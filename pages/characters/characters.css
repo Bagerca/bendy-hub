@@ -1,0 +1,214 @@
+.characters-container { padding-top: 0.5rem; padding-bottom: 4rem; }
+
+/* ПАНЕЛЬ УПРАВЛЕНИЯ */
+.archive-controls {
+    position: sticky;
+    top: 75px; 
+    z-index: 50;
+    margin-bottom: 0.75rem; /* Уменьшен отступ под панелью */
+}
+
+.feed-controls {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.75rem;
+    align-items: center; /* Центрируем все элементы панели по высоте */
+    background-color: rgba(var(--bg-card-rgb, 255, 255, 255), 0.95); 
+    padding: 0.5rem; /* Сделали панель чуть тоньше */
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .feed-controls {
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(15px);
+    }
+    [data-theme="dark"] .feed-controls {
+        background-color: rgba(28, 33, 40, 0.85);
+    }
+}
+
+.search-input-wrapper { position: relative; flex: 1 1 250px; display: flex; align-items: center; }
+.search-btn {
+    position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
+    padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: 0.2s; z-index: 2;
+}
+.search-btn:hover { color: var(--accent-color); background-color: var(--bg-body); }
+.search-input-wrapper:focus-within .search-btn { color: var(--accent-color); }
+
+.feed-controls input {
+    width: 100%; padding: 0.6rem 1rem 0.6rem 2.8rem; border: 1px solid var(--border-color); border-radius: 8px;
+    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
+}
+.feed-controls input::placeholder { color: var(--text-muted); opacity: 0.7; }
+.feed-controls input:focus { border-color: var(--accent-color); background-color: var(--bg-card); box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15); }
+
+/* ИНТЕГРИРОВАННЫЙ СЧЕТЧИК */
+.archive-meta { 
+    margin: 0;
+    padding: 0 0.5rem; 
+    font-size: 0.8rem; 
+    color: var(--text-muted); 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Кастомный выпадающий список */
+.custom-select-container { position: relative; min-width: 220px; flex: 0 0 auto; }
+.custom-select-trigger {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    padding: 0.55rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; 
+    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; cursor: pointer; transition: 0.2s;
+}
+.custom-select-trigger:hover { border-color: var(--text-muted); }
+.custom-select-value { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.95rem; }
+.svg-icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
+
+.custom-select-dropdown {
+    position: absolute; top: calc(100% + 5px); left: 0; right: 0;
+    background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); list-style: none; padding: 0.5rem 0; z-index: 200; 
+    max-height: 250px; overflow-y: auto; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: 0.2s;
+}
+.custom-select-container.active .custom-select-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.custom-select-option { padding: 0.6rem 1rem; display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500; color: var(--text-main);}
+.custom-select-option:hover { background-color: var(--bg-body); }
+.custom-select-option.selected { color: var(--accent-color); background-color: rgba(210, 168, 80, 0.05); }
+
+
+/* НОВЫЙ БЛОК АЛФАВИТНОГО ФИЛЬТРА */
+.alphabet-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* Расстояние между чипами */
+    justify-content: center; /* Центрируем чипы */
+    margin-bottom: 1.25rem; /* Отступ до сетки персонажей */
+    padding: 0 1.5rem; /* Боковые отступы */
+}
+
+.alphabet-chip {
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.9rem; /* Меньше padding для более компактных чипов */
+    border-radius: 20px; /* Сильное скругление для формы чипа */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 40px; /* Минимальная ширина для одиночной буквы */
+    text-align: center;
+    white-space: nowrap;
+}
+
+.alphabet-chip:hover {
+    border-color: var(--accent-color);
+    color: var(--text-main);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(210, 168, 80, 0.1);
+}
+
+.alphabet-chip.active {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-main); /* Используем text-main для контраста на акцентном фоне */
+    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.3);
+    cursor: default;
+    transform: none; /* Убираем translateY на активном */
+}
+/* СЕТКА ПЕРСОНАЖЕЙ (Компактная) */
+.chars-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Чуть расширили минимальный размер карточки */
+    gap: 1rem; 
+}
+
+/* ПРОКАЧАННАЯ КАРТОЧКА */
+.char-card {
+    background-color: var(--bg-card); 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px;
+    padding: 12px 16px; /* Чуть больше воздуха внутри */
+    display: flex; 
+    align-items: center; /* Строгая централизация по вертикали */
+    gap: 14px;
+    text-decoration: none; 
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    min-height: 70px; /* Фиксируем минимальную высоту */
+}
+
+.char-card:hover { 
+    transform: translateY(-3px) scale(1.02); 
+    border-color: var(--accent-color); 
+    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15); 
+    background-color: var(--bg-body);
+}
+
+.char-avatar-wrapper {
+    width: 46px; /* Чуть увеличили аватарку */
+    height: 46px; 
+    border-radius: 50%; 
+    background-color: var(--bg-body); 
+    border: 1px solid var(--border-color);
+    position: relative; 
+    overflow: hidden; 
+    flex-shrink: 0;
+}
+
+.char-img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    position: relative;
+    z-index: 2;
+}
+
+.char-fallback { 
+    position: absolute; 
+    inset: 0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: var(--text-muted); 
+    opacity: 0.4; 
+    z-index: 1; 
+}
+
+/* ПРОКАЧАННЫЙ ТЕКСТ (Line-Clamp 2 строки) */
+.char-card-name { 
+    font-size: 1.1rem; /* Увеличили текст (было 1rem) */
+    font-weight: 700; 
+    color: var(--text-main); 
+    line-height: 1.25; 
+    flex-grow: 1;
+    
+    /* Магия для длинных имен: ограничиваем 2 строками */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Разрешаем перенос */
+    word-wrap: break-word; 
+}
+
+/* АДАПТИВ */
+@media (max-width: 768px) {
+    .archive-meta {
+        width: 100%; 
+        justify-content: center;
+        margin-top: 5px;
+        order: 3;
+    }
+    .custom-select-container { min-width: 100%; order: 2; }
+    .search-input-wrapper { order: 1; }
+    .chars-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; }
+    .alphabet-filters { padding: 0 0.5rem; } /* Уменьшаем padding на мобилках */
+    .alphabet-chip { font-size: 0.85rem; padding: 0.4rem 0.7rem; min-width: 36px; }
+}

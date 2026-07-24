@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Персонаж | Bendy Wiki</title>
+    <link rel="stylesheet" href="shared/css/variables.css">
+    <link rel="stylesheet" href="shared/css/base.css">
+    <link rel="stylesheet" href="shared/css/layout.css">
+    <link rel="stylesheet" href="shared/css/ui.css">
+    <link rel="stylesheet" href="pages/character/character.css">
+    <script>
+        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+
+    <site-header active-page="library"></site-header>
+
+    <div id="char-loader" class="loading-state" style="margin-top: 100px;">
+        <div class="spinner" style="margin: 0 auto 10px;"></div>
+        <span>Расшифровка личного дела...</span>
+    </div>
+
+    <main id="char-content" class="character-page" style="display: none;">
+        
+        <div class="char-header-bg" id="char-bg"></div>
+        
+        <div class="char-container">
+
+            <div class="char-layout">
+                
+                <!-- ЛЕВАЯ КОЛОНКА (Аватар и мета) -->
+                <aside class="char-sidebar">
+                    <a href="javascript:history.back()" class="back-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        Назад
+                    </a>
+
+                    <div class="char-card bento-box">
+                        
+                        <!-- КОНТЕЙНЕР КАРТИНКИ С ФОЛЛБЕКОМ -->
+                        <div class="char-image-wrapper">
+                            <div id="char-fallback" class="char-image-fallback">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <img id="char-image" src="" alt="Photo" style="display: none;">
+                        </div>
+
+                        <h1 id="char-name" class="char-title"></h1>
+                        <div class="char-stats" id="char-meta-container"></div>
+                    </div>
+                </aside>
+
+                <!-- ПРАВАЯ КОЛОНКА (Сложный контент) -->
+                <div class="char-main">
+                    <blockquote class="char-quote" id="char-quote" style="display: none;"></blockquote>
+
+                    <div class="bento-box large wiki-tabs-wrapper">
+                        <nav class="char-tabs">
+                            <button class="char-tab active" data-target="tab-overview">Обзор</button>
+                            <button class="char-tab" id="btn-tab-history" data-target="tab-history" style="display: none;">История</button>
+                            <button class="char-tab" id="btn-tab-trivia" data-target="tab-trivia" style="display: none;">Интересные факты</button>
+                        </nav>
+
+                        <div id="tab-overview" class="char-tab-content active">
+                            <h3 class="section-title">Внешний вид</h3>
+                            <p id="char-appearance" class="char-text"></p>
+                            
+                            <h3 class="section-title mt-4">Личность</h3>
+                            <p id="char-personality" class="char-text"></p>
+                            
+                            <h3 class="section-title mt-4">Появления в играх</h3>
+                            <div class="appearances-tags" id="char-appearances"></div>
+                        </div>
+
+                        <div id="tab-history" class="char-tab-content">
+                            <div class="history-timeline" id="char-history"></div>
+                        </div>
+
+                        <div id="tab-trivia" class="char-tab-content">
+                            <ul class="trivia-list" id="char-trivia"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="pages/character/app.js"></script>
+</body>
+</html>

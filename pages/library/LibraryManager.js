@@ -1,21 +1,17 @@
 import { Logger } from '../../shared/js/Logger.js';
 import { getAverageRGB } from '../../shared/js/utils.js';
-import { GameModal } from './GameModal.js';
 
 export class LibraryManager {
-    constructor(lightboxManager) {
+    constructor() {
         this.container = document.getElementById('games-content');
         this.loader = document.getElementById('games-loader');
         this.template = document.getElementById('game-card-template');
-        this.modal = new GameModal('game-modal', lightboxManager);
-        this.baseAssetPath = 'assets/games/';
     }
 
     determineStatus(releaseDate) {
         if (!releaseDate) return { text: 'В разработке', class: 'status-dev' };
-        
         const lowerDate = releaseDate.toLowerCase();
-        if (lowerDate.includes('скоро') || lowerDate.includes('не объявлена') || lowerDate.includes('2025')) {
+        if (lowerDate.includes('скоро') || lowerDate.includes('не объявлена') || lowerDate.includes('2025') || lowerDate.includes('2026')) {
             return { text: 'В разработке', class: 'status-dev' };
         }
         return { text: 'Вышла', class: 'status-released' };
@@ -39,26 +35,18 @@ export class LibraryManager {
             const imgEl = clone.querySelector('.game-cover-img');
             const fallbackEl = clone.querySelector('.game-cover-fallback');
 
-            // УМНАЯ ЛОГИКА: Сначала берем баннер (идеально для широкой карточки). 
-            // Если баннера нет - берем постер (cover).
-            const cardImageFile = (game.assets && game.assets.banner) 
-                ? game.assets.banner 
-                : (game.assets && game.assets.cover);
+            const cardImageFile = (game.assets && game.assets.banner) ? game.assets.banner : (game.assets && game.assets.cover);
 
             if (cardImageFile) {
-                const imgSrc = `${this.baseAssetPath}${cardImageFile}`;
+                // ПУТЬ ТЕПЕРЬ СТРОИТСЯ ЧЕРЕЗ ПАПКУ ИГРЫ
+                const imgSrc = `assets/games/${game.id}/${cardImageFile}`;
                 imgEl.src = imgSrc;
                 imgEl.alt = game.title;
                 fallbackEl.style.display = 'none';
                 
-                // Извлекаем цвет из баннера для красивого свечения при наведении
                 getAverageRGB(imgSrc, (color) => {
-                    if (color) {
-                        card.style.setProperty('--card-hover-rgb', color);
-                    } else {
-                        // Дефолтный золотой цвет Bendy при ошибке
-                        card.style.setProperty('--card-hover-rgb', '210, 168, 80');
-                    }
+                    if (color) card.style.setProperty('--card-hover-rgb', color);
+                    else card.style.setProperty('--card-hover-rgb', '210, 168, 80');
                 });
 
                 imgEl.onerror = () => {
@@ -71,7 +59,7 @@ export class LibraryManager {
             }
 
             card.addEventListener('click', () => {
-                this.modal.open(game);
+                window.location.href = `game.html?id=${game.id}`;
             });
 
             fragment.appendChild(clone);
@@ -80,7 +68,7 @@ export class LibraryManager {
         this.loader.style.display = 'none';
         this.container.appendChild(fragment);
         this.container.style.display = 'grid';
-        Logger.info('Библиотека игр успешно отрендерена');
+        Logger.info(`Библиотека отрендерена: ${games.length} игр`);
     }
 
     showError(msg) {

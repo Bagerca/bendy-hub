@@ -1,4 +1,3 @@
-// Файл: pages/feed/PostRenderer.js
 import { formatRichText } from '../../shared/js/utils.js';
 import { translateTextApi } from '../../shared/js/api.js';
 import { Logger } from '../../shared/js/Logger.js';

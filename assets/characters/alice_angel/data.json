@@ -1,0 +1,13 @@
+{
+    "id": "alice_angel",
+    "name": "Искаженная Алиса",
+    "role": "Второстепенный антагонист",
+    "status": "Мертва",
+    "voice_actor": "Lauren Synger",
+    "meta": {
+        "gender": "Женский",
+        "species": "Чернильная копия (Сьюзи Кэмпбелл)"
+    },
+    "wiki": {},
+    "assets": {}
+}

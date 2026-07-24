@@ -1,0 +1,15 @@
+{
+    "id": "tom",
+    "name": "Том",
+    "role": "",
+    "status": "Неизвестно",
+    "voice_actor": "",
+    "meta": {
+        "gender": "",
+        "species": "",
+        "aliases": [],
+        "occupation": ""
+    },
+    "wiki": {},
+    "assets": {}
+}

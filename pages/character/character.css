@@ -1,0 +1,168 @@
+.character-page { position: relative; min-height: 100vh; padding-bottom: 4rem; }
+
+/* Фон */
+.char-header-bg {
+    position: absolute; top: 0; left: 0; right: 0; height: 40vh;
+    background-size: cover; background-position: center;
+    filter: blur(40px) brightness(0.4); z-index: 0;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
+.char-container {
+    position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+
+.back-btn {
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    color: var(--text-muted);
+    text-decoration: none; 
+    font-weight: 700; 
+    margin-bottom: 1.25rem; 
+    transition: 0.2s;
+}
+.back-btn:hover { 
+    color: var(--accent-color); 
+    transform: translateX(-4px); 
+}
+
+.char-layout { display: grid; grid-template-columns: 350px 1fr; gap: 3rem; align-items: start;}
+
+.bento-box {
+    background: var(--bg-card); padding: 2rem; border-radius: 16px;
+    border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.bento-box.large { padding: 3rem; }
+
+.char-sidebar { position: sticky; top: 100px; }
+
+/* КОНТЕЙНЕР КАРТИНКИ */
+.char-image-wrapper {
+    width: 100%; 
+    aspect-ratio: 1/1; 
+    border-radius: 12px; 
+    overflow: hidden;
+    margin-bottom: 1.5rem; 
+    background: var(--bg-body); 
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Красивая заглушка, если нет картинки */
+.char-image-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    opacity: 0.3;
+}
+
+/* Обычная аватарка (JPG) */
+.char-image-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    position: relative;
+    z-index: 2;
+}
+
+/* PNG-рендер во весь рост */
+.char-image-wrapper img.is-render { 
+    object-fit: contain; 
+    padding: 12px;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+}
+
+.char-title { font-size: 2.2rem; font-weight: 900; color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.1; }
+
+.char-stats { display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;}
+.stat-row { display: flex; flex-direction: column; gap: 4px; }
+.stat-label { font-size: 0.8rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); letter-spacing: 0.5px;}
+.stat-value { font-size: 1rem; font-weight: 600; color: var(--text-main); }
+
+/* Правая колонка */
+.char-quote {
+    font-size: 1.25rem; font-style: italic; color: var(--accent-color);
+    border-left: 4px solid var(--accent-color); padding: 1.5rem; margin-bottom: 2rem;
+    background: rgba(210, 168, 80, 0.05); border-radius: 0 12px 12px 0; font-weight: 500;
+}
+
+.wiki-tabs-wrapper { padding: 0; overflow: hidden; }
+
+/* Вкладки (Tabs) */
+.char-tabs {
+    display: flex; gap: 1rem; border-bottom: 1px solid var(--border-color);
+    padding: 0 3rem; background: rgba(0,0,0,0.02); overflow-x: auto; scrollbar-width: none;
+}
+.char-tabs::-webkit-scrollbar { display: none; }
+
+.char-tab {
+    background: none; border: none; color: var(--text-muted); font-size: 1.05rem;
+    font-weight: 700; padding: 1.5rem 0.5rem; cursor: pointer; border-bottom: 3px solid transparent;
+    transition: 0.2s; white-space: nowrap; margin-bottom: -1px;
+}
+.char-tab:hover { color: var(--text-main); }
+.char-tab.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
+
+.char-tab-content { display: none; padding: 3rem; animation: fadeIn 0.4s ease forwards; }
+.char-tab-content.active { display: block; }
+
+.section-title { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main); }
+.mt-4 { margin-top: 2.5rem; }
+
+.char-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line; }
+
+/* История (Таймлайн) */
+.history-timeline { display: flex; flex-direction: column; gap: 2.5rem; position: relative; }
+.history-timeline::before {
+    content: ''; position: absolute; left: 11px; top: 10px; bottom: 10px;
+    width: 2px; background: var(--border-color); z-index: 0;
+}
+.history-block { position: relative; z-index: 1; padding-left: 2.5rem; }
+.history-block::before {
+    content: ''; position: absolute; left: 7px; top: 6px; width: 10px; height: 10px;
+    background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-card);
+}
+.history-title { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--text-main); }
+
+/* Факты */
+.trivia-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+.trivia-list li {
+    font-size: 1.05rem; line-height: 1.6; color: var(--text-main);
+    padding-left: 1.8rem; position: relative; opacity: 0.9;
+}
+.trivia-list li::before {
+    content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 1px; font-size: 1.2rem;
+}
+
+/* Теги появлений */
+.appearances-tags { display: flex; flex-wrap: wrap; gap: 10px; min-height: 40px; }
+.app-tag { 
+    display: inline-block; background: rgba(210, 168, 80, 0.1); color: var(--accent-color); 
+    padding: 8px 14px; border-radius: 8px; font-weight: 600; border: 1px solid rgba(210, 168, 80, 0.2);
+    text-decoration: none; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); font-size: 0.95rem;
+}
+a.app-tag.interactive:hover {
+    background: rgba(210, 168, 80, 0.25); border-color: var(--accent-color);
+    color: var(--text-main); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .char-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .char-sidebar { position: static; }
+    .char-header-bg { height: 30vh; }
+    .char-tabs { padding: 0 1.5rem; }
+    .char-tab-content { padding: 2rem 1.5rem; }
+}

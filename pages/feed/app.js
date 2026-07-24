@@ -1,4 +1,3 @@
-// Файл: pages/feed/app.js
 import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
 import { fetchData } from '../../shared/js/api.js';
 import { LightboxManager } from '../../shared/js/Lightbox.js';

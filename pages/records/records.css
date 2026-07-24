@@ -1,0 +1,325 @@
+/* =========================================
+   pages/records/records.css
+   Макет "Цифровой Архив" (Bento UI)
+   ========================================= */
+
+.archives-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: start;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+/* =========================================
+   САЙДБАР (Навигация)
+   ========================================= */
+.archives-sidebar {
+    position: sticky;
+    top: 90px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.03);
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header h3 {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+    padding-right: 5px;
+    scrollbar-width: thin;
+}
+
+.category-nav::-webkit-scrollbar { width: 4px; }
+.category-nav::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+/* Кнопки категорий */
+.cat-btn {
+    background: transparent;
+    border: none;
+    border-left: 3px solid transparent; /* Индикатор активности */
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.8;
+    
+    /* Ограничение текста в 2 строки для красоты */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+}
+
+.cat-btn:hover {
+    background-color: var(--bg-body);
+    opacity: 1;
+}
+
+.cat-btn.active {
+    background: linear-gradient(90deg, rgba(210, 168, 80, 0.1) 0%, transparent 100%);
+    border-left-color: var(--accent-color);
+    color: var(--accent-color);
+    opacity: 1;
+}
+
+[data-theme="light"] .cat-btn.active {
+    background: linear-gradient(90deg, rgba(210, 168, 80, 0.15) 0%, transparent 100%);
+}
+
+/* =========================================
+   ГЛАВНЫЙ ЭКРАН (Заголовок и сетка)
+   ========================================= */
+.archives-header {
+    margin-bottom: 2.5rem;
+}
+
+.archives-header h1 {
+    font-size: 2.4rem;
+    color: var(--text-main);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+}
+
+.meta-count {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: 1rem;
+    background: rgba(210, 168, 80, 0.1);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+/* Сетка карточек */
+.records-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* =========================================
+   КАРТОЧКА ЗАПИСИ (Premium Bento)
+   ========================================= */
+.record-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    animation: fadeInSlideUp 0.4s ease forwards;
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.record-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-color);
+    box-shadow: 0 12px 30px rgba(210, 168, 80, 0.15);
+}
+
+/* Секция картинки / Заглушки */
+.card-image-wrapper {
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.record-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+/* Красивая заглушка (если нет фото) */
+.card-fallback-icon {
+    background-color: var(--bg-card);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.record-card:hover .card-fallback-icon {
+    color: var(--accent-color);
+    transform: scale(1.1);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 25px rgba(210, 168, 80, 0.2);
+}
+
+/* Контент карточки */
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-type-badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    
+    /* Ограничиваем длинные названия тремя строками */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-author {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-author::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background-color: var(--border-color);
+}
+
+/* =========================================
+   МОДАЛКА (Иммерсивная Читалка)
+   ========================================= */
+.reader-modal {
+    max-width: 650px; /* Узкая колонка для комфортного чтения */
+    width: 95%;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    border-radius: 16px;
+    padding: 0;
+}
+
+.reader-content {
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 3.5rem;
+    scrollbar-width: thin;
+}
+
+.reader-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.reader-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.reader-header h2 {
+    font-size: 2.2rem;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.reader-author {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.reader-body {
+    font-family: Georgia, 'Times New Roman', serif; 
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    white-space: pre-line;
+    opacity: 0.9;
+}
+
+/* =========================================
+   АНИМАЦИИ И АДАПТИВ
+   ========================================= */
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .archives-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .archives-sidebar {
+        position: static;
+        max-height: 300px; /* На мобильных меню скроллится внутри себя */
+    }
+    .reader-content { padding: 2.5rem 1.5rem; }
+    .archives-header h1 { font-size: 1.8rem; }
+}

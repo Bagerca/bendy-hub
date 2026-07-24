@@ -10,6 +10,9 @@ export class SiteHeader extends HTMLElement {
                     <nav class="site-nav">
                         <a href="index.html" class="nav-link ${activePage === 'feed' ? 'active' : ''}">Лента Разработчиков</a>
                         <a href="library.html" class="nav-link ${activePage === 'library' ? 'active' : ''}">Библиотека Игр</a>
+                        <a href="characters.html" class="nav-link ${activePage === 'characters' ? 'active' : ''}">Архив Персонажей</a>
+                        <a href="timeline.html" class="nav-link ${activePage === 'timeline' ? 'active' : ''}">Хронология Лора</a>
+                        <a href="records.html" class="nav-link ${activePage === 'records' ? 'active' : ''}">Архивы Студии</a>
                     </nav>
                     
                     <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
@@ -48,8 +51,6 @@ export class SiteHeader extends HTMLElement {
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('bendy-theme', newTheme);
             updateIcon(newTheme);
-            
-            Logger.info(`Тема изменена на: ${newTheme}`);
         });
     }
 }

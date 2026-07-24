@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Архивы Студии | Bendy Wiki</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    
+    <link rel="stylesheet" href="shared/css/variables.css">
+    <link rel="stylesheet" href="shared/css/base.css">
+    <link rel="stylesheet" href="shared/css/layout.css">
+    <link rel="stylesheet" href="shared/css/ui.css">
+    <link rel="stylesheet" href="pages/records/records.css">
+    
+    <script>
+        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+
+    <site-header active-page="records"></site-header>
+
+    <main class="page-content archives-layout">
+        
+        <!-- ЛЕВАЯ КОЛОНКА: Навигация -->
+        <aside class="archives-sidebar">
+            <div class="sidebar-header">
+                <h3>Каталог Архивов</h3>
+            </div>
+            <nav id="category-nav" class="category-nav">
+                <!-- Категории загрузятся сюда -->
+            </nav>
+        </aside>
+
+        <!-- ПРАВАЯ КОЛОНКА: Контент -->
+        <section class="archives-main">
+            
+            <div class="archives-header">
+                <h1 id="current-category-title">Загрузка архивов...</h1>
+                <p id="current-category-count" class="meta-count"></p>
+            </div>
+
+            <div id="records-loader" class="loading-state">
+                <div class="spinner" style="margin: 0 auto 10px;"></div>
+                <span>Расшифровка данных...</span>
+            </div>
+
+            <div id="records-grid" class="records-grid" style="display: none;">
+                <!-- Карточки загрузятся сюда -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- МОДАЛКА ДЛЯ ЧТЕНИЯ -->
+    <dialog id="record-modal" class="custom-modal reader-modal">
+        <button class="modal-close" aria-label="Закрыть">&times;</button>
+        
+        <div class="reader-content">
+            <img id="reader-image" src="" alt="Фото записи" class="reader-image" style="display: none;">
+            
+            <div class="reader-header">
+                <h2 id="reader-title"></h2>
+                <span id="reader-author" class="reader-author"></span>
+            </div>
+            
+            <div class="reader-body">
+                <p id="reader-text"></p>
+            </div>
+        </div>
+    </dialog>
+
+    <script type="module" src="pages/records/app.js"></script>
+</body>
+</html>

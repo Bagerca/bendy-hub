@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Хронология | Bendy Wiki</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    
+    <link rel="stylesheet" href="shared/css/variables.css">
+    <link rel="stylesheet" href="shared/css/base.css">
+    <link rel="stylesheet" href="shared/css/layout.css">
+    <link rel="stylesheet" href="shared/css/ui.css">
+    <link rel="stylesheet" href="pages/timeline/timeline.css">
+    
+    <script>
+        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+
+    <site-header active-page="timeline"></site-header>
+
+    <main class="page-content">
+        
+        <!-- НОВЫЙ БЛОК: Переключатель режимов -->
+        <div class="timeline-mode-toggle">
+            <div class="toggle-track">
+                <button class="mode-btn active" data-mode="lore">Внутриигровая история</button>
+                <button class="mode-btn" data-mode="dev">История разработки</button>
+            </div>
+        </div>
+
+        <!-- Липкая панель навигации по эпохам -->
+        <nav id="era-nav" class="era-nav">
+            <!-- Кнопки эпох сгенерируются через JS -->
+        </nav>
+
+        <!-- Контейнер хронологии -->
+        <div class="timeline-wrapper">
+            <div id="timeline-loader" class="loading-state" style="margin-top: 60px;">
+                <div class="spinner" style="margin: 0 auto 10px;"></div>
+                <span>Расшифровка архивов...</span>
+            </div>
+
+            <!-- Центральная линия и события -->
+            <div id="timeline-content" class="timeline-container" style="display: none;">
+                <div class="timeline-center-line"></div>
+                <div id="events-container"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script type="module" src="pages/timeline/app.js"></script>
+</body>
+</html>

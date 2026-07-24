@@ -1,0 +1,33 @@
+{
+    "id": "game_bendy_secrets_of_the_machine",
+    "steam_id": 622630,
+    "title": "Bendy: Secrets of the Machine",
+    "tier": "tier_indie",
+    "developer": "Gent Corporation",
+    "publisher": "Joey Drew Studios",
+    "release_date": "14 апр. 2024 г.",
+    "tags": [
+        "Adventure", "Indie", "Horror", "Casual", "Puzzle", "Cartoony", 
+        "First-Person", "Interactive Fiction", "Cartoon", "Singleplayer", 
+        "Walking Simulator", "Action", "Dark", "Free to Play", "Stylized", 
+        "Story Rich", "Multiplayer", "Exploration", "Mystery", "Atmospheric"
+    ],
+    "description": "Some things are better left forgotten.",
+    "specs": {
+        "minimum": "Минимальные: | 64-разрядные процессор и операционная система | ОС: Windows 10 (64 bit) | Процессор: Intel Core i5 | Оперативная память: 8 GB ОЗУ | Видеокарта: Nvidia GeForce GTX 1060 | AMD RX 580 | DirectX: версии 11 | Место на диске: 2 GB",
+        "recommended": "Рекомендованные: | 64-разрядные процессор и операционная система"
+    },
+    "assets": {
+        "logo": "logo.png",
+        "cover": "cover.jpg",
+        "banner": "banner.jpg",
+        "hero_bg": "hero.jpg",
+        "screenshots": [
+            "screen_1.jpg",
+            "screen_2.jpg",
+            "screen_3.jpg",
+            "screen_4.jpg",
+            "screen_5.jpg"
+        ]
+    }
+}

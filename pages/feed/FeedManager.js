@@ -1,4 +1,3 @@
-// Файл: pages/feed/FeedManager.js
 export class FeedManager {
     constructor(containerId, sentinelId, renderer) {
         this.container = document.getElementById(containerId);
@@ -9,7 +8,7 @@ export class FeedManager {
         this.filteredPosts = [];
         this.chunkSize = 20;
         this.currentIndex = 0;
-        this.currentSearchTerm = ''; // Сохраняем текущее слово
+        this.currentSearchTerm = ''; // Сохраняем искомое слово
 
         this.initObserver();
     }
@@ -20,7 +19,7 @@ export class FeedManager {
     }
 
     applyFilters(searchTerm, selectedAuthor) {
-        this.currentSearchTerm = searchTerm.trim(); // Запоминаем для подсветки
+        this.currentSearchTerm = searchTerm.trim(); 
         const term = this.currentSearchTerm.toLowerCase();
         
         this.filteredPosts = this.allPosts.filter(post => {
@@ -72,7 +71,7 @@ export class FeedManager {
         const fragment = document.createDocumentFragment();
 
         chunk.forEach(post => {
-            // Передаем искомое слово в рендерер!
+            // Передаем искомое слово в рендерер
             const el = this.renderer.render(post, this.currentSearchTerm);
             if (el) fragment.appendChild(el);
         });
