@@ -21,7 +21,7 @@
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 1.5rem 1rem; /* Уменьшил боковые отступы контейнера для кнопок */
     box-shadow: 0 4px 25px rgba(0,0,0,0.03);
     max-height: calc(100vh - 120px);
     display: flex;
@@ -36,13 +36,14 @@
     letter-spacing: 1px;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
+    padding-left: 0.5rem;
     border-bottom: 1px solid var(--border-color);
 }
 
 .category-nav {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px; /* Немного уменьшили разрыв, чтобы меню выглядело цельнее */
     overflow-y: auto;
     padding-right: 5px;
     scrollbar-width: thin;
@@ -51,23 +52,24 @@
 .category-nav::-webkit-scrollbar { width: 4px; }
 .category-nav::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
 
-/* Кнопки категорий */
+/* =========================================
+   КНОПКИ МЕНЮ (Floating Pills)
+   ========================================= */
 .cat-btn {
+    position: relative;
     background: transparent;
     border: none;
-    border-left: 3px solid transparent; /* Индикатор активности */
     color: var(--text-main);
     font-family: inherit;
     font-size: 0.95rem;
     font-weight: 600;
     text-align: left;
-    padding: 0.85rem 1rem;
-    border-radius: 0 8px 8px 0;
+    padding: 0.75rem 1rem 0.75rem 1.25rem; /* Чуть больше места слева для маркера */
+    border-radius: 10px; /* Теперь круглые со ВСЕХ сторон */
     cursor: pointer;
-    transition: all 0.2s ease;
-    opacity: 0.8;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.65; /* Делаем неактивные чуть прозрачнее */
     
-    /* Ограничение текста в 2 строки для красоты */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -76,20 +78,31 @@
     line-height: 1.4;
 }
 
+/* Эффект наведения: мягкое универсальное высветление + легкий сдвиг */
 .cat-btn:hover {
-    background-color: var(--bg-body);
+    background-color: rgba(120, 120, 120, 0.1); 
     opacity: 1;
+    transform: translateX(4px);
 }
 
+/* Активное состояние: мягкий золотой фон */
 .cat-btn.active {
-    background: linear-gradient(90deg, rgba(210, 168, 80, 0.1) 0%, transparent 100%);
-    border-left-color: var(--accent-color);
+    background-color: rgba(210, 168, 80, 0.1);
     color: var(--accent-color);
     opacity: 1;
+    transform: translateX(0); /* Сброс сдвига */
 }
 
-[data-theme="light"] .cat-btn.active {
-    background: linear-gradient(90deg, rgba(210, 168, 80, 0.15) 0%, transparent 100%);
+/* Изящный индикатор слева внутри активной кнопки */
+.cat-btn.active::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 20%;
+    bottom: 20%;
+    width: 4px;
+    background-color: var(--accent-color);
+    border-radius: 4px;
 }
 
 /* =========================================
