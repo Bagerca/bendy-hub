@@ -8,11 +8,12 @@ export class SiteHeader extends HTMLElement {
             <header class="site-header">
                 <div class="header-content">
                     <nav class="site-nav">
-                        <a href="index.html" class="nav-link ${activePage === 'feed' ? 'active' : ''}">Лента Разработчиков</a>
-                        <a href="library.html" class="nav-link ${activePage === 'library' ? 'active' : ''}">Библиотека Игр</a>
-                        <a href="characters.html" class="nav-link ${activePage === 'characters' ? 'active' : ''}">Архив Персонажей</a>
-                        <a href="timeline.html" class="nav-link ${activePage === 'timeline' ? 'active' : ''}">Хронология Лора</a>
-                        <a href="records.html" class="nav-link ${activePage === 'records' ? 'active' : ''}">Архивы Студии</a>
+                        <a href="index.html" class="nav-link ${activePage === 'feed' ? 'active' : ''}">Лента</a>
+                        <a href="library.html" class="nav-link ${activePage === 'library' ? 'active' : ''}">Игры</a>
+                        <a href="characters.html" class="nav-link ${activePage === 'characters' ? 'active' : ''}">Персонажи</a>
+                        <a href="music.html" class="nav-link ${activePage === 'music' ? 'active' : ''}">Музыка</a>
+                        <a href="timeline.html" class="nav-link ${activePage === 'timeline' ? 'active' : ''}">Хронология</a>
+                        <a href="records.html" class="nav-link ${activePage === 'records' ? 'active' : ''}">Архивы</a>
                     </nav>
                     
                     <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">

@@ -1,6 +1,14 @@
 {
     "id": "game_bendy_the_cage",
-    "steam_id": 2663960,
+    "platforms": {
+        "steam": "https://store.steampowered.com/app/2663960/",
+        "xbox": "https://www.xbox.com/ru-RU/games/...",
+        "playstation": "https://store.playstation.com/...",
+        "nintendo": "https://www.nintendo.com/...",
+        "epic": "https://store.epicgames.com/...",
+        "ios": "https://apps.apple.com/...",
+        "android": "https://play.google.com/store/..."
+    },
     "title": "Bendy: The Cage",
     "tier": "tier_indie",
     "developer": "Joey Drew Studios",
