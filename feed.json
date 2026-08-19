@@ -1,5 +1,25 @@
 [
   {
+    "id": "2090086903475302640",
+    "authorName": "themeatly",
+    "authorHandle": "@themeatly",
+    "platform": "twitter",
+    "content": "On an unrelated note.. I absolutely love theme parks and am always looking to include Bendy officially in them. So if any companies are interested, definitely contact me. 🙂",
+    "timestamp": "2026-08-19T14:42:04Z",
+    "mediaUrl": "https://nitter.net/pic/media%2FHQDfA2BXcAAeD5e.jpg",
+    "avatarUrl": "https://nitter.net/pic/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F2017243552334397440%2F7VYUAWgZ_400x400.jpg"
+  },
+  {
+    "id": "2090068187702333721",
+    "authorName": "m_ZeroLogics",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "some random fun dev facts for the day. in both batim/batdr we have an editor tool we just call \"T'ing\" which in a sentence would be said as \"just T through it\" this just enters a free roaming camera mode, where it leaves the player behind and the camera can freely fly around anywhere and through walls. you can also go really fast if you hold shift while moving around. when you press T again, it'll place the player exactly where you where seamlessly. this makes for testing specific things super easy and quick if it needs to be tested dozens of times. in batim specifically, we have a tool for speeding up time. which gives hilarious results. but in play mode if you press SHIFT+F it will speed up time super fast, including audio. and we used to use this to do super fast tests where we didn't want to T through anything and allow for sequences to trigger properly. in BLW we had a cheat tool by pressing ~ beside 1 on the keyboard and a menu would appear that gives all kinds of options to cheat, like going to any level, unlocking progression, unlock weapons, add days, or making all items appear right beside the elevator with the click of a button to quickly test a floors end result. in Cage we have, oh sorry we ran out of time here, see you in nightmare run!",
+    "timestamp": "2026-08-19T13:27:42Z",
+    "mediaUrl": null,
+    "avatarUrl": "https://nitter.net/pic/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F2081694743340204032%2FSswUyMyX_400x400.png"
+  },
+  {
     "id": "2089727190271242420",
     "authorName": "BLacroix30",
     "authorHandle": "@BLacroix30",
@@ -191,13 +211,13 @@
   },
   {
     "id": "2088641851314044990",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
     "platform": "twitter",
-    "content": "RT by @m_ZeroLogics: Happy Lone Wolfiversary.",
+    "content": "RT by @BLacroix30: Happy Lone Wolfiversary.",
     "timestamp": "2026-08-15T14:59:57Z",
     "mediaUrl": "https://nitter.net/pic/media%2FHPxORVXWUAEwhr6.jpg",
-    "avatarUrl": "https://nitter.net/pic/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F2081694743340204032%2FSswUyMyX_400x400.png"
+    "avatarUrl": "https://nitter.net/pic/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F2086661609821220864%2FDn_VXW8N_400x400.png"
   },
   {
     "id": "2080387892703109315",
@@ -301,13 +321,13 @@
   },
   {
     "id": "2077354244747719055",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
     "platform": "twitter",
-    "content": "RT by @m_ZeroLogics: One week left to get the ORIGINAL BENDY at 90% OFF on Steam!",
+    "content": "RT by @BLacroix30: One week left to get the ORIGINAL BENDY at 90% OFF on Steam!",
     "timestamp": "2026-07-15T11:27:01Z",
     "mediaUrl": "https://nitter.net/pic/amplify_video_thumb%2F2075265171287609344%2Fimg%2FL0VVKENBWRcLW4JI.jpg",
-    "avatarUrl": "https://nitter.net/pic/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F2081694743340204032%2FSswUyMyX_400x400.png"
+    "avatarUrl": "https://nitter.net/pic/https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F2086661609821220864%2FDn_VXW8N_400x400.png"
   },
   {
     "id": "2077345811361305072",
