@@ -2,13 +2,14 @@ import { Logger } from '../Logger.js';
 
 export class SiteHeader extends HTMLElement {
     connectedCallback() {
-        const activePage = this.getAttribute('active-page') || 'feed';
+        const activePage = this.getAttribute('active-page') || 'home';
 
         this.innerHTML = `
             <header class="site-header">
                 <div class="header-content">
                     <nav class="site-nav">
-                        <a href="index.html" class="nav-link ${activePage === 'feed' ? 'active' : ''}">Лента</a>
+                        <a href="index.html" class="nav-link ${activePage === 'home' ? 'active' : ''}">Главная</a>
+                        <a href="feed.html" class="nav-link ${activePage === 'feed' ? 'active' : ''}">Лента</a>
                         <a href="library.html" class="nav-link ${activePage === 'library' ? 'active' : ''}">Игры</a>
                         <a href="characters.html" class="nav-link ${activePage === 'characters' ? 'active' : ''}">Персонажи</a>
                         <a href="music.html" class="nav-link ${activePage === 'music' ? 'active' : ''}">Музыка</a>
