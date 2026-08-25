@@ -123,10 +123,16 @@
     z-index: 200; 
     max-height: 250px; 
     overflow-y: auto;
+    scrollbar-width: none; /* Скрываем скроллбар в Firefox */
     opacity: 0; 
     visibility: hidden; 
     transform: translateY(-10px); 
     transition: 0.2s;
+}
+
+/* Скрываем скроллбар в Chrome/Safari/Edge */
+.custom-select-dropdown::-webkit-scrollbar {
+    display: none;
 }
 
 .custom-select-container.active .custom-select-dropdown { 

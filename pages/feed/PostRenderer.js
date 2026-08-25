@@ -9,15 +9,12 @@ export class PostRenderer {
         this.fallbackAvatar = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="%2365676B" stroke-width="2"%3E%3Cpath d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/%3E%3Ccircle cx="12" cy="7" r="4"/%3E%3C/svg%3E';
     }
 
-    // Экранирование для Regex
     escapeRegExp(string) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    // Умная подсветка текста
     highlightText(html, searchTerm) {
         if (!searchTerm) return html;
-        // Регулярка: ищет слово, ИГНОРИРУЯ всё, что находится внутри HTML тегов <...>
         const regex = new RegExp(`(${this.escapeRegExp(searchTerm)})(?![^<]*>)`, 'gi');
         return html.replace(regex, '<mark class="search-highlight">$1</mark>');
     }
@@ -42,7 +39,6 @@ export class PostRenderer {
             
             if (contentToParse.trim().toLowerCase() === 'gif') contentToParse = '';
 
-            // 1. Форматируем ссылки/хэштеги. 2. Подсвечиваем искомое слово
             let richHtml = formatRichText(contentToParse);
             richHtml = this.highlightText(richHtml, searchTerm);
             
@@ -135,8 +131,29 @@ export class PostRenderer {
         if (post.platform === 'twitter') handleEl.href = `https://twitter.com/${post.authorHandle.replace('@', '')}`;
 
         const avatarEl = clone.querySelector('.post-avatar');
-        avatarEl.onerror = () => { avatarEl.src = this.fallbackAvatar; avatarEl.classList.add('fallback'); };
-        avatarEl.src = post.avatarUrl || this.fallbackAvatar;
+        
+        // 1. Генерируем предсказанный локальный путь по никнейму
+        const cleanHandle = post.authorHandle.replace('@', '').toLowerCase();
+        const predictedLocalPath = `assets/avatars/${cleanHandle}.jpg`;
+        
+        // 2. Достаем интернет-ссылку на крайний случай
+        const internetUrl = post.originalAvatarUrl || post.avatarUrl;
+
+        // 3. Бронебойный onerror
+        avatarEl.onerror = () => {
+            // Если сломалась локальная картинка -> пробуем интернет-ссылку
+            if (avatarEl.src.includes(predictedLocalPath) && internetUrl) {
+                avatarEl.src = internetUrl;
+            } 
+            // Если сломался и интернет (или его нет) -> ставим SVG заглушку
+            else if (!avatarEl.src.includes('data:image')) {
+                avatarEl.src = this.fallbackAvatar;
+                avatarEl.classList.add('fallback');
+            }
+        };
+
+        // Запускаем попытку загрузить локальную картинку
+        avatarEl.src = post.localAvatarPath || predictedLocalPath;
 
         const dateEl = clone.querySelector('.post-date');
         if (post.timestamp) {
