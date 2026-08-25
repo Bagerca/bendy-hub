@@ -6,19 +6,18 @@ import re
 import os
 import logging
 import time
+import socket
 import html
 import ssl
+import random
 import xml.etree.ElementTree as ET
-import concurrent.futures
 from datetime import datetime
 from typing import List, Dict, Tuple
 
-# Отключаем проверку SSL для локальных запусков (решает проблемы с антивирусами и провайдерами)
 ssl._create_default_https_context = ssl._create_unverified_context
-
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%H:%M:%S')
 
-class BendyBlasterScraper:
+class BendySniperScraper:
     def __init__(self, handles: List[str]):
         self.handles = handles
         self.output_file = "feed.json"
@@ -28,31 +27,21 @@ class BendyBlasterScraper:
         self.avatars_dir = os.path.join("assets", "avatars")
         os.makedirs(self.avatars_dir, exist_ok=True)
 
-        self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        # Пул реальных юзер-агентов для обхода защиты прокси
+        self.user_agents = [
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0',
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
+        ]
+
+    def get_headers(self):
+        return {
+            'User-Agent': random.choice(self.user_agents),
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.5',
             'Connection': 'keep-alive'
         }
-
-        # Арсенал зеркал для параллельной атаки
-        self.mirrors = [
-            ("Nitter (poast)", "https://nitter.poast.org/{}/rss", "rss"),
-            ("Nitter (xcancel)", "https://xcancel.com/{}/rss", "rss"),
-            ("Nitter (privacydev)", "https://nitter.privacydev.net/{}/rss", "rss"),
-            ("Nitter (lucabased)", "https://nitter.lucabased.xyz/{}/rss", "rss"),
-            ("Nitter (catsarch)", "https://nitter.catsarch.com/{}/rss", "rss"),
-            ("Nitter (projectsegfau)", "https://nitter.projectsegfau.lt/{}/rss", "rss"),
-            
-            ("RSSHub (rssforever)", "https://rsshub.rssforever.com/twitter/user/{}", "rss"),
-            ("RSSHub (pseudoyu)", "https://rsshub.pseudoyu.com/twitter/user/{}", "rss"),
-            
-            ("Sotwe (Direct)", "https://api.sotwe.com/v3/user/{}", "sotwe"),
-            ("Sotwe (CorsProxy)", "https://corsproxy.io/?https%3A%2F%2Fapi.sotwe.com%2Fv3%2Fuser%2F{}", "sotwe"),
-            
-            ("Syndication (Direct)", "https://syndication.twitter.com/srv/timeline-profile/screen-name/{}", "syndication"),
-            ("Syndication (Cors)", "https://corsproxy.io/?https%3A%2F%2Fsyndication.twitter.com%2Fsrv%2Ftimeline-profile%2Fscreen-name%2F{}", "syndication"),
-        ]
 
     def load_existing_feed(self) -> List[Dict]:
         if not os.path.exists(self.output_file): return []
@@ -82,68 +71,16 @@ class BendyBlasterScraper:
         local_path = os.path.join(self.avatars_dir, local_filename)
         web_path = f"assets/avatars/{local_filename}"
         if os.path.exists(local_path): return web_path
+        
+        avatar_url = avatar_url.replace('_normal', '_400x400')
         try:
-            req = urllib.request.Request(avatar_url.replace('_normal', '_400x400'), headers=self.headers)
-            with urllib.request.urlopen(req, timeout=8) as response:
+            req = urllib.request.Request(avatar_url, headers=self.get_headers())
+            with urllib.request.urlopen(req, timeout=10) as response:
                 if response.status == 200:
-                    with open(local_path, 'wb') as f:
-                        f.write(response.read())
+                    with open(local_path, 'wb') as f: f.write(response.read())
                     return web_path
         except: pass
         return ""
-
-    # === ПАРСЕРЫ ===
-
-    def parse_rss(self, xml_data: str, handle: str) -> Tuple[List[Dict], str]:
-        posts, avatar_url = [], ""
-        try:
-            root = ET.fromstring(xml_data)
-            channel = root.find("channel")
-            if channel is None: return posts, avatar_url
-            
-            author_name = handle
-            title_node = channel.find("title")
-            if title_node is not None and title_node.text:
-                ft = html.unescape(title_node.text)
-                if " / " in ft: author_name = ft.split(" / ")[0].strip()
-                elif "'s Twitter" in ft: author_name = ft.split("'s Twitter")[0].strip()
-                    
-            img_node = channel.find("image")
-            if img_node is not None:
-                u_node = img_node.find("url")
-                if u_node is not None and u_node.text:
-                    raw_url = urllib.parse.unquote(u_node.text)
-                    if 'pbs.twimg.com' in raw_url:
-                        avatar_url = "https://pbs.twimg.com" + raw_url.split('pbs.twimg.com')[-1]
-                        
-            for item in channel.findall("item"):
-                link = item.find("link")
-                if link is None or not link.text: continue
-                
-                content = html.unescape(item.find("title").text.strip()) if item.find("title") is not None and item.find("title").text else ""
-                content = re.sub(r'<video[^>]*>.*?</video>', '', content, flags=re.IGNORECASE | re.DOTALL)
-                
-                media_url = None
-                desc = item.find("description")
-                if desc is not None and desc.text:
-                    img_match = re.search(r'<img[^>]+src="([^"]+)"', desc.text, re.IGNORECASE)
-                    if img_match:
-                        r_src = urllib.parse.unquote(img_match.group(1))
-                        match = re.search(r'media/([^/]+\.(?:jpg|png|mp4|webp))', r_src, re.IGNORECASE)
-                        media_url = f"https://pbs.twimg.com/media/{match.group(1)}" if match else r_src
-                            
-                posts.append({
-                    "id": link.text.rstrip('/').split('/')[-1],
-                    "authorName": author_name,
-                    "authorHandle": f"@{handle}",
-                    "platform": "twitter",
-                    "content": content,
-                    "timestamp": self.parse_date(item.find("pubDate").text if item.find("pubDate") is not None else ""),
-                    "mediaUrl": media_url,
-                    "originalAvatarUrl": avatar_url
-                })
-        except: pass
-        return posts, avatar_url
 
     def parse_sotwe(self, json_data: str, handle: str) -> Tuple[List[Dict], str]:
         posts, avatar_url = [], ""
@@ -151,10 +88,12 @@ class BendyBlasterScraper:
             data = json.loads(json_data)
             u_info = data.get('data', {}).get('profile', {})
             avatar_url = u_info.get('profile_image_url_https', '')
+            actual_name = u_info.get('name', handle)
             
             for tweet in data.get('data', {}).get('tweets', []):
                 t_handle = tweet.get('user', {}).get('screen_name', handle)
                 if t_handle.lower() != handle.lower(): continue
+                content = tweet.get('full_text') or tweet.get('text', '')
                 
                 media_url = None
                 ml = tweet.get('mediaEntities', []) or tweet.get('entities', {}).get('media', [])
@@ -167,10 +106,10 @@ class BendyBlasterScraper:
 
                 posts.append({
                     "id": tweet.get('id_str', ''),
-                    "authorName": u_info.get('name', handle),
+                    "authorName": actual_name,
                     "authorHandle": f"@{t_handle}",
                     "platform": "twitter",
-                    "content": tweet.get('full_text') or tweet.get('text', ''),
+                    "content": content,
                     "timestamp": self.parse_date(tweet.get('createdAt')),
                     "mediaUrl": media_url,
                     "originalAvatarUrl": avatar_url
@@ -212,51 +151,84 @@ class BendyBlasterScraper:
         except: pass
         return posts, avatar_url
 
-    # === ЯДРО БЛАСТЕРА (Многопоточность) ===
-
-    def fetch_single_mirror(self, name: str, url_template: str, parser_type: str, handle: str):
-        """Функция, которую выполняет каждый отдельный поток"""
-        url = url_template.format(handle)
+    def parse_rss(self, xml_data: str, handle: str) -> Tuple[List[Dict], str]:
+        posts, avatar_url = [], ""
         try:
-            req = urllib.request.Request(url, headers=self.headers)
-            with urllib.request.urlopen(req, timeout=12) as response:
-                if response.status == 200:
-                    raw_data = response.read().decode('utf-8')
-                    
-                    if parser_type == "rss":
-                        posts, avatar = self.parse_rss(raw_data, handle)
-                    elif parser_type == "sotwe":
-                        posts, avatar = self.parse_sotwe(raw_data, handle)
-                    else:
-                        posts, avatar = self.parse_syndication(raw_data, handle)
-                        
-                    if posts: # Возвращаем результат ТОЛЬКО если лента не пустая!
-                        return posts, avatar, name
-        except Exception:
-            pass # Игнорируем любые ошибки внутри потока
-        return None
-
-    def fetch_timeline_concurrently(self, handle: str) -> Tuple[List[Dict], str]:
-        """Отправляет 12 запросов одновременно. Кто первый вернет твиты — тот и победил."""
-        logging.info(f"[{handle}] 🚀 Запуск зеркального бластера (12 потоков)...")
-        
-        # Запускаем пул потоков (max_workers равно количеству наших зеркал)
-        with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.mirrors)) as executor:
-            # Отправляем задачи в пул
-            futures = [
-                executor.submit(self.fetch_single_mirror, name, url, ptype, handle) 
-                for name, url, ptype in self.mirrors
-            ]
+            root = ET.fromstring(xml_data)
+            channel = root.find("channel")
+            if channel is None: return posts, avatar_url
             
-            # as_completed возвращает результаты по мере их готовности (кто быстрее)
-            for future in concurrent.futures.as_completed(futures):
-                result = future.result()
-                if result:
-                    posts, avatar, winner_name = result
-                    logging.info(f"🟢 [{handle}] ПРОБИТИЕ! Победитель: {winner_name} (Найдено {len(posts)} постов)")
-                    return posts, avatar
+            author_name = handle
+            title_node = channel.find("title")
+            if title_node is not None and title_node.text:
+                ft = html.unescape(title_node.text)
+                if " / " in ft: author_name = ft.split(" / ")[0].strip()
                     
-        logging.error(f"❌ [{handle}] Абсолютно все 12 зеркал заблокировали запрос или вернули пустоту.")
+            for item in channel.findall("item"):
+                link = item.find("link")
+                if link is None or not link.text: continue
+                
+                content = html.unescape(item.find("title").text.strip()) if item.find("title") is not None and item.find("title").text else ""
+                
+                posts.append({
+                    "id": link.text.rstrip('/').split('/')[-1],
+                    "authorName": author_name,
+                    "authorHandle": f"@{handle}",
+                    "platform": "twitter",
+                    "content": content,
+                    "timestamp": self.parse_date(item.find("pubDate").text if item.find("pubDate") is not None else ""),
+                    "mediaUrl": None,
+                    "originalAvatarUrl": ""
+                })
+        except: pass
+        return posts, avatar_url
+
+    def fetch_timeline(self, handle: str) -> Tuple[List[Dict], str]:
+        # Базовые URL
+        synd_url = f"https://syndication.twitter.com/srv/timeline-profile/screen-name/{handle}"
+        sotwe_url = f"https://api.sotwe.com/v3/user/{handle}"
+        
+        # Точечные, проверенные маршруты.
+        # urllib.parse.quote с safe='' гарантирует, что URL будет полностью закодирован для AllOrigins
+        strategies = [
+            ("Syndication via AllOrigins", f"https://api.allorigins.win/raw?url={urllib.parse.quote(synd_url, safe='')}", "syndication"),
+            ("Sotwe via AllOrigins", f"https://api.allorigins.win/raw?url={urllib.parse.quote(sotwe_url, safe='')}", "sotwe"),
+            ("Syndication via CodeTabs", f"https://api.codetabs.com/v1/proxy?quest={urllib.parse.quote(synd_url, safe='')}", "syndication"),
+            ("Sotwe via CodeTabs", f"https://api.codetabs.com/v1/proxy?quest={urllib.parse.quote(sotwe_url, safe='')}", "sotwe"),
+            ("Nitter (poast)", f"https://nitter.poast.org/{handle}/rss", "rss"),
+        ]
+
+        for name, url, parser_type in strategies:
+            logging.info(f"[{handle}] 🎯 Снайперский выстрел: {name}...")
+            try:
+                req = urllib.request.Request(url, headers=self.get_headers())
+                with urllib.request.urlopen(req, timeout=15) as response:
+                    if response.status == 200:
+                        raw_data = response.read().decode('utf-8')
+                        
+                        if parser_type == "sotwe":
+                            posts, avatar = self.parse_sotwe(raw_data, handle)
+                        elif parser_type == "syndication":
+                            posts, avatar = self.parse_syndication(raw_data, handle)
+                        else:
+                            posts, avatar = self.parse_rss(raw_data, handle)
+                            
+                        if posts:
+                            logging.info(f"🟢 [{handle}] ПОПАДАНИЕ! Найдено постов: {len(posts)}")
+                            return posts, avatar
+                        else:
+                            logging.warning(f"[{handle}] Промах (Твиттер скрыл ленту).")
+            
+            except urllib.error.HTTPError as e:
+                logging.warning(f"[{handle}] Ошибка шлюза ({e.code}).")
+            except socket.timeout:
+                logging.warning(f"[{handle}] ⏳ Таймаут шлюза.")
+            except Exception as e:
+                logging.warning(f"[{handle}] Ошибка: {e}")
+                
+            time.sleep(2) # Пауза между выстрелами, чтобы не злить прокси
+
+        logging.error(f"❌ [{handle}] Все снайперские выстрелы мимо.")
         return [], ""
 
     def run(self):
@@ -265,7 +237,7 @@ class BendyBlasterScraper:
         all_fetched_posts = []
         
         for handle in self.handles:
-            combined, latest_avatar_url = self.fetch_timeline_concurrently(handle)
+            combined, latest_avatar_url = self.fetch_timeline(handle)
             
             if not latest_avatar_url:
                 for ep in existing_posts:
@@ -282,7 +254,7 @@ class BendyBlasterScraper:
                     if latest_avatar_url: ep['originalAvatarUrl'] = latest_avatar_url
 
             all_fetched_posts.extend(combined)
-            time.sleep(1) # Небольшая пауза между разными разработчиками
+            time.sleep(3) # Пауза перед сменой разработчика (очень важно для AllOrigins)
             
         merged_dict = {post['id']: post for post in existing_posts}
         for post in all_fetched_posts:
@@ -313,5 +285,5 @@ if __name__ == "__main__":
         "GentCorporation", 
         "Doberart"
     ] 
-    monitor = BendyBlasterScraper(devs)
+    monitor = BendySniperScraper(devs)
     monitor.run()
