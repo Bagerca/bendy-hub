@@ -16,7 +16,8 @@
 </head>
 <body>
 
-    <site-header active-page="library"></site-header>
+    <!-- Исправлен активный пункт меню на characters -->
+    <site-header active-page="characters"></site-header>
 
     <div id="char-loader" class="loading-state" style="margin-top: 100px;">
         <div class="spinner" style="margin: 0 auto 10px;"></div>
@@ -33,7 +34,8 @@
                 
                 <!-- ЛЕВАЯ КОЛОНКА (Аватар и мета) -->
                 <aside class="char-sidebar">
-                    <a href="javascript:history.back()" class="back-btn">
+                    <!-- Убрали inline JS, добавили id для контроллера -->
+                    <a href="#" id="back-btn" class="back-btn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                         Назад
                     </a>

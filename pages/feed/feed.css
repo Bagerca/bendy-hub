@@ -129,10 +129,11 @@
     border-radius: 8px; 
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     list-style: none; 
-    padding: 0.5rem 0; 
+    padding: 0; /* Убрали внутренние отступы сверху и снизу */
     z-index: 200; 
     max-height: 250px; 
     overflow-y: auto;
+    overflow-x: hidden; /* Обрезаем края дочерних элементов под скругления border-radius */
     scrollbar-width: none; 
     opacity: 0; 
     visibility: hidden; 
@@ -151,27 +152,42 @@
 }
 
 .custom-select-option { 
-    padding: 0.6rem 1rem; 
+    padding: 0.7rem 1rem; /* Сделали кликабельную зону чуть больше */
     display: flex; 
     align-items: center; 
     gap: 10px; 
     cursor: pointer; 
     font-weight: 500;
     color: var(--text-main);
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.custom-select-option:hover { background-color: var(--bg-body); }
-.custom-select-option.selected { color: var(--accent-color); background-color: rgba(210, 168, 80, 0.05); }
+.custom-select-option:hover { 
+    background-color: var(--bg-body); 
+}
 
-.custom-select-avatar { 
+.custom-select-option.selected { 
+    color: var(--accent-color); 
+    background-color: rgba(210, 168, 80, 0.05); 
+}
+
+/* Иконки/аватары внутри селекта */
+.custom-select-icon { 
     width: 24px; 
     height: 24px; 
     border-radius: 50%; 
     object-fit: cover;
     border: 1px solid var(--border-color);
+    display: block;
 }
-.custom-select-avatar-placeholder {
-    width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);
+
+.custom-select-icon.svg-icon {
+    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
 }
 
 /* =====================
@@ -232,7 +248,6 @@
 .post-text { 
     font-size: 0.95rem; 
     white-space: pre-wrap; 
-    /* Железобетонная защита от разрыва контейнера длинными ссылками */
     word-break: break-word; 
     overflow-wrap: anywhere; 
     line-height: 1.5;
@@ -245,21 +260,78 @@
 .post-translation-header { font-size: 0.7rem; color: var(--text-muted); font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; }
 .post-translation-text { word-break: break-word; overflow-wrap: anywhere; line-height: 1.5; }
 
-.post-media { width: 100%; margin-top: 0.85rem; border-radius: 12px; border: 1px solid var(--border-color); max-height: 500px; object-fit: contain; cursor: zoom-in; background-color: var(--bg-body);}
+.post-media { 
+    width: 100%; 
+    margin-top: 0.85rem; 
+    border-radius: 12px; 
+    border: 1px solid var(--border-color); 
+    max-height: 500px; 
+    object-fit: contain; 
+    cursor: zoom-in; 
+    background-color: var(--bg-body);
+}
 
 /* Подвал поста */
 .post-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: 0.75rem; }
 .post-actions { display: flex; gap: 0.5rem; }
 
-.action-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; padding: 0.4rem 0.6rem; border-radius: 6px; font-family: inherit; font-weight: 500; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+/* Кнопки действий (Увеличенные тач-зоны для мобилок) */
+.action-btn { 
+    display: flex; 
+    align-items: center; 
+    gap: 6px; 
+    background: none; 
+    border: none; 
+    color: var(--text-muted); 
+    font-size: 0.85rem; 
+    cursor: pointer; 
+    padding: 0.6rem 0.8rem; /* Увеличено */
+    border-radius: 6px; 
+    font-family: inherit; 
+    font-weight: 500; 
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 36px; /* Для комфортного тапа на смартфонах */
+}
 .action-btn:hover { background-color: var(--bg-body); color: var(--text-main); }
 .action-btn.active { color: var(--accent-color); background-color: rgba(210, 168, 80, 0.1); }
 .action-btn.success { color: #00BA7C; }
 .action-btn.loading .translate-icon { animation: spin 1s linear infinite; }
 
-/* Лоадер скролла */
-.scroll-sentinel { display: none; justify-content: center; align-items: center; gap: 10px; padding: 2rem 0; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
-.scroll-sentinel.active { display: flex; }
+/* =====================
+   ЛОАДЕР И СКЕЛЕТОНЫ
+===================== */
+.scroll-sentinel { 
+    height: 40px; 
+    width: 100%;
+}
+
+.skeleton-card {
+    border-color: transparent !important;
+    box-shadow: none !important;
+    pointer-events: none;
+}
+
+.skeleton-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.skeleton-line {
+    height: 14px;
+    border-radius: 4px;
+}
+
+.skeleton-pulse {
+    background: linear-gradient(90deg, var(--bg-body) 25%, var(--border-color) 50%, var(--bg-body) 75%);
+    background-size: 200% 100%;
+    animation: skeletonLoading 1.5s infinite linear;
+}
+
+@keyframes skeletonLoading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
 
 /* =====================
    ПОДСВЕТКА НАЙДЕННОГО ТЕКСТА

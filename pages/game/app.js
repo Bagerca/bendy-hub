@@ -1,27 +1,24 @@
 import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
-import { fetchData } from '../../shared/js/api.js';
 import { LightboxManager } from '../../shared/js/Lightbox.js';
-import { GameManager } from './GameManager.js';
+
+// Прямые импорты из ЭТОЙ ЖЕ папки
+import { GameModel } from './GameModel.js';
+import { HeroView } from './HeroView.js';
+import { WikiView } from './WikiView.js';
+import { GameController } from './GameController.js';
 
 customElements.define('site-header', SiteHeader);
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const lightbox = new LightboxManager('lightbox', 'lightbox-img');
-    const manager = new GameManager(lightbox);
-
+document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const gameId = urlParams.get('id');
 
-    if (!gameId) {
-        manager.showError('Игра не найдена. Некорректная ссылка.');
-        return;
-    }
-
-    try {
-        // ЗАГРУЖАЕМ ТОЛЬКО ФАЙЛ ИЗ ПАПКИ ЭТОЙ ИГРЫ!
-        const gameData = await fetchData(`assets/games/${gameId}/data.json`);
-        manager.render(gameData, gameId);
-    } catch (error) {
-        manager.showError('Информация о данной игре отсутствует в архивах или файл поврежден.');
-    }
+    const lightbox = new LightboxManager('lightbox', 'lightbox-img');
+    
+    const model = new GameModel();
+    const heroView = new HeroView();
+    const wikiView = new WikiView(lightbox);
+    
+    const controller = new GameController(model, heroView, wikiView);
+    controller.init(gameId);
 });

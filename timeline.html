@@ -6,6 +6,7 @@
     <title>Хронология | Bendy Wiki</title>
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     
+    <!-- Правильные пути от корня -->
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
     <link rel="stylesheet" href="shared/css/layout.css">
@@ -23,7 +24,7 @@
 
     <main class="page-content">
         
-        <!-- НОВЫЙ БЛОК: Переключатель режимов -->
+        <!-- Переключатель режимов -->
         <div class="timeline-mode-toggle">
             <div class="toggle-track">
                 <button class="mode-btn active" data-mode="lore">Внутриигровая история</button>
@@ -32,9 +33,7 @@
         </div>
 
         <!-- Липкая панель навигации по эпохам -->
-        <nav id="era-nav" class="era-nav">
-            <!-- Кнопки эпох сгенерируются через JS -->
-        </nav>
+        <nav id="era-nav" class="era-nav"></nav>
 
         <!-- Контейнер хронологии -->
         <div class="timeline-wrapper">
@@ -52,6 +51,41 @@
 
     </main>
 
+    <!-- ТЕМПЛЕЙТЫ ДЛЯ РЕНДЕРИНГА -->
+
+    <!-- Шаблон кнопки навигации -->
+    <template id="era-nav-template">
+        <button class="era-btn" data-target=""></button>
+    </template>
+
+    <!-- Шаблон разделителя эпохи -->
+    <template id="era-marker-template">
+        <div class="timeline-era-marker">
+            <h2 class="era-title"></h2>
+        </div>
+    </template>
+
+    <!-- Шаблон карточки события -->
+    <template id="event-card-template">
+        <div class="timeline-event-wrapper">
+            <div class="timeline-node"></div>
+            <article class="timeline-card">
+                <span class="event-date"></span>
+                <h3 class="event-title"></h3>
+                <p class="event-desc"></p>
+                <img src="" class="event-image" loading="lazy" alt="Event image" style="display: none;">
+            </article>
+        </div>
+    </template>
+
+    <!-- Шаблон ошибки -->
+    <template id="error-state-template">
+        <div class="error-card">
+            <p class="error-message"></p>
+        </div>
+    </template>
+
+    <!-- Правильный путь к модулю -->
     <script type="module" src="pages/timeline/app.js"></script>
 </body>
 </html>

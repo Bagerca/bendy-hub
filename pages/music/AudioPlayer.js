@@ -1,8 +1,7 @@
 import { Logger } from '../../shared/js/Logger.js';
 
 export class AudioPlayer {
-    constructor(musicManager) {
-        this.manager = musicManager; // Ссылка на менеджер для обновления UI карточек
+    constructor() {
         this.audio = document.getElementById('html5-audio');
         this.container = document.getElementById('global-player');
         
@@ -25,44 +24,43 @@ export class AudioPlayer {
         this.currentTrack = null;
         this.isPlaying = false;
 
-        this.initEvents();
+        // Коллбэки (События), на которые подпишется Контроллер
+        this.onStateChange = null; // Передает (trackId, isPlaying)
+        this.onNextRequest = null;
+        this.onPrevRequest = null;
+        this.onLyricsRequest = null;
+
+        this._initEvents();
     }
 
-    initEvents() {
-        // Управление воспроизведением
+    _initEvents() {
         this.els.playPauseBtn.addEventListener('click', () => this.togglePlay());
-        this.els.btnNext.addEventListener('click', () => this.manager.playNext());
-        this.els.btnPrev.addEventListener('click', () => this.manager.playPrev());
+        this.els.btnNext.addEventListener('click', () => { if (this.onNextRequest) this.onNextRequest(); });
+        this.els.btnPrev.addEventListener('click', () => { if (this.onPrevRequest) this.onPrevRequest(); });
+        this.els.btnLyrics.addEventListener('click', () => { if (this.onLyricsRequest && this.currentTrack) this.onLyricsRequest(this.currentTrack.id); });
 
-        // Прогресс бар и время
-        this.audio.addEventListener('timeupdate', () => this.updateProgress());
+        this.audio.addEventListener('timeupdate', () => this._updateProgress());
         this.audio.addEventListener('loadedmetadata', () => {
-            this.els.timeTot.textContent = this.formatTime(this.audio.duration);
+            this.els.timeTot.textContent = this._formatTime(this.audio.duration);
         });
-        this.audio.addEventListener('ended', () => this.manager.playNext()); // Автовоспроизведение след. трека
         
-        // Клик по полосе перемотки
+        // Автоматически играем следующий трек по завершении
+        this.audio.addEventListener('ended', () => { if (this.onNextRequest) this.onNextRequest(); });
+        
         this.els.progressContainer.addEventListener('click', (e) => {
             const rect = this.els.progressContainer.getBoundingClientRect();
             const percent = (e.clientX - rect.left) / rect.width;
             this.audio.currentTime = percent * this.audio.duration;
         });
-
-        // Модалка текста
-        this.els.btnLyrics.addEventListener('click', () => {
-            if (this.currentTrack) this.manager.openLyrics(this.currentTrack);
-        });
     }
 
-    loadTrack(track) {
+    loadTrack(track, autoPlay = true) {
         if (!track || !track.audioUrl) {
             Logger.error('Ошибка загрузки трека: нет аудио файла.');
             return;
         }
 
-        // Показываем плеер, если скрыт
         this.container.classList.add('active');
-
         this.currentTrack = track;
         this.audio.src = track.audioUrl;
         
@@ -70,7 +68,7 @@ export class AudioPlayer {
         this.els.artist.textContent = track.artist;
         this.els.cover.src = track.cover;
 
-        this.play();
+        if (autoPlay) this.play();
     }
 
     togglePlay() {
@@ -84,8 +82,8 @@ export class AudioPlayer {
             this.isPlaying = true;
             this.els.iconPlay.style.display = 'none';
             this.els.iconPause.style.display = 'block';
-            this.manager.updateGridUI(this.currentTrack.id, true);
-        }).catch(err => Logger.error('Ошибка автоплея (CORS/Политики браузера):', err));
+            this._notifyStateChange();
+        }).catch(err => Logger.error('Ошибка автоплея:', err));
     }
 
     pause() {
@@ -93,17 +91,23 @@ export class AudioPlayer {
         this.isPlaying = false;
         this.els.iconPlay.style.display = 'block';
         this.els.iconPause.style.display = 'none';
-        this.manager.updateGridUI(this.currentTrack.id, false);
+        this._notifyStateChange();
     }
 
-    updateProgress() {
+    _notifyStateChange() {
+        if (this.onStateChange && this.currentTrack) {
+            this.onStateChange(this.currentTrack.id, this.isPlaying);
+        }
+    }
+
+    _updateProgress() {
         if (!this.audio.duration) return;
         const percent = (this.audio.currentTime / this.audio.duration) * 100;
         this.els.progress.style.width = `${percent}%`;
-        this.els.timeCur.textContent = this.formatTime(this.audio.currentTime);
+        this.els.timeCur.textContent = this._formatTime(this.audio.currentTime);
     }
 
-    formatTime(seconds) {
+    _formatTime(seconds) {
         if (isNaN(seconds)) return "0:00";
         const min = Math.floor(seconds / 60);
         const sec = Math.floor(seconds % 60);

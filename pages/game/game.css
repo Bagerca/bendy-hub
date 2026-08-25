@@ -126,47 +126,51 @@
     box-shadow: 0 4px 15px rgba(210, 168, 80, 0.4);
 }
 
-/* --- КОНТЕЙНЕР КНОПОК ПЛАТФОРМ (СТРОГО ОДНА ЛИНИЯ) --- */
 .game-hero-actions { 
     display: flex; 
-    justify-content: center; 
     align-items: center;
     gap: 0.75rem;
-    flex-wrap: nowrap; /* ЗАПРЕЩАЕМ ПЕРЕНОС НА 2 СТРОКУ */
-    width: 100%;
-    max-width: 900px;
-    overflow-x: auto; /* Горизонтальный скролл, если не помещаются */
-    scrollbar-width: none; /* Скрываем ползунок в FF */
-    padding-bottom: 15px; /* Даем место для тени кнопок снизу */
+    width: 100%; 
+    overflow-x: auto; 
+    scrollbar-width: none; 
     -webkit-overflow-scrolling: touch;
+    padding: 0.5rem 0 1.5rem 0; 
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .game-hero-actions::-webkit-scrollbar { display: none; }
 
-/* Элегантные кнопки-таблетки */
+.game-hero-actions::before, .game-hero-actions::after { content: ''; margin: auto; }
+
 .store-btn {
-    display: inline-flex; 
+    display: flex; 
     align-items: center; 
     justify-content: center; 
-    gap: 8px; 
+    gap: 10px; 
     background: rgba(255, 255, 255, 0.1); 
     color: #fff; 
     border: 1px solid rgba(255, 255, 255, 0.2); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     text-decoration: none;
-    padding: 0.6rem 1.25rem; 
+    padding: 0 1.4rem; 
+    height: 44px; 
     border-radius: 30px; 
     font-weight: 700; 
-    font-size: 0.9rem; 
-    white-space: nowrap; /* Запрещает тексту переноситься на новую строку внутри кнопки */
+    font-size: 0.95rem; 
+    white-space: nowrap; 
+    flex-shrink: 0; 
+    box-sizing: border-box;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
 .store-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
+    display: block; 
+    fill: currentColor;
 }
 
 .store-btn:hover { 
@@ -211,7 +215,6 @@
 .overview-grid { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; }
 .game-desc { font-size: 1.15rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line;}
 
-/* Bento Boxes */
 .bento-box {
     background: var(--bg-card);
     padding: 2rem;
@@ -223,64 +226,27 @@
 .sticky-sidebar { position: sticky; top: 140px; }
 .bento-box h3 { margin-bottom: 1.2rem; font-size: 1.2rem; color: var(--text-main); }
 
-/* Теги */
 .tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
 .game-tag { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;}
 
 /* --- КЛИКАБЕЛЬНЫЕ КАРТОЧКИ ПЕРСОНАЖЕЙ --- */
-.character-list { 
-    list-style: none; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 12px; 
-}
+.character-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
 .character-card {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--bg-body);
-    padding: 8px 12px;
-    border-radius: 12px;
-    text-decoration: none;
-    color: var(--text-main);
-    border: 1px solid var(--border-color);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; align-items: center; gap: 12px; background: var(--bg-body);
+    padding: 8px 12px; border-radius: 12px; text-decoration: none; color: var(--text-main);
+    border: 1px solid var(--border-color); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .character-card:hover {
-    border-color: var(--accent-color);
-    transform: translateX(6px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    background: var(--bg-card);
+    border-color: var(--accent-color); transform: translateX(6px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: var(--bg-card);
 }
+.char-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); background-color: var(--bg-body); }
+.char-name { flex-grow: 1; font-weight: 700; font-size: 1.05rem; }
+.char-arrow { color: var(--text-muted); transition: 0.2s; }
+.character-card:hover .char-arrow { color: var(--accent-color); transform: translateX(3px); }
 
-.char-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-body);
-}
-
-.char-name {
-    flex-grow: 1;
-    font-weight: 700;
-    font-size: 1.05rem;
-}
-
-.char-arrow {
-    color: var(--text-muted);
-    transition: 0.2s;
-}
-
-.character-card:hover .char-arrow {
-    color: var(--accent-color);
-    transform: translateX(3px);
-}
-
-/* Геймплей Список */
+/* Геймплей и Таймлайн */
 .gameplay-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
 .gameplay-list li {
     font-size: 1.1rem; line-height: 1.6; color: var(--text-main);
@@ -290,15 +256,12 @@
     content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 2px; font-size: 1.2rem;
 }
 
-/* Таймлайн Разработки */
 .timeline-container { display: flex; flex-direction: column; gap: 2rem; position: relative; }
 .timeline-container::before {
     content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px;
     width: 2px; background: var(--border-color); z-index: 0;
 }
-.timeline-item {
-    position: relative; z-index: 1; padding-left: 3rem;
-}
+.timeline-item { position: relative; z-index: 1; padding-left: 3rem; }
 .timeline-item::before {
     content: ''; position: absolute; left: 11px; top: 5px; width: 10px; height: 10px;
     background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-body);
@@ -328,12 +291,7 @@
     .game-hero { height: auto; min-height: 450px; padding: 4rem 0; }
     .back-link { top: 1rem; left: 1rem; }
     .req-bento-grid { grid-template-columns: 1fr; }
-    
-    .game-hero-actions {
-        justify-content: flex-start; /* На мобилках выравниваем слева, чтобы юзер видел, что можно скроллить */
-        padding-left: 1rem;
-        padding-right: 1.5rem;
-    }
+    .game-hero-actions { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 
 @keyframes fadeInSlideUp {

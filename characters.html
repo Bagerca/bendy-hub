@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Архив Персонажей | Bendy Wiki</title>
-    <link rel="icon" href="data:;base64,iVB2Rw0KGgo=">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
@@ -18,15 +18,12 @@
     </script>
 </head>
 <body>
-
     <site-header active-page="characters"></site-header>
 
     <main class="page-content characters-container">
         
         <!-- ПАНЕЛЬ УПРАВЛЕНИЯ -->
         <search class="archive-controls feed-controls">
-            
-            <!-- Премиум-инпут -->
             <div class="search-input-wrapper">
                 <button id="search-btn" class="search-btn" aria-label="Найти">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -37,35 +34,27 @@
                 <input type="text" id="search-input" placeholder="Поиск по имени или прозвищу (Enter)..." aria-label="Поиск">
             </div>
 
-            <!-- ИНТЕГРИРОВАННЫЙ СЧЕТЧИК (Экономит строку) -->
             <div class="archive-meta">
                 <span id="results-count">Подключение...</span>
             </div>
             
-            <!-- Кастомный селект для категорий -->
+            <!-- Универсальный селект -->
             <div class="custom-select-container" id="category-filter-container">
                 <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                     <div class="custom-select-value">
-                        <div class="svg-icon">
+                        <div class="custom-select-icon svg-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
                         </div>
-                        <span id="current-category">Все категории</span>
+                        <span class="custom-select-text-value">Все категории</span>
                     </div>
                     <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </button>
-                <ul class="custom-select-dropdown" role="listbox">
-                    <li class="custom-select-option selected" data-filter="all">Все категории</li>
-                    <li class="custom-select-option" data-filter="human">Люди</li>
-                    <li class="custom-select-option" data-filter="ink">Чернильные сущности</li>
-                    <li class="custom-select-option" data-filter="toon">Мультяшки</li>
-                </ul>
+                <ul class="custom-select-dropdown" role="listbox"></ul>
             </div>
         </search>
 
-        <!-- АЛФАВИТНЫЙ ФИЛЬТР (НОВЫЙ БЛОК) -->
-        <div id="alphabet-filters" class="alphabet-filters">
-            <!-- Кнопки с буквами будут сгенерированы JavaScript -->
-        </div>
+        <!-- АЛФАВИТНЫЙ ФИЛЬТР -->
+        <div id="alphabet-filters" class="alphabet-filters"></div>
 
         <div id="chars-loader" class="loading-state">
             <div class="spinner" style="margin: 0 auto 10px;"></div>
@@ -73,23 +62,9 @@
         </div>
 
         <div class="chars-grid" id="chars-content" style="display: none;"></div>
-
-        <!-- ПУСТОЕ СОСТОЯНИЕ -->
-        <div id="empty-state" class="empty-state" style="display: none;">
-            <div class="empty-state-icon">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    <path d="M11 8v2"></path>
-                    <path d="M11 14h.01"></path>
-                </svg>
-            </div>
-            <h3 class="empty-state-title">Файл не найден</h3>
-            <p class="empty-state-desc">По вашему запросу ничего не найдено в архивах студии.</p>
-        </div>
     </main>
 
-    <!-- КОМПАКТНЫЙ ШАБЛОН КАРТОЧКИ -->
+    <!-- ТЕМПЛЕЙТЫ -->
     <template id="char-card-template">
         <a href="" class="char-card">
             <div class="char-avatar-wrapper">
@@ -100,6 +75,25 @@
             </div>
             <span class="char-card-name"></span>
         </a>
+    </template>
+
+    <template id="empty-state-template">
+        <div class="empty-state">
+            <div class="empty-state-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <path d="M11 8v2"></path><path d="M11 14h.01"></path>
+                </svg>
+            </div>
+            <h3 class="empty-state-title">Досье не найдено</h3>
+            <p class="empty-state-desc">По вашему запросу ничего не найдено в архивах студии.</p>
+        </div>
+    </template>
+
+    <template id="error-state-template">
+        <div class="error-card">
+            <p class="error-message"></p>
+        </div>
     </template>
 
     <script type="module" src="pages/characters/app.js"></script>

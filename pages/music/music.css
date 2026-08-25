@@ -249,15 +249,48 @@
 .extra-btn:hover { background: rgba(210, 168, 80, 0.1); border-color: var(--accent-color); color: var(--accent-color); }
 
 /* =========================================
-   МОДАЛКА ТЕКСТА ПЕСНИ
+   МОДАЛКА ТЕКСТА ПЕСНИ (Улучшенный UX)
    ========================================= */
-.lyrics-modal { max-width: 800px; width: 90%; padding: 0; overflow: hidden; }
-.lyrics-header { padding: 2rem 2.5rem 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;}
+.lyrics-modal { 
+    max-width: 800px; 
+    width: 90%; 
+    padding: 0; 
+    overflow: hidden; 
+    margin: auto;
+    /* Оставляем место внизу для глобального плеера, чтобы модалка не перекрывала кнопки */
+    margin-bottom: 110px; 
+    /* Максимальная высота с учетом зарезервированного места */
+    max-height: calc(100vh - 140px); 
+}
+
+.lyrics-header { 
+    padding: 2rem 2.5rem 1.5rem; 
+    border-bottom: 1px solid var(--border-color); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
 .lyrics-header h2 { font-size: 1.5rem; color: var(--text-main); margin: 0; font-weight: 900;}
-.yt-link { font-size: 0.9rem; font-weight: 700; color: #fff; background: #FF0000; padding: 6px 14px; border-radius: 8px; text-decoration: none; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px;}
+
+.yt-link { 
+    font-size: 0.9rem; font-weight: 700; color: #fff; background: #FF0000; 
+    padding: 6px 14px; border-radius: 8px; text-decoration: none; transition: 0.2s; 
+    display: inline-flex; align-items: center; gap: 6px;
+}
 .yt-link:hover { background: #cc0000; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255,0,0,0.3);}
 
-.lyrics-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-height: 60vh; overflow-y: auto; padding: 2rem 2.5rem; scrollbar-width: thin; }
+.lyrics-body { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 2rem; 
+    /* Рассчитываем скролл-область с учетом шапки модалки и плеера */
+    max-height: calc(100vh - 240px); 
+    overflow-y: auto; 
+    padding: 2rem 2.5rem; 
+    scrollbar-width: thin; 
+}
+
 .lyrics-col h3 { font-size: 1rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;}
 .lyrics-col p { font-size: 1.1rem; line-height: 1.8; color: var(--text-main); white-space: pre-line; }
 
@@ -271,6 +304,12 @@
     .player-controls { gap: 1rem; justify-content: flex-end; }
     .play-btn { width: 40px; height: 40px; }
     
-    .lyrics-body { grid-template-columns: 1fr; gap: 3rem; }
+    /* Адаптив модалки под мобильные */
+    .lyrics-modal { margin-bottom: 90px; }
+    .lyrics-body { 
+        grid-template-columns: 1fr; 
+        gap: 3rem; 
+        max-height: calc(100vh - 200px); 
+    }
     .lyrics-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }

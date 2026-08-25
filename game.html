@@ -19,6 +19,7 @@
 </head>
 <body>
 
+    <!-- Меню корректно подсвечивает Библиотеку -->
     <site-header active-page="library"></site-header>
 
     <div id="game-loader" class="loading-state" style="margin-top: 100px;">
@@ -28,7 +29,6 @@
 
     <main id="game-content" class="game-wiki-page" style="display: none;">
         
-        <!-- HERO БЛОК -->
         <header class="game-hero">
             <div class="game-hero-bg" id="hero-bg"></div>
             <div class="game-hero-overlay"></div>
@@ -54,7 +54,6 @@
             </div>
         </header>
 
-        <!-- STICKY НАВИГАЦИЯ ВИКИ -->
         <nav class="wiki-tabs-container">
             <div class="wiki-tabs">
                 <button class="wiki-tab active" data-target="tab-overview">Обзор</button>
@@ -65,10 +64,7 @@
             </div>
         </nav>
 
-        <!-- КОНТЕНТ -->
         <div class="wiki-content-area">
-            
-            <!-- ВКЛАДКА: ОБЗОР -->
             <section id="tab-overview" class="wiki-section active">
                 <div class="overview-grid">
                     <div class="overview-main">
@@ -87,9 +83,7 @@
                 </div>
             </section>
 
-            <!-- ВКЛАДКА: СЮЖЕТ И ПЕРСОНАЖИ -->
             <section id="tab-story" class="wiki-section">
-                <!-- Контейнер для данных, если они есть -->
                 <div id="wiki-story-content" style="display: none;">
                     <div class="overview-grid">
                         <div class="overview-main">
@@ -104,14 +98,12 @@
                         </aside>
                     </div>
                 </div>
-                <!-- Заглушка, если данных нет -->
                 <div id="wiki-story-empty" class="empty-state">
                     <h3>Архив сюжета заблокирован</h3>
                     <p>Joey Drew Studios еще не рассекретила данные об этой истории.</p>
                 </div>
             </section>
 
-            <!-- ВКЛАДКА: ГЕЙМПЛЕЙ -->
             <section id="tab-gameplay" class="wiki-section">
                 <div id="wiki-gameplay-content" class="bento-box large" style="display: none;">
                     <h2 class="section-title">Игровые механики</h2>
@@ -123,22 +115,17 @@
                 </div>
             </section>
 
-            <!-- ВКЛАДКА: РАЗРАБОТКА -->
             <section id="tab-dev" class="wiki-section">
-                <div id="wiki-dev-content" class="timeline-container" style="display: none;">
-                    <!-- Таймлайн генерируется через JS -->
-                </div>
+                <div id="wiki-dev-content" class="timeline-container" style="display: none;"></div>
                 <div id="wiki-dev-empty" class="empty-state">
                     <h3>Хронология неизвестна</h3>
                     <p>История разработки этого проекта еще не задокументирована.</p>
                 </div>
             </section>
 
-            <!-- ВКЛАДКА: ТРЕБОВАНИЯ -->
             <section id="tab-specs" class="wiki-section">
                 <div id="game-requirements" class="req-bento-grid"></div>
             </section>
-
         </div>
     </main>
 
