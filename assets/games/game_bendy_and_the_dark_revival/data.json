@@ -6,6 +6,20 @@
     "developer": "Joey Drew Studios",
     "publisher": "Joey Drew Studios",
     "release_date": "15 ноя. 2022 г.",
+    "russifiers": [
+        {
+            "title": "YBT - Team",
+            "description": "Полная локализация",
+            "url": "https://vk.ru/wall-219115234_81",
+            "avatar": "ybt.jpg"
+        },
+        {
+            "title": "The Bullfinch Team",
+            "description": "Полная локализация",
+            "url": "https://vk.ru/the_bullfinch_team?w=wall-155649218_3865",
+            "avatar": "bullfinch.jpg"
+        }
+    ],
     "tags": [
         "Horror", "Singleplayer", "First-Person", "Action", "Survival Horror", 
         "Adventure", "Indie", "Cartoony", "Story Rich", "Dark", 

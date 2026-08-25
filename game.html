@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Игра | Bendy Hub</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
@@ -19,7 +19,6 @@
 </head>
 <body>
 
-    <!-- Меню корректно подсвечивает Библиотеку -->
     <site-header active-page="library"></site-header>
 
     <div id="game-loader" class="loading-state" style="margin-top: 100px;">
@@ -74,10 +73,22 @@
                         <h3 class="section-title mt-4">Скриншоты и Медиа</h3>
                         <div id="game-screenshots" class="screenshots-bento"></div>
                     </div>
+                    
                     <aside class="overview-sidebar">
-                        <div class="bento-box sticky-sidebar">
-                            <h3>Жанры и теги</h3>
-                            <div class="tags-cloud" id="game-tags"></div>
+                        <!-- Обертка для залипания нескольких блоков -->
+                        <div class="sticky-sidebar-wrapper">
+                            
+                            <div class="bento-box">
+                                <h3>Жанры и теги</h3>
+                                <div class="tags-cloud" id="game-tags"></div>
+                            </div>
+
+                            <!-- НОВЫЙ БЛОК РУСИФИКАТОРОВ -->
+                            <div class="bento-box" id="russifiers-container" style="display: none;">
+                                <h3>Русификаторы</h3>
+                                <div class="russifiers-list" id="game-russifiers"></div>
+                            </div>
+                            
                         </div>
                     </aside>
                 </div>

@@ -23,6 +23,7 @@ export class RecordsView {
         };
 
         this._initModalEvents();
+        this._initDragToScroll(); // Инициализация функции Drag-to-Scroll
     }
 
     _initModalEvents() {
@@ -46,6 +47,48 @@ export class RecordsView {
         });
     }
 
+    /**
+     * Реализация захвата и перетаскивания (Drag-to-Scroll) для меню категорий
+     */
+    _initDragToScroll() {
+        const nav = this.els.nav;
+        let isMouseDown = false;
+        let startY;
+        let scrollTop;
+
+        nav.addEventListener('mousedown', (e) => {
+            isMouseDown = true;
+            startY = e.pageY - nav.offsetTop;
+            scrollTop = nav.scrollTop;
+        });
+
+        nav.addEventListener('mousemove', (e) => {
+            if (!isMouseDown) return;
+            e.preventDefault(); // Предотвращаем стандартное выделение текста
+            
+            const y = e.pageY - nav.offsetTop;
+            const walk = (y - startY) * 1.5; // Скорость скролла
+            
+            // Если мышка сдвинулась больше чем на 3 пикселя, считаем это перетаскиванием (блокируем клики)
+            if (Math.abs(walk) > 3) {
+                nav.classList.add('is-dragging');
+            }
+            
+            nav.scrollTop = scrollTop - walk;
+        });
+
+        const stopDragging = () => {
+            isMouseDown = false;
+            // Убираем класс с задержкой, чтобы клик (mouseup) успел заблокироваться CSS-ом
+            requestAnimationFrame(() => {
+                nav.classList.remove('is-dragging');
+            });
+        };
+
+        nav.addEventListener('mouseleave', stopDragging);
+        nav.addEventListener('mouseup', stopDragging);
+    }
+
     showLoader() {
         this.els.loader.style.display = 'block';
         this.els.grid.style.display = 'none';
@@ -66,7 +109,7 @@ export class RecordsView {
             
             btn.textContent = category.title;
             btn.title = category.title;
-            btn.dataset.id = category.title; // Уникальный идентификатор
+            btn.dataset.id = category.title; 
             
             btn.addEventListener('click', () => onCategoryClick(category));
             fragment.appendChild(clone);
@@ -82,7 +125,6 @@ export class RecordsView {
     }
 
     renderGrid(category, onRecordClick) {
-        // Обновляем метаданные секции
         this.els.title.textContent = category.title;
         this.els.count.textContent = `Записей найдено: ${category.items.length}`;
         this.els.count.style.display = 'inline-block';
@@ -94,15 +136,12 @@ export class RecordsView {
             const clone = this.templates.card.content.cloneNode(true);
             const card = clone.querySelector('.record-card');
             
-            // Каскадная задержка анимации появления (до 0.5с)
             card.style.animationDelay = `${Math.min(index * 0.05, 0.5)}s`;
 
-            // Заполнение текста
             clone.querySelector('.card-title').textContent = item.title;
             clone.querySelector('.card-author').textContent = item.author || 'Неизвестный';
             clone.querySelector('.card-type-badge').textContent = category.type === 'audio' ? 'Аудиозапись' : 'Документ';
 
-            // Настройка медиа/иконок
             const imgEl = clone.querySelector('.card-image');
             const fallbackEl = clone.querySelector('.card-fallback-icon');
             
@@ -113,7 +152,6 @@ export class RecordsView {
             } else {
                 imgEl.style.display = 'none';
                 fallbackEl.style.display = 'flex';
-                // Переключаем нужную иконку внутри заглушки
                 if (category.type === 'audio') {
                     clone.querySelector('.icon-audio').style.display = 'block';
                 } else {

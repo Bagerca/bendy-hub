@@ -215,6 +215,15 @@
 .overview-grid { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; }
 .game-desc { font-size: 1.15rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line;}
 
+/* Сайдбар (обертка для липкости) */
+.sticky-sidebar-wrapper {
+    position: sticky; 
+    top: 140px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5rem;
+}
+
 .bento-box {
     background: var(--bg-card);
     padding: 2rem;
@@ -223,11 +232,90 @@
     box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 .bento-box.large { padding: 3rem; }
-.sticky-sidebar { position: sticky; top: 140px; }
 .bento-box h3 { margin-bottom: 1.2rem; font-size: 1.2rem; color: var(--text-main); }
 
 .tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
 .game-tag { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;}
+
+/* --- РУСИФИКАТОРЫ С АВАТАРКАМИ --- */
+.russifiers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rus-card {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Расстояние от аватарки до текста */
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    padding: 12px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rus-card:hover {
+    border-color: var(--accent-color);
+    background: var(--bg-card);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15);
+}
+
+.rus-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.rus-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-grow: 1;
+    overflow: hidden; /* Чтобы длинный текст обрезался корректно */
+}
+
+.rus-title {
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.2;
+}
+
+.rus-title span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rus-icon {
+    color: var(--text-muted);
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.rus-card:hover .rus-icon {
+    color: var(--accent-color);
+}
+
+.rus-team {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /* --- КЛИКАБЕЛЬНЫЕ КАРТОЧКИ ПЕРСОНАЖЕЙ --- */
 .character-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -286,7 +374,7 @@
 
 @media (max-width: 900px) {
     .overview-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .sticky-sidebar { position: static; }
+    .sticky-sidebar-wrapper { position: static; }
     .game-logo { width: 350px; }
     .game-hero { height: auto; min-height: 450px; padding: 4rem 0; }
     .back-link { top: 1rem; left: 1rem; }

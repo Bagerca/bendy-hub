@@ -8,7 +8,11 @@ export class WikiView {
             tags: document.getElementById('game-tags'),
             screens: document.getElementById('game-screenshots'),
             specs: document.getElementById('game-requirements'),
-            charList: document.getElementById('wiki-characters-list')
+            charList: document.getElementById('wiki-characters-list'),
+            
+            // Новые элементы для русификаторов
+            rusContainer: document.getElementById('russifiers-container'),
+            rusList: document.getElementById('game-russifiers')
         };
 
         this._initTabs();
@@ -43,6 +47,9 @@ export class WikiView {
             this.els.tags.appendChild(span);
         });
 
+        // Русификаторы
+        this._renderRussifiers(game.russifiers);
+
         // Скриншоты
         this.els.screens.innerHTML = '';
         if (assets.screenshots && assets.screenshots.length > 0) {
@@ -60,6 +67,45 @@ export class WikiView {
 
         // Wiki: Сюжет, Геймплей, Разработка
         this._renderStaticWiki(wiki);
+    }
+
+    _renderRussifiers(russifiers) {
+        if (russifiers && russifiers.length > 0) {
+            this.els.rusContainer.style.display = 'block';
+            this.els.rusList.innerHTML = '';
+            
+            // Заглушка, если аватарки нет (Иконка "Команда/Люди")
+            const fallbackAvatar = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2365676B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E";
+
+            russifiers.forEach(rus => {
+                const a = document.createElement('a');
+                a.href = rus.url;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.className = 'rus-card';
+                
+                const descText = rus.description || rus.team || '';
+                const avatarSrc = rus.avatar ? `assets/teams/${rus.avatar}` : fallbackAvatar;
+
+                a.innerHTML = `
+                    <img src="${avatarSrc}" alt="Avatar" class="rus-avatar" onerror="this.onerror=null; this.src='${fallbackAvatar}';">
+                    <div class="rus-info">
+                        <div class="rus-title">
+                            <span>${rus.title}</span>
+                            <svg class="rus-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </div>
+                        <span class="rus-team">${descText}</span>
+                    </div>
+                `;
+                this.els.rusList.appendChild(a);
+            });
+        } else {
+            this.els.rusContainer.style.display = 'none';
+        }
     }
 
     _renderSpecs(specs) {
