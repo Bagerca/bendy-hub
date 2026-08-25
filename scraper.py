@@ -13,14 +13,12 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 from typing import List, Dict, Tuple
 
-# === МАГИЯ ДЛЯ ЛОКАЛЬНОГО ЗАПУСКА ===
-# Отключаем проверку SSL. Это решает ошибку "_ssl.c:1015: The handshake operation timed out",
-# которую вызывают системы глубокого анализа трафика (DPI) у провайдеров или антивирусы.
+# Отключаем проверку SSL для локальных запусков через провайдеров РФ
 ssl._create_default_https_context = ssl._create_unverified_context
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%H:%M:%S')
 
-class BendyGhostScraper:
+class BendyMatrixScraper:
     def __init__(self, handles: List[str]):
         self.handles = handles
         self.output_file = "feed.json"
@@ -32,34 +30,35 @@ class BendyGhostScraper:
 
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept': 'application/json, text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.5',
             'Connection': 'keep-alive'
         }
-        
-        # Определяем, где мы запущены: на ПК или на серверах GitHub
-        self.is_github = os.environ.get('GITHUB_ACTIONS') == 'true'
 
     def load_existing_feed(self) -> List[Dict]:
-        if not os.path.exists(self.output_file):
-            return []
+        if not os.path.exists(self.output_file): return []
         try:
             with open(self.output_file, 'r', encoding='utf-8') as f:
                 return json.load(f)
-        except Exception:
-            return []
+        except Exception: return []
 
-    def parse_date(self, date_str: str) -> str:
-        if not date_str: return datetime.utcnow().isoformat() + "Z"
+    def parse_date(self, date_val) -> str:
+        if not date_val: return datetime.utcnow().isoformat() + "Z"
+        
+        # Sotwe формат (timestamp в миллисекундах)
+        if isinstance(date_val, (int, float)):
+            return datetime.utcfromtimestamp(date_val / 1000.0).isoformat() + "Z"
+            
+        date_str = str(date_val)
         if "T" in date_str and "Z" in date_str: return date_str
         
-        # Формат RSS (Wed, 24 Jul 2024 15:22:00 GMT)
+        # RSS формат
         try:
             dt = datetime.strptime(date_str, "%a, %d %b %Y %H:%M:%S %Z")
             return dt.isoformat() + "Z"
         except Exception: pass
             
-        # Формат Syndication (Mon Jul 24 15:22:00 +0000 2023)
+        # Syndication формат
         try:
             parts = date_str.split()
             if len(parts) == 6: 
@@ -76,87 +75,67 @@ class BendyGhostScraper:
         local_path = os.path.join(self.avatars_dir, local_filename)
         web_path = f"assets/avatars/{local_filename}"
         
-        if os.path.exists(local_path): 
-            return web_path # Если аватарка уже есть, не качаем заново, бережем лимиты
+        if os.path.exists(local_path): return web_path
 
         avatar_url = avatar_url.replace('_normal', '_400x400')
-        try:
-            req = urllib.request.Request(avatar_url, headers=self.headers)
-            with urllib.request.urlopen(req, timeout=10) as response:
-                if response.status == 200:
-                    with open(local_path, 'wb') as f:
-                        f.write(response.read())
-                    return web_path
-        except Exception:
-            pass
+        strategies = [
+            avatar_url,
+            f"https://corsproxy.io/?{urllib.parse.quote(avatar_url, safe='=&/?')}"
+        ]
+
+        for url in strategies:
+            try:
+                req = urllib.request.Request(url, headers=self.headers)
+                with urllib.request.urlopen(req, timeout=10) as response:
+                    if response.status == 200:
+                        with open(local_path, 'wb') as f:
+                            f.write(response.read())
+                        return web_path
+            except Exception: pass
         return ""
 
-    def parse_rss_xml(self, xml_data: str, handle: str) -> Tuple[List[Dict], str]:
-        """Универсальный парсер для RSSHub и Nitter"""
+    def parse_sotwe(self, json_data: str, handle: str) -> Tuple[List[Dict], str]:
         posts = []
         avatar_url = ""
-        
         try:
-            root = ET.fromstring(xml_data)
-            channel = root.find("channel")
-            if channel is None: return posts, avatar_url
-                
-            author_name = handle
-            title_node = channel.find("title")
-            if title_node is not None and title_node.text:
-                full_title = html.unescape(title_node.text)
-                if " / " in full_title: author_name = full_title.split(" / ")[0].strip()
-                elif "'s Twitter" in full_title: author_name = full_title.split("'s Twitter")[0].strip()
+            data = json.loads(json_data)
+            user_info = data.get('data', {}).get('profile', {})
+            avatar_url = user_info.get('profile_image_url_https', '')
+            actual_name = user_info.get('name', handle)
+            
+            tweets_data = data.get('data', {}).get('tweets', [])
+            for tweet in tweets_data:
+                t_user = tweet.get('user', {})
+                t_handle = t_user.get('screen_name', handle)
+                if t_handle.lower() != handle.lower(): continue
                     
-            image_node = channel.find("image")
-            if image_node is not None:
-                url_node = image_node.find("url")
-                if url_node is not None and url_node.text:
-                    raw_url = urllib.parse.unquote(url_node.text)
-                    if 'pbs.twimg.com' in raw_url:
-                        avatar_url = "https://pbs.twimg.com" + raw_url.split('pbs.twimg.com')[-1]
-                        
-            for item in channel.findall("item"):
-                link_node = item.find("link")
-                if link_node is None or not link_node.text: continue
-                post_id = link_node.text.rstrip('/').split('/')[-1]
-                
-                pub_node = item.find("pubDate")
-                iso_date = self.parse_date(pub_node.text if pub_node is not None else "")
-                
-                title_item_node = item.find("title")
-                content = html.unescape(title_item_node.text.strip()) if title_item_node is not None and title_item_node.text else ""
-                
-                # Чистим контент от артефактов RSSHub (например, ссылок на видео в конце текста)
-                content = re.sub(r'<video[^>]*>.*?</video>', '', content, flags=re.IGNORECASE | re.DOTALL)
+                content = tweet.get('full_text') or tweet.get('text', '')
                 
                 media_url = None
-                desc_node = item.find("description")
-                if desc_node is not None and desc_node.text:
-                    img_match = re.search(r'<img[^>]+src="([^"]+)"', desc_node.text, re.IGNORECASE)
-                    if img_match:
-                        raw_src = urllib.parse.unquote(img_match.group(1))
-                        match = re.search(r'media/([^/]+\.(?:jpg|png|mp4|webp))', raw_src, re.IGNORECASE)
-                        media_url = f"https://pbs.twimg.com/media/{match.group(1)}" if match else raw_src
-                            
+                media_list = tweet.get('mediaEntities', []) or tweet.get('entities', {}).get('media', [])
+                if media_list:
+                    m = media_list[0]
+                    if 'video_info' in m:
+                        variants = m['video_info'].get('variants', [])
+                        mp4_variants = [v for v in variants if v.get('content_type') == 'video/mp4']
+                        if mp4_variants:
+                            media_url = max(mp4_variants, key=lambda x: x.get('bitrate', 0)).get('url')
+                    if not media_url: media_url = m.get('media_url_https') or m.get('url')
+
                 posts.append({
-                    "id": post_id,
-                    "authorName": author_name,
-                    "authorHandle": f"@{handle}",
+                    "id": tweet.get('id_str', ''),
+                    "authorName": actual_name,
+                    "authorHandle": f"@{t_handle}",
                     "platform": "twitter",
                     "content": content,
-                    "timestamp": iso_date,
+                    "timestamp": self.parse_date(tweet.get('createdAt')),
                     "mediaUrl": media_url,
                     "originalAvatarUrl": avatar_url
                 })
-                
-        except ET.ParseError:
-            pass # Не XML (Cloudflare блок)
-            
+        except Exception: pass
         return posts, avatar_url
 
     def parse_syndication(self, html_data: str, handle: str) -> Tuple[List[Dict], str]:
-        """Парсер виджетов (Официальный канал)"""
         posts = []
         avatar_url = ""
         match = re.search(r'<script id="__NEXT_DATA__" type="application/json">({.*?})</script>', html_data)
@@ -179,8 +158,7 @@ class BendyGhostScraper:
                     if 'video_info' in m:
                         variants = m['video_info'].get('variants', [])
                         mp4_variants = [v for v in variants if v.get('content_type') == 'video/mp4']
-                        if mp4_variants:
-                            media_url = max(mp4_variants, key=lambda x: x.get('bitrate', 0)).get('url')
+                        if mp4_variants: media_url = max(mp4_variants, key=lambda x: x.get('bitrate', 0)).get('url')
                     if not media_url: media_url = m.get('media_url_https')
 
                 posts.append({
@@ -196,61 +174,68 @@ class BendyGhostScraper:
         except Exception: pass
         return posts, avatar_url
 
+    def get_proxy_url(self, target_url: str, proxy_type: str) -> str:
+        safe_url = urllib.parse.quote(target_url, safe='=&/?')
+        if proxy_type == "direct": return target_url
+        if proxy_type == "codetabs": return f"https://api.codetabs.com/v1/proxy?quest={safe_url}"
+        if proxy_type == "corsproxy": return f"https://corsproxy.io/?{safe_url}"
+        if proxy_type == "allorigins": return f"https://api.allorigins.win/raw?url={urllib.parse.quote(target_url)}"
+        return target_url
+
     def fetch_timeline(self, handle: str) -> Tuple[List[Dict], str]:
-        strategies = []
+        # Целевые эндпоинты
+        sotwe_url = f"https://api.sotwe.com/v3/user/{handle}"
+        synd_url = f"https://syndication.twitter.com/srv/timeline-profile/screen-name/{handle}"
         
-        # Если мы на GitHub Actions (США) — бьем напрямую в Твиттер, это 100% сработает
-        if self.is_github:
-            strategies.append(("Syndication (Direct)", f"https://syndication.twitter.com/srv/timeline-profile/screen-name/{handle}", "syndication"))
+        # Матрица стратегий: (Имя, Тип парсера, Целевой URL, Прокси)
+        # GitHub Actions (Azure) блокируется напрямую везде, поэтому прокси идут ПЕРВЫМИ.
+        strategies = [
+            ("Sotwe API via CodeTabs", "sotwe", sotwe_url, "codetabs"),
+            ("Sotwe API via CorsProxy", "sotwe", sotwe_url, "corsproxy"),
+            ("Syndication via CodeTabs", "syndication", synd_url, "codetabs"),
+            ("Syndication via CorsProxy", "syndication", synd_url, "corsproxy"),
+            ("Sotwe API via AllOrigins", "sotwe", sotwe_url, "allorigins"),
+            ("Syndication via AllOrigins", "syndication", synd_url, "allorigins"),
+            ("Sotwe API (Direct)", "sotwe", sotwe_url, "direct") # На случай если локально без блока
+        ]
+
+        for name, parser_type, target, proxy in strategies:
+            logging.info(f"[{handle}] Пробуем маршрут: {name}...")
+            url = self.get_proxy_url(target, proxy)
             
-        # Если мы локально в РФ — используем RSSHub. Это приватные сервера с ключами Твиттера.
-        strategies.extend([
-            ("RSSHub (rssforever)", f"https://rsshub.rssforever.com/twitter/user/{handle}", "rss"),
-            ("RSSHub (pseudoyu)", f"https://rsshub.pseudoyu.com/twitter/user/{handle}", "rss"),
-            ("Nitter (projectsegfau)", f"https://nitter.projectsegfau.lt/{handle}/rss", "rss")
-        ])
-
-        # Фоллбэк, если RSSHub упадет
-        if not self.is_github:
-            synd_url = urllib.parse.quote(f"https://syndication.twitter.com/srv/timeline-profile/screen-name/{handle}")
-            strategies.append(("Syndication (AllOrigins)", f"https://api.allorigins.win/raw?url={synd_url}", "syndication"))
-
-        for name, url, engine in strategies:
-            logging.info(f"[{handle}] Попытка: {name}...")
             try:
                 req = urllib.request.Request(url, headers=self.headers)
                 with urllib.request.urlopen(req, timeout=12) as response:
                     if response.status == 200:
                         raw_data = response.read().decode('utf-8')
                         
-                        if engine == "rss":
-                            posts, avatar = self.parse_rss_xml(raw_data, handle)
+                        if parser_type == "sotwe":
+                            posts, avatar = self.parse_sotwe(raw_data, handle)
                         else:
                             posts, avatar = self.parse_syndication(raw_data, handle)
                             
                         if posts:
-                            logging.info(f"🟢 [{handle}] Успех через {name}! Постов: {len(posts)}")
+                            logging.info(f"🟢 [{handle}] Успех! Найдено постов: {len(posts)}")
                             return posts, avatar
                         else:
-                            logging.warning(f"[{handle}] Пустой ответ или блок Cloudflare.")
+                            logging.warning(f"[{handle}] Данные получены, но лента пуста (возможен shadowban).")
+            
             except socket.timeout:
-                pass # Игнорируем спам логов про таймауты
-            except Exception:
                 pass 
+            except urllib.error.HTTPError as e:
+                # Если 404 - возможно аккаунт удален, но мы идем дальше
+                logging.warning(f"[{handle}] HTTP {e.code} от прокси.")
+            except Exception as e:
+                pass
                 
-            time.sleep(1)
+            time.sleep(1) # Защита от спама
 
-        logging.error(f"❌ [{handle}] Все зеркала недоступны.")
+        logging.error(f"❌ [{handle}] Все маршруты матрицы провалились.")
         return [], ""
 
     def run(self):
         existing_posts = self.load_existing_feed()
         logging.info(f"Загружено постов из кэша: {len(existing_posts)}")
-        if self.is_github:
-            logging.info("🌍 Запущено на серверах GitHub. Используем прямые маршруты.")
-        else:
-            logging.info("💻 Запущено локально. SSL отключен. Используем скрытые маршруты RSS.")
-
         all_fetched_posts = []
         
         for handle in self.handles:
@@ -271,7 +256,7 @@ class BendyGhostScraper:
                     if latest_avatar_url: ep['originalAvatarUrl'] = latest_avatar_url
 
             all_fetched_posts.extend(combined)
-            time.sleep(1.5) 
+            time.sleep(2) 
             
         merged_dict = {post['id']: post for post in existing_posts}
         for post in all_fetched_posts:
@@ -289,7 +274,7 @@ class BendyGhostScraper:
             logging.info(f"🎉 База успешно обновлена! Уникальных постов: {len(final_posts)}")
         except Exception as e:
             if os.path.exists(self.tmp_file): os.remove(self.tmp_file)
-            logging.error(f"Ошибка сохранения: {e}")
+            logging.error(f"Ошибка сохранения файла: {e}")
 
 if __name__ == "__main__":
     devs = [
@@ -302,5 +287,5 @@ if __name__ == "__main__":
         "GentCorporation", 
         "Doberart"
     ] 
-    monitor = BendyGhostScraper(devs)
+    monitor = BendyMatrixScraper(devs)
     monitor.run()
