@@ -5,7 +5,7 @@
 }
 
 /* --- HERO СЕКЦИЯ --- */
-.game-hero {
+.project-hero {
     position: relative;
     height: 65vh;
     min-height: 450px;
@@ -14,7 +14,7 @@
     background-color: #000;
 }
 
-.game-hero-bg {
+.project-hero-bg {
     position: absolute;
     inset: 0;
     background-size: cover;
@@ -23,7 +23,7 @@
     animation: heroZoom 25s infinite alternate ease-in-out;
 }
 
-.game-hero-overlay {
+.project-hero-overlay {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%),
@@ -31,12 +31,12 @@
     z-index: 1;
 }
 
-[data-theme="light"] .game-hero-overlay {
+[data-theme="light"] .project-hero-overlay {
     background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%),
                 linear-gradient(to top, var(--bg-body) 0%, rgba(255, 255, 255, 0) 15%);
 }
 
-.game-hero-container {
+.project-hero-container {
     position: relative;
     z-index: 2;
     max-width: 1200px;
@@ -76,7 +76,7 @@
     transform: translateX(-4px);
 }
 
-.game-hero-content {
+.project-hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,7 +84,7 @@
     width: 100%;
 }
 
-.game-logo {
+.project-logo {
     max-width: 90%;
     width: 550px;
     height: auto;
@@ -93,7 +93,7 @@
     filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
 }
 
-.game-title-text {
+.project-title-text {
     font-size: 4rem;
     font-weight: 900;
     color: #fff;
@@ -102,8 +102,13 @@
     line-height: 1.1;
 }
 
-.game-meta-tags { 
-    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 2rem;
+/* МЕТА-ТЕГИ */
+.project-meta-tags { 
+    display: flex; 
+    justify-content: center; 
+    gap: 12px; 
+    flex-wrap: wrap; 
+    margin-bottom: 2rem;
 }
 
 .meta-badge {
@@ -126,22 +131,16 @@
     box-shadow: 0 4px 15px rgba(210, 168, 80, 0.4);
 }
 
-.game-hero-actions { 
+/* КНОПКИ МАГАЗИНОВ */
+.project-hero-actions { 
     display: flex; 
     align-items: center;
+    justify-content: center; /* Центрируем кнопки */
     gap: 0.75rem;
     width: 100%; 
-    overflow-x: auto; 
-    scrollbar-width: none; 
-    -webkit-overflow-scrolling: touch;
+    flex-wrap: wrap; /* Позволяем перенос на новую строку */
     padding: 0.5rem 0 1.5rem 0; 
-    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
-
-.game-hero-actions::-webkit-scrollbar { display: none; }
-
-.game-hero-actions::before, .game-hero-actions::after { content: ''; margin: auto; }
 
 .store-btn {
     display: flex; 
@@ -213,7 +212,7 @@
 .mt-4 { margin-top: 3rem; }
 
 .overview-grid { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; }
-.game-desc { font-size: 1.15rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line;}
+.project-desc { font-size: 1.15rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line;}
 
 /* Сайдбар (обертка для липкости) */
 .sticky-sidebar-wrapper {
@@ -238,7 +237,7 @@
 .game-tag { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;}
 
 /* --- РУСИФИКАТОРЫ С АВАТАРКАМИ --- */
-.russifiers-list {
+.translators-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -247,7 +246,7 @@
 .rus-card {
     display: flex;
     align-items: center;
-    gap: 12px; /* Расстояние от аватарки до текста */
+    gap: 12px; 
     background: var(--bg-body);
     border: 1px solid var(--border-color);
     padding: 12px 14px;
@@ -278,7 +277,7 @@
     flex-direction: column;
     gap: 2px;
     flex-grow: 1;
-    overflow: hidden; /* Чтобы длинный текст обрезался корректно */
+    overflow: hidden; 
 }
 
 .rus-title {
@@ -375,11 +374,10 @@
 @media (max-width: 900px) {
     .overview-grid { grid-template-columns: 1fr; gap: 2rem; }
     .sticky-sidebar-wrapper { position: static; }
-    .game-logo { width: 350px; }
-    .game-hero { height: auto; min-height: 450px; padding: 4rem 0; }
+    .project-logo { width: 350px; }
+    .project-hero { height: auto; min-height: 450px; padding: 4rem 0; }
     .back-link { top: 1rem; left: 1rem; }
     .req-bento-grid { grid-template-columns: 1fr; }
-    .game-hero-actions { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 
 @keyframes fadeInSlideUp {

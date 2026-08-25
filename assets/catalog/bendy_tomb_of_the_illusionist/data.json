@@ -1,0 +1,23 @@
+{
+    "id": "bendy_tomb_of_the_illusionist",
+    "title": "Tomb of the Illusionist",
+    "type": "movie",
+    "director": "Joey Drew Studios",
+    "release_date": "24 декабря 2017",
+    "description": "Винтажный короткометражный мультфильм, выпущенный в честь праздников. Демонстрирует классические приключения Бенди и его друзей в духе резиношланговой анимации 1930-х годов.",
+    "tags": ["Короткий метр", "Комедия", "Винтаж", "Мультфильм"],
+    "platforms": {
+        "youtube": "https://www.youtube.com/watch?v=0h-hH5pEoxY"
+    },
+    "assets": {
+        "cover": "cover.jpg",
+        "banner": "cover.jpg"
+    },
+    "wiki": {
+        "story": "Бенди и Борис отправляются исследовать древнюю гробницу иллюзиониста, где сталкиваются с магическими ловушками и ожившими мумиями.",
+        "characters": [
+            "bendy_toon",
+            "boris_wolf"
+        ]
+    }
+}

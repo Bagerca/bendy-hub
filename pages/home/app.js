@@ -1,9 +1,17 @@
 import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
+import { HomeModel } from './HomeModel.js';
+import { HomeView } from './HomeView.js';
+import { HomeController } from './HomeController.js';
 
-// Регистрируем веб-компонент шапки
+// Инициализируем общую шапку сайта
 customElements.define('site-header', SiteHeader);
 
 document.addEventListener('DOMContentLoaded', () => {
-    // В будущем здесь можно добавить логику (например, выводить статистику: "В базе 50 персонажей и 12 игр")
-    // Но пока страница статичная и красивая.
+    // Подключаем MVC архитектуру для загрузки JSON
+    const model = new HomeModel();
+    const view = new HomeView();
+    const controller = new HomeController(model, view);
+
+    // Запуск контроллера
+    controller.init();
 });

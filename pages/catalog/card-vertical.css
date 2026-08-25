@@ -1,0 +1,81 @@
+/* ВЕРТИКАЛЬНАЯ КАРТОЧКА (Постер / Обложка) */
+.card-vertical {
+    background-color: transparent;
+    border-radius: 8px; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+    --card-hover-rgb: 210, 168, 80; 
+}
+
+.card-vertical:hover {
+    transform: translateY(-8px);
+}
+
+.card-vertical .card-cover-container { 
+    width: 100%; 
+    aspect-ratio: 2 / 3; 
+    position: relative; 
+    overflow: hidden; 
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .card-vertical .card-cover-container { box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+.card-vertical:hover .card-cover-container {
+    border-color: rgb(var(--card-hover-rgb));
+    box-shadow: 0 15px 35px rgba(var(--card-hover-rgb), 0.25);
+}
+
+.card-vertical .card-cover-img { 
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; 
+}
+.card-vertical:hover .card-cover-img { transform: scale(1.05); }
+
+.card-vertical .card-cover-fallback {
+    width: 100%; height: 100%; 
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);
+    color: var(--text-muted);
+}
+
+/* СТАТУС (ПЛАШКА) */
+.card-badges {
+    position: absolute; top: 10px; left: 10px; z-index: 10; display: flex; gap: 6px; flex-wrap: wrap;
+}
+.status-badge {
+    padding: 0.35rem 0.6rem; font-size: 0.75rem; font-weight: 700;
+    border-radius: 6px; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+
+.status-released { background-color: rgba(35, 134, 54, 0.9); }
+.status-dev { background-color: rgba(210, 168, 80, 0.95); color: #000; }
+
+/* ИНФОРМАЦИЯ (Текст под обложкой) */
+.card-vertical .card-info {
+    padding: 0.75rem 0.2rem 0; 
+    display: flex; flex-direction: column; gap: 0.2rem;
+}
+
+.card-vertical .card-title { 
+    font-size: 1rem; 
+    font-weight: 800; 
+    color: var(--text-main); 
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s;
+}
+
+.card-vertical:hover .card-title { color: rgb(var(--card-hover-rgb)); }
+.card-vertical .card-year { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }

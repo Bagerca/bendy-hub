@@ -1,0 +1,26 @@
+{
+    "id": "dctl_graphic_novel",
+    "title": "Dreams Come to Life (Graphic Novel)",
+    "type": "book",
+    "developer": "Adrienne Kress, Christopher Hastings",
+    "release_date": "6 августа 2024",
+    "description": "Полноценная графическая адаптация (комикс) первого романа 'Dreams Come to Life'. Отличный способ визуально оценить события, происходившие со студией Джоуи Дрю в 1946 году.",
+    "tags": ["Графический роман", "Хоррор", "Приквел"],
+    "platforms": {
+        "pdf": "assets/books/dreams-come-to-life-bendy-graphic-novel-1.pdf"
+    },
+    "assets": {
+        "cover": "cover.jpg",
+        "banner": "cover.jpg"
+    },
+    "wiki": {
+        "story": "Визуальное переложение истории Бадди Льюика. Мы можем своими глазами увидеть ранние версии Чернильного Демона, процесс работы в арт-отделе и ужасающее превращение Бадди.",
+        "characters": [
+            "daniel_lewek",
+            "dot",
+            "joey_drew",
+            "sammy_lawrence",
+            "buddy_boris"
+        ]
+    }
+}

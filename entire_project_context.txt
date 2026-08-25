@@ -7,6 +7,7 @@ FILE: character.html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Персонаж | Bendy Wiki</title>
@@ -22,7 +23,8 @@ FILE: character.html
 </head>
 <body>
 
-    <site-header active-page="library"></site-header>
+    <!-- Исправлен активный пункт меню на characters -->
+    <site-header active-page="characters"></site-header>
 
     <div id="char-loader" class="loading-state" style="margin-top: 100px;">
         <div class="spinner" style="margin: 0 auto 10px;"></div>
@@ -39,7 +41,8 @@ FILE: character.html
                 
                 <!-- ЛЕВАЯ КОЛОНКА (Аватар и мета) -->
                 <aside class="char-sidebar">
-                    <a href="javascript:history.back()" class="back-btn">
+                    <!-- Убрали inline JS, добавили id для контроллера -->
+                    <a href="#" id="back-btn" class="back-btn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                         Назад
                     </a>
@@ -108,7 +111,7 @@ FILE: characters.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Архив Персонажей | Bendy Wiki</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
@@ -205,6 +208,161 @@ FILE: characters.html
 </html>
 
 ============================================================
+FILE: feed.html
+============================================================
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dev Feed | Bendy Hub</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="shared/css/variables.css">
+    <link rel="stylesheet" href="shared/css/base.css">
+    <link rel="stylesheet" href="shared/css/layout.css">
+    <link rel="stylesheet" href="shared/css/ui.css">
+    
+    <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="pages/feed/feed.css">
+    
+    <script>
+        // Предотвращение мерцания белого фона при загрузке (FOUC)
+        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+
+    <site-header active-page="feed"></site-header>
+
+    <main class="page-content">
+        <section class="feed-container">
+            <search class="feed-controls">
+                
+                <div class="search-input-wrapper">
+                    <button id="search-btn" class="search-btn" aria-label="Найти">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <input type="text" id="search-input" placeholder="Поиск по твитам (Enter)..." aria-label="Поиск">
+                </div>
+                
+                <div class="custom-select-container" id="author-filter-container">
+                    <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                        <div class="custom-select-value">
+                            <div class="custom-select-icon svg-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                            </div>
+                            <span class="custom-select-text-value">Все разработчики</span>
+                        </div>
+                        <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <ul class="custom-select-dropdown" role="listbox"></ul>
+                </div>
+            </search>
+
+            <div id="feed-content" aria-live="polite"></div>
+            
+            <div id="scroll-sentinel" class="scroll-sentinel"></div>
+        </section>
+    </main>
+
+    <dialog id="lightbox" class="lightbox">
+        <button class="lightbox-close" aria-label="Закрыть">&times;</button>
+        <img id="lightbox-img" src="" alt="Full image">
+    </dialog>
+
+    <!-- ТЕМПЛЕЙТЫ ДЛЯ РЕНДЕРА -->
+
+    <!-- Шаблон поста -->
+    <template id="post-template">
+        <article class="post-card">
+            <header class="post-header">
+                <img src="" alt="Avatar" class="post-avatar" loading="lazy">
+                <div class="post-meta">
+                    <h2 class="post-author-name"></h2>
+                    <a class="post-author-handle" target="_blank" rel="noopener noreferrer"></a>
+                </div>
+                <span class="post-platform-badge"></span>
+            </header>
+            <div class="post-content">
+                <div class="rt-badge" style="display: none;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                    <span>Оригинал: <a class="rt-author" target="_blank" rel="noopener noreferrer"></a></span>
+                </div>
+                <p class="post-text"></p>
+                <div class="post-translation" style="display: none;">
+                    <div class="post-translation-header">Перевод</div>
+                    <p class="post-translation-text"></p>
+                </div>
+                <img src="" alt="Вложение" class="post-media img-media" loading="lazy" style="display: none;" title="Нажмите для увеличения">
+                <video class="post-media video-media" autoplay loop muted playsinline style="display: none;"></video>
+            </div>
+            <footer class="post-footer">
+                <time class="post-date" datetime=""></time>
+                <div class="post-actions">
+                    <button class="action-btn translate-btn" aria-label="Перевести" title="Перевести">
+                        <svg class="translate-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <span>Перевести</span>
+                    </button>
+                    <button class="action-btn copy-btn" aria-label="Скопировать" title="Скопировать">
+                        <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                </div>
+            </footer>
+        </article>
+    </template>
+
+    <!-- Шаблон пустого состояния -->
+    <template id="empty-state-template">
+        <div class="empty-state">
+            <div class="empty-state-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <path d="M11 8v2"></path><path d="M11 14h.01"></path>
+                </svg>
+            </div>
+            <h3 class="empty-state-title">Ничего не найдено</h3>
+            <p class="empty-state-desc"></p>
+        </div>
+    </template>
+
+    <!-- Шаблон ошибки -->
+    <template id="error-state-template">
+        <div class="error-card">
+            <p class="error-message"></p>
+        </div>
+    </template>
+
+    <!-- Шаблон скелетона (Лоадер) -->
+    <template id="skeleton-template">
+        <div class="post-card skeleton-card">
+            <header class="post-header">
+                <div class="skeleton-avatar skeleton-pulse"></div>
+                <div class="post-meta" style="gap: 8px;">
+                    <div class="skeleton-line skeleton-pulse" style="width: 120px;"></div>
+                    <div class="skeleton-line skeleton-pulse" style="width: 80px; height: 10px;"></div>
+                </div>
+            </header>
+            <div class="post-content" style="gap: 12px; display: flex; flex-direction: column;">
+                <div class="skeleton-line skeleton-pulse" style="width: 100%;"></div>
+                <div class="skeleton-line skeleton-pulse" style="width: 90%;"></div>
+                <div class="skeleton-line skeleton-pulse" style="width: 60%;"></div>
+                <div class="skeleton-pulse" style="width: 100%; height: 200px; border-radius: 12px; margin-top: 10px;"></div>
+            </div>
+        </div>
+    </template>
+
+    <script type="module" src="pages/feed/app.js"></script>
+</body>
+</html>
+
+============================================================
 FILE: game.html
 ============================================================
 
@@ -214,7 +372,7 @@ FILE: game.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Игра | Bendy Hub</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
@@ -283,10 +441,22 @@ FILE: game.html
                         <h3 class="section-title mt-4">Скриншоты и Медиа</h3>
                         <div id="game-screenshots" class="screenshots-bento"></div>
                     </div>
+                    
                     <aside class="overview-sidebar">
-                        <div class="bento-box sticky-sidebar">
-                            <h3>Жанры и теги</h3>
-                            <div class="tags-cloud" id="game-tags"></div>
+                        <!-- Обертка для залипания нескольких блоков -->
+                        <div class="sticky-sidebar-wrapper">
+                            
+                            <div class="bento-box">
+                                <h3>Жанры и теги</h3>
+                                <div class="tags-cloud" id="game-tags"></div>
+                            </div>
+
+                            <!-- НОВЫЙ БЛОК РУСИФИКАТОРОВ -->
+                            <div class="bento-box" id="russifiers-container" style="display: none;">
+                                <h3>Русификаторы</h3>
+                                <div class="russifiers-list" id="game-russifiers"></div>
+                            </div>
+                            
                         </div>
                     </aside>
                 </div>
@@ -488,149 +658,118 @@ FILE: index.html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dev Feed | Bendy Hub</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>Главная | Bendy Hub</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
-    <!-- Shared CSS -->
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
     <link rel="stylesheet" href="shared/css/layout.css">
     <link rel="stylesheet" href="shared/css/ui.css">
-    
-    <!-- Page Specific CSS -->
-    <link rel="stylesheet" href="pages/feed/feed.css">
+    <link rel="stylesheet" href="pages/home/home.css">
     
     <script>
-        // Предотвращение мерцания белого фона при загрузке (FOUC)
         const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
     </script>
 </head>
 <body>
 
-    <site-header active-page="feed"></site-header>
+    <site-header active-page="home"></site-header>
 
-    <main class="page-content">
-        <section class="feed-container">
-            <search class="feed-controls">
-                
-                <div class="search-input-wrapper">
-                    <button id="search-btn" class="search-btn" aria-label="Найти">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </button>
-                    <input type="text" id="search-input" placeholder="Поиск по твитам (Enter)..." aria-label="Поиск">
-                </div>
-                
-                <div class="custom-select-container" id="author-filter-container">
-                    <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                        <div class="custom-select-value">
-                            <div class="custom-select-icon svg-icon">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-                            </div>
-                            <span class="custom-select-text-value">Все разработчики</span>
-                        </div>
-                        <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                    </button>
-                    <ul class="custom-select-dropdown" role="listbox"></ul>
-                </div>
-            </search>
-
-            <div id="feed-content" aria-live="polite"></div>
+    <main class="page-content home-layout">
+        
+        <!-- СЕКЦИЯ: О ПРОЕКТЕ (МАНИФЕСТ) -->
+        <section class="manifesto-card bento-box">
+            <h1 class="manifesto-title">О проекте <span>Bendy Hub</span></h1>
             
-            <div id="scroll-sentinel" class="scroll-sentinel"></div>
+            <div class="manifesto-body">
+                <p>
+                    <strong>Bendy Hub</strong> родился из желания полностью переосмыслить концепцию фанатской базы знаний. Мы сознательно отказались от стандартного понимания «вики» — здесь вы не найдете бесконечных безликих таблиц, громоздких монолитных списков и агрессивной рекламы, кочующей из проекта в проект.
+                </p>
+                <p>
+                    Наша цель — создать живую, интерактивную и визуально выверенную цифровую вселенную. Проект сочетает в себе агрегатор новостей от разработчиков из первых уст, полноценный каталог игрового лора, иммерсивный плеер саундтреков и базу персонажей, упакованные в современный и удобный интерфейс.
+                </p>
+                <p class="manifesto-note">
+                    Сайт разрабатывается независимой командой энтузиастов и фанатов франшизы <em>Joey Drew Studios</em>.
+                </p>
+            </div>
         </section>
+
+        <!-- СЕКЦИЯ: КОМАНДА (DISCORD-STYLE СПИСОК) -->
+        <section class="team-card bento-box">
+            <div class="team-header">
+                <h2>Команда проекта</h2>
+                <span class="team-count">Участники</span>
+            </div>
+
+            <div class="discord-member-list">
+                
+                <!-- ГЛАВНЫЙ / ОСНОВАТЕЛЬ (BAGERca) -->
+                <div class="discord-member">
+                    <div class="member-avatar-wrapper">
+                        <!-- Положи свою аватарку в assets/avatars/bagerca.jpg или замени путь -->
+                        <img src="assets/avatars/bagerca.jpg" alt="BAGERca" class="member-avatar" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' fill=\'none\' stroke=\'%23D2A850\' stroke-width=\'2\'%3E%3Cpath d=\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\'/%3E%3Ccircle cx=\'12\' cy=\'7\' r=\'4\'/%3E%3C/svg%3E';">
+                        <span class="status-indicator online"></span>
+                    </div>
+                    
+                    <div class="member-info">
+                        <div class="member-header-row">
+                            <span class="member-name">BAGERca</span>
+                            <span class="role-badge leader">Основатель</span>
+                        </div>
+                        <span class="member-status">Главный работник</span>
+                    </div>
+
+                    <!-- Ссылка на профиль/соцсеть -->
+                    <a href="https://vk.com" target="_blank" rel="noopener noreferrer" class="member-link-btn" title="Перейти в профиль">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+
+                <!-- ПОМОЩНИК / ВОЛОНТЕР #1 (Шаблон) -->
+                <div class="discord-member">
+                    <div class="member-avatar-wrapper">
+                        <img src="" alt="Volunteer" class="member-avatar" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' fill=\'none\' stroke=\'%238B949E\' stroke-width=\'2\'%3E%3Cpath d=\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\'/%3E%3Ccircle cx=\'12\' cy=\'7\' r=\'4\'/%3E%3C/svg%3E';">
+                    </div>
+                    
+                    <div class="member-info">
+                        <div class="member-header-row">
+                            <span class="member-name">Имя Помощника</span>
+                            <span class="role-badge helper">Редактор / Лор</span>
+                        </div>
+                        <span class="member-status">Заполнение архивов и текстов</span>
+                    </div>
+
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="member-link-btn" title="Профиль">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+
+                <!-- ПОМОЩНИК / ВОЛОНТЕР #2 (Шаблон) -->
+                <div class="discord-member">
+                    <div class="member-avatar-wrapper">
+                        <img src="" alt="Volunteer" class="member-avatar" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' fill=\'none\' stroke=\'%238B949E\' stroke-width=\'2\'%3E%3Cpath d=\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\'/%3E%3Ccircle cx=\'12\' cy=\'7\' r=\'4\'/%3E%3C/svg%3E';">
+                    </div>
+                    
+                    <div class="member-info">
+                        <div class="member-header-row">
+                            <span class="member-name">Волонтер</span>
+                            <span class="role-badge volunteer">Тестер</span>
+                        </div>
+                        <span class="member-status">Поиск багов и обратная связь</span>
+                    </div>
+
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="member-link-btn" title="Профиль">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
-    <dialog id="lightbox" class="lightbox">
-        <button class="lightbox-close" aria-label="Закрыть">&times;</button>
-        <img id="lightbox-img" src="" alt="Full image">
-    </dialog>
-
-    <!-- ТЕМПЛЕЙТЫ ДЛЯ РЕНДЕРА -->
-
-    <!-- Шаблон поста -->
-    <template id="post-template">
-        <article class="post-card">
-            <header class="post-header">
-                <img src="" alt="Avatar" class="post-avatar" loading="lazy">
-                <div class="post-meta">
-                    <h2 class="post-author-name"></h2>
-                    <a class="post-author-handle" target="_blank" rel="noopener noreferrer"></a>
-                </div>
-                <span class="post-platform-badge"></span>
-            </header>
-            <div class="post-content">
-                <div class="rt-badge" style="display: none;">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
-                    <span>Оригинал: <a class="rt-author" target="_blank" rel="noopener noreferrer"></a></span>
-                </div>
-                <p class="post-text"></p>
-                <div class="post-translation" style="display: none;">
-                    <div class="post-translation-header">Перевод</div>
-                    <p class="post-translation-text"></p>
-                </div>
-                <img src="" alt="Вложение" class="post-media img-media" loading="lazy" style="display: none;" title="Нажмите для увеличения">
-                <video class="post-media video-media" autoplay loop muted playsinline style="display: none;"></video>
-            </div>
-            <footer class="post-footer">
-                <time class="post-date" datetime=""></time>
-                <div class="post-actions">
-                    <button class="action-btn translate-btn" aria-label="Перевести" title="Перевести">
-                        <svg class="translate-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        <span>Перевести</span>
-                    </button>
-                    <button class="action-btn copy-btn" aria-label="Скопировать" title="Скопировать">
-                        <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                    </button>
-                </div>
-            </footer>
-        </article>
-    </template>
-
-    <!-- Шаблон пустого состояния -->
-    <template id="empty-state-template">
-        <div class="empty-state">
-            <div class="empty-state-icon">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    <path d="M11 8v2"></path><path d="M11 14h.01"></path>
-                </svg>
-            </div>
-            <h3 class="empty-state-title">Ничего не найдено</h3>
-            <p class="empty-state-desc"></p>
-        </div>
-    </template>
-
-    <!-- Шаблон ошибки -->
-    <template id="error-state-template">
-        <div class="error-card">
-            <p class="error-message"></p>
-        </div>
-    </template>
-
-    <!-- Шаблон скелетона (Лоадер) -->
-    <template id="skeleton-template">
-        <div class="post-card skeleton-card">
-            <header class="post-header">
-                <div class="skeleton-avatar skeleton-pulse"></div>
-                <div class="post-meta" style="gap: 8px;">
-                    <div class="skeleton-line skeleton-pulse" style="width: 120px;"></div>
-                    <div class="skeleton-line skeleton-pulse" style="width: 80px; height: 10px;"></div>
-                </div>
-            </header>
-            <div class="post-content" style="gap: 12px; display: flex; flex-direction: column;">
-                <div class="skeleton-line skeleton-pulse" style="width: 100%;"></div>
-                <div class="skeleton-line skeleton-pulse" style="width: 90%;"></div>
-                <div class="skeleton-line skeleton-pulse" style="width: 60%;"></div>
-                <div class="skeleton-pulse" style="width: 100%; height: 200px; border-radius: 12px; margin-top: 10px;"></div>
-            </div>
-        </div>
-    </template>
-
-    <script type="module" src="pages/feed/app.js"></script>
+    <script type="module" src="pages/home/app.js"></script>
 </body>
 </html>
 
@@ -644,7 +783,7 @@ FILE: library.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Библиотека Игр | Bendy Hub</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
@@ -797,7 +936,7 @@ FILE: music.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Музыка Фандома | Bendy Hub</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
@@ -1038,7 +1177,7 @@ FILE: records.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Архивы Студии | Bendy Wiki</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
@@ -1450,7 +1589,7 @@ FILE: timeline.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Хронология | Bendy Wiki</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <!-- Правильные пути от корня -->
     <link rel="stylesheet" href="shared/css/variables.css">
@@ -1597,175 +1736,18 @@ FILE: pages\character\app.js
 ============================================================
 
 import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
-import { fetchData } from '../../shared/js/api.js';
+import { CharacterModel } from './CharacterModel.js';
+import { CharacterView } from './CharacterView.js';
+import { CharacterController } from './CharacterController.js';
 
 customElements.define('site-header', SiteHeader);
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const charId = urlParams.get('id');
+document.addEventListener('DOMContentLoaded', () => {
+    const model = new CharacterModel();
+    const view = new CharacterView();
+    const controller = new CharacterController(model, view);
 
-    const els = {
-        loader: document.getElementById('char-loader'),
-        content: document.getElementById('char-content'),
-        bg: document.getElementById('char-bg'),
-        img: document.getElementById('char-image'),
-        fallback: document.getElementById('char-fallback'),
-        name: document.getElementById('char-name'),
-        metaContainer: document.getElementById('char-meta-container'),
-        quote: document.getElementById('char-quote'),
-        
-        appearance: document.getElementById('char-appearance'),
-        personality: document.getElementById('char-personality'),
-        appearances: document.getElementById('char-appearances'),
-        
-        historyContainer: document.getElementById('char-history'),
-        triviaContainer: document.getElementById('char-trivia'),
-        btnHistory: document.getElementById('btn-tab-history'),
-        btnTrivia: document.getElementById('btn-tab-trivia')
-    };
-
-    if (!charId) {
-        showError('Персонаж не найден.');
-        return;
-    }
-
-    const tabs = document.querySelectorAll('.char-tab');
-    const tabContents = document.querySelectorAll('.char-tab-content');
-    
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-            
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.target).classList.add('active');
-        });
-    });
-
-    try {
-        const char = await fetchData(`assets/characters/${charId}/data.json`);
-        document.title = `${char.name} | Личное дело`;
-
-        const basePath = `assets/characters/${charId}/`;
-        
-        const avatar = char.assets?.avatar;
-        const fullBody = char.assets?.full_body;
-
-        const bgPhoto = avatar || fullBody;
-        if (bgPhoto) {
-            els.bg.style.backgroundImage = `url('${basePath}${bgPhoto}')`;
-        }
-
-        const mainPhoto = fullBody || avatar;
-        if (mainPhoto) {
-            // Вешаем обработчик ошибки до установки src
-            els.img.onerror = () => {
-                els.img.style.display = 'none';
-                els.fallback.style.display = 'flex';
-            };
-            
-            // Если картинка загрузилась успешно
-            els.img.onload = () => {
-                els.fallback.style.display = 'none';
-                els.img.style.display = 'block';
-            };
-
-            els.img.src = `${basePath}${mainPhoto}`;
-            
-            if (mainPhoto.endsWith('.png')) {
-                els.img.classList.add('is-render');
-            } else {
-                els.img.classList.remove('is-render');
-            }
-        } else {
-            // Если в JSON вообще не указаны картинки
-            els.fallback.style.display = 'flex';
-        }
-
-        els.name.textContent = char.name;
-
-        if (char.quote) {
-            els.quote.textContent = char.quote;
-            els.quote.style.display = 'block';
-        }
-
-        let metaHtml = '';
-        const addMeta = (label, value) => {
-            if (value) metaHtml += `<div class="stat-row"><span class="stat-label">${label}:</span><span class="stat-value">${value}</span></div>`;
-        };
-        
-        addMeta('Прозвища', char.meta?.aliases?.join(', '));
-        addMeta('Роль', char.role);
-        addMeta('Статус', char.status);
-        addMeta('Вид', char.meta?.species);
-        addMeta('Пол', char.meta?.gender);
-        addMeta('Профессия', char.meta?.occupation);
-        addMeta('Озвучка', char.voice_actor);
-        
-        els.metaContainer.innerHTML = metaHtml || `<div class="stat-row"><span class="stat-value">Нет данных</span></div>`;
-
-        if (char.wiki) {
-            els.appearance.textContent = char.wiki.appearance || 'Данные отсутствуют.';
-            els.personality.textContent = char.wiki.personality || 'Данные отсутствуют.';
-            
-            if (char.wiki.history && char.wiki.history.length > 0) {
-                els.btnHistory.style.display = 'inline-block';
-                char.wiki.history.forEach(chapter => {
-                    const block = document.createElement('div');
-                    block.className = 'history-block';
-                    block.innerHTML = `<h4 class="history-title">${chapter.title}</h4><p class="char-text">${chapter.text}</p>`;
-                    els.historyContainer.appendChild(block);
-                });
-            }
-
-            if (char.wiki.trivia && char.wiki.trivia.length > 0) {
-                els.btnTrivia.style.display = 'inline-block';
-                char.wiki.trivia.forEach(fact => {
-                    const li = document.createElement('li');
-                    li.textContent = fact;
-                    els.triviaContainer.appendChild(li);
-                });
-            }
-        }
-
-        els.appearances.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><div class="spinner" style="width: 14px; height: 14px; border-width: 2px;"></div> Поиск в архивах...</span>';
-        
-        try {
-            const gamesIndex = await fetchData('data/games_index.json');
-            const gamePromises = gamesIndex.map(gId => fetchData(`assets/games/${gId}/data.json`).catch(() => null));
-            const allGames = await Promise.all(gamePromises);
-
-            const appearedIn = allGames.filter(game => game?.wiki?.characters?.includes(charId));
-            els.appearances.innerHTML = ''; 
-
-            if (appearedIn.length > 0) {
-                appearedIn.forEach(game => {
-                    const a = document.createElement('a');
-                    a.href = `game.html?id=${game.id}`;
-                    a.className = 'app-tag interactive';
-                    a.textContent = game.title;
-                    els.appearances.appendChild(a);
-                });
-            } else {
-                els.appearances.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem;">Данные отсутствуют.</span>';
-            }
-        } catch (e) {
-            els.appearances.innerHTML = '<span style="color: var(--error-color); font-size: 0.95rem;">Сбой базы данных.</span>';
-        }
-
-        els.loader.style.display = 'none';
-        els.content.style.display = 'block';
-
-    } catch (error) {
-        showError('Личное дело засекречено или файл поврежден.');
-    }
-
-    function showError(msg) {
-        els.loader.style.display = 'none';
-        els.content.style.display = 'block';
-        els.content.innerHTML = `<div class="error-card" style="margin: 4rem auto; max-width: 600px;"><p>${msg}</p><a href="javascript:history.back()" style="color:var(--accent-color);">Вернуться</a></div>`;
-    }
+    controller.init();
 });
 
 ============================================================
@@ -1939,6 +1921,291 @@ a.app-tag.interactive:hover {
     .char-header-bg { height: 30vh; }
     .char-tabs { padding: 0 1.5rem; }
     .char-tab-content { padding: 2rem 1.5rem; }
+}
+
+============================================================
+FILE: pages\character\CharacterController.js
+============================================================
+
+export class CharacterController {
+    constructor(model, view) {
+        this.model = model;
+        this.view = view;
+    }
+
+    async init() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const charId = urlParams.get('id');
+
+        if (!charId) {
+            this.view.renderErrorState('Персонаж не найден. Некорректная ссылка.');
+            return;
+        }
+
+        try {
+            // 1. Загружаем и рендерим основные данные персонажа
+            const charData = await this.model.fetchCharacter(charId);
+            this.view.render(charData, charId);
+            
+            // 2. Показываем интерфейс (чтобы юзер не ждал загрузки связей с играми)
+            this.view.hideLoader();
+
+            // 3. Фоновая подгрузка связей с играми
+            this.view.renderAppearancesLoading();
+            try {
+                const games = await this.model.findAppearances(charId);
+                this.view.renderAppearances(games);
+            } catch (err) {
+                this.view.renderAppearancesError();
+            }
+
+        } catch (error) {
+            this.view.renderErrorState('Личное дело засекречено или файл поврежден.');
+        }
+    }
+}
+
+============================================================
+FILE: pages\character\CharacterModel.js
+============================================================
+
+import { fetchData } from '../../shared/js/api.js';
+import { Logger } from '../../shared/js/Logger.js';
+
+export class CharacterModel {
+    constructor() {
+        this.characterData = null;
+    }
+
+    async fetchCharacter(charId) {
+        try {
+            this.characterData = await fetchData(`assets/characters/${charId}/data.json`);
+            return this.characterData;
+        } catch (error) {
+            Logger.error(`Ошибка загрузки данных персонажа ${charId}`, error);
+            throw error;
+        }
+    }
+
+    /**
+     * Параллельный поиск упоминаний персонажа в базе игр.
+     * Решает проблему N+1 инкапсулируя всю логику загрузки в один метод.
+     */
+    async findAppearances(charId) {
+        try {
+            const gamesIndex = await fetchData('data/games_index.json');
+            
+            // Выполняем запросы параллельно, игнорируя битые файлы
+            const gamePromises = gamesIndex.map(gId => 
+                fetchData(`assets/games/${gId}/data.json`).catch(() => null)
+            );
+            
+            const allGames = await Promise.all(gamePromises);
+
+            // Фильтруем игры, в которых упомянут данный персонаж
+            return allGames.filter(game => game !== null && game.wiki?.characters?.includes(charId));
+        } catch (error) {
+            Logger.error(`Ошибка поиска появлений персонажа ${charId}`, error);
+            throw new Error('Сбой базы данных');
+        }
+    }
+}
+
+============================================================
+FILE: pages\character\CharacterView.js
+============================================================
+
+export class CharacterView {
+    constructor() {
+        this.els = {
+            loader: document.getElementById('char-loader'),
+            content: document.getElementById('char-content'),
+            bg: document.getElementById('char-bg'),
+            img: document.getElementById('char-image'),
+            fallback: document.getElementById('char-fallback'),
+            name: document.getElementById('char-name'),
+            metaContainer: document.getElementById('char-meta-container'),
+            quote: document.getElementById('char-quote'),
+            
+            appearance: document.getElementById('char-appearance'),
+            personality: document.getElementById('char-personality'),
+            appearances: document.getElementById('char-appearances'),
+            
+            historyContainer: document.getElementById('char-history'),
+            triviaContainer: document.getElementById('char-trivia'),
+            btnHistory: document.getElementById('btn-tab-history'),
+            btnTrivia: document.getElementById('btn-tab-trivia'),
+            
+            backBtn: document.getElementById('back-btn')
+        };
+
+        this._initTabs();
+        this._initBackButton();
+    }
+
+    _initTabs() {
+        const tabs = document.querySelectorAll('.char-tab');
+        const tabContents = document.querySelectorAll('.char-tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.target).classList.add('active');
+            });
+        });
+    }
+
+    _initBackButton() {
+        this.els.backBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Безопасная навигация: если пришли с нашего сайта — возвращаем назад.
+            // Если зашли по прямой ссылке — кидаем в общий архив.
+            if (document.referrer && document.referrer.includes(window.location.host)) {
+                window.history.back();
+            } else {
+                window.location.href = 'characters.html';
+            }
+        });
+    }
+
+    showLoader() {
+        this.els.loader.style.display = 'block';
+        this.els.content.style.display = 'none';
+    }
+
+    hideLoader() {
+        this.els.loader.style.display = 'none';
+        this.els.content.style.display = 'block';
+    }
+
+    render(charData, charId) {
+        document.title = `${charData.name} | Личное дело`;
+        const basePath = `assets/characters/${charId}/`;
+
+        this._renderImages(charData.assets, basePath);
+        this._renderMeta(charData);
+        this._renderWikiText(charData.wiki);
+    }
+
+    _renderImages(assets, basePath) {
+        const avatar = assets?.avatar;
+        const fullBody = assets?.full_body;
+
+        const bgPhoto = avatar || fullBody;
+        if (bgPhoto) {
+            this.els.bg.style.backgroundImage = `url('${basePath}${bgPhoto}')`;
+        }
+
+        const mainPhoto = fullBody || avatar;
+        if (mainPhoto) {
+            this.els.img.onerror = () => {
+                this.els.img.style.display = 'none';
+                this.els.fallback.style.display = 'flex';
+            };
+            
+            this.els.img.onload = () => {
+                this.els.fallback.style.display = 'none';
+                this.els.img.style.display = 'block';
+            };
+
+            this.els.img.src = `${basePath}${mainPhoto}`;
+            
+            if (mainPhoto.endsWith('.png')) {
+                this.els.img.classList.add('is-render');
+            } else {
+                this.els.img.classList.remove('is-render');
+            }
+        } else {
+            this.els.fallback.style.display = 'flex';
+        }
+    }
+
+    _renderMeta(charData) {
+        this.els.name.textContent = charData.name;
+
+        if (charData.quote) {
+            this.els.quote.textContent = charData.quote;
+            this.els.quote.style.display = 'block';
+        }
+
+        let metaHtml = '';
+        const addMeta = (label, value) => {
+            if (value) metaHtml += `<div class="stat-row"><span class="stat-label">${label}:</span><span class="stat-value">${value}</span></div>`;
+        };
+        
+        addMeta('Прозвища', charData.meta?.aliases?.join(', '));
+        addMeta('Роль', charData.role);
+        addMeta('Статус', charData.status);
+        addMeta('Вид', charData.meta?.species);
+        addMeta('Пол', charData.meta?.gender);
+        addMeta('Профессия', charData.meta?.occupation);
+        addMeta('Озвучка', charData.voice_actor);
+        
+        this.els.metaContainer.innerHTML = metaHtml || `<div class="stat-row"><span class="stat-value">Нет данных</span></div>`;
+    }
+
+    _renderWikiText(wiki) {
+        if (!wiki) return;
+
+        this.els.appearance.textContent = wiki.appearance || 'Данные отсутствуют.';
+        this.els.personality.textContent = wiki.personality || 'Данные отсутствуют.';
+        
+        if (wiki.history && wiki.history.length > 0) {
+            this.els.btnHistory.style.display = 'inline-block';
+            wiki.history.forEach(chapter => {
+                const block = document.createElement('div');
+                block.className = 'history-block';
+                block.innerHTML = `<h4 class="history-title">${chapter.title}</h4><p class="char-text">${chapter.text}</p>`;
+                this.els.historyContainer.appendChild(block);
+            });
+        }
+
+        if (wiki.trivia && wiki.trivia.length > 0) {
+            this.els.btnTrivia.style.display = 'inline-block';
+            wiki.trivia.forEach(fact => {
+                const li = document.createElement('li');
+                li.textContent = fact;
+                this.els.triviaContainer.appendChild(li);
+            });
+        }
+    }
+
+    renderAppearancesLoading() {
+        this.els.appearances.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><div class="spinner" style="width: 14px; height: 14px; border-width: 2px;"></div> Поиск в архивах...</span>';
+    }
+
+    renderAppearances(games) {
+        this.els.appearances.innerHTML = ''; 
+
+        if (games.length > 0) {
+            games.forEach(game => {
+                const a = document.createElement('a');
+                a.href = `game.html?id=${game.id}`;
+                a.className = 'app-tag interactive';
+                a.textContent = game.title;
+                this.els.appearances.appendChild(a);
+            });
+        } else {
+            this.els.appearances.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem;">Данные отсутствуют.</span>';
+        }
+    }
+
+    renderAppearancesError() {
+        this.els.appearances.innerHTML = '<span style="color: var(--error-color); font-size: 0.95rem;">Сбой базы данных.</span>';
+    }
+
+    renderErrorState(msg) {
+        this.hideLoader();
+        this.els.content.innerHTML = `
+            <div class="error-card" style="margin: 4rem auto; max-width: 600px;">
+                <p>${msg}</p>
+                <a href="characters.html" style="color:var(--accent-color);">Вернуться в архив</a>
+            </div>
+        `;
+    }
 }
 
 ============================================================
@@ -3302,98 +3569,6 @@ export class PostView {
 }
 
 ============================================================
-FILE: pages\feed\components\CustomSelect.js
-============================================================
-
-/**
- * Универсальный UI компонент выпадающего списка (Reusable Select).
- * Больше не знает о предметной области (авторах). Работает с любым массивом данных.
- */
-export class CustomSelect {
-    constructor(containerId, onChangeCallback) {
-        this.container = document.getElementById(containerId);
-        if (!this.container) return;
-
-        this.trigger = this.container.querySelector('.custom-select-trigger');
-        this.dropdown = this.container.querySelector('.custom-select-dropdown');
-        this.iconContainer = this.container.querySelector('.custom-select-icon');
-        this.textContainer = this.container.querySelector('.custom-select-text-value');
-        
-        this.onChange = onChangeCallback;
-        this.isOpen = false;
-
-        this.trigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.toggle();
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!this.container.contains(e.target) && this.isOpen) this.close();
-        });
-    }
-
-    toggle() {
-        this.isOpen = !this.isOpen;
-        this.container.classList.toggle('active', this.isOpen);
-        this.trigger.setAttribute('aria-expanded', this.isOpen);
-    }
-
-    close() {
-        this.isOpen = false;
-        this.container.classList.remove('active');
-        this.trigger.setAttribute('aria-expanded', 'false');
-    }
-
-    /**
-     * @param {Array} options - Массив объектов { id, label, iconHtml }
-     * @param {String} defaultId - ID элемента, выбранного по умолчанию
-     */
-    populate(options, defaultId) {
-        this.dropdown.innerHTML = '';
-        
-        options.forEach(opt => {
-            const li = document.createElement('li');
-            li.className = 'custom-select-option';
-            if (opt.id === defaultId) li.classList.add('selected');
-
-            li.innerHTML = `
-                ${opt.iconHtml || ''}
-                <div class="custom-select-text"><span>${opt.label}</span></div>
-            `;
-
-            li.addEventListener('click', () => this.selectValue(opt, li));
-            this.dropdown.appendChild(li);
-        });
-
-        // Устанавливаем дефолтное значение визуально
-        const defaultOpt = options.find(o => o.id === defaultId);
-        if (defaultOpt) {
-            this.updateTriggerUI(defaultOpt);
-        }
-    }
-
-    selectValue(option, liElement) {
-        this.updateTriggerUI(option);
-
-        // Обновляем классы в дропдауне
-        this.dropdown.querySelectorAll('li').forEach(opt => opt.classList.remove('selected'));
-        liElement.classList.add('selected');
-
-        this.close();
-        if (this.onChange) this.onChange(option.id);
-    }
-
-    updateTriggerUI(option) {
-        this.textContainer.textContent = option.label;
-        if (option.iconHtml) {
-            this.iconContainer.innerHTML = option.iconHtml;
-            // Убираем/добавляем класс svg-icon в зависимости от контента (svg или img)
-            this.iconContainer.classList.toggle('svg-icon', option.iconHtml.includes('<svg'));
-        }
-    }
-}
-
-============================================================
 FILE: pages\feed\services\TranslationService.js
 ============================================================
 
@@ -3688,6 +3863,15 @@ FILE: pages\game\game.css
 .overview-grid { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; }
 .game-desc { font-size: 1.15rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line;}
 
+/* Сайдбар (обертка для липкости) */
+.sticky-sidebar-wrapper {
+    position: sticky; 
+    top: 140px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5rem;
+}
+
 .bento-box {
     background: var(--bg-card);
     padding: 2rem;
@@ -3696,11 +3880,90 @@ FILE: pages\game\game.css
     box-shadow: 0 4px 20px rgba(0,0,0,0.03);
 }
 .bento-box.large { padding: 3rem; }
-.sticky-sidebar { position: sticky; top: 140px; }
 .bento-box h3 { margin-bottom: 1.2rem; font-size: 1.2rem; color: var(--text-main); }
 
 .tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
 .game-tag { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;}
+
+/* --- РУСИФИКАТОРЫ С АВАТАРКАМИ --- */
+.russifiers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rus-card {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Расстояние от аватарки до текста */
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    padding: 12px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rus-card:hover {
+    border-color: var(--accent-color);
+    background: var(--bg-card);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15);
+}
+
+.rus-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.rus-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-grow: 1;
+    overflow: hidden; /* Чтобы длинный текст обрезался корректно */
+}
+
+.rus-title {
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.2;
+}
+
+.rus-title span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rus-icon {
+    color: var(--text-muted);
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.rus-card:hover .rus-icon {
+    color: var(--accent-color);
+}
+
+.rus-team {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /* --- КЛИКАБЕЛЬНЫЕ КАРТОЧКИ ПЕРСОНАЖЕЙ --- */
 .character-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -3759,7 +4022,7 @@ FILE: pages\game\game.css
 
 @media (max-width: 900px) {
     .overview-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .sticky-sidebar { position: static; }
+    .sticky-sidebar-wrapper { position: static; }
     .game-logo { width: 350px; }
     .game-hero { height: auto; min-height: 450px; padding: 4rem 0; }
     .back-link { top: 1rem; left: 1rem; }
@@ -3923,40 +4186,40 @@ export class HeroView {
         }
     }
 
-    /* Все иконки строго нормализованы под viewBox 24x24 */
+    /* Все иконки строго нормализованы под viewBox 24x24 и fill="currentColor" */
     _getPlatformIcons() {
         return {
             steam: { 
                 name: 'Steam', 
-                icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Steam</title><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg>'
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg>'
             },
             xbox: { 
                 name: 'Xbox', 
-                icon: '<svg fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>xbox</title> <path d="M16 5.425c-1.888-1.125-4.106-1.922-6.473-2.249l-0.092-0.010c-0.070-0.005-0.152-0.008-0.234-0.008-0.613 0-1.188 0.16-1.687 0.441l0.017-0.009c2.357-1.634 5.277-2.61 8.426-2.61 0.008 0 0.016 0 0.024 0h0.019c0.005 0 0.011 0 0.018 0 3.157 0 6.086 0.976 8.501 2.642l-0.050-0.033c-0.478-0.272-1.051-0.433-1.662-0.433-0.085 0-0.169 0.003-0.252 0.009l0.011-0.001c-2.459 0.336-4.677 1.13-6.648 2.297l0.082-0.045zM5.554 5.268c-0.041 0.014-0.077 0.032-0.11 0.054l0.002-0.001c-2.758 2.723-4.466 6.504-4.466 10.684 0 3.584 1.256 6.875 3.353 9.457l-0.022-0.028c-1.754-3.261 4.48-12.455 7.61-16.159-3.53-3.521-5.277-4.062-6.015-4.062-0.010-0-0.021-0.001-0.032-0.001-0.115 0-0.225 0.021-0.326 0.060l0.006-0.002zM20.083 9.275c3.129 3.706 9.367 12.908 7.605 16.161 2.075-2.554 3.332-5.845 3.332-9.43 0-4.181-1.709-7.962-4.467-10.684l-0.002-0.002c-0.029-0.021-0.063-0.039-0.1-0.052l-0.003-0.001c-0.1-0.036-0.216-0.056-0.336-0.056-0.005 0-0.011 0-0.016 0h0.001c-0.741-0-2.485 0.543-6.014 4.063zM6.114 27.306c2.627 2.306 6.093 3.714 9.888 3.714s7.261-1.407 9.905-3.728l-0.017 0.015c2.349-2.393-5.402-10.901-9.89-14.29-4.483 3.39-12.24 11.897-9.886 14.29z"></path> </g></svg>' 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="scale(0.75)"><path d="M16 5.425c-1.888-1.125-4.106-1.922-6.473-2.249l-0.092-0.010c-0.070-0.005-0.152-0.008-0.234-0.008-0.613 0-1.188 0.16-1.687 0.441l0.017-0.009c2.357-1.634 5.277-2.61 8.426-2.61 0.008 0 0.016 0 0.024 0h0.019c0.005 0 0.011 0 0.018 0 3.157 0 6.086 0.976 8.501 2.642l-0.050-0.033c-0.478-0.272-1.051-0.433-1.662-0.433-0.085 0-0.169 0.003-0.252 0.009l0.011-0.001c-2.459 0.336-4.677 1.13-6.648 2.297l0.082-0.045zM5.554 5.268c-0.041 0.014-0.077 0.032-0.11 0.054l0.002-0.001c-2.758 2.723-4.466 6.504-4.466 10.684 0 3.584 1.256 6.875 3.353 9.457l-0.022-0.028c-1.754-3.261 4.48-12.455 7.61-16.159-3.53-3.521-5.277-4.062-6.015-4.062-0.010-0-0.021-0.001-0.032-0.001-0.115 0-0.225 0.021-0.326 0.060l0.006-0.002zM20.083 9.275c3.129 3.706 9.367 12.908 7.605 16.161 2.075-2.554 3.332-5.845 3.332-9.43 0-4.181-1.709-7.962-4.467-10.684l-0.002-0.002c-0.029-0.021-0.063-0.039-0.1-0.052l-0.003-0.001c-0.1-0.036-0.216-0.056-0.336-0.056-0.005 0-0.011 0-0.016 0h0.001c-0.741-0-2.485 0.543-6.014 4.063zM6.114 27.306c2.627 2.306 6.093 3.714 9.888 3.714s7.261-1.407 9.905-3.728l-0.017 0.015c2.349-2.393-5.402-10.901-9.89-14.29-4.483 3.39-12.24 11.897-9.886 14.29z"></path></g></svg>' 
             },
             playstation: { 
                 name: 'PlayStation', 
-                icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>PlayStation</title><path d="M8.984 2.596v17.547l3.915 1.261V6.688c0-.69.304-1.151.794-.991.636.18.76.814.76 1.505v5.875c2.441 1.193 4.362-.002 4.362-3.152 0-3.237-1.126-4.675-4.438-5.827-1.307-.448-3.728-1.186-5.39-1.502zm4.656 16.241l6.296-2.275c.715-.258.826-.625.246-.818-.586-.192-1.637-.139-2.357.123l-4.205 1.5V14.98l.24-.085s1.201-.42 2.913-.615c1.696-.18 3.785.03 5.437.661 1.848.601 2.04 1.472 1.576 2.072-.465.6-1.622 1.036-1.622 1.036l-8.544 3.107V18.86zM1.807 18.6c-1.9-.545-2.214-1.668-1.352-2.32.801-.586 2.16-1.052 2.16-1.052l5.615-2.013v2.313L4.205 17c-.705.271-.825.632-.239.826.586.195 1.637.15 2.343-.12L8.247 17v2.074c-.12.03-.256.044-.39.073-1.939.331-3.996.196-6.038-.479z"/></svg>'
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.984 2.596v17.547l3.915 1.261V6.688c0-.69.304-1.151.794-.991.636.18.76.814.76 1.505v5.875c2.441 1.193 4.362-.002 4.362-3.152 0-3.237-1.126-4.675-4.438-5.827-1.307-.448-3.728-1.186-5.39-1.502zm4.656 16.241l6.296-2.275c.715-.258.826-.625.246-.818-.586-.192-1.637-.139-2.357.123l-4.205 1.5V14.98l.24-.085s1.201-.42 2.913-.615c1.696-.18 3.785.03 5.437.661 1.848.601 2.04 1.472 1.576 2.072-.465.6-1.622 1.036-1.622 1.036l-8.544 3.107V18.86zM1.807 18.6c-1.9-.545-2.214-1.668-1.352-2.32.801-.586 2.16-1.052 2.16-1.052l5.615-2.013v2.313L4.205 17c-.705.271-.825.632-.239.826.586.195 1.637.15 2.343-.12L8.247 17v2.074c-.12.03-.256.044-.39.073-1.939.331-3.996.196-6.038-.479z"/></svg>'
             },
             nintendo: { 
                 name: 'Nintendo', 
-                icon: '<svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.901 32h4.901c4.5 0 8.198-3.698 8.198-8.198v-15.604c0-4.5-3.698-8.198-8.198-8.198h-5c-0.099 0-0.203 0.099-0.203 0.198v31.604c0 0.099 0.099 0.198 0.302 0.198zM25 14.401c1.802 0 3.198 1.5 3.198 3.198 0 1.802-1.5 3.198-3.198 3.198-1.802 0-3.198-1.396-3.198-3.198-0.104-1.797 1.396-3.198 3.198-3.198zM15.198 0h-7c-4.5 0-8.198 3.698-8.198 8.198v15.604c0 4.5 3.698 8.198 8.198 8.198h7c0.099 0 0.203-0.099 0.203-0.198v-31.604c0-0.099-0.099-0.198-0.203-0.198zM12.901 29.401h-4.703c-3.099 0-5.599-2.5-5.599-5.599v-15.604c0-3.099 2.5-5.599 5.599-5.599h4.604zM5 9.599c0 1.698 1.302 3 3 3s3-1.302 3-3c0-1.698-1.302-3-3-3s-3 1.302-3 3z"></path> </g></svg>' 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="scale(0.75)"><path d="M18.901 32h4.901c4.5 0 8.198-3.698 8.198-8.198v-15.604c0-4.5-3.698-8.198-8.198-8.198h-5c-0.099 0-0.203 0.099-0.203 0.198v31.604c0 0.099 0.099 0.198 0.302 0.198zM25 14.401c1.802 0 3.198 1.5 3.198 3.198 0 1.802-1.5 3.198-3.198 3.198-1.802 0-3.198-1.396-3.198-3.198-0.104-1.797 1.396-3.198 3.198-3.198zM15.198 0h-7c-4.5 0-8.198 3.698-8.198 8.198v15.604c0 4.5 3.698 8.198 8.198 8.198h7c0.099 0 0.203-0.099 0.203-0.198v-31.604c0-0.099-0.099-0.198-0.203-0.198zM12.901 29.401h-4.703c-3.099 0-5.599-2.5-5.599-5.599v-15.604c0-3.099 2.5-5.599 5.599-5.599h4.604zM5 9.599c0 1.698 1.302 3 3 3s3-1.302 3-3c0-1.698-1.302-3-3-3s-3 1.302-3 3z"></path></g></svg>' 
             },
             epic: { 
                 name: 'Epic Games', 
-                icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Epic Games</title><path d="M3.537 0C2.165 0 1.66.506 1.66 1.879V18.44a4.262 4.262 0 00.02.433c.031.3.037.59.316.92.027.033.311.245.311.245.153.075.258.13.43.2l8.335 3.491c.433.199.614.276.928.27h.002c.314.006.495-.071.928-.27l8.335-3.492c.172-.07.277-.124.43-.2 0 0 .284-.211.311-.243.28-.33.285-.621.316-.92a4.261 4.261 0 00.02-.434V1.879c0-1.373-.506-1.88-1.878-1.88zm13.366 3.11h.68c1.138 0 1.688.553 1.688 1.696v1.88h-1.374v-1.8c0-.369-.17-.54-.523-.54h-.235c-.367 0-.537.17-.537.539v5.81c0 .369.17.54.537.54h.262c.353 0 .523-.171.523-.54V8.619h1.373v2.143c0 1.144-.562 1.71-1.7 1.71h-.694c-1.138 0-1.7-.566-1.7-1.71V4.82c0-1.144.562-1.709 1.7-1.709zm-12.186.08h3.114v1.274H6.117v2.603h1.648v1.275H6.117v2.774h1.74v1.275h-3.14zm3.816 0h2.198c1.138 0 1.7.564 1.7 1.708v2.445c0 1.144-.562 1.71-1.7 1.71h-.799v3.338h-1.4zm4.53 0h1.4v9.201h-1.4zm-3.13 1.235v3.392h.575c.354 0 .523-.171.523-.54V4.965c0-.368-.17-.54-.523-.54zm-3.74 10.147a1.708 1.708 0 01.591.108 1.745 1.745 0 01.49.299l-.452.546a1.247 1.247 0 00-.308-.195.91.91 0 00-.363-.068.658.658 0 00-.28.06.703.703 0 00-.224.163.783.783 0 00-.151.243.799.799 0 00-.056.299v.008a.852.852 0 00.056.31.7.7 0 00.157.245.736.736 0 00.238.16.774.774 0 00.303.058.79.79 0 00.445-.116v-.339h-.548v-.565H7.37v1.255a2.019 2.019 0 01-.524.307 1.789 1.789 0 01-.683.123 1.642 1.642 0 01-.602-.107 1.46 1.46 0 01-.478-.3 1.371 1.371 0 01-.318-.455 1.438 1.438 0 01-.115-.58v-.008a1.426 1.426 0 01.113-.57 1.449 1.449 0 01.312-.46 1.418 1.418 0 01.474-.309 1.58 1.58 0 01.598-.111 1.708 1.708 0 01.045 0zm11.963.008a2.006 2.006 0 01.612.094 1.61 1.61 0 01.507.277l-.386.546a1.562 1.562 0 00-.39-.205 1.178 1.178 0 00-.388-.07.347.347 0 00-.208.052.154.154 0 00-.07.127v.008a.158.158 0 00.022.084.198.198 0 00.076.066.831.831 0 00.147.06c.062.02.14.04.236.061a3.389 3.389 0 01.43.122 1.292 1.292 0 01.328.17.678.678 0 01.207.24.739.739 0 01.071.337v.008a.865.865 0 01-.081.382.82.82 0 01-.229.285 1.032 1.032 0 01-.353.18 1.606 1.606 0 01-.46.061 2.16 2.16 0 01-.71-.116 1.718 1.718 0 01-.593-.346l.43-.514c.277.223.578.335.9.335a.457.457 0 00.236-.05.157.157 0 00.082-.142v-.008a.15.15 0 00-.02-.077.204.204 0 00-.073-.066.753.753 0 00-.143-.062 2.45 2.45 0 00-.233-.062 5.036 5.036 0 01-.413-.113 1.26 1.26 0 01-.331-.16.72.72 0 01-.222-.243.73.73 0 01-.082-.36v-.008a.863.863 0 01.074-.359.794.794 0 01.214-.283 1.007 1.007 0 01.34-.185 1.423 1.423 0 01.448-.066 2.006 2.006 0 01.025 0zm-9.358.025h.742l1.183 2.81h-.825l-.203-.499H8.623l-.198.498h-.81zm2.197.02h.814l.663 1.08.663-1.08h.814v2.79h-.766v-1.602l-.711 1.091h-.016l-.707-1.083v1.593h-.754zm3.469 0h2.235v.658h-1.473v.422h1.334v.61h-1.334v.442h1.493v.658h-2.255zm-5.3.897l-.315.793h.624zm-1.145 5.19h8.014l-4.09 1.348z"/></svg>'
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.537 0C2.165 0 1.66.506 1.66 1.879V18.44a4.262 4.262 0 00.02.433c.031.3.037.59.316.92.027.033.311.245.311.245.153.075.258.13.43.2l8.335 3.491c.433.199.614.276.928.27h.002c.314.006.495-.071.928-.27l8.335-3.492c.172-.07.277-.124.43-.2 0 0 .284-.211.311-.243.28-.33.285-.621.316-.92a4.261 4.261 0 00.02-.434V1.879c0-1.373-.506-1.88-1.878-1.88zm13.366 3.11h.68c1.138 0 1.688.553 1.688 1.696v1.88h-1.374v-1.8c0-.369-.17-.54-.523-.54h-.235c-.367 0-.537.17-.537.539v5.81c0 .369.17.54.537.54h.262c.353 0 .523-.171.523-.54V8.619h1.373v2.143c0 1.144-.562 1.71-1.7 1.71h-.694c-1.138 0-1.7-.566-1.7-1.71V4.82c0-1.144.562-1.709 1.7-1.709zm-12.186.08h3.114v1.274H6.117v2.603h1.648v1.275H6.117v2.774h1.74v1.275h-3.14zm3.816 0h2.198c1.138 0 1.7.564 1.7 1.708v2.445c0 1.144-.562 1.71-1.7 1.71h-.799v3.338h-1.4zm4.53 0h1.4v9.201h-1.4zm-3.13 1.235v3.392h.575c.354 0 .523-.171.523-.54V4.965c0-.368-.17-.54-.523-.54zm-3.74 10.147a1.708 1.708 0 01.591.108 1.745 1.745 0 01.49.299l-.452.546a1.247 1.247 0 00-.308-.195.91.91 0 00-.363-.068.658.658 0 00-.28.06.703.703 0 00-.224.163.783.783 0 00-.151.243.799.799 0 00-.056.299v.008a.852.852 0 00.056.31.7.7 0 00.157.245.736.736 0 00.238.16.774.774 0 00.303.058.79.79 0 00.445-.116v-.339h-.548v-.565H7.37v1.255a2.019 2.019 0 01-.524.307 1.789 1.789 0 01-.683.123 1.642 1.642 0 01-.602-.107 1.46 1.46 0 01-.478-.3 1.371 1.371 0 01-.318-.455 1.438 1.438 0 01-.115-.58v-.008a1.426 1.426 0 01.113-.57 1.449 1.449 0 01.312-.46 1.418 1.418 0 01.474-.309 1.58 1.58 0 01.598-.111 1.708 1.708 0 01.045 0zm11.963.008a2.006 2.006 0 01.612.094 1.61 1.61 0 01.507.277l-.386.546a1.562 1.562 0 00-.39-.205 1.178 1.178 0 00-.388-.07.347.347 0 00-.208.052.154.154 0 00-.07.127v.008a.158.158 0 00.022.084.198.198 0 00.076.066.831.831 0 00.147.06c.062.02.14.04.236.061a3.389 3.389 0 01.43.122 1.292 1.292 0 01.328.17.678.678 0 01.207.24.739.739 0 01.071.337v.008a.865.865 0 01-.081.382.82.82 0 01-.229.285 1.032 1.032 0 01-.353.18 1.606 1.606 0 01-.46.061 2.16 2.16 0 01-.71-.116 1.718 1.718 0 01-.593-.346l.43-.514c.277.223.578.335.9.335a.457.457 0 00.236-.05.157.157 0 00.082-.142v-.008a.15.15 0 00-.02-.077.204.204 0 00-.073-.066.753.753 0 00-.143-.062 2.45 2.45 0 00-.233-.062 5.036 5.036 0 01-.413-.113 1.26 1.26 0 01-.331-.16.72.72 0 01-.222-.243.73.73 0 01-.082-.36v-.008a.863.863 0 01.074-.359.794.794 0 01.214-.283 1.007 1.007 0 01.34-.185 1.423 1.423 0 01.448-.066 2.006 2.006 0 01.025 0zm-9.358.025h.742l1.183 2.81h-.825l-.203-.499H8.623l-.198.498h-.81zm2.197.02h.814l.663 1.08.663-1.08h.814v2.79h-.766v-1.602l-.711 1.091h-.016l-.707-1.083v1.593h-.754zm3.469 0h2.235v.658h-1.473v.422h1.334v.61h-1.334v.442h1.493v.658h-2.255zm-5.3.897l-.315.793h.624zm-1.145 5.19h8.014l-4.09 1.348z"/></svg>'
             },
             ios: { 
                 name: 'App Store', 
-                icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>App Store</title><path d="M8.8086 14.9194l6.1107-11.0368c.0837-.1513.1682-.302.2437-.4584.0685-.142.1267-.2854.1646-.4403.0803-.3259.0588-.6656-.066-.9767-.1238-.3095-.3417-.5678-.6201-.7355a1.4175 1.4175 0 0 0-.921-.1924c-.3207.043-.6135.1935-.8443.4288-.1094.1118-.1996.2361-.2832.369-.092.1463-.175.2979-.259.4492l-.3864.6979-.3865-.6979c-.0837-.1515-.1667-.303-.2587-.4492-.0837-.1329-.1739-.2572-.2835-.369-.2305-.2353-.5233-.3857-.844-.429a1.4181 1.4181 0 0 0-.921.1926c-.2784.1677-.4964.426-.6203.7355-.1246.311-.1461.6508-.066.9767.038.155.0962.2984.1648.4403.0753.1564.1598.307.2437.4584l1.248 2.2543-4.8625 8.7825H2.0295c-.1676 0-.3351-.0007-.5026.0092-.1522.009-.3004.0284-.448.0714-.3108.0906-.5822.2798-.7783.548-.195.2665-.3006.5929-.3006.9279 0 .3352.1057.6612.3006.9277.196.2683.4675.4575.7782.548.1477.043.296.0623.4481.0715.1675.01.335.009.5026.009h13.0974c.0171-.0357.059-.1294.1-.2697.415-1.4151-.6156-2.843-2.0347-2.843zM3.113 18.5418l-.7922 1.5008c-.0818.1553-.1644.31-.2384.4705-.067.1458-.124.293-.1611.452-.0785.3346-.0576.6834.0645 1.0029.1212.3175.3346.583.607.7549.2727.172.5891.2416.9013.1975.3139-.044.6005-.1986.8263-.4402.1072-.1148.1954-.2424.2772-.3787.0902-.1503.1714-.3059.2535-.4612L6 19.4636c-.0896-.149-.9473-1.4704-2.887-.9218m20.5861-3.0056a1.4707 1.4707 0 0 0-.779-.5407c-.1476-.0425-.2961-.0616-.4483-.0705-.1678-.0099-.3352-.0091-.503-.0091H18.648l-4.3891-7.817c-.6655.7005-.9632 1.485-1.0773 2.1976-.1655 1.0333.0367 2.0934.546 3.0004l5.2741 9.3933c.084.1494.167.299.2591.4435.0837.131.1739.2537.2836.364.231.2323.5238.3809.8449.4232.3192.0424.643-.0244.9217-.1899.2784-.1653.4968-.4204.621-.7257.1246-.3072.146-.6425.0658-.9641-.0381-.1529-.0962-.2945-.165-.4346-.0753-.1543-.1598-.303-.2438-.4524l-1.216-2.1662h1.596c.1677 0 .3351.0009.5029-.009.1522-.009.3007-.028.4483-.0705a1.4707 1.4707 0 0 0 .779-.5407A1.5386 1.5386 0 0 0 24 16.452a1.539 1.539 0 0 0-.3009-.9158Z"/></svg>' 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.8086 14.9194l6.1107-11.0368c.0837-.1513.1682-.302.2437-.4584.0685-.142.1267-.2854.1646-.4403.0803-.3259.0588-.6656-.066-.9767-.1238-.3095-.3417-.5678-.6201-.7355a1.4175 1.4175 0 0 0-.921-.1924c-.3207.043-.6135.1935-.8443.4288-.1094.1118-.1996.2361-.2832.369-.092.1463-.175.2979-.259.4492l-.3864.6979-.3865-.6979c-.0837-.1515-.1667-.303-.2587-.4492-.0837-.1329-.1739-.2572-.2835-.369-.2305-.2353-.5233-.3857-.844-.429a1.4181 1.4181 0 0 0-.921.1926c-.2784.1677-.4964.426-.6203.7355-.1246.311-.1461.6508-.066.9767.038.155.0962.2984.1648.4403.0753.1564.1598.307.2437.4584l1.248 2.2543-4.8625 8.7825H2.0295c-.1676 0-.3351-.0007-.5026.0092-.1522.009-.3004.0284-.448.0714-.3108.0906-.5822.2798-.7783.548-.195.2665-.3006.5929-.3006.9279 0 .3352.1057.6612.3006.9277.196.2683.4675.4575.7782.548.1477.043.296.0623.4481.0715.1675.01.335.009.5026.009h13.0974c.0171-.0357.059-.1294.1-.2697.415-1.4151-.6156-2.843-2.0347-2.843zM3.113 18.5418l-.7922 1.5008c-.0818.1553-.1644.31-.2384.4705-.067.1458-.124.293-.1611.452-.0785.3346-.0576.6834.0645 1.0029.1212.3175.3346.583.607.7549.2727.172.5891.2416.9013.1975.3139-.044.6005-.1986.8263-.4402.1072-.1148.1954-.2424.2772-.3787.0902-.1503.1714-.3059.2535-.4612L6 19.4636c-.0896-.149-.9473-1.4704-2.887-.9218m20.5861-3.0056a1.4707 1.4707 0 0 0-.779-.5407c-.1476-.0425-.2961-.0616-.4483-.0705-.1678-.0099-.3352-.0091-.503-.0091H18.648l-4.3891-7.817c-.6655.7005-.9632 1.485-1.0773 2.1976-.1655 1.0333.0367 2.0934.546 3.0004l5.2741 9.3933c.084.1494.167.299.2591.4435.0837.131.1739.2537.2836.364.231.2323.5238.3809.8449.4232.3192.0424.643-.0244.9217-.1899.2784-.1653.4968-.4204.621-.7257.1246-.3072.146-.6425.0658-.9641-.0381-.1529-.0962-.2945-.165-.4346-.0753-.1543-.1598-.303-.2438-.4524l-1.216-2.1662h1.596c.1677 0 .3351.0009.5029-.009.1522-.009.3007-.028.4483-.0705a1.4707 1.4707 0 0 0 .779-.5407A1.5386 1.5386 0 0 0 24 16.452a1.539 1.539 0 0 0-.3009-.9158Z"/></svg>' 
             },
             android: { 
                 name: 'Google Play', 
-                icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google Play</title><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg>'
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg>'
             },
             default: { 
                 name: 'Играть', 
-                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="16" cy="12" r="2"></circle><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line></svg>' 
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="16" cy="12" r="2"></circle><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line></svg>' 
             }
         };
     }
@@ -3976,7 +4239,11 @@ export class WikiView {
             tags: document.getElementById('game-tags'),
             screens: document.getElementById('game-screenshots'),
             specs: document.getElementById('game-requirements'),
-            charList: document.getElementById('wiki-characters-list')
+            charList: document.getElementById('wiki-characters-list'),
+            
+            // Новые элементы для русификаторов
+            rusContainer: document.getElementById('russifiers-container'),
+            rusList: document.getElementById('game-russifiers')
         };
 
         this._initTabs();
@@ -4011,6 +4278,9 @@ export class WikiView {
             this.els.tags.appendChild(span);
         });
 
+        // Русификаторы
+        this._renderRussifiers(game.russifiers);
+
         // Скриншоты
         this.els.screens.innerHTML = '';
         if (assets.screenshots && assets.screenshots.length > 0) {
@@ -4028,6 +4298,45 @@ export class WikiView {
 
         // Wiki: Сюжет, Геймплей, Разработка
         this._renderStaticWiki(wiki);
+    }
+
+    _renderRussifiers(russifiers) {
+        if (russifiers && russifiers.length > 0) {
+            this.els.rusContainer.style.display = 'block';
+            this.els.rusList.innerHTML = '';
+            
+            // Заглушка, если аватарки нет (Иконка "Команда/Люди")
+            const fallbackAvatar = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2365676B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E";
+
+            russifiers.forEach(rus => {
+                const a = document.createElement('a');
+                a.href = rus.url;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.className = 'rus-card';
+                
+                const descText = rus.description || rus.team || '';
+                const avatarSrc = rus.avatar ? `assets/teams/${rus.avatar}` : fallbackAvatar;
+
+                a.innerHTML = `
+                    <img src="${avatarSrc}" alt="Avatar" class="rus-avatar" onerror="this.onerror=null; this.src='${fallbackAvatar}';">
+                    <div class="rus-info">
+                        <div class="rus-title">
+                            <span>${rus.title}</span>
+                            <svg class="rus-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </div>
+                        <span class="rus-team">${descText}</span>
+                    </div>
+                `;
+                this.els.rusList.appendChild(a);
+            });
+        } else {
+            this.els.rusContainer.style.display = 'none';
+        }
     }
 
     _renderSpecs(specs) {
@@ -4122,6 +4431,268 @@ export class WikiView {
     
     showCharLoader() {
         this.els.charList.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
+    }
+}
+
+============================================================
+FILE: pages\home\app.js
+============================================================
+
+import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
+
+// Инициализируем общую шапку сайта
+customElements.define('site-header', SiteHeader);
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Страница манифеста и команды готова к работе
+});
+
+============================================================
+FILE: pages\home\home.css
+============================================================
+
+/* =========================================
+   pages/home/home.css
+   Главная страница: Манифест и Команда
+   ========================================= */
+
+.home-layout {
+    max-width: 860px; /* Оптимальная ширина для комфортного чтения текста */
+    margin: 2rem auto 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* =========================================
+   МАНИФЕСТ (О ПРОЕКТЕ)
+   ========================================= */
+.manifesto-card {
+    padding: 2.5rem 3rem;
+    animation: fadeInSlideUp 0.4s ease forwards;
+}
+
+.manifesto-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.manifesto-title span {
+    color: var(--accent-color);
+}
+
+.manifesto-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    opacity: 0.9;
+}
+
+.manifesto-note {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* =========================================
+   КОМАНДА (DISCORD-STYLE LIST)
+   ========================================= */
+.team-card {
+    padding: 2rem 2.5rem;
+    animation: fadeInSlideUp 0.5s ease forwards;
+}
+
+.team-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.team-header h2 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.team-count {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* Вертикальный список ячеек */
+.discord-member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Ячейка участника */
+.discord-member {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.discord-member:hover {
+    background-color: var(--bg-card);
+    border-color: var(--accent-color);
+    transform: translateX(4px);
+    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.1);
+}
+
+/* Аватарка со статусом */
+.member-avatar-wrapper {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+}
+
+.member-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-body);
+}
+
+.status-indicator.online {
+    background-color: #23a55a; /* Discord Green */
+}
+
+/* Текстовая информация */
+.member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.member-header-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.member-name {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+/* Бейджи ролей */
+.role-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.role-badge.leader {
+    background: rgba(210, 168, 80, 0.15);
+    color: var(--accent-color);
+    border: 1px solid rgba(210, 168, 80, 0.3);
+}
+
+.role-badge.helper {
+    background: rgba(88, 101, 242, 0.15);
+    color: #5865F2; /* Discord Blurple */
+    border: 1px solid rgba(88, 101, 242, 0.3);
+}
+
+.role-badge.volunteer {
+    background: rgba(139, 148, 158, 0.15);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+}
+
+.member-status {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Кнопка ссылки */
+.member-link-btn {
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: transparent;
+}
+
+.member-link-btn:hover {
+    color: var(--accent-color);
+    background-color: rgba(210, 168, 80, 0.1);
+    transform: scale(1.1);
+}
+
+/* =========================================
+   АНИМАЦИИ И АДАПТИВ
+   ========================================= */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .manifesto-card {
+        padding: 1.5rem;
+    }
+    .manifesto-title {
+        font-size: 1.7rem;
+    }
+    .team-card {
+        padding: 1.5rem;
+    }
+    .discord-member {
+        padding: 0.75rem 1rem;
     }
 }
 
@@ -4849,15 +5420,48 @@ FILE: pages\music\music.css
 .extra-btn:hover { background: rgba(210, 168, 80, 0.1); border-color: var(--accent-color); color: var(--accent-color); }
 
 /* =========================================
-   МОДАЛКА ТЕКСТА ПЕСНИ
+   МОДАЛКА ТЕКСТА ПЕСНИ (Улучшенный UX)
    ========================================= */
-.lyrics-modal { max-width: 800px; width: 90%; padding: 0; overflow: hidden; }
-.lyrics-header { padding: 2rem 2.5rem 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;}
+.lyrics-modal { 
+    max-width: 800px; 
+    width: 90%; 
+    padding: 0; 
+    overflow: hidden; 
+    margin: auto;
+    /* Оставляем место внизу для глобального плеера, чтобы модалка не перекрывала кнопки */
+    margin-bottom: 110px; 
+    /* Максимальная высота с учетом зарезервированного места */
+    max-height: calc(100vh - 140px); 
+}
+
+.lyrics-header { 
+    padding: 2rem 2.5rem 1.5rem; 
+    border-bottom: 1px solid var(--border-color); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
 .lyrics-header h2 { font-size: 1.5rem; color: var(--text-main); margin: 0; font-weight: 900;}
-.yt-link { font-size: 0.9rem; font-weight: 700; color: #fff; background: #FF0000; padding: 6px 14px; border-radius: 8px; text-decoration: none; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px;}
+
+.yt-link { 
+    font-size: 0.9rem; font-weight: 700; color: #fff; background: #FF0000; 
+    padding: 6px 14px; border-radius: 8px; text-decoration: none; transition: 0.2s; 
+    display: inline-flex; align-items: center; gap: 6px;
+}
 .yt-link:hover { background: #cc0000; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(255,0,0,0.3);}
 
-.lyrics-body { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-height: 60vh; overflow-y: auto; padding: 2rem 2.5rem; scrollbar-width: thin; }
+.lyrics-body { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 2rem; 
+    /* Рассчитываем скролл-область с учетом шапки модалки и плеера */
+    max-height: calc(100vh - 240px); 
+    overflow-y: auto; 
+    padding: 2rem 2.5rem; 
+    scrollbar-width: thin; 
+}
+
 .lyrics-col h3 { font-size: 1rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;}
 .lyrics-col p { font-size: 1.1rem; line-height: 1.8; color: var(--text-main); white-space: pre-line; }
 
@@ -4871,7 +5475,13 @@ FILE: pages\music\music.css
     .player-controls { gap: 1rem; justify-content: flex-end; }
     .play-btn { width: 40px; height: 40px; }
     
-    .lyrics-body { grid-template-columns: 1fr; gap: 3rem; }
+    /* Адаптив модалки под мобильные */
+    .lyrics-modal { margin-bottom: 90px; }
+    .lyrics-body { 
+        grid-template-columns: 1fr; 
+        gap: 3rem; 
+        max-height: calc(100vh - 200px); 
+    }
     .lyrics-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 
@@ -5161,7 +5771,7 @@ FILE: pages\records\records.css
 
 .archives-layout {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 310px 1fr;
     gap: 3rem;
     align-items: start;
     padding-top: 2rem;
@@ -5177,7 +5787,7 @@ FILE: pages\records\records.css
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 1.5rem 1rem; /* Уменьшил боковые отступы контейнера для кнопок */
+    padding: 1.5rem 0.75rem; 
     box-shadow: 0 4px 25px rgba(0,0,0,0.03);
     max-height: calc(100vh - 120px);
     display: flex;
@@ -5192,27 +5802,47 @@ FILE: pages\records\records.css
     letter-spacing: 1px;
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
-    padding-left: 0.5rem;
+    padding-left: 0.75rem;
     border-bottom: 1px solid var(--border-color);
 }
 
+/* ОБНОВЛЕНО: Скрываем скроллбар и добавляем курсоры для Drag-to-Scroll */
 .category-nav {
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Немного уменьшили разрыв, чтобы меню выглядело цельнее */
+    gap: 4px; 
     overflow-y: auto;
     padding-right: 5px;
-    scrollbar-width: thin;
+    
+    /* Скрываем скроллбары */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    
+    /* Курсоры перетаскивания */
+    cursor: grab;
+    user-select: none; /* Запрещаем выделение текста при драге */
 }
 
-.category-nav::-webkit-scrollbar { width: 4px; }
-.category-nav::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+.category-nav::-webkit-scrollbar { 
+    display: none; /* Chrome/Safari/Webkit */
+}
+
+.category-nav:active {
+    cursor: grabbing;
+}
+
+/* МАГИЯ: Отключаем события на кнопках, когда мышь тащит меню (добавляется через JS) */
+.category-nav.is-dragging .cat-btn {
+    pointer-events: none;
+}
 
 /* =========================================
    КНОПКИ МЕНЮ (Floating Pills)
    ========================================= */
 .cat-btn {
     position: relative;
+    display: block; 
+    width: 100%;
     background: transparent;
     border: none;
     color: var(--text-main);
@@ -5220,42 +5850,34 @@ FILE: pages\records\records.css
     font-size: 0.95rem;
     font-weight: 600;
     text-align: left;
-    padding: 0.75rem 1rem 0.75rem 1.25rem; /* Чуть больше места слева для маркера */
-    border-radius: 10px; /* Теперь круглые со ВСЕХ сторон */
+    padding: 0.85rem 1rem 0.85rem 1.25rem; 
+    border-radius: 10px; 
     cursor: pointer;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.65; /* Делаем неактивные чуть прозрачнее */
-    
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    opacity: 0.65; 
     line-height: 1.4;
+    word-wrap: break-word; 
 }
 
-/* Эффект наведения: мягкое универсальное высветление + легкий сдвиг */
 .cat-btn:hover {
     background-color: rgba(120, 120, 120, 0.1); 
     opacity: 1;
     transform: translateX(4px);
 }
 
-/* Активное состояние: мягкий золотой фон */
 .cat-btn.active {
     background-color: rgba(210, 168, 80, 0.1);
     color: var(--accent-color);
     opacity: 1;
-    transform: translateX(0); /* Сброс сдвига */
+    transform: translateX(0); 
 }
 
-/* Изящный индикатор слева внутри активной кнопки */
 .cat-btn.active::before {
     content: '';
     position: absolute;
     left: 4px;
-    top: 20%;
-    bottom: 20%;
+    top: 10px; 
+    bottom: 10px;
     width: 4px;
     background-color: var(--accent-color);
     border-radius: 4px;
@@ -5286,7 +5908,6 @@ FILE: pages\records\records.css
     border-radius: 20px;
 }
 
-/* Сетка карточек */
 .records-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -5317,7 +5938,6 @@ FILE: pages\records\records.css
     box-shadow: 0 12px 30px rgba(210, 168, 80, 0.15);
 }
 
-/* Секция картинки / Заглушки */
 .card-image-wrapper {
     width: 100%;
     height: 160px;
@@ -5341,7 +5961,6 @@ FILE: pages\records\records.css
     transform: scale(1.05);
 }
 
-/* Красивая заглушка (если нет фото) */
 .card-fallback-icon {
     background-color: var(--bg-card);
     width: 70px;
@@ -5363,7 +5982,6 @@ FILE: pages\records\records.css
     box-shadow: 0 8px 25px rgba(210, 168, 80, 0.2);
 }
 
-/* Контент карточки */
 .card-content {
     padding: 1.5rem;
     display: flex;
@@ -5387,7 +6005,6 @@ FILE: pages\records\records.css
     margin-bottom: 0.75rem;
     line-height: 1.3;
     
-    /* Ограничиваем длинные названия тремя строками */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -5416,7 +6033,7 @@ FILE: pages\records\records.css
    МОДАЛКА (Иммерсивная Читалка)
    ========================================= */
 .reader-modal {
-    max-width: 650px; /* Узкая колонка для комфортного чтения */
+    max-width: 650px; 
     width: 95%;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -5486,8 +6103,18 @@ FILE: pages\records\records.css
         gap: 2rem;
     }
     .archives-sidebar {
-        position: static;
-        max-height: 300px; /* На мобильных меню скроллится внутри себя */
+        position: relative;
+        top: 0;
+        max-height: 280px; 
+        padding: 1rem 0.5rem;
+        box-shadow: inset 0 -15px 15px -15px rgba(0,0,0,0.15);
+    }
+    .category-nav {
+        padding-bottom: 1rem; 
+    }
+    .cat-btn {
+        font-size: 0.9rem; 
+        padding: 0.7rem 0.75rem 0.7rem 1rem;
     }
     .reader-content { padding: 2.5rem 1.5rem; }
     .archives-header h1 { font-size: 1.8rem; }
@@ -5608,6 +6235,7 @@ export class RecordsView {
         };
 
         this._initModalEvents();
+        this._initDragToScroll(); // Инициализация функции Drag-to-Scroll
     }
 
     _initModalEvents() {
@@ -5631,6 +6259,48 @@ export class RecordsView {
         });
     }
 
+    /**
+     * Реализация захвата и перетаскивания (Drag-to-Scroll) для меню категорий
+     */
+    _initDragToScroll() {
+        const nav = this.els.nav;
+        let isMouseDown = false;
+        let startY;
+        let scrollTop;
+
+        nav.addEventListener('mousedown', (e) => {
+            isMouseDown = true;
+            startY = e.pageY - nav.offsetTop;
+            scrollTop = nav.scrollTop;
+        });
+
+        nav.addEventListener('mousemove', (e) => {
+            if (!isMouseDown) return;
+            e.preventDefault(); // Предотвращаем стандартное выделение текста
+            
+            const y = e.pageY - nav.offsetTop;
+            const walk = (y - startY) * 1.5; // Скорость скролла
+            
+            // Если мышка сдвинулась больше чем на 3 пикселя, считаем это перетаскиванием (блокируем клики)
+            if (Math.abs(walk) > 3) {
+                nav.classList.add('is-dragging');
+            }
+            
+            nav.scrollTop = scrollTop - walk;
+        });
+
+        const stopDragging = () => {
+            isMouseDown = false;
+            // Убираем класс с задержкой, чтобы клик (mouseup) успел заблокироваться CSS-ом
+            requestAnimationFrame(() => {
+                nav.classList.remove('is-dragging');
+            });
+        };
+
+        nav.addEventListener('mouseleave', stopDragging);
+        nav.addEventListener('mouseup', stopDragging);
+    }
+
     showLoader() {
         this.els.loader.style.display = 'block';
         this.els.grid.style.display = 'none';
@@ -5651,7 +6321,7 @@ export class RecordsView {
             
             btn.textContent = category.title;
             btn.title = category.title;
-            btn.dataset.id = category.title; // Уникальный идентификатор
+            btn.dataset.id = category.title; 
             
             btn.addEventListener('click', () => onCategoryClick(category));
             fragment.appendChild(clone);
@@ -5667,7 +6337,6 @@ export class RecordsView {
     }
 
     renderGrid(category, onRecordClick) {
-        // Обновляем метаданные секции
         this.els.title.textContent = category.title;
         this.els.count.textContent = `Записей найдено: ${category.items.length}`;
         this.els.count.style.display = 'inline-block';
@@ -5679,15 +6348,12 @@ export class RecordsView {
             const clone = this.templates.card.content.cloneNode(true);
             const card = clone.querySelector('.record-card');
             
-            // Каскадная задержка анимации появления (до 0.5с)
             card.style.animationDelay = `${Math.min(index * 0.05, 0.5)}s`;
 
-            // Заполнение текста
             clone.querySelector('.card-title').textContent = item.title;
             clone.querySelector('.card-author').textContent = item.author || 'Неизвестный';
             clone.querySelector('.card-type-badge').textContent = category.type === 'audio' ? 'Аудиозапись' : 'Документ';
 
-            // Настройка медиа/иконок
             const imgEl = clone.querySelector('.card-image');
             const fallbackEl = clone.querySelector('.card-fallback-icon');
             
@@ -5698,7 +6364,6 @@ export class RecordsView {
             } else {
                 imgEl.style.display = 'none';
                 fallbackEl.style.display = 'flex';
-                // Переключаем нужную иконку внутри заглушки
                 if (category.type === 'audio') {
                     clone.querySelector('.icon-audio').style.display = 'block';
                 } else {
@@ -7059,13 +7724,14 @@ import { Logger } from '../Logger.js';
 
 export class SiteHeader extends HTMLElement {
     connectedCallback() {
-        const activePage = this.getAttribute('active-page') || 'feed';
+        const activePage = this.getAttribute('active-page') || 'home';
 
         this.innerHTML = `
             <header class="site-header">
                 <div class="header-content">
                     <nav class="site-nav">
-                        <a href="index.html" class="nav-link ${activePage === 'feed' ? 'active' : ''}">Лента</a>
+                        <a href="index.html" class="nav-link ${activePage === 'home' ? 'active' : ''}">Главная</a>
+                        <a href="feed.html" class="nav-link ${activePage === 'feed' ? 'active' : ''}">Лента</a>
                         <a href="library.html" class="nav-link ${activePage === 'library' ? 'active' : ''}">Игры</a>
                         <a href="characters.html" class="nav-link ${activePage === 'characters' ? 'active' : ''}">Персонажи</a>
                         <a href="music.html" class="nav-link ${activePage === 'music' ? 'active' : ''}">Музыка</a>

@@ -1,0 +1,22 @@
+{
+    "id": "bendy_haunted_hijinks",
+    "title": "Haunted Hijinks",
+    "type": "movie",
+    "director": "Joey Drew Studios",
+    "release_date": "31 октября 2017",
+    "description": "...",
+    "tags": ["...", "...", "Мультфильм"],
+    "platforms": {
+        "youtube": "https://www.youtube.com/watch?v=L-I7zXbBIfU"
+    },
+    "assets": {
+        "cover": "cover.jpg"
+    },
+    "wiki": {
+        "story": "Бенди решает разыграть Бориса, переодевшись в привидение, но вскоре выясняется, что в старом доме они не одни...",
+        "characters": [
+            "bendy_toon",
+            "boris_wolf"
+        ]
+    }
+}

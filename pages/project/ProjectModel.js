@@ -1,22 +1,22 @@
 import { fetchData } from '../../shared/js/api.js';
 import { Logger } from '../../shared/js/Logger.js';
 
-export class GameModel {
+export class ProjectModel {
     constructor() {
-        this.game = null;
+        this.project = null;
     }
 
-    async fetchGame(id) {
+    async fetchProject(id) {
         try {
-            this.game = await fetchData(`assets/games/${id}/data.json`);
-            return this.game;
+            // Загружаем из новой папки assets/catalog
+            this.project = await fetchData(`assets/catalog/${id}/data.json`);
+            return this.project;
         } catch (error) {
-            Logger.error(`Ошибка загрузки игры ${id}`, error);
+            Logger.error(`Ошибка загрузки проекта ${id}`, error);
             throw error;
         }
     }
 
-    // Для списка персонажей грузим их мини-досье параллельно
     async fetchCharacters(charIds) {
         if (!charIds || charIds.length === 0) return [];
         try {

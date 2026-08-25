@@ -1,128 +1,290 @@
 /* =========================================
    pages/home/home.css
-   Стили приветственной страницы
+   Главная страница: Манифест и Команда (Grid Layout)
    ========================================= */
 
-.home-hero {
-    text-align: center;
-    padding: 3rem 1.5rem 4rem;
-    max-width: 800px;
-    margin: 0 auto;
-    animation: fadeInSlideUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+.home-layout {
+    max-width: 1200px; /* Увеличено для двух колонок */
+    margin: 2rem auto 4rem;
+    display: grid;
+    grid-template-columns: 1fr 380px; /* Манифест занимает свободное место, сайдбар - 380px */
+    gap: 2.5rem;
+    align-items: start; /* Важно для работы position: sticky у сайдбара */
 }
 
-.hero-title {
-    font-size: 3rem;
+/* =========================================
+   ЛЕВАЯ КОЛОНКА (МАНИФЕСТ)
+   ========================================= */
+.manifesto-card {
+    padding: 3.5rem 4rem;
+    animation: fadeInSlideUp 0.4s ease forwards;
+}
+
+.manifesto-title {
+    font-size: 2.5rem;
     font-weight: 900;
     color: var(--text-main);
+    margin-bottom: 2rem;
     line-height: 1.2;
-    margin-bottom: 1rem;
 }
 
-.hero-title span {
+.manifesto-title span {
     color: var(--accent-color);
 }
 
-.hero-subtitle {
-    font-size: 1.15rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
-/* Сетка модулей */
-.modules-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-    padding-bottom: 4rem;
-}
-
-/* Карточка (Bento Box) */
-.module-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 2rem;
-    text-decoration: none;
+.manifesto-body {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-    
-    /* Анимация появления */
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInSlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Задержка появления для разных карточек */
-.module-card:nth-child(1) { animation-delay: 0.1s; }
-.module-card:nth-child(2) { animation-delay: 0.2s; }
-.module-card:nth-child(3) { animation-delay: 0.3s; }
-.module-card:nth-child(4) { animation-delay: 0.4s; }
-.module-card:nth-child(5) { animation-delay: 0.5s; }
-.module-card:nth-child(6) { animation-delay: 0.6s; }
-
-.module-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-    background-color: var(--bg-body);
-    box-shadow: 0 10px 30px rgba(210, 168, 80, 0.15);
-}
-
-.module-icon {
-    width: 42px;
-    height: 42px;
-    color: var(--accent-color);
-    margin-bottom: 1.5rem;
-    background: rgba(210, 168, 80, 0.1);
-    padding: 8px;
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-}
-
-.module-card:hover .module-icon {
-    transform: scale(1.1) rotate(-5deg);
-}
-
-.module-title {
-    font-size: 1.25rem;
-    font-weight: 800;
+    gap: 1.5rem;
+    font-size: 1.15rem; /* Текст манифеста чуть крупнее для удобного чтения */
+    line-height: 1.8;
     color: var(--text-main);
-    margin-bottom: 0.5rem;
+    opacity: 0.9;
 }
 
-.module-desc {
+.manifesto-note {
     font-size: 0.95rem;
     color: var(--text-muted);
-    line-height: 1.5;
+    font-style: italic;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1.2rem;
+    margin-top: 2.5rem;
 }
 
+/* =========================================
+   ПРАВАЯ КОЛОНКА (САЙДБАР С КОМАНДОЙ)
+   ========================================= */
+.team-sidebar {
+    position: sticky;
+    top: 90px; /* Отступ от липкой шапки */
+}
+
+.team-card {
+    padding: 2rem;
+    animation: fadeInSlideUp 0.5s ease forwards;
+}
+
+.team-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.team-header h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.team-count {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* Вертикальный список ячеек */
+.discord-member-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Ячейка участника */
+.discord-member {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.discord-member:hover {
+    background-color: var(--bg-card);
+    border-color: var(--accent-color);
+    transform: translateX(-4px);
+    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.1);
+}
+
+/* Аватарка со статусом */
+.member-avatar-wrapper {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+}
+
+.member-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2.5px solid var(--bg-body);
+    display: none;
+}
+
+.discord-member:hover .status-indicator {
+    border-color: var(--bg-card);
+}
+
+.status-indicator.online {
+    display: block;
+    background-color: #23a55a; /* Discord Green */
+}
+
+/* Текстовая информация */
+.member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.member-header-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.member-name {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Бейджи ролей */
+.role-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.role-badge.leader {
+    background: rgba(210, 168, 80, 0.15);
+    color: var(--accent-color);
+    border: 1px solid rgba(210, 168, 80, 0.3);
+}
+
+.role-badge.helper {
+    background: rgba(88, 101, 242, 0.15);
+    color: #5865F2; /* Discord Blurple */
+    border: 1px solid rgba(88, 101, 242, 0.3);
+}
+
+.role-badge.volunteer {
+    background: rgba(139, 148, 158, 0.15);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+}
+
+.member-status {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Кнопка ссылки */
+.member-link-btn {
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.member-link-btn:hover {
+    color: var(--accent-color);
+    background-color: rgba(210, 168, 80, 0.1);
+    transform: scale(1.1);
+}
+
+/* =========================================
+   СКЕЛЕТОНЫ ЗАГРУЗКИ
+   ========================================= */
+.skeleton-member {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    background-color: var(--bg-body);
+    border-radius: 12px;
+}
+.skeleton-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    animation: pulse 1.5s infinite;
+}
+.skeleton-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.skeleton-line {
+    background-color: var(--border-color);
+    border-radius: 4px;
+    animation: pulse 1.5s infinite;
+}
+
+/* =========================================
+   АНИМАЦИИ И АДАПТИВ
+   ========================================= */
 @keyframes fadeInSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Адаптив */
-@media (max-width: 768px) {
-    .home-hero {
-        padding: 2rem 1rem 3rem;
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+@media (max-width: 900px) {
+    .home-layout {
+        grid-template-columns: 1fr; /* На мобилках и планшетах 1 колонка */
+        gap: 1.5rem;
     }
-    .hero-title {
-        font-size: 2.2rem;
+    .manifesto-card {
+        padding: 2.5rem 2rem;
     }
-    .hero-subtitle {
-        font-size: 1rem;
+    .manifesto-title {
+        font-size: 2rem;
     }
-    .modules-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+    .team-sidebar {
+        position: static; /* Отключаем липкость на малых экранах */
     }
 }
