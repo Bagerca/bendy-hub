@@ -19,16 +19,37 @@ export class CatalogCardView {
         const isDev = lower.includes('скоро') || 
                       lower.includes('не объявлена') || 
                       lower.includes('tba') ||
+                      lower.includes('тба') ||
+                      lower.includes('tbd') ||
                       /202[4-9]/.test(lower) || 
                       /203[0-9]/.test(lower);
 
-        return { text: isDev ? 'В разработке' : 'Вышел', class: isDev ? 'status-dev' : 'status-released' };
+        return { text: isDev ? 'В разработке' : 'Вышел' , class: isDev ? 'status-dev' : 'status-released' };
     }
 
-    render(item) {
+    render(item, viewMode = 'horizontal') {
         const type = item.type || 'game';
-        const isVertical = (type === 'book' || type === 'movie');
         
+        let isVertical = false;
+
+        // Строгая логика определения ориентации
+        if (viewMode === 'vertical') {
+            isVertical = true;
+        } else if (viewMode === 'horizontal') {
+            isVertical = false;
+        } else if (viewMode === 'mixed') {
+            // В смешанной сетке смотрим, что лежит в data.json
+            const hasBanner = !!(item.assets && item.assets.banner);
+            const hasCover = !!(item.assets && item.assets.cover);
+
+            // Если есть только вертикальный постер -> делаем карточку вертикальной
+            if (hasCover && !hasBanner) {
+                isVertical = true;
+            } else {
+                isVertical = false; // Все остальные случаи (баннер или нет картинок) -> горизонтальная
+            }
+        }
+
         const activeTemplate = isVertical ? this.verticalTemplate : this.horizontalTemplate;
         const clone = activeTemplate.content.cloneNode(true);
         
@@ -48,6 +69,7 @@ export class CatalogCardView {
 
         const imgEl = clone.querySelector('.card-cover-img');
         
+        // Берем правильную картинку под выбранный формат
         let cardImageFile;
         if (isVertical) {
             cardImageFile = item.assets?.cover || item.assets?.banner;

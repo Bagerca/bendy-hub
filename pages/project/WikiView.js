@@ -18,7 +18,7 @@ export class WikiView {
     }
 
     setupTabs(type) {
-        // Динамически строим табы. Книгам не нужен геймплей и сис.требования
+        // Динамически строим табы. Книгам и мультфильмам не нужен геймплей и сис.требования
         let tabsHtml = `<button class="wiki-tab active" data-target="tab-overview">Обзор</button>
                         <button class="wiki-tab" data-target="tab-story">Сюжет и Персонажи</button>`;
         
@@ -64,20 +64,11 @@ export class WikiView {
             this.els.tags.appendChild(span);
         });
 
-        // Переводы (для игр — русификаторы, для книг — переводы)
+        // Переводы (для игр — русификаторы, для книг/фильмов — переводы)
         this._renderTranslators(data.russifiers, type);
 
-        // Скриншоты
-        this.els.screens.innerHTML = '';
-        if (assets.screenshots && assets.screenshots.length > 0) {
-            assets.screenshots.forEach(src => {
-                const img = document.createElement('img');
-                img.src = `${this.baseAssetPath}${projectId}/${src}`;
-                img.loading = 'lazy';
-                img.onclick = () => this.lightbox.open(img.src);
-                this.els.screens.appendChild(img);
-            });
-        }
+        // Медиа (Видео и Скриншоты)
+        this._renderMedia(assets, projectId);
 
         // Системные требования (только для игр)
         if (type === 'game') this._renderSpecs(data.specs);
@@ -86,10 +77,53 @@ export class WikiView {
         this._renderStaticWiki(wiki, type);
     }
 
+    // НОВЫЙ МЕТОД: Рендер Видео и Скриншотов
+    _renderMedia(assets, projectId) {
+        this.els.screens.innerHTML = '';
+        let hasMedia = false;
+
+        // 1. Рендерим YouTube Видео
+        if (assets.videos && assets.videos.length > 0) {
+            assets.videos.forEach(videoUrl => {
+                const videoId = this._extractYouTubeId(videoUrl);
+                if (videoId) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'video-wrapper';
+                    wrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    this.els.screens.appendChild(wrapper);
+                    hasMedia = true;
+                }
+            });
+        }
+
+        // 2. Рендерим Скриншоты
+        if (assets.screenshots && assets.screenshots.length > 0) {
+            assets.screenshots.forEach(src => {
+                const img = document.createElement('img');
+                img.src = `${this.baseAssetPath}${projectId}/${src}`;
+                img.loading = 'lazy';
+                img.className = 'screenshot-img';
+                img.onclick = () => this.lightbox.open(img.src);
+                this.els.screens.appendChild(img);
+                hasMedia = true;
+            });
+        }
+
+        if (!hasMedia) {
+            this.els.screens.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem;">Медиафайлы отсутствуют.</span>';
+        }
+    }
+
+    // Парсер ссылок YouTube (Достает ID видео из любой ссылки)
+    _extractYouTubeId(url) {
+        const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+        return match ? match[1] : null;
+    }
+
     _renderTranslators(translators, type) {
         if (translators && translators.length > 0) {
             this.els.translatorsContainer.style.display = 'block';
-            this.els.translatorsTitle.textContent = type === 'book' ? 'Любительские переводы' : 'Русификаторы';
+            this.els.translatorsTitle.textContent = type === 'book' ? 'Любительские переводы' : (type === 'movie' ? 'Озвучка / Сабы' : 'Русификаторы');
             this.els.translatorsList.innerHTML = '';
             
             const fallbackAvatar = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2365676B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E";

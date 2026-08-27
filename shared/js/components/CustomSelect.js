@@ -1,4 +1,7 @@
 export class CustomSelect {
+    // Храним ссылки на все инстансы для глобального управления
+    static instances = [];
+
     constructor(containerId, onChangeCallback) {
         this.container = document.getElementById(containerId);
         if (!this.container) return;
@@ -11,6 +14,9 @@ export class CustomSelect {
         this.onChange = onChangeCallback;
         this.isOpen = false;
 
+        // Регистрируем этот компонент в глобальном массиве
+        CustomSelect.instances.push(this);
+
         this.trigger.addEventListener('click', (e) => {
             e.stopPropagation();
             this.toggle();
@@ -22,6 +28,15 @@ export class CustomSelect {
     }
 
     toggle() {
+        if (!this.isOpen) {
+            // Если мы пытаемся открыть селект, сначала закрываем все остальные
+            CustomSelect.instances.forEach(instance => {
+                if (instance !== this && instance.isOpen) {
+                    instance.close();
+                }
+            });
+        }
+
         this.isOpen = !this.isOpen;
         this.container.classList.toggle('active', this.isOpen);
         this.trigger.setAttribute('aria-expanded', this.isOpen);

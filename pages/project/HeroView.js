@@ -2,6 +2,9 @@ export class HeroView {
     constructor() {
         this.els = {
             bg: document.getElementById('hero-bg'),
+            contentWrapper: document.getElementById('hero-content'),
+            posterContainer: document.getElementById('hero-poster-container'),
+            posterImg: document.getElementById('project-poster'),
             logo: document.getElementById('project-logo'),
             title: document.getElementById('project-title'),
             type: document.getElementById('project-type'),
@@ -19,19 +22,45 @@ export class HeroView {
         const assets = data.assets || {};
         const type = data.type || 'game';
 
-        // Фон и Лого
-        const bgImage = assets.hero_bg || assets.banner || assets.cover;
-        if (bgImage) this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${bgImage}')`;
+        const isSplitLayout = type === 'book' || type === 'movie';
 
-        if (assets.logo) {
-            this.els.logo.src = `${this.baseAssetPath}${projectId}/${assets.logo}`;
-        } else {
+        // ДИНАМИЧЕСКИЙ РЕНДЕР МАКЕТА
+        if (isSplitLayout) {
+            // Включаем дизайн для книг/фильмов
+            this.els.contentWrapper.classList.add('hero-split-layout');
+            this.els.bg.classList.add('heavy-blur');
+
+            if (assets.cover) {
+                this.els.posterImg.src = `${this.baseAssetPath}${projectId}/${assets.cover}`;
+                this.els.posterContainer.style.display = 'block';
+                // Эмбиент-фон из обложки
+                this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${assets.cover}')`;
+            }
+
             this.els.logo.style.display = 'none';
             this.els.title.textContent = data.title;
             this.els.title.style.display = 'block';
+        } else {
+            // Включаем классический дизайн для Игр
+            this.els.contentWrapper.classList.remove('hero-split-layout');
+            this.els.bg.classList.remove('heavy-blur');
+            this.els.posterContainer.style.display = 'none';
+
+            const bgImage = assets.hero_bg || assets.banner || assets.cover;
+            if (bgImage) this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${bgImage}')`;
+
+            if (assets.logo) {
+                this.els.logo.src = `${this.baseAssetPath}${projectId}/${assets.logo}`;
+                this.els.logo.style.display = 'block';
+                this.els.title.style.display = 'none';
+            } else {
+                this.els.logo.style.display = 'none';
+                this.els.title.textContent = data.title;
+                this.els.title.style.display = 'block';
+            }
         }
 
-        // Тип контента
+        // Метаданные (Тип)
         let typeStr = 'Игра';
         if (type === 'book') typeStr = 'Книга / Комикс';
         if (type === 'movie') typeStr = 'Анимация';
@@ -40,14 +69,7 @@ export class HeroView {
         // Дата и Статус
         this.els.date.textContent = `Релиз: ${data.release_date || 'TBA'}`;
         const lowerDate = (data.release_date || '').toLowerCase();
-        
-        // Проверка на статус "В разработке"
-        const isDev = lowerDate.includes('скоро') || 
-                      lowerDate.includes('не объявлена') || 
-                      lowerDate.includes('tba') ||
-                      /202[4-9]/.test(lowerDate) || 
-                      /203[0-9]/.test(lowerDate);
-                      
+        const isDev = lowerDate.includes('скоро') || lowerDate.includes('не объявлена') || lowerDate.includes('tba') || /202[4-9]/.test(lowerDate) || /203[0-9]/.test(lowerDate);
         this.els.status.textContent = isDev ? 'В разработке' : 'Вышел';
 
         // Автор / Разработчик
@@ -59,7 +81,7 @@ export class HeroView {
             this.els.author.textContent = `Разработчик: ${data.developer || 'Joey Drew Studios'}`;
         }
 
-        // Ссылки на магазины / Чтение
+        // Ссылки на магазины
         this.els.storeLink.innerHTML = '';
         if (data.platforms) {
             Object.entries(data.platforms).forEach(([key, url]) => {
@@ -74,7 +96,11 @@ export class HeroView {
         return {
             youtube: {
                 name: 'Смотреть',
-                icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>'
+                icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>'
+            },
+            gamejolt: {
+                name: 'Game Jolt',
+                icon: '<svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6.353 0v2.824H4.94v2.823H3.53v2.824H2.118v2.823H.706v2.824h8.47v2.823H7.765v2.824H6.353v2.823h1.412v-1.412h1.411v-1.411h1.412v-1.412H12V16.94h1.412v-1.41h1.412v-1.411h1.411v-1.412h1.412v-1.412h1.412V9.882h1.412V8.471h1.411V7.059h-4.235V5.647h1.412V4.235h1.412V2.824h1.411V1.412h1.412V0zm0 22.588H4.94V24h1.412zM7.765 2.824h9.882v1.411h-1.412v1.412h-1.411V7.06h-1.412v1.41H12v1.411h1.412v1.412H12V9.882h-1.412v1.412H9.176V9.882H7.765v1.412H6.353V9.882H4.94V8.471h1.412V5.647h1.412zM6.353 8.47v1.411h1.412v-1.41zm2.823 1.411h1.412v-1.41H9.176zm5.648 0h1.411v1.412h-1.411Z"/></svg>'
             },
             pdf: { 
                 name: 'Читать', 

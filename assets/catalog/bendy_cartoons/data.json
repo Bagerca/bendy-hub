@@ -1,0 +1,37 @@
+{
+    "id": "bendy_cartoons",
+    "type": "movie",
+    "title": "Мультфильмы про Бенди",
+    "developer": "Joey Drew Studios",
+    "release_date": "1929 - Настоящее время",
+    "description": "Классические анимационные короткометражки, созданные Joey Drew Studios в золотую эру анимации.",
+    "tags": ["Анимация", "Комедия", "Классика", "Черно-белое"],
+    
+    "platforms": {
+        "youtube": "https://youtube.com/playlist?list=PL5adzFCvE4-9WlPnpbBS1qGawdPA2v-z3&si=RDUYrkbl6COcDrke"
+    },
+    
+    "assets": {
+        "banner": "cover.jpg",
+        "videos": [
+            "https://youtu.be/oN4jmLFQ5a4?si=Xk_YQ_OdMyEhS69C",
+            "https://youtu.be/MX9x1oCGzX0?si=CunCYD4P7azuWvXY",
+            "https://youtu.be/3RmZDZja4Hs?si=30QKKVckxwZo0LhH",
+            "https://youtu.be/E6L4_4Vi43g?si=BUn2ICh9kaoG5f1h",
+            "https://youtu.be/uWmWM9SBXUo?si=1AXvt9gYlEeu4kUc",
+            "https://youtu.be/kVMp4blt-Os?si=won-Sjgko4ydAk_d",
+            "https://youtu.be/a0uJbCJsXR4?si=zsNNyBa6GmfxoWMI",
+            "https://youtu.be/V8IpB1sLHW0?si=d1KXh2UNk2uaX2KY"
+        ]
+    },
+    "specs": null,
+
+    "wiki": {
+        "story": "Серия комедийных зарисовок о приключениях озорного демона Бенди, его лучшего друга Волка Бориса и небесной красавицы Ангела Алисы.",
+        "characters": [
+            "bendy_toon",
+            "boris_wolf",
+            "alice_angel"
+        ]
+    }
+}

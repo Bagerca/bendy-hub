@@ -1,6 +1,114 @@
 
 
 ============================================================
+FILE: catalog.html
+============================================================
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Каталог Проектов | Bendy Hub</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <link rel="stylesheet" href="shared/css/variables.css">
+    <link rel="stylesheet" href="shared/css/base.css">
+    <link rel="stylesheet" href="shared/css/layout.css">
+    <link rel="stylesheet" href="shared/css/ui.css">
+    
+    <link rel="stylesheet" href="pages/catalog/catalog.css">
+    <link rel="stylesheet" href="pages/catalog/card-horizontal.css">
+    <link rel="stylesheet" href="pages/catalog/card-vertical.css">
+    
+    <script>
+        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+    <site-header active-page="catalog"></site-header>
+
+    <main class="page-content catalog-container">
+        
+        <search class="archive-controls feed-controls">
+            <div class="search-input-wrapper">
+                <button id="search-btn" class="search-btn" aria-label="Найти">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+                <input type="text" id="search-input" placeholder="Поиск по названию (Enter)..." aria-label="Поиск">
+            </div>
+            
+            <div class="custom-select-container" id="type-filter-container">
+                <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <div class="custom-select-value">
+                        <span class="custom-select-text-value">Все проекты</span>
+                    </div>
+                    <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <ul class="custom-select-dropdown" role="listbox"></ul>
+            </div>
+        </search>
+
+        <div id="catalog-loader" class="loading-state">
+            <div class="spinner" style="margin: 0 auto 10px;"></div>
+            <span>Синхронизация каталога...</span>
+        </div>
+        
+        <div id="catalog-content" style="display: none;"></div>
+    </main>
+
+    <!-- ТЕМПЛЕЙТ #1: ГОРИЗОНТАЛЬНАЯ КАРТОЧКА -->
+    <template id="template-card-horizontal">
+        <article class="card-horizontal">
+            <div class="card-cover-container">
+                <div class="card-badges">
+                    <span class="status-badge"></span>
+                </div>
+                <img src="" alt="" class="card-cover-img" loading="lazy">
+                
+                <div class="card-cover-fallback"></div>
+            </div>
+            <footer class="card-info">
+                <h3 class="card-title"></h3>
+                <time class="card-year"></time>
+            </footer>
+        </article>
+    </template>
+
+    <!-- ТЕМПЛЕЙТ #2: ВЕРТИКАЛЬНАЯ КАРТОЧКА -->
+    <template id="template-card-vertical">
+        <article class="card-vertical">
+            <div class="card-cover-container">
+                <div class="card-badges">
+                    <span class="status-badge"></span>
+                </div>
+                <img src="" alt="" class="card-cover-img" loading="lazy">
+                
+                <div class="card-cover-fallback"></div>
+            </div>
+            <footer class="card-info">
+                <h3 class="card-title"></h3>
+                <time class="card-year"></time>
+            </footer>
+        </article>
+    </template>
+
+    <template id="empty-state-template">
+        <div class="empty-state">
+            <h3 class="empty-state-title">Ничего не найдено</h3>
+            <p class="empty-state-desc">Измените параметры поиска или фильтры.</p>
+        </div>
+    </template>
+
+    <script type="module" src="pages/catalog/app.js"></script>
+</body>
+</html>
+
+============================================================
 FILE: character.html
 ============================================================
 
@@ -363,161 +471,6 @@ FILE: feed.html
 </html>
 
 ============================================================
-FILE: game.html
-============================================================
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Игра | Bendy Hub</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    
-    <link rel="stylesheet" href="shared/css/variables.css">
-    <link rel="stylesheet" href="shared/css/base.css">
-    <link rel="stylesheet" href="shared/css/layout.css">
-    <link rel="stylesheet" href="shared/css/ui.css">
-    <link rel="stylesheet" href="pages/game/game.css">
-    
-    <script>
-        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    </script>
-</head>
-<body>
-
-    <site-header active-page="library"></site-header>
-
-    <div id="game-loader" class="loading-state" style="margin-top: 100px;">
-        <div class="spinner" style="margin: 0 auto 10px;"></div>
-        <span>Расшифровка архивов студии...</span>
-    </div>
-
-    <main id="game-content" class="game-wiki-page" style="display: none;">
-        
-        <header class="game-hero">
-            <div class="game-hero-bg" id="hero-bg"></div>
-            <div class="game-hero-overlay"></div>
-            
-            <div class="game-hero-container">
-                <a href="library.html" class="back-link">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                    В библиотеку
-                </a>
-
-                <div class="game-hero-content">
-                    <img id="game-logo" class="game-logo" src="" alt="Логотип игры">
-                    <h1 id="game-title" class="game-title-text" style="display: none;"></h1>
-                    
-                    <div class="game-meta-tags">
-                        <span id="game-status" class="meta-badge status-badge"></span>
-                        <span id="game-date" class="meta-badge"></span>
-                        <span id="game-dev" class="meta-badge"></span>
-                    </div>
-
-                    <div id="store-link-container" class="game-hero-actions"></div>
-                </div>
-            </div>
-        </header>
-
-        <nav class="wiki-tabs-container">
-            <div class="wiki-tabs">
-                <button class="wiki-tab active" data-target="tab-overview">Обзор</button>
-                <button class="wiki-tab" data-target="tab-story">Сюжет и Персонажи</button>
-                <button class="wiki-tab" data-target="tab-gameplay">Геймплей</button>
-                <button class="wiki-tab" data-target="tab-dev">Разработка</button>
-                <button class="wiki-tab" data-target="tab-specs">Системные требования</button>
-            </div>
-        </nav>
-
-        <div class="wiki-content-area">
-            <section id="tab-overview" class="wiki-section active">
-                <div class="overview-grid">
-                    <div class="overview-main">
-                        <h2>О проекте</h2>
-                        <p id="game-description" class="game-desc"></p>
-                        
-                        <h3 class="section-title mt-4">Скриншоты и Медиа</h3>
-                        <div id="game-screenshots" class="screenshots-bento"></div>
-                    </div>
-                    
-                    <aside class="overview-sidebar">
-                        <!-- Обертка для залипания нескольких блоков -->
-                        <div class="sticky-sidebar-wrapper">
-                            
-                            <div class="bento-box">
-                                <h3>Жанры и теги</h3>
-                                <div class="tags-cloud" id="game-tags"></div>
-                            </div>
-
-                            <!-- НОВЫЙ БЛОК РУСИФИКАТОРОВ -->
-                            <div class="bento-box" id="russifiers-container" style="display: none;">
-                                <h3>Русификаторы</h3>
-                                <div class="russifiers-list" id="game-russifiers"></div>
-                            </div>
-                            
-                        </div>
-                    </aside>
-                </div>
-            </section>
-
-            <section id="tab-story" class="wiki-section">
-                <div id="wiki-story-content" style="display: none;">
-                    <div class="overview-grid">
-                        <div class="overview-main">
-                            <h2 class="section-title">Синопсис</h2>
-                            <p id="wiki-story-text" class="game-desc"></p>
-                        </div>
-                        <aside class="overview-sidebar">
-                            <div class="bento-box">
-                                <h3>Персонажи</h3>
-                                <ul id="wiki-characters-list" class="character-list"></ul>
-                            </div>
-                        </aside>
-                    </div>
-                </div>
-                <div id="wiki-story-empty" class="empty-state">
-                    <h3>Архив сюжета заблокирован</h3>
-                    <p>Joey Drew Studios еще не рассекретила данные об этой истории.</p>
-                </div>
-            </section>
-
-            <section id="tab-gameplay" class="wiki-section">
-                <div id="wiki-gameplay-content" class="bento-box large" style="display: none;">
-                    <h2 class="section-title">Игровые механики</h2>
-                    <ul id="wiki-gameplay-list" class="gameplay-list"></ul>
-                </div>
-                <div id="wiki-gameplay-empty" class="empty-state">
-                    <h3>Данные отсутствуют</h3>
-                    <p>Информация об игровом процессе пока недоступна.</p>
-                </div>
-            </section>
-
-            <section id="tab-dev" class="wiki-section">
-                <div id="wiki-dev-content" class="timeline-container" style="display: none;"></div>
-                <div id="wiki-dev-empty" class="empty-state">
-                    <h3>Хронология неизвестна</h3>
-                    <p>История разработки этого проекта еще не задокументирована.</p>
-                </div>
-            </section>
-
-            <section id="tab-specs" class="wiki-section">
-                <div id="game-requirements" class="req-bento-grid"></div>
-            </section>
-        </div>
-    </main>
-
-    <dialog id="lightbox" class="lightbox">
-        <button class="lightbox-close" aria-label="Закрыть">&times;</button>
-        <img id="lightbox-img" src="" alt="Full image">
-    </dialog>
-
-    <script type="module" src="pages/game/app.js"></script>
-</body>
-</html>
-
-============================================================
 FILE: generate_chars.py
 ============================================================
 
@@ -525,7 +478,6 @@ import os
 import json
 
 # Словарь персонажей: "id_папки": "Отображаемое Имя"
-# Я собрал базу с твоих скриншотов. Можешь добавлять сюда кого угодно.
 CHARACTERS = {
     "henry_stein": "Генри Штейн",
     "joey_drew": "Джоуи Дрю",
@@ -588,7 +540,14 @@ CHARACTERS = {
     "abby_lambert": "Эбби Ламберт",
     "eckhardt": "Экхарт",
     "emma_lamont": "Эмма Ламонт",
-    "andrew": "Эндрю"
+    "andrew": "Эндрю",
+    
+    # НОВЫЕ ПЕРСОНАЖИ И ВРАГИ ИЗ BATIM
+    "searchers": "Искатели",
+    "lost_ones": "Потерянные",
+    "piper": "Пайпер",
+    "striker": "Страйкер",
+    "fisher": "Фишер"
 }
 
 # Пути к папкам
@@ -678,157 +637,74 @@ FILE: index.html
 
     <main class="page-content home-layout">
         
-        <!-- СЕКЦИЯ: О ПРОЕКТЕ (МАНИФЕСТ) -->
+        <!-- ЛЕВАЯ КОЛОНКА: О ПРОЕКТЕ -->
         <section class="manifesto-card bento-box">
-            <h1 class="manifesto-title">О проекте <span>Bendy Hub</span></h1>
+            <h1 class="manifesto-title" id="manifesto-title">
+                <span class="skeleton-line" style="width: 250px; height: 35px; display: inline-block;"></span>
+            </h1>
             
-            <div class="manifesto-body">
-                <p>
-                    <strong>Bendy Hub</strong> родился из желания полностью переосмыслить концепцию фанатской базы знаний. Мы сознательно отказались от стандартного понимания «вики» — здесь вы не найдете бесконечных безликих таблиц, громоздких монолитных списков и агрессивной рекламы, кочующей из проекта в проект.
-                </p>
-                <p>
-                    Наша цель — создать живую, интерактивную и визуально выверенную цифровую вселенную. Проект сочетает в себе агрегатор новостей от разработчиков из первых уст, полноценный каталог игрового лора, иммерсивный плеер саундтреков и базу персонажей, упакованные в современный и удобный интерфейс.
-                </p>
-                <p class="manifesto-note">
-                    Сайт разрабатывается независимой командой энтузиастов и фанатов франшизы <em>Joey Drew Studios</em>.
-                </p>
+            <div class="manifesto-body" id="manifesto-body">
+                <div class="skeleton-line" style="width: 100%; height: 20px;"></div>
+                <div class="skeleton-line" style="width: 90%; height: 20px;"></div>
+                <div class="skeleton-line" style="width: 95%; height: 20px;"></div>
             </div>
+            
+            <p class="manifesto-note" id="manifesto-note" style="display: none;"></p>
         </section>
 
-        <!-- СЕКЦИЯ: КОМАНДА (DISCORD-STYLE СПИСОК) -->
-        <section class="team-card bento-box">
-            <div class="team-header">
-                <h2>Команда проекта</h2>
-                <span class="team-count">Участники</span>
-            </div>
-
-            <div class="discord-member-list">
-                
-                <!-- ГЛАВНЫЙ / ОСНОВАТЕЛЬ (BAGERca) -->
-                <div class="discord-member">
-                    <div class="member-avatar-wrapper">
-                        <!-- Положи свою аватарку в assets/avatars/bagerca.jpg или замени путь -->
-                        <img src="assets/avatars/bagerca.jpg" alt="BAGERca" class="member-avatar" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' fill=\'none\' stroke=\'%23D2A850\' stroke-width=\'2\'%3E%3Cpath d=\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\'/%3E%3Ccircle cx=\'12\' cy=\'7\' r=\'4\'/%3E%3C/svg%3E';">
-                        <span class="status-indicator online"></span>
-                    </div>
-                    
-                    <div class="member-info">
-                        <div class="member-header-row">
-                            <span class="member-name">BAGERca</span>
-                            <span class="role-badge leader">Основатель</span>
-                        </div>
-                        <span class="member-status">Главный работник</span>
-                    </div>
-
-                    <!-- Ссылка на профиль/соцсеть -->
-                    <a href="https://vk.com" target="_blank" rel="noopener noreferrer" class="member-link-btn" title="Перейти в профиль">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                    </a>
+        <!-- ПРАВАЯ КОЛОНКА: КОМАНДА -->
+        <aside class="team-sidebar">
+            <section class="team-card bento-box">
+                <div class="team-header">
+                    <h2>Команда проекта</h2>
+                    <span class="team-count" id="team-count">Загрузка...</span>
                 </div>
 
-                <!-- ПОМОЩНИК / ВОЛОНТЕР #1 (Шаблон) -->
-                <div class="discord-member">
-                    <div class="member-avatar-wrapper">
-                        <img src="" alt="Volunteer" class="member-avatar" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' fill=\'none\' stroke=\'%238B949E\' stroke-width=\'2\'%3E%3Cpath d=\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\'/%3E%3Ccircle cx=\'12\' cy=\'7\' r=\'4\'/%3E%3C/svg%3E';">
-                    </div>
-                    
-                    <div class="member-info">
-                        <div class="member-header-row">
-                            <span class="member-name">Имя Помощника</span>
-                            <span class="role-badge helper">Редактор / Лор</span>
+                <div class="discord-member-list" id="team-list">
+                    <!-- Скелетоны для загрузки -->
+                    <div class="skeleton-member">
+                        <div class="skeleton-avatar"></div>
+                        <div class="skeleton-info">
+                            <div class="skeleton-line" style="width: 120px; height: 16px;"></div>
+                            <div class="skeleton-line" style="width: 180px; height: 12px; margin-top: 4px;"></div>
                         </div>
-                        <span class="member-status">Заполнение архивов и текстов</span>
                     </div>
-
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="member-link-btn" title="Профиль">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                    </a>
-                </div>
-
-                <!-- ПОМОЩНИК / ВОЛОНТЕР #2 (Шаблон) -->
-                <div class="discord-member">
-                    <div class="member-avatar-wrapper">
-                        <img src="" alt="Volunteer" class="member-avatar" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' fill=\'none\' stroke=\'%238B949E\' stroke-width=\'2\'%3E%3Cpath d=\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\'/%3E%3Ccircle cx=\'12\' cy=\'7\' r=\'4\'/%3E%3C/svg%3E';">
-                    </div>
-                    
-                    <div class="member-info">
-                        <div class="member-header-row">
-                            <span class="member-name">Волонтер</span>
-                            <span class="role-badge volunteer">Тестер</span>
+                    <div class="skeleton-member">
+                        <div class="skeleton-avatar"></div>
+                        <div class="skeleton-info">
+                            <div class="skeleton-line" style="width: 140px; height: 16px;"></div>
+                            <div class="skeleton-line" style="width: 160px; height: 12px; margin-top: 4px;"></div>
                         </div>
-                        <span class="member-status">Поиск багов и обратная связь</span>
                     </div>
-
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="member-link-btn" title="Профиль">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                    </a>
                 </div>
-
-            </div>
-        </section>
+            </section>
+        </aside>
 
     </main>
 
-    <script type="module" src="pages/home/app.js"></script>
-</body>
-</html>
+    <!-- ТЕМПЛЕЙТ КАРТОЧКИ УЧАСТНИКА -->
+    <template id="team-member-template">
+        <div class="discord-member">
+            <div class="member-avatar-wrapper">
+                <img src="" alt="Avatar" class="member-avatar">
+                <span class="status-indicator"></span>
+            </div>
+            
+            <div class="member-info">
+                <div class="member-header-row">
+                    <span class="member-name"></span>
+                    <span class="role-badge"></span>
+                </div>
+                <span class="member-status"></span>
+            </div>
 
-============================================================
-FILE: library.html
-============================================================
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Библиотека Игр | Bendy Hub</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    
-    <link rel="stylesheet" href="shared/css/variables.css">
-    <link rel="stylesheet" href="shared/css/base.css">
-    <link rel="stylesheet" href="shared/css/layout.css">
-    <link rel="stylesheet" href="shared/css/ui.css">
-    <link rel="stylesheet" href="pages/library/library.css">
-    <link rel="stylesheet" href="pages/library/game-card.css">
-    
-    <script>
-        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    </script>
-</head>
-<body>
-    <site-header active-page="library"></site-header>
-
-    <main class="page-content library-container">
-        <div id="games-loader" class="loading-state">
-            <div class="spinner" style="margin: 0 auto 10px;"></div>
-            <span>Загрузка архивов студии...</span>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="member-link-btn" title="Перейти в профиль">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
         </div>
-        <div class="games-grid" id="games-content" style="display: none;"></div>
-    </main>
-
-    <template id="game-card-template">
-        <article class="game-card">
-            <div class="game-cover-container">
-                <span class="game-status-badge"></span>
-                <img src="" alt="" class="game-cover-img" loading="lazy">
-                
-                <div class="game-cover-fallback">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="fallback-icon">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                        <line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                </div>
-            </div>
-            <footer class="game-info">
-                <h3 class="game-title"></h3>
-                <time class="game-year"></time>
-            </footer>
-        </article>
     </template>
 
-    <script type="module" src="pages/library/app.js"></script>
+    <script type="module" src="pages/home/app.js"></script>
 </body>
 </html>
 
@@ -1087,6 +963,159 @@ FILE: music.html
     </template>
 
     <script type="module" src="pages/music/app.js"></script>
+</body>
+</html>
+
+============================================================
+FILE: project.html
+============================================================
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Проект | Bendy Hub</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <link rel="stylesheet" href="shared/css/variables.css">
+    <link rel="stylesheet" href="shared/css/base.css">
+    <link rel="stylesheet" href="shared/css/layout.css">
+    <link rel="stylesheet" href="shared/css/ui.css">
+    <link rel="stylesheet" href="pages/project/project.css">
+    
+    <script>
+        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+
+    <site-header active-page="catalog"></site-header>
+
+    <div id="project-loader" class="loading-state" style="margin-top: 100px;">
+        <div class="spinner" style="margin: 0 auto 10px;"></div>
+        <span>Расшифровка архивов студии...</span>
+    </div>
+
+    <main id="project-content" class="project-wiki-page" style="display: none;">
+        
+        <header class="project-hero">
+            <div class="project-hero-bg" id="hero-bg"></div>
+            <div class="project-hero-overlay"></div>
+            
+            <div class="project-hero-container">
+                <a href="catalog.html" class="back-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    В каталог
+                </a>
+
+                <div class="project-hero-content" id="hero-content">
+                    <div class="hero-poster-container" id="hero-poster-container" style="display: none;">
+                        <img id="project-poster" class="project-poster" src="" alt="Обложка">
+                    </div>
+
+                    <div class="hero-text-container">
+                        <img id="project-logo" class="project-logo" src="" alt="Логотип">
+                        <h1 id="project-title" class="project-title-text" style="display: none;"></h1>
+                        
+                        <div class="project-meta-tags">
+                            <span id="project-type" class="meta-badge type-badge"></span>
+                            <span id="project-status" class="meta-badge status-badge"></span>
+                            <span id="project-date" class="meta-badge"></span>
+                            <span id="project-author" class="meta-badge"></span>
+                        </div>
+
+                        <div id="store-link-container" class="project-hero-actions"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="wiki-tabs-container">
+            <div class="wiki-tabs" id="dynamic-tabs"></div>
+        </nav>
+
+        <div class="wiki-content-area" id="dynamic-sections">
+            
+            <section id="tab-overview" class="wiki-section active">
+                <div class="overview-grid">
+                    <div class="overview-main">
+                        <h2>О проекте</h2>
+                        <p id="project-description" class="project-desc"></p>
+                        
+                        <h3 class="section-title mt-4">Медиа и Иллюстрации</h3>
+                        <div id="project-screenshots" class="screenshots-bento"></div>
+                    </div>
+                    
+                    <aside class="overview-sidebar">
+                        <div class="sticky-sidebar-wrapper">
+                            <div class="bento-box">
+                                <h3>Жанры и теги</h3>
+                                <div class="tags-cloud" id="project-tags"></div>
+                            </div>
+                            <div class="bento-box" id="translators-container" style="display: none;">
+                                <h3 id="translators-title">Русификаторы</h3>
+                                <div class="translators-list" id="project-translators"></div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section id="tab-story" class="wiki-section">
+                <div id="wiki-story-content" style="display: none;">
+                    <div class="overview-grid">
+                        <div class="overview-main">
+                            <h2 class="section-title">Синопсис</h2>
+                            <p id="wiki-story-text" class="project-desc"></p>
+                        </div>
+                        <aside class="overview-sidebar">
+                            <div class="bento-box">
+                                <h3>Персонажи</h3>
+                                <ul id="wiki-characters-list" class="character-list"></ul>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+                <div id="wiki-story-empty" class="empty-state">
+                    <h3>Архив сюжета заблокирован</h3>
+                    <p>Joey Drew Studios еще не рассекретила данные об этой истории.</p>
+                </div>
+            </section>
+
+            <section id="tab-gameplay" class="wiki-section">
+                <div id="wiki-gameplay-content" class="bento-box large" style="display: none;">
+                    <h2 class="section-title">Игровые механики</h2>
+                    <ul id="wiki-gameplay-list" class="gameplay-list"></ul>
+                </div>
+                <div id="wiki-gameplay-empty" class="empty-state">
+                    <h3>Данные отсутствуют</h3>
+                    <p>Информация об игровом процессе пока недоступна.</p>
+                </div>
+            </section>
+
+            <section id="tab-dev" class="wiki-section">
+                <div id="wiki-dev-content" class="timeline-container" style="display: none;"></div>
+                <div id="wiki-dev-empty" class="empty-state">
+                    <h3>Хронология неизвестна</h3>
+                    <p>История создания этого проекта еще не задокументирована.</p>
+                </div>
+            </section>
+
+            <section id="tab-specs" class="wiki-section">
+                <div id="project-requirements" class="req-bento-grid"></div>
+            </section>
+
+        </div>
+    </main>
+
+    <dialog id="lightbox" class="lightbox">
+        <button class="lightbox-close" aria-label="Закрыть">&times;</button>
+        <img id="lightbox-img" src="" alt="Full image">
+    </dialog>
+
+    <script type="module" src="pages/project/app.js"></script>
 </body>
 </html>
 
@@ -1732,6 +1761,570 @@ jobs:
 
 
 ============================================================
+FILE: pages\catalog\app.js
+============================================================
+
+import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
+import { CustomSelect } from '../../shared/js/components/CustomSelect.js';
+import { debounce } from '../../shared/js/utils.js';
+
+import { CatalogModel } from './CatalogModel.js';
+import { CatalogCardView } from './views/CatalogCardView.js';
+import { CatalogController } from './CatalogController.js';
+
+customElements.define('site-header', SiteHeader);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const model = new CatalogModel();
+    // Передаем новые семантические ID шаблонов
+    const cardView = new CatalogCardView('template-card-horizontal', 'template-card-vertical');
+    const controller = new CatalogController(model, cardView);
+
+    const typeSelect = new CustomSelect('type-filter-container', (selectedId) => {
+        controller.handleFilterChange(document.getElementById('search-input').value, selectedId);
+    });
+
+    typeSelect.populate([
+        { id: 'all', label: 'Все проекты' },
+        { id: 'game', label: 'Игры' },
+        { id: 'book', label: 'Книги и Комиксы' },
+        { id: 'movie', label: 'Анимация' }
+    ], 'all');
+
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+
+    const triggerSearch = () => {
+        const activeItem = document.querySelector('#type-filter-container .custom-select-option.selected .custom-select-text span');
+        let currentType = 'all';
+        if (activeItem) {
+            const label = activeItem.textContent;
+            if (label === 'Игры') currentType = 'game';
+            else if (label === 'Книги и Комиксы') currentType = 'book';
+            else if (label === 'Анимация') currentType = 'movie';
+        }
+        controller.handleFilterChange(searchInput.value, currentType);
+    };
+
+    searchInput.addEventListener('input', debounce(triggerSearch, 300));
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); triggerSearch(); }
+    });
+    searchBtn.addEventListener('click', triggerSearch);
+
+    controller.init();
+});
+
+============================================================
+FILE: pages\catalog\card-horizontal.css
+============================================================
+
+/* ГОРИЗОНТАЛЬНАЯ КАРТОЧКА (Баннер) */
+.card-horizontal {
+    background-color: var(--bg-card); 
+    border: 1px solid var(--border-color);
+    border-radius: 12px; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    cursor: pointer;
+    text-decoration: none;
+    --card-hover-rgb: 210, 168, 80; 
+}
+
+[data-theme="dark"] .card-horizontal { box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+.card-horizontal:hover {
+    transform: translateY(-6px);
+    border-color: rgb(var(--card-hover-rgb));
+    box-shadow: 0 12px 30px rgba(var(--card-hover-rgb), 0.2);
+}
+
+.card-horizontal .card-cover-container { 
+    width: 100%; 
+    aspect-ratio: 92 / 45; 
+    position: relative; 
+    overflow: hidden; 
+    background-color: var(--bg-body);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-horizontal .card-cover-img { 
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; 
+}
+.card-horizontal:hover .card-cover-img { transform: scale(1.05); }
+
+.card-horizontal .card-cover-fallback {
+    width: 100%; height: 100%; 
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);
+    color: var(--text-muted);
+}
+
+/* СТАТУС (ПЛАШКА) */
+.card-badges {
+    position: absolute; top: 10px; left: 10px; z-index: 10; display: flex; gap: 6px; flex-wrap: wrap;
+}
+.status-badge {
+    padding: 0.35rem 0.6rem; font-size: 0.75rem; font-weight: 700;
+    border-radius: 6px; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+
+.status-released { background-color: rgba(35, 134, 54, 0.9); }
+.status-dev { background-color: rgba(210, 168, 80, 0.95); color: #000; }
+
+/* ИНФОРМАЦИЯ */
+.card-horizontal .card-info {
+    padding: 0.85rem 1rem; display: flex; flex-direction: column; gap: 0.2rem;
+}
+.card-horizontal .card-title { font-size: 1.1rem; font-weight: 800; color: var(--text-main); line-height: 1.2;}
+.card-horizontal .card-year { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+
+============================================================
+FILE: pages\catalog\card-vertical.css
+============================================================
+
+/* ВЕРТИКАЛЬНАЯ КАРТОЧКА (Постер / Обложка) */
+.card-vertical {
+    background-color: transparent;
+    border-radius: 8px; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+    --card-hover-rgb: 210, 168, 80; 
+}
+
+.card-vertical:hover {
+    transform: translateY(-8px);
+}
+
+.card-vertical .card-cover-container { 
+    width: 100%; 
+    aspect-ratio: 2 / 3; 
+    position: relative; 
+    overflow: hidden; 
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .card-vertical .card-cover-container { box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+.card-vertical:hover .card-cover-container {
+    border-color: rgb(var(--card-hover-rgb));
+    box-shadow: 0 15px 35px rgba(var(--card-hover-rgb), 0.25);
+}
+
+.card-vertical .card-cover-img { 
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; 
+}
+.card-vertical:hover .card-cover-img { transform: scale(1.05); }
+
+.card-vertical .card-cover-fallback {
+    width: 100%; height: 100%; 
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);
+    color: var(--text-muted);
+}
+
+/* СТАТУС (ПЛАШКА) */
+.card-badges {
+    position: absolute; top: 10px; left: 10px; z-index: 10; display: flex; gap: 6px; flex-wrap: wrap;
+}
+.status-badge {
+    padding: 0.35rem 0.6rem; font-size: 0.75rem; font-weight: 700;
+    border-radius: 6px; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+}
+
+.status-released { background-color: rgba(35, 134, 54, 0.9); }
+.status-dev { background-color: rgba(210, 168, 80, 0.95); color: #000; }
+
+/* ИНФОРМАЦИЯ (Текст под обложкой) */
+.card-vertical .card-info {
+    padding: 0.75rem 0.2rem 0; 
+    display: flex; flex-direction: column; gap: 0.2rem;
+}
+
+.card-vertical .card-title { 
+    font-size: 1rem; 
+    font-weight: 800; 
+    color: var(--text-main); 
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s;
+}
+
+.card-vertical:hover .card-title { color: rgb(var(--card-hover-rgb)); }
+.card-vertical .card-year { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+
+============================================================
+FILE: pages\catalog\catalog.css
+============================================================
+
+.catalog-container {
+    width: 100%; 
+    padding-top: 0.5rem; 
+    padding-bottom: 4rem;
+}
+
+/* ПАНЕЛЬ УПРАВЛЕНИЯ */
+.archive-controls {
+    position: sticky;
+    top: 75px; 
+    z-index: 50;
+    margin-bottom: 2rem; 
+}
+
+.feed-controls {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.75rem;
+    align-items: center; 
+    background-color: rgba(var(--bg-card-rgb, 255, 255, 255), 0.95); 
+    padding: 0.5rem; 
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .feed-controls {
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(15px);
+    }
+    [data-theme="dark"] .feed-controls {
+        background-color: rgba(28, 33, 40, 0.85);
+    }
+}
+
+.search-input-wrapper { position: relative; flex: 1 1 250px; display: flex; align-items: center; }
+.search-btn {
+    position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
+    padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: 0.2s; z-index: 2;
+}
+.search-btn:hover { color: var(--accent-color); background-color: var(--bg-body); }
+.search-input-wrapper:focus-within .search-btn { color: var(--accent-color); }
+
+.feed-controls input {
+    width: 100%; padding: 0.6rem 1rem 0.6rem 2.8rem; border: 1px solid var(--border-color); border-radius: 8px;
+    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
+}
+.feed-controls input::placeholder { color: var(--text-muted); opacity: 0.7; }
+.feed-controls input:focus { border-color: var(--accent-color); background-color: var(--bg-card); box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15); }
+
+/* Кастомный выпадающий список */
+.custom-select-container { position: relative; min-width: 200px; flex: 0 0 auto; }
+.custom-select-trigger {
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    padding: 0.55rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; 
+    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; cursor: pointer; transition: 0.2s;
+}
+.custom-select-trigger:hover { border-color: var(--text-muted); }
+.custom-select-value { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.95rem; }
+
+.custom-select-dropdown {
+    position: absolute; top: calc(100% + 5px); left: 0; right: 0;
+    background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); list-style: none; padding: 0.5rem 0; z-index: 200; 
+    opacity: 0; visibility: hidden; transform: translateY(-10px); transition: 0.2s;
+}
+.custom-select-container.active .custom-select-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+.custom-select-option { padding: 0.6rem 1rem; cursor: pointer; font-weight: 500; color: var(--text-main);}
+.custom-select-option:hover { background-color: var(--bg-body); }
+.custom-select-option.selected { color: var(--accent-color); background-color: rgba(210, 168, 80, 0.05); }
+
+/* ДИНАМИЧЕСКИЕ СЕКЦИИ (Игры, Книги, Фильмы) */
+.catalog-section {
+    margin-bottom: 4rem;
+}
+
+.catalog-section-title {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem; /* Расстояние от текста до начала линии */
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+}
+
+/* Сама линия, которая тянется до конца экрана */
+.catalog-section-title::after {
+    content: '';
+    flex-grow: 1; /* Заставляет линию занять всё свободное пространство справа */
+    height: 2px; /* Толщина линии */
+    background-color: var(--border-color);
+    border-radius: 2px; /* Мягкие края */
+}
+
+/* СЕТКИ */
+.grid-horizontal {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.grid-vertical {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .grid-horizontal { grid-template-columns: 1fr; gap: 1.25rem; }
+    .grid-vertical { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .custom-select-container { min-width: 100%; order: 2; }
+    .search-input-wrapper { order: 1; }
+}
+
+.empty-state {
+    text-align: center; padding: 4rem 2rem; background: var(--bg-card);
+    border: 1px dashed var(--border-color); border-radius: 16px; color: var(--text-muted);
+}
+.empty-state h3 { color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.3rem;}
+
+============================================================
+FILE: pages\catalog\CatalogController.js
+============================================================
+
+export class CatalogController {
+    constructor(model, cardView) {
+        this.model = model;
+        this.cardView = cardView;
+        
+        this.container = document.getElementById('catalog-content');
+        this.loader = document.getElementById('catalog-loader');
+        this.emptyTemplate = document.getElementById('empty-state-template');
+    }
+
+    async init() {
+        try {
+            const items = await this.model.fetchAllItems();
+            this.renderSections(items);
+        } catch (error) {
+            this.showError('Сбой доступа к индексу архивов.');
+        }
+    }
+
+    handleFilterChange(searchTerm, type) {
+        const filtered = this.model.filterItems(searchTerm, type);
+        this.renderSections(filtered);
+    }
+
+    renderSections(items) {
+        this.container.innerHTML = '';
+        this.loader.style.display = 'none';
+        this.container.style.display = 'block';
+
+        if (items.length === 0) {
+            this.container.appendChild(this.emptyTemplate.content.cloneNode(true));
+            return;
+        }
+
+        // Группируем проекты
+        const sectionsData = [
+            { title: 'Игры', layout: 'grid-horizontal', data: items.filter(i => i.type === 'game' || !i.type) },
+            { title: 'Книги и Комиксы', layout: 'grid-vertical', data: items.filter(i => i.type === 'book') },
+            { title: 'Анимация и Фильмы', layout: 'grid-vertical', data: items.filter(i => i.type === 'movie') }
+        ];
+
+        const fragment = document.createDocumentFragment();
+
+        sectionsData.forEach(section => {
+            if (section.data.length > 0) {
+                // Создаем обертку секции
+                const sectionWrapper = document.createElement('section');
+                sectionWrapper.className = 'catalog-section';
+
+                // Заголовок секции
+                const title = document.createElement('h2');
+                title.className = 'catalog-section-title';
+                title.textContent = section.title;
+                sectionWrapper.appendChild(title);
+
+                // Сетка (применяем класс grid-horizontal или grid-vertical)
+                const grid = document.createElement('div');
+                grid.className = section.layout;
+                
+                // Рендерим карточки
+                section.data.forEach(item => {
+                    grid.appendChild(this.cardView.render(item));
+                });
+
+                sectionWrapper.appendChild(grid);
+                fragment.appendChild(sectionWrapper);
+            }
+        });
+        
+        this.container.appendChild(fragment);
+    }
+
+    showError(msg) {
+        this.loader.style.display = 'none';
+        this.container.innerHTML = `<div class="error-card" style="grid-column: 1/-1"><p>${msg}</p></div>`;
+        this.container.style.display = 'block';
+    }
+}
+
+============================================================
+FILE: pages\catalog\CatalogModel.js
+============================================================
+
+import { fetchData } from '../../shared/js/api.js';
+import { Logger } from '../../shared/js/Logger.js';
+
+export class CatalogModel {
+    constructor() {
+        this.items = [];
+    }
+
+    async fetchAllItems() {
+        try {
+            // Изменен путь на catalog_index
+            const folders = await fetchData('data/catalog_index.json'); 
+            
+            const promises = folders.map(folderId => 
+                fetchData(`assets/catalog/${folderId}/data.json`).catch(err => {
+                    Logger.warn(`Не удалось загрузить данные проекта: ${folderId}`, err);
+                    return null; 
+                })
+            );
+            
+            const results = await Promise.all(promises);
+            this.items = results.filter(item => item !== null);
+            return this.items;
+        } catch (error) {
+            Logger.error('Сбой доступа к индексу каталога', error);
+            throw error;
+        }
+    }
+
+    filterItems(searchTerm, type) {
+        const term = searchTerm.toLowerCase().trim();
+        return this.items.filter(item => {
+            const matchSearch = item.title.toLowerCase().includes(term);
+            const itemType = item.type || 'game'; // Фолбэк для старых JSON
+            const matchType = type === 'all' || itemType === type;
+            return matchSearch && matchType;
+        });
+    }
+}
+
+============================================================
+FILE: pages\catalog\views\CatalogCardView.js
+============================================================
+
+import { getAverageRGB } from '../../../shared/js/utils.js';
+
+export class CatalogCardView {
+    constructor(horizontalTemplateId, verticalTemplateId) {
+        this.horizontalTemplate = document.getElementById(horizontalTemplateId);
+        this.verticalTemplate = document.getElementById(verticalTemplateId);
+        
+        this.fallbackIcons = {
+            game: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>',
+            book: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+            movie: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>'
+        };
+    }
+
+    _determineStatus(releaseDate) {
+        if (!releaseDate) return { text: 'В разработке', class: 'status-dev' };
+        const lower = releaseDate.toLowerCase();
+        
+        const isDev = lower.includes('скоро') || 
+                      lower.includes('не объявлена') || 
+                      lower.includes('tba') ||
+                      /202[4-9]/.test(lower) || 
+                      /203[0-9]/.test(lower);
+
+        return { text: isDev ? 'В разработке' : 'status-dev' , class: isDev ? 'status-dev' : 'status-released' };
+    }
+
+    render(item) {
+        const type = item.type || 'game';
+        
+        // МАГИЯ: Определяем ориентацию карточки по наличию ключей в assets
+        // Если есть banner, но нет cover -> горизонтальная. В остальных случаях (или по умолчанию) -> вертикальная.
+        const hasBanner = !!(item.assets && item.assets.banner);
+        const hasCover = !!(item.assets && item.assets.cover);
+        
+        // По умолчанию игры - горизонтальные, книги/фильмы - вертикальные.
+        // НО если явно задан только баннер, форсируем горизонтальную!
+        let isVertical = (type === 'book' || type === 'movie');
+        if (hasBanner && !hasCover) {
+            isVertical = false; 
+        } else if (hasCover && !hasBanner) {
+            isVertical = true;
+        }
+
+        const activeTemplate = isVertical ? this.verticalTemplate : this.horizontalTemplate;
+        const clone = activeTemplate.content.cloneNode(true);
+        
+        const cardClass = isVertical ? '.card-vertical' : '.card-horizontal';
+        const card = clone.querySelector(cardClass);
+        
+        clone.querySelector('.card-title').textContent = item.title;
+        clone.querySelector('.card-year').textContent = item.release_date || '';
+        
+        const statusBadge = clone.querySelector('.status-badge');
+        const statusConfig = this._determineStatus(item.release_date);
+        statusBadge.textContent = statusConfig.text;
+        statusBadge.classList.add(statusConfig.class);
+
+        const fallbackContainer = clone.querySelector('.card-cover-fallback');
+        fallbackContainer.innerHTML = this.fallbackIcons[type] || this.fallbackIcons.game;
+
+        const imgEl = clone.querySelector('.card-cover-img');
+        
+        // Берем приоритетную картинку в зависимости от выбранного макета
+        let cardImageFile;
+        if (isVertical) {
+            cardImageFile = item.assets?.cover || item.assets?.banner;
+        } else {
+            cardImageFile = item.assets?.banner || item.assets?.cover;
+        }
+
+        if (cardImageFile) {
+            const imgSrc = `assets/catalog/${item.id}/${cardImageFile}`;
+            imgEl.src = imgSrc;
+            fallbackContainer.style.display = 'none';
+            
+            getAverageRGB(imgSrc, (color) => {
+                card.style.setProperty('--card-hover-rgb', color || '210, 168, 80');
+            });
+
+            imgEl.onerror = () => {
+                imgEl.style.display = 'none';
+                fallbackContainer.style.display = 'flex';
+            };
+        } else {
+            imgEl.style.display = 'none';
+            fallbackContainer.style.display = 'flex';
+        }
+
+        card.addEventListener('click', () => {
+            window.location.href = `project.html?id=${item.id}`;
+        });
+
+        return clone;
+    }
+}
+
+============================================================
 FILE: pages\character\app.js
 ============================================================
 
@@ -1988,22 +2581,23 @@ export class CharacterModel {
     }
 
     /**
-     * Параллельный поиск упоминаний персонажа в базе игр.
+     * Параллельный поиск упоминаний персонажа в базе каталога (проектов).
      * Решает проблему N+1 инкапсулируя всю логику загрузки в один метод.
      */
     async findAppearances(charId) {
         try {
-            const gamesIndex = await fetchData('data/games_index.json');
+            // Изменено: теперь ищем в едином индексе каталога
+            const catalogIndex = await fetchData('data/catalog_index.json');
             
-            // Выполняем запросы параллельно, игнорируя битые файлы
-            const gamePromises = gamesIndex.map(gId => 
-                fetchData(`assets/games/${gId}/data.json`).catch(() => null)
+            // Выполняем запросы параллельно к новой папке catalog, игнорируя битые файлы
+            const projectPromises = catalogIndex.map(pId => 
+                fetchData(`assets/catalog/${pId}/data.json`).catch(() => null)
             );
             
-            const allGames = await Promise.all(gamePromises);
+            const allProjects = await Promise.all(projectPromises);
 
-            // Фильтруем игры, в которых упомянут данный персонаж
-            return allGames.filter(game => game !== null && game.wiki?.characters?.includes(charId));
+            // Фильтруем проекты (игры, книги, анимации), в которых упомянут данный персонаж
+            return allProjects.filter(project => project !== null && project.wiki?.characters?.includes(charId));
         } catch (error) {
             Logger.error(`Ошибка поиска появлений персонажа ${charId}`, error);
             throw new Error('Сбой базы данных');
@@ -2061,8 +2655,6 @@ export class CharacterView {
     _initBackButton() {
         this.els.backBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Безопасная навигация: если пришли с нашего сайта — возвращаем назад.
-            // Если зашли по прямой ссылке — кидаем в общий архив.
             if (document.referrer && document.referrer.includes(window.location.host)) {
                 window.history.back();
             } else {
@@ -2177,15 +2769,16 @@ export class CharacterView {
         this.els.appearances.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><div class="spinner" style="width: 14px; height: 14px; border-width: 2px;"></div> Поиск в архивах...</span>';
     }
 
-    renderAppearances(games) {
+    // Изменено: теперь принимает projects и ссылается на project.html
+    renderAppearances(projects) {
         this.els.appearances.innerHTML = ''; 
 
-        if (games.length > 0) {
-            games.forEach(game => {
+        if (projects.length > 0) {
+            projects.forEach(project => {
                 const a = document.createElement('a');
-                a.href = `game.html?id=${game.id}`;
+                a.href = `project.html?id=${project.id}`; // Было game.html
                 a.className = 'app-tag interactive';
-                a.textContent = game.title;
+                a.textContent = project.title;
                 this.els.appearances.appendChild(a);
             });
         } else {
@@ -3614,837 +4207,25 @@ export class TranslationService {
 }
 
 ============================================================
-FILE: pages\game\app.js
-============================================================
-
-import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
-import { LightboxManager } from '../../shared/js/Lightbox.js';
-
-// Прямые импорты из ЭТОЙ ЖЕ папки
-import { GameModel } from './GameModel.js';
-import { HeroView } from './HeroView.js';
-import { WikiView } from './WikiView.js';
-import { GameController } from './GameController.js';
-
-customElements.define('site-header', SiteHeader);
-
-document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const gameId = urlParams.get('id');
-
-    const lightbox = new LightboxManager('lightbox', 'lightbox-img');
-    
-    const model = new GameModel();
-    const heroView = new HeroView();
-    const wikiView = new WikiView(lightbox);
-    
-    const controller = new GameController(model, heroView, wikiView);
-    controller.init(gameId);
-});
-
-============================================================
-FILE: pages\game\game.css
-============================================================
-
-/* --- АНИМАЦИЯ ФОНА --- */
-@keyframes heroZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.08); }
-}
-
-/* --- HERO СЕКЦИЯ --- */
-.game-hero {
-    position: relative;
-    height: 65vh;
-    min-height: 450px;
-    display: flex;
-    overflow: hidden;
-    background-color: #000;
-}
-
-.game-hero-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center; 
-    z-index: 0;
-    animation: heroZoom 25s infinite alternate ease-in-out;
-}
-
-.game-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%),
-                linear-gradient(to top, var(--bg-body) 0%, rgba(var(--bg-body-rgb), 0) 15%);
-    z-index: 1;
-}
-
-[data-theme="light"] .game-hero-overlay {
-    background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%),
-                linear-gradient(to top, var(--bg-body) 0%, rgba(255, 255, 255, 0) 15%);
-}
-
-.game-hero-container {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.back-link {
-    position: absolute;
-    top: 2rem;
-    left: 1.5rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 10px 18px;
-    border-radius: 30px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.2s ease;
-    z-index: 10;
-}
-
-.back-link:hover { 
-    background: rgba(0, 0, 0, 0.8); 
-    color: var(--accent-color); 
-    border-color: rgba(210, 168, 80, 0.4);
-    transform: translateX(-4px);
-}
-
-.game-hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-}
-
-.game-logo {
-    max-width: 90%;
-    width: 550px;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 2rem;
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
-}
-
-.game-title-text {
-    font-size: 4rem;
-    font-weight: 900;
-    color: #fff;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.8);
-    line-height: 1.1;
-}
-
-.game-meta-tags { 
-    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 2rem;
-}
-
-.meta-badge {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 8px 16px;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.status-badge { 
-    background: var(--accent-color); 
-    color: #000; 
-    border: none; 
-    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.4);
-}
-
-.game-hero-actions { 
-    display: flex; 
-    align-items: center;
-    gap: 0.75rem;
-    width: 100%; 
-    overflow-x: auto; 
-    scrollbar-width: none; 
-    -webkit-overflow-scrolling: touch;
-    padding: 0.5rem 0 1.5rem 0; 
-    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-}
-
-.game-hero-actions::-webkit-scrollbar { display: none; }
-
-.game-hero-actions::before, .game-hero-actions::after { content: ''; margin: auto; }
-
-.store-btn {
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 10px; 
-    background: rgba(255, 255, 255, 0.1); 
-    color: #fff; 
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    text-decoration: none;
-    padding: 0 1.4rem; 
-    height: 44px; 
-    border-radius: 30px; 
-    font-weight: 700; 
-    font-size: 0.95rem; 
-    white-space: nowrap; 
-    flex-shrink: 0; 
-    box-sizing: border-box;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
-}
-
-.store-btn svg {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    display: block; 
-    fill: currentColor;
-}
-
-.store-btn:hover { 
-    transform: translateY(-3px); 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: #000;
-}
-
-/* --- STICKY TABS --- */
-.wiki-tabs-container {
-    background-color: var(--bg-card);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 70px;
-    z-index: 100;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.wiki-tabs {
-    max-width: 1200px; margin: 0 auto; display: flex; gap: 2.5rem; padding: 0 1.5rem;
-    overflow-x: auto; scrollbar-width: none;
-}
-.wiki-tabs::-webkit-scrollbar { display: none; }
-
-.wiki-tab {
-    background: none; border: none; color: var(--text-muted); font-size: 1.05rem;
-    font-weight: 700; padding: 1.25rem 0; cursor: pointer; border-bottom: 3px solid transparent;
-    transition: 0.2s; white-space: nowrap;
-}
-.wiki-tab:hover { color: var(--text-main); }
-.wiki-tab.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
-
-/* --- WIKI CONTENT --- */
-.wiki-content-area { max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem; min-height: 50vh; }
-.wiki-section { display: none; animation: fadeInSlideUp 0.4s ease forwards; }
-.wiki-section.active { display: block; }
-.section-title { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
-.mt-4 { margin-top: 3rem; }
-
-.overview-grid { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; }
-.game-desc { font-size: 1.15rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line;}
-
-/* Сайдбар (обертка для липкости) */
-.sticky-sidebar-wrapper {
-    position: sticky; 
-    top: 140px; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 1.5rem;
-}
-
-.bento-box {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-}
-.bento-box.large { padding: 3rem; }
-.bento-box h3 { margin-bottom: 1.2rem; font-size: 1.2rem; color: var(--text-main); }
-
-.tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-.game-tag { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;}
-
-/* --- РУСИФИКАТОРЫ С АВАТАРКАМИ --- */
-.russifiers-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.rus-card {
-    display: flex;
-    align-items: center;
-    gap: 12px; /* Расстояние от аватарки до текста */
-    background: var(--bg-body);
-    border: 1px solid var(--border-color);
-    padding: 12px 14px;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.rus-card:hover {
-    border-color: var(--accent-color);
-    background: var(--bg-card);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15);
-}
-
-.rus-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    flex-shrink: 0;
-}
-
-.rus-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    flex-grow: 1;
-    overflow: hidden; /* Чтобы длинный текст обрезался корректно */
-}
-
-.rus-title {
-    font-weight: 800;
-    color: var(--text-main);
-    font-size: 0.95rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    line-height: 1.2;
-}
-
-.rus-title span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.rus-icon {
-    color: var(--text-muted);
-    transition: color 0.2s;
-    flex-shrink: 0;
-}
-
-.rus-card:hover .rus-icon {
-    color: var(--accent-color);
-}
-
-.rus-team {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* --- КЛИКАБЕЛЬНЫЕ КАРТОЧКИ ПЕРСОНАЖЕЙ --- */
-.character-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-
-.character-card {
-    display: flex; align-items: center; gap: 12px; background: var(--bg-body);
-    padding: 8px 12px; border-radius: 12px; text-decoration: none; color: var(--text-main);
-    border: 1px solid var(--border-color); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.character-card:hover {
-    border-color: var(--accent-color); transform: translateX(6px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: var(--bg-card);
-}
-.char-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); background-color: var(--bg-body); }
-.char-name { flex-grow: 1; font-weight: 700; font-size: 1.05rem; }
-.char-arrow { color: var(--text-muted); transition: 0.2s; }
-.character-card:hover .char-arrow { color: var(--accent-color); transform: translateX(3px); }
-
-/* Геймплей и Таймлайн */
-.gameplay-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
-.gameplay-list li {
-    font-size: 1.1rem; line-height: 1.6; color: var(--text-main);
-    padding-left: 2rem; position: relative; opacity: 0.9;
-}
-.gameplay-list li::before {
-    content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 2px; font-size: 1.2rem;
-}
-
-.timeline-container { display: flex; flex-direction: column; gap: 2rem; position: relative; }
-.timeline-container::before {
-    content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px;
-    width: 2px; background: var(--border-color); z-index: 0;
-}
-.timeline-item { position: relative; z-index: 1; padding-left: 3rem; }
-.timeline-item::before {
-    content: ''; position: absolute; left: 11px; top: 5px; width: 10px; height: 10px;
-    background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-body);
-}
-.timeline-item h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-main); }
-.timeline-item p { font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); }
-
-/* Скриншоты */
-.screenshots-bento { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
-.screenshots-bento img {
-    width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 12px; cursor: zoom-in;
-    transition: 0.3s; border: 1px solid var(--border-color);
-}
-.screenshots-bento img:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.2); z-index: 2; position: relative;}
-
-/* Требования */
-.req-bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
-.req-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-.req-list li { color: var(--text-main); font-size: 1rem; padding-left: 14px; position: relative; }
-.req-list li::before { content: "▹"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold;}
-.req-label { font-weight: 800; opacity: 1; display: inline-block; font-size: 0.95rem; margin-right: 6px;}
-
-@media (max-width: 900px) {
-    .overview-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .sticky-sidebar-wrapper { position: static; }
-    .game-logo { width: 350px; }
-    .game-hero { height: auto; min-height: 450px; padding: 4rem 0; }
-    .back-link { top: 1rem; left: 1rem; }
-    .req-bento-grid { grid-template-columns: 1fr; }
-    .game-hero-actions { padding-left: 1.5rem; padding-right: 1.5rem; }
-}
-
-@keyframes fadeInSlideUp {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.empty-state {
-    text-align: center; padding: 4rem 2rem; background: var(--bg-card);
-    border: 1px dashed var(--border-color); border-radius: 16px; color: var(--text-muted);
-}
-.empty-state h3 { color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.3rem;}
-
-============================================================
-FILE: pages\game\GameController.js
-============================================================
-
-export class GameController {
-    constructor(model, heroView, wikiView) {
-        this.model = model;
-        this.heroView = heroView;
-        this.wikiView = wikiView;
-        
-        this.loader = document.getElementById('game-loader');
-        this.content = document.getElementById('game-content');
-    }
-
-    async init(gameId) {
-        if (!gameId) {
-            this.showError('Игра не найдена. Некорректная ссылка.');
-            return;
-        }
-
-        try {
-            // 1. Грузим саму игру
-            const gameData = await this.model.fetchGame(gameId);
-            
-            // 2. Рендерим шапку и базовые табы
-            this.heroView.render(gameData, gameId);
-            this.wikiView.render(gameData, gameId);
-            
-            // 3. Показываем контент
-            this.loader.style.display = 'none';
-            this.content.style.display = 'block';
-
-            // 4. Догружаем персонажей параллельно, чтобы не тормозить показ страницы
-            if (gameData.wiki?.characters?.length > 0) {
-                this.wikiView.showCharLoader();
-                const chars = await this.model.fetchCharacters(gameData.wiki.characters);
-                this.wikiView.renderCharacters(chars, gameData.wiki.characters);
-            }
-
-        } catch (error) {
-            this.showError('Информация о данной игре отсутствует в архивах или файл поврежден.');
-        }
-    }
-
-    showError(msg) {
-        this.loader.style.display = 'none';
-        this.content.style.display = 'block';
-        this.content.innerHTML = `<div class="error-card" style="margin: 4rem auto; max-width: 600px;"><p>${msg}</p><a href="library.html" style="color:var(--accent-color);">Вернуться назад</a></div>`;
-    }
-}
-
-============================================================
-FILE: pages\game\GameModel.js
-============================================================
-
-import { fetchData } from '../../shared/js/api.js';
-import { Logger } from '../../shared/js/Logger.js';
-
-export class GameModel {
-    constructor() {
-        this.game = null;
-    }
-
-    async fetchGame(id) {
-        try {
-            this.game = await fetchData(`assets/games/${id}/data.json`);
-            return this.game;
-        } catch (error) {
-            Logger.error(`Ошибка загрузки игры ${id}`, error);
-            throw error;
-        }
-    }
-
-    // Для списка персонажей грузим их мини-досье параллельно
-    async fetchCharacters(charIds) {
-        if (!charIds || charIds.length === 0) return [];
-        try {
-            const promises = charIds.map(charId => 
-                fetchData(`assets/characters/${charId}/data.json`).catch(() => null)
-            );
-            return await Promise.all(promises);
-        } catch (error) {
-            Logger.error('Ошибка загрузки персонажей', error);
-            return [];
-        }
-    }
-}
-
-============================================================
-FILE: pages\game\HeroView.js
-============================================================
-
-export class HeroView {
-    constructor() {
-        this.els = {
-            bg: document.getElementById('hero-bg'),
-            logo: document.getElementById('game-logo'),
-            title: document.getElementById('game-title'),
-            date: document.getElementById('game-date'),
-            status: document.getElementById('game-status'),
-            dev: document.getElementById('game-dev'),
-            storeLink: document.getElementById('store-link-container')
-        };
-        this.baseAssetPath = 'assets/games/';
-        this.platformIcons = this._getPlatformIcons();
-    }
-
-    render(game, gameId) {
-        document.title = `${game.title} | Bendy Wiki`;
-        const assets = game.assets || {};
-
-        // Фон
-        const bgImage = assets.hero_bg || assets.banner || assets.cover;
-        if (bgImage) this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${gameId}/${bgImage}')`;
-
-        // Логотип или текст
-        if (assets.logo) {
-            this.els.logo.src = `${this.baseAssetPath}${gameId}/${assets.logo}`;
-        } else {
-            this.els.logo.style.display = 'none';
-            this.els.title.textContent = game.title;
-            this.els.title.style.display = 'block';
-        }
-
-        // Метаданные
-        this.els.date.textContent = `Релиз: ${game.release_date || 'TBA'}`;
-        this.els.dev.textContent = `Разработчик: ${game.developer}`;
-        
-        const lowerDate = (game.release_date || '').toLowerCase();
-        this.els.status.textContent = (lowerDate.includes('скоро') || lowerDate.includes('не объявлена') || lowerDate.includes('2025')) ? 'В разработке' : 'Вышла';
-
-        // Кнопки платформ
-        this.els.storeLink.innerHTML = '';
-        if (game.platforms) {
-            Object.entries(game.platforms).forEach(([key, url]) => {
-                const keyLower = key.toLowerCase();
-                const pData = this.platformIcons[keyLower] || { name: key.charAt(0).toUpperCase() + key.slice(1), icon: this.platformIcons.default.icon };
-                this.els.storeLink.innerHTML += `<a href="${url}" target="_blank" class="store-btn">${pData.icon} <span>${pData.name}</span></a>`;
-            });
-        } else if (game.steam_id) {
-            const pData = this.platformIcons.steam;
-            this.els.storeLink.innerHTML = `<a href="https://store.steampowered.com/app/${game.steam_id}/" target="_blank" class="store-btn">${pData.icon} <span>${pData.name}</span></a>`;
-        }
-    }
-
-    /* Все иконки строго нормализованы под viewBox 24x24 и fill="currentColor" */
-    _getPlatformIcons() {
-        return {
-            steam: { 
-                name: 'Steam', 
-                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg>'
-            },
-            xbox: { 
-                name: 'Xbox', 
-                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="scale(0.75)"><path d="M16 5.425c-1.888-1.125-4.106-1.922-6.473-2.249l-0.092-0.010c-0.070-0.005-0.152-0.008-0.234-0.008-0.613 0-1.188 0.16-1.687 0.441l0.017-0.009c2.357-1.634 5.277-2.61 8.426-2.61 0.008 0 0.016 0 0.024 0h0.019c0.005 0 0.011 0 0.018 0 3.157 0 6.086 0.976 8.501 2.642l-0.050-0.033c-0.478-0.272-1.051-0.433-1.662-0.433-0.085 0-0.169 0.003-0.252 0.009l0.011-0.001c-2.459 0.336-4.677 1.13-6.648 2.297l0.082-0.045zM5.554 5.268c-0.041 0.014-0.077 0.032-0.11 0.054l0.002-0.001c-2.758 2.723-4.466 6.504-4.466 10.684 0 3.584 1.256 6.875 3.353 9.457l-0.022-0.028c-1.754-3.261 4.48-12.455 7.61-16.159-3.53-3.521-5.277-4.062-6.015-4.062-0.010-0-0.021-0.001-0.032-0.001-0.115 0-0.225 0.021-0.326 0.060l0.006-0.002zM20.083 9.275c3.129 3.706 9.367 12.908 7.605 16.161 2.075-2.554 3.332-5.845 3.332-9.43 0-4.181-1.709-7.962-4.467-10.684l-0.002-0.002c-0.029-0.021-0.063-0.039-0.1-0.052l-0.003-0.001c-0.1-0.036-0.216-0.056-0.336-0.056-0.005 0-0.011 0-0.016 0h0.001c-0.741-0-2.485 0.543-6.014 4.063zM6.114 27.306c2.627 2.306 6.093 3.714 9.888 3.714s7.261-1.407 9.905-3.728l-0.017 0.015c2.349-2.393-5.402-10.901-9.89-14.29-4.483 3.39-12.24 11.897-9.886 14.29z"></path></g></svg>' 
-            },
-            playstation: { 
-                name: 'PlayStation', 
-                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.984 2.596v17.547l3.915 1.261V6.688c0-.69.304-1.151.794-.991.636.18.76.814.76 1.505v5.875c2.441 1.193 4.362-.002 4.362-3.152 0-3.237-1.126-4.675-4.438-5.827-1.307-.448-3.728-1.186-5.39-1.502zm4.656 16.241l6.296-2.275c.715-.258.826-.625.246-.818-.586-.192-1.637-.139-2.357.123l-4.205 1.5V14.98l.24-.085s1.201-.42 2.913-.615c1.696-.18 3.785.03 5.437.661 1.848.601 2.04 1.472 1.576 2.072-.465.6-1.622 1.036-1.622 1.036l-8.544 3.107V18.86zM1.807 18.6c-1.9-.545-2.214-1.668-1.352-2.32.801-.586 2.16-1.052 2.16-1.052l5.615-2.013v2.313L4.205 17c-.705.271-.825.632-.239.826.586.195 1.637.15 2.343-.12L8.247 17v2.074c-.12.03-.256.044-.39.073-1.939.331-3.996.196-6.038-.479z"/></svg>'
-            },
-            nintendo: { 
-                name: 'Nintendo', 
-                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="scale(0.75)"><path d="M18.901 32h4.901c4.5 0 8.198-3.698 8.198-8.198v-15.604c0-4.5-3.698-8.198-8.198-8.198h-5c-0.099 0-0.203 0.099-0.203 0.198v31.604c0 0.099 0.099 0.198 0.302 0.198zM25 14.401c1.802 0 3.198 1.5 3.198 3.198 0 1.802-1.5 3.198-3.198 3.198-1.802 0-3.198-1.396-3.198-3.198-0.104-1.797 1.396-3.198 3.198-3.198zM15.198 0h-7c-4.5 0-8.198 3.698-8.198 8.198v15.604c0 4.5 3.698 8.198 8.198 8.198h7c0.099 0 0.203-0.099 0.203-0.198v-31.604c0-0.099-0.099-0.198-0.203-0.198zM12.901 29.401h-4.703c-3.099 0-5.599-2.5-5.599-5.599v-15.604c0-3.099 2.5-5.599 5.599-5.599h4.604zM5 9.599c0 1.698 1.302 3 3 3s3-1.302 3-3c0-1.698-1.302-3-3-3s-3 1.302-3 3z"></path></g></svg>' 
-            },
-            epic: { 
-                name: 'Epic Games', 
-                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.537 0C2.165 0 1.66.506 1.66 1.879V18.44a4.262 4.262 0 00.02.433c.031.3.037.59.316.92.027.033.311.245.311.245.153.075.258.13.43.2l8.335 3.491c.433.199.614.276.928.27h.002c.314.006.495-.071.928-.27l8.335-3.492c.172-.07.277-.124.43-.2 0 0 .284-.211.311-.243.28-.33.285-.621.316-.92a4.261 4.261 0 00.02-.434V1.879c0-1.373-.506-1.88-1.878-1.88zm13.366 3.11h.68c1.138 0 1.688.553 1.688 1.696v1.88h-1.374v-1.8c0-.369-.17-.54-.523-.54h-.235c-.367 0-.537.17-.537.539v5.81c0 .369.17.54.537.54h.262c.353 0 .523-.171.523-.54V8.619h1.373v2.143c0 1.144-.562 1.71-1.7 1.71h-.694c-1.138 0-1.7-.566-1.7-1.71V4.82c0-1.144.562-1.709 1.7-1.709zm-12.186.08h3.114v1.274H6.117v2.603h1.648v1.275H6.117v2.774h1.74v1.275h-3.14zm3.816 0h2.198c1.138 0 1.7.564 1.7 1.708v2.445c0 1.144-.562 1.71-1.7 1.71h-.799v3.338h-1.4zm4.53 0h1.4v9.201h-1.4zm-3.13 1.235v3.392h.575c.354 0 .523-.171.523-.54V4.965c0-.368-.17-.54-.523-.54zm-3.74 10.147a1.708 1.708 0 01.591.108 1.745 1.745 0 01.49.299l-.452.546a1.247 1.247 0 00-.308-.195.91.91 0 00-.363-.068.658.658 0 00-.28.06.703.703 0 00-.224.163.783.783 0 00-.151.243.799.799 0 00-.056.299v.008a.852.852 0 00.056.31.7.7 0 00.157.245.736.736 0 00.238.16.774.774 0 00.303.058.79.79 0 00.445-.116v-.339h-.548v-.565H7.37v1.255a2.019 2.019 0 01-.524.307 1.789 1.789 0 01-.683.123 1.642 1.642 0 01-.602-.107 1.46 1.46 0 01-.478-.3 1.371 1.371 0 01-.318-.455 1.438 1.438 0 01-.115-.58v-.008a1.426 1.426 0 01.113-.57 1.449 1.449 0 01.312-.46 1.418 1.418 0 01.474-.309 1.58 1.58 0 01.598-.111 1.708 1.708 0 01.045 0zm11.963.008a2.006 2.006 0 01.612.094 1.61 1.61 0 01.507.277l-.386.546a1.562 1.562 0 00-.39-.205 1.178 1.178 0 00-.388-.07.347.347 0 00-.208.052.154.154 0 00-.07.127v.008a.158.158 0 00.022.084.198.198 0 00.076.066.831.831 0 00.147.06c.062.02.14.04.236.061a3.389 3.389 0 01.43.122 1.292 1.292 0 01.328.17.678.678 0 01.207.24.739.739 0 01.071.337v.008a.865.865 0 01-.081.382.82.82 0 01-.229.285 1.032 1.032 0 01-.353.18 1.606 1.606 0 01-.46.061 2.16 2.16 0 01-.71-.116 1.718 1.718 0 01-.593-.346l.43-.514c.277.223.578.335.9.335a.457.457 0 00.236-.05.157.157 0 00.082-.142v-.008a.15.15 0 00-.02-.077.204.204 0 00-.073-.066.753.753 0 00-.143-.062 2.45 2.45 0 00-.233-.062 5.036 5.036 0 01-.413-.113 1.26 1.26 0 01-.331-.16.72.72 0 01-.222-.243.73.73 0 01-.082-.36v-.008a.863.863 0 01.074-.359.794.794 0 01.214-.283 1.007 1.007 0 01.34-.185 1.423 1.423 0 01.448-.066 2.006 2.006 0 01.025 0zm-9.358.025h.742l1.183 2.81h-.825l-.203-.499H8.623l-.198.498h-.81zm2.197.02h.814l.663 1.08.663-1.08h.814v2.79h-.766v-1.602l-.711 1.091h-.016l-.707-1.083v1.593h-.754zm3.469 0h2.235v.658h-1.473v.422h1.334v.61h-1.334v.442h1.493v.658h-2.255zm-5.3.897l-.315.793h.624zm-1.145 5.19h8.014l-4.09 1.348z"/></svg>'
-            },
-            ios: { 
-                name: 'App Store', 
-                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.8086 14.9194l6.1107-11.0368c.0837-.1513.1682-.302.2437-.4584.0685-.142.1267-.2854.1646-.4403.0803-.3259.0588-.6656-.066-.9767-.1238-.3095-.3417-.5678-.6201-.7355a1.4175 1.4175 0 0 0-.921-.1924c-.3207.043-.6135.1935-.8443.4288-.1094.1118-.1996.2361-.2832.369-.092.1463-.175.2979-.259.4492l-.3864.6979-.3865-.6979c-.0837-.1515-.1667-.303-.2587-.4492-.0837-.1329-.1739-.2572-.2835-.369-.2305-.2353-.5233-.3857-.844-.429a1.4181 1.4181 0 0 0-.921.1926c-.2784.1677-.4964.426-.6203.7355-.1246.311-.1461.6508-.066.9767.038.155.0962.2984.1648.4403.0753.1564.1598.307.2437.4584l1.248 2.2543-4.8625 8.7825H2.0295c-.1676 0-.3351-.0007-.5026.0092-.1522.009-.3004.0284-.448.0714-.3108.0906-.5822.2798-.7783.548-.195.2665-.3006.5929-.3006.9279 0 .3352.1057.6612.3006.9277.196.2683.4675.4575.7782.548.1477.043.296.0623.4481.0715.1675.01.335.009.5026.009h13.0974c.0171-.0357.059-.1294.1-.2697.415-1.4151-.6156-2.843-2.0347-2.843zM3.113 18.5418l-.7922 1.5008c-.0818.1553-.1644.31-.2384.4705-.067.1458-.124.293-.1611.452-.0785.3346-.0576.6834.0645 1.0029.1212.3175.3346.583.607.7549.2727.172.5891.2416.9013.1975.3139-.044.6005-.1986.8263-.4402.1072-.1148.1954-.2424.2772-.3787.0902-.1503.1714-.3059.2535-.4612L6 19.4636c-.0896-.149-.9473-1.4704-2.887-.9218m20.5861-3.0056a1.4707 1.4707 0 0 0-.779-.5407c-.1476-.0425-.2961-.0616-.4483-.0705-.1678-.0099-.3352-.0091-.503-.0091H18.648l-4.3891-7.817c-.6655.7005-.9632 1.485-1.0773 2.1976-.1655 1.0333.0367 2.0934.546 3.0004l5.2741 9.3933c.084.1494.167.299.2591.4435.0837.131.1739.2537.2836.364.231.2323.5238.3809.8449.4232.3192.0424.643-.0244.9217-.1899.2784-.1653.4968-.4204.621-.7257.1246-.3072.146-.6425.0658-.9641-.0381-.1529-.0962-.2945-.165-.4346-.0753-.1543-.1598-.303-.2438-.4524l-1.216-2.1662h1.596c.1677 0 .3351.0009.5029-.009.1522-.009.3007-.028.4483-.0705a1.4707 1.4707 0 0 0 .779-.5407A1.5386 1.5386 0 0 0 24 16.452a1.539 1.539 0 0 0-.3009-.9158Z"/></svg>' 
-            },
-            android: { 
-                name: 'Google Play', 
-                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg>'
-            },
-            default: { 
-                name: 'Играть', 
-                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="16" cy="12" r="2"></circle><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line></svg>' 
-            }
-        };
-    }
-}
-
-============================================================
-FILE: pages\game\WikiView.js
-============================================================
-
-export class WikiView {
-    constructor(lightboxManager) {
-        this.lightbox = lightboxManager;
-        this.baseAssetPath = 'assets/games/';
-        
-        this.els = {
-            desc: document.getElementById('game-description'),
-            tags: document.getElementById('game-tags'),
-            screens: document.getElementById('game-screenshots'),
-            specs: document.getElementById('game-requirements'),
-            charList: document.getElementById('wiki-characters-list'),
-            
-            // Новые элементы для русификаторов
-            rusContainer: document.getElementById('russifiers-container'),
-            rusList: document.getElementById('game-russifiers')
-        };
-
-        this._initTabs();
-    }
-
-    _initTabs() {
-        const tabs = document.querySelectorAll('.wiki-tab');
-        const sections = document.querySelectorAll('.wiki-section');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                sections.forEach(s => s.classList.remove('active'));
-                
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.target).classList.add('active');
-            });
-        });
-    }
-
-    render(game, gameId) {
-        const assets = game.assets || {};
-        const wiki = game.wiki || {};
-
-        // Обзор
-        this.els.desc.textContent = game.description || 'Информация отсутствует.';
-        
-        this.els.tags.innerHTML = '';
-        (game.tags || []).slice(0, 15).forEach(tag => {
-            const span = document.createElement('span');
-            span.className = 'game-tag'; span.textContent = tag;
-            this.els.tags.appendChild(span);
-        });
-
-        // Русификаторы
-        this._renderRussifiers(game.russifiers);
-
-        // Скриншоты
-        this.els.screens.innerHTML = '';
-        if (assets.screenshots && assets.screenshots.length > 0) {
-            assets.screenshots.forEach(src => {
-                const img = document.createElement('img');
-                img.src = `${this.baseAssetPath}${gameId}/${src}`;
-                img.loading = 'lazy';
-                img.onclick = () => this.lightbox.open(img.src);
-                this.els.screens.appendChild(img);
-            });
-        }
-
-        // Системные требования
-        this._renderSpecs(game.specs);
-
-        // Wiki: Сюжет, Геймплей, Разработка
-        this._renderStaticWiki(wiki);
-    }
-
-    _renderRussifiers(russifiers) {
-        if (russifiers && russifiers.length > 0) {
-            this.els.rusContainer.style.display = 'block';
-            this.els.rusList.innerHTML = '';
-            
-            // Заглушка, если аватарки нет (Иконка "Команда/Люди")
-            const fallbackAvatar = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2365676B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E";
-
-            russifiers.forEach(rus => {
-                const a = document.createElement('a');
-                a.href = rus.url;
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
-                a.className = 'rus-card';
-                
-                const descText = rus.description || rus.team || '';
-                const avatarSrc = rus.avatar ? `assets/teams/${rus.avatar}` : fallbackAvatar;
-
-                a.innerHTML = `
-                    <img src="${avatarSrc}" alt="Avatar" class="rus-avatar" onerror="this.onerror=null; this.src='${fallbackAvatar}';">
-                    <div class="rus-info">
-                        <div class="rus-title">
-                            <span>${rus.title}</span>
-                            <svg class="rus-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                <polyline points="15 3 21 3 21 9"></polyline>
-                                <line x1="10" y1="14" x2="21" y2="3"></line>
-                            </svg>
-                        </div>
-                        <span class="rus-team">${descText}</span>
-                    </div>
-                `;
-                this.els.rusList.appendChild(a);
-            });
-        } else {
-            this.els.rusContainer.style.display = 'none';
-        }
-    }
-
-    _renderSpecs(specs) {
-        if (!specs) {
-            this.els.specs.innerHTML = '<div class="empty-state">Нет данных</div>';
-            return;
-        }
-        let reqHtml = '';
-        if (specs.minimum && specs.minimum.length > 15) {
-            reqHtml += `<div class="bento-box"><h3>Минимальные</h3>${this._parseSpecsString(specs.minimum)}</div>`;
-        }
-        if (specs.recommended && specs.recommended.length > 15) {
-            reqHtml += `<div class="bento-box"><h3>Рекомендованные</h3>${this._parseSpecsString(specs.recommended)}</div>`;
-        }
-        this.els.specs.innerHTML = reqHtml || '<div class="empty-state">Нет данных</div>';
-    }
-
-    _parseSpecsString(specStr) {
-        const parts = specStr.split('|').map(s => s.trim()).filter(s => s);
-        if (parts.length > 0 && (parts[0].includes('Минимальные') || parts[0].includes('Рекомендованные'))) parts.shift(); 
-        
-        return `<ul class="req-list">` + parts.map(p => {
-            const colonIndex = p.indexOf(':');
-            if (colonIndex !== -1 && colonIndex < 25) { 
-                return `<li><span class="req-label">${p.substring(0, colonIndex + 1)}</span>${p.substring(colonIndex + 1)}</li>`;
-            }
-            return `<li>${p}</li>`;
-        }).join('') + `</ul>`;
-    }
-
-    _renderStaticWiki(wiki) {
-        if (wiki.story) {
-            document.getElementById('wiki-story-empty').style.display = 'none';
-            document.getElementById('wiki-story-content').style.display = 'block';
-            document.getElementById('wiki-story-text').textContent = wiki.story;
-        }
-        
-        if (wiki.gameplay && wiki.gameplay.length > 0) {
-            document.getElementById('wiki-gameplay-empty').style.display = 'none';
-            const container = document.getElementById('wiki-gameplay-content');
-            container.style.display = 'block';
-            
-            const list = document.getElementById('wiki-gameplay-list');
-            list.innerHTML = '';
-            wiki.gameplay.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                list.appendChild(li);
-            });
-        }
-
-        if (wiki.development && wiki.development.length > 0) {
-            document.getElementById('wiki-dev-empty').style.display = 'none';
-            const container = document.getElementById('wiki-dev-content');
-            container.style.display = 'flex';
-            container.innerHTML = '';
-            
-            wiki.development.forEach(stage => {
-                const item = document.createElement('div');
-                item.className = 'timeline-item';
-                item.innerHTML = `<h3>${stage.title}</h3><p>${stage.text}</p>`;
-                container.appendChild(item);
-            });
-        }
-    }
-
-    // Динамический рендер персонажей
-    renderCharacters(charactersData, requestedIds) {
-        this.els.charList.innerHTML = '';
-        const fallback = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="%2365676B" stroke-width="2"%3E%3Cpath d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/%3E%3Ccircle cx="12" cy="7" r="4"/%3E%3C/svg%3E';
-
-        charactersData.forEach((char, index) => {
-            if (!char) {
-                this.els.charList.innerHTML += `<li style="color: var(--text-muted); font-size: 0.9rem;">[Архив поврежден: ${requestedIds[index]}]</li>`;
-                return;
-            }
-            
-            const a = document.createElement('a');
-            a.href = `character.html?id=${char.id}`;
-            a.className = 'character-card';
-            
-            const avatar = char.assets?.avatar ? `assets/characters/${char.id}/${char.assets.avatar}` : fallback;
-            
-            a.innerHTML = `
-                <img src="${avatar}" alt="${char.name}" class="char-avatar" onerror="this.src='${fallback}'">
-                <span class="char-name">${char.name}</span>
-                <svg class="char-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            `;
-            this.els.charList.appendChild(a);
-        });
-    }
-    
-    showCharLoader() {
-        this.els.charList.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
-    }
-}
-
-============================================================
 FILE: pages\home\app.js
 ============================================================
 
 import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
+import { HomeModel } from './HomeModel.js';
+import { HomeView } from './HomeView.js';
+import { HomeController } from './HomeController.js';
 
 // Инициализируем общую шапку сайта
 customElements.define('site-header', SiteHeader);
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Страница манифеста и команды готова к работе
+    // Подключаем MVC архитектуру для загрузки JSON
+    const model = new HomeModel();
+    const view = new HomeView();
+    const controller = new HomeController(model, view);
+
+    // Запуск контроллера
+    controller.init();
 });
 
 ============================================================
@@ -4453,30 +4234,31 @@ FILE: pages\home\home.css
 
 /* =========================================
    pages/home/home.css
-   Главная страница: Манифест и Команда
+   Главная страница: Манифест и Команда (Grid Layout)
    ========================================= */
 
 .home-layout {
-    max-width: 860px; /* Оптимальная ширина для комфортного чтения текста */
+    max-width: 1200px; /* Увеличено для двух колонок */
     margin: 2rem auto 4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 380px; /* Манифест занимает свободное место, сайдбар - 380px */
+    gap: 2.5rem;
+    align-items: start; /* Важно для работы position: sticky у сайдбара */
 }
 
 /* =========================================
-   МАНИФЕСТ (О ПРОЕКТЕ)
+   ЛЕВАЯ КОЛОНКА (МАНИФЕСТ)
    ========================================= */
 .manifesto-card {
-    padding: 2.5rem 3rem;
+    padding: 3.5rem 4rem;
     animation: fadeInSlideUp 0.4s ease forwards;
 }
 
 .manifesto-title {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 900;
     color: var(--text-main);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     line-height: 1.2;
 }
 
@@ -4487,8 +4269,8 @@ FILE: pages\home\home.css
 .manifesto-body {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    font-size: 1.05rem;
+    gap: 1.5rem;
+    font-size: 1.15rem; /* Текст манифеста чуть крупнее для удобного чтения */
     line-height: 1.8;
     color: var(--text-main);
     opacity: 0.9;
@@ -4498,16 +4280,21 @@ FILE: pages\home\home.css
     font-size: 0.95rem;
     color: var(--text-muted);
     font-style: italic;
-    border-left: 3px solid var(--accent-color);
-    padding-left: 1rem;
-    margin-top: 0.5rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1.2rem;
+    margin-top: 2.5rem;
 }
 
 /* =========================================
-   КОМАНДА (DISCORD-STYLE LIST)
+   ПРАВАЯ КОЛОНКА (САЙДБАР С КОМАНДОЙ)
    ========================================= */
+.team-sidebar {
+    position: sticky;
+    top: 90px; /* Отступ от липкой шапки */
+}
+
 .team-card {
-    padding: 2rem 2.5rem;
+    padding: 2rem;
     animation: fadeInSlideUp 0.5s ease forwards;
 }
 
@@ -4521,7 +4308,7 @@ FILE: pages\home\home.css
 }
 
 .team-header h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: var(--text-main);
 }
@@ -4548,7 +4335,7 @@ FILE: pages\home\home.css
     gap: 1rem;
     background-color: var(--bg-body);
     border: 1px solid var(--border-color);
-    padding: 0.75rem 1.25rem;
+    padding: 0.85rem 1rem;
     border-radius: 12px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -4556,15 +4343,15 @@ FILE: pages\home\home.css
 .discord-member:hover {
     background-color: var(--bg-card);
     border-color: var(--accent-color);
-    transform: translateX(4px);
+    transform: translateX(-4px);
     box-shadow: 0 4px 15px rgba(210, 168, 80, 0.1);
 }
 
 /* Аватарка со статусом */
 .member-avatar-wrapper {
     position: relative;
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
     flex-shrink: 0;
 }
 
@@ -4579,15 +4366,21 @@ FILE: pages\home\home.css
 
 .status-indicator {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 12px;
-    height: 12px;
+    bottom: -2px;
+    right: -2px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    border: 2px solid var(--bg-body);
+    border: 2.5px solid var(--bg-body);
+    display: none;
+}
+
+.discord-member:hover .status-indicator {
+    border-color: var(--bg-card);
 }
 
 .status-indicator.online {
+    display: block;
     background-color: #23a55a; /* Discord Green */
 }
 
@@ -4595,7 +4388,7 @@ FILE: pages\home\home.css
 .member-info {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
     flex-grow: 1;
     overflow: hidden;
 }
@@ -4611,13 +4404,16 @@ FILE: pages\home\home.css
     font-size: 1rem;
     font-weight: 800;
     color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Бейджи ролей */
 .role-badge {
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 2px 8px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 3px 8px;
     border-radius: 6px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -4659,6 +4455,7 @@ FILE: pages\home\home.css
     justify-content: center;
     transition: all 0.2s;
     background: transparent;
+    flex-shrink: 0;
 }
 
 .member-link-btn:hover {
@@ -4668,31 +4465,207 @@ FILE: pages\home\home.css
 }
 
 /* =========================================
+   СКЕЛЕТОНЫ ЗАГРУЗКИ
+   ========================================= */
+.skeleton-member {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    background-color: var(--bg-body);
+    border-radius: 12px;
+}
+.skeleton-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    animation: pulse 1.5s infinite;
+}
+.skeleton-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.skeleton-line {
+    background-color: var(--border-color);
+    border-radius: 4px;
+    animation: pulse 1.5s infinite;
+}
+
+/* =========================================
    АНИМАЦИИ И АДАПТИВ
    ========================================= */
 @keyframes fadeInSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+@media (max-width: 900px) {
+    .home-layout {
+        grid-template-columns: 1fr; /* На мобилках и планшетах 1 колонка */
+        gap: 1.5rem;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .manifesto-card {
+        padding: 2.5rem 2rem;
+    }
+    .manifesto-title {
+        font-size: 2rem;
+    }
+    .team-sidebar {
+        position: static; /* Отключаем липкость на малых экранах */
     }
 }
 
-@media (max-width: 768px) {
-    .manifesto-card {
-        padding: 1.5rem;
+============================================================
+FILE: pages\home\HomeController.js
+============================================================
+
+export class HomeController {
+    constructor(model, view) {
+        this.model = model;
+        this.view = view;
     }
-    .manifesto-title {
-        font-size: 1.7rem;
+
+    async init() {
+        try {
+            const data = await this.model.fetchHomeData();
+            
+            // Если данные загружены, передаем их в View
+            this.view.renderManifesto(data.manifesto);
+            this.view.renderTeam(data.team);
+        } catch (error) {
+            // В случае ошибки показываем fallback
+            this.view.renderErrorState();
+        }
     }
-    .team-card {
-        padding: 1.5rem;
+}
+
+============================================================
+FILE: pages\home\HomeModel.js
+============================================================
+
+import { fetchData } from '../../shared/js/api.js';
+import { Logger } from '../../shared/js/Logger.js';
+
+export class HomeModel {
+    constructor() {
+        this.homeData = null;
     }
-    .discord-member {
-        padding: 0.75rem 1rem;
+
+    async fetchHomeData() {
+        try {
+            this.homeData = await fetchData('data/home.json');
+            return this.homeData;
+        } catch (error) {
+            Logger.error('Ошибка загрузки данных главной страницы', error);
+            throw error;
+        }
+    }
+}
+
+============================================================
+FILE: pages\home\HomeView.js
+============================================================
+
+export class HomeView {
+    constructor() {
+        this.els = {
+            manifestoTitle: document.getElementById('manifesto-title'),
+            manifestoBody: document.getElementById('manifesto-body'),
+            manifestoNote: document.getElementById('manifesto-note'),
+            teamList: document.getElementById('team-list'),
+            teamCount: document.getElementById('team-count')
+        };
+        this.teamTemplate = document.getElementById('team-member-template');
+        
+        // Дефолтная SVG-заглушка для аватаров
+        this.fallbackAvatar = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%238B949E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E";
+    }
+
+    renderManifesto(manifestoData) {
+        if (!manifestoData) return;
+
+        // Рендер заголовка
+        this.els.manifestoTitle.innerHTML = `${manifestoData.title} <span>${manifestoData.highlight}</span>`;
+
+        // Рендер параграфов
+        this.els.manifestoBody.innerHTML = '';
+        manifestoData.paragraphs.forEach(text => {
+            const p = document.createElement('p');
+            p.textContent = text;
+            this.els.manifestoBody.appendChild(p);
+        });
+
+        // Рендер примечания
+        if (manifestoData.note) {
+            this.els.manifestoNote.textContent = manifestoData.note;
+            this.els.manifestoNote.style.display = 'block';
+        }
+    }
+
+    renderTeam(teamData) {
+        this.els.teamList.innerHTML = ''; // Убираем скелетоны
+        
+        if (!teamData || teamData.length === 0) {
+            this.els.teamCount.textContent = '0 участников';
+            return;
+        }
+
+        this.els.teamCount.textContent = `${teamData.length} участник${this._getDeclension(teamData.length)}`;
+        
+        const fragment = document.createDocumentFragment();
+
+        teamData.forEach(member => {
+            const clone = this.teamTemplate.content.cloneNode(true);
+            
+            clone.querySelector('.member-name').textContent = member.name;
+            clone.querySelector('.member-status').textContent = member.status;
+            
+            const roleBadge = clone.querySelector('.role-badge');
+            roleBadge.textContent = member.role;
+            roleBadge.classList.add(member.roleClass || 'volunteer');
+
+            const linkBtn = clone.querySelector('.member-link-btn');
+            if (member.link && member.link !== '#') {
+                linkBtn.href = member.link;
+            } else {
+                linkBtn.style.display = 'none';
+            }
+
+            const avatarImg = clone.querySelector('.member-avatar');
+            const avatarSrc = member.avatar ? `assets/avatars/${member.avatar}` : this.fallbackAvatar;
+            avatarImg.src = avatarSrc;
+            avatarImg.onerror = () => { avatarImg.src = this.fallbackAvatar; };
+
+            if (member.isOnline) {
+                clone.querySelector('.status-indicator').classList.add('online');
+            }
+
+            fragment.appendChild(clone);
+        });
+
+        this.els.teamList.appendChild(fragment);
+    }
+
+    renderErrorState() {
+        this.els.manifestoBody.innerHTML = '<p style="color: var(--error-color);">Не удалось загрузить манифест.</p>';
+        this.els.teamList.innerHTML = '<div style="padding: 1rem; color: var(--error-color);">Ошибка загрузки команды.</div>';
+    }
+
+    _getDeclension(number) {
+        const lastDigit = number % 10;
+        const lastTwoDigits = number % 100;
+        if (lastTwoDigits > 10 && lastTwoDigits < 20) return 'ов';
+        if (lastDigit > 1 && lastDigit < 5) return 'а';
+        if (lastDigit === 1) return '';
+        return 'ов';
     }
 }
 
@@ -5128,12 +5101,26 @@ export class AudioPlayer {
     }
 
     play() {
-        this.audio.play().then(() => {
-            this.isPlaying = true;
-            this.els.iconPlay.style.display = 'none';
-            this.els.iconPause.style.display = 'block';
-            this._notifyStateChange();
-        }).catch(err => Logger.error('Ошибка автоплея:', err));
+        if (!this.audio.src) return; // Защита от пустых вызовов
+
+        const playPromise = this.audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                this.isPlaying = true;
+                this.els.iconPlay.style.display = 'none';
+                this.els.iconPause.style.display = 'block';
+                this._notifyStateChange();
+            }).catch(err => {
+                Logger.error('Воспроизведение заблокировано браузером или произошел сбой сети:', err);
+                
+                // Сбрасываем UI в состояние "Пауза", чтобы сетка (View) убрала анимацию эквалайзера
+                this.isPlaying = false;
+                this.els.iconPlay.style.display = 'block';
+                this.els.iconPause.style.display = 'none';
+                this._notifyStateChange();
+            });
+        }
     }
 
     pause() {
@@ -5738,6 +5725,1039 @@ export class MusicView {
         const clone = this.templates.error.content.cloneNode(true);
         clone.querySelector('.error-message').textContent = message;
         this.els.container.appendChild(clone);
+    }
+}
+
+============================================================
+FILE: pages\project\app.js
+============================================================
+
+import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
+import { LightboxManager } from '../../shared/js/Lightbox.js';
+
+import { ProjectModel } from './ProjectModel.js';
+import { HeroView } from './HeroView.js';
+import { WikiView } from './WikiView.js';
+import { ProjectController } from './ProjectController.js';
+
+customElements.define('site-header', SiteHeader);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('id');
+
+    const lightbox = new LightboxManager('lightbox', 'lightbox-img');
+    
+    const model = new ProjectModel();
+    const heroView = new HeroView();
+    const wikiView = new WikiView(lightbox);
+    
+    const controller = new ProjectController(model, heroView, wikiView);
+    controller.init(projectId);
+});
+
+============================================================
+FILE: pages\project\HeroView.js
+============================================================
+
+export class HeroView {
+    constructor() {
+        this.els = {
+            bg: document.getElementById('hero-bg'),
+            contentWrapper: document.getElementById('hero-content'),
+            posterContainer: document.getElementById('hero-poster-container'),
+            posterImg: document.getElementById('project-poster'),
+            logo: document.getElementById('project-logo'),
+            title: document.getElementById('project-title'),
+            type: document.getElementById('project-type'),
+            date: document.getElementById('project-date'),
+            status: document.getElementById('project-status'),
+            author: document.getElementById('project-author'),
+            storeLink: document.getElementById('store-link-container')
+        };
+        this.baseAssetPath = 'assets/catalog/';
+        this.platformIcons = this._getPlatformIcons();
+    }
+
+    render(data, projectId) {
+        document.title = `${data.title} | Bendy Wiki`;
+        const assets = data.assets || {};
+        const type = data.type || 'game';
+
+        const isSplitLayout = type === 'book' || type === 'movie';
+
+        // ДИНАМИЧЕСКИЙ РЕНДЕР МАКЕТА
+        if (isSplitLayout) {
+            // Включаем дизайн для книг/фильмов
+            this.els.contentWrapper.classList.add('hero-split-layout');
+            this.els.bg.classList.add('heavy-blur');
+
+            if (assets.cover) {
+                this.els.posterImg.src = `${this.baseAssetPath}${projectId}/${assets.cover}`;
+                this.els.posterContainer.style.display = 'block';
+                // Эмбиент-фон из обложки
+                this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${assets.cover}')`;
+            }
+
+            this.els.logo.style.display = 'none';
+            this.els.title.textContent = data.title;
+            this.els.title.style.display = 'block';
+        } else {
+            // Включаем классический дизайн для Игр
+            this.els.contentWrapper.classList.remove('hero-split-layout');
+            this.els.bg.classList.remove('heavy-blur');
+            this.els.posterContainer.style.display = 'none';
+
+            const bgImage = assets.hero_bg || assets.banner || assets.cover;
+            if (bgImage) this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${bgImage}')`;
+
+            if (assets.logo) {
+                this.els.logo.src = `${this.baseAssetPath}${projectId}/${assets.logo}`;
+                this.els.logo.style.display = 'block';
+                this.els.title.style.display = 'none';
+            } else {
+                this.els.logo.style.display = 'none';
+                this.els.title.textContent = data.title;
+                this.els.title.style.display = 'block';
+            }
+        }
+
+        // Метаданные (Тип)
+        let typeStr = 'Игра';
+        if (type === 'book') typeStr = 'Книга / Комикс';
+        if (type === 'movie') typeStr = 'Анимация';
+        this.els.type.textContent = typeStr;
+
+        // Дата и Статус
+        this.els.date.textContent = `Релиз: ${data.release_date || 'TBA'}`;
+        const lowerDate = (data.release_date || '').toLowerCase();
+        const isDev = lowerDate.includes('скоро') || lowerDate.includes('не объявлена') || lowerDate.includes('tba') || /202[4-9]/.test(lowerDate) || /203[0-9]/.test(lowerDate);
+        this.els.status.textContent = isDev ? 'В разработке' : 'Вышел';
+
+        // Автор / Разработчик
+        if (type === 'book') {
+            this.els.author.textContent = `Автор: ${data.developer || data.author || 'Неизвестно'}`;
+        } else if (type === 'movie') {
+            this.els.author.textContent = `Режиссер: ${data.developer || data.director || 'Joey Drew Studios'}`;
+        } else {
+            this.els.author.textContent = `Разработчик: ${data.developer || 'Joey Drew Studios'}`;
+        }
+
+        // Ссылки на магазины
+        this.els.storeLink.innerHTML = '';
+        if (data.platforms) {
+            Object.entries(data.platforms).forEach(([key, url]) => {
+                const keyLower = key.toLowerCase();
+                const pData = this.platformIcons[keyLower] || { name: key.charAt(0).toUpperCase() + key.slice(1), icon: this.platformIcons.default.icon };
+                this.els.storeLink.innerHTML += `<a href="${url}" target="_blank" class="store-btn">${pData.icon} <span>${pData.name}</span></a>`;
+            });
+        }
+    }
+
+    _getPlatformIcons() {
+        return {
+            youtube: {
+                name: 'Смотреть',
+                icon: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>'
+            },
+            gamejolt: {
+                name: 'Game Jolt',
+                icon: '<svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M6.353 0v2.824H4.94v2.823H3.53v2.824H2.118v2.823H.706v2.824h8.47v2.823H7.765v2.824H6.353v2.823h1.412v-1.412h1.411v-1.411h1.412v-1.412H12V16.94h1.412v-1.41h1.412v-1.411h1.411v-1.412h1.412v-1.412h1.412V9.882h1.412V8.471h1.411V7.059h-4.235V5.647h1.412V4.235h1.412V2.824h1.411V1.412h1.412V0zm0 22.588H4.94V24h1.412zM7.765 2.824h9.882v1.411h-1.412v1.412h-1.411V7.06h-1.412v1.41H12v1.411h1.412v1.412H12V9.882h-1.412v1.412H9.176V9.882H7.765v1.412H6.353V9.882H4.94V8.471h1.412V5.647h1.412zM6.353 8.47v1.411h1.412v-1.41zm2.823 1.411h1.412v-1.41H9.176zm5.648 0h1.411v1.412h-1.411Z"/></svg>'
+            },
+            pdf: { 
+                name: 'Читать', 
+                icon: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 8H3V7H3.5C3.77614 7 4 7.22386 4 7.5C4 7.77614 3.77614 8 3.5 8Z" fill="currentColor"></path><path d="M7 10V7H7.5C7.77614 7 8 7.22386 8 7.5V9.5C8 9.77614 7.77614 10 7.5 10H7Z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M1 1.5C1 0.671573 1.67157 0 2.5 0H10.7071L14 3.29289V13.5C14 14.3284 13.3284 15 12.5 15H2.5C1.67157 15 1 14.3284 1 13.5V1.5ZM3.5 6H2V11H3V9H3.5C4.32843 9 5 8.32843 5 7.5C5 6.67157 4.32843 6 3.5 6ZM7.5 6H6V11H7.5C8.32843 11 9 10.3284 9 9.5V7.5C9 6.67157 8.32843 6 7.5 6ZM10 11V6H13V7H11V8H12V9H11V11H10Z" fill="currentColor"></path></svg>'
+            },
+            amazon: { 
+                name: 'Amazon', 
+                icon: '<svg viewBox="87 292.9 256 255.9" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M306,500.1c-1.3,0-2.6,0.3-3.8,0.9c-1.4,0.6-2.8,1.2-4.1,1.7l-1.9,0.8l-2.5,1v0c-27.5,11.1-56.3,17.7-83,18.2 c-1,0-2,0-2.9,0c-42,0-76.2-19.5-110.8-38.6c-1.2-0.6-2.4-1-3.6-1c-1.6,0-3.1,0.6-4.3,1.7c-1.2,1.1-1.9,2.7-1.8,4.3 c0,2.1,1.1,4,2.7,5.3c32.4,28.2,68,54.3,115.8,54.4c0.9,0,1.9,0,2.8,0c30.4-0.7,64.8-11,91.5-27.7l0.2-0.1c3.5-2.1,7-4.5,10.3-7.1 c2-1.5,3.5-3.9,3.5-6.4C313.7,503.1,310,500.1,306,500.1z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M343,484.6L343,484.6c-0.1-2.7-0.7-4.7-1.8-6.4l-0.1-0.2l-0.1-0.2c-1.1-1.2-2.2-1.7-3.4-2.2 c-3.5-1.3-8.6-2.1-14.7-2.1c-4.4,0-9.3,0.4-14.2,1.5l0-0.3l-4.9,1.6l-0.1,0l-2.8,0.9v0.1c-3.3,1.4-6.2,3-9,5 c-1.7,1.3-3.1,3-3.2,5.6c0,1.4,0.7,3,1.9,4c1.2,1,2.6,1.3,3.8,1.3c0.3,0,0.6,0,0.8-0.1l0.2,0l0.2,0c2.4-0.5,5.9-0.8,10-1.4 c3.5-0.4,7.3-0.7,10.5-0.7c2.3,0,4.4,0.1,5.8,0.5c0.7,0.1,1.2,0.3,1.5,0.5c0.1,0,0.2,0.1,0.2,0.1c0.1,0.2,0.1,0.7,0.1,1.4 c0,2.7-1.1,7.7-2.7,12.6c-1.5,4.9-3.4,9.8-4.6,13.1c-0.3,0.8-0.5,1.6-0.5,2.5c0,1.3,0.5,2.9,1.6,4c1.1,1.1,2.6,1.5,3.8,1.5h0.1 c1.8,0,3.4-0.7,4.7-1.8c12.5-11.2,16.8-29.2,17-39.3L343,484.6z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M228.7,364.1c-7.3,0.6-15.8,1.1-24.3,2.2c-13,1.7-26,4-36.7,9.1c-20.9,8.5-35,26.5-35,53.1 c0,33.3,21.5,50.3,48.6,50.3c9,0,16.4-1.1,23.1-2.8c10.8-3.4,19.8-9.6,30.5-20.9c6.2,8.5,7.9,12.4,18.6,21.5 c2.8,1.1,5.7,1.1,7.9-0.6c6.8-5.7,18.7-15.8,24.9-21.5c2.8-2.3,2.3-5.7,0.6-8.5c-6.2-7.9-12.4-14.7-12.4-30v-50.8 c0-21.5,1.7-41.2-14.1-55.9c-13-11.9-33.3-16.4-49.2-16.4h-6.8c-28.8,1.7-59.3,14.1-66.1,49.7c-1.1,4.5,2.3,6.2,4.5,6.8l31.6,4 c3.4-0.6,5.1-3.4,5.6-6.2c2.8-12.4,13-18.7,24.3-19.8h2.3c6.8,0,14.1,2.8,18.1,8.5c4.5,6.8,4,15.8,4,23.7V364.1z M222.5,431.3 c-4,7.9-10.7,13-18.1,14.7c-1.1,0-2.8,0.6-4.5,0.6c-12.4,0-19.8-9.6-19.8-23.7c0-18.1,10.7-26.6,24.3-30.5 c7.3-1.7,15.8-2.3,24.3-2.3v6.8C228.7,409.9,229.3,420,222.5,431.3z"></path></svg>' 
+            },
+            steam: { 
+                name: 'Steam', 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></svg>' 
+            },
+            xbox: { 
+                name: 'Xbox', 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="scale(0.75)"><path d="M16 5.425c-1.888-1.125-4.106-1.922-6.473-2.249l-0.092-0.010c-0.070-0.005-0.152-0.008-0.234-0.008-0.613 0-1.188 0.16-1.687 0.441l0.017-0.009c2.357-1.634 5.277-2.61 8.426-2.61 0.008 0 0.016 0 0.024 0h0.019c0.005 0 0.011 0 0.018 0 3.157 0 6.086 0.976 8.501 2.642l-0.050-0.033c-0.478-0.272-1.051-0.433-1.662-0.433-0.085 0-0.169 0.003-0.252 0.009l0.011-0.001c-2.459 0.336-4.677 1.13-6.648 2.297l0.082-0.045zM5.554 5.268c-0.041 0.014-0.077 0.032-0.11 0.054l0.002-0.001c-2.758 2.723-4.466 6.504-4.466 10.684 0 3.584 1.256 6.875 3.353 9.457l-0.022-0.028c-1.754-3.261 4.48-12.455 7.61-16.159-3.53-3.521-5.277-4.062-6.015-4.062-0.010-0-0.021-0.001-0.032-0.001-0.115 0-0.225 0.021-0.326 0.060l0.006-0.002zM20.083 9.275c3.129 3.706 9.367 12.908 7.605 16.161 2.075-2.554 3.332-5.845 3.332-9.43 0-4.181-1.709-7.962-4.467-10.684l-0.002-0.002c-0.029-0.021-0.063-0.039-0.1-0.052l-0.003-0.001c-0.1-0.036-0.216-0.056-0.336-0.056-0.005 0-0.011 0-0.016 0h0.001c-0.741-0-2.485 0.543-6.014 4.063zM6.114 27.306c2.627 2.306 6.093 3.714 9.888 3.714s7.261-1.407 9.905-3.728l-0.017 0.015c2.349-2.393-5.402-10.901-9.89-14.29-4.483 3.39-12.24 11.897-9.886 14.29z"></path></g></svg>' 
+            },
+            playstation: { 
+                name: 'PlayStation', 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.984 2.596v17.547l3.915 1.261V6.688c0-.69.304-1.151.794-.991.636.18.76.814.76 1.505v5.875c2.441 1.193 4.362-.002 4.362-3.152 0-3.237-1.126-4.675-4.438-5.827-1.307-.448-3.728-1.186-5.39-1.502zm4.656 16.241l6.296-2.275c.715-.258.826-.625.246-.818-.586-.192-1.637-.139-2.357.123l-4.205 1.5V14.98l.24-.085s1.201-.42 2.913-.615c1.696-.18 3.785.03 5.437.661 1.848.601 2.04 1.472 1.576 2.072-.465.6-1.622 1.036-1.622 1.036l-8.544 3.107V18.86zM1.807 18.6c-1.9-.545-2.214-1.668-1.352-2.32.801-.586 2.16-1.052 2.16-1.052l5.615-2.013v2.313L4.205 17c-.705.271-.825.632-.239.826.586.195 1.637.15 2.343-.12L8.247 17v2.074c-.12.03-.256.044-.39.073-1.939.331-3.996.196-6.038-.479z"/></svg>' 
+            },
+            nintendo: { 
+                name: 'Nintendo', 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="scale(0.75)"><path d="M18.901 32h4.901c4.5 0 8.198-3.698 8.198-8.198v-15.604c0-4.5-3.698-8.198-8.198-8.198h-5c-0.099 0-0.203 0.099-0.203 0.198v31.604c0 0.099 0.099 0.198 0.302 0.198zM25 14.401c1.802 0 3.198 1.5 3.198 3.198 0 1.802-1.5 3.198-3.198 3.198-1.802 0-3.198-1.396-3.198-3.198-0.104-1.797 1.396-3.198 3.198-3.198zM15.198 0h-7c-4.5 0-8.198 3.698-8.198 8.198v15.604c0 4.5 3.698 8.198 8.198 8.198h7c0.099 0 0.203-0.099 0.203-0.198v-31.604c0-0.099-0.099-0.198-0.203-0.198zM12.901 29.401h-4.703c-3.099 0-5.599-2.5-5.599-5.599v-15.604c0-3.099 2.5-5.599 5.599-5.599h4.604zM5 9.599c0 1.698 1.302 3 3 3s3-1.302 3-3c0-1.698-1.302-3-3-3s-3 1.302-3 3z"></path></g></svg>' 
+            },
+            epic: { 
+                name: 'Epic Games', 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.537 0C2.165 0 1.66.506 1.66 1.879V18.44a4.262 4.262 0 00.02.433c.031.3.037.59.316.92.027.033.311.245.311.245.153.075.258.13.43.2l8.335 3.491c.433.199.614.276.928.27h.002c.314.006.495-.071.928-.27l8.335-3.492c.172-.07.277-.124.43-.2 0 0 .284-.211.311-.243.28-.33.285-.621.316-.92a4.261 4.261 0 00.02-.434V1.879c0-1.373-.506-1.88-1.878-1.88zm13.366 3.11h.68c1.138 0 1.688.553 1.688 1.696v1.88h-1.374v-1.8c0-.369-.17-.54-.523-.54h-.235c-.367 0-.537.17-.537.539v5.81c0 .369.17.54.537.54h.262c.353 0 .523-.171.523-.54V8.619h1.373v2.143c0 1.144-.562 1.71-1.7 1.71h-.694c-1.138 0-1.7-.566-1.7-1.71V4.82c0-1.144.562-1.709 1.7-1.709zm-12.186.08h3.114v1.274H6.117v2.603h1.648v1.275H6.117v2.774h1.74v1.275h-3.14zm3.816 0h2.198c1.138 0 1.7.564 1.7 1.708v2.445c0 1.144-.562 1.71-1.7 1.71h-.799v3.338h-1.4zm4.53 0h1.4v9.201h-1.4zm-3.13 1.235v3.392h.575c.354 0 .523-.171.523-.54V4.965c0-.368-.17-.54-.523-.54zm-3.74 10.147a1.708 1.708 0 01.591.108 1.745 1.745 0 01.49.299l-.452.546a1.247 1.247 0 00-.308-.195.91.91 0 00-.363-.068.658.658 0 00-.28.06.703.703 0 00-.224.163.783.783 0 00-.151.243.799.799 0 00-.056.299v.008a.852.852 0 00.056.31.7.7 0 00.157.245.736.736 0 00.238.16.774.774 0 00.303.058.79.79 0 00.445-.116v-.339h-.548v-.565H7.37v1.255a2.019 2.019 0 01-.524.307 1.789 1.789 0 01-.683.123 1.642 1.642 0 01-.602-.107 1.46 1.46 0 01-.478-.3 1.371 1.371 0 01-.318-.455 1.438 1.438 0 01-.115-.58v-.008a1.426 1.426 0 01.113-.57 1.449 1.449 0 01.312-.46 1.418 1.418 0 01.474-.309 1.58 1.58 0 01.598-.111 1.708 1.708 0 01.045 0zm11.963.008a2.006 2.006 0 01.612.094 1.61 1.61 0 01.507.277l-.386.546a1.562 1.562 0 00-.39-.205 1.178 1.178 0 00-.388-.07.347.347 0 00-.208.052.154.154 0 00-.07.127v.008a.158.158 0 00.022.084.198.198 0 00.076.066.831.831 0 00.147.06c.062.02.14.04.236.061a3.389 3.389 0 01.43.122 1.292 1.292 0 01.328.17.678.678 0 01.207.24.739.739 0 01.071.337v.008a.865.865 0 01-.081.382.82.82 0 01-.229.285 1.032 1.032 0 01-.353.18 1.606 1.606 0 01-.46.061 2.16 2.16 0 01-.71-.116 1.718 1.718 0 01-.593-.346l.43-.514c.277.223.578.335.9.335a.457.457 0 00.236-.05.157.157 0 00.082-.142v-.008a.15.15 0 00-.02-.077.204.204 0 00-.073-.066.753.753 0 00-.143-.062 2.45 2.45 0 00-.233-.062 5.036 5.036 0 01-.413-.113 1.26 1.26 0 01-.331-.16.72.72 0 01-.222-.243.73.73 0 01-.082-.36v-.008a.863.863 0 01.074-.359.794.794 0 01.214-.283 1.007 1.007 0 01.34-.185 1.423 1.423 0 01.448-.066 2.006 2.006 0 01.025 0zm-9.358.025h.742l1.183 2.81h-.825l-.203-.499H8.623l-.198.498h-.81zm2.197.02h.814l.663 1.08.663-1.08h.814v2.79h-.766v-1.602l-.711 1.091h-.016l-.707-1.083v1.593h-.754zm3.469 0h2.235v.658h-1.473v.422h1.334v.61h-1.334v.442h1.493v.658h-2.255zm-5.3.897l-.315.793h.624zm-1.145 5.19h8.014l-4.09 1.348z"/></svg>' 
+            },
+            ios: { 
+                name: 'App Store', 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8.8086 14.9194l6.1107-11.0368c.0837-.1513.1682-.302.2437-.4584.0685-.142.1267-.2854.1646-.4403.0803-.3259.0588-.6656-.066-.9767-.1238-.3095-.3417-.5678-.6201-.7355a1.4175 1.4175 0 0 0-.921-.1924c-.3207.043-.6135.1935-.8443.4288-.1094.1118-.1996.2361-.2832.369-.092.1463-.175.2979-.259.4492l-.3864.6979-.3865-.6979c-.0837-.1515-.1667-.303-.2587-.4492-.0837-.1329-.1739-.2572-.2835-.369-.2305-.2353-.5233-.3857-.844-.429a1.4181 1.4181 0 0 0-.921.1926c-.2784.1677-.4964.426-.6203.7355-.1246.311-.1461.6508-.066.9767.038.155.0962.2984.1648.4403.0753.1564.1598.307.2437.4584l1.248 2.2543-4.8625 8.7825H2.0295c-.1676 0-.3351-.0007-.5026.0092-.1522.009-.3004.0284-.448.0714-.3108.0906-.5822.2798-.7783.548-.195.2665-.3006.5929-.3006.9279 0 .3352.1057.6612.3006.9277.196.2683.4675.4575.7782.548.1477.043.296.0623.4481.0715.1675.01.335.009.5026.009h13.0974c.0171-.0357.059-.1294.1-.2697.415-1.4151-.6156-2.843-2.0347-2.843zM3.113 18.5418l-.7922 1.5008c-.0818.1553-.1644.31-.2384.4705-.067.1458-.124.293-.1611.452-.0785.3346-.0576.6834.0645 1.0029.1212.3175.3346.583.607.7549.2727.172.5891.2416.9013.1975.3139-.044.6005-.1986.8263-.4402.1072-.1148.1954-.2424.2772-.3787.0902-.1503.1714-.3059.2535-.4612L6 19.4636c-.0896-.149-.9473-1.4704-2.887-.9218m20.5861-3.0056a1.4707 1.4707 0 0 0-.779-.5407c-.1476-.0425-.2961-.0616-.4483-.0705-.1678-.0099-.3352-.0091-.503-.0091H18.648l-4.3891-7.817c-.6655.7005-.9632 1.485-1.0773 2.1976-.1655 1.0333.0367 2.0934.546 3.0004l5.2741 9.3933c.084.1494.167.299.2591.4435.0837.131.1739.2537.2836.364.231.2323.5238.3809.8449.4232.3192.0424.643-.0244.9217-.1899.2784-.1653.4968-.4204.621-.7257.1246-.3072.146-.6425.0658-.9641-.0381-.1529-.0962-.2945-.165-.4346-.0753-.1543-.1598-.303-.2438-.4524l-1.216-2.1662h1.596c.1677 0 .3351.0009.5029-.009.1522-.009.3007-.028.4483-.0705a1.4707 1.4707 0 0 0 .779-.5407A1.5386 1.5386 0 0 0 24 16.452a1.539 1.539 0 0 0-.3009-.9158Z"/></svg>' 
+            },
+            android: { 
+                name: 'Google Play', 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg>'
+            },
+            default: { 
+                name: 'Смотреть / Читать', 
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="16" cy="12" r="2"></circle><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line></svg>' 
+            }
+        };
+    }
+}
+
+============================================================
+FILE: pages\project\project.css
+============================================================
+
+/* --- АНИМАЦИЯ ФОНА --- */
+@keyframes heroZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+}
+
+/* --- HERO СЕКЦИЯ --- */
+.project-hero {
+    position: relative;
+    height: 65vh;
+    min-height: 450px;
+    display: flex;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.project-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center; 
+    z-index: 0;
+    animation: heroZoom 25s infinite alternate ease-in-out;
+}
+
+/* Модификатор для эмбиент-фона (используется для книг) */
+.project-hero-bg.heavy-blur {
+    filter: blur(40px) brightness(0.3);
+    transform: scale(1.2); /* Увеличиваем, чтобы края не светились после размытия */
+    animation: none; /* Отключаем зум, так как это просто размытый фон */
+}
+
+.project-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%),
+                linear-gradient(to top, var(--bg-body) 0%, rgba(var(--bg-body-rgb), 0) 15%);
+    z-index: 1;
+}
+
+[data-theme="light"] .project-hero-overlay {
+    background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%),
+                linear-gradient(to top, var(--bg-body) 0%, rgba(255, 255, 255, 0) 15%);
+}
+
+.project-hero-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-link {
+    position: absolute;
+    top: 2rem;
+    left: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 18px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.back-link:hover { 
+    background: rgba(0, 0, 0, 0.8); 
+    color: var(--accent-color); 
+    border-color: rgba(210, 168, 80, 0.4);
+    transform: translateX(-4px);
+}
+
+/* Обертка контента */
+.project-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.hero-text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+/* === SPLIT LAYOUT ДЛЯ КНИГ И ФИЛЬМОВ === */
+.hero-split-layout {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3.5rem; /* Отступ между постером и текстом */
+    text-align: left;
+}
+
+.hero-split-layout .hero-text-container {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-split-layout .project-meta-tags,
+.hero-split-layout .project-hero-actions {
+    justify-content: flex-start;
+}
+
+/* Контейнер постера */
+.hero-poster-container {
+    flex-shrink: 0;
+    width: 260px;
+    aspect-ratio: 2 / 3;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.15);
+    overflow: hidden;
+    background-color: var(--bg-body);
+}
+
+.project-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* === ЭЛЕМЕНТЫ === */
+.project-logo {
+    max-width: 90%;
+    width: 550px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
+}
+
+.project-title-text {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 10px 20px rgba(0,0,0,0.8);
+    line-height: 1.1;
+}
+
+.hero-split-layout .project-title-text {
+    font-size: 3rem; /* Чуть меньше для книг, так как места меньше */
+}
+
+/* МЕТА-ТЕГИ */
+.project-meta-tags { 
+    display: flex; 
+    justify-content: center; 
+    gap: 12px; 
+    flex-wrap: wrap; 
+    margin-bottom: 2rem;
+}
+
+.meta-badge {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.status-badge { 
+    background: var(--accent-color); 
+    color: #000; 
+    border: none; 
+    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.4);
+}
+
+/* КНОПКИ МАГАЗИНОВ */
+.project-hero-actions { 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    gap: 0.75rem;
+    width: 100%; 
+    flex-wrap: wrap;
+    padding: 0.5rem 0 1.5rem 0; 
+}
+
+.store-btn {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    background: rgba(255, 255, 255, 0.1); 
+    color: #fff; 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-decoration: none;
+    padding: 0 1.4rem; 
+    height: 44px; 
+    border-radius: 30px; 
+    font-weight: 700; 
+    font-size: 0.95rem; 
+    white-space: nowrap; 
+    flex-shrink: 0; 
+    box-sizing: border-box;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.store-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: block; 
+    fill: currentColor;
+}
+
+.store-btn:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #000;
+}
+
+/* --- STICKY TABS --- */
+.wiki-tabs-container {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.wiki-tabs {
+    max-width: 1200px; margin: 0 auto; display: flex; gap: 2.5rem; padding: 0 1.5rem;
+    overflow-x: auto; scrollbar-width: none;
+}
+.wiki-tabs::-webkit-scrollbar { display: none; }
+
+.wiki-tab {
+    background: none; border: none; color: var(--text-muted); font-size: 1.05rem;
+    font-weight: 700; padding: 1.25rem 0; cursor: pointer; border-bottom: 3px solid transparent;
+    transition: 0.2s; white-space: nowrap;
+}
+.wiki-tab:hover { color: var(--text-main); }
+.wiki-tab.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
+
+/* --- WIKI CONTENT --- */
+.wiki-content-area { max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem; min-height: 50vh; }
+.wiki-section { display: none; animation: fadeInSlideUp 0.4s ease forwards; }
+.wiki-section.active { display: block; }
+.section-title { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
+.mt-4 { margin-top: 3rem; }
+
+.overview-grid { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; }
+.project-desc { font-size: 1.15rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line;}
+
+/* Сайдбар (обертка для липкости) */
+.sticky-sidebar-wrapper {
+    position: sticky; 
+    top: 140px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5rem;
+}
+
+.bento-box {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+.bento-box.large { padding: 3rem; }
+.bento-box h3 { margin-bottom: 1.2rem; font-size: 1.2rem; color: var(--text-main); }
+
+.tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+.game-tag { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;}
+
+/* --- РУСИФИКАТОРЫ С АВАТАРКАМИ --- */
+.translators-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rus-card {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    padding: 12px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rus-card:hover {
+    border-color: var(--accent-color);
+    background: var(--bg-card);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15);
+}
+
+.rus-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.rus-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-grow: 1;
+    overflow: hidden; 
+}
+
+.rus-title {
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.2;
+}
+
+.rus-title span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rus-icon {
+    color: var(--text-muted);
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.rus-card:hover .rus-icon {
+    color: var(--accent-color);
+}
+
+.rus-team {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- КЛИКАБЕЛЬНЫЕ КАРТОЧКИ ПЕРСОНАЖЕЙ --- */
+.character-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+.character-card {
+    display: flex; align-items: center; gap: 12px; background: var(--bg-body);
+    padding: 8px 12px; border-radius: 12px; text-decoration: none; color: var(--text-main);
+    border: 1px solid var(--border-color); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.character-card:hover {
+    border-color: var(--accent-color); transform: translateX(6px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: var(--bg-card);
+}
+.char-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); background-color: var(--bg-body); }
+.char-name { flex-grow: 1; font-weight: 700; font-size: 1.05rem; }
+.char-arrow { color: var(--text-muted); transition: 0.2s; }
+.character-card:hover .char-arrow { color: var(--accent-color); transform: translateX(3px); }
+
+/* Геймплей и Таймлайн */
+.gameplay-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+.gameplay-list li {
+    font-size: 1.1rem; line-height: 1.6; color: var(--text-main);
+    padding-left: 2rem; position: relative; opacity: 0.9;
+}
+.gameplay-list li::before {
+    content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 2px; font-size: 1.2rem;
+}
+
+.timeline-container { display: flex; flex-direction: column; gap: 2rem; position: relative; }
+.timeline-container::before {
+    content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px;
+    width: 2px; background: var(--border-color); z-index: 0;
+}
+.timeline-item { position: relative; z-index: 1; padding-left: 3rem; }
+.timeline-item::before {
+    content: ''; position: absolute; left: 11px; top: 5px; width: 10px; height: 10px;
+    background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-body);
+}
+.timeline-item h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-main); }
+.timeline-item p { font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); }
+
+/* --- МЕДИА И СКРИНШОТЫ --- */
+.screenshots-bento { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 1.25rem; 
+}
+
+/* Обертка для встроенного видео (Адаптивный 16:9) */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Пропорция 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: #000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+}
+
+/* Скриншоты */
+.screenshot-img {
+    width: 100%; 
+    aspect-ratio: 16/9; 
+    object-fit: cover; 
+    border-radius: 12px; 
+    cursor: zoom-in;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-body);
+}
+
+.screenshot-img:hover { 
+    transform: scale(1.03); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+    z-index: 2; 
+    position: relative;
+}
+
+/* Требования */
+.req-bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
+.req-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.req-list li { color: var(--text-main); font-size: 1rem; padding-left: 14px; position: relative; }
+.req-list li::before { content: "▹"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold;}
+.req-label { font-weight: 800; opacity: 1; display: inline-block; font-size: 0.95rem; margin-right: 6px;}
+
+/* === АДАПТИВ === */
+@media (max-width: 900px) {
+    .overview-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .sticky-sidebar-wrapper { position: static; }
+    .project-logo { width: 350px; }
+    .project-hero { height: auto; min-height: 450px; padding: 4rem 0; }
+    .back-link { top: 1rem; left: 1rem; }
+    .req-bento-grid { grid-template-columns: 1fr; }
+    
+    /* Адаптив для Split-Layout (книги съезжают в колонку) */
+    .hero-split-layout {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    .hero-split-layout .hero-text-container {
+        align-items: center;
+        text-align: center;
+    }
+    .hero-split-layout .project-meta-tags,
+    .hero-split-layout .project-hero-actions {
+        justify-content: center;
+    }
+    .hero-split-layout .project-title-text {
+        font-size: 2.2rem; 
+    }
+    .hero-poster-container {
+        width: 200px;
+    }
+}
+
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.empty-state {
+    text-align: center; padding: 4rem 2rem; background: var(--bg-card);
+    border: 1px dashed var(--border-color); border-radius: 16px; color: var(--text-muted);
+}
+.empty-state h3 { color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.3rem;}
+
+============================================================
+FILE: pages\project\ProjectController.js
+============================================================
+
+export class ProjectController {
+    constructor(model, heroView, wikiView) {
+        this.model = model;
+        this.heroView = heroView;
+        this.wikiView = wikiView;
+        
+        this.loader = document.getElementById('project-loader');
+        this.content = document.getElementById('project-content');
+    }
+
+    async init(projectId) {
+        if (!projectId) {
+            this.showError('Проект не найден. Некорректная ссылка.');
+            return;
+        }
+
+        try {
+            const data = await this.model.fetchProject(projectId);
+            
+            // Настраиваем табы в зависимости от типа (книга, игра, фильм)
+            this.wikiView.setupTabs(data.type || 'game');
+            
+            this.heroView.render(data, projectId);
+            this.wikiView.render(data, projectId);
+            
+            this.loader.style.display = 'none';
+            this.content.style.display = 'block';
+
+            if (data.wiki?.characters?.length > 0) {
+                this.wikiView.showCharLoader();
+                const chars = await this.model.fetchCharacters(data.wiki.characters);
+                this.wikiView.renderCharacters(chars, data.wiki.characters);
+            }
+
+        } catch (error) {
+            this.showError('Информация о данном проекте отсутствует в архивах или файл поврежден.');
+        }
+    }
+
+    showError(msg) {
+        this.loader.style.display = 'none';
+        this.content.style.display = 'block';
+        this.content.innerHTML = `<div class="error-card" style="margin: 4rem auto; max-width: 600px;"><p>${msg}</p><a href="catalog.html" style="color:var(--accent-color);">Вернуться в каталог</a></div>`;
+    }
+}
+
+============================================================
+FILE: pages\project\ProjectModel.js
+============================================================
+
+import { fetchData } from '../../shared/js/api.js';
+import { Logger } from '../../shared/js/Logger.js';
+
+export class ProjectModel {
+    constructor() {
+        this.project = null;
+    }
+
+    async fetchProject(id) {
+        try {
+            // Загружаем из новой папки assets/catalog
+            this.project = await fetchData(`assets/catalog/${id}/data.json`);
+            return this.project;
+        } catch (error) {
+            Logger.error(`Ошибка загрузки проекта ${id}`, error);
+            throw error;
+        }
+    }
+
+    async fetchCharacters(charIds) {
+        if (!charIds || charIds.length === 0) return [];
+        try {
+            const promises = charIds.map(charId => 
+                fetchData(`assets/characters/${charId}/data.json`).catch(() => null)
+            );
+            return await Promise.all(promises);
+        } catch (error) {
+            Logger.error('Ошибка загрузки персонажей', error);
+            return [];
+        }
+    }
+}
+
+============================================================
+FILE: pages\project\WikiView.js
+============================================================
+
+export class WikiView {
+    constructor(lightboxManager) {
+        this.lightbox = lightboxManager;
+        this.baseAssetPath = 'assets/catalog/';
+        
+        this.els = {
+            tabsContainer: document.getElementById('dynamic-tabs'),
+            desc: document.getElementById('project-description'),
+            tags: document.getElementById('project-tags'),
+            screens: document.getElementById('project-screenshots'),
+            specs: document.getElementById('project-requirements'),
+            charList: document.getElementById('wiki-characters-list'),
+            
+            translatorsContainer: document.getElementById('translators-container'),
+            translatorsList: document.getElementById('project-translators'),
+            translatorsTitle: document.getElementById('translators-title')
+        };
+    }
+
+    setupTabs(type) {
+        // Динамически строим табы. Книгам и мультфильмам не нужен геймплей и сис.требования
+        let tabsHtml = `<button class="wiki-tab active" data-target="tab-overview">Обзор</button>
+                        <button class="wiki-tab" data-target="tab-story">Сюжет и Персонажи</button>`;
+        
+        if (type === 'game') {
+            tabsHtml += `<button class="wiki-tab" data-target="tab-gameplay">Геймплей</button>`;
+        }
+        
+        tabsHtml += `<button class="wiki-tab" data-target="tab-dev">Создание</button>`;
+        
+        if (type === 'game') {
+            tabsHtml += `<button class="wiki-tab" data-target="tab-specs">Системные требования</button>`;
+        }
+
+        this.els.tabsContainer.innerHTML = tabsHtml;
+
+        // Вешаем логику переключения
+        const tabs = this.els.tabsContainer.querySelectorAll('.wiki-tab');
+        const sections = document.querySelectorAll('.wiki-section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.target).classList.add('active');
+            });
+        });
+    }
+
+    render(data, projectId) {
+        const assets = data.assets || {};
+        const wiki = data.wiki || {};
+        const type = data.type || 'game';
+
+        // Обзор
+        this.els.desc.textContent = data.description || 'Информация отсутствует.';
+        
+        this.els.tags.innerHTML = '';
+        (data.tags || []).slice(0, 15).forEach(tag => {
+            const span = document.createElement('span');
+            span.className = 'game-tag'; span.textContent = tag;
+            this.els.tags.appendChild(span);
+        });
+
+        // Переводы (для игр — русификаторы, для книг/фильмов — переводы)
+        this._renderTranslators(data.russifiers, type);
+
+        // Медиа (Видео и Скриншоты)
+        this._renderMedia(assets, projectId);
+
+        // Системные требования (только для игр)
+        if (type === 'game') this._renderSpecs(data.specs);
+
+        // Сюжет, Геймплей, Разработка
+        this._renderStaticWiki(wiki, type);
+    }
+
+    // НОВЫЙ МЕТОД: Рендер Видео и Скриншотов
+    _renderMedia(assets, projectId) {
+        this.els.screens.innerHTML = '';
+        let hasMedia = false;
+
+        // 1. Рендерим YouTube Видео
+        if (assets.videos && assets.videos.length > 0) {
+            assets.videos.forEach(videoUrl => {
+                const videoId = this._extractYouTubeId(videoUrl);
+                if (videoId) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'video-wrapper';
+                    wrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    this.els.screens.appendChild(wrapper);
+                    hasMedia = true;
+                }
+            });
+        }
+
+        // 2. Рендерим Скриншоты
+        if (assets.screenshots && assets.screenshots.length > 0) {
+            assets.screenshots.forEach(src => {
+                const img = document.createElement('img');
+                img.src = `${this.baseAssetPath}${projectId}/${src}`;
+                img.loading = 'lazy';
+                img.className = 'screenshot-img';
+                img.onclick = () => this.lightbox.open(img.src);
+                this.els.screens.appendChild(img);
+                hasMedia = true;
+            });
+        }
+
+        if (!hasMedia) {
+            this.els.screens.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem;">Медиафайлы отсутствуют.</span>';
+        }
+    }
+
+    // Парсер ссылок YouTube (Достает ID видео из любой ссылки)
+    _extractYouTubeId(url) {
+        const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+        return match ? match[1] : null;
+    }
+
+    _renderTranslators(translators, type) {
+        if (translators && translators.length > 0) {
+            this.els.translatorsContainer.style.display = 'block';
+            this.els.translatorsTitle.textContent = type === 'book' ? 'Любительские переводы' : (type === 'movie' ? 'Озвучка / Сабы' : 'Русификаторы');
+            this.els.translatorsList.innerHTML = '';
+            
+            const fallbackAvatar = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2365676B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E";
+
+            translators.forEach(rus => {
+                const a = document.createElement('a');
+                a.href = rus.url;
+                a.target = '_blank';
+                a.className = 'rus-card';
+                
+                const descText = rus.description || rus.team || '';
+                const avatarSrc = rus.avatar ? `assets/teams/${rus.avatar}` : fallbackAvatar;
+
+                a.innerHTML = `
+                    <img src="${avatarSrc}" alt="Avatar" class="rus-avatar" onerror="this.onerror=null; this.src='${fallbackAvatar}';">
+                    <div class="rus-info">
+                        <div class="rus-title">
+                            <span>${rus.title}</span>
+                            <svg class="rus-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </div>
+                        <span class="rus-team">${descText}</span>
+                    </div>
+                `;
+                this.els.translatorsList.appendChild(a);
+            });
+        } else {
+            this.els.translatorsContainer.style.display = 'none';
+        }
+    }
+
+    _renderSpecs(specs) {
+        if (!specs) {
+            this.els.specs.innerHTML = '<div class="empty-state">Нет данных</div>';
+            return;
+        }
+        let reqHtml = '';
+        if (specs.minimum && specs.minimum.length > 15) {
+            reqHtml += `<div class="bento-box"><h3>Минимальные</h3>${this._parseSpecsString(specs.minimum)}</div>`;
+        }
+        if (specs.recommended && specs.recommended.length > 15) {
+            reqHtml += `<div class="bento-box"><h3>Рекомендованные</h3>${this._parseSpecsString(specs.recommended)}</div>`;
+        }
+        this.els.specs.innerHTML = reqHtml || '<div class="empty-state">Нет данных</div>';
+    }
+
+    _parseSpecsString(specStr) {
+        const parts = specStr.split('|').map(s => s.trim()).filter(s => s);
+        if (parts.length > 0 && (parts[0].includes('Минимальные') || parts[0].includes('Рекомендованные'))) parts.shift(); 
+        return `<ul class="req-list">` + parts.map(p => {
+            const colonIndex = p.indexOf(':');
+            if (colonIndex !== -1 && colonIndex < 25) { 
+                return `<li><span class="req-label">${p.substring(0, colonIndex + 1)}</span>${p.substring(colonIndex + 1)}</li>`;
+            }
+            return `<li>${p}</li>`;
+        }).join('') + `</ul>`;
+    }
+
+    _renderStaticWiki(wiki, type) {
+        if (wiki.story) {
+            document.getElementById('wiki-story-empty').style.display = 'none';
+            document.getElementById('wiki-story-content').style.display = 'block';
+            document.getElementById('wiki-story-text').textContent = wiki.story;
+        }
+        
+        if (type === 'game' && wiki.gameplay && wiki.gameplay.length > 0) {
+            document.getElementById('wiki-gameplay-empty').style.display = 'none';
+            const container = document.getElementById('wiki-gameplay-content');
+            container.style.display = 'block';
+            
+            const list = document.getElementById('wiki-gameplay-list');
+            list.innerHTML = '';
+            wiki.gameplay.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                list.appendChild(li);
+            });
+        }
+
+        if (wiki.development && wiki.development.length > 0) {
+            document.getElementById('wiki-dev-empty').style.display = 'none';
+            const container = document.getElementById('wiki-dev-content');
+            container.style.display = 'flex';
+            container.innerHTML = '';
+            
+            wiki.development.forEach(stage => {
+                const item = document.createElement('div');
+                item.className = 'timeline-item';
+                item.innerHTML = `<h3>${stage.title}</h3><p>${stage.text}</p>`;
+                container.appendChild(item);
+            });
+        }
+    }
+
+    renderCharacters(charactersData, requestedIds) {
+        this.els.charList.innerHTML = '';
+        const fallback = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="%2365676B" stroke-width="2"%3E%3Cpath d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/%3E%3Ccircle cx="12" cy="7" r="4"/%3E%3C/svg%3E';
+
+        charactersData.forEach((char, index) => {
+            if (!char) {
+                this.els.charList.innerHTML += `<li style="color: var(--text-muted); font-size: 0.9rem;">[Архив поврежден: ${requestedIds[index]}]</li>`;
+                return;
+            }
+            const a = document.createElement('a');
+            a.href = `character.html?id=${char.id}`;
+            a.className = 'character-card';
+            const avatar = char.assets?.avatar ? `assets/characters/${char.id}/${char.assets.avatar}` : fallback;
+            a.innerHTML = `
+                <img src="${avatar}" alt="${char.name}" class="char-avatar" onerror="this.src='${fallback}'">
+                <span class="char-name">${char.name}</span>
+                <svg class="char-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            `;
+            this.els.charList.appendChild(a);
+        });
+    }
+    
+    showCharLoader() {
+        this.els.charList.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
     }
 }
 
@@ -7603,6 +8623,9 @@ FILE: shared\js\components\CustomSelect.js
 ============================================================
 
 export class CustomSelect {
+    // Храним ссылки на все инстансы для глобального управления
+    static instances = [];
+
     constructor(containerId, onChangeCallback) {
         this.container = document.getElementById(containerId);
         if (!this.container) return;
@@ -7615,6 +8638,9 @@ export class CustomSelect {
         this.onChange = onChangeCallback;
         this.isOpen = false;
 
+        // Регистрируем этот компонент в глобальном массиве
+        CustomSelect.instances.push(this);
+
         this.trigger.addEventListener('click', (e) => {
             e.stopPropagation();
             this.toggle();
@@ -7626,6 +8652,15 @@ export class CustomSelect {
     }
 
     toggle() {
+        if (!this.isOpen) {
+            // Если мы пытаемся открыть селект, сначала закрываем все остальные
+            CustomSelect.instances.forEach(instance => {
+                if (instance !== this && instance.isOpen) {
+                    instance.close();
+                }
+            });
+        }
+
         this.isOpen = !this.isOpen;
         this.container.classList.toggle('active', this.isOpen);
         this.trigger.setAttribute('aria-expanded', this.isOpen);
@@ -7732,7 +8767,7 @@ export class SiteHeader extends HTMLElement {
                     <nav class="site-nav">
                         <a href="index.html" class="nav-link ${activePage === 'home' ? 'active' : ''}">Главная</a>
                         <a href="feed.html" class="nav-link ${activePage === 'feed' ? 'active' : ''}">Лента</a>
-                        <a href="library.html" class="nav-link ${activePage === 'library' ? 'active' : ''}">Игры</a>
+                        <a href="catalog.html" class="nav-link ${activePage === 'catalog' ? 'active' : ''}">Каталог</a>
                         <a href="characters.html" class="nav-link ${activePage === 'characters' ? 'active' : ''}">Персонажи</a>
                         <a href="music.html" class="nav-link ${activePage === 'music' ? 'active' : ''}">Музыка</a>
                         <a href="timeline.html" class="nav-link ${activePage === 'timeline' ? 'active' : ''}">Хронология</a>

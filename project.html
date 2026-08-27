@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="shared/css/base.css">
     <link rel="stylesheet" href="shared/css/layout.css">
     <link rel="stylesheet" href="shared/css/ui.css">
-    <!-- Переименован CSS -->
     <link rel="stylesheet" href="pages/project/project.css">
     
     <script>
@@ -39,30 +38,34 @@
                     В каталог
                 </a>
 
-                <div class="project-hero-content">
-                    <img id="project-logo" class="project-logo" src="" alt="Логотип">
-                    <h1 id="project-title" class="project-title-text" style="display: none;"></h1>
-                    
-                    <div class="project-meta-tags">
-                        <span id="project-type" class="meta-badge type-badge"></span>
-                        <span id="project-status" class="meta-badge status-badge"></span>
-                        <span id="project-date" class="meta-badge"></span>
-                        <span id="project-author" class="meta-badge"></span>
+                <div class="project-hero-content" id="hero-content">
+                    <div class="hero-poster-container" id="hero-poster-container" style="display: none;">
+                        <img id="project-poster" class="project-poster" src="" alt="Обложка">
                     </div>
 
-                    <div id="store-link-container" class="project-hero-actions"></div>
+                    <div class="hero-text-container">
+                        <img id="project-logo" class="project-logo" src="" alt="Логотип">
+                        <h1 id="project-title" class="project-title-text" style="display: none;"></h1>
+                        
+                        <div class="project-meta-tags">
+                            <span id="project-type" class="meta-badge type-badge"></span>
+                            <span id="project-status" class="meta-badge status-badge"></span>
+                            <span id="project-date" class="meta-badge"></span>
+                            <span id="project-author" class="meta-badge"></span>
+                        </div>
+
+                        <div id="store-link-container" class="project-hero-actions"></div>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <!-- ТАБЫ ГЕНЕРИРУЮТСЯ ЧЕРЕЗ JS В ЗАВИСИМОСТИ ОТ ТИПА ПРОЕКТА -->
         <nav class="wiki-tabs-container">
             <div class="wiki-tabs" id="dynamic-tabs"></div>
         </nav>
 
         <div class="wiki-content-area" id="dynamic-sections">
             
-            <!-- Секция: Обзор (Всегда есть) -->
             <section id="tab-overview" class="wiki-section active">
                 <div class="overview-grid">
                     <div class="overview-main">
@@ -79,7 +82,6 @@
                                 <h3>Жанры и теги</h3>
                                 <div class="tags-cloud" id="project-tags"></div>
                             </div>
-                            <!-- Блок переводов/русификаторов -->
                             <div class="bento-box" id="translators-container" style="display: none;">
                                 <h3 id="translators-title">Русификаторы</h3>
                                 <div class="translators-list" id="project-translators"></div>
@@ -89,7 +91,6 @@
                 </div>
             </section>
 
-            <!-- Секция: Сюжет и Персонажи -->
             <section id="tab-story" class="wiki-section">
                 <div id="wiki-story-content" style="display: none;">
                     <div class="overview-grid">
@@ -111,7 +112,6 @@
                 </div>
             </section>
 
-            <!-- Секция: Геймплей (Только для игр) -->
             <section id="tab-gameplay" class="wiki-section">
                 <div id="wiki-gameplay-content" class="bento-box large" style="display: none;">
                     <h2 class="section-title">Игровые механики</h2>
@@ -123,7 +123,6 @@
                 </div>
             </section>
 
-            <!-- Секция: Создание / Разработка -->
             <section id="tab-dev" class="wiki-section">
                 <div id="wiki-dev-content" class="timeline-container" style="display: none;"></div>
                 <div id="wiki-dev-empty" class="empty-state">
@@ -132,7 +131,6 @@
                 </div>
             </section>
 
-            <!-- Секция: Спецификации (Только для игр) -->
             <section id="tab-specs" class="wiki-section">
                 <div id="project-requirements" class="req-bento-grid"></div>
             </section>

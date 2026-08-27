@@ -17,22 +17,23 @@ export class CharacterModel {
     }
 
     /**
-     * Параллельный поиск упоминаний персонажа в базе игр.
+     * Параллельный поиск упоминаний персонажа в базе каталога (проектов).
      * Решает проблему N+1 инкапсулируя всю логику загрузки в один метод.
      */
     async findAppearances(charId) {
         try {
-            const gamesIndex = await fetchData('data/games_index.json');
+            // Изменено: теперь ищем в едином индексе каталога
+            const catalogIndex = await fetchData('data/catalog_index.json');
             
-            // Выполняем запросы параллельно, игнорируя битые файлы
-            const gamePromises = gamesIndex.map(gId => 
-                fetchData(`assets/games/${gId}/data.json`).catch(() => null)
+            // Выполняем запросы параллельно к новой папке catalog, игнорируя битые файлы
+            const projectPromises = catalogIndex.map(pId => 
+                fetchData(`assets/catalog/${pId}/data.json`).catch(() => null)
             );
             
-            const allGames = await Promise.all(gamePromises);
+            const allProjects = await Promise.all(projectPromises);
 
-            // Фильтруем игры, в которых упомянут данный персонаж
-            return allGames.filter(game => game !== null && game.wiki?.characters?.includes(charId));
+            // Фильтруем проекты (игры, книги, анимации), в которых упомянут данный персонаж
+            return allProjects.filter(project => project !== null && project.wiki?.characters?.includes(charId));
         } catch (error) {
             Logger.error(`Ошибка поиска появлений персонажа ${charId}`, error);
             throw new Error('Сбой базы данных');

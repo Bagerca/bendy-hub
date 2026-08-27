@@ -44,8 +44,6 @@ export class CharacterView {
     _initBackButton() {
         this.els.backBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Безопасная навигация: если пришли с нашего сайта — возвращаем назад.
-            // Если зашли по прямой ссылке — кидаем в общий архив.
             if (document.referrer && document.referrer.includes(window.location.host)) {
                 window.history.back();
             } else {
@@ -160,15 +158,16 @@ export class CharacterView {
         this.els.appearances.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><div class="spinner" style="width: 14px; height: 14px; border-width: 2px;"></div> Поиск в архивах...</span>';
     }
 
-    renderAppearances(games) {
+    // Изменено: теперь принимает projects и ссылается на project.html
+    renderAppearances(projects) {
         this.els.appearances.innerHTML = ''; 
 
-        if (games.length > 0) {
-            games.forEach(game => {
+        if (projects.length > 0) {
+            projects.forEach(project => {
                 const a = document.createElement('a');
-                a.href = `game.html?id=${game.id}`;
+                a.href = `project.html?id=${project.id}`; // Было game.html
                 a.className = 'app-tag interactive';
-                a.textContent = game.title;
+                a.textContent = project.title;
                 this.els.appearances.appendChild(a);
             });
         } else {

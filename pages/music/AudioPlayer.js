@@ -78,12 +78,26 @@ export class AudioPlayer {
     }
 
     play() {
-        this.audio.play().then(() => {
-            this.isPlaying = true;
-            this.els.iconPlay.style.display = 'none';
-            this.els.iconPause.style.display = 'block';
-            this._notifyStateChange();
-        }).catch(err => Logger.error('Ошибка автоплея:', err));
+        if (!this.audio.src) return; // Защита от пустых вызовов
+
+        const playPromise = this.audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                this.isPlaying = true;
+                this.els.iconPlay.style.display = 'none';
+                this.els.iconPause.style.display = 'block';
+                this._notifyStateChange();
+            }).catch(err => {
+                Logger.error('Воспроизведение заблокировано браузером или произошел сбой сети:', err);
+                
+                // Сбрасываем UI в состояние "Пауза", чтобы сетка (View) убрала анимацию эквалайзера
+                this.isPlaying = false;
+                this.els.iconPlay.style.display = 'block';
+                this.els.iconPause.style.display = 'none';
+                this._notifyStateChange();
+            });
+        }
     }
 
     pause() {

@@ -32,34 +32,34 @@ export class CatalogController {
             return;
         }
 
-        // Группируем проекты
+        /* 
+           Игры -> только горизонтальные (grid-horizontal)
+           Книги -> только вертикальные (grid-vertical)
+           Фильмы -> умная смешанная сетка (grid-mixed)
+        */
         const sectionsData = [
-            { title: 'Игры', layout: 'grid-horizontal', data: items.filter(i => i.type === 'game' || !i.type) },
-            { title: 'Книги и Комиксы', layout: 'grid-vertical', data: items.filter(i => i.type === 'book') },
-            { title: 'Анимация и Фильмы', layout: 'grid-vertical', data: items.filter(i => i.type === 'movie') }
+            { title: 'Игры', layout: 'grid-horizontal', viewMode: 'horizontal', data: items.filter(i => i.type === 'game' || !i.type) },
+            { title: 'Книги и Комиксы', layout: 'grid-vertical', viewMode: 'vertical', data: items.filter(i => i.type === 'book') },
+            { title: 'Анимация и Фильмы', layout: 'grid-mixed', viewMode: 'mixed', data: items.filter(i => i.type === 'movie') }
         ];
 
         const fragment = document.createDocumentFragment();
 
         sectionsData.forEach(section => {
             if (section.data.length > 0) {
-                // Создаем обертку секции
                 const sectionWrapper = document.createElement('section');
                 sectionWrapper.className = 'catalog-section';
 
-                // Заголовок секции
                 const title = document.createElement('h2');
                 title.className = 'catalog-section-title';
                 title.textContent = section.title;
                 sectionWrapper.appendChild(title);
 
-                // Сетка (применяем класс grid-horizontal или grid-vertical)
                 const grid = document.createElement('div');
                 grid.className = section.layout;
                 
-                // Рендерим карточки
                 section.data.forEach(item => {
-                    grid.appendChild(this.cardView.render(item));
+                    grid.appendChild(this.cardView.render(item, section.viewMode));
                 });
 
                 sectionWrapper.appendChild(grid);
