@@ -1,55 +1,10 @@
 .catalog-container {
     width: 100%; 
-    padding-top: 0.5rem; 
     padding-bottom: 4rem;
+    /* Убрали padding-top, теперь он регулируется в base.css */
 }
 
-.archive-controls {
-    position: sticky;
-    top: 75px; 
-    z-index: 50;
-    margin-bottom: 2rem; 
-}
-
-.feed-controls {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 0.75rem;
-    align-items: center; 
-    background-color: rgba(var(--bg-card-rgb, 255, 255, 255), 0.95); 
-    padding: 0.5rem; 
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-@supports (backdrop-filter: blur(10px)) {
-    .feed-controls {
-        background-color: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(15px);
-    }
-    [data-theme="dark"] .feed-controls {
-        background-color: rgba(28, 33, 40, 0.85);
-    }
-}
-
-.search-input-wrapper { position: relative; flex: 1 1 300px; display: flex; align-items: center; }
-.search-btn {
-    position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
-    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
-    padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: 0.2s; z-index: 2;
-}
-.search-btn:hover { color: var(--accent-color); background-color: var(--bg-body); }
-.search-input-wrapper:focus-within .search-btn { color: var(--accent-color); }
-
-.feed-controls input {
-    width: 100%; padding: 0.6rem 1rem 0.6rem 2.8rem; border: 1px solid var(--border-color); border-radius: 8px;
-    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
-}
-.feed-controls input::placeholder { color: var(--text-muted); opacity: 0.7; }
-.feed-controls input:focus { border-color: var(--accent-color); background-color: var(--bg-card); box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15); }
-
-/* --- НОВЫЕ КНОПКИ СОРТИРОВКИ (Иконки) --- */
+/* --- КНОПКИ СОРТИРОВКИ (Иконки) --- */
 .sort-toggles {
     display: flex;
     gap: 0.5rem;
@@ -60,8 +15,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px; /* Уменьшен отступ, так как текста больше нет */
-    padding: 0.55rem 0.75rem; /* Более квадратная форма кнопки */
+    gap: 4px; 
+    padding: 0.55rem 0.75rem; 
     background-color: var(--bg-body);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -134,15 +89,9 @@
 /* ================================
    СИСТЕМА СЕТОК
    ================================ */
-.grid-horizontal {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(364px, 1fr)); gap: 1.5rem;
-}
-.grid-vertical {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem;
-}
-.grid-mixed {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; align-items: start; grid-auto-flow: dense; 
-}
+.grid-horizontal { display: grid; grid-template-columns: repeat(auto-fill, minmax(364px, 1fr)); gap: 1.5rem; }
+.grid-vertical { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; }
+.grid-mixed { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; align-items: start; grid-auto-flow: dense; }
 .grid-mixed .card-horizontal { grid-column: span 2; }
 
 /* АДАПТИВ */
@@ -164,9 +113,7 @@
     
     .sort-toggles { width: 100%; order: 2; }
     .sort-btn { flex: 1; justify-content: center; }
-    
     .custom-select-container { width: 100%; order: 3; }
-    .search-input-wrapper { order: 1; flex-basis: 100%; }
 }
 
 .empty-state {

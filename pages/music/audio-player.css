@@ -1,0 +1,105 @@
+/* =========================================
+   ГЛОБАЛЬНЫЙ ПЛЕЕР
+   ========================================= */
+.global-player { 
+    position: fixed; 
+    bottom: 0; left: 0; right: 0; 
+    background-color: rgba(var(--bg-card-rgb, 28, 33, 40), 0.95); 
+    backdrop-filter: blur(25px); 
+    -webkit-backdrop-filter: blur(25px); 
+    border-top: 1px solid var(--border-color); 
+    z-index: 1000; 
+    transform: translateY(100%); 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    display: flex; 
+    flex-direction: column; 
+}
+
+[data-theme="light"] .global-player { background-color: rgba(255, 255, 255, 0.95); }
+
+.global-player.active { transform: translateY(0); }
+
+/* --- ПОЛЗУНКИ --- */
+.custom-slider { 
+    -webkit-appearance: none; 
+    width: 100%; height: 4px; 
+    background: rgba(150, 150, 150, 0.2); 
+    outline: none; cursor: pointer; 
+    border-radius: 2px; margin: 0; 
+    transition: height 0.1s ease; 
+}
+
+.player-progress-bar-container:hover .custom-slider,
+.volume-container:hover .custom-slider { height: 6px; }
+
+.custom-slider::-webkit-slider-runnable-track { width: 100%; height: 100%; background: transparent; border: none; }
+
+.custom-slider::-webkit-slider-thumb { 
+    -webkit-appearance: none; height: 12px; width: 12px; border-radius: 50%; 
+    background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.3); margin-top: -4px; 
+    opacity: 0; transition: opacity 0.2s, margin-top 0.1s ease; 
+}
+
+.player-progress-bar-container:hover .custom-slider::-webkit-slider-thumb, 
+.volume-container:hover .custom-slider::-webkit-slider-thumb { margin-top: -3px; }
+
+.custom-slider::-moz-range-track { width: 100%; height: 100%; background: transparent; border: none; }
+
+.custom-slider::-moz-range-thumb { 
+    height: 12px; width: 12px; border-radius: 50%; background: #fff; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3); border: none; opacity: 0; transition: opacity 0.2s; 
+}
+
+.player-progress-bar-container:hover .custom-slider::-webkit-slider-thumb, 
+.volume-container:hover .custom-slider::-webkit-slider-thumb, 
+.player-progress-bar-container:hover .custom-slider::-moz-range-thumb, 
+.volume-container:hover .custom-slider::-moz-range-thumb { opacity: 1; }
+
+.player-progress-bar-container { 
+    position: absolute; top: -8px; left: 0; right: 0; height: 16px; 
+    display: flex; align-items: center; padding: 0; cursor: pointer; 
+}
+
+/* --- КОНТЕНТ ПЛЕЕРА --- */
+.player-content { padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+.player-track-info { display: flex; align-items: center; gap: 1rem; width: 30%; min-width: 180px; }
+.player-cover { width: 56px; height: 56px; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.player-text { display: flex; flex-direction: column; overflow: hidden; }
+.player-text h4 { font-size: 0.95rem; color: var(--text-main); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 800;}
+.player-text p { font-size: 0.8rem; color: var(--text-muted); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600;}
+
+/* --- ЭЛЕМЕНТЫ УПРАВЛЕНИЯ --- */
+.player-controls { display: flex; align-items: center; gap: 1.25rem; flex: 1; justify-content: center; max-width: 400px; }
+.player-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+.player-btn:hover { color: var(--text-main); }
+.player-btn.active { color: var(--accent-color); position: relative; }
+.player-btn.active::after { content: ''; position: absolute; bottom: -4px; width: 4px; height: 4px; background: var(--accent-color); border-radius: 50%; }
+
+.control-small svg { width: 20px; height: 20px; }
+
+.play-btn { width: 44px; height: 44px; background: var(--text-main); color: var(--bg-card); border-radius: 50%; transition: transform 0.1s;}
+.play-btn:hover { transform: scale(1.05); color: var(--bg-card); background: #fff;}
+.play-btn:active { transform: scale(0.95); }
+
+/* --- ДОП. КНОПКИ (ГРОМКОСТЬ/ВРЕМЯ) --- */
+.player-extra { display: flex; align-items: center; gap: 1rem; width: 30%; justify-content: flex-end; }
+.time-stamp { font-size: 0.75rem; color: var(--text-muted); font-variant-numeric: tabular-nums; font-weight: 600; min-width: 35px; text-align: center;}
+.separator { min-width: auto; opacity: 0.5; }
+
+.volume-container { display: flex; align-items: center; gap: 8px; width: 100px; color: var(--text-muted); padding: 8px 0; }
+.volume-container svg { flex-shrink: 0; }
+
+.extra-btn { color: var(--text-muted); padding: 6px; background: transparent; border-radius: 6px;}
+.extra-btn:hover { background: rgba(150, 150, 150, 0.1); color: var(--text-main); }
+
+/* --- АДАПТИВ ПЛЕЕРА --- */
+@media (max-width: 768px) {
+    .player-content { padding: 10px 16px; }
+    .player-track-info { width: auto; max-width: 140px; }
+    .player-cover { width: 44px; height: 44px; }
+    .volume-container, .time-stamp { display: none; }
+    .player-extra { width: auto; }
+    .player-controls { gap: 1rem; justify-content: flex-end; }
+    #btn-shuffle, #btn-repeat { display: none; } 
+}

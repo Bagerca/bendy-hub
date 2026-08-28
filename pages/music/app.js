@@ -1,5 +1,5 @@
 import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
-import { debounce } from '../../shared/js/utils.js';
+import { SearchControls } from '../../shared/js/components/SearchControls.js';
 
 import { MusicModel } from './MusicModel.js';
 import { MusicView } from './MusicView.js';
@@ -7,6 +7,7 @@ import { AudioPlayer } from './AudioPlayer.js';
 import { MusicController } from './MusicController.js';
 
 customElements.define('site-header', SiteHeader);
+customElements.define('search-controls', SearchControls);
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Инициализация MVC слоев
@@ -16,25 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const controller = new MusicController(model, view, player);
 
     // 2. Инициализация UI поиска
-    const searchInput = document.getElementById('search-input');
+    const searchControls = document.querySelector('search-controls');
     
-    searchInput.addEventListener('input', debounce((e) => {
-        controller.handleSearch(e.target.value);
-    }, 300));
+    // Предоставляем функцию для автодополнения (показывает треки и авторов)
+    searchControls.suggestionProvider = (query) => model.getSuggestions(query);
     
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            controller.handleSearch(e.target.value);
-        }
+    // Принимаем окончательный запрос
+    searchControls.addEventListener('onSearch', (e) => {
+        controller.handleSearch(e.detail);
     });
-
-    const searchBtn = document.getElementById('search-btn');
-    if (searchBtn) {
-        searchBtn.addEventListener('click', () => {
-            controller.handleSearch(searchInput.value);
-        });
-    }
 
     // 3. Запуск
     controller.init();

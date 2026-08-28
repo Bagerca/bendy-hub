@@ -31,18 +31,7 @@ FILE: catalog.html
 
     <main class="page-content catalog-container">
         
-        <search class="archive-controls feed-controls">
-            <!-- Поиск -->
-            <div class="search-input-wrapper">
-                <button id="search-btn" class="search-btn" aria-label="Найти">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-                <input type="text" id="search-input" placeholder="Поиск по названию (Enter)..." aria-label="Поиск">
-            </div>
-            
+        <search-controls placeholder="Поиск по названию (Enter)...">
             <!-- Кнопки сортировки (Только иконки) -->
             <div class="sort-toggles">
                 <button id="sort-date-btn" class="sort-btn active" data-type="date" aria-label="Сортировка по дате" title="Сортировка по дате">
@@ -66,7 +55,7 @@ FILE: catalog.html
                 </button>
                 <ul class="custom-select-dropdown" role="listbox"></ul>
             </div>
-        </search>
+        </search-controls>
 
         <div id="catalog-loader" class="loading-state">
             <div class="spinner" style="margin: 0 auto 10px;"></div>
@@ -252,23 +241,12 @@ FILE: characters.html
 
     <main class="page-content characters-container">
         
-        <!-- ПАНЕЛЬ УПРАВЛЕНИЯ -->
-        <search class="archive-controls feed-controls">
-            <div class="search-input-wrapper">
-                <button id="search-btn" class="search-btn" aria-label="Найти">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-                <input type="text" id="search-input" placeholder="Поиск по имени или прозвищу (Enter)..." aria-label="Поиск">
-            </div>
-
+        <!-- ПАНЕЛЬ УПРАВЛЕНИЯ ЧЕРЕЗ WEB COMPONENT -->
+        <search-controls placeholder="Поиск по имени или прозвищу (Enter)...">
             <div class="archive-meta">
                 <span id="results-count">Подключение...</span>
             </div>
             
-            <!-- Универсальный селект -->
             <div class="custom-select-container" id="category-filter-container">
                 <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                     <div class="custom-select-value">
@@ -281,7 +259,7 @@ FILE: characters.html
                 </button>
                 <ul class="custom-select-dropdown" role="listbox"></ul>
             </div>
-        </search>
+        </search-controls>
 
         <!-- АЛФАВИТНЫЙ ФИЛЬТР -->
         <div id="alphabet-filters" class="alphabet-filters"></div>
@@ -352,7 +330,6 @@ FILE: feed.html
     <link rel="stylesheet" href="pages/feed/feed.css">
     
     <script>
-        // Предотвращение мерцания белого фона при загрузке (FOUC)
         const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
     </script>
@@ -363,18 +340,7 @@ FILE: feed.html
 
     <main class="page-content">
         <section class="feed-container">
-            <search class="feed-controls">
-                
-                <div class="search-input-wrapper">
-                    <button id="search-btn" class="search-btn" aria-label="Найти">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </button>
-                    <input type="text" id="search-input" placeholder="Поиск по твитам (Enter)..." aria-label="Поиск">
-                </div>
-                
+            <search-controls placeholder="Поиск по твитам (Enter)...">
                 <div class="custom-select-container" id="author-filter-container">
                     <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                         <div class="custom-select-value">
@@ -387,7 +353,7 @@ FILE: feed.html
                     </button>
                     <ul class="custom-select-dropdown" role="listbox"></ul>
                 </div>
-            </search>
+            </search-controls>
 
             <div id="feed-content" aria-live="polite"></div>
             
@@ -400,9 +366,6 @@ FILE: feed.html
         <img id="lightbox-img" src="" alt="Full image">
     </dialog>
 
-    <!-- ТЕМПЛЕЙТЫ ДЛЯ РЕНДЕРА -->
-
-    <!-- Шаблон поста -->
     <template id="post-template">
         <article class="post-card">
             <header class="post-header">
@@ -441,7 +404,6 @@ FILE: feed.html
         </article>
     </template>
 
-    <!-- Шаблон пустого состояния -->
     <template id="empty-state-template">
         <div class="empty-state">
             <div class="empty-state-icon">
@@ -455,14 +417,12 @@ FILE: feed.html
         </div>
     </template>
 
-    <!-- Шаблон ошибки -->
     <template id="error-state-template">
         <div class="error-card">
             <p class="error-message"></p>
         </div>
     </template>
 
-    <!-- Шаблон скелетона (Лоадер) -->
     <template id="skeleton-template">
         <div class="post-card skeleton-card">
             <header class="post-header">
@@ -1106,11 +1066,17 @@ FILE: music.html
     <title>Музыка Фандома | Bendy Hub</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
+    <!-- Shared CSS -->
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
     <link rel="stylesheet" href="shared/css/layout.css">
     <link rel="stylesheet" href="shared/css/ui.css">
+    
+    <!-- Page Specific CSS -->
     <link rel="stylesheet" href="pages/music/music.css">
+    <link rel="stylesheet" href="pages/music/song-card.css">
+    <link rel="stylesheet" href="pages/music/audio-player.css">
+    <link rel="stylesheet" href="pages/music/lyrics-panel.css">
     
     <script>
         const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
@@ -1125,17 +1091,7 @@ FILE: music.html
 
     <main class="page-content music-layout">
         
-        <search class="archive-controls feed-controls">
-            <div class="search-input-wrapper">
-                <button id="search-btn" class="search-btn" aria-label="Найти">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-                <input type="text" id="search-input" placeholder="Поиск по названию трека или исполнителю (Enter)..." aria-label="Поиск">
-            </div>
-
+        <search-controls placeholder="Поиск по названию трека или исполнителю (Enter)...">
             <div class="view-toggles">
                 <button id="btn-view-grid" class="view-btn active" title="Сетка" aria-label="Вид сеткой">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -1144,7 +1100,7 @@ FILE: music.html
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
                 </button>
             </div>
-        </search>
+        </search-controls>
 
         <div id="music-loader" class="loading-state">
             <div class="spinner" style="margin: 0 auto 10px;"></div>
@@ -1171,7 +1127,6 @@ FILE: music.html
                 </div>
             </div>
 
-            <!-- ОБНОВЛЕННЫЕ ИКОНКИ УПРАВЛЕНИЯ -->
             <div class="player-controls">
                 <button id="btn-shuffle" class="player-btn control-small" title="Перемешать">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"></path><path d="M4 20L21 3"></path><path d="M21 16v5h-5"></path><path d="M15 15l6 6"></path><path d="M4 4l5 5"></path></svg>
@@ -1182,9 +1137,7 @@ FILE: music.html
                 </button>
                 
                 <button id="btn-play-pause" class="player-btn play-btn" title="Play/Pause">
-                    <!-- Иконка Play с классом optical-center для идеального выравнивания -->
                     <svg id="icon-play" class="optical-center" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"/></svg>
-                    <!-- Иконка Pause -->
                     <svg id="icon-pause" style="display: none;" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                 </button>
                 
@@ -1246,14 +1199,12 @@ FILE: music.html
                 <img src="" alt="" class="song-cover" loading="lazy">
                 <div class="song-overlay"></div>
                 
-                <!-- ПЛАВНЫЙ ЭКВАЛАЙЗЕР (Убрали inline style) -->
                 <div class="eq-animation">
                     <span></span><span></span><span></span>
                 </div>
                 
                 <button class="song-play-btn">
                     <svg class="play-icon optical-center" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"/></svg>
-                    <!-- Иконка паузы внутри сетки -->
                     <svg class="pause-icon" style="display:none;" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                 </button>
             </div>
@@ -12586,12 +12537,12 @@ FILE: data\songs.json
 
 [
     {
-        "id": "dagames-bendy-and-the-ink-machine-dagames",
-        "title": "BENDY AND THE INK MACHINE     DAGames",
+        "id": "dagames-build-our-machine",
+        "title": "Build Our Machine",
         "artist": "DAGames",
         "type": "fan_song",
         "game": "BATIM",
-        "year": 2026,
+        "year": "2017",
         "cover": "assets/music/covers/dagames-bendy-and-the-ink-machine-dagames.jpg",
         "audioUrl": "assets/music/audio/dagames-bendy-and-the-ink-machine-dagames.mp3",
         "youtubeUrl": "https://youtu.be/ZstsPUKT5CI?si=C9xhs66XnsTJURqN",
@@ -13839,21 +13790,19 @@ FILE: pages\catalog\app.js
 
 import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
 import { CustomSelect } from '../../shared/js/components/CustomSelect.js';
-import { debounce } from '../../shared/js/utils.js';
+import { SearchControls } from '../../shared/js/components/SearchControls.js';
 
 import { CatalogModel } from './CatalogModel.js';
 import { CatalogCardView } from './views/CatalogCardView.js';
 import { CatalogController } from './CatalogController.js';
 
 customElements.define('site-header', SiteHeader);
+customElements.define('search-controls', SearchControls);
 
 document.addEventListener('DOMContentLoaded', () => {
     const model = new CatalogModel();
     const cardView = new CatalogCardView('template-card-horizontal', 'template-card-vertical');
     const controller = new CatalogController(model, cardView);
-
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
 
     // === ФИЛЬТР: ТИП ПРОЕКТА ===
     const typeSelect = new CustomSelect('type-filter-container', (selectedId) => {
@@ -13867,35 +13816,28 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'movie', label: 'Анимация' }
     ], 'all');
 
-
     // === НОВАЯ СОРТИРОВКА: ТОГГЛЫ ===
     const dateBtn = document.getElementById('sort-date-btn');
     const alphaBtn = document.getElementById('sort-alpha-btn');
     
-    // Дефолтное состояние (как в модели)
     let currentSortType = 'date';
     let currentSortDir = 'asc'; 
 
     function updateSortUI() {
-        // Сбрасываем активность с обеих кнопок
         dateBtn.classList.remove('active');
         alphaBtn.classList.remove('active');
         
-        // Активируем нужную кнопку и задаем ей data-атрибут направления
         const activeBtn = currentSortType === 'date' ? dateBtn : alphaBtn;
         activeBtn.classList.add('active');
         activeBtn.setAttribute('data-dir', currentSortDir);
 
-        // Отправляем команду в контроллер
         controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
     }
 
     function handleSortClick(clickedType) {
         if (currentSortType === clickedType) {
-            // Если кликнули по той же кнопке — меняем направление
             currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
         } else {
-            // Если кликнули по другой кнопке — делаем ее активной (по умолчанию asc)
             currentSortType = clickedType;
             currentSortDir = 'asc';
         }
@@ -13905,19 +13847,18 @@ document.addEventListener('DOMContentLoaded', () => {
     dateBtn.addEventListener('click', () => handleSortClick('date'));
     alphaBtn.addEventListener('click', () => handleSortClick('alpha'));
 
-    // === ПОИСК ===
-    const triggerSearch = () => {
-        controller.handleFilterChange({ search: searchInput.value });
-    };
-
-    searchInput.addEventListener('input', debounce(triggerSearch, 300));
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') { e.preventDefault(); triggerSearch(); }
+    // === ПОИСК (Связь с компонентом умного поиска) ===
+    const searchControls = document.querySelector('search-controls');
+    
+    // Провайдер данных для отрисовки dropdown подсказок
+    searchControls.suggestionProvider = (query) => model.getSuggestions(query);
+    
+    // Реальный поиск (меняющий DOM карточек), срабатывающий по клику лупы / нажатию Enter / выбору саджеста
+    searchControls.addEventListener('onSearch', (e) => {
+        controller.handleFilterChange({ search: e.detail });
     });
-    searchBtn.addEventListener('click', triggerSearch);
 
     // Старт
-    // Устанавливаем изначальный UI для дефолтной сортировки
     dateBtn.setAttribute('data-dir', 'asc');
     controller.init();
 });
@@ -14122,56 +14063,11 @@ FILE: pages\catalog\catalog.css
 
 .catalog-container {
     width: 100%; 
-    padding-top: 0.5rem; 
     padding-bottom: 4rem;
+    /* Убрали padding-top, теперь он регулируется в base.css */
 }
 
-.archive-controls {
-    position: sticky;
-    top: 75px; 
-    z-index: 50;
-    margin-bottom: 2rem; 
-}
-
-.feed-controls {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 0.75rem;
-    align-items: center; 
-    background-color: rgba(var(--bg-card-rgb, 255, 255, 255), 0.95); 
-    padding: 0.5rem; 
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-@supports (backdrop-filter: blur(10px)) {
-    .feed-controls {
-        background-color: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(15px);
-    }
-    [data-theme="dark"] .feed-controls {
-        background-color: rgba(28, 33, 40, 0.85);
-    }
-}
-
-.search-input-wrapper { position: relative; flex: 1 1 300px; display: flex; align-items: center; }
-.search-btn {
-    position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
-    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
-    padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: 0.2s; z-index: 2;
-}
-.search-btn:hover { color: var(--accent-color); background-color: var(--bg-body); }
-.search-input-wrapper:focus-within .search-btn { color: var(--accent-color); }
-
-.feed-controls input {
-    width: 100%; padding: 0.6rem 1rem 0.6rem 2.8rem; border: 1px solid var(--border-color); border-radius: 8px;
-    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
-}
-.feed-controls input::placeholder { color: var(--text-muted); opacity: 0.7; }
-.feed-controls input:focus { border-color: var(--accent-color); background-color: var(--bg-card); box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15); }
-
-/* --- НОВЫЕ КНОПКИ СОРТИРОВКИ (Иконки) --- */
+/* --- КНОПКИ СОРТИРОВКИ (Иконки) --- */
 .sort-toggles {
     display: flex;
     gap: 0.5rem;
@@ -14182,8 +14078,8 @@ FILE: pages\catalog\catalog.css
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px; /* Уменьшен отступ, так как текста больше нет */
-    padding: 0.55rem 0.75rem; /* Более квадратная форма кнопки */
+    gap: 4px; 
+    padding: 0.55rem 0.75rem; 
     background-color: var(--bg-body);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -14256,15 +14152,9 @@ FILE: pages\catalog\catalog.css
 /* ================================
    СИСТЕМА СЕТОК
    ================================ */
-.grid-horizontal {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(364px, 1fr)); gap: 1.5rem;
-}
-.grid-vertical {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem;
-}
-.grid-mixed {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; align-items: start; grid-auto-flow: dense; 
-}
+.grid-horizontal { display: grid; grid-template-columns: repeat(auto-fill, minmax(364px, 1fr)); gap: 1.5rem; }
+.grid-vertical { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; }
+.grid-mixed { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; align-items: start; grid-auto-flow: dense; }
 .grid-mixed .card-horizontal { grid-column: span 2; }
 
 /* АДАПТИВ */
@@ -14286,9 +14176,7 @@ FILE: pages\catalog\catalog.css
     
     .sort-toggles { width: 100%; order: 2; }
     .sort-btn { flex: 1; justify-content: center; }
-    
     .custom-select-container { width: 100%; order: 3; }
-    .search-input-wrapper { order: 1; flex-basis: 100%; }
 }
 
 .empty-state {
@@ -14384,18 +14272,13 @@ FILE: pages\catalog\CatalogModel.js
 
 import { fetchData } from '../../shared/js/api.js';
 import { Logger } from '../../shared/js/Logger.js';
+import { SmartSearch } from '../../shared/js/SmartSearch.js';
 
 export class CatalogModel {
     constructor() {
         this.allItems = [];
         this.filteredItems = [];
-        
-        // Храним состояние фильтров и сортировки
-        this.filters = {
-            search: '',
-            type: 'all',
-            sort: 'date_asc' // ПО УМОЛЧАНИЮ: Сначала старые
-        };
+        this.filters = { search: '', type: 'all', sort: 'date_asc' };
     }
 
     async fetchAllItems() {
@@ -14412,7 +14295,6 @@ export class CatalogModel {
             this.allItems = results.filter(item => item !== null);
             this.filteredItems = [...this.allItems];
             
-            // Применяем дефолтную сортировку при старте
             return this.applyFilters({});
         } catch (error) {
             Logger.error('Сбой доступа к индексу каталога', error);
@@ -14420,33 +14302,33 @@ export class CatalogModel {
         }
     }
 
+    // Для выпадающего списка
+    getSuggestions(query) {
+        const results = SmartSearch.execute(query, this.allItems, ['title']);
+        return results.slice(0, 5).map(item => ({ label: item.title, value: item.title }));
+    }
+
     applyFilters(updates) {
         this.filters = { ...this.filters, ...updates };
         const { search, type, sort } = this.filters;
-        const term = search.toLowerCase().trim();
 
-        // 1. Фильтрация
-        let result = this.allItems.filter(item => {
-            const matchSearch = item.title.toLowerCase().includes(term);
+        // 1. Умный поиск по названию
+        let result = SmartSearch.execute(search, this.allItems, ['title']);
+
+        // 2. Фильтрация по типу
+        result = result.filter(item => {
             const itemType = item.type || 'game';
-            const matchType = type === 'all' || itemType === type;
-            return matchSearch && matchType;
+            return type === 'all' || itemType === type;
         });
 
-        // 2. Сортировка
+        // 3. Сортировка
         result.sort((a, b) => {
-            // По алфавиту
             if (sort.startsWith('alpha')) {
                 const cmp = a.title.localeCompare(b.title, 'ru');
                 return sort === 'alpha_asc' ? cmp : -cmp;
-            } 
-            // По дате выхода
-            else {
+            } else {
                 const timeA = this._parseRussianDate(a.release_date);
                 const timeB = this._parseRussianDate(b.release_date);
-                
-                // date_desc (Сначала новые): B - A
-                // date_asc (Сначала старые): A - B
                 return sort === 'date_desc' ? timeB - timeA : timeA - timeB;
             }
         });
@@ -14455,36 +14337,19 @@ export class CatalogModel {
         return result;
     }
 
-    /**
-     * Конвертирует строку "15 ноя. 2022 г." в Timestamp для сортировки.
-     * Если дата "..." или TBA, возвращает Infinity (всегда в конце при asc, в начале при desc).
-     */
     _parseRussianDate(dateStr) {
-        if (!dateStr || dateStr === '...' || dateStr.toUpperCase() === 'TBA') {
-            return Infinity; 
-        }
-
+        if (!dateStr || dateStr === '...' || dateStr.toUpperCase() === 'TBA') return Infinity; 
         try {
-            const months = {
-                'янв': 0, 'фев': 1, 'мар': 2, 'апр': 3, 'мая': 4, 'май': 4,
-                'июн': 5, 'июл': 6, 'авг': 7, 'сен': 8, 'окт': 9, 'ноя': 10, 'дек': 11
-            };
-
+            const months = { 'янв':0, 'фев':1, 'мар':2, 'апр':3, 'мая':4, 'май':4, 'июн':5, 'июл':6, 'авг':7, 'сен':8, 'окт':9, 'ноя':10, 'дек':11 };
             const cleanStr = dateStr.replace(/г\.?/g, '').trim();
             const parts = cleanStr.split(/\s+/);
-
             if (parts.length >= 3) {
                 const day = parseInt(parts[0], 10);
                 const monthStr = parts[1].replace('.', '').toLowerCase();
                 const year = parseInt(parts[2], 10);
-                const month = months[monthStr] !== undefined ? months[monthStr] : 0;
-                
-                return new Date(year, month, day).getTime();
+                return new Date(year, months[monthStr] || 0, day).getTime();
             }
-        } catch (err) {
-            return 0; // Фолбэк в случае сломанной строки
-        }
-        
+        } catch (err) { return 0; }
         return 0;
     }
 }
@@ -15100,56 +14965,52 @@ FILE: pages\characters\app.js
 
 import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
 import { CustomSelect } from '../../shared/js/components/CustomSelect.js';
-import { debounce } from '../../shared/js/utils.js';
+import { SearchControls } from '../../shared/js/components/SearchControls.js';
 
 import { CharactersModel } from './CharactersModel.js';
 import { CharactersView } from './CharactersView.js';
 import { CharactersController } from './CharactersController.js';
 
 customElements.define('site-header', SiteHeader);
+customElements.define('search-controls', SearchControls);
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. MVC Инициализация
     const model = new CharactersModel();
     const view = new CharactersView();
     const controller = new CharactersController(model, view);
 
-    // 2. Инициализация UI элементов
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
+    // Подписка на кастомный умный поисковик
+    const searchControls = document.querySelector('search-controls');
+    
+    // Передаем функцию получения подсказок из модели
+    searchControls.suggestionProvider = (query) => model.getSuggestions(query);
+    
+    // Событие отправки формы поиска
+    searchControls.addEventListener('onSearch', (e) => {
+        controller.handleFilterChange({ search: e.detail });
+    });
 
-    // Настройка универсального селекта категорий
+    // Селект Категорий
     const categorySelect = new CustomSelect('category-filter-container', (selectedId) => {
         controller.handleFilterChange({ category: selectedId });
     });
 
-    // Иконка по умолчанию для категорий
-    const catIcon = `<div class="svg-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>`;
+    // --- Иконки из SVG пользователя ---
+    const iconAll = `<div class="svg-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></div>`;
+    
+    const iconHuman = `<div class="svg-icon"><svg width="20" height="20" fill="currentColor" viewBox="0 0 173.303 173.304"><g><path d="M58.732,173.304h96.756c0,0-28.077-22.566-27.486-47.307c0.354-13.785,27.486-31.334,27.353-69.638 c-0.085-19.263-18.767-51.286-50.491-55.277C73.136-2.916,49.392,4.068,39.016,23.63C28.627,43.182,27.842,60.351,28.64,63.535 c0.807,3.199,4.192,9.186,4.192,9.186s-15.962,24.542-14.973,28.53c1.011,4.001,11.959,6.15,11.959,6.15s0.993,2.776-1.008,8.159 c-1.997,5.396,3.714,11.648,5.432,13.835c1.69,2.174-2.402,8.969-1.011,12.769c1.395,3.781,7.986,8.372,15.564,7.38 c7.587-1.004,17.32-2.789,20.7-3.397C77.127,164.109,58.732,173.304,58.732,173.304z M100.072,114.812 c-7.265,0-12.196-5.346-12.196-12.471c0-7.271,5.06-12.471,12.196-12.471c7.404,0,12.202,5.207,12.337,12.471 C112.409,109.459,107.476,114.812,100.072,114.812z M101.984,19.395c18.103,0,26.323,10.008,26.323,21.382 c0,10.419-6.442,17.272-11.643,23.032c-5.078,5.617-7.137,10.967-6.996,17.135v2.472H91.437l-0.131-3.562 c-0.405-6.996,1.915-14.124,8.083-21.525c4.385-5.207,7.947-9.596,7.947-14.254c0-4.802-3.148-7.95-10.005-8.224 c-4.519,0-10.005,1.647-13.57,4.116L79.11,25.027C84.036,22.138,92.247,19.395,101.984,19.395z"></path></g></svg></div>`;
+    
+    const iconToon = `<div class="svg-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M18.5 2a4.5 4.5 0 0 1 .883 8.913 8 8 0 1 1-14.765-.001A4.499 4.499 0 0 1 5.5 2a4.5 4.5 0 0 1 4.493 4.254A7.998 7.998 0 0 1 12 6c.693 0 1.365.088 2.006.254A4.5 4.5 0 0 1 18.5 2z"></path></g></svg></div>`;
+    
+    const iconInk = `<div class="svg-icon"><svg width="20" height="20" viewBox="0 0 512 512" fill="currentColor"><path d="M256 32.796c-29.75 0-68.891 11.577-99.588 28.844-15.348 8.633-28.61 18.674-37.685 28.884C109.65 100.735 105 110.796 105 119.796c0 1 .75 3.54 3.62 7.164 2.867 3.623 7.55 8.046 13.503 12.809 11.906 9.524 28.805 20.496 46.87 32.539 31.444 20.963 66.69 44.82 87.007 74.048 20.317-29.229 55.563-53.085 87.008-74.048 18.064-12.043 34.963-23.015 46.869-32.54 5.953-4.762 10.636-9.185 13.504-12.808 2.868-3.623 3.619-6.164 3.619-7.164 0-9-4.65-19.06-13.727-29.272-9.076-10.21-22.337-20.251-37.685-28.884C324.89 44.373 285.75 32.796 256 32.796zm-96 55c16 0 80 48 80 80-49.427-32.146-80-32-80-32-16-16-16-48 0-48zm192 0c16 0 16 32 0 48 0 0-30.573-.146-80 32 0-32 64-80 80-80zM124.389 216.099c-1.259 0-2.503.037-3.73.107-.326.019-.644.055-.968.078 4.622 3.44 8.605 7.731 11.797 12.52 7.195 10.792 10.748 24.327 8.934 37.931-1.338 10.032-5.833 20.055-13.715 28.377 1.736 1.92 3.344 4.07 4.99 6.438 7.078 10.176 14.145 24.717 21.242 41.256 1.2 2.797 2.396 5.651 3.586 8.54 10.648-6.648 22.597-10.931 35.457-10.529 1.92.06 3.862.224 5.82.5 12.583 1.776 25.386 7.956 38.677 19.051a288.157 288.157 0 0 0 3.953-6.65c-4.372-16.06-11.582-34.608-20.555-52.612-18.748-37.617-46.579-72.377-66.69-79.558-10.431-3.725-19.989-5.453-28.798-5.45zm263.222 0c-8.81-.004-18.367 1.724-28.798 5.449-20.111 7.18-47.942 41.941-66.69 79.558-8.973 18.004-16.183 36.551-20.555 52.612 1.26 2.194 2.591 4.42 3.953 6.65 13.29-11.095 26.094-17.275 38.676-19.05 1.96-.277 3.9-.44 5.82-.5 12.86-.403 24.81 3.88 35.458 10.529 1.19-2.89 2.385-5.744 3.586-8.541 7.097-16.54 14.164-31.08 21.242-41.256 1.646-2.367 3.254-4.517 4.99-6.438-7.882-8.322-12.377-18.345-13.715-28.377-1.814-13.604 1.739-27.14 8.934-37.931 3.192-4.789 7.175-9.08 11.797-12.52-.324-.023-.642-.06-.967-.078a65.622 65.622 0 0 0-3.73-.107zm-293.047 9.718a23.893 23.893 0 0 0-4.12.39c-4.146 2.676-8.089 5.835-11.856 9.425-19.142 18.24-32.817 48.68-38.734 82.889-5.918 34.207-4.163 72.009 5.894 104.39 6.921 22.286 17.755 41.725 32.348 56.293-7.482-25.49-12.588-54.061-12.727-82.312-.192-39.136 9.156-78.077 36.291-105.371 1.569-1.578 3.7-2.926 6.031-3.694 9.491-6.578 13.73-14.786 14.887-23.47 1.186-8.896-1.261-18.361-6.066-25.569-4.806-7.208-11.614-11.916-19.076-12.805-.933-.11-1.89-.169-2.872-.166zm322.872 0a23.654 23.654 0 0 0-2.872.166c-7.462.889-14.27 5.597-19.076 12.805-4.805 7.208-7.252 16.673-6.066 25.568 1.158 8.685 5.396 16.893 14.887 23.471 2.331.768 4.462 2.116 6.03 3.694 27.136 27.294 36.484 66.235 36.292 105.37-.14 28.252-5.245 56.823-12.727 82.313 14.593-14.568 25.427-34.007 32.348-56.293 10.057-32.381 11.812-70.183 5.894-104.39-5.917-34.208-19.592-64.65-38.734-82.89-3.767-3.589-7.71-6.748-11.855-9.425a23.856 23.856 0 0 0-4.121-.389zM223.54 236.642l-4.668 25.673c6.142 9.82 11.863 20.228 17.113 30.762 8.339 16.73 15.233 33.836 20.012 49.658 4.78-15.822 11.678-32.928 20.016-49.658 5.25-10.534 10.971-20.943 17.113-30.762l-4.668-25.673c-10.553 10.212-19.153 20.668-24.408 31.18L256 283.92l-8.05-16.1c-5.256-10.511-13.856-20.967-24.409-31.18zM189.412 358.77c-.642.01-1.283.039-1.92.084-7.645.535-14.922 3.493-22.58 8.482-18.513 12.06-29.046 29.471-33.531 52.262-3.334 16.942-3.043 36.818.517 58.691 7.15-14.08 14.765-30.503 22.176-44.867 5.776-11.194 11.273-20.973 17.479-27.951 3.103-3.49 6.382-6.572 11.355-8.092 4.974-1.52 11.702.299 15.455 4.053l15.117 15.117c2.063-2.118 5.486-7.853 8.249-14.299 4.073-9.506 6.651-18.326 8.09-23.52-13.398-12.427-24.835-18.221-34.532-19.59a37.478 37.478 0 0 0-5.875-.37zm133.176 0a37.478 37.478 0 0 0-5.875.37c-9.697 1.369-21.134 7.163-34.531 19.59 1.438 5.194 4.016 14.014 8.09 23.52 2.762 6.446 6.185 12.18 8.248 14.299l15.117-15.117c3.753-3.754 10.481-5.573 15.455-4.053 4.973 1.52 8.252 4.603 11.355 8.092 6.206 6.978 11.703 16.757 17.479 27.95 7.411 14.365 15.026 30.789 22.176 44.868 3.56-21.873 3.851-41.75.517-58.691-4.485-22.791-15.018-40.203-33.531-52.262-7.658-4.989-14.935-7.947-22.58-8.483a36.203 36.203 0 0 0-1.92-.084zM256 362.726a300.28 300.28 0 0 1-6.125 10.216l.092.092-1.237 4.945s-4.051 16.411-10.459 31.362c-3.203 7.475-6.71 14.621-12.158 20.068-2.723 2.724-6.272 5.322-11.15 5.863-4.878.542-10-1.787-13.326-5.113l-3.2-3.199c-3.24 1.637-6.565 2.987-9.988 3.953a44.166 44.166 0 0 0 2.783 4.275c4.507 6.084 11.133 13.22 18.694 19.834 15.12 13.231 34.574 23.774 46.074 23.774s30.953-10.543 46.074-23.774c7.56-6.615 14.187-13.75 18.694-19.834a44.166 44.166 0 0 0 2.783-4.275c-3.423-.966-6.748-2.316-9.989-3.953l-3.199 3.2c-3.326 3.325-8.448 5.654-13.326 5.112-4.878-.541-8.427-3.14-11.15-5.863-5.447-5.447-8.955-12.593-12.158-20.068-6.408-14.951-10.46-31.362-10.46-31.362l-1.236-4.945.092-.092A300.28 300.28 0 0 1 256 362.726z"></path></svg></div>`;
     
     categorySelect.populate([
-        { id: 'all', label: 'Все категории', iconHtml: catIcon },
-        { id: 'human', label: 'Люди', iconHtml: catIcon },
-        { id: 'ink', label: 'Чернильные сущности', iconHtml: catIcon },
-        { id: 'toon', label: 'Мультяшки', iconHtml: catIcon }
+        { id: 'all', label: 'Все категории', iconHtml: iconAll },
+        { id: 'human', label: 'Люди', iconHtml: iconHuman },
+        { id: 'ink', label: 'Чернильные сущности', iconHtml: iconInk },
+        { id: 'toon', label: 'Мультяшки', iconHtml: iconToon }
     ], 'all');
 
-    // 3. Обработчики поиска
-    searchInput.addEventListener('input', debounce((e) => {
-        controller.handleFilterChange({ search: e.target.value });
-    }, 300));
-    
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            controller.handleFilterChange({ search: searchInput.value });
-        }
-    });
-    
-    searchBtn.addEventListener('click', () => {
-        controller.handleFilterChange({ search: searchInput.value });
-    });
-
-    // 4. Запуск
     controller.init();
 });
 
@@ -15157,53 +15018,10 @@ document.addEventListener('DOMContentLoaded', () => {
 FILE: pages\characters\characters.css
 ============================================================
 
-.characters-container { padding-top: 0.5rem; padding-bottom: 4rem; }
-
-/* ПАНЕЛЬ УПРАВЛЕНИЯ */
-.archive-controls {
-    position: sticky;
-    top: 75px; 
-    z-index: 50;
-    margin-bottom: 0.75rem; /* Уменьшен отступ под панелью */
+.characters-container { 
+    padding-bottom: 4rem; 
+    /* padding-top убран */
 }
-
-.feed-controls {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 0.75rem;
-    align-items: center; /* Центрируем все элементы панели по высоте */
-    background-color: rgba(var(--bg-card-rgb, 255, 255, 255), 0.95); 
-    padding: 0.5rem; /* Сделали панель чуть тоньше */
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-@supports (backdrop-filter: blur(10px)) {
-    .feed-controls {
-        background-color: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(15px);
-    }
-    [data-theme="dark"] .feed-controls {
-        background-color: rgba(28, 33, 40, 0.85);
-    }
-}
-
-.search-input-wrapper { position: relative; flex: 1 1 250px; display: flex; align-items: center; }
-.search-btn {
-    position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
-    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
-    padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: 0.2s; z-index: 2;
-}
-.search-btn:hover { color: var(--accent-color); background-color: var(--bg-body); }
-.search-input-wrapper:focus-within .search-btn { color: var(--accent-color); }
-
-.feed-controls input {
-    width: 100%; padding: 0.6rem 1rem 0.6rem 2.8rem; border: 1px solid var(--border-color); border-radius: 8px;
-    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
-}
-.feed-controls input::placeholder { color: var(--text-muted); opacity: 0.7; }
-.feed-controls input:focus { border-color: var(--accent-color); background-color: var(--bg-card); box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15); }
 
 /* ИНТЕГРИРОВАННЫЙ СЧЕТЧИК */
 .archive-meta { 
@@ -15232,16 +15050,11 @@ FILE: pages\characters\characters.css
     position: absolute; top: calc(100% + 5px); left: 0; right: 0;
     background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; 
     box-shadow: 0 10px 25px rgba(0,0,0,0.15); list-style: none; padding: 0.5rem 0; z-index: 200; 
-    max-height: 250px; overflow-y: auto; 
-    scrollbar-width: none; /* Скрываем скроллбар в Firefox */
-    opacity: 0; visibility: hidden; transform: translateY(-10px); transition: 0.2s;
+    max-height: 250px; overflow-y: auto; scrollbar-width: none; opacity: 0; visibility: hidden; 
+    transform: translateY(-10px); transition: 0.2s;
 }
 
-/* Скрываем скроллбар в Chrome/Safari/Edge */
-.custom-select-dropdown::-webkit-scrollbar { 
-    display: none; 
-}
-
+.custom-select-dropdown::-webkit-scrollbar { display: none; }
 .custom-select-container.active .custom-select-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 .custom-select-option { padding: 0.6rem 1rem; display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500; color: var(--text-main);}
 .custom-select-option:hover { background-color: var(--bg-body); }
@@ -15252,10 +15065,10 @@ FILE: pages\characters\characters.css
 .alphabet-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px; /* Расстояние между чипами */
-    justify-content: center; /* Центрируем чипы */
-    margin-bottom: 1.25rem; /* Отступ до сетки персонажей */
-    padding: 0 1.5rem; /* Боковые отступы */
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    padding: 0 1.5rem; 
 }
 
 .alphabet-chip {
@@ -15264,11 +15077,11 @@ FILE: pages\characters\characters.css
     color: var(--text-muted);
     font-weight: 600;
     font-size: 0.9rem;
-    padding: 0.5rem 0.9rem; /* Меньше padding для более компактных чипов */
-    border-radius: 20px; /* Сильное скругление для формы чипа */
+    padding: 0.5rem 0.9rem;
+    border-radius: 20px;
     cursor: pointer;
     transition: all 0.2s ease;
-    min-width: 40px; /* Минимальная ширина для одиночной буквы */
+    min-width: 40px; 
     text-align: center;
     white-space: nowrap;
 }
@@ -15283,100 +15096,44 @@ FILE: pages\characters\characters.css
 .alphabet-chip.active {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
-    color: var(--text-main); /* Используем text-main для контраста на акцентном фоне */
+    color: var(--text-main);
     box-shadow: 0 4px 15px rgba(210, 168, 80, 0.3);
     cursor: default;
-    transform: none; /* Убираем translateY на активном */
-}
-/* СЕТКА ПЕРСОНАЖЕЙ (Компактная) */
-.chars-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Чуть расширили минимальный размер карточки */
-    gap: 1rem; 
+    transform: none; 
 }
 
-/* ПРОКАЧАННАЯ КАРТОЧКА */
+/* СЕТКА ПЕРСОНАЖЕЙ (Компактная) */
+.chars-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+
 .char-card {
-    background-color: var(--bg-card); 
-    border: 1px solid var(--border-color); 
-    border-radius: 12px;
-    padding: 12px 16px; /* Чуть больше воздуха внутри */
-    display: flex; 
-    align-items: center; /* Строгая централизация по вертикали */
-    gap: 14px;
-    text-decoration: none; 
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    min-height: 70px; /* Фиксируем минимальную высоту */
+    background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px;
+    padding: 12px 16px; display: flex; align-items: center; gap: 14px; text-decoration: none; 
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 8px rgba(0,0,0,0.02); min-height: 70px;
 }
 
 .char-card:hover { 
-    transform: translateY(-3px) scale(1.02); 
-    border-color: var(--accent-color); 
-    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15); 
-    background-color: var(--bg-body);
+    transform: translateY(-3px) scale(1.02); border-color: var(--accent-color); 
+    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15); background-color: var(--bg-body);
 }
 
 .char-avatar-wrapper {
-    width: 46px; /* Чуть увеличили аватарку */
-    height: 46px; 
-    border-radius: 50%; 
-    background-color: var(--bg-body); 
-    border: 1px solid var(--border-color);
-    position: relative; 
-    overflow: hidden; 
-    flex-shrink: 0;
+    width: 46px; height: 46px; border-radius: 50%; background-color: var(--bg-body); 
+    border: 1px solid var(--border-color); position: relative; overflow: hidden; flex-shrink: 0;
 }
 
-.char-img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    position: relative;
-    z-index: 2;
-}
+.char-img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2; }
+.char-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--text-muted); opacity: 0.4; z-index: 1; }
 
-.char-fallback { 
-    position: absolute; 
-    inset: 0; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    color: var(--text-muted); 
-    opacity: 0.4; 
-    z-index: 1; 
-}
-
-/* ПРОКАЧАННЫЙ ТЕКСТ (Line-Clamp 2 строки) */
 .char-card-name { 
-    font-size: 1.1rem; /* Увеличили текст (было 1rem) */
-    font-weight: 700; 
-    color: var(--text-main); 
-    line-height: 1.25; 
-    flex-grow: 1;
-    
-    /* Магия для длинных имен: ограничиваем 2 строками */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal; /* Разрешаем перенос */
-    word-wrap: break-word; 
+    font-size: 1.1rem; font-weight: 700; color: var(--text-main); line-height: 1.25; flex-grow: 1;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; white-space: normal; word-wrap: break-word; 
 }
 
-/* АДАПТИВ */
 @media (max-width: 768px) {
-    .archive-meta {
-        width: 100%; 
-        justify-content: center;
-        margin-top: 5px;
-        order: 3;
-    }
+    .archive-meta { width: 100%; justify-content: center; margin-top: 5px; order: 3; }
     .custom-select-container { min-width: 100%; order: 2; }
-    .search-input-wrapper { order: 1; }
     .chars-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; }
-    .alphabet-filters { padding: 0 0.5rem; } /* Уменьшаем padding на мобилках */
+    .alphabet-filters { padding: 0 0.5rem; }
     .alphabet-chip { font-size: 0.85rem; padding: 0.4rem 0.7rem; min-width: 36px; }
 }
 
@@ -15421,17 +15178,13 @@ FILE: pages\characters\CharactersModel.js
 
 import { fetchData } from '../../shared/js/api.js';
 import { Logger } from '../../shared/js/Logger.js';
+import { SmartSearch } from '../../shared/js/SmartSearch.js';
 
 export class CharactersModel {
     constructor() {
         this.allCharacters = [];
         this.filteredCharacters = [];
-        
-        this.filters = {
-            search: '',
-            category: 'all',
-            letter: 'all'
-        };
+        this.filters = { search: '', category: 'all', letter: 'all' };
     }
 
     async fetchAll() {
@@ -15440,10 +15193,8 @@ export class CharactersModel {
             const charPromises = charIds.map(id => 
                 fetchData(`assets/characters/${id}/data.json`).catch(() => null)
             );
-            
             const results = await Promise.all(charPromises);
             
-            // Фильтруем битые файлы и сортируем по алфавиту
             this.allCharacters = results
                 .filter(char => char !== null)
                 .sort((a, b) => a.name.localeCompare(b.name, 'ru'));
@@ -15456,7 +15207,6 @@ export class CharactersModel {
         }
     }
 
-    // Бизнес-логика определения расы/категории
     _determineCategory(char) {
         const species = (char.meta?.species || '').toLowerCase();
         if (species.includes('человек') || species.includes('human')) return 'human';
@@ -15465,48 +15215,39 @@ export class CharactersModel {
         return 'other';
     }
 
+    getSuggestions(query) {
+        // Ищем и по имени, и по алиасам (например, "объект 414" -> Генри)
+        const results = SmartSearch.execute(query, this.allCharacters, ['name', 'meta.aliases']);
+        return results.slice(0, 5).map(char => ({ label: char.name, value: char.name }));
+    }
+
     applyFilters(updates) {
         this.filters = { ...this.filters, ...updates };
         const { search, category, letter } = this.filters;
-        const term = search.toLowerCase().trim();
 
-        this.filteredCharacters = this.allCharacters.filter(char => {
-            // Поиск по имени и алиасам
-            const matchName = char.name.toLowerCase().includes(term);
-            const aliases = char.meta?.aliases ? char.meta.aliases.join(' ').toLowerCase() : '';
-            const matchAlias = aliases.includes(term);
-            const searchPass = matchName || matchAlias;
+        // Умный поиск
+        let result = SmartSearch.execute(search, this.allCharacters, ['name', 'meta.aliases']);
 
-            // Фильтр по категории
+        result = result.filter(char => {
             const charCat = this._determineCategory(char);
             const categoryPass = category === 'all' || charCat === category;
-
-            // Фильтр по букве
             const firstLetter = char.name.charAt(0).toLowerCase();
             const letterPass = letter === 'all' || firstLetter === letter;
-
-            return searchPass && categoryPass && letterPass;
+            return categoryPass && letterPass;
         });
 
+        this.filteredCharacters = result;
         return this.filteredCharacters;
     }
 
     getUniqueFirstLetters() {
         const russianAlphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
         const uniqueLetters = new Set();
-        
         this.allCharacters.forEach(char => {
             const firstChar = char.name.charAt(0).toLowerCase();
-            if (russianAlphabet.includes(firstChar)) {
-                uniqueLetters.add(firstChar);
-            }
+            if (russianAlphabet.includes(firstChar)) uniqueLetters.add(firstChar);
         });
-
         return Array.from(uniqueLetters).sort();
-    }
-
-    getFilteredCount() {
-        return this.filteredCharacters.length;
     }
 }
 
@@ -15616,7 +15357,7 @@ import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
 import { InfiniteScroll } from '../../shared/js/components/InfiniteScroll.js';
 import { fetchData } from '../../shared/js/api.js';
 import { LightboxManager } from '../../shared/js/Lightbox.js';
-import { debounce } from '../../shared/js/utils.js';
+import { SearchControls } from '../../shared/js/components/SearchControls.js';
 
 import { FeedModel } from './FeedModel.js';
 import { PostView } from './PostView.js';
@@ -15625,6 +15366,7 @@ import { TranslationService } from './services/TranslationService.js';
 import { CustomSelect } from '../../shared/js/components/CustomSelect.js';
 
 customElements.define('site-header', SiteHeader);
+customElements.define('search-controls', SearchControls);
 
 const TRACKED_AUTHORS = [
     { handle: '@Bendy', name: 'Bendy' },
@@ -15650,13 +15392,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const controller = new FeedController(model, view, scroller);
 
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
     let currentSelectedAuthor = 'all';
+    let currentSearchTerm = ''; // Сохраняем состояние поиска для комбинирования с селектом
 
     const triggerSearch = () => {
-        controller.handleSearchOrFilter(searchInput.value, currentSelectedAuthor);
+        controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthor);
     };
+
+    const searchControls = document.querySelector('search-controls');
+    
+    // Подсказки (Ищет только имена авторов в ленте)
+    searchControls.suggestionProvider = (query) => model.getSuggestions(query);
+    
+    // Событие подтверждения поиска
+    searchControls.addEventListener('onSearch', (e) => {
+        currentSearchTerm = e.detail;
+        triggerSearch();
+    });
 
     const authorSelect = new CustomSelect('author-filter-container', (selectedId) => {
         currentSelectedAuthor = selectedId;
@@ -15675,7 +15427,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         ];
 
         TRACKED_AUTHORS.forEach(author => {
-            // Динамически строим новый путь, игнорируя старые JSON данные
+            // Динамически строим путь к аватарке
             const handleClean = author.handle.replace('@', '').toLowerCase();
             const newLocalPath = `assets/developers/${handleClean}/avatar.jpg`;
             
@@ -15695,15 +15447,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             controller.renderEmptyState();
         }
 
-        searchInput.addEventListener('input', debounce(triggerSearch, 400));
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                triggerSearch();
-            }
-        });
-        searchBtn.addEventListener('click', triggerSearch);
-
     } catch (error) {
         controller.renderErrorState('Не удалось загрузить ленту. База данных недоступна или повреждена.');
     }
@@ -15717,193 +15460,43 @@ FILE: pages\feed\feed.css
    КОНТЕЙНЕР ЛЕНТЫ
 ===================== */
 .feed-container {
-    /* Оптимальная ширина для чтения текста (UX стандарт) */
     max-width: 600px; 
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-/* =====================
-   ПАНЕЛЬ УПРАВЛЕНИЯ (Поиск и Селект)
-===================== */
-.feed-controls {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 0.75rem;
-    background-color: var(--bg-card);
-    padding: 0.75rem; 
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    /* Легкая тень для отделения от скролла */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-}
-
-/* Обертка для инпута (занимает всё свободное место) */
-.search-input-wrapper {
-    position: relative;
-    flex: 1 1 250px; 
-    display: flex;
-    align-items: center;
-}
-
-/* Кнопка поиска внутри инпута */
-.search-btn {
-    position: absolute;
-    left: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 2;
-}
-
-.search-btn:hover {
-    color: var(--accent-color);
-    background-color: var(--bg-body);
-}
-
-.search-input-wrapper:focus-within .search-btn {
-    color: var(--accent-color);
-}
-
-.feed-controls input {
-    width: 100%;
-    padding: 0.7rem 1rem 0.7rem 2.8rem;
-    border: 1px solid var(--border-color); 
-    border-radius: 8px;
-    background-color: var(--bg-body); 
-    color: var(--text-main);
-    font-family: inherit;
-    font-size: 0.95rem;
-    outline: none; 
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.feed-controls input::placeholder {
-    color: var(--text-muted);
-    opacity: 0.7;
-}
-
-.feed-controls input:focus {
-    border-color: var(--accent-color);
-    background-color: var(--bg-card);
-    box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15);
+    /* Убрали display:flex и gap, чтобы не множить отступы с поисковиком */
 }
 
 /* Кастомный селект */
-.custom-select-container { 
-    position: relative; 
-    /* На мобильных займет всю ширину, на ПК сожмется до контента */
-    flex: 1 1 200px;
-    min-width: 200px; 
-}
-
+.custom-select-container { position: relative; flex: 1 1 200px; min-width: 200px; }
 .custom-select-trigger {
-    width: 100%; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center;
-    padding: 0.65rem 1rem; 
-    border: 1px solid var(--border-color);
-    border-radius: 8px; 
-    background-color: var(--bg-body); 
-    color: var(--text-main);
-    font-family: inherit;
-    cursor: pointer;
-    transition: border-color 0.2s ease;
+    width: 100%; display: flex; justify-content: space-between; align-items: center;
+    padding: 0.65rem 1rem; border: 1px solid var(--border-color);
+    border-radius: 8px; background-color: var(--bg-body); color: var(--text-main);
+    font-family: inherit; cursor: pointer; transition: border-color 0.2s ease;
 }
-
-.custom-select-trigger:hover {
-    border-color: var(--text-muted);
-}
-
-.custom-select-value { 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-    font-weight: 500;
-}
+.custom-select-trigger:hover { border-color: var(--text-muted); }
+.custom-select-value { display: flex; align-items: center; gap: 10px; font-weight: 500; }
 
 .custom-select-dropdown {
-    position: absolute; 
-    top: calc(100% + 5px); 
-    left: 0; 
-    right: 0;
-    background-color: var(--bg-card); 
-    border: 1px solid var(--border-color);
-    border-radius: 8px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    list-style: none; 
-    padding: 0; /* Убрали внутренние отступы сверху и снизу */
-    z-index: 200; 
-    max-height: 250px; 
-    overflow-y: auto;
-    overflow-x: hidden; /* Обрезаем края дочерних элементов под скругления border-radius */
-    scrollbar-width: none; 
-    opacity: 0; 
-    visibility: hidden; 
-    transform: translateY(-10px); 
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute; top: calc(100% + 5px); left: 0; right: 0;
+    background-color: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    list-style: none; padding: 0; z-index: 200; max-height: 250px; 
+    overflow-y: auto; overflow-x: hidden; scrollbar-width: none; 
+    opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.custom-select-dropdown::-webkit-scrollbar {
-    display: none;
-}
-
-.custom-select-container.active .custom-select-dropdown { 
-    opacity: 1; 
-    visibility: visible; 
-    transform: translateY(0); 
-}
+.custom-select-dropdown::-webkit-scrollbar { display: none; }
+.custom-select-container.active .custom-select-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 
 .custom-select-option { 
-    padding: 0.7rem 1rem; /* Сделали кликабельную зону чуть больше */
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-    cursor: pointer; 
-    font-weight: 500;
-    color: var(--text-main);
-    transition: background-color 0.15s ease, color 0.15s ease;
+    padding: 0.7rem 1rem; display: flex; align-items: center; gap: 10px; cursor: pointer; 
+    font-weight: 500; color: var(--text-main); transition: background-color 0.15s ease, color 0.15s ease;
 }
+.custom-select-option:hover { background-color: var(--bg-body); }
+.custom-select-option.selected { color: var(--accent-color); background-color: rgba(210, 168, 80, 0.05); }
 
-.custom-select-option:hover { 
-    background-color: var(--bg-body); 
-}
-
-.custom-select-option.selected { 
-    color: var(--accent-color); 
-    background-color: rgba(210, 168, 80, 0.05); 
-}
-
-/* Иконки/аватары внутри селекта */
-.custom-select-icon { 
-    width: 24px; 
-    height: 24px; 
-    border-radius: 50%; 
-    object-fit: cover;
-    border: 1px solid var(--border-color);
-    display: block;
-}
-
-.custom-select-icon.svg-icon {
-    border: none;
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-}
+.custom-select-icon { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); display: block; }
+.custom-select-icon.svg-icon { border: none; border-radius: 0; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
 
 /* =====================
    КАРТОЧКА ПОСТА
@@ -15911,46 +15504,24 @@ FILE: pages\feed\feed.css
 #feed-content { 
     display: flex; 
     flex-direction: column; 
-    gap: 1.25rem; 
-    width: 100%;
+    gap: 1.25rem; /* Отступы только между самими постами */
+    width: 100%; 
 }
 
 .post-card {
-    background-color: var(--bg-card); 
-    border: 1px solid var(--border-color);
-    border-radius: 12px; 
-    padding: 1.25rem; 
-    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+    background-color: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 12px; padding: 1.25rem; transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
     animation: fadeInSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.post-card:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 8px 25px rgba(210, 168, 80, 0.1);
-    transform: translateY(-2px);
-}
+.post-card:hover { border-color: var(--accent-color); box-shadow: 0 8px 25px rgba(210, 168, 80, 0.1); transform: translateY(-2px); }
 
-.post-header { 
-    display: flex; 
-    align-items: center; 
-    margin-bottom: 0.85rem; 
-    gap: 0.75rem; 
-}
-
-.post-avatar { 
-    width: 48px; 
-    height: 48px; 
-    border-radius: 50%; 
-    object-fit: cover; 
-    background-color: var(--bg-body);
-    border: 1px solid var(--border-color);
-}
-
+.post-header { display: flex; align-items: center; margin-bottom: 0.85rem; gap: 0.75rem; }
+.post-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background-color: var(--bg-body); border: 1px solid var(--border-color); }
 .post-meta { flex-grow: 1; display: flex; flex-direction: column; }
 .post-author-name { font-size: 1rem; font-weight: 700; line-height: 1.2; color: var(--text-main);}
 .post-author-handle { color: var(--text-muted); font-size: 0.85rem; text-decoration: none; margin-top: 0.1rem;}
 .post-author-handle:hover { color: var(--accent-color); text-decoration: underline;}
-
 .post-platform-badge { font-size: 0.75rem; color: var(--text-muted); background: var(--bg-body); padding: 0.25rem 0.6rem; border-radius: 12px; text-transform: capitalize; font-weight: 600;}
 
 /* Ретвиты */
@@ -15960,14 +15531,7 @@ FILE: pages\feed\feed.css
 .rt-badge a:hover { color: var(--accent-color); text-decoration: underline; }
 
 /* Текст и медиа */
-.post-text { 
-    font-size: 0.95rem; 
-    white-space: pre-wrap; 
-    word-break: break-word; 
-    overflow-wrap: anywhere; 
-    line-height: 1.5;
-    color: var(--text-main);
-}
+.post-text { font-size: 0.95rem; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; line-height: 1.5; color: var(--text-main); }
 .rich-link { color: var(--accent-color); text-decoration: none; }
 .rich-link:hover { text-decoration: underline; }
 
@@ -15975,38 +15539,13 @@ FILE: pages\feed\feed.css
 .post-translation-header { font-size: 0.7rem; color: var(--text-muted); font-weight: 700; margin-bottom: 0.4rem; text-transform: uppercase; }
 .post-translation-text { word-break: break-word; overflow-wrap: anywhere; line-height: 1.5; }
 
-.post-media { 
-    width: 100%; 
-    margin-top: 0.85rem; 
-    border-radius: 12px; 
-    border: 1px solid var(--border-color); 
-    max-height: 500px; 
-    object-fit: contain; 
-    cursor: zoom-in; 
-    background-color: var(--bg-body);
-}
+.post-media { width: 100%; margin-top: 0.85rem; border-radius: 12px; border: 1px solid var(--border-color); max-height: 500px; object-fit: contain; cursor: zoom-in; background-color: var(--bg-body); }
 
 /* Подвал поста */
 .post-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid var(--border-color); padding-top: 0.75rem; margin-top: 0.75rem; }
 .post-actions { display: flex; gap: 0.5rem; }
 
-/* Кнопки действий (Увеличенные тач-зоны для мобилок) */
-.action-btn { 
-    display: flex; 
-    align-items: center; 
-    gap: 6px; 
-    background: none; 
-    border: none; 
-    color: var(--text-muted); 
-    font-size: 0.85rem; 
-    cursor: pointer; 
-    padding: 0.6rem 0.8rem; /* Увеличено */
-    border-radius: 6px; 
-    font-family: inherit; 
-    font-weight: 500; 
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    min-height: 36px; /* Для комфортного тапа на смартфонах */
-}
+.action-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; padding: 0.6rem 0.8rem; border-radius: 6px; font-family: inherit; font-weight: 500; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); min-height: 36px; }
 .action-btn:hover { background-color: var(--bg-body); color: var(--text-main); }
 .action-btn.active { color: var(--accent-color); background-color: rgba(210, 168, 80, 0.1); }
 .action-btn.success { color: #00BA7C; }
@@ -16015,103 +15554,28 @@ FILE: pages\feed\feed.css
 /* =====================
    ЛОАДЕР И СКЕЛЕТОНЫ
 ===================== */
-.scroll-sentinel { 
-    height: 40px; 
-    width: 100%;
-}
-
-.skeleton-card {
-    border-color: transparent !important;
-    box-shadow: none !important;
-    pointer-events: none;
-}
-
-.skeleton-avatar {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-}
-
-.skeleton-line {
-    height: 14px;
-    border-radius: 4px;
-}
-
-.skeleton-pulse {
-    background: linear-gradient(90deg, var(--bg-body) 25%, var(--border-color) 50%, var(--bg-body) 75%);
-    background-size: 200% 100%;
-    animation: skeletonLoading 1.5s infinite linear;
-}
+.scroll-sentinel { height: 40px; width: 100%; }
+.skeleton-card { border-color: transparent !important; box-shadow: none !important; pointer-events: none; }
+.skeleton-avatar { width: 48px; height: 48px; border-radius: 50%; }
+.skeleton-line { height: 14px; border-radius: 4px; }
+.skeleton-pulse { background: linear-gradient(90deg, var(--bg-body) 25%, var(--border-color) 50%, var(--bg-body) 75%); background-size: 200% 100%; animation: skeletonLoading 1.5s infinite linear; }
 
 @keyframes skeletonLoading {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
 
-/* =====================
-   ПОДСВЕТКА НАЙДЕННОГО ТЕКСТА
-===================== */
-.search-highlight {
-    background-color: rgba(210, 168, 80, 0.3);
-    color: var(--accent-color);
-    padding: 0 2px;
-    border-radius: 4px;
-    font-weight: 700;
-    box-shadow: 0 0 0 1px rgba(210, 168, 80, 0.5);
-}
+.search-highlight { background-color: rgba(210, 168, 80, 0.3); color: var(--accent-color); padding: 0 2px; border-radius: 4px; font-weight: 700; box-shadow: 0 0 0 1px rgba(210, 168, 80, 0.5); }
 
-/* =====================
-   АНИМАЦИЯ ПОЯВЛЕНИЯ И EMPTY STATE
-===================== */
 @keyframes fadeInSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.empty-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    background-color: var(--bg-card);
-    border: 1px dashed var(--border-color);
-    border-radius: 12px;
-    animation: fadeInSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.empty-state-icon {
-    width: 80px;
-    height: 80px;
-    background-color: var(--bg-body);
-    color: var(--text-muted);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-}
-
-.empty-state-title {
-    font-size: 1.25rem;
-    color: var(--text-main);
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
-
-.empty-state-desc {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    max-width: 300px;
-    line-height: 1.5;
-}
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; background-color: var(--bg-card); border: 1px dashed var(--border-color); border-radius: 12px; animation: fadeInSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.empty-state-icon { width: 80px; height: 80px; background-color: var(--bg-body); color: var(--text-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+.empty-state-title { font-size: 1.25rem; color: var(--text-main); margin-bottom: 0.5rem; font-weight: 700; }
+.empty-state-desc { color: var(--text-muted); font-size: 0.95rem; max-width: 300px; line-height: 1.5; }
 
 ============================================================
 FILE: pages\feed\FeedController.js
@@ -16217,10 +15681,8 @@ export class FeedController {
 FILE: pages\feed\FeedModel.js
 ============================================================
 
-/**
- * Model: Отвечает ИСКЛЮЧИТЕЛЬНО за логику данных, фильтрацию и пагинацию.
- * Никакого DOM, никаких document.getElementById.
- */
+import { SmartSearch } from '../../shared/js/SmartSearch.js';
+
 export class FeedModel {
     constructor(chunkSize = 20) {
         this.allPosts = [];
@@ -16233,25 +15695,35 @@ export class FeedModel {
     }
 
     setPosts(posts) {
-        // Сортировка от новых к старым при инициализации
         this.allPosts = posts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
         this.applyFilters('', 'all');
+    }
+
+    getSuggestions(query) {
+        // Подсказываем только имена авторов
+        const results = SmartSearch.execute(query, this.allPosts, ['authorName', 'authorHandle']);
+        const uniqueAuthors = [...new Set(results.map(p => p.authorName))];
+        
+        return uniqueAuthors.slice(0, 5).map(name => ({ 
+            label: `Твиты автора: <span style="color: var(--accent-color);">${name}</span>`, 
+            value: name 
+        }));
     }
 
     applyFilters(searchTerm, authorId) {
         this.currentSearchTerm = searchTerm.toLowerCase().trim();
         this.currentAuthor = authorId;
         
-        this.filteredPosts = this.allPosts.filter(post => {
-            const matchAuthor = this.currentAuthor === 'all' || post.authorHandle === this.currentAuthor;
-            const matchSearch = this.currentSearchTerm === '' || 
-                                post.content.toLowerCase().includes(this.currentSearchTerm) || 
-                                post.authorName.toLowerCase().includes(this.currentSearchTerm);
-            
-            return matchAuthor && matchSearch;
-        });
+        // Умный поиск по тексту поста и имени
+        let result = SmartSearch.execute(this.currentSearchTerm, this.allPosts, ['content', 'authorName']);
 
-        this.currentIndex = 0; // Сбрасываем пагинацию при новом фильтре
+        // Строгий фильтр по автору из селекта
+        if (this.currentAuthor !== 'all') {
+            result = result.filter(post => post.authorHandle === this.currentAuthor);
+        }
+
+        this.filteredPosts = result;
+        this.currentIndex = 0; 
     }
 
     getNextChunk() {
@@ -16260,17 +15732,9 @@ export class FeedModel {
         return chunk;
     }
 
-    hasMore() {
-        return this.currentIndex < this.filteredPosts.length;
-    }
-
-    getSearchTerm() {
-        return this.currentSearchTerm;
-    }
-
-    isEmpty() {
-        return this.filteredPosts.length === 0;
-    }
+    hasMore() { return this.currentIndex < this.filteredPosts.length; }
+    getSearchTerm() { return this.currentSearchTerm; }
+    isEmpty() { return this.filteredPosts.length === 0; }
 }
 
 ============================================================
@@ -17166,7 +16630,7 @@ FILE: pages\music\app.js
 ============================================================
 
 import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
-import { debounce } from '../../shared/js/utils.js';
+import { SearchControls } from '../../shared/js/components/SearchControls.js';
 
 import { MusicModel } from './MusicModel.js';
 import { MusicView } from './MusicView.js';
@@ -17174,6 +16638,7 @@ import { AudioPlayer } from './AudioPlayer.js';
 import { MusicController } from './MusicController.js';
 
 customElements.define('site-header', SiteHeader);
+customElements.define('search-controls', SearchControls);
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Инициализация MVC слоев
@@ -17183,29 +16648,129 @@ document.addEventListener('DOMContentLoaded', () => {
     const controller = new MusicController(model, view, player);
 
     // 2. Инициализация UI поиска
-    const searchInput = document.getElementById('search-input');
+    const searchControls = document.querySelector('search-controls');
     
-    searchInput.addEventListener('input', debounce((e) => {
-        controller.handleSearch(e.target.value);
-    }, 300));
+    // Предоставляем функцию для автодополнения (показывает треки и авторов)
+    searchControls.suggestionProvider = (query) => model.getSuggestions(query);
     
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            controller.handleSearch(e.target.value);
-        }
+    // Принимаем окончательный запрос
+    searchControls.addEventListener('onSearch', (e) => {
+        controller.handleSearch(e.detail);
     });
-
-    const searchBtn = document.getElementById('search-btn');
-    if (searchBtn) {
-        searchBtn.addEventListener('click', () => {
-            controller.handleSearch(searchInput.value);
-        });
-    }
 
     // 3. Запуск
     controller.init();
 });
+
+============================================================
+FILE: pages\music\audio-player.css
+============================================================
+
+/* =========================================
+   ГЛОБАЛЬНЫЙ ПЛЕЕР
+   ========================================= */
+.global-player { 
+    position: fixed; 
+    bottom: 0; left: 0; right: 0; 
+    background-color: rgba(var(--bg-card-rgb, 28, 33, 40), 0.95); 
+    backdrop-filter: blur(25px); 
+    -webkit-backdrop-filter: blur(25px); 
+    border-top: 1px solid var(--border-color); 
+    z-index: 1000; 
+    transform: translateY(100%); 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    display: flex; 
+    flex-direction: column; 
+}
+
+[data-theme="light"] .global-player { background-color: rgba(255, 255, 255, 0.95); }
+
+.global-player.active { transform: translateY(0); }
+
+/* --- ПОЛЗУНКИ --- */
+.custom-slider { 
+    -webkit-appearance: none; 
+    width: 100%; height: 4px; 
+    background: rgba(150, 150, 150, 0.2); 
+    outline: none; cursor: pointer; 
+    border-radius: 2px; margin: 0; 
+    transition: height 0.1s ease; 
+}
+
+.player-progress-bar-container:hover .custom-slider,
+.volume-container:hover .custom-slider { height: 6px; }
+
+.custom-slider::-webkit-slider-runnable-track { width: 100%; height: 100%; background: transparent; border: none; }
+
+.custom-slider::-webkit-slider-thumb { 
+    -webkit-appearance: none; height: 12px; width: 12px; border-radius: 50%; 
+    background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.3); margin-top: -4px; 
+    opacity: 0; transition: opacity 0.2s, margin-top 0.1s ease; 
+}
+
+.player-progress-bar-container:hover .custom-slider::-webkit-slider-thumb, 
+.volume-container:hover .custom-slider::-webkit-slider-thumb { margin-top: -3px; }
+
+.custom-slider::-moz-range-track { width: 100%; height: 100%; background: transparent; border: none; }
+
+.custom-slider::-moz-range-thumb { 
+    height: 12px; width: 12px; border-radius: 50%; background: #fff; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3); border: none; opacity: 0; transition: opacity 0.2s; 
+}
+
+.player-progress-bar-container:hover .custom-slider::-webkit-slider-thumb, 
+.volume-container:hover .custom-slider::-webkit-slider-thumb, 
+.player-progress-bar-container:hover .custom-slider::-moz-range-thumb, 
+.volume-container:hover .custom-slider::-moz-range-thumb { opacity: 1; }
+
+.player-progress-bar-container { 
+    position: absolute; top: -8px; left: 0; right: 0; height: 16px; 
+    display: flex; align-items: center; padding: 0; cursor: pointer; 
+}
+
+/* --- КОНТЕНТ ПЛЕЕРА --- */
+.player-content { padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+.player-track-info { display: flex; align-items: center; gap: 1rem; width: 30%; min-width: 180px; }
+.player-cover { width: 56px; height: 56px; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.player-text { display: flex; flex-direction: column; overflow: hidden; }
+.player-text h4 { font-size: 0.95rem; color: var(--text-main); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 800;}
+.player-text p { font-size: 0.8rem; color: var(--text-muted); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600;}
+
+/* --- ЭЛЕМЕНТЫ УПРАВЛЕНИЯ --- */
+.player-controls { display: flex; align-items: center; gap: 1.25rem; flex: 1; justify-content: center; max-width: 400px; }
+.player-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+.player-btn:hover { color: var(--text-main); }
+.player-btn.active { color: var(--accent-color); position: relative; }
+.player-btn.active::after { content: ''; position: absolute; bottom: -4px; width: 4px; height: 4px; background: var(--accent-color); border-radius: 50%; }
+
+.control-small svg { width: 20px; height: 20px; }
+
+.play-btn { width: 44px; height: 44px; background: var(--text-main); color: var(--bg-card); border-radius: 50%; transition: transform 0.1s;}
+.play-btn:hover { transform: scale(1.05); color: var(--bg-card); background: #fff;}
+.play-btn:active { transform: scale(0.95); }
+
+/* --- ДОП. КНОПКИ (ГРОМКОСТЬ/ВРЕМЯ) --- */
+.player-extra { display: flex; align-items: center; gap: 1rem; width: 30%; justify-content: flex-end; }
+.time-stamp { font-size: 0.75rem; color: var(--text-muted); font-variant-numeric: tabular-nums; font-weight: 600; min-width: 35px; text-align: center;}
+.separator { min-width: auto; opacity: 0.5; }
+
+.volume-container { display: flex; align-items: center; gap: 8px; width: 100px; color: var(--text-muted); padding: 8px 0; }
+.volume-container svg { flex-shrink: 0; }
+
+.extra-btn { color: var(--text-muted); padding: 6px; background: transparent; border-radius: 6px;}
+.extra-btn:hover { background: rgba(150, 150, 150, 0.1); color: var(--text-main); }
+
+/* --- АДАПТИВ ПЛЕЕРА --- */
+@media (max-width: 768px) {
+    .player-content { padding: 10px 16px; }
+    .player-track-info { width: auto; max-width: 140px; }
+    .player-cover { width: 44px; height: 44px; }
+    .volume-container, .time-stamp { display: none; }
+    .player-extra { width: auto; }
+    .player-controls { gap: 1rem; justify-content: flex-end; }
+    #btn-shuffle, #btn-repeat { display: none; } 
+}
 
 ============================================================
 FILE: pages\music\AudioPlayer.js
@@ -17386,6 +16951,63 @@ export class AudioPlayer {
 }
 
 ============================================================
+FILE: pages\music\lyrics-panel.css
+============================================================
+
+/* =========================================
+   ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ ТЕКСТА (Side Panel)
+   ========================================= */
+.lyrics-overlay { 
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1005; 
+    opacity: 0; visibility: hidden; transition: 0.3s ease; backdrop-filter: blur(4px); 
+}
+.lyrics-overlay.active { opacity: 1; visibility: visible; }
+
+.lyrics-sidepanel { 
+    position: fixed; top: 0; right: 0; bottom: 85px; width: 450px; max-width: 100vw; 
+    background: var(--bg-card); border-left: 1px solid var(--border-color); z-index: 1010; 
+    display: flex; flex-direction: column; transform: translateX(100%); 
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: -10px 0 30px rgba(0,0,0,0.1); 
+}
+
+.lyrics-sidepanel.active { transform: translateX(0); }
+
+.lyrics-header { 
+    padding: 1.5rem; border-bottom: 1px solid var(--border-color); 
+    display: flex; justify-content: space-between; align-items: flex-start; 
+}
+.lyrics-header h2 { font-size: 1.25rem; color: var(--text-main); margin-bottom: 8px; font-weight: 900; line-height: 1.2;}
+
+.yt-link { 
+    font-size: 0.8rem; font-weight: 700; color: #fff; background: #FF0000; padding: 4px 10px; 
+    border-radius: 6px; text-decoration: none; transition: 0.2s; display: inline-flex; align-items: center; 
+}
+.yt-link:hover { background: #cc0000; transform: translateY(-2px); }
+
+.panel-close { 
+    background: transparent; border: none; font-size: 1.8rem; color: var(--text-muted); 
+    cursor: pointer; line-height: 1; transition: 0.2s; 
+}
+.panel-close:hover { color: var(--error-color); }
+
+.lyrics-body { 
+    padding: 1.5rem; overflow-y: auto; flex-grow: 1; display: flex; 
+    flex-direction: column; gap: 2rem; scrollbar-width: thin; 
+}
+
+.lyrics-col h3 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;}
+.lyrics-col p { font-size: 1.05rem; line-height: 1.8; color: var(--text-main); white-space: pre-line; opacity: 0.9;}
+
+/* --- АДАПТИВ БОКОВОЙ ПАНЕЛИ --- */
+@media (max-width: 768px) {
+    .lyrics-sidepanel { 
+        width: 100%; 
+        bottom: 0; 
+        z-index: 1100; /* На мобильных перекрывает плеер */
+    } 
+}
+
+============================================================
 FILE: pages\music\music.css
 ============================================================
 
@@ -17411,59 +17033,19 @@ FILE: pages\music\music.css
 }
 
 /* =========================================
-   Макет страницы Музыки
+   МАКЕТ СТРАНИЦЫ
    ========================================= */
 .music-layout { 
     padding-bottom: 120px; 
-    padding-top: 1rem;
     position: relative;
 }
 
+/* Специфичный отступ поиска для музыки */
+search-controls { margin-bottom: 1.5rem; }
+
 /* =========================================
-   ПАНЕЛЬ УПРАВЛЕНИЯ
+   КНОПКИ ПЕРЕКЛЮЧЕНИЯ ВИДА (Сетка / Список)
    ========================================= */
-.archive-controls {
-    position: sticky;
-    top: 70px; 
-    z-index: 50;
-    margin-bottom: 1.5rem; 
-}
-
-.feed-controls {
-    display: flex; 
-    flex-wrap: wrap; 
-    gap: 0.75rem;
-    align-items: center; 
-    background-color: rgba(var(--bg-card-rgb, 255, 255, 255), 0.85); 
-    padding: 0.5rem; 
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-}
-
-[data-theme="dark"] .feed-controls {
-    background-color: rgba(28, 33, 40, 0.75);
-}
-
-.search-input-wrapper { position: relative; flex: 1; display: flex; align-items: center; min-width: 250px;}
-
-.search-btn {
-    position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
-    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
-    padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: 0.2s; z-index: 2;
-}
-.search-btn:hover { color: var(--accent-color); background-color: var(--bg-body); }
-.search-input-wrapper:focus-within .search-btn { color: var(--accent-color); }
-
-.feed-controls input {
-    width: 100%; padding: 0.6rem 1rem 0.6rem 2.8rem; border: 1px solid var(--border-color); border-radius: 8px;
-    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
-}
-.feed-controls input::placeholder { color: var(--text-muted); opacity: 0.7; }
-.feed-controls input:focus { border-color: var(--accent-color); background-color: var(--bg-card); box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15); }
-
 .view-toggles {
     display: flex;
     gap: 4px;
@@ -17481,399 +17063,20 @@ FILE: pages\music\music.css
     border-radius: 6px;
     cursor: pointer;
     transition: 0.2s;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
 }
 
 .view-btn:hover { color: var(--text-main); }
-.view-btn.active { background: var(--bg-card); color: var(--text-main); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-
-
-/* =========================================
-   УНИВЕРСАЛЬНЫЙ ФИКС ОПТИЧЕСКОГО ЦЕНТРА
-   ========================================= */
-.optical-center {
-    /* Сдвигаем треугольник Play на 1-2 пикселя вправо для идеального визуального баланса */
-    transform: translateX(1.5px);
+.view-btn.active { 
+    background: var(--bg-card); 
+    color: var(--text-main); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
 }
 
-/* =========================================
-   СЕТКА ТРЕКОВ (Grid View)
-   ========================================= */
-.music-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-}
-
-.song-card {
-    background-color: var(--bg-card);
-    border: 1px solid transparent; 
-    border-radius: 12px;
-    padding: 12px;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    position: relative;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-}
-
-.song-card:hover {
-    background-color: rgba(255, 255, 255, 0.05); 
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-[data-theme="light"] .song-card:hover { background-color: #FFFFFF; }
-
-.song-cover-wrapper {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 12px;
-    background-color: var(--bg-body);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.song-cover {
-    width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;
-}
-.song-card:hover .song-cover { transform: scale(1.05); }
-
-.song-overlay {
-    position: absolute; inset: 0; background: rgba(0,0,0,0.4);
-    opacity: 0; transition: opacity 0.3s ease;
-}
-.song-card:hover .song-overlay { opacity: 1; }
-
-
-/* --- УМНАЯ КНОПКА PLAY И ЭКВАЛАЙЗЕР --- */
-
-.song-play-btn {
-    position: absolute;
-    top: 50%; left: 50%;
-    background: var(--accent-color); color: #000; border: none;
-    width: 48px; height: 48px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-    
-    /* Начальное состояние (скрыта внизу) */
-    opacity: 0;
-    transform: translate(-50%, calc(-50% + 15px)); 
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 20;
-}
-
-/* Показываем Play при наведении */
-.song-card:hover .song-play-btn { 
-    opacity: 1;
-    transform: translate(-50%, -50%); 
-}
-
-.song-play-btn:hover { background: #fff; transform: translate(-50%, -50%) scale(1.05); }
-
-/* Плавный эквалайзер */
-.eq-animation { 
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    display: flex; gap: 4px; align-items: flex-end; height: 24px; z-index: 10;
-    
-    /* Скрыто по умолчанию, плавная анимация появления */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.eq-animation span {
-    display: block; width: 4px; background-color: var(--accent-color); border-radius: 2px;
-    animation: eqPlay 0.8s infinite alternate ease-in-out;
-}
-.eq-animation span:nth-child(1) { height: 10px; animation-delay: 0s; }
-.eq-animation span:nth-child(2) { height: 24px; animation-delay: 0.2s; }
-.eq-animation span:nth-child(3) { height: 16px; animation-delay: 0.4s; }
-@keyframes eqPlay { 0% { height: 4px; } 100% { height: 24px; } }
-
-/* --- ЛОГИКА СОСТОЯНИЙ ВОСПРОИЗВЕДЕНИЯ --- */
-
-/* 1. Трек играет */
-.song-card.playing .song-title { color: var(--accent-color); }
-.song-card.playing .song-overlay { opacity: 1; background: rgba(0,0,0,0.5); }
-
-/* Показываем эквалайзер плавно */
-.song-card.playing .eq-animation { 
-    opacity: 1; 
-    visibility: visible;
-}
-
-/* Скрываем кнопку Play, пока мышка не наведена */
-.song-card.playing .song-play-btn {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9);
-}
-
-/* 2. Навели мышку на ИГРАЮЩИЙ трек (Хотим поставить на паузу) */
-.song-card.playing:hover .eq-animation { 
-    opacity: 0; /* Плавно прячем эквалайзер */
-    visibility: hidden;
-}
-.song-card.playing:hover .song-play-btn {
-    opacity: 1; /* Показываем кнопку */
-    transform: translate(-50%, -50%) scale(1);
-}
-.song-card.playing .play-icon { display: none; }
-.song-card.playing .pause-icon { display: block; }
-
-/* 3. Трек на паузе */
-.song-card.is-paused .song-overlay { opacity: 1; background: rgba(0,0,0,0.4); }
-.song-card.is-paused .eq-animation { opacity: 0; visibility: hidden; }
-.song-card.is-paused .song-play-btn { 
-    opacity: 1; 
-    transform: translate(-50%, -50%) scale(1);
-}
-.song-card.is-paused .play-icon { display: block; }
-.song-card.is-paused .pause-icon { display: none; }
-
-
-/* --- ИНФО ТРЕКА --- */
-.song-info { display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-.song-text-wrap { margin-bottom: 8px; }
-.song-title { font-size: 1rem; font-weight: 800; color: var(--text-main); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s;}
-.song-artist { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-.song-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-.song-year { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
-.song-game { font-size: 0.7rem; background: var(--bg-body); padding: 2px 6px; border-radius: 4px; color: var(--text-main); font-weight: 700; }
-
-/* =========================================
-   СПИСОК ТРЕКОВ (List View) 
-   ========================================= */
-.music-grid.list-view {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-}
-
-.music-grid.list-view .song-card {
-    flex-direction: row;
-    align-items: center;
-    padding: 8px 12px;
-    border-radius: 8px;
-    height: 70px;
-    background: transparent;
-}
-
-.music-grid.list-view .song-card:hover {
-    background-color: var(--bg-card);
-    transform: none; 
-}
-
-.music-grid.list-view .song-cover-wrapper {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 0;
-    margin-right: 16px;
-    flex-shrink: 0;
-    border-radius: 4px;
-}
-
-/* Настройки кнопок для списка */
-.music-grid.list-view .song-play-btn {
-    width: 32px; height: 32px; 
-}
-.music-grid.list-view .song-play-btn svg { width: 16px; height: 16px; }
-
-/* Переопределяем анимации кнопки для строчного вида */
-.music-grid.list-view .song-play-btn { transform: translate(-50%, -50%) scale(0.8); }
-.music-grid.list-view .song-card:hover .song-play-btn { transform: translate(-50%, -50%) scale(1); }
-
-.music-grid.list-view .song-info {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.music-grid.list-view .song-text-wrap { margin-bottom: 0; width: 40%; flex-shrink: 0; }
-.music-grid.list-view .song-meta { width: 30%; justify-content: flex-end; gap: 1rem; margin-top: 0;}
-
-@media (max-width: 600px) {
-    .music-grid.list-view .song-meta { display: none; }
-    .music-grid.list-view .song-text-wrap { width: 100%; }
-}
-
-/* =========================================
-   ГЛОБАЛЬНЫЙ ПЛЕЕР
-   ========================================= */
-.global-player {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    background-color: rgba(var(--bg-card-rgb, 28, 33, 40), 0.95);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-top: 1px solid var(--border-color);
-    z-index: 1000;
-    transform: translateY(100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex; flex-direction: column;
-}
-
-[data-theme="light"] .global-player { background-color: rgba(255, 255, 255, 0.95); }
-.global-player.active { transform: translateY(0); }
-
-/* --- ИСПРАВЛЕННЫЕ СТИЛИ ПОЛЗУНКОВ --- */
-.custom-slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 4px; 
-    background: rgba(150, 150, 150, 0.2); 
-    outline: none;
-    cursor: pointer;
-    border-radius: 2px;
-    margin: 0;
-    transition: height 0.1s ease;
-}
-
-.player-progress-bar-container:hover .custom-slider { height: 6px; }
-.volume-container:hover .custom-slider { height: 6px; }
-
-.custom-slider::-webkit-slider-runnable-track { width: 100%; height: 100%; background: transparent; border: none; }
-
-.custom-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    height: 12px; width: 12px; border-radius: 50%;
-    background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-    margin-top: -4px; 
-    opacity: 0; transition: opacity 0.2s, margin-top 0.1s ease;
-}
-
-.player-progress-bar-container:hover .custom-slider::-webkit-slider-thumb,
-.volume-container:hover .custom-slider::-webkit-slider-thumb {
-    margin-top: -3px; 
-}
-
-.custom-slider::-moz-range-track { width: 100%; height: 100%; background: transparent; border: none; }
-.custom-slider::-moz-range-thumb {
-    height: 12px; width: 12px; border-radius: 50%;
-    background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-    border: none; opacity: 0; transition: opacity 0.2s;
-}
-
-.player-progress-bar-container:hover .custom-slider::-webkit-slider-thumb,
-.volume-container:hover .custom-slider::-webkit-slider-thumb,
-.player-progress-bar-container:hover .custom-slider::-moz-range-thumb,
-.volume-container:hover .custom-slider::-moz-range-thumb { 
-    opacity: 1; 
-}
-
-.player-progress-bar-container { 
-    position: absolute; 
-    top: -8px; 
-    left: 0; right: 0; 
-    height: 16px; 
-    display: flex; align-items: center; 
-    padding: 0; 
-    cursor: pointer;
-}
-
-/* ========================================= */
-
-.player-content {
-    padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-}
-
-.player-track-info { display: flex; align-items: center; gap: 1rem; width: 30%; min-width: 180px; }
-.player-cover { width: 56px; height: 56px; border-radius: 8px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-.player-text { display: flex; flex-direction: column; overflow: hidden; }
-.player-text h4 { font-size: 0.95rem; color: var(--text-main); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 800;}
-.player-text p { font-size: 0.8rem; color: var(--text-muted); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 600;}
-
-.player-controls { display: flex; align-items: center; gap: 1.25rem; flex: 1; justify-content: center; max-width: 400px; }
-.player-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
-.player-btn:hover { color: var(--text-main); }
-.player-btn.active { color: var(--accent-color); position: relative; }
-.player-btn.active::after { content: ''; position: absolute; bottom: -4px; width: 4px; height: 4px; background: var(--accent-color); border-radius: 50%; }
-
-.control-small svg { width: 20px; height: 20px; }
-
-.play-btn { width: 44px; height: 44px; background: var(--text-main); color: var(--bg-card); border-radius: 50%; transition: transform 0.1s;}
-.play-btn:hover { transform: scale(1.05); color: var(--bg-card); background: #fff;}
-.play-btn:active { transform: scale(0.95); }
-
-.player-extra { display: flex; align-items: center; gap: 1rem; width: 30%; justify-content: flex-end; }
-.time-stamp { font-size: 0.75rem; color: var(--text-muted); font-variant-numeric: tabular-nums; font-weight: 600; min-width: 35px; text-align: center;}
-.separator { min-width: auto; opacity: 0.5; }
-
-.volume-container { 
-    display: flex; align-items: center; gap: 8px; width: 100px; color: var(--text-muted); 
-    padding: 8px 0; 
-}
-.volume-container svg { flex-shrink: 0; }
-
-.extra-btn { color: var(--text-muted); padding: 6px; background: transparent; border-radius: 6px;}
-.extra-btn:hover { background: rgba(150, 150, 150, 0.1); color: var(--text-main); }
-
-/* =========================================
-   ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ ТЕКСТА (Side Panel)
-   ========================================= */
-.lyrics-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1005;
-    opacity: 0; visibility: hidden; transition: 0.3s ease;
-    backdrop-filter: blur(4px);
-}
-.lyrics-overlay.active { opacity: 1; visibility: visible; }
-
-.lyrics-sidepanel {
-    position: fixed; top: 0; right: 0; bottom: 85px; 
-    width: 450px; max-width: 100vw;
-    background: var(--bg-card); border-left: 1px solid var(--border-color);
-    z-index: 1010; display: flex; flex-direction: column;
-    transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-}
-.lyrics-sidepanel.active { transform: translateX(0); }
-
-.lyrics-header {
-    padding: 1.5rem; border-bottom: 1px solid var(--border-color);
-    display: flex; justify-content: space-between; align-items: flex-start;
-}
-.lyrics-header h2 { font-size: 1.25rem; color: var(--text-main); margin-bottom: 8px; font-weight: 900; line-height: 1.2;}
-
-.yt-link { 
-    font-size: 0.8rem; font-weight: 700; color: #fff; background: #FF0000; 
-    padding: 4px 10px; border-radius: 6px; text-decoration: none; transition: 0.2s; 
-    display: inline-flex; align-items: center;
-}
-.yt-link:hover { background: #cc0000; transform: translateY(-2px); }
-
-.panel-close {
-    background: transparent; border: none; font-size: 1.8rem; color: var(--text-muted);
-    cursor: pointer; line-height: 1; transition: 0.2s;
-}
-.panel-close:hover { color: var(--error-color); }
-
-.lyrics-body {
-    padding: 1.5rem; overflow-y: auto; flex-grow: 1;
-    display: flex; flex-direction: column; gap: 2rem; scrollbar-width: thin;
-}
-
-.lyrics-col h3 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.5rem;}
-.lyrics-col p { font-size: 1.05rem; line-height: 1.8; color: var(--text-main); white-space: pre-line; opacity: 0.9;}
-
-/* АДАПТИВ */
-@media (max-width: 768px) {
-    .music-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;}
-    
-    .player-content { padding: 10px 16px; }
-    .player-track-info { width: auto; max-width: 140px; }
-    .player-cover { width: 44px; height: 44px; }
-    
-    .volume-container, .time-stamp { display: none; }
-    .player-extra { width: auto; }
-    
-    .player-controls { gap: 1rem; justify-content: flex-end; }
-    #btn-shuffle, #btn-repeat { display: none; } 
-    
-    .lyrics-sidepanel { width: 100%; bottom: 0; z-index: 1100; } 
-}
+/* Оптический центр для иконок Play */
+.optical-center { transform: translateX(1.5px); }
 
 ============================================================
 FILE: pages\music\MusicController.js
@@ -17949,16 +17152,14 @@ FILE: pages\music\MusicModel.js
 
 import { fetchData } from '../../shared/js/api.js';
 import { Logger } from '../../shared/js/Logger.js';
+import { SmartSearch } from '../../shared/js/SmartSearch.js';
 
 export class MusicModel {
     constructor() {
-        this.tracks = []; // Все оригинальные треки
-        this.filteredTracks = []; // Отфильтрованные (после поиска)
-        
-        // Для плейлиста воспроизведения
+        this.tracks = []; 
+        this.filteredTracks = []; 
         this.playbackQueue = []; 
         this.currentIndex = -1; 
-        
         this.isShuffle = false;
     }
 
@@ -17966,7 +17167,7 @@ export class MusicModel {
         try {
             this.tracks = await fetchData('data/songs.json');
             this.filteredTracks = [...this.tracks];
-            this._updateQueue(); // Инициализируем очередь
+            this._updateQueue(); 
             return this.tracks;
         } catch (error) {
             Logger.error('Ошибка загрузки аудио архивов.', error);
@@ -17974,12 +17175,16 @@ export class MusicModel {
         }
     }
 
+    getSuggestions(query) {
+        const results = SmartSearch.execute(query, this.tracks, ['title', 'artist']);
+        return results.slice(0, 5).map(t => ({ 
+            label: `${t.title} <span style="opacity:0.5; font-size:0.85em; font-weight: normal;">— ${t.artist}</span>`, 
+            value: t.title 
+        }));
+    }
+
     applySearch(term) {
-        const query = term.toLowerCase().trim();
-        this.filteredTracks = this.tracks.filter(t => 
-            t.title.toLowerCase().includes(query) || 
-            t.artist.toLowerCase().includes(query)
-        );
+        this.filteredTracks = SmartSearch.execute(term, this.tracks, ['title', 'artist']);
         this._updateQueue();
         return this.filteredTracks;
     }
@@ -17987,21 +17192,16 @@ export class MusicModel {
     // Вкл/Выкл Shuffle
     toggleShuffle() {
         this.isShuffle = !this.isShuffle;
-        
         const currentTrackId = this.playbackQueue[this.currentIndex]?.id;
         this._updateQueue();
-        
-        // Восстанавливаем индекс текущего трека в новой очереди
         if (currentTrackId) {
             this.currentIndex = this.playbackQueue.findIndex(t => t.id === currentTrackId);
         }
         return this.isShuffle;
     }
 
-    // Обновляет реальную очередь воспроизведения
     _updateQueue() {
         if (this.isShuffle) {
-            // Создаем копию и перемешиваем (Алгоритм Фишера-Йетса)
             let shuffled = [...this.filteredTracks];
             for (let i = shuffled.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -18016,26 +17216,14 @@ export class MusicModel {
 
     getTrackByIndex(index) {
         if (this.playbackQueue.length === 0) return null;
-        // Закольцованная логика (бесконечный плейлист)
         this.currentIndex = (index + this.playbackQueue.length) % this.playbackQueue.length;
         return this.playbackQueue[this.currentIndex];
     }
 
-    getNextTrack() {
-        return this.getTrackByIndex(this.currentIndex + 1);
-    }
-
-    getPrevTrack() {
-        return this.getTrackByIndex(this.currentIndex - 1);
-    }
-
-    setCurrentIndexById(trackId) {
-        this.currentIndex = this.playbackQueue.findIndex(t => t.id === trackId);
-    }
-
-    getTrackById(trackId) {
-        return this.tracks.find(t => t.id === trackId);
-    }
+    getNextTrack() { return this.getTrackByIndex(this.currentIndex + 1); }
+    getPrevTrack() { return this.getTrackByIndex(this.currentIndex - 1); }
+    setCurrentIndexById(trackId) { this.currentIndex = this.playbackQueue.findIndex(t => t.id === trackId); }
+    getTrackById(trackId) { return this.tracks.find(t => t.id === trackId); }
 }
 
 ============================================================
@@ -18186,6 +17374,153 @@ export class MusicView {
         clone.querySelector('.error-message').textContent = message;
         this.els.container.appendChild(clone);
     }
+}
+
+============================================================
+FILE: pages\music\song-card.css
+============================================================
+
+/* =========================================
+   СЕТКА ТРЕКОВ (Grid View)
+   ========================================= */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.song-card {
+    background-color: var(--bg-card); 
+    border: 1px solid transparent; 
+    border-radius: 12px; 
+    padding: 12px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    display: flex; 
+    flex-direction: column; 
+    cursor: pointer;
+    position: relative; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.song-card:hover {
+    background-color: rgba(255, 255, 255, 0.05); 
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .song-card:hover { background-color: #FFFFFF; }
+
+.song-cover-wrapper {
+    width: 100%; 
+    aspect-ratio: 1 / 1; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    position: relative;
+    margin-bottom: 12px; 
+    background-color: var(--bg-body); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.song-cover { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.5s ease; 
+}
+
+.song-card:hover .song-cover { transform: scale(1.05); }
+
+.song-overlay { 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(0,0,0,0.4); 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+}
+.song-card:hover .song-overlay { opacity: 1; }
+
+.song-play-btn {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    background: var(--accent-color); 
+    color: #000; 
+    border: none;
+    width: 48px; 
+    height: 48px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    cursor: pointer; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4); 
+    opacity: 0; 
+    transform: translate(-50%, calc(-50% + 15px)); 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    z-index: 20;
+}
+
+.song-card:hover .song-play-btn { opacity: 1; transform: translate(-50%, -50%); }
+.song-play-btn:hover { background: #fff; transform: translate(-50%, -50%) scale(1.05); }
+
+.eq-animation { 
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    display: flex; gap: 4px; align-items: flex-end; height: 24px; z-index: 10;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.eq-animation span { 
+    display: block; width: 4px; background-color: var(--accent-color); border-radius: 2px; 
+    animation: eqPlay 0.8s infinite alternate ease-in-out; 
+}
+.eq-animation span:nth-child(1) { height: 10px; animation-delay: 0s; }
+.eq-animation span:nth-child(2) { height: 24px; animation-delay: 0.2s; }
+.eq-animation span:nth-child(3) { height: 16px; animation-delay: 0.4s; }
+
+@keyframes eqPlay { 0% { height: 4px; } 100% { height: 24px; } }
+
+/* --- Логика состояний воспроизведения --- */
+.song-card.playing .song-title { color: var(--accent-color); }
+.song-card.playing .song-overlay { opacity: 1; background: rgba(0,0,0,0.5); }
+.song-card.playing .eq-animation { opacity: 1; visibility: visible; }
+.song-card.playing .song-play-btn { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+.song-card.playing:hover .eq-animation { opacity: 0; visibility: hidden; }
+.song-card.playing:hover .song-play-btn { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.song-card.playing .play-icon { display: none; }
+.song-card.playing .pause-icon { display: block; }
+.song-card.is-paused .song-overlay { opacity: 1; background: rgba(0,0,0,0.4); }
+.song-card.is-paused .eq-animation { opacity: 0; visibility: hidden; }
+.song-card.is-paused .song-play-btn { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.song-card.is-paused .play-icon { display: block; }
+.song-card.is-paused .pause-icon { display: none; }
+
+/* --- Инфо трека --- */
+.song-info { display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+.song-text-wrap { margin-bottom: 8px; }
+.song-title { font-size: 1rem; font-weight: 800; color: var(--text-main); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s;}
+.song-artist { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.song-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.song-year { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
+.song-game { font-size: 0.7rem; background: var(--bg-body); padding: 2px 6px; border-radius: 4px; color: var(--text-main); font-weight: 700; }
+
+/* =========================================
+   СПИСОК ТРЕКОВ (List View) 
+   ========================================= */
+.music-grid.list-view { grid-template-columns: 1fr; gap: 0.5rem; }
+.music-grid.list-view .song-card { flex-direction: row; align-items: center; padding: 8px 12px; border-radius: 8px; height: 70px; background: transparent; }
+.music-grid.list-view .song-card:hover { background-color: var(--bg-card); transform: none; }
+.music-grid.list-view .song-cover-wrapper { width: 48px; height: 48px; margin-bottom: 0; margin-right: 16px; flex-shrink: 0; border-radius: 4px; }
+.music-grid.list-view .song-play-btn { width: 32px; height: 32px; transform: translate(-50%, -50%) scale(0.8); }
+.music-grid.list-view .song-play-btn svg { width: 16px; height: 16px; }
+.music-grid.list-view .song-card:hover .song-play-btn { transform: translate(-50%, -50%) scale(1); }
+.music-grid.list-view .song-info { flex-direction: row; align-items: center; justify-content: space-between; width: 100%; }
+.music-grid.list-view .song-text-wrap { margin-bottom: 0; width: 40%; flex-shrink: 0; }
+.music-grid.list-view .song-meta { width: 30%; justify-content: flex-end; gap: 1rem; margin-top: 0;}
+
+@media (max-width: 600px) {
+    .music-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;}
+    .music-grid.list-view .song-meta { display: none; }
+    .music-grid.list-view .song-text-wrap { width: 100%; }
 }
 
 ============================================================
@@ -20855,9 +20190,9 @@ FILE: shared\css\base.css
    ========================================= */
 
 html {
-    /* МАГИЯ ЗДЕСЬ: Принудительно резервируем место под скроллбар */
+    /* Принудительно резервируем место под скроллбар */
     overflow-y: scroll; 
-    scrollbar-gutter: stable; /* Для современных браузеров, чтобы не было сдвигов */
+    scrollbar-gutter: stable; 
 }
 
 * {
@@ -20875,12 +20210,14 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Обертка для всех страниц */
+/* Обертка для всех страниц. 
+   Мы задаем жесткий отступ сверху (1.5rem), чтобы на всех страницах
+   контент и поисковики начинались на одной идеальной высоте. */
 .page-content {
     max-width: 1200px; 
     width: 100%;
-    margin: 2rem auto 3rem;
-    padding: 0 1.5rem;
+    margin: 0 auto 3rem;
+    padding: 1.5rem 1.5rem 0; 
 }
 
 ============================================================
@@ -21034,29 +20371,13 @@ FILE: shared\css\ui.css
    ПРОКАЧАННЫЙ ЛАЙТБОКС (Просмотр фото)
    ========================================= */
 .lightbox {
-    /* Полностью обнуляем дефолтные стили <dialog> */
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: transparent;
-    width: 100vw;
-    height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
-    
-    /* Состояние до анимации */
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    padding: 0; margin: 0; border: none; background: transparent;
+    width: 100vw; height: 100vh; max-width: 100vw; max-height: 100vh;
+    opacity: 0; transition: opacity 0.3s ease;
 }
 
-/* Браузерный хак: заставляем <dialog> использовать flexbox при открытии */
-.lightbox[open] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.lightbox[open] { display: flex; justify-content: center; align-items: center; }
 
-/* Затемняющий фон ПОЗАДИ картинки */
 .lightbox::backdrop {
     background-color: rgba(0, 0, 0, 0);
     backdrop-filter: blur(0px);
@@ -21064,126 +20385,165 @@ FILE: shared\css\ui.css
     transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* Активное состояние (когда добавлен класс .active через JS) */
-.lightbox.active {
-    opacity: 1;
-}
-
+.lightbox.active { opacity: 1; }
 .lightbox.active::backdrop {
-    background-color: rgba(0, 0, 0, 0.85); /* Темный фон */
-    backdrop-filter: blur(8px); /* Размытие заднего плана */
+    background-color: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(8px); 
     -webkit-backdrop-filter: blur(8px);
 }
 
-/* Сама картинка */
 .lightbox img {
-    max-width: 90vw;
-    max-height: 90vh;
-    object-fit: contain;
-    border-radius: 12px; /* Мягкие углы */
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); /* Глубокая тень для объема */
-    user-select: none;
-    
-    /* Анимация увеличения */
-    transform: scale(0.9);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 12px; 
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); user-select: none;
+    transform: scale(0.9); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.lightbox.active img { 
-    transform: scale(1); 
-}
+.lightbox.active img { transform: scale(1); }
 
-/* Кнопка закрытия (Стекломорфизм) */
 .lightbox-close {
-    position: fixed;
-    top: 20px; 
-    right: 25px;
-    width: 44px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: white; 
-    font-size: 2rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1001;
-    line-height: 0;
+    position: fixed; top: 20px; right: 25px; width: 44px; height: 44px;
+    background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: white; 
+    font-size: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1001; line-height: 0;
 }
 
 .lightbox-close:hover { 
-    background: rgba(255, 255, 255, 0.25);
-    color: var(--accent-color); 
-    border-color: var(--accent-color);
-    transform: scale(1.15) rotate(90deg); /* Красивое вращение при наведении */
+    background: rgba(255, 255, 255, 0.25); color: var(--accent-color); 
+    border-color: var(--accent-color); transform: scale(1.15) rotate(90deg); 
 }
-
 
 /* =========================================
    БАЗОВЫЕ СТИЛИ ДЛЯ <DIALOG> (Скелет модалок)
    ========================================= */
 .custom-modal {
-    margin: auto;
-    padding: 0;
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    background-color: var(--bg-card);
-    color: var(--text-main);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    max-width: 600px;
-    width: 90%;
-    overflow: visible;
-    
-    opacity: 0;
-    transform: scale(0.95) translateY(15px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: auto; padding: 0; border: 1px solid var(--border-color); border-radius: 16px;
+    background-color: var(--bg-card); color: var(--text-main); box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    max-width: 600px; width: 90%; overflow: visible; opacity: 0;
+    transform: scale(0.95) translateY(15px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.custom-modal::backdrop {
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.custom-modal.active {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-}
-
-.custom-modal.active::backdrop {
-    opacity: 1;
-}
+.custom-modal::backdrop { background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.3s ease; }
+.custom-modal.active { opacity: 1; transform: scale(1) translateY(0); }
+.custom-modal.active::backdrop { opacity: 1; }
 
 .modal-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: var(--bg-body);
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.2s;
-    line-height: 0;
-    z-index: 100;
+    position: absolute; top: 15px; right: 15px; background: var(--bg-body); border: 1px solid var(--border-color);
+    color: var(--text-muted); width: 32px; height: 32px; border-radius: 50%; font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s;
+    line-height: 0; z-index: 100;
+}
+.modal-close:hover { color: var(--error-color); border-color: var(--error-color); transform: scale(1.1); }
+
+/* =========================================
+   УНИВЕРСАЛЬНАЯ ПАНЕЛЬ ПОИСКА И ФИЛЬТРОВ
+   ========================================= */
+search-controls {
+    display: block;
+    position: sticky;
+    top: 85px; /* Идеальное прилипание: 70px шапка + 15px отступ */
+    z-index: 50;
+    margin-bottom: 1.5rem; /* Единый отступ снизу до контента для всех страниц */
 }
 
-.modal-close:hover {
-    color: var(--error-color);
-    border-color: var(--error-color);
-    transform: scale(1.1);
+.page-controls {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 0.75rem;
+    align-items: center; 
+    background-color: rgba(var(--bg-card-rgb, 255, 255, 255), 0.95); 
+    padding: 0.5rem; 
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .page-controls {
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+    [data-theme="dark"] .page-controls {
+        background-color: rgba(28, 33, 40, 0.85);
+    }
+}
+
+.search-input-wrapper { position: relative; flex: 1 1 250px; display: flex; align-items: center; }
+
+.search-btn {
+    position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
+    padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: 0.2s; z-index: 2;
+}
+.search-btn:hover { color: var(--accent-color); background-color: var(--bg-body); }
+.search-input-wrapper:focus-within .search-btn { color: var(--accent-color); }
+
+.search-input {
+    width: 100%; padding: 0.6rem 1rem 0.6rem 2.8rem; border: 1px solid var(--border-color); border-radius: 8px;
+    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: 0.3s;
+}
+.search-input::placeholder { color: var(--text-muted); opacity: 0.7; }
+.search-input:focus { border-color: var(--accent-color); background-color: var(--bg-card); box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15); }
+
+/* --- Выпадающий список автокомплита --- */
+.search-suggestions {
+    position: absolute; 
+    top: calc(100% + 8px); 
+    left: 0; 
+    right: 0;
+    background: var(--bg-card); 
+    border: 1px solid var(--border-color);
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    list-style: none; 
+    padding: 0.4rem; 
+    z-index: 200;
+    opacity: 0; 
+    visibility: hidden; 
+    transform: translateY(-10px);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+    max-height: 300px; 
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.search-suggestions::-webkit-scrollbar { display: none; }
+
+.search-input-wrapper.has-suggestions .search-suggestions {
+    opacity: 1; 
+    visibility: visible; 
+    transform: translateY(0);
+}
+
+.suggestion-item {
+    padding: 0.6rem 0.8rem; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    color: var(--text-main); 
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+}
+
+.suggestion-icon { color: var(--text-muted); flex-shrink: 0; transition: color 0.2s ease; }
+.suggestion-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; }
+
+.suggestion-item:hover { 
+    background: var(--bg-body); 
+    color: var(--accent-color); 
+    transform: translateX(2px); 
+}
+.suggestion-item:hover .suggestion-icon { color: var(--accent-color); }
+
+/* Контейнер для кастомных фильтров справа */
+.page-controls-filters { display: flex; gap: 0.5rem; flex: 0 0 auto; align-items: center; }
+
+@media (max-width: 768px) {
+    .page-controls-filters { width: 100%; flex-wrap: wrap; }
+    .custom-select-container { flex: 1 1 100%; }
 }
 
 ============================================================
@@ -21330,6 +20690,106 @@ export const Logger = {
     warn: (msg, ...args) => console.warn(`%c[BendyHub WARN] %c${msg}`, 'color: #D2A850; font-weight: bold;', 'color: inherit;', ...args),
     error: (msg, ...args) => console.error(`%c[BendyHub ERROR] %c${msg}`, 'color: #F85149; font-weight: bold;', 'color: inherit;', ...args),
 };
+
+============================================================
+FILE: shared\js\SmartSearch.js
+============================================================
+
+export class SmartSearch {
+    static layoutMapEnToRu = {
+        'q':'й', 'w':'ц', 'e':'у', 'r':'к', 't':'е', 'y':'н', 'u':'г', 'i':'ш', 'o':'щ', 'p':'з', '[':'х', ']':'ъ',
+        'a':'ф', 's':'ы', 'd':'в', 'f':'а', 'g':'п', 'h':'р', 'j':'о', 'k':'л', 'l':'д', ';':'ж', "'":'э',
+        'z':'я', 'x':'ч', 'c':'с', 'v':'м', 'b':'и', 'n':'т', 'm':'ь', ',':'б', '.':'ю', '`':'ё'
+    };
+    
+    static layoutMapRuToEn = Object.fromEntries(Object.entries(this.layoutMapEnToRu).map(([k, v]) => [v, k]));
+
+    // Автоматическая смена раскладки введенного текста
+    static switchLayout(str) {
+        const isRu = /[а-яё]/i.test(str);
+        const map = isRu ? this.layoutMapRuToEn : this.layoutMapEnToRu;
+        return str.split('').map(c => {
+            const lower = c.toLowerCase();
+            const mapped = map[lower];
+            if (!mapped) return c;
+            return c === lower ? mapped : mapped.toUpperCase();
+        }).join('');
+    }
+
+    // Оценка релевантности совпадения
+    static getMatchScore(query, text) {
+        query = query.toLowerCase();
+        text = text.toLowerCase();
+        
+        if (text === query) return 100; // Точное совпадение
+        if (text.startsWith(query)) return 90; // Начинается с запроса
+        if (text.includes(query)) return 70; // Содержит подстроку
+        
+        // Умный поиск по отдельным словам (порядок не важен)
+        const words = query.split(/\s+/).filter(w => w.length > 0);
+        if (words.length > 1 && words.every(w => text.includes(w))) return 60;
+
+        // Легкая толерантность к опечаткам (fuzzy search)
+        if (query.length > 3) {
+            let textIdx = 0;
+            let matches = 0;
+            for (let i = 0; i < query.length; i++) {
+                const foundIdx = text.indexOf(query[i], textIdx);
+                if (foundIdx !== -1) {
+                    matches++;
+                    textIdx = foundIdx + 1;
+                }
+            }
+            if (matches >= query.length - 1) return 40; // Допускается 1 пропущенная буква
+        }
+
+        return 0;
+    }
+
+    /**
+     * @param {string} query Поисковой запрос
+     * @param {Array} items Массив объектов для поиска
+     * @param {Array} fields Массив строковых путей ключей (например: ['title', 'meta.aliases'])
+     */
+    static execute(query, items, fields = []) {
+        if (!query || query.trim() === '') return items; // Возвращаем всё, если запрос пуст
+        
+        const cleanQuery = query.trim();
+        const altQuery = this.switchLayout(cleanQuery);
+
+        const scoredItems = items.map(item => {
+            let maxScore = 0;
+            
+            fields.forEach(field => {
+                // Поддержка вложенных ключей (напр. 'meta.aliases')
+                const val = field.split('.').reduce((o, i) => o ? o[i] : null, item);
+                
+                const processValue = (v) => {
+                    if (!v) return;
+                    const strVal = String(v);
+                    // Проверяем как прямой ввод, так и исправленную раскладку
+                    const score1 = this.getMatchScore(cleanQuery, strVal);
+                    const score2 = this.getMatchScore(altQuery, strVal);
+                    maxScore = Math.max(maxScore, score1, score2);
+                };
+
+                if (Array.isArray(val)) {
+                    val.forEach(processValue);
+                } else {
+                    processValue(val);
+                }
+            });
+            
+            return { item, score: maxScore };
+        });
+
+        // Отсеиваем несовпадения и сортируем по релевантности
+        return scoredItems
+            .filter(res => res.score > 0)
+            .sort((a, b) => b.score - a.score)
+            .map(res => res.item);
+    }
+}
 
 ============================================================
 FILE: shared\js\ThemeManager.js
@@ -21584,6 +21044,133 @@ export class InfiniteScroll {
         if (this.observer) {
             this.observer.disconnect();
         }
+    }
+}
+
+============================================================
+FILE: shared\js\components\SearchControls.js
+============================================================
+
+import { debounce } from '../utils.js';
+
+export class SearchControls extends HTMLElement {
+    connectedCallback() {
+        const placeholder = this.getAttribute('placeholder') || 'Поиск...';
+        // Сохраняем то, что было вложено внутрь тега (фильтры, селекты)
+        const customFilters = this.innerHTML;
+
+        // Рендерим единый каркас
+        this.innerHTML = `
+            <search class="page-controls">
+                <div class="search-input-wrapper">
+                    <button class="search-btn" aria-label="Найти">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <!-- autocomplete="off" важен, чтобы браузер не перекрывал наши подсказки своими -->
+                    <input type="text" class="search-input" placeholder="${placeholder}" aria-label="Поиск" autocomplete="off">
+                    <ul class="search-suggestions" role="listbox"></ul>
+                </div>
+                <!-- Контейнер для кастомных фильтров конкретной страницы -->
+                <div class="page-controls-filters">
+                    ${customFilters}
+                </div>
+            </search>
+        `;
+
+        this._initEvents();
+    }
+
+    _initEvents() {
+        const input = this.querySelector('.search-input');
+        const btn = this.querySelector('.search-btn');
+        const wrapper = this.querySelector('.search-input-wrapper');
+        this.suggestionsList = this.querySelector('.search-suggestions');
+
+        // Отправка запроса на обновление сетки страницы
+        const emitSearch = () => {
+            this.closeSuggestions();
+            this.dispatchEvent(new CustomEvent('onSearch', { detail: input.value, bubbles: true }));
+            input.blur();
+        };
+
+        // Обработка живого ввода (только для выпадающих подсказок)
+        const handleInput = async () => {
+            const val = input.value.trim();
+            
+            // Если нет текста или страница не задала провайдер подсказок
+            if (!val || !this.suggestionProvider) {
+                this.closeSuggestions();
+                return;
+            }
+            
+            // Запрашиваем топ 5 вариантов у контроллера страницы (он перенаправит в SmartSearch)
+            const suggestions = await this.suggestionProvider(val);
+            
+            if (suggestions && suggestions.length > 0) {
+                this.renderSuggestions(suggestions, input);
+                wrapper.classList.add('has-suggestions');
+            } else {
+                this.closeSuggestions();
+            }
+        };
+
+        // Дебаунс только на отрисовку выпадающего списка
+        input.addEventListener('input', debounce(handleInput, 200));
+        
+        // Показываем подсказки при клике в инпут, если там уже есть текст
+        input.addEventListener('focus', () => {
+            if (input.value.trim() && this.suggestionsList.children.length > 0) {
+                wrapper.classList.add('has-suggestions');
+            }
+        });
+
+        // Фактический поиск (меняет страницу) только по Enter
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                emitSearch();
+            }
+        });
+        
+        // Фактический поиск по клику на лупу
+        btn.addEventListener('click', emitSearch);
+
+        // Скрывать подсказки при клике вне зоны поиска
+        document.addEventListener('click', (e) => {
+            if (!wrapper.contains(e.target)) this.closeSuggestions();
+        });
+    }
+
+    renderSuggestions(items, inputEl) {
+        this.suggestionsList.innerHTML = '';
+        items.forEach(item => {
+            const li = document.createElement('li');
+            li.className = 'suggestion-item';
+            
+            li.innerHTML = `
+                <svg class="suggestion-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <span class="suggestion-text">${item.label}</span>
+            `;
+            
+            li.addEventListener('click', () => {
+                inputEl.value = item.value; // Подставляем в инпут значение из подсказки
+                this.closeSuggestions();
+                // Запускаем реальный поиск после клика по подсказке
+                this.dispatchEvent(new CustomEvent('onSearch', { detail: item.value, bubbles: true })); 
+            });
+            
+            this.suggestionsList.appendChild(li);
+        });
+    }
+
+    closeSuggestions() {
+        this.querySelector('.search-input-wrapper').classList.remove('has-suggestions');
     }
 }
 

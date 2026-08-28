@@ -2,7 +2,7 @@ import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
 import { InfiniteScroll } from '../../shared/js/components/InfiniteScroll.js';
 import { fetchData } from '../../shared/js/api.js';
 import { LightboxManager } from '../../shared/js/Lightbox.js';
-import { debounce } from '../../shared/js/utils.js';
+import { SearchControls } from '../../shared/js/components/SearchControls.js';
 
 import { FeedModel } from './FeedModel.js';
 import { PostView } from './PostView.js';
@@ -11,6 +11,7 @@ import { TranslationService } from './services/TranslationService.js';
 import { CustomSelect } from '../../shared/js/components/CustomSelect.js';
 
 customElements.define('site-header', SiteHeader);
+customElements.define('search-controls', SearchControls);
 
 const TRACKED_AUTHORS = [
     { handle: '@Bendy', name: 'Bendy' },
@@ -36,13 +37,23 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const controller = new FeedController(model, view, scroller);
 
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
     let currentSelectedAuthor = 'all';
+    let currentSearchTerm = ''; // Сохраняем состояние поиска для комбинирования с селектом
 
     const triggerSearch = () => {
-        controller.handleSearchOrFilter(searchInput.value, currentSelectedAuthor);
+        controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthor);
     };
+
+    const searchControls = document.querySelector('search-controls');
+    
+    // Подсказки (Ищет только имена авторов в ленте)
+    searchControls.suggestionProvider = (query) => model.getSuggestions(query);
+    
+    // Событие подтверждения поиска
+    searchControls.addEventListener('onSearch', (e) => {
+        currentSearchTerm = e.detail;
+        triggerSearch();
+    });
 
     const authorSelect = new CustomSelect('author-filter-container', (selectedId) => {
         currentSelectedAuthor = selectedId;
@@ -61,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         ];
 
         TRACKED_AUTHORS.forEach(author => {
-            // Динамически строим новый путь, игнорируя старые JSON данные
+            // Динамически строим путь к аватарке
             const handleClean = author.handle.replace('@', '').toLowerCase();
             const newLocalPath = `assets/developers/${handleClean}/avatar.jpg`;
             
@@ -80,15 +91,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             controller.renderEmptyState();
         }
-
-        searchInput.addEventListener('input', debounce(triggerSearch, 400));
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                triggerSearch();
-            }
-        });
-        searchBtn.addEventListener('click', triggerSearch);
 
     } catch (error) {
         controller.renderErrorState('Не удалось загрузить ленту. База данных недоступна или повреждена.');

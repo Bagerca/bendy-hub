@@ -1,7 +1,5 @@
-/**
- * Model: Отвечает ИСКЛЮЧИТЕЛЬНО за логику данных, фильтрацию и пагинацию.
- * Никакого DOM, никаких document.getElementById.
- */
+import { SmartSearch } from '../../shared/js/SmartSearch.js';
+
 export class FeedModel {
     constructor(chunkSize = 20) {
         this.allPosts = [];
@@ -14,25 +12,35 @@ export class FeedModel {
     }
 
     setPosts(posts) {
-        // Сортировка от новых к старым при инициализации
         this.allPosts = posts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
         this.applyFilters('', 'all');
+    }
+
+    getSuggestions(query) {
+        // Подсказываем только имена авторов
+        const results = SmartSearch.execute(query, this.allPosts, ['authorName', 'authorHandle']);
+        const uniqueAuthors = [...new Set(results.map(p => p.authorName))];
+        
+        return uniqueAuthors.slice(0, 5).map(name => ({ 
+            label: `Твиты автора: <span style="color: var(--accent-color);">${name}</span>`, 
+            value: name 
+        }));
     }
 
     applyFilters(searchTerm, authorId) {
         this.currentSearchTerm = searchTerm.toLowerCase().trim();
         this.currentAuthor = authorId;
         
-        this.filteredPosts = this.allPosts.filter(post => {
-            const matchAuthor = this.currentAuthor === 'all' || post.authorHandle === this.currentAuthor;
-            const matchSearch = this.currentSearchTerm === '' || 
-                                post.content.toLowerCase().includes(this.currentSearchTerm) || 
-                                post.authorName.toLowerCase().includes(this.currentSearchTerm);
-            
-            return matchAuthor && matchSearch;
-        });
+        // Умный поиск по тексту поста и имени
+        let result = SmartSearch.execute(this.currentSearchTerm, this.allPosts, ['content', 'authorName']);
 
-        this.currentIndex = 0; // Сбрасываем пагинацию при новом фильтре
+        // Строгий фильтр по автору из селекта
+        if (this.currentAuthor !== 'all') {
+            result = result.filter(post => post.authorHandle === this.currentAuthor);
+        }
+
+        this.filteredPosts = result;
+        this.currentIndex = 0; 
     }
 
     getNextChunk() {
@@ -41,15 +49,7 @@ export class FeedModel {
         return chunk;
     }
 
-    hasMore() {
-        return this.currentIndex < this.filteredPosts.length;
-    }
-
-    getSearchTerm() {
-        return this.currentSearchTerm;
-    }
-
-    isEmpty() {
-        return this.filteredPosts.length === 0;
-    }
+    hasMore() { return this.currentIndex < this.filteredPosts.length; }
+    getSearchTerm() { return this.currentSearchTerm; }
+    isEmpty() { return this.filteredPosts.length === 0; }
 }

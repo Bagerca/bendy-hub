@@ -1,11 +1,11 @@
 [
     {
-        "id": "dagames-bendy-and-the-ink-machine-dagames",
-        "title": "BENDY AND THE INK MACHINE     DAGames",
+        "id": "dagames-build-our-machine",
+        "title": "Build Our Machine",
         "artist": "DAGames",
         "type": "fan_song",
         "game": "BATIM",
-        "year": 2026,
+        "year": "2017",
         "cover": "assets/music/covers/dagames-bendy-and-the-ink-machine-dagames.jpg",
         "audioUrl": "assets/music/audio/dagames-bendy-and-the-ink-machine-dagames.mp3",
         "youtubeUrl": "https://youtu.be/ZstsPUKT5CI?si=C9xhs66XnsTJURqN",

@@ -1,16 +1,12 @@
 import { fetchData } from '../../shared/js/api.js';
 import { Logger } from '../../shared/js/Logger.js';
+import { SmartSearch } from '../../shared/js/SmartSearch.js';
 
 export class CharactersModel {
     constructor() {
         this.allCharacters = [];
         this.filteredCharacters = [];
-        
-        this.filters = {
-            search: '',
-            category: 'all',
-            letter: 'all'
-        };
+        this.filters = { search: '', category: 'all', letter: 'all' };
     }
 
     async fetchAll() {
@@ -19,10 +15,8 @@ export class CharactersModel {
             const charPromises = charIds.map(id => 
                 fetchData(`assets/characters/${id}/data.json`).catch(() => null)
             );
-            
             const results = await Promise.all(charPromises);
             
-            // Фильтруем битые файлы и сортируем по алфавиту
             this.allCharacters = results
                 .filter(char => char !== null)
                 .sort((a, b) => a.name.localeCompare(b.name, 'ru'));
@@ -35,7 +29,6 @@ export class CharactersModel {
         }
     }
 
-    // Бизнес-логика определения расы/категории
     _determineCategory(char) {
         const species = (char.meta?.species || '').toLowerCase();
         if (species.includes('человек') || species.includes('human')) return 'human';
@@ -44,47 +37,38 @@ export class CharactersModel {
         return 'other';
     }
 
+    getSuggestions(query) {
+        // Ищем и по имени, и по алиасам (например, "объект 414" -> Генри)
+        const results = SmartSearch.execute(query, this.allCharacters, ['name', 'meta.aliases']);
+        return results.slice(0, 5).map(char => ({ label: char.name, value: char.name }));
+    }
+
     applyFilters(updates) {
         this.filters = { ...this.filters, ...updates };
         const { search, category, letter } = this.filters;
-        const term = search.toLowerCase().trim();
 
-        this.filteredCharacters = this.allCharacters.filter(char => {
-            // Поиск по имени и алиасам
-            const matchName = char.name.toLowerCase().includes(term);
-            const aliases = char.meta?.aliases ? char.meta.aliases.join(' ').toLowerCase() : '';
-            const matchAlias = aliases.includes(term);
-            const searchPass = matchName || matchAlias;
+        // Умный поиск
+        let result = SmartSearch.execute(search, this.allCharacters, ['name', 'meta.aliases']);
 
-            // Фильтр по категории
+        result = result.filter(char => {
             const charCat = this._determineCategory(char);
             const categoryPass = category === 'all' || charCat === category;
-
-            // Фильтр по букве
             const firstLetter = char.name.charAt(0).toLowerCase();
             const letterPass = letter === 'all' || firstLetter === letter;
-
-            return searchPass && categoryPass && letterPass;
+            return categoryPass && letterPass;
         });
 
+        this.filteredCharacters = result;
         return this.filteredCharacters;
     }
 
     getUniqueFirstLetters() {
         const russianAlphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
         const uniqueLetters = new Set();
-        
         this.allCharacters.forEach(char => {
             const firstChar = char.name.charAt(0).toLowerCase();
-            if (russianAlphabet.includes(firstChar)) {
-                uniqueLetters.add(firstChar);
-            }
+            if (russianAlphabet.includes(firstChar)) uniqueLetters.add(firstChar);
         });
-
         return Array.from(uniqueLetters).sort();
-    }
-
-    getFilteredCount() {
-        return this.filteredCharacters.length;
     }
 }

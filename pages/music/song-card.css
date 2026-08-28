@@ -1,0 +1,142 @@
+/* =========================================
+   СЕТКА ТРЕКОВ (Grid View)
+   ========================================= */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.song-card {
+    background-color: var(--bg-card); 
+    border: 1px solid transparent; 
+    border-radius: 12px; 
+    padding: 12px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    display: flex; 
+    flex-direction: column; 
+    cursor: pointer;
+    position: relative; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.song-card:hover {
+    background-color: rgba(255, 255, 255, 0.05); 
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .song-card:hover { background-color: #FFFFFF; }
+
+.song-cover-wrapper {
+    width: 100%; 
+    aspect-ratio: 1 / 1; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    position: relative;
+    margin-bottom: 12px; 
+    background-color: var(--bg-body); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.song-cover { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.5s ease; 
+}
+
+.song-card:hover .song-cover { transform: scale(1.05); }
+
+.song-overlay { 
+    position: absolute; 
+    inset: 0; 
+    background: rgba(0,0,0,0.4); 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+}
+.song-card:hover .song-overlay { opacity: 1; }
+
+.song-play-btn {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    background: var(--accent-color); 
+    color: #000; 
+    border: none;
+    width: 48px; 
+    height: 48px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    cursor: pointer; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4); 
+    opacity: 0; 
+    transform: translate(-50%, calc(-50% + 15px)); 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    z-index: 20;
+}
+
+.song-card:hover .song-play-btn { opacity: 1; transform: translate(-50%, -50%); }
+.song-play-btn:hover { background: #fff; transform: translate(-50%, -50%) scale(1.05); }
+
+.eq-animation { 
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+    display: flex; gap: 4px; align-items: flex-end; height: 24px; z-index: 10;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.eq-animation span { 
+    display: block; width: 4px; background-color: var(--accent-color); border-radius: 2px; 
+    animation: eqPlay 0.8s infinite alternate ease-in-out; 
+}
+.eq-animation span:nth-child(1) { height: 10px; animation-delay: 0s; }
+.eq-animation span:nth-child(2) { height: 24px; animation-delay: 0.2s; }
+.eq-animation span:nth-child(3) { height: 16px; animation-delay: 0.4s; }
+
+@keyframes eqPlay { 0% { height: 4px; } 100% { height: 24px; } }
+
+/* --- Логика состояний воспроизведения --- */
+.song-card.playing .song-title { color: var(--accent-color); }
+.song-card.playing .song-overlay { opacity: 1; background: rgba(0,0,0,0.5); }
+.song-card.playing .eq-animation { opacity: 1; visibility: visible; }
+.song-card.playing .song-play-btn { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+.song-card.playing:hover .eq-animation { opacity: 0; visibility: hidden; }
+.song-card.playing:hover .song-play-btn { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.song-card.playing .play-icon { display: none; }
+.song-card.playing .pause-icon { display: block; }
+.song-card.is-paused .song-overlay { opacity: 1; background: rgba(0,0,0,0.4); }
+.song-card.is-paused .eq-animation { opacity: 0; visibility: hidden; }
+.song-card.is-paused .song-play-btn { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.song-card.is-paused .play-icon { display: block; }
+.song-card.is-paused .pause-icon { display: none; }
+
+/* --- Инфо трека --- */
+.song-info { display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+.song-text-wrap { margin-bottom: 8px; }
+.song-title { font-size: 1rem; font-weight: 800; color: var(--text-main); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s;}
+.song-artist { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.song-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.song-year { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
+.song-game { font-size: 0.7rem; background: var(--bg-body); padding: 2px 6px; border-radius: 4px; color: var(--text-main); font-weight: 700; }
+
+/* =========================================
+   СПИСОК ТРЕКОВ (List View) 
+   ========================================= */
+.music-grid.list-view { grid-template-columns: 1fr; gap: 0.5rem; }
+.music-grid.list-view .song-card { flex-direction: row; align-items: center; padding: 8px 12px; border-radius: 8px; height: 70px; background: transparent; }
+.music-grid.list-view .song-card:hover { background-color: var(--bg-card); transform: none; }
+.music-grid.list-view .song-cover-wrapper { width: 48px; height: 48px; margin-bottom: 0; margin-right: 16px; flex-shrink: 0; border-radius: 4px; }
+.music-grid.list-view .song-play-btn { width: 32px; height: 32px; transform: translate(-50%, -50%) scale(0.8); }
+.music-grid.list-view .song-play-btn svg { width: 16px; height: 16px; }
+.music-grid.list-view .song-card:hover .song-play-btn { transform: translate(-50%, -50%) scale(1); }
+.music-grid.list-view .song-info { flex-direction: row; align-items: center; justify-content: space-between; width: 100%; }
+.music-grid.list-view .song-text-wrap { margin-bottom: 0; width: 40%; flex-shrink: 0; }
+.music-grid.list-view .song-meta { width: 30%; justify-content: flex-end; gap: 1rem; margin-top: 0;}
+
+@media (max-width: 600px) {
+    .music-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;}
+    .music-grid.list-view .song-meta { display: none; }
+    .music-grid.list-view .song-text-wrap { width: 100%; }
+}

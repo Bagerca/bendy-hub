@@ -6,11 +6,17 @@
     <title>Музыка Фандома | Bendy Hub</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
+    <!-- Shared CSS -->
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
     <link rel="stylesheet" href="shared/css/layout.css">
     <link rel="stylesheet" href="shared/css/ui.css">
+    
+    <!-- Page Specific CSS -->
     <link rel="stylesheet" href="pages/music/music.css">
+    <link rel="stylesheet" href="pages/music/song-card.css">
+    <link rel="stylesheet" href="pages/music/audio-player.css">
+    <link rel="stylesheet" href="pages/music/lyrics-panel.css">
     
     <script>
         const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
@@ -25,17 +31,7 @@
 
     <main class="page-content music-layout">
         
-        <search class="archive-controls feed-controls">
-            <div class="search-input-wrapper">
-                <button id="search-btn" class="search-btn" aria-label="Найти">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-                <input type="text" id="search-input" placeholder="Поиск по названию трека или исполнителю (Enter)..." aria-label="Поиск">
-            </div>
-
+        <search-controls placeholder="Поиск по названию трека или исполнителю (Enter)...">
             <div class="view-toggles">
                 <button id="btn-view-grid" class="view-btn active" title="Сетка" aria-label="Вид сеткой">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -44,7 +40,7 @@
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
                 </button>
             </div>
-        </search>
+        </search-controls>
 
         <div id="music-loader" class="loading-state">
             <div class="spinner" style="margin: 0 auto 10px;"></div>
@@ -71,7 +67,6 @@
                 </div>
             </div>
 
-            <!-- ОБНОВЛЕННЫЕ ИКОНКИ УПРАВЛЕНИЯ -->
             <div class="player-controls">
                 <button id="btn-shuffle" class="player-btn control-small" title="Перемешать">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"></path><path d="M4 20L21 3"></path><path d="M21 16v5h-5"></path><path d="M15 15l6 6"></path><path d="M4 4l5 5"></path></svg>
@@ -82,9 +77,7 @@
                 </button>
                 
                 <button id="btn-play-pause" class="player-btn play-btn" title="Play/Pause">
-                    <!-- Иконка Play с классом optical-center для идеального выравнивания -->
                     <svg id="icon-play" class="optical-center" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"/></svg>
-                    <!-- Иконка Pause -->
                     <svg id="icon-pause" style="display: none;" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                 </button>
                 
@@ -146,14 +139,12 @@
                 <img src="" alt="" class="song-cover" loading="lazy">
                 <div class="song-overlay"></div>
                 
-                <!-- ПЛАВНЫЙ ЭКВАЛАЙЗЕР (Убрали inline style) -->
                 <div class="eq-animation">
                     <span></span><span></span><span></span>
                 </div>
                 
                 <button class="song-play-btn">
                     <svg class="play-icon optical-center" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6v12l10-6z"/></svg>
-                    <!-- Иконка паузы внутри сетки -->
                     <svg class="pause-icon" style="display:none;" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
                 </button>
             </div>
