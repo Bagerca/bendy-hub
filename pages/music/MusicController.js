@@ -8,12 +8,12 @@ export class MusicController {
     }
 
     _bindEvents() {
-        // Подписка на события UI (Сетка)
+        // Сетка
         this.view.onTrackClick = (trackId) => this._handleTrackClick(trackId);
 
-        // Подписка на события Плеера (Внизу)
-        this.player.onStateChange = (trackId, isPlaying) => {
-            this.view.updateGridStateUI(trackId, isPlaying);
+        // Плеер
+        this.player.onStateChange = (track, isPlaying) => {
+            this.view.updateGridStateUI(track, isPlaying);
         };
         
         this.player.onNextRequest = () => {
@@ -24,6 +24,10 @@ export class MusicController {
         this.player.onPrevRequest = () => {
             const prevTrack = this.model.getPrevTrack();
             if (prevTrack) this.player.loadTrack(prevTrack);
+        };
+
+        this.player.onShuffleToggle = () => {
+            return this.model.toggleShuffle();
         };
 
         this.player.onLyricsRequest = (trackId) => {
@@ -43,18 +47,14 @@ export class MusicController {
 
     handleSearch(searchTerm) {
         const filtered = this.model.applySearch(searchTerm);
-        
-        // При перерисовке сетки передаем инфо о текущем треке, чтобы иконка эквалайзера восстановилась
         const currentPlayingId = this.player.currentTrack ? this.player.currentTrack.id : null;
         this.view.renderGrid(filtered, currentPlayingId, this.player.isPlaying);
     }
 
     _handleTrackClick(trackId) {
-        // Если кликнули на играющий сейчас трек — ставим паузу
         if (this.player.currentTrack && this.player.currentTrack.id === trackId) {
             this.player.togglePlay();
         } else {
-            // Иначе грузим новый трек
             this.model.setCurrentIndexById(trackId);
             const track = this.model.getTrackById(trackId);
             this.player.loadTrack(track);

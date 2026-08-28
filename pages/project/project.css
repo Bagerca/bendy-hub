@@ -1,241 +1,37 @@
-/* --- АНИМАЦИЯ ФОНА --- */
-@keyframes heroZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.08); }
+/* --- СТРУКТУРА СТРАНИЦЫ И СЕТКИ --- */
+.wiki-content-area { 
+    max-width: 1200px; 
+    margin: 3rem auto; 
+    padding: 0 1.5rem; 
+    min-height: 50vh; 
 }
 
-/* --- HERO СЕКЦИЯ --- */
-.project-hero {
-    position: relative;
-    height: 65vh;
-    min-height: 450px;
-    display: flex;
-    overflow: hidden;
-    background-color: #000;
+.overview-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 320px; 
+    gap: 4rem; 
 }
 
-.project-hero-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center; 
-    z-index: 0;
-    animation: heroZoom 25s infinite alternate ease-in-out;
+/* Жестко фиксируем поведение левой колонки, запрещая ей ломать грид */
+.overview-main {
+    min-width: 0;
 }
 
-/* Модификатор для эмбиент-фона (используется для книг) */
-.project-hero-bg.heavy-blur {
-    filter: blur(40px) brightness(0.3);
-    transform: scale(1.2); /* Увеличиваем, чтобы края не светились после размытия */
-    animation: none; /* Отключаем зум, так как это просто размытый фон */
-}
-
-.project-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%),
-                linear-gradient(to top, var(--bg-body) 0%, rgba(var(--bg-body-rgb), 0) 15%);
-    z-index: 1;
-}
-
-[data-theme="light"] .project-hero-overlay {
-    background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%),
-                linear-gradient(to top, var(--bg-body) 0%, rgba(255, 255, 255, 0) 15%);
-}
-
-.project-hero-container {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.back-link {
-    position: absolute;
-    top: 2rem;
-    left: 1.5rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 10px 18px;
-    border-radius: 30px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.2s ease;
-    z-index: 10;
-}
-
-.back-link:hover { 
-    background: rgba(0, 0, 0, 0.8); 
-    color: var(--accent-color); 
-    border-color: rgba(210, 168, 80, 0.4);
-    transform: translateX(-4px);
-}
-
-/* Обертка контента */
-.project-hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-}
-
-.hero-text-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-}
-
-/* === SPLIT LAYOUT ДЛЯ КНИГ И ФИЛЬМОВ === */
-.hero-split-layout {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 3.5rem; /* Отступ между постером и текстом */
-    text-align: left;
-}
-
-.hero-split-layout .hero-text-container {
-    align-items: flex-start;
-    text-align: left;
-}
-
-.hero-split-layout .project-meta-tags,
-.hero-split-layout .project-hero-actions {
-    justify-content: flex-start;
-}
-
-/* Контейнер постера */
-.hero-poster-container {
-    flex-shrink: 0;
-    width: 260px;
-    aspect-ratio: 2 / 3;
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    border: 1px solid rgba(255,255,255,0.15);
-    overflow: hidden;
-    background-color: var(--bg-body);
-}
-
-.project-poster {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* === ЭЛЕМЕНТЫ === */
-.project-logo {
-    max-width: 90%;
-    width: 550px;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 2rem;
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
-}
-
-.project-title-text {
-    font-size: 4rem;
-    font-weight: 900;
-    color: #fff;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.8);
-    line-height: 1.1;
-}
-
-.hero-split-layout .project-title-text {
-    font-size: 3rem; /* Чуть меньше для книг, так как места меньше */
-}
-
-/* МЕТА-ТЕГИ */
-.project-meta-tags { 
+/* Сайдбар */
+.sticky-sidebar-wrapper {
+    position: sticky; 
+    top: 140px; 
     display: flex; 
-    justify-content: center; 
-    gap: 12px; 
-    flex-wrap: wrap; 
-    margin-bottom: 2rem;
+    flex-direction: column; 
+    gap: 1.5rem;
 }
 
-.meta-badge {
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 8px 16px;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.status-badge { 
-    background: var(--accent-color); 
-    color: #000; 
-    border: none; 
-    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.4);
-}
-
-/* КНОПКИ МАГАЗИНОВ */
-.project-hero-actions { 
-    display: flex; 
-    align-items: center;
-    justify-content: center; 
-    gap: 0.75rem;
-    width: 100%; 
-    flex-wrap: wrap;
-    padding: 0.5rem 0 1.5rem 0; 
-}
-
-.store-btn {
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 10px; 
-    background: rgba(255, 255, 255, 0.1); 
-    color: #fff; 
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    text-decoration: none;
-    padding: 0 1.4rem; 
-    height: 44px; 
-    border-radius: 30px; 
-    font-weight: 700; 
-    font-size: 0.95rem; 
-    white-space: nowrap; 
-    flex-shrink: 0; 
-    box-sizing: border-box;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
-}
-
-.store-btn svg {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    display: block; 
-    fill: currentColor;
-}
-
-.store-btn:hover { 
-    transform: translateY(-3px); 
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: #000;
+.project-desc { 
+    font-size: 1.15rem; 
+    line-height: 1.8; 
+    color: var(--text-main); 
+    opacity: 0.9; 
+    white-space: pre-line;
 }
 
 /* --- STICKY TABS --- */
@@ -249,263 +45,68 @@
 }
 
 .wiki-tabs {
-    max-width: 1200px; margin: 0 auto; display: flex; gap: 2.5rem; padding: 0 1.5rem;
-    overflow-x: auto; scrollbar-width: none;
+    max-width: 1200px; 
+    margin: 0 auto; 
+    display: flex; 
+    gap: 2.5rem; 
+    padding: 0 1.5rem;
+    overflow-x: auto; 
+    scrollbar-width: none;
 }
 .wiki-tabs::-webkit-scrollbar { display: none; }
 
 .wiki-tab {
-    background: none; border: none; color: var(--text-muted); font-size: 1.05rem;
-    font-weight: 700; padding: 1.25rem 0; cursor: pointer; border-bottom: 3px solid transparent;
-    transition: 0.2s; white-space: nowrap;
+    background: none; 
+    border: none; 
+    color: var(--text-muted); 
+    font-size: 1.05rem;
+    font-weight: 700; 
+    padding: 1.25rem 0; 
+    cursor: pointer; 
+    border-bottom: 3px solid transparent;
+    transition: 0.2s; 
+    white-space: nowrap;
 }
 .wiki-tab:hover { color: var(--text-main); }
 .wiki-tab.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
 
-/* --- WIKI CONTENT --- */
-.wiki-content-area { max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem; min-height: 50vh; }
-.wiki-section { display: none; animation: fadeInSlideUp 0.4s ease forwards; }
+/* --- WIKI СЕКЦИИ --- */
+.wiki-section { 
+    display: none; 
+    animation: fadeInSlideUp 0.4s ease forwards; 
+}
 .wiki-section.active { display: block; }
 .section-title { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
 .mt-4 { margin-top: 3rem; }
 
-.overview-grid { display: grid; grid-template-columns: 1fr 320px; gap: 4rem; }
-.project-desc { font-size: 1.15rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line;}
-
-/* Сайдбар (обертка для липкости) */
-.sticky-sidebar-wrapper {
-    position: sticky; 
-    top: 140px; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 1.5rem;
-}
-
-.bento-box {
+/* --- ПУСТОЕ СОСТОЯНИЕ (Empty State) --- */
+.empty-state {
+    text-align: center; 
+    padding: 4rem 2rem; 
     background: var(--bg-card);
-    padding: 2rem;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-}
-.bento-box.large { padding: 3rem; }
-.bento-box h3 { margin-bottom: 1.2rem; font-size: 1.2rem; color: var(--text-main); }
-
-.tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-.game-tag { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); padding: 6px 12px; border-radius: 8px; font-weight: 600; font-size: 0.9rem;}
-
-/* --- РУСИФИКАТОРЫ С АВАТАРКАМИ --- */
-.translators-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.rus-card {
-    display: flex;
-    align-items: center;
-    gap: 12px; 
-    background: var(--bg-body);
-    border: 1px solid var(--border-color);
-    padding: 12px 14px;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.rus-card:hover {
-    border-color: var(--accent-color);
-    background: var(--bg-card);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15);
-}
-
-.rus-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    flex-shrink: 0;
-}
-
-.rus-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    flex-grow: 1;
-    overflow: hidden; 
-}
-
-.rus-title {
-    font-weight: 800;
-    color: var(--text-main);
-    font-size: 0.95rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    line-height: 1.2;
-}
-
-.rus-title span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.rus-icon {
+    border: 1px dashed var(--border-color); 
+    border-radius: 16px; 
     color: var(--text-muted);
-    transition: color 0.2s;
-    flex-shrink: 0;
+}
+.empty-state h3 { 
+    color: var(--text-main); 
+    margin-bottom: 0.5rem; 
+    font-size: 1.3rem;
 }
 
-.rus-card:hover .rus-icon {
-    color: var(--accent-color);
-}
-
-.rus-team {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* --- КЛИКАБЕЛЬНЫЕ КАРТОЧКИ ПЕРСОНАЖЕЙ --- */
-.character-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-
-.character-card {
-    display: flex; align-items: center; gap: 12px; background: var(--bg-body);
-    padding: 8px 12px; border-radius: 12px; text-decoration: none; color: var(--text-main);
-    border: 1px solid var(--border-color); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.character-card:hover {
-    border-color: var(--accent-color); transform: translateX(6px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: var(--bg-card);
-}
-.char-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); background-color: var(--bg-body); }
-.char-name { flex-grow: 1; font-weight: 700; font-size: 1.05rem; }
-.char-arrow { color: var(--text-muted); transition: 0.2s; }
-.character-card:hover .char-arrow { color: var(--accent-color); transform: translateX(3px); }
-
-/* Геймплей и Таймлайн */
-.gameplay-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
-.gameplay-list li {
-    font-size: 1.1rem; line-height: 1.6; color: var(--text-main);
-    padding-left: 2rem; position: relative; opacity: 0.9;
-}
-.gameplay-list li::before {
-    content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 2px; font-size: 1.2rem;
-}
-
-.timeline-container { display: flex; flex-direction: column; gap: 2rem; position: relative; }
-.timeline-container::before {
-    content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px;
-    width: 2px; background: var(--border-color); z-index: 0;
-}
-.timeline-item { position: relative; z-index: 1; padding-left: 3rem; }
-.timeline-item::before {
-    content: ''; position: absolute; left: 11px; top: 5px; width: 10px; height: 10px;
-    background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-body);
-}
-.timeline-item h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-main); }
-.timeline-item p { font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); }
-
-/* --- МЕДИА И СКРИНШОТЫ --- */
-.screenshots-bento { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-    gap: 1.25rem; 
-}
-
-/* Обертка для встроенного видео (Адаптивный 16:9) */
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* Пропорция 16:9 */
-    height: 0;
-    overflow: hidden;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    background: #000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-}
-
-/* Скриншоты */
-.screenshot-img {
-    width: 100%; 
-    aspect-ratio: 16/9; 
-    object-fit: cover; 
-    border-radius: 12px; 
-    cursor: zoom-in;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-body);
-}
-
-.screenshot-img:hover { 
-    transform: scale(1.03); 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
-    z-index: 2; 
-    position: relative;
-}
-
-/* Требования */
-.req-bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
-.req-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-.req-list li { color: var(--text-main); font-size: 1rem; padding-left: 14px; position: relative; }
-.req-list li::before { content: "▹"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold;}
-.req-label { font-weight: 800; opacity: 1; display: inline-block; font-size: 0.95rem; margin-right: 6px;}
-
-/* === АДАПТИВ === */
-@media (max-width: 900px) {
-    .overview-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .sticky-sidebar-wrapper { position: static; }
-    .project-logo { width: 350px; }
-    .project-hero { height: auto; min-height: 450px; padding: 4rem 0; }
-    .back-link { top: 1rem; left: 1rem; }
-    .req-bento-grid { grid-template-columns: 1fr; }
-    
-    /* Адаптив для Split-Layout (книги съезжают в колонку) */
-    .hero-split-layout {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-    .hero-split-layout .hero-text-container {
-        align-items: center;
-        text-align: center;
-    }
-    .hero-split-layout .project-meta-tags,
-    .hero-split-layout .project-hero-actions {
-        justify-content: center;
-    }
-    .hero-split-layout .project-title-text {
-        font-size: 2.2rem; 
-    }
-    .hero-poster-container {
-        width: 200px;
-    }
-}
-
+/* --- ГЛОБАЛЬНЫЕ АНИМАЦИИ --- */
 @keyframes fadeInSlideUp {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-.empty-state {
-    text-align: center; padding: 4rem 2rem; background: var(--bg-card);
-    border: 1px dashed var(--border-color); border-radius: 16px; color: var(--text-muted);
+/* === АДАПТИВ БАЗОВОЙ СЕТКИ === */
+@media (max-width: 900px) {
+    .overview-grid { 
+        grid-template-columns: 1fr; 
+        gap: 2rem; 
+    }
+    .sticky-sidebar-wrapper { 
+        position: static; 
+    }
 }
-.empty-state h3 { color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.3rem;}

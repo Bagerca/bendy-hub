@@ -18,7 +18,6 @@ export class WikiView {
     }
 
     setupTabs(type) {
-        // Динамически строим табы. Книгам и мультфильмам не нужен геймплей и сис.требования
         let tabsHtml = `<button class="wiki-tab active" data-target="tab-overview">Обзор</button>
                         <button class="wiki-tab" data-target="tab-story">Сюжет и Персонажи</button>`;
         
@@ -34,7 +33,6 @@ export class WikiView {
 
         this.els.tabsContainer.innerHTML = tabsHtml;
 
-        // Вешаем логику переключения
         const tabs = this.els.tabsContainer.querySelectorAll('.wiki-tab');
         const sections = document.querySelectorAll('.wiki-section');
 
@@ -64,57 +62,146 @@ export class WikiView {
             this.els.tags.appendChild(span);
         });
 
-        // Переводы (для игр — русификаторы, для книг/фильмов — переводы)
+        // Переводы
         this._renderTranslators(data.russifiers, type);
 
-        // Медиа (Видео и Скриншоты)
-        this._renderMedia(assets, projectId);
+        // Интерактивная Медиа-Галерея (БЕЗ автоплея)
+        this._renderMediaGallery(assets, projectId);
 
-        // Системные требования (только для игр)
+        // Системные требования 
         if (type === 'game') this._renderSpecs(data.specs);
 
         // Сюжет, Геймплей, Разработка
         this._renderStaticWiki(wiki, type);
     }
 
-    // НОВЫЙ МЕТОД: Рендер Видео и Скриншотов
-    _renderMedia(assets, projectId) {
+    // НОВЫЙ МЕТОД: Интерактивная галерея видео и фото
+    _renderMediaGallery(assets, projectId) {
         this.els.screens.innerHTML = '';
-        let hasMedia = false;
+        
+        const mediaItems = [];
 
-        // 1. Рендерим YouTube Видео
+        // Видео с ютуба
         if (assets.videos && assets.videos.length > 0) {
-            assets.videos.forEach(videoUrl => {
-                const videoId = this._extractYouTubeId(videoUrl);
+            assets.videos.forEach(url => {
+                const videoId = this._extractYouTubeId(url);
                 if (videoId) {
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'video-wrapper';
-                    wrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-                    this.els.screens.appendChild(wrapper);
-                    hasMedia = true;
+                    mediaItems.push({
+                        type: 'video',
+                        src: `https://www.youtube.com/embed/${videoId}?rel=0`, // Автовоспроизведение убрано
+                        thumb: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+                    });
                 }
             });
         }
 
-        // 2. Рендерим Скриншоты
+        // Картинки из папки проекта
         if (assets.screenshots && assets.screenshots.length > 0) {
             assets.screenshots.forEach(src => {
-                const img = document.createElement('img');
-                img.src = `${this.baseAssetPath}${projectId}/${src}`;
-                img.loading = 'lazy';
-                img.className = 'screenshot-img';
-                img.onclick = () => this.lightbox.open(img.src);
-                this.els.screens.appendChild(img);
-                hasMedia = true;
+                const fullUrl = `${this.baseAssetPath}${projectId}/${src}`;
+                mediaItems.push({
+                    type: 'image',
+                    src: fullUrl,
+                    thumb: fullUrl
+                });
             });
         }
 
-        if (!hasMedia) {
-            this.els.screens.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem;">Медиафайлы отсутствуют.</span>';
+        // Если медиа нет, скрываем блок
+        if (mediaItems.length === 0) {
+            this.els.screens.style.display = 'none';
+            return;
+        } else {
+            this.els.screens.style.display = 'block';
         }
+
+        const galleryHtml = `
+            <div class="media-gallery">
+                <div class="gallery-main-view" id="gallery-main-view"></div>
+                
+                ${mediaItems.length > 1 ? `
+                <div class="gallery-nav">
+                    <button class="gallery-arrow left" id="gallery-prev" aria-label="Назад">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    
+                    <div class="gallery-thumbnails" id="gallery-thumbnails">
+                        ${mediaItems.map((item, idx) => `
+                            <button class="gallery-thumb-btn ${idx === 0 ? 'active' : ''}" data-index="${idx}">
+                                <img src="${item.thumb}" alt="Thumbnail" loading="lazy">
+                                ${item.type === 'video' ? '<div class="play-indicator"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>' : ''}
+                            </button>
+                        `).join('')}
+                    </div>
+                    
+                    <button class="gallery-arrow right" id="gallery-next" aria-label="Вперед">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+                ` : ''}
+            </div>
+        `;
+
+        this.els.screens.innerHTML = galleryHtml;
+
+        let currentIndex = 0;
+        const mainView = document.getElementById('gallery-main-view');
+        const thumbnailsWrapper = document.getElementById('gallery-thumbnails');
+        const thumbs = document.querySelectorAll('.gallery-thumb-btn');
+
+        const updateMainView = (index) => {
+            const item = mediaItems[index];
+            
+            if (item.type === 'image') {
+                mainView.innerHTML = `<img src="${item.src}" alt="Screenshot" class="gallery-main-img">`;
+                const imgEl = mainView.querySelector('.gallery-main-img');
+                imgEl.onclick = () => this.lightbox.open(item.src);
+            } 
+            else if (item.type === 'video') {
+                mainView.innerHTML = `
+                    <div class="video-wrapper">
+                        <iframe src="${item.src}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `;
+            }
+
+            if (thumbs.length > 0) {
+                thumbs.forEach(t => t.classList.remove('active'));
+                const activeThumb = thumbs[index];
+                activeThumb.classList.add('active');
+                
+                if (thumbnailsWrapper) {
+                    const scrollLeft = activeThumb.offsetLeft - (thumbnailsWrapper.offsetWidth / 2) + (activeThumb.offsetWidth / 2);
+                    thumbnailsWrapper.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+                }
+            }
+        };
+
+        if (mediaItems.length > 1) {
+            const btnPrev = document.getElementById('gallery-prev');
+            const btnNext = document.getElementById('gallery-next');
+
+            btnPrev.addEventListener('click', () => {
+                currentIndex = currentIndex === 0 ? mediaItems.length - 1 : currentIndex - 1;
+                updateMainView(currentIndex);
+            });
+
+            btnNext.addEventListener('click', () => {
+                currentIndex = currentIndex === mediaItems.length - 1 ? 0 : currentIndex + 1;
+                updateMainView(currentIndex);
+            });
+
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    currentIndex = parseInt(thumb.dataset.index);
+                    updateMainView(currentIndex);
+                });
+            });
+        }
+
+        updateMainView(0);
     }
 
-    // Парсер ссылок YouTube (Достает ID видео из любой ссылки)
     _extractYouTubeId(url) {
         const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
         return match ? match[1] : null;

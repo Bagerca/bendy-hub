@@ -3,8 +3,14 @@ export class MusicView {
         this.els = {
             container: document.getElementById('music-grid'),
             loader: document.getElementById('music-loader'),
-            modal: document.getElementById('lyrics-modal'),
-            closeBtn: document.querySelector('#lyrics-modal .modal-close')
+            ambientBg: document.getElementById('ambient-bg'),
+            
+            btnGrid: document.getElementById('btn-view-grid'),
+            btnList: document.getElementById('btn-view-list'),
+
+            panel: document.getElementById('lyrics-panel'),
+            overlay: document.getElementById('lyrics-overlay'),
+            closeBtn: document.querySelector('.panel-close')
         };
         
         this.templates = {
@@ -13,18 +19,32 @@ export class MusicView {
             error: document.getElementById('error-state-template')
         };
 
-        this.onTrackClick = null; // Коллбэк для Контроллера
+        this.onTrackClick = null; 
         this._initEvents();
     }
 
     _initEvents() {
-        this.els.closeBtn.addEventListener('click', () => this.closeLyrics());
-        this.els.modal.addEventListener('click', (e) => {
-            const rect = this.els.modal.getBoundingClientRect();
-            if (!(rect.top <= e.clientY && e.clientY <= rect.top + rect.height && rect.left <= e.clientX && e.clientX <= rect.left + rect.width)) {
-                this.closeLyrics();
-            }
-        });
+        const closePanel = () => {
+            this.els.panel.classList.remove('active');
+            this.els.overlay.classList.remove('active');
+        };
+        this.els.closeBtn.addEventListener('click', closePanel);
+        this.els.overlay.addEventListener('click', closePanel);
+
+        this.els.btnGrid.addEventListener('click', () => this.setViewMode('grid'));
+        this.els.btnList.addEventListener('click', () => this.setViewMode('list'));
+    }
+
+    setViewMode(mode) {
+        if (mode === 'list') {
+            this.els.container.classList.add('list-view');
+            this.els.btnList.classList.add('active');
+            this.els.btnGrid.classList.remove('active');
+        } else {
+            this.els.container.classList.remove('list-view');
+            this.els.btnGrid.classList.add('active');
+            this.els.btnList.classList.remove('active');
+        }
     }
 
     renderGrid(tracksToRender, currentPlayingId = null, isPlaying = false) {
@@ -65,25 +85,30 @@ export class MusicView {
         this.els.container.style.display = 'grid';
 
         if (currentPlayingId) {
-            this.updateGridStateUI(currentPlayingId, isPlaying);
+            this.updateGridStateUI({id: currentPlayingId, cover: this.els.ambientBg.style.backgroundImage.slice(5, -2)}, isPlaying);
         }
     }
 
-    updateGridStateUI(trackId, isPlaying) {
+    // Обновленная логика UI без изменения style.display напрямую
+    updateGridStateUI(currentTrack, isPlaying) {
+        // 1. Управляем классами карточек
         document.querySelectorAll('.song-card').forEach(card => {
-            const icon = card.querySelector('.play-icon');
-            const eq = card.querySelector('.eq-animation');
-            
-            if (card.dataset.id === trackId) {
+            if (card.dataset.id === currentTrack.id) {
                 card.classList.add('playing');
-                icon.style.display = isPlaying ? 'none' : 'block';
-                eq.style.display = isPlaying ? 'flex' : 'none';
+                // Добавляем класс is-paused, если трек на паузе
+                card.classList.toggle('is-paused', !isPlaying);
             } else {
-                card.classList.remove('playing');
-                icon.style.display = 'block';
-                eq.style.display = 'none';
+                card.classList.remove('playing', 'is-paused');
             }
         });
+
+        // 2. Обновляем эмбиент фон
+        if (isPlaying && currentTrack.cover) {
+            this.els.ambientBg.style.backgroundImage = `url('${currentTrack.cover}')`;
+            this.els.ambientBg.style.opacity = '1';
+        } else if (!isPlaying && !currentTrack.id) { // Скрываем только если вообще ничего не выбрано
+            this.els.ambientBg.style.opacity = '0';
+        }
     }
 
     openLyrics(track) {
@@ -99,13 +124,8 @@ export class MusicView {
             ytBtn.style.display = 'none';
         }
 
-        this.els.modal.showModal();
-        requestAnimationFrame(() => this.els.modal.classList.add('active'));
-    }
-
-    closeLyrics() {
-        this.els.modal.classList.remove('active');
-        setTimeout(() => this.els.modal.close(), 300);
+        this.els.overlay.classList.add('active');
+        this.els.panel.classList.add('active');
     }
 
     _renderEmptyState() {

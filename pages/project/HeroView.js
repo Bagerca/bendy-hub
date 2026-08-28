@@ -30,11 +30,26 @@ export class HeroView {
             this.els.contentWrapper.classList.add('hero-split-layout');
             this.els.bg.classList.add('heavy-blur');
 
-            if (assets.cover) {
-                this.els.posterImg.src = `${this.baseAssetPath}${projectId}/${assets.cover}`;
+            // ИЗМЕНЕНИЕ: Умный выбор обложки и пропорций контейнера
+            let mainImage = null;
+            
+            if (type === 'movie') {
+                // Для мультфильмов берем баннер и делаем контейнер горизонтальным
+                mainImage = assets.banner || assets.cover;
+                this.els.posterContainer.classList.add('movie-poster');
+            } else {
+                // Для книг берем вертикальную обложку
+                mainImage = assets.cover || assets.banner;
+                this.els.posterContainer.classList.remove('movie-poster');
+            }
+
+            if (mainImage) {
+                this.els.posterImg.src = `${this.baseAssetPath}${projectId}/${mainImage}`;
                 this.els.posterContainer.style.display = 'block';
                 // Эмбиент-фон из обложки
-                this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${assets.cover}')`;
+                this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${mainImage}')`;
+            } else {
+                this.els.posterContainer.style.display = 'none';
             }
 
             this.els.logo.style.display = 'none';

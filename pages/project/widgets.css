@@ -1,0 +1,181 @@
+/* =========================================
+   ВИДЖЕТЫ И КОМПОНЕНТЫ WIKI
+   ========================================= */
+
+/* --- УНИВЕРСАЛЬНЫЙ BENTO BOX --- */
+.bento-box {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+.bento-box.large { padding: 3rem; }
+.bento-box h3 { margin-bottom: 1.2rem; font-size: 1.2rem; color: var(--text-main); }
+
+/* --- ТЕГИ ЖАНРОВ --- */
+.tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+.game-tag { 
+    background: rgba(210, 168, 80, 0.1); 
+    color: var(--accent-color); 
+    padding: 6px 12px; 
+    border-radius: 8px; 
+    font-weight: 600; 
+    font-size: 0.9rem;
+}
+
+/* --- КАРТОЧКИ РУСИФИКАТОРОВ --- */
+.translators-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rus-card {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    padding: 12px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rus-card:hover {
+    border-color: var(--accent-color);
+    background: var(--bg-card);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15);
+}
+
+.rus-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.rus-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-grow: 1;
+    overflow: hidden; 
+}
+
+.rus-title {
+    font-weight: 800;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.2;
+}
+
+.rus-title span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rus-icon {
+    color: var(--text-muted);
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.rus-card:hover .rus-icon {
+    color: var(--accent-color);
+}
+
+.rus-team {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* --- КАРТОЧКИ ПЕРСОНАЖЕЙ (В сайдбаре сюжета) --- */
+.character-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+.character-card {
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    background: var(--bg-body);
+    padding: 8px 12px; 
+    border-radius: 12px; 
+    text-decoration: none; 
+    color: var(--text-main);
+    border: 1px solid var(--border-color); 
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.character-card:hover {
+    border-color: var(--accent-color); 
+    transform: translateX(6px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+    background: var(--bg-card);
+}
+
+.char-avatar { 
+    width: 44px; 
+    height: 44px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 1px solid var(--border-color); 
+    background-color: var(--bg-body); 
+}
+
+.char-name { flex-grow: 1; font-weight: 700; font-size: 1.05rem; }
+.char-arrow { color: var(--text-muted); transition: 0.2s; }
+.character-card:hover .char-arrow { color: var(--accent-color); transform: translateX(3px); }
+
+/* --- ГЕЙМПЛЕЙ (Список механик) --- */
+.gameplay-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
+.gameplay-list li {
+    font-size: 1.1rem; line-height: 1.6; color: var(--text-main);
+    padding-left: 2rem; position: relative; opacity: 0.9;
+}
+.gameplay-list li::before {
+    content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 2px; font-size: 1.2rem;
+}
+
+/* --- ТАЙМЛАЙН РАЗРАБОТКИ --- */
+.timeline-container { display: flex; flex-direction: column; gap: 2rem; position: relative; }
+.timeline-container::before {
+    content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px;
+    width: 2px; background: var(--border-color); z-index: 0;
+}
+.timeline-item { position: relative; z-index: 1; padding-left: 3rem; }
+.timeline-item::before {
+    content: ''; position: absolute; left: 11px; top: 5px; width: 10px; height: 10px;
+    background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-body);
+}
+.timeline-item h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-main); }
+.timeline-item p { font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); }
+
+/* --- СИСТЕМНЫЕ ТРЕБОВАНИЯ --- */
+.req-bento-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    gap: 1.5rem; 
+}
+.req-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.req-list li { color: var(--text-main); font-size: 1rem; padding-left: 14px; position: relative; }
+.req-list li::before { content: "▹"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold;}
+.req-label { font-weight: 800; opacity: 1; display: inline-block; font-size: 0.95rem; margin-right: 6px;}
+
+/* === АДАПТИВ ВИДЖЕТОВ === */
+@media (max-width: 900px) {
+    .req-bento-grid { grid-template-columns: 1fr; }
+}

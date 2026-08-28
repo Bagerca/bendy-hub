@@ -23,6 +23,7 @@
     "cover": "cover.jpg",
     "banner": "banner.jpg",
     "logo": "logo.png",
+    "hero_bg": "hero.jpg",
     "screenshots": [
       "screen1.jpg",
       "screen2.jpg"
