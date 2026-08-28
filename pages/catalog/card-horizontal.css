@@ -65,17 +65,18 @@
     flex-direction: column; 
     gap: 0.3rem;
     overflow: hidden;
+    /* МАГИЯ ЗДЕСЬ: Двусторонний градиент. 
+       Слева: растворяется в зоне padding (0-12px).
+       Справа: растворяется на последних 20px */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 20px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 20px), transparent 100%);
 }
-
-/* Строгий контроль в одну строку */
 .card-horizontal .card-title { 
     font-size: 1.15rem; 
     font-weight: 800; 
     color: var(--text-main); 
     line-height: 1.25;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: block;
     width: 100%;
     will-change: transform;
@@ -86,8 +87,6 @@
     font-weight: 600; 
     color: var(--text-muted); 
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: block;
     width: 100%;
     will-change: transform;

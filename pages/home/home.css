@@ -4,12 +4,13 @@
    ========================================= */
 
 .home-layout {
-    max-width: 1280px; 
+    /* Расширяем макет, перебивая базовые 1200px */
+    max-width: 1360px !important; 
     margin: 2rem auto 4rem;
     display: grid;
-    /* Увеличили правую колонку до 400px (было 360px) */
-    grid-template-columns: 240px 1fr 400px; 
-    gap: 2rem;
+    /* Узкая стата (220px) | Широкий центр (1fr) | Команда (340px) */
+    grid-template-columns: 220px 1fr 340px; 
+    gap: 2.5rem; /* Увеличили воздух между колонками */
     align-items: start; 
 }
 
@@ -41,7 +42,7 @@
 .stats-sidebar {
     position: sticky;
     top: 90px;
-    padding: 1.75rem;
+    padding: 1.5rem; /* Чуть уменьшили внутренний отступ */
     animation: fadeInSlideUp 0.4s ease forwards;
 }
 
@@ -101,7 +102,7 @@
    КОЛОНКА 2: МАНИФЕСТ (Центр)
    ========================================= */
 .manifesto-main {
-    padding: 2.5rem 3rem; 
+    padding: 3rem; /* Увеличили воздух внутри центрального блока */
     animation: fadeInSlideUp 0.5s ease forwards;
 }
 
@@ -146,7 +147,7 @@
 }
 
 .team-card {
-    padding: 1.75rem;
+    padding: 1.5rem; /* Чуть уменьшили, чтобы скомпенсировать ширину */
     animation: fadeInSlideUp 0.6s ease forwards;
 }
 
@@ -174,7 +175,7 @@
     gap: 1rem;
     background-color: var(--bg-body);
     border: 1px solid var(--border-color);
-    padding: 1rem 1.25rem;
+    padding: 1rem 1.15rem;
     border-radius: 12px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -188,8 +189,8 @@
 
 .member-avatar-wrapper {
     position: relative;
-    width: 48px; 
-    height: 48px;
+    width: 44px; /* Чуть меньше аватарки */
+    height: 44px;
     flex-shrink: 0;
 }
 
@@ -233,12 +234,12 @@
 .member-header-row {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-wrap: nowrap; /* ЖЕСТКО ЗАПРЕЩАЕМ ПЕРЕНОС СТРОКИ */
+    gap: 6px;
+    flex-wrap: nowrap; 
 }
 
 .member-name {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 800;
     color: var(--text-main);
     white-space: nowrap;
@@ -247,13 +248,13 @@
 }
 
 .role-badge {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 800;
-    padding: 4px 8px;
+    padding: 4px 6px;
     border-radius: 6px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    flex-shrink: 0; /* ЗАЩИЩАЕМ БЕЙДЖ ОТ СПЛЮЩИВАНИЯ */
+    flex-shrink: 0; 
 }
 
 .role-badge.leader { background: rgba(210, 168, 80, 0.15); color: var(--accent-color); border: 1px solid rgba(210, 168, 80, 0.3); }
@@ -261,7 +262,7 @@
 .role-badge.volunteer { background: rgba(139, 148, 158, 0.15); color: var(--text-muted); border: 1px solid var(--border-color); }
 
 .member-status {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     white-space: nowrap;
     overflow: hidden;
@@ -270,7 +271,7 @@
 
 .member-link-btn {
     color: var(--text-muted);
-    padding: 8px;
+    padding: 6px;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -323,7 +324,7 @@
     background-color: var(--bg-body);
     border-radius: 12px;
 }
-.skeleton-avatar { width: 48px; height: 48px; border-radius: 50%; background-color: var(--border-color); animation: pulse 1.5s infinite; }
+.skeleton-avatar { width: 44px; height: 44px; border-radius: 50%; background-color: var(--border-color); animation: pulse 1.5s infinite; }
 .skeleton-info { display: flex; flex-direction: column; gap: 6px; }
 .skeleton-line { background-color: var(--border-color); border-radius: 4px; animation: pulse 1.5s infinite; }
 
@@ -341,7 +342,7 @@
     100% { opacity: 0.5; }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1150px) {
     .home-layout {
         grid-template-columns: 1fr; 
         gap: 2rem;

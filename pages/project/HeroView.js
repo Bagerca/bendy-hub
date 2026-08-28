@@ -7,7 +7,6 @@ export class HeroView {
             posterImg: document.getElementById('project-poster'),
             logo: document.getElementById('project-logo'),
             title: document.getElementById('project-title'),
-            type: document.getElementById('project-type'),
             date: document.getElementById('project-date'),
             status: document.getElementById('project-status'),
             author: document.getElementById('project-author'),
@@ -75,11 +74,6 @@ export class HeroView {
                 this.els.title.style.display = 'block';
             }
         }
-
-        let typeStr = 'Игра';
-        if (type === 'book') typeStr = 'Книга / Комикс';
-        if (type === 'movie') typeStr = 'Анимация';
-        this.els.type.textContent = typeStr;
 
         this.els.date.textContent = `Релиз: ${data.release_date === '...' ? 'TBA' : data.release_date}`;
         

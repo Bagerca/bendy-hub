@@ -31,7 +31,6 @@ export class CatalogCardView {
                     const distance = el.scrollWidth - el.clientWidth;
                     const duration = Math.max(distance / 30, 1.5); 
                     el.style.width = 'max-content';
-                    el.style.textOverflow = 'clip';
                     void el.offsetWidth;
                     el.style.transition = `transform ${duration}s linear 0.3s`;
                     el.style.transform = `translateX(-${distance}px)`;
@@ -47,7 +46,6 @@ export class CatalogCardView {
                 el.style.transform = `translateX(0)`;
                 const t = setTimeout(() => {
                     el.style.width = '100%';
-                    el.style.textOverflow = 'ellipsis';
                 }, 400);
                 timers.push(t);
             });
