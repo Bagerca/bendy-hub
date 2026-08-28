@@ -1,0 +1,21 @@
+{
+    "id": "sent_from_above",
+    "title": "Sent From Above",
+    "type": "book",
+    "release_date": "30 октября 2023",
+    "developer": "Adrienne Kress",
+    "assets": {
+        "cover": "cover.jpg",
+        "banner": "banner.webp"
+    },
+    "description": "A thrilling new chapter in the Bendy universe, Sent From Above takes readers on a suspenseful journey through the haunted halls of Joey Drew Studios.",
+    "tags": ["Novel", "Horror", "Supernatural", "Bendy the Dark Revival"],
+    "wiki": {
+        "story": "The story follows a protagonist who discovers a mysterious book that leads them into the world of Bendy and the Dark Revival, facing ink-maniac horrors and uncovering dark secrets of the studio.",
+        "characters": ["audrey_drew", "bendy_ink_demon"],
+        "genre": ["Horror", "Mystery"]
+    },
+    "platforms": {
+        "pdf": "assets/catalog/sent_from_above/SentFromAbove.pdf"
+    }
+}

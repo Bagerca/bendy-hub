@@ -79,49 +79,55 @@
 }
 
 /* ================================
-   СИСТЕМА СЕТОК (ИДЕАЛЬНЫЙ МАСШТАБ)
+   СИСТЕМА СЕТОК (ИДЕАЛЬНАЯ МАТЕМАТИКА)
+   Gap (Отступ) = 24px (1.5rem)
    ================================ */
 
 .grid-horizontal {
-    /* Сетка для Игр */
+    /* Сетка для Игр. H_min = (170 * 2) + 24 = 364px */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Чуть уменьшили для гармонии */
+    grid-template-columns: repeat(auto-fill, minmax(364px, 1fr)); 
     gap: 1.5rem;
 }
 
 .grid-vertical {
-    /* Сетка для Книг */
+    /* Сетка для Книг. V_min = 170px (теперь вмещается 6 штук в ряд) */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     gap: 1.5rem;
 }
 
 .grid-mixed {
-    /* Смешанная сетка для Фильмов */
+    /* Смешанная сетка для Анимации. Базовая колонка = 170px */
     display: grid;
-    /* УРАВНЯЛИ! Теперь базовая колонка фильма 1в1 равна колонке книги (200px) */
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     gap: 1.5rem;
     align-items: start; 
     grid-auto-flow: dense; 
 }
 
-/* Горизонтальная карточка занимает 2 колонки */
+/* Горизонтальная карточка занимает 2 колонки и идеально стыкуется с вертикальными */
 .grid-mixed .card-horizontal {
     grid-column: span 2;
 }
 
+/* АДАПТИВ */
 @media (max-width: 768px) {
-    /* На планшетах и телефонах делаем карточки чуть компактнее */
-    .grid-horizontal { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
-    .grid-vertical { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
-    .grid-mixed { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1.25rem; }
+    /* Для планшетов пересчитываем математику:
+       Gap = 16px (1rem).
+       V_min = 140px.
+       H_min = (140 * 2) + 16 = 296px. */
+    .grid-horizontal { grid-template-columns: repeat(auto-fill, minmax(296px, 1fr)); gap: 1rem; }
+    .grid-vertical { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+    .grid-mixed { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
 }
 
 @media (max-width: 480px) {
-    /* На совсем узких телефонах карточки идут в 1 колонку */
+    /* На узких телефонах карточки идут в 1 колонку */
     .grid-horizontal { grid-template-columns: 1fr; }
-    .grid-vertical { grid-template-columns: repeat(2, 1fr); } /* Книги оставляем по 2 в ряд */
+    
+    /* Книги оставляем по 2 в ряд. Отступ 12px (0.75rem) */
+    .grid-vertical { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; } 
     .grid-mixed { grid-template-columns: 1fr; }
     
     /* Отменяем 2 колонки для горизонтальных фильмов на телефоне */

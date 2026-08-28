@@ -27,26 +27,79 @@ export class CatalogCardView {
         return { text: isDev ? 'В разработке' : 'Вышел' , class: isDev ? 'status-dev' : 'status-released' };
     }
 
+    // ИСПРАВЛЕННЫЙ МЕТОД: Настоящая бегущая строка с отрисовкой невидимого текста
+    _applySmartMarquee(card) {
+        let timers = []; // Хранилище таймеров для корректного сброса при быстром вождении мышкой
+
+        card.addEventListener('mouseenter', () => {
+            // Очищаем таймеры возврата, если они были
+            timers.forEach(t => clearTimeout(t));
+            timers = [];
+
+            const textElements = card.querySelectorAll('.card-title, .card-year');
+            
+            textElements.forEach(el => {
+                // Сначала возвращаем ширину в 100%, чтобы честно измерить, влезает текст или нет
+                el.style.width = '100%';
+                
+                // Если реальная ширина текста больше, чем ширина видимого контейнера
+                if (el.scrollWidth > el.clientWidth) {
+                    const distance = el.scrollWidth - el.clientWidth;
+                    const duration = Math.max(distance / 30, 1.5); 
+                    
+                    // МАГИЯ: Даем тексту растянуться на всю длину, чтобы браузер отрендерил скрытые слова
+                    el.style.width = 'max-content';
+                    el.style.textOverflow = 'clip';
+                    
+                    // Форсируем перерисовку кадра в браузере, чтобы новые стили применились до старта анимации
+                    void el.offsetWidth;
+
+                    // Запускаем прокрутку
+                    el.style.transition = `transform ${duration}s linear 0.3s`;
+                    el.style.transform = `translateX(-${distance}px)`;
+                }
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            const textElements = card.querySelectorAll('.card-title, .card-year');
+            
+            textElements.forEach(el => {
+                // Если элемент не был длинным, игнорируем
+                if (el.style.width !== 'max-content') return;
+
+                // Плавно возвращаем текст в начало
+                el.style.transition = `transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s`;
+                el.style.transform = `translateX(0)`;
+                
+                // Когда текст вернулся (через 400мс), возвращаем ему жесткие рамки и многоточие
+                const t = setTimeout(() => {
+                    el.style.width = '100%';
+                    el.style.textOverflow = 'ellipsis';
+                }, 400);
+                
+                timers.push(t);
+            });
+        });
+    }
+
     render(item, viewMode = 'horizontal') {
         const type = item.type || 'game';
         
         let isVertical = false;
 
-        // Строгая логика определения ориентации
         if (viewMode === 'vertical') {
             isVertical = true;
         } else if (viewMode === 'horizontal') {
             isVertical = false;
         } else if (viewMode === 'mixed') {
-            // В смешанной сетке смотрим, что лежит в data.json
             const hasBanner = !!(item.assets && item.assets.banner);
             const hasCover = !!(item.assets && item.assets.cover);
 
-            // Если есть только вертикальный постер -> делаем карточку вертикальной
             if (hasCover && !hasBanner) {
                 isVertical = true;
             } else {
-                isVertical = false; // Все остальные случаи (баннер или нет картинок) -> горизонтальная
+                isVertical = false; 
             }
         }
 
@@ -69,7 +122,6 @@ export class CatalogCardView {
 
         const imgEl = clone.querySelector('.card-cover-img');
         
-        // Берем правильную картинку под выбранный формат
         let cardImageFile;
         if (isVertical) {
             cardImageFile = item.assets?.cover || item.assets?.banner;
@@ -94,6 +146,9 @@ export class CatalogCardView {
             imgEl.style.display = 'none';
             fallbackContainer.style.display = 'flex';
         }
+
+        // Подключаем бегущую строку к карточке
+        this._applySmartMarquee(card);
 
         card.addEventListener('click', () => {
             window.location.href = `project.html?id=${item.id}`;

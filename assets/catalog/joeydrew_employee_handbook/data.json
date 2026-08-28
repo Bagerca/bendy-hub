@@ -1,0 +1,16 @@
+{
+    "id": "joeydrew_employee_handbook",
+    "title": "Joey Drew Studios Employee Handbook",
+    "type": "book",
+    "release_date": "2021",
+    "developer": "Joey Drew Studios",
+    "assets": {
+        "cover": "cover.jpg"
+    },
+    "description": "The original employee handbook for Joey Drew Studios, offering a glimpse into the early days of the studio and its peculiar guidelines.",
+    "tags": ["Handbook", "Lore", "Joey Drew Studios", "Early Development"],
+    "wiki": {
+        "story": "This handbook details the initial rules and regulations set forth by Joey Drew, reflecting the early vision and atmosphere of the studio.",
+        "characters": ["joey_drew"]
+    }
+}

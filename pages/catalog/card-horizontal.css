@@ -23,7 +23,6 @@
 
 .card-horizontal .card-cover-container { 
     width: 100%; 
-    /* Твое оригинальное и лучшее соотношение сторон! */
     aspect-ratio: 92 / 45; 
     position: relative; 
     overflow: hidden; 
@@ -56,15 +55,37 @@
 .status-released { background-color: rgba(35, 134, 54, 0.9); }
 .status-dev { background-color: rgba(210, 168, 80, 0.95); color: #000; }
 
-/* Дизайн текстового блока 1в1 как у вертикальной */
+/* Дизайн текстового блока */
 .card-horizontal .card-info {
     padding: 1rem; 
-    display: flex; flex-direction: column; gap: 0.3rem;
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.3rem;
+    overflow: hidden; /* Важно, чтобы текст не вылезал за пределы при прокрутке */
 }
 
+/* Строгий контроль в одну строку */
 .card-horizontal .card-title { 
-    font-size: 1.15rem; font-weight: 800; color: var(--text-main); line-height: 1.25;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    font-size: 1.15rem; 
+    font-weight: 800; 
+    color: var(--text-main); 
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+    will-change: transform; /* Аппаратное ускорение для плавной анимации */
 }
 
-.card-horizontal .card-year { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+.card-horizontal .card-year { 
+    font-size: 0.85rem; 
+    font-weight: 600; 
+    color: var(--text-muted); 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+    will-change: transform;
+}

@@ -1,0 +1,20 @@
+{
+    "id": "bendy_silver_screams",
+    "title": "Bendy and the Silver Screams",
+    "type": "book",
+    "release_date": "2022",
+    "developer": "Adrienne Kress",
+    "assets": {
+        "cover": "cover.jpg",
+        "banner": "banner.webp"
+    },
+    "description": "Step into a world of chilling tales and unsettling mysteries with Bendy and the Silver Screams, a collection of spine-tingling stories set in the Bendy universe.",
+    "tags": ["Collection", "Horror Stories", "Bendy the Ink Machine"],
+    "wiki": {
+        "story": "This collection features various short stories that delve into the darker corners of the Bendy lore, exploring the fates of characters and the unsettling events within Joey Drew Studios.",
+        "characters": ["sammy_lawrence", "alice_angel"]
+    },
+    "platforms": {
+        "pdf": "assets/catalog/bendy_silver_screams/BendySilverScreams.pdf"
+    }
+}
