@@ -1,0 +1,17 @@
+{
+    "id": "ybt",
+    "name": "YBT - Team",
+    "description": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "vk": "..."
+    },
+    "translations": {
+        "game_bendy_and_the_dark_revival": {
+            "type": "Полная локализация",
+            "url": "https://vk.ru/wall-219115234_81"
+        }
+    }
+}

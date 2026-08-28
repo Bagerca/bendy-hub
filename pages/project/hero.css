@@ -188,12 +188,15 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
+/* Статусные плашки на странице проекта */
 .status-badge { 
-    background: var(--accent-color); 
-    color: #000; 
     border: none; 
-    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
+.status-badge.status-released { background: rgba(35, 134, 54, 0.9); color: #fff; }
+.status-badge.status-dev { background: var(--accent-color); color: #000; box-shadow: 0 4px 15px rgba(210, 168, 80, 0.4); }
+.status-badge.status-frozen { background: rgba(44, 130, 201, 0.9); color: #fff; }
+.status-badge.status-cancelled { background: rgba(211, 47, 47, 0.9); color: #fff; }
 
 /* КНОПКИ МАГАЗИНОВ */
 .project-hero-actions { 

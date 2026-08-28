@@ -1,0 +1,55 @@
+{
+    "id": "game_bendys_nightmare_run",
+    "title": "Bendy's Nightmare Run",
+    "type": "game",
+    "status": "released",
+    "developer": "...",
+    "publisher": "...",
+    "release_date": "19 авг. 2026 г.",
+    "description": "...",
+    "tags": [
+        "..."
+    ],
+    "platforms": {
+        "...": "..."
+    },
+    "specs": {
+        "minimum": "...",
+        "recommended": "..."
+    },
+    "assets": {
+        "logo": "logo.png",
+    "cover": "cover.jpg",
+    "banner": "banner.jpg",
+    "hero_bg": "hero.jpg",
+        "videos": [
+            "..."
+        ],
+        "screenshots": [
+            "..."
+        ]
+    },
+    "russifiers": [
+        {
+            "title": "...",
+            "description": "...",
+            "url": "...",
+            "avatar": "..."
+        }
+    ],
+    "wiki": {
+        "story": "...",
+        "characters": [
+            "..."
+        ],
+        "gameplay": [
+            "..."
+        ],
+        "development": [
+            {
+                "title": "...",
+                "text": "..."
+            }
+        ]
+    }
+}

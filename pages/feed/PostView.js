@@ -1,10 +1,6 @@
 import { formatRichText } from '../../shared/js/utils.js';
 import { Logger } from '../../shared/js/Logger.js';
 
-/**
- * View: Отвечает только за создание DOM элемента одной карточки.
- * Никаких сетевых запросов. Зависимости передаются снаружи.
- */
 export class PostView {
     constructor(templateId, lightboxManager, translationService) {
         this.template = document.getElementById(templateId);
@@ -35,7 +31,6 @@ export class PostView {
         const rtAuthorLink = clone.querySelector('.rt-author');
         let text = post.content;
         
-        // Обработка ретвитов
         const rtMatch = post.content.match(/^RT\s+(?:by\s+)?(@[\w_]+)[\s:]+([\s\S]*)$/i);
         if (rtMatch) {
             text = rtMatch[2].trim();
@@ -44,7 +39,6 @@ export class PostView {
             rtBadge.style.display = 'flex';
         }
 
-        // Удаление мусорных gif подписей
         if (text.trim().toLowerCase() === 'gif') text = '';
         return text;
     }
@@ -52,7 +46,6 @@ export class PostView {
     _setupText(clone, text, searchTerm) {
         let richHtml = formatRichText(text);
         if (searchTerm) {
-            // Подсветка поиска
             const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?![^<]*>)`, 'gi');
             richHtml = richHtml.replace(regex, '<mark class="search-highlight">$1</mark>');
         }
@@ -73,17 +66,23 @@ export class PostView {
         }
 
         const avatarEl = clone.querySelector('.post-avatar');
-        const predictedPath = `assets/avatars/${post.authorHandle.replace('@', '').toLowerCase()}.jpg`;
+        const handleClean = post.authorHandle.replace('@', '').toLowerCase();
         const internetUrl = post.originalAvatarUrl || post.avatarUrl;
+        
+        // Жестко формируем новый путь, игнорируя старый кэш из JSON
+        const newLocalPath = `assets/developers/${handleClean}/avatar.jpg`;
 
+        // Умная цепочка: Локальная папка -> URL Твиттера -> SVG заглушка
         avatarEl.onerror = () => {
-            if (avatarEl.src.includes(predictedPath) && internetUrl) {
+            if (!avatarEl.dataset.triedInternet && internetUrl) {
+                avatarEl.dataset.triedInternet = 'true';
                 avatarEl.src = internetUrl;
             } else if (!avatarEl.src.includes('data:image')) {
                 avatarEl.src = this.fallbackAvatar;
             }
         };
-        avatarEl.src = post.localAvatarPath || predictedPath;
+        
+        avatarEl.src = newLocalPath;
 
         const dateEl = clone.querySelector('.post-date');
         if (post.timestamp) {
@@ -122,7 +121,6 @@ export class PostView {
         const translationContainer = clone.querySelector('.post-translation');
         const translateTextEl = clone.querySelector('.post-translation-text');
 
-        // Логика копирования
         copyBtn.addEventListener('click', async () => {
             try {
                 await navigator.clipboard.writeText(rawText);
@@ -133,7 +131,6 @@ export class PostView {
             }
         });
 
-        // Логика перевода через инжектированный сервис
         translateBtn.addEventListener('click', async () => {
             const isTranslated = translateBtn.classList.contains('active');
             
@@ -143,14 +140,12 @@ export class PostView {
                 return;
             }
 
-            // Если перевод уже лежит в DOM
             if (translateTextEl.innerHTML !== '') {
                 translationContainer.style.display = 'block';
                 translateBtn.classList.add('active');
                 return;
             }
 
-            // Запрашиваем новый перевод
             try {
                 translateBtn.classList.add('loading');
                 const translatedText = await this.translator.translate(rawText);

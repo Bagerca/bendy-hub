@@ -1,0 +1,17 @@
+{
+    "id": "fanic",
+    "name": "«FaN&C» Family's",
+    "description": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "vk": "..."
+    },
+    "translations": {
+        "game_bendy_and_the_ink_machine": {
+            "type": "Полная локализация",
+            "url": "https://vk.ru/wall-137351764_3069"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "id": "doberart",
+    "name": "Doberart",
+    "handle": "@doberart",
+    "role": "Разработчик",
+    "bio": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "twitter": "https://twitter.com/doberart"
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "id": "game_bendy_in_nightmare_run",
+    "title": "Bendy in Nightmare Run",
+    "type": "game",
+    "status": "cancelled",
+    "developer": "...",
+    "publisher": "...",
+    "release_date": "15 авг. 2018 г.",
+    "description": "...",
+    "tags": [
+        "..."
+    ],
+    "platforms": {
+        "...": "..."
+    },
+    "specs": {
+        "minimum": "...",
+        "recommended": "..."
+    },
+    "assets": {
+    "logo": "logo.png",
+    "cover": "cover.jpg",
+    "banner": "banner.jpg",
+    "hero_bg": "hero.jpg",
+        "videos": [
+            "..."
+        ],
+        "screenshots": [
+            "..."
+        ]
+    },
+    "russifiers": [
+        {
+            "title": "...",
+            "description": "...",
+            "url": "...",
+            "avatar": "..."
+        }
+    ],
+    "wiki": {
+        "story": "...",
+        "characters": [
+            "..."
+        ],
+        "gameplay": [
+            "..."
+        ],
+        "development": [
+            {
+                "title": "...",
+                "text": "..."
+            }
+        ]
+    }
+}

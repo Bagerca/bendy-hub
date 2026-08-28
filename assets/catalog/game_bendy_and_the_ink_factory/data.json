@@ -1,31 +1,48 @@
 {
     "id": "game_bendy_and_the_ink_factory",
-    "steam_id": 2613150,
     "title": "Bendy and the Ink Factory",
-    "tier": "tier_indie",
-    "developer": "Joey Drew Studios",
-    "publisher": "Joey Drew Studios",
-    "release_date": "Ещё не объявлена",
+    "type": "game",
+    "status": "development",
+    "developer": "...",
+    "publisher": "...",
+    "release_date": "...",
+    "description": "...",
     "tags": [
-        "Action", "Adventure", "Strategy", "Horror", "Exploration", "Shooter", 
-        "First-Person", "3D", "Atmospheric", "Dark", "Singleplayer", "Survival Horror", 
-        "Cartoon", "Story Rich", "Combat", "Indie", "Cartoony", "Psychological Horror", 
-        "Great Soundtrack"
+        "..."
     ],
-    "description": "Bendy and the Ink Factory™ is a first-person survival horror. Return to the world of Joey Drew Studios like never before. The dark truth is hanging in the shadows... waiting to devour you. The rubberhose nightmare continues.. But eventually, everything must end.",
+    "platforms": {
+        "...": "..."
+    },
     "specs": {
-        "minimum": "Минимальные: | 64-разрядные процессор и операционная система | ОС: Windows 10 (64 bit) | Оперативная память: 8 GB ОЗУ | Видеокарта: 2GB VRAM GeForce GTX 1030, AMD RX 550 | DirectX: версии 11 | Место на диске: 20 GB",
-        "recommended": "Рекомендованные: | 64-разрядные процессор и операционная система"
+        "minimum": "...",
+        "recommended": "..."
     },
     "assets": {
         "logo": "logo.png",
         "cover": "cover.jpg",
         "banner": "banner.jpg",
         "hero_bg": "hero.jpg",
+        "videos": [
+            "..."
+        ],
         "screenshots": [
-            "screen_1.jpg",
-            "screen_2.jpg",
-            "screen_3.jpg"
+            "..."
+        ]
+    },
+    "russifiers": [],
+    "wiki": {
+        "story": "...",
+        "characters": [
+            "..."
+        ],
+        "gameplay": [
+            "..."
+        ],
+        "development": [
+            {
+                "title": "...",
+                "text": "..."
+            }
         ]
     }
 }

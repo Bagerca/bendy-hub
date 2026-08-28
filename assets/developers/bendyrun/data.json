@@ -1,0 +1,13 @@
+{
+    "id": "bendyrun",
+    "name": "BendyRun",
+    "handle": "@bendyrun",
+    "role": "Разработчик",
+    "bio": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "twitter": "https://twitter.com/bendyrun"
+    }
+}

@@ -33,7 +33,7 @@
     }
 }
 
-.search-input-wrapper { position: relative; flex: 1 1 250px; display: flex; align-items: center; }
+.search-input-wrapper { position: relative; flex: 1 1 300px; display: flex; align-items: center; }
 .search-btn {
     position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
     background: transparent; border: none; color: var(--text-muted); cursor: pointer;
@@ -49,7 +49,57 @@
 .feed-controls input::placeholder { color: var(--text-muted); opacity: 0.7; }
 .feed-controls input:focus { border-color: var(--accent-color); background-color: var(--bg-card); box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15); }
 
-.custom-select-container { position: relative; min-width: 200px; flex: 0 0 auto; }
+/* --- НОВЫЕ КНОПКИ СОРТИРОВКИ (Иконки) --- */
+.sort-toggles {
+    display: flex;
+    gap: 0.5rem;
+    flex: 0 0 auto;
+}
+
+.sort-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px; /* Уменьшен отступ, так как текста больше нет */
+    padding: 0.55rem 0.75rem; /* Более квадратная форма кнопки */
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sort-btn:hover {
+    border-color: var(--text-muted);
+    color: var(--text-main);
+}
+
+.sort-btn.active {
+    background-color: rgba(210, 168, 80, 0.1);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.sort-arrow {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0; 
+    width: 0;   
+    margin-left: -4px;
+}
+
+.sort-btn.active .sort-arrow {
+    opacity: 1;
+    width: 16px;
+    margin-left: 0;
+}
+
+.sort-btn[data-dir="desc"] .sort-arrow {
+    transform: rotate(180deg);
+}
+
+/* --- Селект типа проекта --- */
+.custom-select-container { position: relative; min-width: 180px; flex: 0 1 auto; }
 .custom-select-trigger {
     width: 100%; display: flex; justify-content: space-between; align-items: center;
     padding: 0.55rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; 
@@ -65,9 +115,12 @@
     opacity: 0; visibility: hidden; transform: translateY(-10px); transition: 0.2s;
 }
 .custom-select-container.active .custom-select-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-.custom-select-option { padding: 0.6rem 1rem; cursor: pointer; font-weight: 500; color: var(--text-main);}
+.custom-select-option { padding: 0.6rem 1rem; cursor: pointer; font-weight: 500; color: var(--text-main); display: flex; align-items: center; gap: 8px;}
 .custom-select-option:hover { background-color: var(--bg-body); }
 .custom-select-option.selected { color: var(--accent-color); background-color: rgba(210, 168, 80, 0.05); }
+
+.svg-icon { display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
+.custom-select-option.selected .svg-icon { color: var(--accent-color); }
 
 .catalog-section { margin-bottom: 4rem; }
 .catalog-section-title {
@@ -79,62 +132,41 @@
 }
 
 /* ================================
-   СИСТЕМА СЕТОК (ИДЕАЛЬНАЯ МАТЕМАТИКА)
-   Gap (Отступ) = 24px (1.5rem)
+   СИСТЕМА СЕТОК
    ================================ */
-
 .grid-horizontal {
-    /* Сетка для Игр. H_min = (170 * 2) + 24 = 364px */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(364px, 1fr)); 
-    gap: 1.5rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(364px, 1fr)); gap: 1.5rem;
 }
-
 .grid-vertical {
-    /* Сетка для Книг. V_min = 170px (теперь вмещается 6 штук в ряд) */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 1.5rem;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem;
 }
-
 .grid-mixed {
-    /* Смешанная сетка для Анимации. Базовая колонка = 170px */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 1.5rem;
-    align-items: start; 
-    grid-auto-flow: dense; 
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; align-items: start; grid-auto-flow: dense; 
 }
-
-/* Горизонтальная карточка занимает 2 колонки и идеально стыкуется с вертикальными */
-.grid-mixed .card-horizontal {
-    grid-column: span 2;
-}
+.grid-mixed .card-horizontal { grid-column: span 2; }
 
 /* АДАПТИВ */
+@media (max-width: 900px) {
+    .custom-select-container { flex: 1 1 150px; }
+}
+
 @media (max-width: 768px) {
-    /* Для планшетов пересчитываем математику:
-       Gap = 16px (1rem).
-       V_min = 140px.
-       H_min = (140 * 2) + 16 = 296px. */
     .grid-horizontal { grid-template-columns: repeat(auto-fill, minmax(296px, 1fr)); gap: 1rem; }
     .grid-vertical { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
     .grid-mixed { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
 }
 
 @media (max-width: 480px) {
-    /* На узких телефонах карточки идут в 1 колонку */
     .grid-horizontal { grid-template-columns: 1fr; }
-    
-    /* Книги оставляем по 2 в ряд. Отступ 12px (0.75rem) */
     .grid-vertical { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; } 
     .grid-mixed { grid-template-columns: 1fr; }
-    
-    /* Отменяем 2 колонки для горизонтальных фильмов на телефоне */
     .grid-mixed .card-horizontal { grid-column: span 1; }
     
-    .custom-select-container { min-width: 100%; order: 2; }
-    .search-input-wrapper { order: 1; }
+    .sort-toggles { width: 100%; order: 2; }
+    .sort-btn { flex: 1; justify-content: center; }
+    
+    .custom-select-container { width: 100%; order: 3; }
+    .search-input-wrapper { order: 1; flex-basis: 100%; }
 }
 
 .empty-state {

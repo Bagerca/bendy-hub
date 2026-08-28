@@ -23,8 +23,45 @@
 
     <main class="page-content home-layout">
         
-        <!-- ЛЕВАЯ КОЛОНКА: О ПРОЕКТЕ -->
-        <section class="manifesto-card bento-box">
+        <!-- КОЛОНКА 1: СТАТИСТИКА (Левый виджет) -->
+        <aside class="stats-sidebar bento-box">
+            <div class="widget-header">
+                <h2>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    </svg>
+                    Архивы
+                </h2>
+            </div>
+            
+            <div id="stats-grid" class="stats-list">
+                <!-- Скелетоны для красоты при загрузке -->
+                <div class="skeleton-member" style="border: none; padding: 0; background: transparent;">
+                    <div class="skeleton-avatar" style="border-radius: 12px; width: 44px; height: 44px;"></div>
+                    <div class="skeleton-info">
+                        <div class="skeleton-line" style="width: 40px; height: 20px;"></div>
+                        <div class="skeleton-line" style="width: 80px; height: 10px; margin-top: 4px;"></div>
+                    </div>
+                </div>
+                <div class="skeleton-member" style="border: none; padding: 0; background: transparent;">
+                    <div class="skeleton-avatar" style="border-radius: 12px; width: 44px; height: 44px;"></div>
+                    <div class="skeleton-info">
+                        <div class="skeleton-line" style="width: 40px; height: 20px;"></div>
+                        <div class="skeleton-line" style="width: 80px; height: 10px; margin-top: 4px;"></div>
+                    </div>
+                </div>
+                <div class="skeleton-member" style="border: none; padding: 0; background: transparent;">
+                    <div class="skeleton-avatar" style="border-radius: 12px; width: 44px; height: 44px;"></div>
+                    <div class="skeleton-info">
+                        <div class="skeleton-line" style="width: 40px; height: 20px;"></div>
+                        <div class="skeleton-line" style="width: 80px; height: 10px; margin-top: 4px;"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- КОЛОНКА 2: МАНИФЕСТ (Центр) -->
+        <section class="manifesto-main bento-box">
             <h1 class="manifesto-title" id="manifesto-title">
                 <span class="skeleton-line" style="width: 250px; height: 35px; display: inline-block;"></span>
             </h1>
@@ -38,16 +75,23 @@
             <p class="manifesto-note" id="manifesto-note" style="display: none;"></p>
         </section>
 
-        <!-- ПРАВАЯ КОЛОНКА: КОМАНДА -->
+        <!-- КОЛОНКА 3: КОМАНДА (Правый виджет) -->
         <aside class="team-sidebar">
             <section class="team-card bento-box">
-                <div class="team-header">
-                    <h2>Команда проекта</h2>
-                    <span class="team-count" id="team-count">Загрузка...</span>
+                <div class="widget-header">
+                    <h2>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        Команда
+                    </h2>
+                    <span class="team-count" id="team-count">...</span>
                 </div>
 
                 <div class="discord-member-list" id="team-list">
-                    <!-- Скелетоны для загрузки -->
                     <div class="skeleton-member">
                         <div class="skeleton-avatar"></div>
                         <div class="skeleton-info">
@@ -55,20 +99,16 @@
                             <div class="skeleton-line" style="width: 180px; height: 12px; margin-top: 4px;"></div>
                         </div>
                     </div>
-                    <div class="skeleton-member">
-                        <div class="skeleton-avatar"></div>
-                        <div class="skeleton-info">
-                            <div class="skeleton-line" style="width: 140px; height: 16px;"></div>
-                            <div class="skeleton-line" style="width: 160px; height: 12px; margin-top: 4px;"></div>
-                        </div>
-                    </div>
                 </div>
+
+                <!-- Контейнер для кнопки "Присоединиться" -->
+                <div id="join-team-wrapper" style="display: none; margin-top: 1.25rem;"></div>
             </section>
         </aside>
 
     </main>
 
-    <!-- ТЕМПЛЕЙТ КАРТОЧКИ УЧАСТНИКА -->
+    <!-- ТЕМПЛЕЙТЫ -->
     <template id="team-member-template">
         <div class="discord-member">
             <div class="member-avatar-wrapper">
@@ -87,6 +127,17 @@
             <a href="#" target="_blank" rel="noopener noreferrer" class="member-link-btn" title="Перейти в профиль">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
+        </div>
+    </template>
+
+    <!-- Темплейт для статистики -->
+    <template id="stat-card-template">
+        <div class="stat-item">
+            <div class="stat-icon-wrap"></div>
+            <div class="stat-text-wrap">
+                <span class="stat-value"></span>
+                <span class="stat-label"></span>
+            </div>
         </div>
     </template>
 

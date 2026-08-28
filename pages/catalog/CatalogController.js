@@ -17,8 +17,9 @@ export class CatalogController {
         }
     }
 
-    handleFilterChange(searchTerm, type) {
-        const filtered = this.model.filterItems(searchTerm, type);
+    // Принимает объект обновлений: { search: 'text' } или { sort: 'alpha_asc' }
+    handleFilterChange(updates) {
+        const filtered = this.model.applyFilters(updates);
         this.renderSections(filtered);
     }
 
@@ -32,11 +33,8 @@ export class CatalogController {
             return;
         }
 
-        /* 
-           Игры -> только горизонтальные (grid-horizontal)
-           Книги -> только вертикальные (grid-vertical)
-           Фильмы -> умная смешанная сетка (grid-mixed)
-        */
+        // Данные приходят УЖЕ отсортированные из Модели. 
+        // filter() не ломает порядок массива, поэтому проекты внутри категорий сохранят верную сортировку!
         const sectionsData = [
             { title: 'Игры', layout: 'grid-horizontal', viewMode: 'horizontal', data: items.filter(i => i.type === 'game' || !i.type) },
             { title: 'Книги и Комиксы', layout: 'grid-vertical', viewMode: 'vertical', data: items.filter(i => i.type === 'book') },

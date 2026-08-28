@@ -52,8 +52,11 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.2); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
 }
 
+/* Статусы проектов */
 .status-released { background-color: rgba(35, 134, 54, 0.9); }
 .status-dev { background-color: rgba(210, 168, 80, 0.95); color: #000; }
+.status-frozen { background-color: rgba(44, 130, 201, 0.9); }
+.status-cancelled { background-color: rgba(211, 47, 47, 0.9); }
 
 /* Дизайн текстового блока */
 .card-horizontal .card-info {
@@ -61,7 +64,7 @@
     display: flex; 
     flex-direction: column; 
     gap: 0.3rem;
-    overflow: hidden; /* Важно, чтобы текст не вылезал за пределы при прокрутке */
+    overflow: hidden;
 }
 
 /* Строгий контроль в одну строку */
@@ -75,7 +78,7 @@
     text-overflow: ellipsis;
     display: block;
     width: 100%;
-    will-change: transform; /* Аппаратное ускорение для плавной анимации */
+    will-change: transform;
 }
 
 .card-horizontal .card-year { 

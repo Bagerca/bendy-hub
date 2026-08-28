@@ -8,7 +8,6 @@ export class ProjectModel {
 
     async fetchProject(id) {
         try {
-            // Загружаем из новой папки assets/catalog
             this.project = await fetchData(`assets/catalog/${id}/data.json`);
             return this.project;
         } catch (error) {
@@ -26,6 +25,20 @@ export class ProjectModel {
             return await Promise.all(promises);
         } catch (error) {
             Logger.error('Ошибка загрузки персонажей', error);
+            return [];
+        }
+    }
+
+    // НОВЫЙ МЕТОД: Загрузка команд локализаторов по их ID
+    async fetchTranslators(teamIds) {
+        if (!teamIds || teamIds.length === 0) return [];
+        try {
+            const promises = teamIds.map(teamId => 
+                fetchData(`assets/teams/${teamId}/data.json`).catch(() => null)
+            );
+            return await Promise.all(promises);
+        } catch (error) {
+            Logger.error('Ошибка загрузки команд', error);
             return [];
         }
     }

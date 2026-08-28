@@ -10,12 +10,15 @@ customElements.define('site-header', SiteHeader);
 
 document.addEventListener('DOMContentLoaded', () => {
     const model = new CatalogModel();
-    // Передаем новые семантические ID шаблонов
     const cardView = new CatalogCardView('template-card-horizontal', 'template-card-vertical');
     const controller = new CatalogController(model, cardView);
 
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+
+    // === ФИЛЬТР: ТИП ПРОЕКТА ===
     const typeSelect = new CustomSelect('type-filter-container', (selectedId) => {
-        controller.handleFilterChange(document.getElementById('search-input').value, selectedId);
+        controller.handleFilterChange({ type: selectedId });
     });
 
     typeSelect.populate([
@@ -25,19 +28,47 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'movie', label: 'Анимация' }
     ], 'all');
 
-    const searchInput = document.getElementById('search-input');
-    const searchBtn = document.getElementById('search-btn');
 
-    const triggerSearch = () => {
-        const activeItem = document.querySelector('#type-filter-container .custom-select-option.selected .custom-select-text span');
-        let currentType = 'all';
-        if (activeItem) {
-            const label = activeItem.textContent;
-            if (label === 'Игры') currentType = 'game';
-            else if (label === 'Книги и Комиксы') currentType = 'book';
-            else if (label === 'Анимация') currentType = 'movie';
+    // === НОВАЯ СОРТИРОВКА: ТОГГЛЫ ===
+    const dateBtn = document.getElementById('sort-date-btn');
+    const alphaBtn = document.getElementById('sort-alpha-btn');
+    
+    // Дефолтное состояние (как в модели)
+    let currentSortType = 'date';
+    let currentSortDir = 'asc'; 
+
+    function updateSortUI() {
+        // Сбрасываем активность с обеих кнопок
+        dateBtn.classList.remove('active');
+        alphaBtn.classList.remove('active');
+        
+        // Активируем нужную кнопку и задаем ей data-атрибут направления
+        const activeBtn = currentSortType === 'date' ? dateBtn : alphaBtn;
+        activeBtn.classList.add('active');
+        activeBtn.setAttribute('data-dir', currentSortDir);
+
+        // Отправляем команду в контроллер
+        controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
+    }
+
+    function handleSortClick(clickedType) {
+        if (currentSortType === clickedType) {
+            // Если кликнули по той же кнопке — меняем направление
+            currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+            // Если кликнули по другой кнопке — делаем ее активной (по умолчанию asc)
+            currentSortType = clickedType;
+            currentSortDir = 'asc';
         }
-        controller.handleFilterChange(searchInput.value, currentType);
+        updateSortUI();
+    }
+
+    dateBtn.addEventListener('click', () => handleSortClick('date'));
+    alphaBtn.addEventListener('click', () => handleSortClick('alpha'));
+
+    // === ПОИСК ===
+    const triggerSearch = () => {
+        controller.handleFilterChange({ search: searchInput.value });
     };
 
     searchInput.addEventListener('input', debounce(triggerSearch, 300));
@@ -46,5 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     searchBtn.addEventListener('click', triggerSearch);
 
+    // Старт
+    // Устанавливаем изначальный UI для дефолтной сортировки
+    dateBtn.setAttribute('data-dir', 'asc');
     controller.init();
 });

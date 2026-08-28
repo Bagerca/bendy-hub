@@ -47,23 +47,24 @@ export class WikiView {
         });
     }
 
-    render(data, projectId) {
+    render(data, projectId, teamsData = []) {
         const assets = data.assets || {};
         const wiki = data.wiki || {};
         const type = data.type || 'game';
 
         // Обзор
-        this.els.desc.textContent = data.description || 'Информация отсутствует.';
+        this.els.desc.textContent = data.description && data.description !== '...' ? data.description : 'Информация отсутствует.';
         
         this.els.tags.innerHTML = '';
         (data.tags || []).slice(0, 15).forEach(tag => {
+            if(tag === '...') return;
             const span = document.createElement('span');
             span.className = 'game-tag'; span.textContent = tag;
             this.els.tags.appendChild(span);
         });
 
-        // Переводы
-        this._renderTranslators(data.russifiers, type);
+        // Переводы (передаем новый параметр teamsData и ID текущего проекта)
+        this._renderTranslators(teamsData, type, projectId);
 
         // Интерактивная Медиа-Галерея (БЕЗ автоплея)
         this._renderMediaGallery(assets, projectId);
@@ -75,29 +76,81 @@ export class WikiView {
         this._renderStaticWiki(wiki, type);
     }
 
-    // НОВЫЙ МЕТОД: Интерактивная галерея видео и фото
+    // НОВЫЙ МЕТОД ОТОБРАЖЕНИЯ ПЕРЕВОДОВ ИЗ ОБЪЕКТОВ КОМАНД
+    _renderTranslators(teams, type, projectId) {
+        // ЖЕСТКАЯ ФИЛЬТРАЦИЯ: убираем null, пустые строки и заглушки с '...'
+        const validTeams = (teams || []).filter(team => {
+            if (!team) return false;
+            if (typeof team === 'string' && team === '...') return false;
+            if (team.title === '...') return false; // Защита от старых ручных шаблонов
+            return true;
+        });
+
+        if (validTeams.length > 0) {
+            this.els.translatorsContainer.style.display = 'block';
+            this.els.translatorsTitle.textContent = type === 'book' ? 'Любительские переводы' : (type === 'movie' ? 'Озвучка / Сабы' : 'Русификаторы');
+            this.els.translatorsList.innerHTML = '';
+            
+            const fallbackAvatar = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2365676B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E";
+
+            validTeams.forEach(team => {
+                // Ищем перевод именно для текущей игры
+                const translationData = team.translations ? team.translations[projectId] : null;
+                
+                // Fallback для старых данных
+                const isLegacy = !team.translations;
+                const url = isLegacy ? team.url : (translationData?.url || '#');
+                const tType = isLegacy ? team.description : (translationData?.type || 'Перевод');
+                const tName = isLegacy ? team.title : team.name;
+                const avatarSrc = isLegacy 
+                    ? (team.avatar ? `assets/teams/${team.avatar}` : fallbackAvatar)
+                    : (team.assets?.avatar ? `assets/teams/${team.id}/${team.assets.avatar}` : fallbackAvatar);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.target = '_blank';
+                a.className = 'rus-card';
+
+                a.innerHTML = `
+                    <img src="${avatarSrc}" alt="Avatar" class="rus-avatar" onerror="this.onerror=null; this.src='${fallbackAvatar}';">
+                    <div class="rus-info">
+                        <div class="rus-title">
+                            <span>${tName}</span>
+                            <svg class="rus-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </div>
+                        <span class="rus-team">${tType}</span>
+                    </div>
+                `;
+                this.els.translatorsList.appendChild(a);
+            });
+        } else {
+            // Если реальных команд нет — полностью скрываем блок
+            this.els.translatorsContainer.style.display = 'none';
+        }
+    }
+
     _renderMediaGallery(assets, projectId) {
         this.els.screens.innerHTML = '';
         
         const mediaItems = [];
 
-        // Видео с ютуба
         if (assets.videos && assets.videos.length > 0) {
             assets.videos.forEach(url => {
+                if(url === '...') return;
                 const videoId = this._extractYouTubeId(url);
                 if (videoId) {
                     mediaItems.push({
                         type: 'video',
-                        src: `https://www.youtube.com/embed/${videoId}?rel=0`, // Автовоспроизведение убрано
+                        src: `https://www.youtube.com/embed/${videoId}?rel=0`, 
                         thumb: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
                     });
                 }
             });
         }
 
-        // Картинки из папки проекта
         if (assets.screenshots && assets.screenshots.length > 0) {
             assets.screenshots.forEach(src => {
+                if(src === '...') return;
                 const fullUrl = `${this.baseAssetPath}${projectId}/${src}`;
                 mediaItems.push({
                     type: 'image',
@@ -107,7 +160,6 @@ export class WikiView {
             });
         }
 
-        // Если медиа нет, скрываем блок
         if (mediaItems.length === 0) {
             this.els.screens.style.display = 'none';
             return;
@@ -207,50 +259,16 @@ export class WikiView {
         return match ? match[1] : null;
     }
 
-    _renderTranslators(translators, type) {
-        if (translators && translators.length > 0) {
-            this.els.translatorsContainer.style.display = 'block';
-            this.els.translatorsTitle.textContent = type === 'book' ? 'Любительские переводы' : (type === 'movie' ? 'Озвучка / Сабы' : 'Русификаторы');
-            this.els.translatorsList.innerHTML = '';
-            
-            const fallbackAvatar = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2365676B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E";
-
-            translators.forEach(rus => {
-                const a = document.createElement('a');
-                a.href = rus.url;
-                a.target = '_blank';
-                a.className = 'rus-card';
-                
-                const descText = rus.description || rus.team || '';
-                const avatarSrc = rus.avatar ? `assets/teams/${rus.avatar}` : fallbackAvatar;
-
-                a.innerHTML = `
-                    <img src="${avatarSrc}" alt="Avatar" class="rus-avatar" onerror="this.onerror=null; this.src='${fallbackAvatar}';">
-                    <div class="rus-info">
-                        <div class="rus-title">
-                            <span>${rus.title}</span>
-                            <svg class="rus-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                        </div>
-                        <span class="rus-team">${descText}</span>
-                    </div>
-                `;
-                this.els.translatorsList.appendChild(a);
-            });
-        } else {
-            this.els.translatorsContainer.style.display = 'none';
-        }
-    }
-
     _renderSpecs(specs) {
         if (!specs) {
             this.els.specs.innerHTML = '<div class="empty-state">Нет данных</div>';
             return;
         }
         let reqHtml = '';
-        if (specs.minimum && specs.minimum.length > 15) {
+        if (specs.minimum && specs.minimum !== '...' && specs.minimum.length > 5) {
             reqHtml += `<div class="bento-box"><h3>Минимальные</h3>${this._parseSpecsString(specs.minimum)}</div>`;
         }
-        if (specs.recommended && specs.recommended.length > 15) {
+        if (specs.recommended && specs.recommended !== '...' && specs.recommended.length > 5) {
             reqHtml += `<div class="bento-box"><h3>Рекомендованные</h3>${this._parseSpecsString(specs.recommended)}</div>`;
         }
         this.els.specs.innerHTML = reqHtml || '<div class="empty-state">Нет данных</div>';
@@ -269,13 +287,13 @@ export class WikiView {
     }
 
     _renderStaticWiki(wiki, type) {
-        if (wiki.story) {
+        if (wiki.story && wiki.story !== '...') {
             document.getElementById('wiki-story-empty').style.display = 'none';
             document.getElementById('wiki-story-content').style.display = 'block';
             document.getElementById('wiki-story-text').textContent = wiki.story;
         }
         
-        if (type === 'game' && wiki.gameplay && wiki.gameplay.length > 0) {
+        if (type === 'game' && wiki.gameplay && wiki.gameplay.length > 0 && wiki.gameplay[0] !== '...') {
             document.getElementById('wiki-gameplay-empty').style.display = 'none';
             const container = document.getElementById('wiki-gameplay-content');
             container.style.display = 'block';
@@ -289,7 +307,7 @@ export class WikiView {
             });
         }
 
-        if (wiki.development && wiki.development.length > 0) {
+        if (wiki.development && wiki.development.length > 0 && wiki.development[0].text !== '...') {
             document.getElementById('wiki-dev-empty').style.display = 'none';
             const container = document.getElementById('wiki-dev-content');
             container.style.display = 'flex';
@@ -309,8 +327,11 @@ export class WikiView {
         const fallback = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="%2365676B" stroke-width="2"%3E%3Cpath d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/%3E%3Ccircle cx="12" cy="7" r="4"/%3E%3C/svg%3E';
 
         charactersData.forEach((char, index) => {
-            if (!char) {
-                this.els.charList.innerHTML += `<li style="color: var(--text-muted); font-size: 0.9rem;">[Архив поврежден: ${requestedIds[index]}]</li>`;
+            if (!char || char === '...') {
+                const invalidId = requestedIds[index];
+                if (invalidId !== '...') {
+                    this.els.charList.innerHTML += `<li style="color: var(--text-muted); font-size: 0.9rem;">[Архив поврежден: ${invalidId}]</li>`;
+                }
                 return;
             }
             const a = document.createElement('a');

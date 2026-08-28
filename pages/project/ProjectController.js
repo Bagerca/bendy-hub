@@ -17,11 +17,22 @@ export class ProjectController {
         try {
             const data = await this.model.fetchProject(projectId);
             
-            // Настраиваем табы в зависимости от типа (книга, игра, фильм)
             this.wikiView.setupTabs(data.type || 'game');
-            
             this.heroView.render(data, projectId);
-            this.wikiView.render(data, projectId);
+            
+            // Загружаем команды (если есть массив russifiers с айдишниками команд)
+            let teamsData = [];
+            if (data.russifiers && data.russifiers.length > 0) {
+                // Предполагаем, что data.russifiers теперь массив строк ["fanic", "ybt"]
+                if (typeof data.russifiers[0] === 'string') {
+                    teamsData = await this.model.fetchTranslators(data.russifiers);
+                } else {
+                    // Fallback для старых данных, пока скрипт не отработает
+                    teamsData = data.russifiers;
+                }
+            }
+
+            this.wikiView.render(data, projectId, teamsData);
             
             this.loader.style.display = 'none';
             this.content.style.display = 'block';

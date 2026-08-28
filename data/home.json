@@ -8,36 +8,8 @@
         ],
         "note": "Сайт разрабатывается независимой командой энтузиастов и фанатов франшизы Joey Drew Studios."
     },
-    "team": [
-        {
-            "id": "bagerca",
-            "name": "BAGERca",
-            "role": "Основатель",
-            "roleClass": "leader",
-            "status": "Главный работник",
-            "avatar": "bagerca.jpg",
-            "link": "#",
-            "isOnline": true
-        },
-        {
-            "id": "volunteer_1",
-            "name": "Имя Помощника",
-            "role": "Редактор / Лор",
-            "roleClass": "helper",
-            "status": "Заполнение архивов и текстов",
-            "avatar": "",
-            "link": "#",
-            "isOnline": false
-        },
-        {
-            "id": "volunteer_2",
-            "name": "Волонтер",
-            "role": "Тестер",
-            "roleClass": "volunteer",
-            "status": "Поиск багов и обратная связь",
-            "avatar": "",
-            "link": "#",
-            "isOnline": false
-        }
-    ]
+    "joinTeam": {
+        "text": "Хочешь помочь проекту?",
+        "link": "https://t.me/bagerca"
+    }
 }

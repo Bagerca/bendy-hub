@@ -1,34 +1,48 @@
 {
     "id": "game_boris_and_the_dark_survival",
-    "steam_id": 1236990,
     "title": "Boris and the Dark Survival",
-    "tier": "tier_indie",
-    "developer": "Joey Drew Studios",
-    "publisher": "Joey Drew Studios",
+    "type": "game",
+    "status": "cancelled",
+    "developer": "...",
+    "publisher": "...",
     "release_date": "10 фев. 2020 г.",
+    "description": "...",
     "tags": [
-        "Action", "Adventure", "Indie", "Horror", "Strategy", "Casual", 
-        "Survival Horror", "Survival", "Singleplayer", "Top-Down", "Cartoony", 
-        "Arcade", "Roguelike", "Dark", "Action-Adventure", "Atmospheric", 
-        "Story Rich", "Exploration", "Third Person", "Action Roguelike"
+        "..."
     ],
-    "description": "A lone wolf struggles to survive the inky abyss of Joey Drew Studios in this top-down survival horror.",
+    "platforms": {
+        "...": "..."
+    },
     "specs": {
-        "minimum": "Минимальные: | ОС *: Windows 7 and up | Процессор: i5 and up | Оперативная память: 4 GB ОЗУ | Видеокарта: GTX 770 and up | DirectX: версии 11 | Место на диске: 200 MB",
-        "recommended": ""
+        "minimum": "...",
+        "recommended": "..."
     },
     "assets": {
         "logo": "logo.png",
         "cover": "cover.jpg",
         "banner": "banner.jpg",
         "hero_bg": "hero.jpg",
+        "videos": [
+            "..."
+        ],
         "screenshots": [
-            "screen_1.jpg",
-            "screen_2.jpg",
-            "screen_3.jpg",
-            "screen_4.jpg",
-            "screen_5.jpg",
-            "screen_6.jpg"
+            "..."
+        ]
+    },
+    "russifiers": [],
+    "wiki": {
+        "story": "...",
+        "characters": [
+            "..."
+        ],
+        "gameplay": [
+            "..."
+        ],
+        "development": [
+            {
+                "title": "...",
+                "text": "..."
+            }
         ]
     }
 }

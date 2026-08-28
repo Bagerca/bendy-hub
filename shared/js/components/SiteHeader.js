@@ -1,4 +1,5 @@
 import { Logger } from '../Logger.js';
+import { ThemeManager } from '../ThemeManager.js';
 
 export class SiteHeader extends HTMLElement {
     connectedCallback() {
@@ -25,34 +26,7 @@ export class SiteHeader extends HTMLElement {
             </header>
         `;
 
-        this.initThemeToggle();
-    }
-
-    initThemeToggle() {
-        const themeToggle = this.querySelector('#theme-toggle');
-        const sun = themeToggle.querySelector('.icon-sun');
-        const moon = themeToggle.querySelector('.icon-moon');
-
-        const updateIcon = (theme) => {
-            if (theme === 'dark') {
-                sun.style.display = 'block';
-                moon.style.display = 'none';
-            } else {
-                sun.style.display = 'none';
-                moon.style.display = 'block';
-            }
-        };
-
-        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
-        updateIcon(savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('bendy-theme', newTheme);
-            updateIcon(newTheme);
-        });
+        // Делегируем логику глобальному контроллеру тем
+        new ThemeManager('theme-toggle');
     }
 }

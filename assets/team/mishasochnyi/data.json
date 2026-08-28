@@ -1,0 +1,12 @@
+{
+    "id": "mishasochnyi",
+    "name": "MishaSochnyi",
+    "role": "Архивариус",
+    "roleClass": "helper",
+    "status": "Поиск данных",
+    "assets": {
+        "avatar": ""
+    },
+    "link": "#",
+    "isOnline": false
+}

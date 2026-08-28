@@ -1,68 +1,41 @@
 {
     "id": "game_bendy_and_the_ink_machine",
-    "steam_id": 622650,
-    "type": "game",
     "title": "Bendy and the Ink Machine",
-    "developer": "Joey Drew Studios",
+    "type": "game",
+    "status": "released",
+    "developer": "...",
+    "publisher": "...",
     "release_date": "10 фев. 2017 г.",
-    "description": "Bendy and the Ink Machine® is the first person puzzle action horror game that will forever ruin your childhood love of cartoons.",
+    "description": "...",
     "tags": [
-        "Экшен",
-        "Хоррор",
-        "Головоломка",
-        "От первого лица"
+        "..."
     ],
     "platforms": {
-        "steam": "https://store.steampowered.com/app/622650/Bendy_and_the_Ink_Machine/",
-        "gamejolt": "https://gamejolt.com/games/batim/231092",
-        "nintendo": "https://www.nintendo.com/us/store/products/bendy-and-the-ink-machine-switch/",
-        "xbox": "https://www.xbox.com/en-sg/games/store/bendy-and-the-ink-machine/btq96qtq58f3",
-        "playstation": "https://store.playstation.com/en-us/product/UP2344-CUSA13637_00-MDKRTGAMES4BATIM",
-        "ios": "https://apps.apple.com/ru/app/bendy-and-the-ink-machine/id1437669537",
-        "android": "https://play.google.com/store/apps/details?id=com.jds.batim&hl=ru"
+        "...": "..."
+    },
+    "specs": {
+        "minimum": "...",
+        "recommended": "..."
     },
     "assets": {
         "logo": "logo.png",
         "cover": "cover.jpg",
         "banner": "banner.jpg",
         "hero_bg": "hero.jpg",
+        "videos": [
+            "..."
+        ],
         "screenshots": [
-            "screen1.jpg",
-            "screen2.jpg",
-            "screen3.jpg",
-            "screen4.jpg"
+            "..."
         ]
     },
     "russifiers": [
-        {
-            "title": "«FaN&C» Family's",
-            "description": "Полная локализация",
-            "url": "https://vk.ru/wall-137351764_3069",
-            "avatar": "fanic.jpg"
-        }
+        "fanic"
     ],
-    "specs": {
-        "minimum": "Требуются 64-разрядные процессор и операционная система | ОС: 10 | ПРОЦЕССОР: 64 | ОПЕРАТИВНАЯ ПАМЯТЬ: 8 GB ОЗУ | ВИДЕОКАРТА: 4GB Dedicated | DIRECTX: версии 12 | МЕСТО НА ДИСКЕ: 2 GB",
-        "recommended": "Требуются 64-разрядные процессор и операционная система"
-    },
     "wiki": {
         "story": "...",
         "characters": [
-            "henry_stein",
-            "sammy_lawrence",
-            "searchers",
-            "bendy_ink_demon",
-            "allison_angel",
-            "alice_angel",
-            "tom",
-            "boris_wolf",
-            "joey_drew",
-            "lost_ones",
-            "piper",
-            "striker",
-            "fisher",
-            "bertram_piedmont",
-            "norman_polk"
+            "..."
         ],
         "gameplay": [
             "..."

@@ -1,0 +1,13 @@
+{
+    "id": "bookpast",
+    "name": "bookpast",
+    "handle": "@bookpast",
+    "role": "Разработчик",
+    "bio": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "twitter": "https://twitter.com/bookpast"
+    }
+}

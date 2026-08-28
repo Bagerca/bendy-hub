@@ -8,11 +8,13 @@ export class HomeController {
         try {
             const data = await this.model.fetchHomeData();
             
-            // Если данные загружены, передаем их в View
+            // Передаем данные в View
             this.view.renderManifesto(data.manifesto);
+            this.view.renderStats(data.stats);
             this.view.renderTeam(data.team);
+            this.view.renderJoinTeam(data.joinTeam);
+            
         } catch (error) {
-            // В случае ошибки показываем fallback
             this.view.renderErrorState();
         }
     }

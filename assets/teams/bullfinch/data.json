@@ -1,0 +1,17 @@
+{
+    "id": "bullfinch",
+    "name": "The Bullfinch Team",
+    "description": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "vk": "..."
+    },
+    "translations": {
+        "game_bendy_and_the_dark_revival": {
+            "type": "Полная локализация",
+            "url": "https://vk.ru/the_bullfinch_team?w=wall-155649218_3865"
+        }
+    }
+}

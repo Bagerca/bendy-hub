@@ -1,0 +1,13 @@
+{
+    "id": "gentcorporation",
+    "name": "GentCorporation",
+    "handle": "@gentcorporation",
+    "role": "Разработчик",
+    "bio": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "twitter": "https://twitter.com/gentcorporation"
+    }
+}

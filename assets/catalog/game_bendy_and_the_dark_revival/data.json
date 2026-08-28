@@ -1,48 +1,51 @@
 {
     "id": "game_bendy_and_the_dark_revival",
-    "steam_id": 1063660,
     "title": "Bendy and the Dark Revival",
-    "tier": "tier_indie",
-    "developer": "Joey Drew Studios",
-    "publisher": "Joey Drew Studios",
+    "type": "game",
+    "status": "released",
+    "developer": "...",
+    "publisher": "...",
     "release_date": "15 ноя. 2022 г.",
-    "russifiers": [
-        {
-            "title": "YBT - Team",
-            "description": "Полная локализация",
-            "url": "https://vk.ru/wall-219115234_81",
-            "avatar": "ybt.jpg"
-        },
-        {
-            "title": "The Bullfinch Team",
-            "description": "Полная локализация",
-            "url": "https://vk.ru/the_bullfinch_team?w=wall-155649218_3865",
-            "avatar": "bullfinch.jpg"
-        }
-    ],
+    "description": "...",
     "tags": [
-        "Horror", "Singleplayer", "First-Person", "Action", "Survival Horror", 
-        "Adventure", "Indie", "Cartoony", "Story Rich", "Dark", 
-        "Puzzle", "Survival", "Stealth", "Sequel", "Action-Adventure", 
-        "Combat", "Atmospheric", "Strategy", "Great Soundtrack", "Casual"
+        "..."
     ],
-    "description": "Bendy and the Dark Revival® is a first-person survival horror game set in the creepiest cartoon studio to ever exist. Discover the truth. Escape the studio. Above all, fear the Ink Demon…and survive.",
+    "platforms": {
+        "...": "..."
+    },
     "specs": {
-        "minimum": "Минимальные: | 64-разрядные процессор и операционная система | ОС: Windows 10 (64 bit) | Оперативная память: 8 GB ОЗУ | Видеокарта: 2GB VRAM GeForce GTX 1030, AMD RX 550 | DirectX: версии 11 | Место на диске: 15 GB",
-        "recommended": "Рекомендованные: | 64-разрядные процессор и операционная система | ОС: Windows 10 (64 bit) | Оперативная память: 16 GB ОЗУ | Видеокарта: 8GB VRAM GeForce RTX 2080, AMD Radeon VII | DirectX: версии 12 | Место на диске: 15 GB"
+        "minimum": "...",
+        "recommended": "..."
     },
     "assets": {
         "logo": "logo.png",
         "cover": "cover.jpg",
         "banner": "banner.jpg",
         "hero_bg": "hero.jpg",
+        "videos": [
+            "..."
+        ],
         "screenshots": [
-            "screen_1.jpg",
-            "screen_2.jpg",
-            "screen_3.jpg",
-            "screen_4.jpg",
-            "screen_5.jpg",
-            "screen_6.jpg"
+            "..."
+        ]
+    },
+    "russifiers": [
+        "ybt",
+        "bullfinch"
+    ],
+    "wiki": {
+        "story": "...",
+        "characters": [
+            "..."
+        ],
+        "gameplay": [
+            "..."
+        ],
+        "development": [
+            {
+                "title": "...",
+                "text": "..."
+            }
         ]
     }
 }

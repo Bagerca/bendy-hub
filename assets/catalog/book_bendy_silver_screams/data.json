@@ -1,0 +1,55 @@
+{
+    "id": "book_bendy_silver_screams",
+    "title": "Bendy and the Silver Screams",
+    "type": "book",
+    "status": "released",
+    "developer": "...",
+    "publisher": "...",
+    "release_date": "...",
+    "description": "...",
+    "tags": [
+        "..."
+    ],
+    "platforms": {
+        "...": "..."
+    },
+    "specs": {
+        "minimum": "...",
+        "recommended": "..."
+    },
+    "assets": {
+        "logo": "logo.png",
+    "cover": "cover.jpg",
+    "banner": "banner.jpg",
+    "hero_bg": "hero.jpg",
+        "videos": [
+            "..."
+        ],
+        "screenshots": [
+            "..."
+        ]
+    },
+    "russifiers": [
+        {
+            "title": "...",
+            "description": "...",
+            "url": "...",
+            "avatar": "..."
+        }
+    ],
+    "wiki": {
+        "story": "...",
+        "characters": [
+            "..."
+        ],
+        "gameplay": [
+            "..."
+        ],
+        "development": [
+            {
+                "title": "...",
+                "text": "..."
+            }
+        ]
+    }
+}

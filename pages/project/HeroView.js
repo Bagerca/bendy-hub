@@ -15,91 +15,93 @@ export class HeroView {
         };
         this.baseAssetPath = 'assets/catalog/';
         this.platformIcons = this._getPlatformIcons();
+        
+        this.statusMap = {
+            released: { text: 'Вышел', class: 'status-released' },
+            development: { text: 'В разработке', class: 'status-dev' },
+            frozen: { text: 'Заморожен', class: 'status-frozen' },
+            cancelled: { text: 'Отменен', class: 'status-cancelled' }
+        };
     }
 
     render(data, projectId) {
-        document.title = `${data.title} | Bendy Wiki`;
+        document.title = `${data.title === '...' ? 'Без названия' : data.title} | Bendy Wiki`;
         const assets = data.assets || {};
         const type = data.type || 'game';
-
         const isSplitLayout = type === 'book' || type === 'movie';
 
-        // ДИНАМИЧЕСКИЙ РЕНДЕР МАКЕТА
         if (isSplitLayout) {
-            // Включаем дизайн для книг/фильмов
             this.els.contentWrapper.classList.add('hero-split-layout');
             this.els.bg.classList.add('heavy-blur');
 
-            // ИЗМЕНЕНИЕ: Умный выбор обложки и пропорций контейнера
             let mainImage = null;
-            
             if (type === 'movie') {
-                // Для мультфильмов берем баннер и делаем контейнер горизонтальным
-                mainImage = assets.banner || assets.cover;
+                mainImage = (assets.banner !== '...') ? assets.banner : assets.cover;
                 this.els.posterContainer.classList.add('movie-poster');
             } else {
-                // Для книг берем вертикальную обложку
-                mainImage = assets.cover || assets.banner;
+                mainImage = (assets.cover !== '...') ? assets.cover : assets.banner;
                 this.els.posterContainer.classList.remove('movie-poster');
             }
 
-            if (mainImage) {
+            if (mainImage && mainImage !== '...') {
                 this.els.posterImg.src = `${this.baseAssetPath}${projectId}/${mainImage}`;
                 this.els.posterContainer.style.display = 'block';
-                // Эмбиент-фон из обложки
                 this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${mainImage}')`;
             } else {
                 this.els.posterContainer.style.display = 'none';
             }
 
             this.els.logo.style.display = 'none';
-            this.els.title.textContent = data.title;
+            this.els.title.textContent = data.title === '...' ? 'Без названия' : data.title;
             this.els.title.style.display = 'block';
         } else {
-            // Включаем классический дизайн для Игр
             this.els.contentWrapper.classList.remove('hero-split-layout');
             this.els.bg.classList.remove('heavy-blur');
             this.els.posterContainer.style.display = 'none';
 
-            const bgImage = assets.hero_bg || assets.banner || assets.cover;
+            let bgImage = (assets.hero_bg !== '...') ? assets.hero_bg : null;
+            if (!bgImage) bgImage = (assets.banner !== '...') ? assets.banner : null;
+            if (!bgImage) bgImage = (assets.cover !== '...') ? assets.cover : null;
+            
             if (bgImage) this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${bgImage}')`;
 
-            if (assets.logo) {
+            if (assets.logo && assets.logo !== '...') {
                 this.els.logo.src = `${this.baseAssetPath}${projectId}/${assets.logo}`;
                 this.els.logo.style.display = 'block';
                 this.els.title.style.display = 'none';
             } else {
                 this.els.logo.style.display = 'none';
-                this.els.title.textContent = data.title;
+                this.els.title.textContent = data.title === '...' ? 'Без названия' : data.title;
                 this.els.title.style.display = 'block';
             }
         }
 
-        // Метаданные (Тип)
         let typeStr = 'Игра';
         if (type === 'book') typeStr = 'Книга / Комикс';
         if (type === 'movie') typeStr = 'Анимация';
         this.els.type.textContent = typeStr;
 
-        // Дата и Статус
-        this.els.date.textContent = `Релиз: ${data.release_date || 'TBA'}`;
-        const lowerDate = (data.release_date || '').toLowerCase();
-        const isDev = lowerDate.includes('скоро') || lowerDate.includes('не объявлена') || lowerDate.includes('tba') || /202[4-9]/.test(lowerDate) || /203[0-9]/.test(lowerDate);
-        this.els.status.textContent = isDev ? 'В разработке' : 'Вышел';
+        this.els.date.textContent = `Релиз: ${data.release_date === '...' ? 'TBA' : data.release_date}`;
+        
+        // Обновленный статус
+        const statusKey = data.status || 'released';
+        const statusConfig = this.statusMap[statusKey] || this.statusMap.released;
+        this.els.status.textContent = statusConfig.text;
+        this.els.status.className = `meta-badge status-badge ${statusConfig.class}`;
 
-        // Автор / Разработчик
+        let authorText = data.developer === '...' ? 'Неизвестно' : data.developer;
         if (type === 'book') {
-            this.els.author.textContent = `Автор: ${data.developer || data.author || 'Неизвестно'}`;
+            this.els.author.textContent = `Автор: ${authorText}`;
         } else if (type === 'movie') {
-            this.els.author.textContent = `Режиссер: ${data.developer || data.director || 'Joey Drew Studios'}`;
+            this.els.author.textContent = `Режиссер: ${data.publisher !== '...' && data.publisher ? data.publisher : authorText}`;
         } else {
-            this.els.author.textContent = `Разработчик: ${data.developer || 'Joey Drew Studios'}`;
+            this.els.author.textContent = `Разработчик: ${authorText}`;
         }
 
-        // Ссылки на магазины
         this.els.storeLink.innerHTML = '';
-        if (data.platforms) {
+        if (data.platforms && Object.keys(data.platforms).length > 0 && data.platforms[Object.keys(data.platforms)[0]] !== '...') {
             Object.entries(data.platforms).forEach(([key, url]) => {
+                if (url === '...') return;
                 const keyLower = key.toLowerCase();
                 const pData = this.platformIcons[keyLower] || { name: key.charAt(0).toUpperCase() + key.slice(1), icon: this.platformIcons.default.icon };
                 this.els.storeLink.innerHTML += `<a href="${url}" target="_blank" class="store-btn">${pData.icon} <span>${pData.name}</span></a>`;
@@ -139,7 +141,7 @@ export class HeroView {
             },
             nintendo: { 
                 name: 'Nintendo', 
-                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="scale(0.75)"><path d="M18.901 32h4.901c4.5 0 8.198-3.698 8.198-8.198v-15.604c0-4.5-3.698-8.198-8.198-8.198h-5c-0.099 0-0.203 0.099-0.203 0.198v31.604c0 0.099 0.099 0.198 0.302 0.198zM25 14.401c1.802 0 3.198 1.5 3.198 3.198 0 1.802-1.5 3.198-3.198 3.198-1.802 0-3.198-1.396-3.198-3.198-0.104-1.797 1.396-3.198 3.198-3.198zM15.198 0h-7c-4.5 0-8.198 3.698-8.198 8.198v15.604c0 4.5 3.698 8.198 8.198 8.198h7c0.099 0 0.203-0.099 0.203-0.198v-31.604c0-0.099-0.099-0.198-0.203-0.198zM12.901 29.401h-4.703c-3.099 0-5.599-2.5-5.599-5.599v-15.604c0-3.099 2.5-5.599 5.599-5.599h4.604zM5 9.599c0 1.698 1.302 3 3 3s3-1.302 3-3c0-1.698-1.302-3-3-3s-3 1.302-3 3z"></path></g></svg>' 
+                icon: '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="scale(0.75)"><path d="M18.901 32h4.901c4.5 0 8.198-3.698 8.198-8.198v-15.604c0-4.5-3.698-8.198-8.198-8.198h-5c-0.099 0-0.203 0.099-0.203 0.198v31.604c0 0.099 0.099 0.198 0.302 0.198zM25 14.401c1.802 0 3.198 1.5 3.198 3.198 0 1.802-1.5 3.198-3.198-3.198-1.802 0-3.198-1.396-3.198-3.198-0.104-1.797 1.396-3.198 3.198-3.198zM15.198 0h-7c-4.5 0-8.198 3.698-8.198 8.198v15.604c0 4.5 3.698 8.198 8.198 8.198h7c0.099 0 0.203-0.099 0.203-0.198v-31.604c0-0.099-0.099-0.198-0.203-0.198zM12.901 29.401h-4.703c-3.099 0-5.599-2.5-5.599-5.599v-15.604c0-3.099 2.5-5.599 5.599-5.599h4.604zM5 9.599c0 1.698 1.302 3 3 3s3-1.302 3-3c0-1.698-1.302-3-3-3s-3 1.302-3 3z"></path></g></svg>' 
             },
             epic: { 
                 name: 'Epic Games', 

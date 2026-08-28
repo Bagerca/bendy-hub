@@ -1,0 +1,12 @@
+{
+    "id": "bagerca",
+    "name": "BAGERca",
+    "role": "Основатель",
+    "roleClass": "leader",
+    "status": "Главный работник",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "link": "#",
+    "isOnline": true
+}

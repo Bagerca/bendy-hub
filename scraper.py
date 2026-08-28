@@ -20,14 +20,16 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(me
 class BendySniperScraper:
     def __init__(self, handles: List[str]):
         self.handles = handles
-        self.output_file = "feed.json"
-        self.tmp_file = "feed.json.tmp"
-        self.max_history = 1000
         
-        self.avatars_dir = os.path.join("assets", "avatars")
-        os.makedirs(self.avatars_dir, exist_ok=True)
+        # Убеждаемся, что системные папки существуют
+        os.makedirs("data", exist_ok=True)
+        self.devs_dir = os.path.join("assets", "developers")
+        os.makedirs(self.devs_dir, exist_ok=True)
 
-        # Пул реальных юзер-агентов для обхода защиты прокси
+        self.output_file = os.path.join("data", "feed.json")
+        self.tmp_file = os.path.join("data", "feed.json.tmp")
+        self.max_history = 1000
+
         self.user_agents = [
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
             'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15',
@@ -65,11 +67,36 @@ class BendySniperScraper:
         except: pass
         return date_str
 
-    def download_avatar(self, handle: str, avatar_url: str) -> str:
+    # НОВАЯ ЛОГИКА: Создание папки разработчика + data.json + загрузка аватара
+    def process_developer_folder(self, handle: str, actual_name: str, avatar_url: str) -> str:
+        safe_handle = handle.replace('@', '').lower()
+        dev_dir = os.path.join(self.devs_dir, safe_handle)
+        os.makedirs(dev_dir, exist_ok=True)
+        
+        # 1. Генерируем data.json, если его еще нет (Задел на будущее)
+        json_path = os.path.join(dev_dir, "data.json")
+        if not os.path.exists(json_path):
+            dev_data = {
+                "id": safe_handle,
+                "name": actual_name or handle,
+                "handle": f"@{safe_handle}",
+                "role": "Разработчик",
+                "bio": "...",
+                "assets": {
+                    "avatar": "avatar.jpg"
+                },
+                "links": {
+                    "twitter": f"https://twitter.com/{safe_handle}"
+                }
+            }
+            with open(json_path, "w", encoding="utf-8") as f:
+                json.dump(dev_data, f, ensure_ascii=False, indent=4)
+                
+        # 2. Скачиваем аватарку
         if not avatar_url: return ""
-        local_filename = f"{handle.lower()}.jpg"
-        local_path = os.path.join(self.avatars_dir, local_filename)
-        web_path = f"assets/avatars/{local_filename}"
+        local_path = os.path.join(dev_dir, "avatar.jpg")
+        web_path = f"assets/developers/{safe_handle}/avatar.jpg"
+        
         if os.path.exists(local_path): return web_path
         
         avatar_url = avatar_url.replace('_normal', '_400x400')
@@ -79,11 +106,14 @@ class BendySniperScraper:
                 if response.status == 200:
                     with open(local_path, 'wb') as f: f.write(response.read())
                     return web_path
-        except: pass
+        except Exception as e: 
+            logging.warning(f"Не удалось скачать аватар для {handle}: {e}")
+            pass
+            
         return ""
 
-    def parse_sotwe(self, json_data: str, handle: str) -> Tuple[List[Dict], str]:
-        posts, avatar_url = [], ""
+    def parse_sotwe(self, json_data: str, handle: str) -> Tuple[List[Dict], str, str]:
+        posts, avatar_url, actual_name = [], "", handle
         try:
             data = json.loads(json_data)
             u_info = data.get('data', {}).get('profile', {})
@@ -115,12 +145,12 @@ class BendySniperScraper:
                     "originalAvatarUrl": avatar_url
                 })
         except: pass
-        return posts, avatar_url
+        return posts, avatar_url, actual_name
 
-    def parse_syndication(self, html_data: str, handle: str) -> Tuple[List[Dict], str]:
-        posts, avatar_url = [], ""
+    def parse_syndication(self, html_data: str, handle: str) -> Tuple[List[Dict], str, str]:
+        posts, avatar_url, actual_name = [], "", handle
         match = re.search(r'<script id="__NEXT_DATA__" type="application/json">({.*?})</script>', html_data)
-        if not match: return posts, avatar_url
+        if not match: return posts, avatar_url, actual_name
         try:
             for entry in json.loads(match.group(1)).get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', []):
                 if entry.get('type') != 'tweet': continue
@@ -128,6 +158,7 @@ class BendySniperScraper:
                 author = tweet.get('user', {})
                 if author.get('screen_name', '').lower() != handle.lower(): continue
                 if not avatar_url: avatar_url = author.get('profile_image_url_https', '')
+                actual_name = author.get('name', handle)
 
                 media_url = None
                 ml = tweet.get('entities', {}).get('media', [])
@@ -140,7 +171,7 @@ class BendySniperScraper:
 
                 posts.append({
                     "id": tweet.get('id_str', ''),
-                    "authorName": author.get('name', handle),
+                    "authorName": actual_name,
                     "authorHandle": f"@{author.get('screen_name', handle)}",
                     "platform": "twitter",
                     "content": tweet.get('text', ''),
@@ -149,20 +180,19 @@ class BendySniperScraper:
                     "originalAvatarUrl": avatar_url
                 })
         except: pass
-        return posts, avatar_url
+        return posts, avatar_url, actual_name
 
-    def parse_rss(self, xml_data: str, handle: str) -> Tuple[List[Dict], str]:
-        posts, avatar_url = [], ""
+    def parse_rss(self, xml_data: str, handle: str) -> Tuple[List[Dict], str, str]:
+        posts, avatar_url, actual_name = [], "", handle
         try:
             root = ET.fromstring(xml_data)
             channel = root.find("channel")
-            if channel is None: return posts, avatar_url
+            if channel is None: return posts, avatar_url, actual_name
             
-            author_name = handle
             title_node = channel.find("title")
             if title_node is not None and title_node.text:
                 ft = html.unescape(title_node.text)
-                if " / " in ft: author_name = ft.split(" / ")[0].strip()
+                if " / " in ft: actual_name = ft.split(" / ")[0].strip()
                     
             for item in channel.findall("item"):
                 link = item.find("link")
@@ -172,7 +202,7 @@ class BendySniperScraper:
                 
                 posts.append({
                     "id": link.text.rstrip('/').split('/')[-1],
-                    "authorName": author_name,
+                    "authorName": actual_name,
                     "authorHandle": f"@{handle}",
                     "platform": "twitter",
                     "content": content,
@@ -181,15 +211,12 @@ class BendySniperScraper:
                     "originalAvatarUrl": ""
                 })
         except: pass
-        return posts, avatar_url
+        return posts, avatar_url, actual_name
 
-    def fetch_timeline(self, handle: str) -> Tuple[List[Dict], str]:
-        # Базовые URL
+    def fetch_timeline(self, handle: str) -> Tuple[List[Dict], str, str]:
         synd_url = f"https://syndication.twitter.com/srv/timeline-profile/screen-name/{handle}"
         sotwe_url = f"https://api.sotwe.com/v3/user/{handle}"
         
-        # Точечные, проверенные маршруты.
-        # urllib.parse.quote с safe='' гарантирует, что URL будет полностью закодирован для AllOrigins
         strategies = [
             ("Syndication via AllOrigins", f"https://api.allorigins.win/raw?url={urllib.parse.quote(synd_url, safe='')}", "syndication"),
             ("Sotwe via AllOrigins", f"https://api.allorigins.win/raw?url={urllib.parse.quote(sotwe_url, safe='')}", "sotwe"),
@@ -207,15 +234,15 @@ class BendySniperScraper:
                         raw_data = response.read().decode('utf-8')
                         
                         if parser_type == "sotwe":
-                            posts, avatar = self.parse_sotwe(raw_data, handle)
+                            posts, avatar, actual_name = self.parse_sotwe(raw_data, handle)
                         elif parser_type == "syndication":
-                            posts, avatar = self.parse_syndication(raw_data, handle)
+                            posts, avatar, actual_name = self.parse_syndication(raw_data, handle)
                         else:
-                            posts, avatar = self.parse_rss(raw_data, handle)
+                            posts, avatar, actual_name = self.parse_rss(raw_data, handle)
                             
                         if posts:
                             logging.info(f"🟢 [{handle}] ПОПАДАНИЕ! Найдено постов: {len(posts)}")
-                            return posts, avatar
+                            return posts, avatar, actual_name
                         else:
                             logging.warning(f"[{handle}] Промах (Твиттер скрыл ленту).")
             
@@ -226,10 +253,10 @@ class BendySniperScraper:
             except Exception as e:
                 logging.warning(f"[{handle}] Ошибка: {e}")
                 
-            time.sleep(2) # Пауза между выстрелами, чтобы не злить прокси
+            time.sleep(2)
 
         logging.error(f"❌ [{handle}] Все снайперские выстрелы мимо.")
-        return [], ""
+        return [], "", handle
 
     def run(self):
         existing_posts = self.load_existing_feed()
@@ -237,7 +264,7 @@ class BendySniperScraper:
         all_fetched_posts = []
         
         for handle in self.handles:
-            combined, latest_avatar_url = self.fetch_timeline(handle)
+            combined, latest_avatar_url, actual_name = self.fetch_timeline(handle)
             
             if not latest_avatar_url:
                 for ep in existing_posts:
@@ -245,7 +272,8 @@ class BendySniperScraper:
                         latest_avatar_url = ep.get('originalAvatarUrl', '')
                         break
 
-            local_avatar_path = self.download_avatar(handle, latest_avatar_url)
+            # Создаем папку, JSON и качаем аватар
+            local_avatar_path = self.process_developer_folder(handle, actual_name, latest_avatar_url)
             
             for p in combined: p['localAvatarPath'] = local_avatar_path
             for ep in existing_posts:
@@ -254,7 +282,7 @@ class BendySniperScraper:
                     if latest_avatar_url: ep['originalAvatarUrl'] = latest_avatar_url
 
             all_fetched_posts.extend(combined)
-            time.sleep(3) # Пауза перед сменой разработчика (очень важно для AllOrigins)
+            time.sleep(3)
             
         merged_dict = {post['id']: post for post in existing_posts}
         for post in all_fetched_posts:
@@ -270,6 +298,7 @@ class BendySniperScraper:
                 json.dump(final_posts, f, ensure_ascii=False, indent=2)
             os.replace(self.tmp_file, self.output_file)
             logging.info(f"🎉 База успешно обновлена! Уникальных постов: {len(final_posts)}")
+            logging.info(f"💾 Сохранено в: {self.output_file}")
         except Exception as e:
             if os.path.exists(self.tmp_file): os.remove(self.tmp_file)
             logging.error(f"Ошибка сохранения файла: {e}")

@@ -8,7 +8,7 @@ import { FeedModel } from './FeedModel.js';
 import { PostView } from './PostView.js';
 import { FeedController } from './FeedController.js';
 import { TranslationService } from './services/TranslationService.js';
-import { CustomSelect } from '../../shared/js/components/CustomSelect.js'; // Используем единый компонент
+import { CustomSelect } from '../../shared/js/components/CustomSelect.js';
 
 customElements.define('site-header', SiteHeader);
 
@@ -53,10 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await fetchData('data/feed.json'); 
         const feedData = Array.isArray(data) ? data : [];
 
-        // Иконка для пункта "Все разработчики" (Обычный SVG)
         const allDevsIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>`;
-        
-        // Закодированная SVG картинка для атрибута src (решает баг со сломанными кавычками)
         const fallbackAvatarUri = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238B949E' stroke-width='2'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E";
 
         const selectOptions = [
@@ -64,15 +61,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         ];
 
         TRACKED_AUTHORS.forEach(author => {
-            const latestPost = feedData.find(p => p.authorHandle.toLowerCase() === author.handle.toLowerCase());
-            const predictedLocalPath = `assets/avatars/${author.handle.replace('@', '').toLowerCase()}.jpg`;
-            const avatarUrl = latestPost?.localAvatarPath || latestPost?.originalAvatarUrl || predictedLocalPath;
+            // Динамически строим новый путь, игнорируя старые JSON данные
+            const handleClean = author.handle.replace('@', '').toLowerCase();
+            const newLocalPath = `assets/developers/${handleClean}/avatar.jpg`;
             
-            // Безопасный onerror без ломающихся кавычек
             selectOptions.push({
                 id: author.handle,
                 label: author.handle,
-                iconHtml: `<img src="${avatarUrl}" alt="Avatar" class="custom-select-icon" onerror="this.onerror=null; this.src='${fallbackAvatarUri}';">`
+                iconHtml: `<img src="${newLocalPath}" alt="Avatar" class="custom-select-icon" onerror="this.onerror=null; this.src='${fallbackAvatarUri}';">`
             });
         });
 
