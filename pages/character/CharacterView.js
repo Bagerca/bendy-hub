@@ -7,6 +7,7 @@ export class CharacterView {
             img: document.getElementById('char-image'),
             fallback: document.getElementById('char-fallback'),
             name: document.getElementById('char-name'),
+            versionsContainer: document.getElementById('char-versions-container'),
             metaContainer: document.getElementById('char-meta-container'),
             quote: document.getElementById('char-quote'),
             
@@ -21,6 +22,9 @@ export class CharacterView {
             
             backBtn: document.getElementById('back-btn')
         };
+
+        this.charData = null; 
+        this.charId = null;
 
         this._initTabs();
         this._initBackButton();
@@ -63,21 +67,106 @@ export class CharacterView {
     }
 
     render(charData, charId) {
-        document.title = `${charData.name} | Личное дело`;
-        const basePath = `assets/characters/${charId}/`;
+        this.charData = charData;
+        this.charId = charId;
 
-        this._renderImages(charData.assets, basePath);
-        this._renderMeta(charData);
+        document.title = `${charData.name} | Личное дело`;
+        this.els.name.textContent = charData.name;
+
+        if (charData.versions && charData.versions.length > 1) {
+            this._renderVersionButtons(charData.versions);
+            this._applyVersionData(charData.versions[0]);
+        } else {
+            this.els.versionsContainer.style.display = 'none';
+            this._applyVersionData(charData);
+        }
+
         this._renderWikiText(charData.wiki);
     }
 
-    _renderImages(assets, basePath) {
-        const avatar = assets?.avatar;
-        const fullBody = assets?.full_body;
+    _renderVersionButtons(versions) {
+        this.els.versionsContainer.innerHTML = '';
+        this.els.versionsContainer.style.display = 'flex';
 
-        const bgPhoto = avatar || fullBody;
+        versions.forEach((version, index) => {
+            const btn = document.createElement('button');
+            btn.className = `version-btn ${index === 0 ? 'active' : ''}`;
+            btn.textContent = version.label || `Версия ${index + 1}`;
+            
+            btn.addEventListener('click', () => {
+                this.els.versionsContainer.querySelectorAll('.version-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                this.els.img.style.opacity = '0';
+                setTimeout(() => {
+                    this._applyVersionData(version);
+                    this.els.img.style.opacity = '1';
+                }, 200);
+            });
+
+            this.els.versionsContainer.appendChild(btn);
+        });
+    }
+
+    _applyVersionData(dataBlock) {
+        const basePath = `assets/characters/${this.charId}/`;
+        
+        const assets = dataBlock.assets || this.charData.assets || {};
+        this._renderImages(assets, basePath);
+
+        const quoteText = dataBlock.quote || this.charData.quote;
+        if (quoteText && quoteText !== '...') {
+            this.els.quote.textContent = quoteText;
+            this.els.quote.style.display = 'block';
+        } else {
+            this.els.quote.style.display = 'none';
+        }
+
+        const role = dataBlock.role || this.charData.role;
+        const status = dataBlock.status || this.charData.status;
+        const actor = dataBlock.voice_actor || this.charData.voice_actor;
+        
+        const globalMeta = this.charData.meta || {};
+        const localMeta = dataBlock.meta || {};
+        
+        const mergedMeta = {
+            aliases: localMeta.aliases || globalMeta.aliases,
+            species: localMeta.species || globalMeta.species,
+            gender: localMeta.gender || globalMeta.gender,
+            occupation: localMeta.occupation || globalMeta.occupation,
+            affiliation: localMeta.affiliation || globalMeta.affiliation // Добавлена Фракция
+        };
+
+        let metaHtml = '';
+        const addMeta = (label, value, isFullWidth = false) => {
+            // Игнорируем пустые значения и заглушки
+            if (value && value !== '...' && value.length > 0) {
+                const widthClass = isFullWidth ? 'full-width' : '';
+                metaHtml += `<div class="stat-row ${widthClass}"><span class="stat-label">${label}:</span><span class="stat-value">${value}</span></div>`;
+            }
+        };
+        
+        addMeta('Прозвища', mergedMeta.aliases?.join(', '), true);
+        addMeta('Роль', role);
+        addMeta('Статус', status);
+        addMeta('Вид', mergedMeta.species);
+        addMeta('Фракция', mergedMeta.affiliation); // Вывод фракции
+        addMeta('Пол', mergedMeta.gender);
+        addMeta('Профессия', mergedMeta.occupation);
+        addMeta('Озвучка', actor, true);
+        
+        this.els.metaContainer.innerHTML = metaHtml || `<div class="stat-row"><span class="stat-value">Секретно</span></div>`;
+    }
+
+    _renderImages(assets, basePath) {
+        const avatar = assets?.avatar !== '...' ? assets?.avatar : null;
+        const fullBody = assets?.full_body !== '...' ? assets?.full_body : null;
+
+        const bgPhoto = fullBody || avatar;
         if (bgPhoto) {
             this.els.bg.style.backgroundImage = `url('${basePath}${bgPhoto}')`;
+        } else {
+            this.els.bg.style.backgroundImage = 'none';
         }
 
         const mainPhoto = fullBody || avatar;
@@ -100,43 +189,22 @@ export class CharacterView {
                 this.els.img.classList.remove('is-render');
             }
         } else {
+            this.els.img.style.display = 'none';
             this.els.fallback.style.display = 'flex';
         }
-    }
-
-    _renderMeta(charData) {
-        this.els.name.textContent = charData.name;
-
-        if (charData.quote) {
-            this.els.quote.textContent = charData.quote;
-            this.els.quote.style.display = 'block';
-        }
-
-        let metaHtml = '';
-        const addMeta = (label, value) => {
-            if (value) metaHtml += `<div class="stat-row"><span class="stat-label">${label}:</span><span class="stat-value">${value}</span></div>`;
-        };
-        
-        addMeta('Прозвища', charData.meta?.aliases?.join(', '));
-        addMeta('Роль', charData.role);
-        addMeta('Статус', charData.status);
-        addMeta('Вид', charData.meta?.species);
-        addMeta('Пол', charData.meta?.gender);
-        addMeta('Профессия', charData.meta?.occupation);
-        addMeta('Озвучка', charData.voice_actor);
-        
-        this.els.metaContainer.innerHTML = metaHtml || `<div class="stat-row"><span class="stat-value">Нет данных</span></div>`;
     }
 
     _renderWikiText(wiki) {
         if (!wiki) return;
 
-        this.els.appearance.textContent = wiki.appearance || 'Данные отсутствуют.';
-        this.els.personality.textContent = wiki.personality || 'Данные отсутствуют.';
+        this.els.appearance.textContent = wiki.appearance && wiki.appearance !== '...' ? wiki.appearance : 'Данные засекречены.';
+        this.els.personality.textContent = wiki.personality && wiki.personality !== '...' ? wiki.personality : 'Данные засекречены.';
         
-        if (wiki.history && wiki.history.length > 0) {
+        if (wiki.history && wiki.history.length > 0 && wiki.history[0].title !== '...') {
             this.els.btnHistory.style.display = 'inline-block';
+            this.els.historyContainer.innerHTML = '';
             wiki.history.forEach(chapter => {
+                if(chapter.title === '...') return;
                 const block = document.createElement('div');
                 block.className = 'history-block';
                 block.innerHTML = `<h4 class="history-title">${chapter.title}</h4><p class="char-text">${chapter.text}</p>`;
@@ -146,6 +214,7 @@ export class CharacterView {
 
         if (wiki.trivia && wiki.trivia.length > 0) {
             this.els.btnTrivia.style.display = 'inline-block';
+            this.els.triviaContainer.innerHTML = '';
             wiki.trivia.forEach(fact => {
                 const li = document.createElement('li');
                 li.textContent = fact;
@@ -158,14 +227,13 @@ export class CharacterView {
         this.els.appearances.innerHTML = '<span style="color: var(--text-muted); font-size: 0.95rem; display: flex; align-items: center; gap: 8px;"><div class="spinner" style="width: 14px; height: 14px; border-width: 2px;"></div> Поиск в архивах...</span>';
     }
 
-    // Изменено: теперь принимает projects и ссылается на project.html
     renderAppearances(projects) {
         this.els.appearances.innerHTML = ''; 
 
         if (projects.length > 0) {
             projects.forEach(project => {
                 const a = document.createElement('a');
-                a.href = `project.html?id=${project.id}`; // Было game.html
+                a.href = `project.html?id=${project.id}`; 
                 a.className = 'app-tag interactive';
                 a.textContent = project.title;
                 this.els.appearances.appendChild(a);
@@ -187,5 +255,6 @@ export class CharacterView {
                 <a href="characters.html" style="color:var(--accent-color);">Вернуться в архив</a>
             </div>
         `;
+        this.els.content.style.display = 'block';
     }
 }

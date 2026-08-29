@@ -3,11 +3,29 @@
     "name": "Искаженная Алиса",
     "role": "Второстепенный антагонист",
     "status": "Мертва",
+    "quote": "...",
     "voice_actor": "Lauren Synger",
     "meta": {
+        "aliases": [],
+        "species": "Чернильная копия (Сьюзи Кэмпбелл)",
         "gender": "Женский",
-        "species": "Чернильная копия (Сьюзи Кэмпбелл)"
+        "occupation": "...",
+        "affiliation": "..."
     },
-    "wiki": {},
-    "assets": {}
+    "versions": [],
+    "wiki": {
+        "appearance": "...",
+        "personality": "...",
+        "history": [
+            {
+                "title": "...",
+                "text": "..."
+            }
+        ],
+        "trivia": []
+    },
+    "assets": {
+        "avatar": "avatar.jpg",
+        "full_body": "full_body.png"
+    }
 }

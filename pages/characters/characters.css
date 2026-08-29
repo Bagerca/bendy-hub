@@ -1,45 +1,18 @@
 .characters-container { 
     padding-bottom: 4rem; 
-    /* padding-top убран */
 }
 
-/* ИНТЕГРИРОВАННЫЙ СЧЕТЧИК */
+/* ИНТЕГРИРОВАННЫЙ СЧЕТЧИК (Внутри панели фильтров) */
 .archive-meta { 
     margin: 0;
     padding: 0 0.5rem; 
-    font-size: 0.8rem; 
+    font-size: 0.85rem; 
     color: var(--text-muted); 
     font-weight: 700; 
     text-transform: uppercase; 
     letter-spacing: 0.5px;
     white-space: nowrap;
 }
-
-/* Кастомный выпадающий список */
-.custom-select-container { position: relative; min-width: 220px; flex: 0 0 auto; }
-.custom-select-trigger {
-    width: 100%; display: flex; justify-content: space-between; align-items: center;
-    padding: 0.55rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; 
-    background-color: var(--bg-body); color: var(--text-main); font-family: inherit; cursor: pointer; transition: 0.2s;
-}
-.custom-select-trigger:hover { border-color: var(--text-muted); }
-.custom-select-value { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.95rem; }
-.svg-icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
-
-.custom-select-dropdown {
-    position: absolute; top: calc(100% + 5px); left: 0; right: 0;
-    background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15); list-style: none; padding: 0.5rem 0; z-index: 200; 
-    max-height: 250px; overflow-y: auto; scrollbar-width: none; opacity: 0; visibility: hidden; 
-    transform: translateY(-10px); transition: 0.2s;
-}
-
-.custom-select-dropdown::-webkit-scrollbar { display: none; }
-.custom-select-container.active .custom-select-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
-.custom-select-option { padding: 0.6rem 1rem; display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500; color: var(--text-main);}
-.custom-select-option:hover { background-color: var(--bg-body); }
-.custom-select-option.selected { color: var(--accent-color); background-color: rgba(210, 168, 80, 0.05); }
-
 
 /* НОВЫЙ БЛОК АЛФАВИТНОГО ФИЛЬТРА */
 .alphabet-filters {
@@ -110,8 +83,7 @@
 }
 
 @media (max-width: 768px) {
-    .archive-meta { width: 100%; justify-content: center; margin-top: 5px; order: 3; }
-    .custom-select-container { min-width: 100%; order: 2; }
+    .archive-meta { width: 100%; text-align: center; }
     .chars-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; }
     .alphabet-filters { padding: 0 0.5rem; }
     .alphabet-chip { font-size: 0.85rem; padding: 0.4rem 0.7rem; min-width: 36px; }

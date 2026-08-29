@@ -1,8 +1,8 @@
 {
-    "id": "grant_cohen",
-    "name": "Грант Коэн",
+    "id": "ink_demon",
+    "name": "Чернильный Демон",
     "role": "...",
-    "status": "Неизвестно",
+    "status": "...",
     "quote": "...",
     "voice_actor": "...",
     "meta": {
@@ -16,12 +16,7 @@
     "wiki": {
         "appearance": "...",
         "personality": "...",
-        "history": [
-            {
-                "title": "...",
-                "text": "..."
-            }
-        ],
+        "history": [],
         "trivia": []
     },
     "assets": {

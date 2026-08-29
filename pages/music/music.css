@@ -27,9 +27,6 @@
     position: relative;
 }
 
-/* Специфичный отступ поиска для музыки */
-search-controls { margin-bottom: 1.5rem; }
-
 /* =========================================
    КНОПКИ ПЕРЕКЛЮЧЕНИЯ ВИДА (Сетка / Список)
    ========================================= */
@@ -46,7 +43,7 @@ search-controls { margin-bottom: 1.5rem; }
     background: transparent;
     border: none;
     color: var(--text-muted);
-    padding: 6px;
+    padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
     transition: 0.2s;
@@ -64,3 +61,8 @@ search-controls { margin-bottom: 1.5rem; }
 
 /* Оптический центр для иконок Play */
 .optical-center { transform: translateX(1.5px); }
+
+@media (max-width: 768px) {
+    /* Растягиваем кнопки на мобилках */
+    .view-btn { flex: 1; }
+}

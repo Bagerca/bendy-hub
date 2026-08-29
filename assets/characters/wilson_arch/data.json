@@ -1,15 +1,31 @@
 {
     "id": "wilson_arch",
     "name": "Уилсон Арч",
-    "role": "",
+    "role": "...",
     "status": "Неизвестно",
-    "voice_actor": "",
+    "quote": "...",
+    "voice_actor": "...",
     "meta": {
-        "gender": "",
-        "species": "",
         "aliases": [],
-        "occupation": ""
+        "species": "...",
+        "gender": "...",
+        "occupation": "...",
+        "affiliation": "..."
     },
-    "wiki": {},
-    "assets": {}
+    "versions": [],
+    "wiki": {
+        "appearance": "...",
+        "personality": "...",
+        "history": [
+            {
+                "title": "...",
+                "text": "..."
+            }
+        ],
+        "trivia": []
+    },
+    "assets": {
+        "avatar": "avatar.jpg",
+        "full_body": "full_body.png"
+    }
 }

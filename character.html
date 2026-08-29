@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Персонаж | Bendy Wiki</title>
+    
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
     <link rel="stylesheet" href="shared/css/layout.css">
     <link rel="stylesheet" href="shared/css/ui.css">
     <link rel="stylesheet" href="pages/character/character.css">
+    
     <script>
         const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
@@ -17,7 +19,6 @@
 </head>
 <body>
 
-    <!-- Исправлен активный пункт меню на characters -->
     <site-header active-page="characters"></site-header>
 
     <div id="char-loader" class="loading-state" style="margin-top: 100px;">
@@ -33,26 +34,31 @@
 
             <div class="char-layout">
                 
-                <!-- ЛЕВАЯ КОЛОНКА (Аватар и мета) -->
+                <!-- ЛЕВАЯ КОЛОНКА (Аватар, Версии и Мета) -->
                 <aside class="char-sidebar">
-                    <!-- Убрали inline JS, добавили id для контроллера -->
-                    <a href="#" id="back-btn" class="back-btn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                        Назад
-                    </a>
-
-                    <div class="char-card bento-box">
+                    <div class="sidebar-wrapper">
                         
-                        <!-- КОНТЕЙНЕР КАРТИНКИ С ФОЛЛБЕКОМ -->
-                        <div class="char-image-wrapper">
-                            <div id="char-fallback" class="char-image-fallback">
-                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                            </div>
-                            <img id="char-image" src="" alt="Photo" style="display: none;">
-                        </div>
+                        <!-- ПЛАВАЮЩАЯ КНОПКА НАЗАД (Привязана к карточке) -->
+                        <a href="#" id="back-btn" class="back-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                            В архив
+                        </a>
 
-                        <h1 id="char-name" class="char-title"></h1>
-                        <div class="char-stats" id="char-meta-container"></div>
+                        <div class="char-card bento-box">
+                            <!-- КОНТЕЙНЕР КАРТИНКИ -->
+                            <div class="char-image-wrapper">
+                                <div id="char-fallback" class="char-image-fallback">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                </div>
+                                <img id="char-image" src="" alt="Photo" style="display: none;">
+                            </div>
+
+                            <!-- ПЕРЕКЛЮЧАТЕЛЬ ВЕРСИЙ (Генерируется через JS) -->
+                            <div id="char-versions-container" class="char-versions" style="display: none;"></div>
+
+                            <h1 id="char-name" class="char-title"></h1>
+                            <div class="char-stats" id="char-meta-container"></div>
+                        </div>
                     </div>
                 </aside>
 
@@ -74,7 +80,7 @@
                             <h3 class="section-title mt-4">Личность</h3>
                             <p id="char-personality" class="char-text"></p>
                             
-                            <h3 class="section-title mt-4">Появления в играх</h3>
+                            <h3 class="section-title mt-4">Появления в архивах</h3>
                             <div class="appearances-tags" id="char-appearances"></div>
                         </div>
 

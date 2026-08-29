@@ -1,6 +1,13 @@
-.character-page { position: relative; min-height: 100vh; padding-bottom: 4rem; }
+/* =========================================
+   СТРУКТУРА СТРАНИЦЫ
+   ========================================= */
+.character-page { 
+    position: relative; 
+    min-height: 100vh; 
+    padding-bottom: 4rem; 
+}
 
-/* Фон */
+/* Фон верхней части */
 .char-header-bg {
     position: absolute; top: 0; left: 0; right: 0; height: 40vh;
     background-size: cover; background-position: center;
@@ -10,38 +17,72 @@
 }
 
 .char-container {
-    position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem;
+    position: relative; 
+    z-index: 2; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 2rem 1.5rem;
 }
 
-.back-btn {
-    display: inline-flex; 
-    align-items: center; 
-    gap: 8px; 
-    color: var(--text-muted);
-    text-decoration: none; 
-    font-weight: 700; 
-    margin-bottom: 1.25rem; 
-    transition: 0.2s;
+.char-layout { 
+    display: grid; 
+    grid-template-columns: 350px 1fr; 
+    gap: 3rem; 
+    align-items: start;
+    margin-top: 2rem; /* Отступ от верха страницы */
 }
-.back-btn:hover { 
+
+/* =========================================
+   САЙДБАР И КНОПКА "НАЗАД"
+   ========================================= */
+.char-sidebar { 
+    position: sticky; 
+    top: 100px; 
+}
+
+.sidebar-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.back-link {
+    position: absolute;
+    /* Привязываем кнопку строго слева от карточки */
+    right: calc(100% + 1.25rem); 
+    top: 0; /* Идеальное выравнивание по верхней границе карточки */
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 18px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease;
+    z-index: 10;
+    white-space: nowrap; 
+}
+
+.back-link:hover { 
+    background: rgba(0, 0, 0, 0.8); 
     color: var(--accent-color); 
-    transform: translateX(-4px); 
+    border-color: rgba(210, 168, 80, 0.4);
+    transform: translateX(-4px);
 }
 
-.char-layout { display: grid; grid-template-columns: 350px 1fr; gap: 3rem; align-items: start;}
-
-.bento-box {
-    background: var(--bg-card); padding: 2rem; border-radius: 16px;
-    border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-}
-.bento-box.large { padding: 3rem; }
-
-.char-sidebar { position: sticky; top: 100px; }
-
-/* КОНТЕЙНЕР КАРТИНКИ */
+/* =========================================
+   ИЗОБРАЖЕНИЕ ПЕРСОНАЖА (АДАПТИВНОЕ)
+   ========================================= */
 .char-image-wrapper {
     width: 100%; 
-    aspect-ratio: 1/1; 
+    min-height: 300px; /* Базовая высота, если картинки нет (для заглушки) */
+    max-height: 550px; /* Ограничитель, чтобы слишком длинные рендеры не ломали сайт */
     border-radius: 12px; 
     overflow: hidden;
     margin-bottom: 1.5rem; 
@@ -53,41 +94,91 @@
     position: relative;
 }
 
-/* Красивая заглушка, если нет картинки */
-.char-image-fallback {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    opacity: 0.3;
+.char-image-fallback { 
+    position: absolute; inset: 0; display: flex; align-items: center; 
+    justify-content: center; color: var(--text-muted); opacity: 0.3; 
 }
 
-/* Обычная аватарка (JPG) */
 .char-image-wrapper img { 
     width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    position: relative;
-    z-index: 2;
+    height: auto; /* Позволяем изображению диктовать высоту контейнера */
+    max-height: 550px; /* Синхронизируем с контейнером */
+    object-fit: cover; /* Если это квадратный JPG (аватар), он заполнит ширину */
+    position: relative; 
+    z-index: 2; 
+    transition: opacity 0.3s ease; 
+    display: block;
 }
 
-/* PNG-рендер во весь рост */
+/* Магия для PNG-рендеров (как Генри) */
 .char-image-wrapper img.is-render { 
-    object-fit: contain; 
-    padding: 12px;
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+    object-fit: contain; /* Чтобы персонаж не обрезался, а вписывался целиком */
+    padding: 1.5rem; /* Даем "воздух" вокруг модели */
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5)); /* Красивая 3D-тень */
 }
 
-.char-title { font-size: 2.2rem; font-weight: 900; color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.1; }
+/* =========================================
+   ПЕРЕКЛЮЧАТЕЛЬ ВЕРСИЙ
+   ========================================= */
+.char-versions {
+    display: flex;
+    background: var(--bg-body);
+    padding: 6px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.char-versions::-webkit-scrollbar { display: none; }
 
-.char-stats { display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;}
+.version-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.6rem 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.version-btn:hover { color: var(--text-main); }
+.version-btn.active {
+    background: var(--bg-card);
+    color: var(--accent-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   МЕТА ХАРАКТЕРИСТИКИ
+   ========================================= */
+.char-title { 
+    font-size: 2.2rem; font-weight: 900; color: var(--text-main); 
+    margin-bottom: 1.5rem; line-height: 1.1; 
+}
+
+.char-stats { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.25rem 1rem; 
+    border-top: 1px solid var(--border-color); 
+    padding-top: 1.5rem;
+}
+
+.stat-row.full-width { grid-column: span 2; }
 .stat-row { display: flex; flex-direction: column; gap: 4px; }
-.stat-label { font-size: 0.8rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); letter-spacing: 0.5px;}
-.stat-value { font-size: 1rem; font-weight: 600; color: var(--text-main); }
+.stat-label { font-size: 0.75rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); letter-spacing: 0.5px;}
+.stat-value { font-size: 0.95rem; font-weight: 600; color: var(--text-main); word-wrap: break-word; }
 
-/* Правая колонка */
+
+/* =========================================
+   ПРАВАЯ КОЛОНКА (ЦИТАТА, ТАБЫ, КОНТЕНТ)
+   ========================================= */
 .char-quote {
     font-size: 1.25rem; font-style: italic; color: var(--accent-color);
     border-left: 4px solid var(--accent-color); padding: 1.5rem; margin-bottom: 2rem;
@@ -114,33 +205,22 @@
 .char-tab-content { display: none; padding: 3rem; animation: fadeIn 0.4s ease forwards; }
 .char-tab-content.active { display: block; }
 
-.section-title { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main); }
+.section-title { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main); font-weight: 800;}
 .mt-4 { margin-top: 2.5rem; }
 
 .char-text { font-size: 1.1rem; line-height: 1.8; color: var(--text-main); opacity: 0.9; white-space: pre-line; }
 
 /* История (Таймлайн) */
 .history-timeline { display: flex; flex-direction: column; gap: 2.5rem; position: relative; }
-.history-timeline::before {
-    content: ''; position: absolute; left: 11px; top: 10px; bottom: 10px;
-    width: 2px; background: var(--border-color); z-index: 0;
-}
+.history-timeline::before { content: ''; position: absolute; left: 11px; top: 10px; bottom: 10px; width: 2px; background: var(--border-color); z-index: 0;}
 .history-block { position: relative; z-index: 1; padding-left: 2.5rem; }
-.history-block::before {
-    content: ''; position: absolute; left: 7px; top: 6px; width: 10px; height: 10px;
-    background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-card);
-}
+.history-block::before { content: ''; position: absolute; left: 7px; top: 6px; width: 10px; height: 10px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-card);}
 .history-title { font-size: 1.3rem; margin-bottom: 0.75rem; color: var(--text-main); }
 
 /* Факты */
 .trivia-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
-.trivia-list li {
-    font-size: 1.05rem; line-height: 1.6; color: var(--text-main);
-    padding-left: 1.8rem; position: relative; opacity: 0.9;
-}
-.trivia-list li::before {
-    content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 1px; font-size: 1.2rem;
-}
+.trivia-list li { font-size: 1.05rem; line-height: 1.6; color: var(--text-main); padding-left: 1.8rem; position: relative; opacity: 0.9; }
+.trivia-list li::before { content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 1px; font-size: 1.2rem; }
 
 /* Теги появлений */
 .appearances-tags { display: flex; flex-wrap: wrap; gap: 10px; min-height: 40px; }
@@ -149,19 +229,41 @@
     padding: 8px 14px; border-radius: 8px; font-weight: 600; border: 1px solid rgba(210, 168, 80, 0.2);
     text-decoration: none; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); font-size: 0.95rem;
 }
-a.app-tag.interactive:hover {
-    background: rgba(210, 168, 80, 0.25); border-color: var(--accent-color);
-    color: var(--text-main); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15);
-}
+a.app-tag.interactive:hover { background: rgba(210, 168, 80, 0.25); border-color: var(--accent-color); color: var(--text-main); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15);}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
+
+/* =========================================
+   АДАПТИВНОСТЬ
+   ========================================= */
+
+@media (max-width: 1400px) {
+    /* Если экран меньше 1400px, кнопке не хватит места слева.
+       Возвращаем её классическое поведение НАД карточкой. */
+    .back-link {
+        position: static;
+        margin-bottom: 1.25rem;
+    }
+    
+    /* Опускаем правую колонку, чтобы она осталась на одном уровне с аватаркой */
+    .char-main {
+        margin-top: calc(44px + 1.25rem); 
+    }
+}
+
 @media (max-width: 900px) {
-    .char-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .char-layout { 
+        grid-template-columns: 1fr; 
+        gap: 2rem; 
+        margin-top: 0;
+    }
     .char-sidebar { position: static; }
+    .char-main { margin-top: 0; } /* Сбрасываем компенсацию */
+    
     .char-header-bg { height: 30vh; }
     .char-tabs { padding: 0 1.5rem; }
     .char-tab-content { padding: 2rem 1.5rem; }
