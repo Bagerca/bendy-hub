@@ -27,7 +27,6 @@ export class AudioPlayer {
         this.isPlaying = false;
         this.isRepeat = false;
 
-        // Коллбэки
         this.onStateChange = null; 
         this.onNextRequest = null;
         this.onPrevRequest = null;
@@ -35,11 +34,10 @@ export class AudioPlayer {
         this.onLyricsRequest = null;
 
         this._initEvents();
-        this._updateSliderColor(this.els.volSlider); // Инит цвета ползунка громкости
+        this._updateSliderColor(this.els.volSlider); 
     }
 
     _initEvents() {
-        // Управление
         this.els.playPauseBtn.addEventListener('click', () => this.togglePlay());
         this.els.btnNext.addEventListener('click', () => { if (this.onNextRequest) this.onNextRequest(); });
         this.els.btnPrev.addEventListener('click', () => { if (this.onPrevRequest) this.onPrevRequest(); });
@@ -54,33 +52,29 @@ export class AudioPlayer {
         this.els.btnRepeat.addEventListener('click', () => {
             this.isRepeat = !this.isRepeat;
             this.els.btnRepeat.classList.toggle('active', this.isRepeat);
-            this.audio.loop = this.isRepeat; // Встроенный луп HTML5 Audio
+            this.audio.loop = this.isRepeat; 
         });
 
         this.els.btnLyrics.addEventListener('click', () => { 
             if (this.onLyricsRequest && this.currentTrack) this.onLyricsRequest(this.currentTrack.id); 
         });
 
-        // Аудио события
         this.audio.addEventListener('timeupdate', () => this._updateProgress());
         this.audio.addEventListener('loadedmetadata', () => {
             this.els.timeTot.textContent = this._formatTime(this.audio.duration);
             this.els.progressSlider.max = this.audio.duration;
         });
         
-        // Авто-переключение
         this.audio.addEventListener('ended', () => { 
             if (!this.isRepeat && this.onNextRequest) this.onNextRequest(); 
         });
         
-        // Ползунок прогресса
         this.els.progressSlider.addEventListener('input', (e) => {
             this.audio.currentTime = e.target.value;
             this._updateSliderColor(e.target);
             this.els.timeCur.textContent = this._formatTime(e.target.value);
         });
 
-        // Ползунок громкости
         this.els.volSlider.addEventListener('input', (e) => {
             this.audio.volume = e.target.value;
             this._updateSliderColor(e.target);
@@ -88,22 +82,25 @@ export class AudioPlayer {
     }
 
     loadTrack(track, autoPlay = true) {
-        if (!track || !track.audioUrl) return;
+        if (!track || !track.audio) {
+            Logger.warn('Трек не имеет аудиофайла');
+            return;
+        }
 
         this.container.classList.add('active');
         this.currentTrack = track;
         
-        // Сброс прогресс бара перед загрузкой нового трека
         this.els.progressSlider.value = 0;
         this._updateSliderColor(this.els.progressSlider);
         this.els.timeCur.textContent = "0:00";
         this.els.timeTot.textContent = "0:00";
 
-        this.audio.src = track.audioUrl;
+        // Динамически строим пути (НОВЫЙ СТАНДАРТ)
+        this.audio.src = `assets/music/${track.id}/${track.audio}`;
+        this.els.cover.src = track.cover ? `assets/music/${track.id}/${track.cover}` : '';
         
         this.els.title.textContent = track.title;
         this.els.artist.textContent = track.artist;
-        this.els.cover.src = track.cover;
 
         if (autoPlay) this.play();
     }
@@ -124,7 +121,7 @@ export class AudioPlayer {
                 this.els.iconPause.style.display = 'block';
                 this._notifyStateChange();
             }).catch(err => {
-                Logger.error('Play failed:', err);
+                Logger.error('Ошибка воспроизведения:', err);
                 this.isPlaying = false;
                 this.els.iconPlay.style.display = 'block';
                 this.els.iconPause.style.display = 'none';
@@ -154,13 +151,10 @@ export class AudioPlayer {
         this.els.timeCur.textContent = this._formatTime(this.audio.currentTime);
     }
 
-    // Красим часть ползунка до бегунка акцентным цветом
     _updateSliderColor(slider) {
         const min = parseFloat(slider.min) || 0;
         const max = parseFloat(slider.max) || 100;
         const value = ((slider.value - min) / (max - min)) * 100;
-        
-        // ВАЖНО: Применяем фон к самому input, так как его высота теперь строго 4px
         slider.style.background = `linear-gradient(to right, var(--accent-color) 0%, var(--accent-color) ${value}%, rgba(150, 150, 150, 0.2) ${value}%, rgba(150, 150, 150, 0.2) 100%)`;
     }
 

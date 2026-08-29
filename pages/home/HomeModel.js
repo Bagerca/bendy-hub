@@ -50,20 +50,22 @@ export class HomeModel {
     // Метод: парсим все базы данных и считаем реальное количество
     async _calculateDynamicStats() {
         try {
-            // Запрашиваем все массивы параллельно
+            // Запрашиваем все массивы параллельно. 
+            // ИСПРАВЛЕНИЕ 1: Ищем музыку по новому индексу.
             const [projects, chars, songs, recordsIndex] = await Promise.all([
                 fetchData('data/catalog_index.json').catch(() => []),
                 fetchData('data/characters_index.json').catch(() => []),
-                fetchData('data/songs.json').catch(() => []),
+                fetchData('data/music_index.json').catch(() => []), 
                 fetchData('data/records_index.json').catch(() => [])
             ]);
 
             let recordsCount = 0;
             
-            // Для записей нужно прочитать каждый файл категории и посчитать кол-во items
+            // Для записей нужно прочитать каждый файл категории из новой папки assets и посчитать items
+            // ИСПРАВЛЕНИЕ 2: Читаем из assets/records/<id>/data.json
             if (recordsIndex.length > 0) {
-                const recordPromises = recordsIndex.map(file => 
-                    fetchData(`data/records/${file}.json`).catch(() => null)
+                const recordPromises = recordsIndex.map(folderId => 
+                    fetchData(`assets/records/${folderId}/data.json`).catch(() => null)
                 );
                 const recordsData = await Promise.all(recordPromises);
                 

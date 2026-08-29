@@ -7,7 +7,6 @@ export class RecordsView {
             title: document.getElementById('current-category-title'),
             count: document.getElementById('current-category-count'),
             
-            // Элементы модалки
             modal: document.getElementById('record-modal'),
             closeBtn: document.querySelector('#record-modal .modal-close'),
             mImage: document.getElementById('reader-image'),
@@ -23,7 +22,14 @@ export class RecordsView {
         };
 
         this._initModalEvents();
-        this._initDragToScroll(); // Инициализация функции Drag-to-Scroll
+        this._initDragToScroll();
+    }
+
+    // Умный метод для очистки длинных названий из JSON
+    _cleanTitle(title) {
+        return title
+            .replace(/^Все\s+/i, '')       // Убираем слово "Все " в начале
+            .replace(/\s+из\s+/i, ' | ');  // Меняем " из " на разделитель " | "
     }
 
     _initModalEvents() {
@@ -34,7 +40,6 @@ export class RecordsView {
 
         this.els.closeBtn.addEventListener('click', closeModal);
         
-        // Закрытие по клику вне контента модалки (по backdrop)
         this.els.modal.addEventListener('click', (e) => {
             const rect = this.els.modal.getBoundingClientRect();
             const isInDialog = (
@@ -47,9 +52,6 @@ export class RecordsView {
         });
     }
 
-    /**
-     * Реализация захвата и перетаскивания (Drag-to-Scroll) для меню категорий
-     */
     _initDragToScroll() {
         const nav = this.els.nav;
         let isMouseDown = false;
@@ -64,12 +66,11 @@ export class RecordsView {
 
         nav.addEventListener('mousemove', (e) => {
             if (!isMouseDown) return;
-            e.preventDefault(); // Предотвращаем стандартное выделение текста
+            e.preventDefault(); 
             
             const y = e.pageY - nav.offsetTop;
-            const walk = (y - startY) * 1.5; // Скорость скролла
+            const walk = (y - startY) * 1.5; 
             
-            // Если мышка сдвинулась больше чем на 3 пикселя, считаем это перетаскиванием (блокируем клики)
             if (Math.abs(walk) > 3) {
                 nav.classList.add('is-dragging');
             }
@@ -79,7 +80,6 @@ export class RecordsView {
 
         const stopDragging = () => {
             isMouseDown = false;
-            // Убираем класс с задержкой, чтобы клик (mouseup) успел заблокироваться CSS-ом
             requestAnimationFrame(() => {
                 nav.classList.remove('is-dragging');
             });
@@ -107,9 +107,11 @@ export class RecordsView {
             const clone = this.templates.navBtn.content.cloneNode(true);
             const btn = clone.querySelector('.cat-btn');
             
-            btn.textContent = category.title;
-            btn.title = category.title;
-            btn.dataset.id = category.title; 
+            // Применяем очистку и к боковому меню!
+            const cleanName = this._cleanTitle(category.title);
+            btn.textContent = cleanName;
+            btn.title = cleanName;
+            btn.dataset.id = category.title; // ID оставляем оригинальным для логики
             
             btn.addEventListener('click', () => onCategoryClick(category));
             fragment.appendChild(clone);
@@ -125,8 +127,9 @@ export class RecordsView {
     }
 
     renderGrid(category, onRecordClick) {
-        this.els.title.textContent = category.title;
-        this.els.count.textContent = `Записей найдено: ${category.items.length}`;
+        // Применяем очистку к главному заголовку
+        this.els.title.textContent = this._cleanTitle(category.title);
+        this.els.count.textContent = `${category.items.length} ЗАПИСЕЙ`;
         this.els.count.style.display = 'inline-block';
         
         this.els.grid.innerHTML = '';
@@ -140,13 +143,14 @@ export class RecordsView {
 
             clone.querySelector('.card-title').textContent = item.title;
             clone.querySelector('.card-author').textContent = item.author || 'Неизвестный';
-            clone.querySelector('.card-type-badge').textContent = category.type === 'audio' ? 'Аудиозапись' : 'Документ';
+
+            item.categoryId = category.id;
 
             const imgEl = clone.querySelector('.card-image');
             const fallbackEl = clone.querySelector('.card-fallback-icon');
             
             if (item.image) {
-                imgEl.src = `assets/records/${item.image}`;
+                imgEl.src = `assets/records/${category.id}/${item.image}`;
                 imgEl.style.display = 'block';
                 fallbackEl.style.display = 'none';
             } else {
@@ -173,7 +177,7 @@ export class RecordsView {
         this.els.mText.textContent = record.text;
 
         if (record.image) {
-            this.els.mImage.src = `assets/records/${record.image}`;
+            this.els.mImage.src = `assets/records/${record.categoryId}/${record.image}`;
             this.els.mImage.style.display = 'block';
         } else {
             this.els.mImage.style.display = 'none';

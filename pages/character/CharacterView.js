@@ -98,9 +98,12 @@ export class CharacterView {
                 btn.classList.add('active');
                 
                 this.els.img.style.opacity = '0';
+                this.els.bg.style.opacity = '0'; // Плавно прячем фон
+                
                 setTimeout(() => {
                     this._applyVersionData(version);
                     this.els.img.style.opacity = '1';
+                    this.els.bg.style.opacity = '1'; // Плавно возвращаем фон
                 }, 200);
             });
 
@@ -134,12 +137,11 @@ export class CharacterView {
             species: localMeta.species || globalMeta.species,
             gender: localMeta.gender || globalMeta.gender,
             occupation: localMeta.occupation || globalMeta.occupation,
-            affiliation: localMeta.affiliation || globalMeta.affiliation // Добавлена Фракция
+            affiliation: localMeta.affiliation || globalMeta.affiliation
         };
 
         let metaHtml = '';
         const addMeta = (label, value, isFullWidth = false) => {
-            // Игнорируем пустые значения и заглушки
             if (value && value !== '...' && value.length > 0) {
                 const widthClass = isFullWidth ? 'full-width' : '';
                 metaHtml += `<div class="stat-row ${widthClass}"><span class="stat-label">${label}:</span><span class="stat-value">${value}</span></div>`;
@@ -150,7 +152,7 @@ export class CharacterView {
         addMeta('Роль', role);
         addMeta('Статус', status);
         addMeta('Вид', mergedMeta.species);
-        addMeta('Фракция', mergedMeta.affiliation); // Вывод фракции
+        addMeta('Фракция', mergedMeta.affiliation);
         addMeta('Пол', mergedMeta.gender);
         addMeta('Профессия', mergedMeta.occupation);
         addMeta('Озвучка', actor, true);
@@ -159,38 +161,57 @@ export class CharacterView {
     }
 
     _renderImages(assets, basePath) {
-        const avatar = assets?.avatar !== '...' ? assets?.avatar : null;
-        const fullBody = assets?.full_body !== '...' ? assets?.full_body : null;
+        // Сбрасываем старые обработчики, чтобы они не конфликтовали
+        this.els.img.onload = null;
+        this.els.img.onerror = null;
 
-        const bgPhoto = fullBody || avatar;
-        if (bgPhoto) {
-            this.els.bg.style.backgroundImage = `url('${basePath}${bgPhoto}')`;
-        } else {
-            this.els.bg.style.backgroundImage = 'none';
-        }
+        const avatar = (assets?.avatar && assets.avatar !== '...') ? assets.avatar : null;
+        const fullBody = (assets?.full_body && assets.full_body !== '...') ? assets.full_body : null;
 
-        const mainPhoto = fullBody || avatar;
-        if (mainPhoto) {
-            this.els.img.onerror = () => {
-                this.els.img.style.display = 'none';
-                this.els.fallback.style.display = 'flex';
-            };
+        const showFallback = () => {
+            this.els.img.style.display = 'none';
+            this.els.fallback.style.display = 'flex';
+            this.els.bg.style.backgroundImage = 'none'; // Нет картинки = нет фона
+        };
+
+        // Функция вызывается ТОЛЬКО если картинка реально скачалась
+        const showImage = (validSrc) => {
+            this.els.fallback.style.display = 'none';
+            this.els.img.style.display = 'block';
+            this.els.bg.style.backgroundImage = `url('${validSrc}')`; // Синхронизируем фон
             
-            this.els.img.onload = () => {
-                this.els.fallback.style.display = 'none';
-                this.els.img.style.display = 'block';
-            };
-
-            this.els.img.src = `${basePath}${mainPhoto}`;
-            
-            if (mainPhoto.endsWith('.png')) {
+            if (validSrc.includes('.png')) {
                 this.els.img.classList.add('is-render');
             } else {
                 this.els.img.classList.remove('is-render');
             }
+        };
+
+        if (fullBody) {
+            const fullBodySrc = `${basePath}${fullBody}`;
+            
+            this.els.img.onload = () => showImage(fullBodySrc);
+            
+            this.els.img.onerror = () => {
+                if (avatar) {
+                    const avatarSrc = `${basePath}${avatar}`;
+                    this.els.img.onload = () => showImage(avatarSrc);
+                    this.els.img.onerror = showFallback;
+                    this.els.img.src = avatarSrc; // Грузим аватар, если full_body сломался
+                } else {
+                    showFallback();
+                }
+            };
+            
+            this.els.img.src = fullBodySrc; // Запускаем попытку скачать full_body
+            
+        } else if (avatar) {
+            const avatarSrc = `${basePath}${avatar}`;
+            this.els.img.onload = () => showImage(avatarSrc);
+            this.els.img.onerror = showFallback;
+            this.els.img.src = avatarSrc;
         } else {
-            this.els.img.style.display = 'none';
-            this.els.fallback.style.display = 'flex';
+            showFallback();
         }
     }
 
@@ -210,6 +231,8 @@ export class CharacterView {
                 block.innerHTML = `<h4 class="history-title">${chapter.title}</h4><p class="char-text">${chapter.text}</p>`;
                 this.els.historyContainer.appendChild(block);
             });
+        } else {
+            this.els.btnHistory.style.display = 'none';
         }
 
         if (wiki.trivia && wiki.trivia.length > 0) {
@@ -220,6 +243,8 @@ export class CharacterView {
                 li.textContent = fact;
                 this.els.triviaContainer.appendChild(li);
             });
+        } else {
+            this.els.btnTrivia.style.display = 'none';
         }
     }
 

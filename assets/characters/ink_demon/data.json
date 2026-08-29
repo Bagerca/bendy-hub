@@ -1,26 +1,47 @@
 {
     "id": "ink_demon",
     "name": "Чернильный Демон",
-    "role": "...",
-    "status": "...",
+    "role": "Главный антагонист",
+    "status": "Активен",
     "quote": "...",
     "voice_actor": "...",
     "meta": {
-        "aliases": [],
-        "species": "...",
-        "gender": "...",
-        "occupation": "...",
-        "affiliation": "..."
+        "aliases": ["Бенди", "Демон", "Улыбающаяся Тварь"],
+        "species": "Чернильная сущность (Неудачный эксперимент)",
+        "gender": "Мужской",
+        "occupation": "Правитель Чернильной Бездны",
+        "affiliation": "Joey Drew Studios"
     },
-    "versions": [],
+    "versions": [
+        {
+            "label": "BATDR",
+            "quote": "Останься со мной... в темноте.",
+            "assets": {
+                "avatar": "avatar.jpg",
+                "full_body": "full_body.png"
+            }
+        },
+        {
+            "label": "BATIM",
+            "quote": "...",
+            "assets": {
+                "avatar": "avatar_batim.jpg",
+                "full_body": "full_body_batim.png"
+            }
+        },
+        {
+            "label": "Книги",
+            "quote": "...",
+            "assets": {
+                "avatar": "avatar_book.jpg",
+                "full_body": "full_body_book.png"
+            }
+        }
+    ],
     "wiki": {
         "appearance": "...",
         "personality": "...",
         "history": [],
         "trivia": []
-    },
-    "assets": {
-        "avatar": "avatar.jpg",
-        "full_body": "full_body.png"
     }
 }

@@ -40,7 +40,6 @@
     border-bottom: 1px solid var(--border-color);
 }
 
-/* ОБНОВЛЕНО: Скрываем скроллбар и добавляем курсоры для Drag-to-Scroll */
 .category-nav {
     display: flex;
     flex-direction: column;
@@ -48,24 +47,21 @@
     overflow-y: auto;
     padding-right: 5px;
     
-    /* Скрываем скроллбары */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
     
-    /* Курсоры перетаскивания */
     cursor: grab;
-    user-select: none; /* Запрещаем выделение текста при драге */
+    user-select: none; 
 }
 
 .category-nav::-webkit-scrollbar { 
-    display: none; /* Chrome/Safari/Webkit */
+    display: none; 
 }
 
 .category-nav:active {
     cursor: grabbing;
 }
 
-/* МАГИЯ: Отключаем события на кнопках, когда мышь тащит меню (добавляется через JS) */
 .category-nav.is-dragging .cat-btn {
     pointer-events: none;
 }
@@ -121,25 +117,33 @@
    ГЛАВНЫЙ ЭКРАН (Заголовок и сетка)
    ========================================= */
 .archives-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
     margin-bottom: 2.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .archives-header h1 {
-    font-size: 2.4rem;
+    font-size: 1.8rem; 
     color: var(--text-main);
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    margin: 0;
     font-weight: 900;
 }
 
 .meta-count {
     color: var(--accent-color);
-    font-weight: 700;
-    font-size: 1rem;
+    font-weight: 800;
+    font-size: 0.85rem;
     background: rgba(210, 168, 80, 0.1);
-    display: inline-block;
-    padding: 4px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
+    white-space: nowrap; 
+    flex-shrink: 0; 
+    box-shadow: inset 0 0 0 1px rgba(210, 168, 80, 0.2);
 }
 
 .records-grid {
@@ -221,15 +225,6 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-}
-
-.card-type-badge {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    font-weight: 800;
-    color: var(--accent-color);
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.5px;
 }
 
 .card-title {
@@ -351,5 +346,11 @@
         padding: 0.7rem 0.75rem 0.7rem 1rem;
     }
     .reader-content { padding: 2.5rem 1.5rem; }
-    .archives-header h1 { font-size: 1.8rem; }
+    
+    .archives-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    .archives-header h1 { font-size: 1.6rem; }
 }

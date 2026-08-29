@@ -69,7 +69,11 @@ export class MusicView {
             clone.querySelector('.song-game').textContent = track.game || 'Bendy';
             
             const coverEl = clone.querySelector('.song-cover');
-            coverEl.src = track.cover;
+            
+            // Динамический путь к обложке по новому стандарту
+            const coverPath = track.cover ? `assets/music/${track.id}/${track.cover}` : '';
+            
+            coverEl.src = coverPath;
             coverEl.onerror = () => { 
                 coverEl.src = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="%2330363D"%3E%3Crect width="100" height="100"/%3E%3C/svg%3E'; 
             };
@@ -89,24 +93,25 @@ export class MusicView {
         }
     }
 
-    // Обновленная логика UI без изменения style.display напрямую
     updateGridStateUI(currentTrack, isPlaying) {
-        // 1. Управляем классами карточек
         document.querySelectorAll('.song-card').forEach(card => {
             if (card.dataset.id === currentTrack.id) {
                 card.classList.add('playing');
-                // Добавляем класс is-paused, если трек на паузе
                 card.classList.toggle('is-paused', !isPlaying);
             } else {
                 card.classList.remove('playing', 'is-paused');
             }
         });
 
-        // 2. Обновляем эмбиент фон
+        // Формируем путь для эмбиент фона
         if (isPlaying && currentTrack.cover) {
-            this.els.ambientBg.style.backgroundImage = `url('${currentTrack.cover}')`;
+            const coverPath = currentTrack.cover.includes('assets/music') 
+                ? currentTrack.cover 
+                : `assets/music/${currentTrack.id}/${currentTrack.cover}`;
+            
+            this.els.ambientBg.style.backgroundImage = `url('${coverPath}')`;
             this.els.ambientBg.style.opacity = '1';
-        } else if (!isPlaying && !currentTrack.id) { // Скрываем только если вообще ничего не выбрано
+        } else if (!isPlaying && !currentTrack.id) {
             this.els.ambientBg.style.opacity = '0';
         }
     }

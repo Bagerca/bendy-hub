@@ -6,6 +6,7 @@
     <title>Архив Персонажей | Bendy Wiki</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
+    <!-- ПРАВИЛЬНЫЕ ПУТИ ОТ КОРНЯ ПРОЕКТА -->
     <link rel="stylesheet" href="shared/css/variables.css">
     <link rel="stylesheet" href="shared/css/base.css">
     <link rel="stylesheet" href="shared/css/layout.css">
@@ -22,7 +23,6 @@
 
     <main class="page-content characters-container">
         
-        <!-- ПАНЕЛЬ УПРАВЛЕНИЯ ЧЕРЕЗ WEB COMPONENT -->
         <search-controls placeholder="Поиск по имени или прозвищу (Enter)...">
             <div class="archive-meta">
                 <span id="results-count">Подключение...</span>
@@ -56,12 +56,8 @@
     <!-- ТЕМПЛЕЙТЫ -->
     <template id="char-card-template">
         <a href="" class="char-card">
-            <div class="char-avatar-wrapper">
-                <div class="char-fallback">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                </div>
-                <img src="" alt="" class="char-img" loading="lazy" onerror="this.style.display='none'">
-            </div>
+            <!-- Внутренности собирает Javascript (CharactersView.js) -->
+            <div class="char-avatar-wrapper"></div>
             <span class="char-card-name"></span>
         </a>
     </template>
@@ -85,6 +81,7 @@
         </div>
     </template>
 
+    <!-- ПРАВИЛЬНЫЙ ПУТЬ К СКРИПТУ -->
     <script type="module" src="pages/characters/app.js"></script>
 </body>
 </html>

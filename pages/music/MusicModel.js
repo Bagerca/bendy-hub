@@ -13,12 +13,25 @@ export class MusicModel {
 
     async fetchTracks() {
         try {
-            this.tracks = await fetchData('data/songs.json');
+            // 1. Загружаем индексный файл (как у персонажей и каталога)
+            const trackIds = await fetchData('data/music_index.json');
+            
+            // 2. Параллельно загружаем все data.json треков
+            const trackPromises = trackIds.map(id => 
+                fetchData(`assets/music/${id}/data.json`).catch(err => {
+                    Logger.warn(`Не удалось загрузить трек: ${id}`, err);
+                    return null;
+                })
+            );
+            
+            const results = await Promise.all(trackPromises);
+            this.tracks = results.filter(t => t !== null);
             this.filteredTracks = [...this.tracks];
+            
             this._updateQueue(); 
             return this.tracks;
         } catch (error) {
-            Logger.error('Ошибка загрузки аудио архивов.', error);
+            Logger.error('Ошибка загрузки музыкальных архивов.', error);
             throw error;
         }
     }
@@ -37,7 +50,6 @@ export class MusicModel {
         return this.filteredTracks;
     }
 
-    // Вкл/Выкл Shuffle
     toggleShuffle() {
         this.isShuffle = !this.isShuffle;
         const currentTrackId = this.playbackQueue[this.currentIndex]?.id;

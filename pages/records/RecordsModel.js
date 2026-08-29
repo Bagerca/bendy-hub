@@ -11,10 +11,10 @@ export class RecordsModel {
             // Читаем индексный файл
             const indexFiles = await fetchData('data/records_index.json');
             
-            // Скачиваем все файлы из папки records параллельно
-            const promises = indexFiles.map(filename => 
-                fetchData(`data/records/${filename}.json`).catch(err => {
-                    Logger.warn(`Не удалось загрузить архив: ${filename}`, err);
+            // Скачиваем все data.json из новых атомарных папок в assets/
+            const promises = indexFiles.map(folderName => 
+                fetchData(`assets/records/${folderName}/data.json`).catch(err => {
+                    Logger.warn(`Не удалось загрузить архив: ${folderName}`, err);
                     return null; // Игнорируем битые файлы
                 })
             );
