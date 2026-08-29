@@ -8,10 +8,8 @@ export class MusicController {
     }
 
     _bindEvents() {
-        // Сетка
-        this.view.onTrackClick = (trackId) => this._handleTrackClick(trackId);
+        this.view.onTrackClick = (trackId, cardElement) => this._handleTrackClick(trackId, cardElement);
 
-        // Плеер
         this.player.onStateChange = (track, isPlaying) => {
             this.view.updateGridStateUI(track, isPlaying);
         };
@@ -45,13 +43,16 @@ export class MusicController {
         }
     }
 
-    handleSearch(searchTerm) {
-        const filtered = this.model.applySearch(searchTerm);
+    handleFilterChange(updates) {
+        const filtered = this.model.applyFilters(updates);
         const currentPlayingId = this.player.currentTrack ? this.player.currentTrack.id : null;
         this.view.renderGrid(filtered, currentPlayingId, this.player.isPlaying);
     }
 
-    _handleTrackClick(trackId) {
+    _handleTrackClick(trackId, cardElement) {
+        // Блокируем воспроизведение, если у карточки повесился флаг отсутствия аудио
+        if (cardElement.classList.contains('no-audio')) return;
+
         if (this.player.currentTrack && this.player.currentTrack.id === trackId) {
             this.player.togglePlay();
         } else {

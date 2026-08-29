@@ -4,10 +4,8 @@ export class MusicView {
             container: document.getElementById('music-grid'),
             loader: document.getElementById('music-loader'),
             ambientBg: document.getElementById('ambient-bg'),
-            
             btnGrid: document.getElementById('btn-view-grid'),
             btnList: document.getElementById('btn-view-list'),
-
             panel: document.getElementById('lyrics-panel'),
             overlay: document.getElementById('lyrics-overlay'),
             closeBtn: document.querySelector('.panel-close')
@@ -69,8 +67,6 @@ export class MusicView {
             clone.querySelector('.song-game').textContent = track.game || 'Bendy';
             
             const coverEl = clone.querySelector('.song-cover');
-            
-            // Динамический путь к обложке по новому стандарту
             const coverPath = track.cover ? `assets/music/${track.id}/${track.cover}` : '';
             
             coverEl.src = coverPath;
@@ -78,8 +74,18 @@ export class MusicView {
                 coverEl.src = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="%2330363D"%3E%3Crect width="100" height="100"/%3E%3C/svg%3E'; 
             };
 
+            // МАГИЯ "УМНОЙ" КАРТОЧКИ: Делаем скрытый HEAD-запрос для проверки наличия аудио
+            if (track.audio) {
+                const audioPath = `assets/music/${track.id}/${track.audio}`;
+                fetch(audioPath, { method: 'HEAD' }).then(res => {
+                    if (!res.ok) this._markCardAsNoAudio(card);
+                }).catch(() => this._markCardAsNoAudio(card));
+            } else {
+                this._markCardAsNoAudio(card);
+            }
+
             card.addEventListener('click', () => {
-                if (this.onTrackClick) this.onTrackClick(track.id);
+                if (this.onTrackClick) this.onTrackClick(track.id, card);
             });
 
             fragment.appendChild(clone);
@@ -89,8 +95,17 @@ export class MusicView {
         this.els.container.style.display = 'grid';
 
         if (currentPlayingId) {
-            this.updateGridStateUI({id: currentPlayingId, cover: this.els.ambientBg.style.backgroundImage.slice(5, -2)}, isPlaying);
+            // Защита: не пытаемся восстановить эмбиент, если его не было
+            const currentBg = this.els.ambientBg.style.backgroundImage;
+            const cleanCover = currentBg ? currentBg.slice(5, -2) : '';
+            this.updateGridStateUI({id: currentPlayingId, cover: cleanCover}, isPlaying);
         }
+    }
+
+    _markCardAsNoAudio(cardElement) {
+        cardElement.classList.add('no-audio');
+        const badge = cardElement.querySelector('.no-audio-badge');
+        if (badge) badge.style.display = 'block';
     }
 
     updateGridStateUI(currentTrack, isPlaying) {
@@ -103,7 +118,6 @@ export class MusicView {
             }
         });
 
-        // Формируем путь для эмбиент фона
         if (isPlaying && currentTrack.cover) {
             const coverPath = currentTrack.cover.includes('assets/music') 
                 ? currentTrack.cover 

@@ -2,67 +2,54 @@
    ЭМБИЕНТ ФОН (ЭФФЕКТ ПОГРУЖЕНИЯ)
    ========================================= */
 .ambient-bg {
-    position: fixed;
-    inset: -5%;
-    width: 110%;
-    height: 110%;
-    background-size: cover;
-    background-position: center;
-    filter: blur(80px) brightness(0.25);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 1.5s ease, background-image 1.5s ease;
+    position: fixed; inset: -5%; width: 110%; height: 110%;
+    background-size: cover; background-position: center;
+    filter: blur(80px) brightness(0.25); z-index: -1;
+    opacity: 0; transition: opacity 1.5s ease, background-image 1.5s ease;
     pointer-events: none;
 }
-
-[data-theme="light"] .ambient-bg {
-    filter: blur(80px) brightness(0.85); 
-}
+[data-theme="light"] .ambient-bg { filter: blur(80px) brightness(0.85); }
 
 /* =========================================
    МАКЕТ СТРАНИЦЫ
    ========================================= */
-.music-layout { 
-    padding-bottom: 120px; 
-    position: relative;
-}
+.music-layout { padding-bottom: 120px; position: relative; }
 
 /* =========================================
-   КНОПКИ ПЕРЕКЛЮЧЕНИЯ ВИДА (Сетка / Список)
+   КНОПКИ СОРТИРОВКИ И ВИДА
    ========================================= */
+.sort-toggles { display: flex; gap: 0.5rem; }
+
+.sort-btn {
+    display: flex; align-items: center; justify-content: center; gap: 4px; 
+    height: 44px; padding: 0 1rem; 
+    background-color: var(--bg-body); border: 1px solid var(--border-color);
+    border-radius: 8px; color: var(--text-muted); cursor: pointer;
+    transition: all 0.2s ease; font-family: inherit; font-weight: 500;
+}
+.sort-btn:hover { border-color: var(--text-muted); color: var(--text-main); }
+.sort-btn.active {
+    background-color: rgba(210, 168, 80, 0.1); border-color: var(--accent-color); color: var(--accent-color);
+}
+.sort-arrow { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; width: 0; margin-left: -4px; }
+.sort-btn.active .sort-arrow { opacity: 1; width: 16px; margin-left: 0; }
+.sort-btn[data-dir="desc"] .sort-arrow { transform: rotate(180deg); }
+
 .view-toggles {
-    display: flex;
-    gap: 4px;
-    background: var(--bg-body);
-    padding: 4px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+    display: flex; gap: 4px; background: var(--bg-body);
+    padding: 4px; border-radius: 8px; border: 1px solid var(--border-color);
 }
-
 .view-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
+    background: transparent; border: none; color: var(--text-muted);
+    padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: 0.2s;
+    display: flex; align-items: center; justify-content: center;
 }
-
 .view-btn:hover { color: var(--text-main); }
-.view-btn.active { 
-    background: var(--bg-card); 
-    color: var(--text-main); 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
-}
+.view-btn.active { background: var(--bg-card); color: var(--text-main); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-/* Оптический центр для иконок Play */
 .optical-center { transform: translateX(1.5px); }
 
 @media (max-width: 768px) {
-    /* Растягиваем кнопки на мобилках */
+    .sort-btn { flex: 1; padding: 0 0.5rem; }
     .view-btn { flex: 1; }
 }

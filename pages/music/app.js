@@ -10,23 +10,49 @@ customElements.define('site-header', SiteHeader);
 customElements.define('search-controls', SearchControls);
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Инициализация MVC слоев
     const model = new MusicModel();
     const view = new MusicView();
     const player = new AudioPlayer();
     const controller = new MusicController(model, view, player);
 
-    // 2. Инициализация UI поиска
     const searchControls = document.querySelector('search-controls');
-    
-    // Предоставляем функцию для автодополнения (показывает треки и авторов)
     searchControls.suggestionProvider = (query) => model.getSuggestions(query);
-    
-    // Принимаем окончательный запрос
     searchControls.addEventListener('onSearch', (e) => {
-        controller.handleSearch(e.detail);
+        controller.handleFilterChange({ search: e.detail });
     });
 
-    // 3. Запуск
+    // === СОРТИРОВКА ===
+    const dateBtn = document.getElementById('sort-date-btn');
+    const alphaBtn = document.getElementById('sort-alpha-btn');
+    
+    // Ставим Date ASC по умолчанию (От старых к новым)
+    let currentSortType = 'date';
+    let currentSortDir = 'asc'; 
+
+    function updateSortUI() {
+        dateBtn.classList.remove('active');
+        alphaBtn.classList.remove('active');
+        
+        const activeBtn = currentSortType === 'date' ? dateBtn : alphaBtn;
+        activeBtn.classList.add('active');
+        activeBtn.setAttribute('data-dir', currentSortDir);
+
+        controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
+    }
+
+    function handleSortClick(clickedType) {
+        if (currentSortType === clickedType) {
+            currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+            currentSortType = clickedType;
+            currentSortDir = 'asc';
+        }
+        updateSortUI();
+    }
+
+    dateBtn.addEventListener('click', () => handleSortClick('date'));
+    alphaBtn.addEventListener('click', () => handleSortClick('alpha'));
+
+    dateBtn.setAttribute('data-dir', 'asc');
     controller.init();
 });

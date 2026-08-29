@@ -9,14 +9,15 @@ export class MusicModel {
         this.playbackQueue = []; 
         this.currentIndex = -1; 
         this.isShuffle = false;
+        
+        // По умолчанию: поиск пуст, сортировка по дате (по возрастанию)
+        this.filters = { search: '', sort: 'date_asc' };
     }
 
     async fetchTracks() {
         try {
-            // 1. Загружаем индексный файл (как у персонажей и каталога)
             const trackIds = await fetchData('data/music_index.json');
             
-            // 2. Параллельно загружаем все data.json треков
             const trackPromises = trackIds.map(id => 
                 fetchData(`assets/music/${id}/data.json`).catch(err => {
                     Logger.warn(`Не удалось загрузить трек: ${id}`, err);
@@ -26,10 +27,8 @@ export class MusicModel {
             
             const results = await Promise.all(trackPromises);
             this.tracks = results.filter(t => t !== null);
-            this.filteredTracks = [...this.tracks];
             
-            this._updateQueue(); 
-            return this.tracks;
+            return this.applyFilters({});
         } catch (error) {
             Logger.error('Ошибка загрузки музыкальных архивов.', error);
             throw error;
@@ -44,8 +43,31 @@ export class MusicModel {
         }));
     }
 
-    applySearch(term) {
-        this.filteredTracks = SmartSearch.execute(term, this.tracks, ['title', 'artist']);
+    applyFilters(updates) {
+        this.filters = { ...this.filters, ...updates };
+        const { search, sort } = this.filters;
+
+        // 1. Поиск
+        let result = SmartSearch.execute(search, this.tracks, ['title', 'artist']);
+
+        // 2. Сортировка
+        result.sort((a, b) => {
+            if (sort.startsWith('alpha')) {
+                const cmp = a.title.localeCompare(b.title, 'ru');
+                return sort === 'alpha_asc' ? cmp : -cmp;
+            } else {
+                // Если год не указан (пустая строка), ставим Infinity, чтобы они падали в конец при ASC
+                const yearA = a.year ? parseInt(a.year, 10) : Infinity;
+                const yearB = b.year ? parseInt(b.year, 10) : Infinity;
+                
+                if (yearA === yearB) {
+                    return a.title.localeCompare(b.title, 'ru');
+                }
+                return sort === 'date_asc' ? yearA - yearB : yearB - yearA;
+            }
+        });
+
+        this.filteredTracks = result;
         this._updateQueue();
         return this.filteredTracks;
     }
