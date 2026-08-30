@@ -1,3 +1,4 @@
+// FILE: pages/music/MusicController.js
 export class MusicController {
     constructor(model, view, player) {
         this.model = model;
@@ -8,29 +9,33 @@ export class MusicController {
     }
 
     _bindEvents() {
-        this.view.onTrackClick = (trackId, cardElement) => this._handleTrackClick(trackId, cardElement);
+        this.view.onTrackClick = (trackId) => this._handleTrackClick(trackId);
 
-        this.player.onStateChange = (track, isPlaying) => {
-            this.view.updateGridStateUI(track, isPlaying);
-        };
-        
+        // Навигация из плавающего окна
         this.player.onNextRequest = () => {
             const nextTrack = this.model.getNextTrack();
-            if (nextTrack) this.player.loadTrack(nextTrack);
+            if (nextTrack) {
+                this.view.updateActiveCard(nextTrack.id);
+                this.player.loadTrack(nextTrack);
+            }
         };
 
         this.player.onPrevRequest = () => {
             const prevTrack = this.model.getPrevTrack();
-            if (prevTrack) this.player.loadTrack(prevTrack);
-        };
-
-        this.player.onShuffleToggle = () => {
-            return this.model.toggleShuffle();
+            if (prevTrack) {
+                this.view.updateActiveCard(prevTrack.id);
+                this.player.loadTrack(prevTrack);
+            }
         };
 
         this.player.onLyricsRequest = (trackId) => {
             const track = this.model.getTrackById(trackId);
             if (track) this.view.openLyrics(track);
+        };
+        
+        // Когда пользователь закрывает плеер по крестику
+        this.player.onClose = () => {
+            this.view.updateActiveCard(null); // Снимаем подсветку
         };
     }
 
@@ -39,25 +44,22 @@ export class MusicController {
             await this.model.fetchTracks();
             this.view.renderGrid(this.model.filteredTracks);
         } catch (error) {
-            this.view.renderErrorState('Файл data/songs.json не найден. Музыкальная база недоступна.');
+            this.view.renderErrorState('Файл data/music_index.json не найден. Музыкальная база недоступна.');
         }
     }
 
     handleFilterChange(updates) {
         const filtered = this.model.applyFilters(updates);
-        const currentPlayingId = this.player.currentTrack ? this.player.currentTrack.id : null;
-        this.view.renderGrid(filtered, currentPlayingId, this.player.isPlaying);
+        // При фильтрации снимаем выделение активного трека
+        this.view.renderGrid(filtered);
     }
 
-    _handleTrackClick(trackId, cardElement) {
-        // Блокируем воспроизведение, если у карточки повесился флаг отсутствия аудио
-        if (cardElement.classList.contains('no-audio')) return;
-
-        if (this.player.currentTrack && this.player.currentTrack.id === trackId) {
-            this.player.togglePlay();
-        } else {
-            this.model.setCurrentIndexById(trackId);
-            const track = this.model.getTrackById(trackId);
+    _handleTrackClick(trackId) {
+        this.model.setCurrentIndexById(trackId);
+        const track = this.model.getTrackById(trackId);
+        
+        if (track && track.youtubeUrl) {
+            this.view.updateActiveCard(trackId);
             this.player.loadTrack(track);
         }
     }

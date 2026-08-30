@@ -1,14 +1,16 @@
 import { getAverageRGB } from '../../../shared/js/utils.js';
+import { Icons } from '../../../shared/js/icons.js';
 
 export class CatalogCardView {
     constructor(horizontalTemplateId, verticalTemplateId) {
         this.horizontalTemplate = document.getElementById(horizontalTemplateId);
         this.verticalTemplate = document.getElementById(verticalTemplateId);
         
+        // ОБНОВЛЕНО: Используем новые иконки категорий для заглушек
         this.fallbackIcons = {
-            game: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>',
-            book: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
-            movie: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>'
+            game: Icons.stat_gamepad,
+            book: Icons.stat_book,
+            movie: Icons.cat_movie
         };
 
         this.statusMap = {
@@ -73,7 +75,6 @@ export class CatalogCardView {
         clone.querySelector('.card-title').textContent = item.title === '...' ? 'Без названия' : item.title;
         clone.querySelector('.card-year').textContent = item.release_date === '...' ? '' : item.release_date;
         
-        // Маппинг статусов
         const statusKey = item.status || 'released';
         const statusConfig = this.statusMap[statusKey] || this.statusMap.released;
         const statusBadge = clone.querySelector('.status-badge');
@@ -81,6 +82,7 @@ export class CatalogCardView {
         statusBadge.classList.add(statusConfig.class);
 
         const fallbackContainer = clone.querySelector('.card-cover-fallback');
+        // Вставляем правильную иконку на основе типа проекта
         fallbackContainer.innerHTML = this.fallbackIcons[type] || this.fallbackIcons.game;
 
         const imgEl = clone.querySelector('.card-cover-img');
@@ -114,8 +116,14 @@ export class CatalogCardView {
 
         this._applySmartMarquee(card);
 
-        card.addEventListener('click', () => {
-            window.location.href = `project.html?id=${item.id}`;
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            const url = `project.html?id=${item.id}`;
+            if (window.router) {
+                window.router.navigate(url);
+            } else {
+                window.location.href = url;
+            }
         });
 
         return clone;

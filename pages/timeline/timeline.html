@@ -1,0 +1,23 @@
+<main class="page-content">
+    <!-- Единый закрепляемый блок навигации -->
+    <div class="timeline-sticky-header">
+        <div class="timeline-mode-toggle">
+            <div class="toggle-track">
+                <button class="mode-btn active" data-mode="lore">Внутриигровая история</button>
+                <button class="mode-btn" data-mode="dev">История разработки</button>
+            </div>
+        </div>
+        <nav id="era-nav" class="era-nav"></nav>
+    </div>
+
+    <div class="timeline-wrapper">
+        <div id="timeline-loader" class="loading-state" style="margin-top: 60px;">
+            <div class="spinner" style="margin: 0 auto 10px;"></div>
+            <span>Расшифровка архивов...</span>
+        </div>
+        <div id="timeline-content" class="timeline-container" style="display: none;">
+            <div class="timeline-center-line"></div>
+            <div id="events-container"></div>
+        </div>
+    </div>
+</main>

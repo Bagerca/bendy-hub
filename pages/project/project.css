@@ -79,21 +79,6 @@
 .section-title { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
 .mt-4 { margin-top: 3rem; }
 
-/* --- ПУСТОЕ СОСТОЯНИЕ (Empty State) --- */
-.empty-state {
-    text-align: center; 
-    padding: 4rem 2rem; 
-    background: var(--bg-card);
-    border: 1px dashed var(--border-color); 
-    border-radius: 16px; 
-    color: var(--text-muted);
-}
-.empty-state h3 { 
-    color: var(--text-main); 
-    margin-bottom: 0.5rem; 
-    font-size: 1.3rem;
-}
-
 /* --- ГЛОБАЛЬНЫЕ АНИМАЦИИ --- */
 @keyframes fadeInSlideUp {
     from { opacity: 0; transform: translateY(15px); }

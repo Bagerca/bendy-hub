@@ -1,22 +1,78 @@
-/* Навигация по эпохам (Sticky) */
-.era-nav {
+/* FILE: pages/timeline/timeline.css */
+
+/* =========================================
+   ПАНЕЛЬ УПРАВЛЕНИЯ ТАЙМЛАЙНОМ (Sticky Header)
+   Объединяет переключатель режимов и кнопки эпох
+   ========================================= */
+.timeline-sticky-header {
     position: sticky;
-    top: 75px; /* Под шапкой */
+    top: 70px; /* Высота главной шапки сайта */
     z-index: 50;
-    display: flex;
-    gap: 10px;
-    padding: 1rem;
-    background-color: rgba(var(--bg-body-rgb, 17, 20, 24), 0.9);
-    backdrop-filter: blur(10px);
-    overflow-x: auto;
-    scrollbar-width: none;
+    background-color: var(--bg-body); /* Fallback */
+    margin: -1.5rem -1.5rem 3rem -1.5rem; /* Компенсируем padding родителя, чтобы растянуть на всю ширину */
+    padding: 1.5rem 1.5rem 0 1.5rem;
     border-bottom: 1px solid var(--border-color);
-    margin: -2rem -1.5rem 3rem -1.5rem; /* Вытягиваем на всю ширину */
+    transition: background-color 0.3s ease;
 }
 
-@supports (backdrop-filter: blur(10px)) {
-    [data-theme="light"] .era-nav { background-color: rgba(240, 242, 245, 0.9); }
-    [data-theme="dark"] .era-nav { background-color: rgba(17, 20, 24, 0.9); }
+/* Красивое размытие фона, если браузер поддерживает */
+@supports (backdrop-filter: blur(15px)) {
+    .timeline-sticky-header {
+        background-color: rgba(240, 242, 245, 0.85); /* Базовый светлый */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+    [data-theme="dark"] .timeline-sticky-header { 
+        background-color: rgba(17, 20, 24, 0.85); 
+    }
+}
+
+/* ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ (Сверху) */
+.timeline-mode-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.toggle-track {
+    display: flex;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    padding: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.mode-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.mode-btn:hover {
+    color: var(--text-main);
+}
+
+.mode-btn.active {
+    background-color: var(--accent-color);
+    color: var(--bg-card);
+    box-shadow: 0 4px 10px rgba(210, 168, 80, 0.2);
+}
+
+/* НАВИГАЦИЯ ПО ЭПОХАМ (Снизу) */
+.era-nav {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 1rem; /* Отступ до бордера */
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
 .era-nav::-webkit-scrollbar { display: none; }
@@ -48,7 +104,9 @@
     box-shadow: 0 5px 15px rgba(210, 168, 80, 0.3);
 }
 
-/* ОСНОВНОЙ КОНТЕЙНЕР ТАЙМЛАЙНА */
+/* =========================================
+   ОСНОВНОЙ КОНТЕЙНЕР ТАЙМЛАЙНА
+   ========================================= */
 .timeline-wrapper {
     max-width: 1000px;
     margin: 0 auto;
@@ -58,6 +116,11 @@
 .timeline-container {
     position: relative;
     padding: 2rem 0;
+}
+
+/* АНТИ-КОНФЛИКТ: Убиваем левую линию, которая прилетает из project.css */
+.timeline-wrapper .timeline-container::before {
+    display: none !important;
 }
 
 /* Центральная ось (Чернильная труба) */
@@ -201,24 +264,36 @@
     border: 1px solid var(--border-color);
 }
 
-
 /* =========================================
    АДАПТИВ ДЛЯ МОБИЛЬНЫХ ТЕЛЕФОНОВ
    ========================================= */
 @media (max-width: 768px) {
+    .timeline-sticky-header {
+        margin: -1.5rem -1.5rem 2rem -1.5rem;
+        padding: 1rem 1rem 0 1rem;
+    }
+    
+    .timeline-mode-toggle {
+        margin-bottom: 1rem;
+    }
+
+    .mode-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
     .era-nav {
-        margin: -1rem -1.5rem 2rem -1.5rem;
-        padding: 0.75rem 1.5rem;
+        padding-bottom: 0.75rem;
     }
 
     .timeline-center-line {
-        left: 20px; /* Прижимаем линию к левому краю */
+        left: 20px; 
         transform: none;
     }
 
     .timeline-era-marker {
         justify-content: flex-start;
-        padding-left: 40px; /* Отступ от линии */
+        padding-left: 40px; 
     }
 
     .timeline-era-marker h2 {
@@ -227,67 +302,16 @@
     }
 
     .timeline-node {
-        left: 20px; /* Точка на линии */
+        left: 20px; 
         transform: translateX(-50%);
     }
 
     .timeline-card {
-        width: 100%; /* Карточка на всю ширину */
+        width: 100%; 
     }
 
     .timeline-event-wrapper.left .timeline-card,
     .timeline-event-wrapper.right .timeline-card {
-        /* Отменяем змейку, делаем отступ слева под линию */
         margin: 0 0 0 50px; 
-    }
-}
-
-/* =========================================
-   ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ (Сверху)
-   ========================================= */
-.timeline-mode-toggle {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-    padding-top: 1rem;
-}
-
-.toggle-track {
-    display: flex;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 30px;
-    padding: 6px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.mode-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 0.75rem 2rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: inherit;
-}
-
-.mode-btn:hover {
-    color: var(--text-main);
-}
-
-.mode-btn.active {
-    background-color: var(--accent-color);
-    color: var(--bg-card);
-    box-shadow: 0 4px 10px rgba(210, 168, 80, 0.2);
-}
-
-/* На мобильных делаем кнопки чуть меньше */
-@media (max-width: 600px) {
-    .mode-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
     }
 }

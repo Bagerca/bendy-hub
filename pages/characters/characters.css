@@ -1,8 +1,12 @@
+/* =========================================
+   pages/characters/characters.css
+   ========================================= */
+
 .characters-container { 
     padding-bottom: 4rem; 
 }
 
-/* ИНТЕГРИРОВАННЫЙ СЧЕТЧИК (Внутри панели фильтров) */
+/* ИНТЕГРИРОВАННЫЙ СЧЕТЧИК */
 .archive-meta { 
     margin: 0;
     padding: 0 0.5rem; 
@@ -20,7 +24,7 @@
     flex-wrap: wrap;
     gap: 8px;
     justify-content: center;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     padding: 0 1.5rem; 
 }
 
@@ -33,10 +37,11 @@
     padding: 0.5rem 0.9rem;
     border-radius: 20px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     min-width: 40px; 
     text-align: center;
     white-space: nowrap;
+    user-select: none;
 }
 
 .alphabet-chip:hover {
@@ -49,17 +54,18 @@
 .alphabet-chip.active {
     background-color: var(--accent-color);
     border-color: var(--accent-color);
-    color: var(--text-main);
+    color: var(--bg-card);
     box-shadow: 0 4px 15px rgba(210, 168, 80, 0.3);
     cursor: default;
     transform: none; 
 }
 
-/* СЕТКА ПЕРСОНАЖЕЙ (Компактная) */
+/* СЕТКА ПЕРСОНАЖЕЙ */
 .chars-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
-    gap: 1rem; 
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+    gap: 1.25rem; 
+    animation: fadeInSlideUp 0.4s ease forwards;
 }
 
 .char-card {
@@ -73,38 +79,37 @@
     text-decoration: none; 
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
     box-shadow: 0 2px 8px rgba(0,0,0,0.02); 
-    min-height: 70px;
+    min-height: 72px;
     overflow: hidden; 
 }
 
 .char-card:hover { 
-    transform: translateY(-3px) scale(1.02); 
+    transform: translateY(-4px); 
     border-color: var(--accent-color); 
-    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.15); 
+    box-shadow: 0 8px 20px rgba(210, 168, 80, 0.15); 
     background-color: var(--bg-body);
 }
 
 /* ==============================================
-   КОНТЕЙНЕР АВАТАРА (ЛОГИКА СТАНДАРТНАЯ И СТОПКА)
+   КОНТЕЙНЕР АВАТАРА (СТРОГИЕ ГРАНИЦЫ)
    ============================================== */
 .char-avatar-wrapper {
     display: flex;
     align-items: center;
     position: relative;
     flex-shrink: 0;
+    /* Базовые размеры, чтобы контейнер не схлопывался */
+    width: 48px;
+    height: 48px;
 }
 
-/* СТАНДАРТНЫЙ АВАТАР (Одинарный или Fallback) */
+/* СТАНДАРТНЫЙ АВАТАР (Одинарный) */
 .char-avatar-wrapper:not(.is-stack) {
-    width: 48px; 
-    height: 48px; 
     border-radius: 50%; 
     background-color: var(--bg-body); 
     border: 1px solid var(--border-color); 
-    overflow: hidden;
-    display: flex;
+    overflow: hidden; /* ВАЖНО: обрезает гигантские картинки */
     justify-content: center;
-    align-items: center;
 }
 
 .char-avatar-wrapper:not(.is-stack) .char-img {
@@ -116,12 +121,13 @@
 
 /* ПРОФЕССИОНАЛЬНАЯ СТОПКА АВАТАРОВ (STACK) */
 .char-avatar-wrapper.is-stack {
-    padding: 2px 0; 
+    width: auto; /* Позволяем стопке растянуться по ширине */
+    overflow: visible; /* Разрешаем наложение */
 }
 
 .char-avatar-wrapper.is-stack .char-img {
-    width: 44px; 
-    height: 44px; 
+    width: 44px; /* ЖЕСТКИЙ РАЗМЕР */
+    height: 44px; /* ЖЕСТКИЙ РАЗМЕР */
     border-radius: 50%;
     object-fit: cover;
     background-color: var(--border-color); 
@@ -153,8 +159,11 @@
 
 /* Fallback иконка (SVG) */
 .char-fallback { 
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-body);
     color: var(--text-muted); 
-    opacity: 0.4; 
+    opacity: 0.6; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -162,7 +171,7 @@
 
 /* Текст карточки */
 .char-card-name { 
-    font-size: 1.1rem; 
+    font-size: 1.05rem; 
     font-weight: 700; 
     color: var(--text-main); 
     line-height: 1.25; 
@@ -172,8 +181,6 @@
     -webkit-box-orient: vertical; 
     overflow: hidden; 
     text-overflow: ellipsis; 
-    white-space: normal; 
-    word-wrap: break-word; 
 }
 
 /* ==============================================
@@ -225,9 +232,10 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* АДАПТИВ */
 @media (max-width: 768px) {
     .archive-meta { width: 100%; text-align: center; }
-    .chars-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; }
+    .chars-grid { grid-template-columns: 1fr; gap: 0.75rem; }
     .alphabet-filters { padding: 0 0.5rem; }
     .alphabet-chip { font-size: 0.85rem; padding: 0.4rem 0.7rem; min-width: 36px; }
 }

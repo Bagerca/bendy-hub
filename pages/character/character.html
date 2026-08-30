@@ -1,0 +1,48 @@
+<div id="char-loader" class="loading-state" style="margin-top: 100px;"><div class="spinner" style="margin: 0 auto 10px;"></div><span>Расшифровка личного дела...</span></div>
+<main id="char-content" class="character-page" style="display: none;">
+    <div class="char-header-bg" id="char-bg"></div>
+    
+    <div class="char-container">
+        <div class="char-layout">
+            <aside class="char-sidebar">
+                <div class="sidebar-wrapper">
+                    
+                    <!-- Кнопка "В архив" теперь живет внутри обертки сайдбара -->
+                    <a href="characters.html" id="back-btn" class="char-back-link">
+                        <svg width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path d="M48.6,23H15.4c-0.9,0-1.3-1.1-0.7-1.7l9.6-9.6c0.6-0.6,0.6-1.5,0-2.1l-2.2-2.2c-0.6-0.6-1.5-0.6-2.1,0 L2.5,25c-0.6,0.6-0.6,1.5,0,2.1L20,44.6c0.6,0.6,1.5,0.6,2.1,0l2.1-2.1c0.6-0.6,0.6-1.5,0-2.1l-9.6-9.6C14,30.1,14.4,29,15.3,29 h33.2c0.8,0,1.5-0.6,1.5-1.4v-3C50,23.8,49.4,23,48.6,23z"></path></svg>
+                        В архив
+                    </a>
+
+                    <!-- Сама карточка -->
+                    <div class="char-card bento-box">
+                        <div class="char-image-wrapper">
+                            <div id="char-fallback" class="char-image-fallback"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                            <img id="char-image" src="" alt="Photo" style="display: none;">
+                        </div>
+                        <div id="char-versions-container" class="char-versions" style="display: none;"></div>
+                        <h1 id="char-name" class="char-title"></h1>
+                        <div class="char-stats" id="char-meta-container"></div>
+                    </div>
+                </div>
+            </aside>
+            
+            <div class="char-main">
+                <blockquote class="char-quote" id="char-quote" style="display: none;"></blockquote>
+                <div class="bento-box large wiki-tabs-wrapper">
+                    <nav class="char-tabs">
+                        <button class="char-tab active" data-target="tab-overview">Обзор</button>
+                        <button class="char-tab" id="btn-tab-history" data-target="tab-history" style="display: none;">История</button>
+                        <button class="char-tab" id="btn-tab-trivia" data-target="tab-trivia" style="display: none;">Интересные факты</button>
+                    </nav>
+                    <div id="tab-overview" class="char-tab-content active">
+                        <h3 class="section-title">Внешний вид</h3><p id="char-appearance" class="char-text"></p>
+                        <h3 class="section-title mt-4">Личность</h3><p id="char-personality" class="char-text"></p>
+                        <h3 class="section-title mt-4">Появления в архивах</h3><div class="appearances-tags" id="char-appearances"></div>
+                    </div>
+                    <div id="tab-history" class="char-tab-content"><div class="history-timeline" id="char-history"></div></div>
+                    <div id="tab-trivia" class="char-tab-content"><ul class="trivia-list" id="char-trivia"></ul></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

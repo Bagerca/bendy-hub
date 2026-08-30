@@ -1,3 +1,5 @@
+import { Icons } from '../../shared/js/icons.js';
+
 export class RecordsView {
     constructor() {
         this.els = {
@@ -21,15 +23,16 @@ export class RecordsView {
             error: document.getElementById('error-state-template')
         };
 
+        if (this.els.closeBtn) this.els.closeBtn.innerHTML = Icons.close;
+
         this._initModalEvents();
         this._initDragToScroll();
     }
 
-    // Умный метод для очистки длинных названий из JSON
     _cleanTitle(title) {
         return title
-            .replace(/^Все\s+/i, '')       // Убираем слово "Все " в начале
-            .replace(/\s+из\s+/i, ' | ');  // Меняем " из " на разделитель " | "
+            .replace(/^Все\s+/i, '')
+            .replace(/\s+из\s+/i, ' | '); 
     }
 
     _initModalEvents() {
@@ -107,11 +110,10 @@ export class RecordsView {
             const clone = this.templates.navBtn.content.cloneNode(true);
             const btn = clone.querySelector('.cat-btn');
             
-            // Применяем очистку и к боковому меню!
             const cleanName = this._cleanTitle(category.title);
             btn.textContent = cleanName;
             btn.title = cleanName;
-            btn.dataset.id = category.title; // ID оставляем оригинальным для логики
+            btn.dataset.id = category.title;
             
             btn.addEventListener('click', () => onCategoryClick(category));
             fragment.appendChild(clone);
@@ -127,7 +129,6 @@ export class RecordsView {
     }
 
     renderGrid(category, onRecordClick) {
-        // Применяем очистку к главному заголовку
         this.els.title.textContent = this._cleanTitle(category.title);
         this.els.count.textContent = `${category.items.length} ЗАПИСЕЙ`;
         this.els.count.style.display = 'inline-block';
@@ -156,11 +157,8 @@ export class RecordsView {
             } else {
                 imgEl.style.display = 'none';
                 fallbackEl.style.display = 'flex';
-                if (category.type === 'audio') {
-                    clone.querySelector('.icon-audio').style.display = 'block';
-                } else {
-                    clone.querySelector('.icon-document').style.display = 'block';
-                }
+                // Динамическая вставка иконки в зависимости от категории
+                fallbackEl.innerHTML = (category.type === 'audio') ? Icons.stat_music : Icons.empty_doc;
             }
 
             card.addEventListener('click', () => onRecordClick(item));

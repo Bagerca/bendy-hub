@@ -1,5 +1,4 @@
 export class CustomSelect {
-    // Храним ссылки на все инстансы для глобального управления
     static instances = [];
 
     constructor(containerId, onChangeCallback) {
@@ -14,7 +13,9 @@ export class CustomSelect {
         this.onChange = onChangeCallback;
         this.isOpen = false;
 
-        // Регистрируем этот компонент в глобальном массиве
+        // Делаем триггер фокусируемым для A11y
+        this.trigger.setAttribute('tabindex', '0');
+
         CustomSelect.instances.push(this);
 
         this.trigger.addEventListener('click', (e) => {
@@ -22,18 +23,56 @@ export class CustomSelect {
             this.toggle();
         });
 
+        // Поддержка навигации с клавиатуры
+        this.trigger.addEventListener('keydown', (e) => this._handleKeydown(e));
+
         document.addEventListener('click', (e) => {
             if (!this.container.contains(e.target) && this.isOpen) this.close();
         });
     }
 
+    _handleKeydown(e) {
+        if (!this.isOpen) {
+            if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                this.toggle();
+                setTimeout(() => {
+                    const firstOpt = this.dropdown.querySelector('.custom-select-option');
+                    if (firstOpt) firstOpt.focus();
+                }, 50);
+            }
+            return;
+        }
+
+        const options = Array.from(this.dropdown.querySelectorAll('.custom-select-option'));
+        if (options.length === 0) return;
+
+        const currentIndex = options.indexOf(document.activeElement);
+
+        if (e.key === 'Escape') {
+            this.close();
+            this.trigger.focus();
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextIndex = currentIndex < options.length - 1 ? currentIndex + 1 : 0;
+            options[nextIndex].focus();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIndex = currentIndex > 0 ? currentIndex - 1 : options.length - 1;
+            options[prevIndex].focus();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (currentIndex !== -1) {
+                options[currentIndex].click();
+                this.trigger.focus();
+            }
+        }
+    }
+
     toggle() {
         if (!this.isOpen) {
-            // Если мы пытаемся открыть селект, сначала закрываем все остальные
             CustomSelect.instances.forEach(instance => {
-                if (instance !== this && instance.isOpen) {
-                    instance.close();
-                }
+                if (instance !== this && instance.isOpen) instance.close();
             });
         }
 
@@ -54,6 +93,7 @@ export class CustomSelect {
         options.forEach(opt => {
             const li = document.createElement('li');
             li.className = 'custom-select-option';
+            li.setAttribute('tabindex', '-1'); // Делаем фокусируемым программно
             if (opt.id === defaultId) li.classList.add('selected');
 
             li.innerHTML = `
@@ -85,3 +125,5 @@ export class CustomSelect {
         }
     }
 }
+
+window.CustomSelect = CustomSelect;

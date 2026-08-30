@@ -50,3 +50,6 @@
         z-index: 1100; /* На мобильных перекрывает плеер */
     } 
 }
+
+/* Фикс для SVG-крестика панели текстов */
+.panel-close svg { width: 24px; height: 24px; display: block; }

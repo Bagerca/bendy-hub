@@ -91,3 +91,19 @@
     width: 100%;
     will-change: transform;
 }
+
+/* ДОБАВИТЬ В КОНЕЦ ФАЙЛА */
+/* Увеличиваем и стилизуем SVG иконку внутри заглушки */
+.card-horizontal .card-cover-fallback svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.3;
+    display: block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card-horizontal:hover .card-cover-fallback svg {
+    opacity: 0.6;
+    transform: scale(1.1);
+    color: var(--accent-color);
+}

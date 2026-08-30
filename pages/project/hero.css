@@ -58,21 +58,36 @@
     position: absolute;
     top: 2.5rem; 
     left: 2.5rem; 
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
+    justify-content: center;
     gap: 8px;
+    
+    /* Жестко заставляем фон обтягивать текст и иконку */
+    width: max-content !important; 
+    height: auto !important;
+    white-space: nowrap !important;
+    
     color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
     background: rgba(0, 0, 0, 0.4);
-    padding: 10px 18px;
-    border-radius: 30px;
+    padding: 10px 20px !important;
+    border-radius: 30px !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     transition: all 0.2s ease;
     z-index: 10;
+}
+
+.back-link svg {
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0;
+    display: block;
+    margin: 0;
 }
 
 .back-link:hover { 

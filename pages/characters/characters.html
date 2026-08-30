@@ -1,0 +1,12 @@
+<main class="page-content characters-container">
+    <search-controls placeholder="Поиск по имени или прозвищу (Enter)...">
+        <div class="archive-meta"><span id="results-count">Подключение...</span></div>
+        <div class="custom-select-container" id="category-filter-container">
+            <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false"><div class="custom-select-value"><div class="custom-select-icon svg-icon"></div><span class="custom-select-text-value">Все категории</span></div><svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+            <ul class="custom-select-dropdown" role="listbox"></ul>
+        </div>
+    </search-controls>
+    <div id="alphabet-filters" class="alphabet-filters"></div>
+    <div id="chars-loader" class="loading-state"><div class="spinner" style="margin: 0 auto 10px;"></div><span>Синхронизация с базой данных...</span></div>
+    <div class="chars-grid" id="chars-content" style="display: none;"></div>
+</main>

@@ -1,0 +1,19 @@
+<main class="page-content">
+    <section class="feed-container">
+        <search-controls placeholder="Поиск по твитам (Enter)...">
+            <div class="custom-select-container" id="author-filter-container">
+                <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <div class="custom-select-value">
+                        <!-- Добавлен контейнер для иконки -->
+                        <div class="custom-select-icon svg-icon"></div>
+                        <span class="custom-select-text-value">Все разработчики</span>
+                    </div>
+                    <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <ul class="custom-select-dropdown" role="listbox"></ul>
+            </div>
+        </search-controls>
+        <div id="feed-content" aria-live="polite"></div>
+        <div id="scroll-sentinel" class="scroll-sentinel"></div>
+    </section>
+</main>

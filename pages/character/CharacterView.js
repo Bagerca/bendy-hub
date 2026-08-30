@@ -1,3 +1,5 @@
+// FILE: pages/character/CharacterView.js
+
 export class CharacterView {
     constructor() {
         this.els = {
@@ -48,10 +50,15 @@ export class CharacterView {
     _initBackButton() {
         this.els.backBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            if (document.referrer && document.referrer.includes(window.location.host)) {
+            // Возвращаем SPA-роутинг и мягкий переход назад
+            if (window.history.length > 1 && document.referrer.includes(window.location.host)) {
                 window.history.back();
             } else {
-                window.location.href = 'characters.html';
+                if (window.router) {
+                    window.router.navigate('characters.html');
+                } else {
+                    window.location.href = 'characters.html';
+                }
             }
         });
     }
@@ -161,7 +168,7 @@ export class CharacterView {
     }
 
     _renderImages(assets, basePath) {
-        // Сбрасываем старые обработчики, чтобы они не конфликтовали
+        // Сбрасываем старые обработчики во избежание проблем
         this.els.img.onload = null;
         this.els.img.onerror = null;
 
@@ -171,14 +178,13 @@ export class CharacterView {
         const showFallback = () => {
             this.els.img.style.display = 'none';
             this.els.fallback.style.display = 'flex';
-            this.els.bg.style.backgroundImage = 'none'; // Нет картинки = нет фона
+            this.els.bg.style.backgroundImage = 'none';
         };
 
-        // Функция вызывается ТОЛЬКО если картинка реально скачалась
         const showImage = (validSrc) => {
             this.els.fallback.style.display = 'none';
             this.els.img.style.display = 'block';
-            this.els.bg.style.backgroundImage = `url('${validSrc}')`; // Синхронизируем фон
+            this.els.bg.style.backgroundImage = `url('${validSrc}')`;
             
             if (validSrc.includes('.png')) {
                 this.els.img.classList.add('is-render');
@@ -187,28 +193,36 @@ export class CharacterView {
             }
         };
 
+        // Логика загрузки с защитой от бесконечных циклов
         if (fullBody) {
             const fullBodySrc = `${basePath}${fullBody}`;
             
             this.els.img.onload = () => showImage(fullBodySrc);
             
             this.els.img.onerror = () => {
+                this.els.img.onerror = null; // Защита
                 if (avatar) {
                     const avatarSrc = `${basePath}${avatar}`;
                     this.els.img.onload = () => showImage(avatarSrc);
-                    this.els.img.onerror = showFallback;
-                    this.els.img.src = avatarSrc; // Грузим аватар, если full_body сломался
+                    this.els.img.onerror = () => {
+                        this.els.img.onerror = null; // Защита
+                        showFallback();
+                    };
+                    this.els.img.src = avatarSrc; 
                 } else {
                     showFallback();
                 }
             };
             
-            this.els.img.src = fullBodySrc; // Запускаем попытку скачать full_body
+            this.els.img.src = fullBodySrc;
             
         } else if (avatar) {
             const avatarSrc = `${basePath}${avatar}`;
             this.els.img.onload = () => showImage(avatarSrc);
-            this.els.img.onerror = showFallback;
+            this.els.img.onerror = () => {
+                this.els.img.onerror = null; // Защита
+                showFallback();
+            };
             this.els.img.src = avatarSrc;
         } else {
             showFallback();
@@ -259,6 +273,17 @@ export class CharacterView {
             projects.forEach(project => {
                 const a = document.createElement('a');
                 a.href = `project.html?id=${project.id}`; 
+                
+                // ВАЖНО: Вешаем обработчик для мягкого перехода SPA в страницу проекта!
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (window.router) {
+                        window.router.navigate(a.href);
+                    } else {
+                        window.location.href = a.href;
+                    }
+                });
+
                 a.className = 'app-tag interactive';
                 a.textContent = project.title;
                 this.els.appearances.appendChild(a);

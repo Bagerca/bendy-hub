@@ -1,18 +1,14 @@
-import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
-import { SearchControls } from '../../shared/js/components/SearchControls.js';
-
 import { MusicModel } from './MusicModel.js';
 import { MusicView } from './MusicView.js';
-import { AudioPlayer } from './AudioPlayer.js';
 import { MusicController } from './MusicController.js';
+import { Icons } from '../../shared/js/icons.js';
 
-customElements.define('site-header', SiteHeader);
-customElements.define('search-controls', SearchControls);
-
-document.addEventListener('DOMContentLoaded', () => {
+export async function init() {
     const model = new MusicModel();
     const view = new MusicView();
-    const player = new AudioPlayer();
+    
+    const player = window.globalPlayer; 
+    
     const controller = new MusicController(model, view, player);
 
     const searchControls = document.querySelector('search-controls');
@@ -21,38 +17,43 @@ document.addEventListener('DOMContentLoaded', () => {
         controller.handleFilterChange({ search: e.detail });
     });
 
-    // === СОРТИРОВКА ===
     const dateBtn = document.getElementById('sort-date-btn');
     const alphaBtn = document.getElementById('sort-alpha-btn');
+    const gridBtn = document.getElementById('btn-view-grid');
+    const listBtn = document.getElementById('btn-view-list');
+
+    // Вставляем иконки
+    dateBtn.innerHTML = `${Icons.sort_date}${Icons.sort_arrow}`;
+    alphaBtn.innerHTML = `${Icons.sort_alpha}${Icons.sort_arrow}`;
+    gridBtn.innerHTML = Icons.view_grid;
+    listBtn.innerHTML = Icons.view_list;
     
-    // Ставим Date ASC по умолчанию (От старых к новым)
     let currentSortType = 'date';
     let currentSortDir = 'asc'; 
 
     function updateSortUI() {
         dateBtn.classList.remove('active');
         alphaBtn.classList.remove('active');
-        
         const activeBtn = currentSortType === 'date' ? dateBtn : alphaBtn;
         activeBtn.classList.add('active');
         activeBtn.setAttribute('data-dir', currentSortDir);
-
         controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
     }
 
-    function handleSortClick(clickedType) {
-        if (currentSortType === clickedType) {
-            currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
-        } else {
-            currentSortType = clickedType;
-            currentSortDir = 'asc';
-        }
+    dateBtn.addEventListener('click', () => {
+        currentSortDir = currentSortType === 'date' && currentSortDir === 'asc' ? 'desc' : 'asc';
+        currentSortType = 'date';
         updateSortUI();
-    }
-
-    dateBtn.addEventListener('click', () => handleSortClick('date'));
-    alphaBtn.addEventListener('click', () => handleSortClick('alpha'));
+    });
+    
+    alphaBtn.addEventListener('click', () => {
+        currentSortDir = currentSortType === 'alpha' && currentSortDir === 'asc' ? 'desc' : 'asc';
+        currentSortType = 'alpha';
+        updateSortUI();
+    });
 
     dateBtn.setAttribute('data-dir', 'asc');
-    controller.init();
-});
+    await controller.init();
+
+    return controller;
+}

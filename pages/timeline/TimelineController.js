@@ -12,6 +12,7 @@ export class TimelineController {
     init() {
         this._bindEvents();
         this.loadMode(this.model.getCurrentMode());
+        return this; // Важно для сборщика мусора в Роутере
     }
 
     _bindEvents() {
@@ -34,7 +35,6 @@ export class TimelineController {
         try {
             const data = await this.model.getTimelineData(mode);
             
-            // Передаем в View данные и коллбэк для плавной прокрутки
             this.view.renderTimeline(data, (eraId) => this._scrollToEra(eraId));
             
             this._setupScrollAnimations();
@@ -48,7 +48,8 @@ export class TimelineController {
     _scrollToEra(eraId) {
         const target = document.getElementById(eraId);
         if (target) {
-            const offset = 140; // Высота шапки + навигации
+            // Увеличили offset: учитывает шапку сайта (70px) + новую двойную sticky-панель (~160px)
+            const offset = 230; 
             const bodyRect = document.body.getBoundingClientRect().top;
             const elementRect = target.getBoundingClientRect().top;
             window.scrollTo({
@@ -63,7 +64,7 @@ export class TimelineController {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     this.view.markEventAsVisible(entry.target);
-                    observer.unobserve(entry.target); // Анимируем только 1 раз при появлении
+                    observer.unobserve(entry.target); 
                 }
             });
         }, { rootMargin: '0px 0px -15% 0px', threshold: 0 });
@@ -72,6 +73,7 @@ export class TimelineController {
     }
 
     _setupActiveEraTracking() {
+        // Слегка смещаем область трекинга, так как липкая шапка стала шире
         this.trackingObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -79,7 +81,7 @@ export class TimelineController {
                     this.view.updateActiveNavBtn(eraId);
                 }
             });
-        }, { rootMargin: '-20% 0px -80% 0px' });
+        }, { rootMargin: '-30% 0px -70% 0px' });
 
         this.view.getEraMarkers().forEach(marker => this.trackingObserver.observe(marker));
     }
@@ -88,4 +90,9 @@ export class TimelineController {
         if (this.scrollObserver) this.scrollObserver.disconnect();
         if (this.trackingObserver) this.trackingObserver.disconnect();
     }
-}
+
+    // ВАЖНО: Метод вызывается роутером при уходе со страницы
+    destroy() {
+        this._cleanupObservers();
+    }
+}   

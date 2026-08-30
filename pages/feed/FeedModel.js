@@ -16,27 +16,16 @@ export class FeedModel {
         this.applyFilters('', 'all');
     }
 
-    getSuggestions(query) {
-        // Подсказываем только имена авторов
-        const results = SmartSearch.execute(query, this.allPosts, ['authorName', 'authorHandle']);
-        const uniqueAuthors = [...new Set(results.map(p => p.authorName))];
-        
-        return uniqueAuthors.slice(0, 5).map(name => ({ 
-            label: `Твиты автора: <span style="color: var(--accent-color);">${name}</span>`, 
-            value: name 
-        }));
-    }
-
     applyFilters(searchTerm, authorId) {
         this.currentSearchTerm = searchTerm.toLowerCase().trim();
         this.currentAuthor = authorId;
         
-        // Умный поиск по тексту поста и имени
-        let result = SmartSearch.execute(this.currentSearchTerm, this.allPosts, ['content', 'authorName']);
+        // Умный поиск по тексту поста (имена исключили из поиска, так как есть отдельный фильтр)
+        let result = SmartSearch.execute(this.currentSearchTerm, this.allPosts, ['content']);
 
-        // Строгий фильтр по автору из селекта
+        // Строгий фильтр по автору из селекта (фильтруем по тегу)
         if (this.currentAuthor !== 'all') {
-            result = result.filter(post => post.authorHandle === this.currentAuthor);
+            result = result.filter(post => post.authorHandle.toLowerCase() === this.currentAuthor.toLowerCase());
         }
 
         this.filteredPosts = result;

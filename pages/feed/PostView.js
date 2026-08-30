@@ -1,12 +1,15 @@
 import { formatRichText } from '../../shared/js/utils.js';
 import { Logger } from '../../shared/js/Logger.js';
+import { SmartSearch } from '../../shared/js/SmartSearch.js';
+import { Icons } from '../../shared/js/icons.js';
 
 export class PostView {
-    constructor(templateId, lightboxManager, translationService) {
+    constructor(templateId, lightboxManager, translationService, authorNamesMap = {}) {
         this.template = document.getElementById(templateId);
         this.lightbox = lightboxManager;
         this.translator = translationService;
-        this.fallbackAvatar = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="%2365676B" stroke-width="2"%3E%3Cpath d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/%3E%3Ccircle cx="12" cy="7" r="4"/%3E%3C/svg%3E';
+        this.authorNamesMap = authorNamesMap; 
+        this.fallbackAvatar = Icons.avatar_fallback;
     }
 
     render(post, searchTerm = '') {
@@ -37,6 +40,7 @@ export class PostView {
             rtAuthorLink.textContent = rtMatch[1];
             rtAuthorLink.href = `https://twitter.com/${rtMatch[1].replace('@', '')}`;
             rtBadge.style.display = 'flex';
+            rtBadge.insertAdjacentHTML('afterbegin', Icons.action_repost);
         }
 
         if (text.trim().toLowerCase() === 'gif') text = '';
@@ -46,14 +50,19 @@ export class PostView {
     _setupText(clone, text, searchTerm) {
         let richHtml = formatRichText(text);
         if (searchTerm) {
-            const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})(?![^<]*>)`, 'gi');
+            const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const altTerm = SmartSearch.switchLayout(searchTerm).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escapedTerm}|${altTerm})(?![^<]*>)`, 'gi');
             richHtml = richHtml.replace(regex, '<mark class="search-highlight">$1</mark>');
         }
         clone.querySelector('.post-text').innerHTML = richHtml;
     }
 
     _setupMeta(clone, post) {
-        clone.querySelector('.post-author-name').textContent = post.authorName;
+        const handleLower = (post.authorHandle || '').toLowerCase();
+        const displayName = this.authorNamesMap[handleLower] || post.authorName || post.authorHandle;
+
+        clone.querySelector('.post-author-name').textContent = displayName;
         
         const badgeEl = clone.querySelector('.post-platform-badge');
         if (post.platform) badgeEl.textContent = post.platform;
@@ -69,10 +78,8 @@ export class PostView {
         const handleClean = post.authorHandle.replace('@', '').toLowerCase();
         const internetUrl = post.originalAvatarUrl || post.avatarUrl;
         
-        // Жестко формируем новый путь, игнорируя старый кэш из JSON
         const newLocalPath = `assets/developers/${handleClean}/avatar.jpg`;
 
-        // Умная цепочка: Локальная папка -> URL Твиттера -> SVG заглушка
         avatarEl.onerror = () => {
             if (!avatarEl.dataset.triedInternet && internetUrl) {
                 avatarEl.dataset.triedInternet = 'true';
@@ -118,6 +125,10 @@ export class PostView {
 
         const copyBtn = clone.querySelector('.copy-btn');
         const translateBtn = clone.querySelector('.translate-btn');
+        
+        translateBtn.insertAdjacentHTML('afterbegin', Icons.action_translate);
+        copyBtn.insertAdjacentHTML('afterbegin', Icons.action_copy);
+
         const translationContainer = clone.querySelector('.post-translation');
         const translateTextEl = clone.querySelector('.post-translation-text');
 

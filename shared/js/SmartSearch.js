@@ -32,8 +32,9 @@ export class SmartSearch {
         const words = query.split(/\s+/).filter(w => w.length > 0);
         if (words.length > 1 && words.every(w => text.includes(w))) return 60;
 
-        // Легкая толерантность к опечаткам (fuzzy search)
-        if (query.length > 3) {
+        // ВАЖНО: Отключаем Fuzzy Search (разбросанные буквы) для длинных текстов.
+        // Иначе в посте на 200+ символов всегда найдутся 4 любые буквы, и поиск выдаст весь мусор.
+        if (query.length > 3 && text.length <= 80) {
             let textIdx = 0;
             let matches = 0;
             for (let i = 0; i < query.length; i++) {
@@ -43,7 +44,7 @@ export class SmartSearch {
                     textIdx = foundIdx + 1;
                 }
             }
-            if (matches >= query.length - 1) return 40; // Допускается 1 пропущенная буква
+            if (matches >= query.length - 1) return 40; 
         }
 
         return 0;
@@ -64,13 +65,11 @@ export class SmartSearch {
             let maxScore = 0;
             
             fields.forEach(field => {
-                // Поддержка вложенных ключей (напр. 'meta.aliases')
                 const val = field.split('.').reduce((o, i) => o ? o[i] : null, item);
                 
                 const processValue = (v) => {
                     if (!v) return;
                     const strVal = String(v);
-                    // Проверяем как прямой ввод, так и исправленную раскладку
                     const score1 = this.getMatchScore(cleanQuery, strVal);
                     const score2 = this.getMatchScore(altQuery, strVal);
                     maxScore = Math.max(maxScore, score1, score2);

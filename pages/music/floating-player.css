@@ -1,0 +1,166 @@
+/* FILE: pages/music/floating-player.css */
+
+.floating-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 380px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.95);
+    
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s, 
+                width 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-radius 0.4s ease, 
+                left 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                right 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-player.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.floating-player.is-dragging {
+    transition: none !important;
+}
+
+/* =========================================
+   РЕЖИМ DOCK (СВЕРНУТО К КРАЮ ЭКРАНА)
+   ========================================= */
+.floating-player.is-docked {
+    width: 64px;
+    border-radius: 20px;
+    height: auto;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.floating-player.is-docked:hover {
+    opacity: 1;
+    transform: scale(1.03); 
+}
+
+.floating-player.is-docked.docked-left { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.floating-player.is-docked.docked-right { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+
+.floating-player.is-docked .fp-body { display: none; }
+.floating-player.is-docked .fp-title-wrapper { display: none; }
+.floating-player.is-docked .fp-actions { display: none; } 
+
+.floating-player.is-docked .fp-header { 
+    padding: 20px 10px; 
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+.floating-player.is-docked .fp-controls { 
+    flex-direction: column; 
+    padding: 10px 0 15px 0; 
+    gap: 10px; 
+}
+.floating-player.is-docked .fp-controls-center { flex-direction: column; }
+
+/* =========================================
+   ОБЫЧНЫЙ РЕЖИМ ПЛЕЕРА
+   ========================================= */
+.fp-header {
+    background-color: var(--bg-body);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.fp-header:active { cursor: grabbing; }
+
+.fp-header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.fp-title-wrapper {
+    overflow: hidden;
+    flex-grow: 1;
+    padding: 0 15px; 
+    margin: 0 -15px;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 15px, #000 calc(100% - 20px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 15px, #000 calc(100% - 20px), transparent 100%);
+}
+
+.fp-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--text-main);
+    white-space: nowrap;
+    display: inline-block;
+    will-change: transform;
+}
+
+.fp-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+/* Иконки в шапке плеера */
+.fp-action-btn {
+    background: transparent; border: none; color: var(--text-muted); 
+    line-height: 1; cursor: pointer; transition: 0.2s; display: flex; align-items: center; 
+    justify-content: center; padding: 4px; border-radius: 6px;
+}
+.fp-action-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+.fp-action-btn:hover { background: var(--bg-card); color: var(--text-main); }
+.fp-close:hover { color: var(--error-color); }
+
+.fp-body { width: 100%; aspect-ratio: 16 / 9; background-color: #000; position: relative; }
+
+.fp-drag-overlay { position: absolute; inset: 0; z-index: 10; display: none; }
+.floating-player.is-dragging .fp-drag-overlay { display: block; }
+
+.fp-controls { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; background-color: var(--bg-card); }
+.fp-controls-center { display: flex; align-items: center; gap: 15px; }
+
+/* Иконки управления внизу плеера */
+.fp-btn {
+    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
+    transition: color 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; padding: 5px;
+}
+.fp-btn svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.fp-btn:hover { color: var(--text-main); transform: scale(1.1); }
+.fp-btn:active { transform: scale(0.95); }
+
+@media (max-width: 600px) {
+    .floating-player:not(.is-docked) {
+        right: 10px; bottom: 10px; width: calc(100vw - 20px);
+    }
+}

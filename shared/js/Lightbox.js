@@ -1,32 +1,46 @@
+import { Icons } from './icons.js';
+
 export class LightboxManager {
     constructor(lightboxId, imgId) {
         this.lightbox = document.getElementById(lightboxId);
         this.lightboxImg = document.getElementById(imgId);
-        
-        // Кнопка закрытия
         this.closeBtn = this.lightbox?.querySelector('.lightbox-close');
         
+        // Применяем глобальную иконку закрытия
+        if (this.closeBtn) this.closeBtn.innerHTML = Icons.close;
+
+        // Создаем контейнер для видео (если его еще нет)
+        this.videoContainer = document.createElement('div');
+        this.videoContainer.className = 'lightbox-video-wrapper';
+        this.videoContainer.style.display = 'none';
+        this.videoContainer.style.width = '90vw';
+        this.videoContainer.style.maxWidth = '1000px';
+        this.videoContainer.style.aspectRatio = '16 / 9';
+        this.videoContainer.style.borderRadius = '12px';
+        this.videoContainer.style.overflow = 'hidden';
+        this.videoContainer.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.5)';
+        
+        if (this.lightboxImg && this.lightboxImg.parentNode) {
+            this.lightboxImg.parentNode.insertBefore(this.videoContainer, this.lightboxImg.nextSibling);
+        }
+
         this.init();
     }
 
     init() {
         if (!this.lightbox) return;
 
-        // Закрытие по клику на фон (всё, что не является картинкой)
         this.lightbox.addEventListener('click', (e) => {
-            if (e.target !== this.lightboxImg) this.close();
+            if (e.target === this.lightbox) this.close();
         });
         
-        // Закрытие по клавише Esc
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.lightbox.classList.contains('active')) {
-                // Предотвращаем дефолтное закрытие <dialog>, чтобы проиграть нашу CSS анимацию
                 e.preventDefault();
                 this.close();
             }
         });
         
-        // Закрытие по крестику
         if (this.closeBtn) {
             this.closeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -35,28 +49,41 @@ export class LightboxManager {
         }
     }
 
-    open(imgSrc) {
-        this.lightboxImg.src = imgSrc;
+    open(src, isVideo = false) {
+        if (isVideo) {
+            // Режим видео (YouTube iframe)
+            this.lightboxImg.style.display = 'none';
+            this.videoContainer.style.display = 'block';
+            
+            // Превращаем обычную ссылку ютуба в embed
+            const videoId = this._extractYouTubeId(src);
+            const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0` : src;
+            
+            this.videoContainer.innerHTML = `<iframe width="100%" height="100%" src="${embedUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+        } else {
+            // Режим картинки
+            this.videoContainer.style.display = 'none';
+            this.videoContainer.innerHTML = '';
+            this.lightboxImg.style.display = 'block';
+            this.lightboxImg.src = src;
+        }
         
-        // Открываем диалог (мгновенно, без анимации)
         this.lightbox.showModal(); 
-        
-        // Принудительный reflow браузера, чтобы CSS-транзиция сработала
-        // без этого браузер попытается анимировать от display:none, что сломает плавность
         void this.lightbox.offsetWidth;
-        
-        // Добавляем класс, запускающий CSS-анимацию
         this.lightbox.classList.add('active');
     }
 
     close() {
-        // Убираем класс (запускается CSS анимация исчезновения)
         this.lightbox.classList.remove('active');
-        
-        // Ждем ровно столько, сколько длится CSS анимация (0.3s = 300ms)
         setTimeout(() => {
             this.lightbox.close();
-            this.lightboxImg.src = ''; // Очищаем источник, чтобы не мигал при следующем открытии
+            this.lightboxImg.src = ''; 
+            this.videoContainer.innerHTML = ''; // Убиваем iframe, чтобы звук видео остановился
         }, 300);
+    }
+
+    _extractYouTubeId(url) {
+        const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+        return match ? match[1] : null;
     }
 }

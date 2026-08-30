@@ -1,3 +1,5 @@
+import { Icons } from '../../shared/js/icons.js';
+
 export class WikiView {
     constructor(lightboxManager) {
         this.lightbox = lightboxManager;
@@ -52,8 +54,18 @@ export class WikiView {
         const wiki = data.wiki || {};
         const type = data.type || 'game';
 
-        // Обзор
-        this.els.desc.textContent = data.description && data.description !== '...' ? data.description : 'Информация отсутствует.';
+        if (data.description && data.description !== '...') {
+            this.els.desc.className = 'project-desc';
+            this.els.desc.textContent = data.description;
+        } else {
+            this.els.desc.className = ''; 
+            this.els.desc.innerHTML = `
+                <div class="empty-state compact" style="margin-top: 0;">
+                    <div class="empty-state-icon">${Icons.error_404}</div>
+                    <h3 class="empty-state-title">Архивные данные отсутствуют</h3>
+                </div>
+            `;
+        }
         
         this.els.tags.innerHTML = '';
         (data.tags || []).slice(0, 15).forEach(tag => {
@@ -63,26 +75,17 @@ export class WikiView {
             this.els.tags.appendChild(span);
         });
 
-        // Переводы (передаем новый параметр teamsData и ID текущего проекта)
         this._renderTranslators(teamsData, type, projectId);
-
-        // Интерактивная Медиа-Галерея (БЕЗ автоплея)
         this._renderMediaGallery(assets, projectId);
-
-        // Системные требования 
         if (type === 'game') this._renderSpecs(data.specs);
-
-        // Сюжет, Геймплей, Разработка
         this._renderStaticWiki(wiki, type);
     }
 
-    // НОВЫЙ МЕТОД ОТОБРАЖЕНИЯ ПЕРЕВОДОВ ИЗ ОБЪЕКТОВ КОМАНД
     _renderTranslators(teams, type, projectId) {
-        // ЖЕСТКАЯ ФИЛЬТРАЦИЯ: убираем null, пустые строки и заглушки с '...'
         const validTeams = (teams || []).filter(team => {
             if (!team) return false;
             if (typeof team === 'string' && team === '...') return false;
-            if (team.title === '...') return false; // Защита от старых ручных шаблонов
+            if (team.title === '...') return false; 
             return true;
         });
 
@@ -91,13 +94,10 @@ export class WikiView {
             this.els.translatorsTitle.textContent = type === 'book' ? 'Любительские переводы' : (type === 'movie' ? 'Озвучка / Сабы' : 'Русификаторы');
             this.els.translatorsList.innerHTML = '';
             
-            const fallbackAvatar = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%2365676B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E";
+            const fallbackAvatar = Icons.avatar_fallback;
 
             validTeams.forEach(team => {
-                // Ищем перевод именно для текущей игры
                 const translationData = team.translations ? team.translations[projectId] : null;
-                
-                // Fallback для старых данных
                 const isLegacy = !team.translations;
                 const url = isLegacy ? team.url : (translationData?.url || '#');
                 const tType = isLegacy ? team.description : (translationData?.type || 'Перевод');
@@ -116,7 +116,7 @@ export class WikiView {
                     <div class="rus-info">
                         <div class="rus-title">
                             <span>${tName}</span>
-                            <svg class="rus-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            <div class="rus-icon">${Icons.link_external}</div>
                         </div>
                         <span class="rus-team">${tType}</span>
                     </div>
@@ -124,14 +124,12 @@ export class WikiView {
                 this.els.translatorsList.appendChild(a);
             });
         } else {
-            // Если реальных команд нет — полностью скрываем блок
             this.els.translatorsContainer.style.display = 'none';
         }
     }
 
     _renderMediaGallery(assets, projectId) {
         this.els.screens.innerHTML = '';
-        
         const mediaItems = [];
 
         if (assets.videos && assets.videos.length > 0) {
@@ -173,22 +171,18 @@ export class WikiView {
                 
                 ${mediaItems.length > 1 ? `
                 <div class="gallery-nav">
-                    <button class="gallery-arrow left" id="gallery-prev" aria-label="Назад">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </button>
+                    <button class="gallery-arrow left" id="gallery-prev" aria-label="Назад">${Icons.gallery_prev}</button>
                     
                     <div class="gallery-thumbnails" id="gallery-thumbnails">
                         ${mediaItems.map((item, idx) => `
                             <button class="gallery-thumb-btn ${idx === 0 ? 'active' : ''}" data-index="${idx}">
                                 <img src="${item.thumb}" alt="Thumbnail" loading="lazy">
-                                ${item.type === 'video' ? '<div class="play-indicator"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>' : ''}
+                                ${item.type === 'video' ? `<div class="play-indicator">${Icons.play_indicator}</div>` : ''}
                             </button>
                         `).join('')}
                     </div>
                     
-                    <button class="gallery-arrow right" id="gallery-next" aria-label="Вперед">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </button>
+                    <button class="gallery-arrow right" id="gallery-next" aria-label="Вперед">${Icons.gallery_next}</button>
                 </div>
                 ` : ''}
             </div>
@@ -260,10 +254,17 @@ export class WikiView {
     }
 
     _renderSpecs(specs) {
+        const specsEmptyHtml = `
+            <div class="empty-state compact" style="grid-column: 1/-1;">
+                <div class="empty-state-icon">${Icons.error_404}</div>
+                <h3 class="empty-state-title">Системные требования неизвестны</h3>
+            </div>`;
+
         if (!specs) {
-            this.els.specs.innerHTML = '<div class="empty-state">Нет данных</div>';
+            this.els.specs.innerHTML = specsEmptyHtml;
             return;
         }
+
         let reqHtml = '';
         if (specs.minimum && specs.minimum !== '...' && specs.minimum.length > 5) {
             reqHtml += `<div class="bento-box"><h3>Минимальные</h3>${this._parseSpecsString(specs.minimum)}</div>`;
@@ -271,7 +272,12 @@ export class WikiView {
         if (specs.recommended && specs.recommended !== '...' && specs.recommended.length > 5) {
             reqHtml += `<div class="bento-box"><h3>Рекомендованные</h3>${this._parseSpecsString(specs.recommended)}</div>`;
         }
-        this.els.specs.innerHTML = reqHtml || '<div class="empty-state">Нет данных</div>';
+        
+        if (!reqHtml) {
+             this.els.specs.innerHTML = specsEmptyHtml;
+        } else {
+             this.els.specs.innerHTML = reqHtml;
+        }
     }
 
     _parseSpecsString(specStr) {
@@ -287,44 +293,65 @@ export class WikiView {
     }
 
     _renderStaticWiki(wiki, type) {
+        const storyEmpty = document.getElementById('wiki-story-empty');
+        const storyContent = document.getElementById('wiki-story-content');
+        
         if (wiki.story && wiki.story !== '...') {
-            document.getElementById('wiki-story-empty').style.display = 'none';
-            document.getElementById('wiki-story-content').style.display = 'block';
+            storyEmpty.style.display = 'none';
+            storyContent.style.display = 'block';
             document.getElementById('wiki-story-text').textContent = wiki.story;
+        } else {
+            storyEmpty.querySelector('.empty-state-icon').innerHTML = Icons.error_404;
+            storyEmpty.style.display = 'flex'; 
+            storyContent.style.display = 'none';
         }
         
-        if (type === 'game' && wiki.gameplay && wiki.gameplay.length > 0 && wiki.gameplay[0] !== '...') {
-            document.getElementById('wiki-gameplay-empty').style.display = 'none';
-            const container = document.getElementById('wiki-gameplay-content');
-            container.style.display = 'block';
+        if (type === 'game') {
+            const gpEmpty = document.getElementById('wiki-gameplay-empty');
+            const gpContent = document.getElementById('wiki-gameplay-content');
             
-            const list = document.getElementById('wiki-gameplay-list');
-            list.innerHTML = '';
-            wiki.gameplay.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                list.appendChild(li);
-            });
+            if (wiki.gameplay && wiki.gameplay.length > 0 && wiki.gameplay[0] !== '...') {
+                gpEmpty.style.display = 'none';
+                gpContent.style.display = 'block';
+                
+                const list = document.getElementById('wiki-gameplay-list');
+                list.innerHTML = '';
+                wiki.gameplay.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    list.appendChild(li);
+                });
+            } else {
+                gpEmpty.querySelector('.empty-state-icon').innerHTML = Icons.error_404;
+                gpEmpty.style.display = 'flex'; 
+                gpContent.style.display = 'none';
+            }
         }
 
+        const devEmpty = document.getElementById('wiki-dev-empty');
+        const devContent = document.getElementById('wiki-dev-content');
+        
         if (wiki.development && wiki.development.length > 0 && wiki.development[0].text !== '...') {
-            document.getElementById('wiki-dev-empty').style.display = 'none';
-            const container = document.getElementById('wiki-dev-content');
-            container.style.display = 'flex';
-            container.innerHTML = '';
+            devEmpty.style.display = 'none';
+            devContent.style.display = 'flex';
+            devContent.innerHTML = '';
             
             wiki.development.forEach(stage => {
                 const item = document.createElement('div');
                 item.className = 'timeline-item';
                 item.innerHTML = `<h3>${stage.title}</h3><p>${stage.text}</p>`;
-                container.appendChild(item);
+                devContent.appendChild(item);
             });
+        } else {
+            devEmpty.querySelector('.empty-state-icon').innerHTML = Icons.error_404;
+            devEmpty.style.display = 'flex'; 
+            devContent.style.display = 'none';
         }
     }
 
     renderCharacters(charactersData, requestedIds) {
         this.els.charList.innerHTML = '';
-        const fallback = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="%2365676B" stroke-width="2"%3E%3Cpath d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/%3E%3Ccircle cx="12" cy="7" r="4"/%3E%3C/svg%3E';
+        const fallback = Icons.avatar_fallback;
 
         charactersData.forEach((char, index) => {
             if (!char || char === '...') {
@@ -337,11 +364,21 @@ export class WikiView {
             const a = document.createElement('a');
             a.href = `character.html?id=${char.id}`;
             a.className = 'character-card';
+            
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (window.router) {
+                    window.router.navigate(a.href);
+                } else {
+                    window.location.href = a.href;
+                }
+            });
+            
             const avatar = char.assets?.avatar ? `assets/characters/${char.id}/${char.assets.avatar}` : fallback;
             a.innerHTML = `
                 <img src="${avatar}" alt="${char.name}" class="char-avatar" onerror="this.src='${fallback}'">
                 <span class="char-name">${char.name}</span>
-                <svg class="char-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <div class="char-arrow">${Icons.chevron_right}</div>
             `;
             this.els.charList.appendChild(a);
         });

@@ -1,3 +1,5 @@
+/* FILE: pages/character/character.css */
+
 /* =========================================
    СТРУКТУРА СТРАНИЦЫ
    ========================================= */
@@ -21,7 +23,8 @@
     z-index: 2; 
     max-width: 1200px; 
     margin: 0 auto; 
-    padding: 2rem 1.5rem;
+    /* Чистые аккуратные отступы, никаких гигантских пространств сверху */
+    padding: 3rem 1.5rem 2rem 1.5rem;
 }
 
 .char-layout { 
@@ -29,62 +32,100 @@
     grid-template-columns: 350px 1fr; 
     gap: 3rem; 
     align-items: start;
-    margin-top: 2rem; /* Отступ от верха страницы */
 }
 
 /* =========================================
-   САЙДБАР И КНОПКА "НАЗАД"
+   САЙДБАР И КАРТОЧКА ПЕРСОНАЖА
    ========================================= */
 .char-sidebar { 
     position: sticky; 
-    top: 100px; 
+    top: 90px; 
 }
 
 .sidebar-wrapper {
-    position: relative;
+    position: relative; /* Для абсолютного позиционирования кнопки "В архив" */
     width: 100%;
 }
 
-.back-link {
-    position: absolute;
-    /* Привязываем кнопку строго слева от карточки */
-    right: calc(100% + 1.25rem); 
-    top: 0; /* Идеальное выравнивание по верхней границе карточки */
-    
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    background: rgba(0, 0, 0, 0.4);
-    padding: 10px 18px;
-    border-radius: 30px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.2s ease;
-    z-index: 10;
-    white-space: nowrap; 
+.sidebar-wrapper .char-card {
+    display: block !important; 
+    padding: 2rem !important; 
+    overflow: visible !important; 
+    height: auto !important;
+    min-height: auto !important;
+    transform: none !important; 
+    border-color: var(--border-color) !important;
+    background-color: var(--bg-card) !important;
+    cursor: default;
 }
 
-.back-link:hover { 
-    background: rgba(0, 0, 0, 0.8); 
-    color: var(--accent-color); 
-    border-color: rgba(210, 168, 80, 0.4);
-    transform: translateX(-4px);
+.sidebar-wrapper .char-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03) !important;
 }
 
 /* =========================================
-   ИЗОБРАЖЕНИЕ ПЕРСОНАЖА (АДАПТИВНОЕ)
+   УМНАЯ КНОПКА "НАЗАД"
+   ========================================= */
+.char-back-link {
+    /* На широких экранах кнопка элегантно висит слева от карточки */
+    position: absolute;
+    right: calc(100% + 1.5rem); 
+    top: 0;
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: max-content; 
+    white-space: nowrap; 
+    
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--bg-card);
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+.char-back-link svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.char-back-link:hover { 
+    color: var(--accent-color); 
+    border-color: var(--accent-color);
+    transform: translateX(-4px);
+    box-shadow: 0 6px 20px rgba(210, 168, 80, 0.15);
+}
+
+/* Если окно браузера меньше 1450px, слева не остается места. 
+   В этом случае аккуратно кладем кнопку над карточкой. */
+@media (max-width: 1450px) {
+    .char-back-link {
+        position: relative;
+        right: auto;
+        margin-bottom: 1.25rem;
+    }
+}
+
+/* =========================================
+   ИЗОБРАЖЕНИЕ ПЕРСОНАЖА (УМНЫЙ СКЕЙЛИНГ)
    ========================================= */
 .char-image-wrapper {
     width: 100%; 
-    min-height: 300px; /* Базовая высота, если картинки нет (для заглушки) */
-    max-height: 550px; /* Ограничитель, чтобы слишком длинные рендеры не ломали сайт */
+    height: auto; 
+    min-height: 250px; 
+    max-height: 500px; /* Жесткий лимит высоты */
     border-radius: 12px; 
-    overflow: hidden;
+    overflow: hidden; 
     margin-bottom: 1.5rem; 
     background: var(--bg-body); 
     border: 1px solid var(--border-color);
@@ -101,20 +142,18 @@
 
 .char-image-wrapper img { 
     width: 100%; 
-    height: auto; /* Позволяем изображению диктовать высоту контейнера */
-    max-height: 550px; /* Синхронизируем с контейнером */
-    object-fit: cover; /* Если это квадратный JPG (аватар), он заполнит ширину */
+    height: auto; 
+    max-height: 500px; 
+    object-fit: contain; /* Картинка всегда полностью влезет в рамки */
     position: relative; 
     z-index: 2; 
     transition: opacity 0.3s ease; 
     display: block;
 }
 
-/* Магия для PNG-рендеров (как Генри) */
 .char-image-wrapper img.is-render { 
-    object-fit: contain; /* Чтобы персонаж не обрезался, а вписывался целиком */
-    padding: 1.5rem; /* Даем "воздух" вокруг модели */
-    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5)); /* Красивая 3D-тень */
+    padding: 1.5rem; 
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5)); 
 }
 
 /* =========================================
@@ -160,6 +199,7 @@
 .char-title { 
     font-size: 2.2rem; font-weight: 900; color: var(--text-main); 
     margin-bottom: 1.5rem; line-height: 1.1; 
+    white-space: normal; 
 }
 
 .char-stats { 
@@ -174,7 +214,6 @@
 .stat-row { display: flex; flex-direction: column; gap: 4px; }
 .stat-label { font-size: 0.75rem; text-transform: uppercase; font-weight: 800; color: var(--text-muted); letter-spacing: 0.5px;}
 .stat-value { font-size: 0.95rem; font-weight: 600; color: var(--text-main); word-wrap: break-word; }
-
 
 /* =========================================
    ПРАВАЯ КОЛОНКА (ЦИТАТА, ТАБЫ, КОНТЕНТ)
@@ -236,34 +275,15 @@ a.app-tag.interactive:hover { background: rgba(210, 168, 80, 0.25); border-color
     to { opacity: 1; transform: translateY(0); }
 }
 
-
 /* =========================================
    АДАПТИВНОСТЬ
    ========================================= */
-
-@media (max-width: 1400px) {
-    /* Если экран меньше 1400px, кнопке не хватит места слева.
-       Возвращаем её классическое поведение НАД карточкой. */
-    .back-link {
-        position: static;
-        margin-bottom: 1.25rem;
-    }
-    
-    /* Опускаем правую колонку, чтобы она осталась на одном уровне с аватаркой */
-    .char-main {
-        margin-top: calc(44px + 1.25rem); 
-    }
-}
-
 @media (max-width: 900px) {
     .char-layout { 
         grid-template-columns: 1fr; 
         gap: 2rem; 
-        margin-top: 0;
     }
     .char-sidebar { position: static; }
-    .char-main { margin-top: 0; } /* Сбрасываем компенсацию */
-    
     .char-header-bg { height: 30vh; }
     .char-tabs { padding: 0 1.5rem; }
     .char-tab-content { padding: 2rem 1.5rem; }

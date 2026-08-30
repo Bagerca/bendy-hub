@@ -1,17 +1,12 @@
-import { SiteHeader } from '../../shared/js/components/SiteHeader.js';
 import { HomeModel } from './HomeModel.js';
 import { HomeView } from './HomeView.js';
 import { HomeController } from './HomeController.js';
 
-// Инициализируем общую шапку сайта
-customElements.define('site-header', SiteHeader);
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Подключаем MVC архитектуру для загрузки JSON
+export async function init() {
     const model = new HomeModel();
     const view = new HomeView();
     const controller = new HomeController(model, view);
 
-    // Запуск контроллера
-    controller.init();
-});
+    await controller.init();
+    return controller; // Возвращаем, если роутеру нужно будет его убить при переходе
+}

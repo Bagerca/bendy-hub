@@ -1,0 +1,40 @@
+<div id="project-loader" class="loading-state" style="margin-top: 100px;"><div class="spinner" style="margin: 0 auto 10px;"></div><span>Расшифровка архивов студии...</span></div>
+<main id="project-content" class="project-wiki-page" style="display: none;">
+    <header class="project-hero">
+        <div class="project-hero-bg" id="hero-bg"></div><div class="project-hero-overlay"></div>
+        <div class="project-hero-container">
+            <a href="catalog.html" class="back-link"><svg width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><path d="M48.6,23H15.4c-0.9,0-1.3-1.1-0.7-1.7l9.6-9.6c0.6-0.6,0.6-1.5,0-2.1l-2.2-2.2c-0.6-0.6-1.5-0.6-2.1,0 L2.5,25c-0.6,0.6-0.6,1.5,0,2.1L20,44.6c0.6,0.6,1.5,0.6,2.1,0l2.1-2.1c0.6-0.6,0.6-1.5,0-2.1l-9.6-9.6C14,30.1,14.4,29,15.3,29 h33.2c0.8,0,1.5-0.6,1.5-1.4v-3C50,23.8,49.4,23,48.6,23z"></path></svg>В каталог</a>
+            <div class="project-hero-content" id="hero-content">
+                <div class="hero-poster-container" id="hero-poster-container" style="display: none;"><img id="project-poster" class="project-poster" src="" alt="Обложка"></div>
+                <div class="hero-text-container">
+                    <img id="project-logo" class="project-logo" src="" alt="Логотип">
+                    <h1 id="project-title" class="project-title-text" style="display: none;"></h1>
+                    <div class="project-meta-tags"><span id="project-status" class="meta-badge status-badge"></span><span id="project-date" class="meta-badge"></span><span id="project-author" class="meta-badge"></span></div>
+                    <div id="store-link-container" class="project-hero-actions"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="wiki-tabs-container"><div class="wiki-tabs" id="dynamic-tabs"></div></nav>
+    <div class="wiki-content-area" id="dynamic-sections">
+        <section id="tab-overview" class="wiki-section active">
+            <div class="overview-grid">
+                <div class="overview-main"><p id="project-description" class="project-desc"></p><div id="project-screenshots" class="screenshots-bento" style="margin-top: 2rem;"></div></div>
+                <aside class="overview-sidebar"><div class="sticky-sidebar-wrapper"><div class="bento-box"><h3>Жанры и теги</h3><div class="tags-cloud" id="project-tags"></div></div><div class="bento-box" id="translators-container" style="display: none;"><h3 id="translators-title">Русификаторы</h3><div class="translators-list" id="project-translators"></div></div></div></aside>
+            </div>
+        </section>
+        <section id="tab-story" class="wiki-section">
+            <div id="wiki-story-content" style="display: none;"><div class="overview-grid"><div class="overview-main"><h2 class="section-title">Синопсис</h2><p id="wiki-story-text" class="project-desc"></p></div><aside class="overview-sidebar"><div class="bento-box"><h3>Персонажи</h3><ul id="wiki-characters-list" class="character-list"></ul></div></aside></div></div>
+            <div id="wiki-story-empty" class="empty-state compact" style="display: none;"><div class="empty-state-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div><h3 class="empty-state-title">Архив сюжета заблокирован</h3></div>
+        </section>
+        <section id="tab-gameplay" class="wiki-section">
+            <div id="wiki-gameplay-content" class="bento-box large" style="display: none;"><h2 class="section-title">Игровые механики</h2><ul id="wiki-gameplay-list" class="gameplay-list"></ul></div>
+            <div id="wiki-gameplay-empty" class="empty-state compact" style="display: none;"><div class="empty-state-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2" ry="2"></rect><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line></svg></div><h3 class="empty-state-title">Данные отсутствуют</h3></div>
+        </section>
+        <section id="tab-dev" class="wiki-section">
+            <div id="wiki-dev-content" class="timeline-container" style="display: none;"></div>
+            <div id="wiki-dev-empty" class="empty-state compact" style="display: none;"><div class="empty-state-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div><h3 class="empty-state-title">Хронология неизвестна</h3></div>
+        </section>
+        <section id="tab-specs" class="wiki-section"><div id="project-requirements" class="req-bento-grid"></div></section>
+    </div>
+</main>
