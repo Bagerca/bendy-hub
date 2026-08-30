@@ -1,0 +1,214 @@
+/* =========================================
+   FORMS.CSS
+   Универсальная панель поиска, фильтры и селекты
+   ========================================= */
+
+search-controls {
+    display: block;
+    position: sticky;
+    top: 85px; /* Идеальное прилипание под шапкой */
+    z-index: 50;
+    margin-bottom: 1.5rem;
+}
+
+.page-controls {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 1rem; 
+    align-items: center; 
+    background-color: rgba(var(--bg-card-rgb, 255, 255, 255), 0.95); 
+    padding: 0.75rem; 
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .page-controls {
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+    [data-theme="dark"] .page-controls {
+        background-color: rgba(28, 33, 40, 0.85);
+    }
+}
+
+/* --- ПОИСКОВАЯ СТРОКА --- */
+.search-input-wrapper { 
+    position: relative; 
+    flex: 1 1 250px; 
+    display: flex; 
+    align-items: center; 
+}
+
+.search-btn {
+    position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
+    padding: 6px; display: flex; align-items: center; justify-content: center; border-radius: 6px; transition: 0.2s; z-index: 2;
+}
+.search-btn:hover { color: var(--accent-color); background-color: var(--bg-body); }
+.search-input-wrapper:focus-within .search-btn { color: var(--accent-color); }
+
+.search-input {
+    width: 100%; 
+    height: 44px;
+    padding: 0 1rem 0 2.8rem; 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px;
+    background-color: var(--bg-body); 
+    color: var(--text-main); 
+    font-family: inherit; 
+    font-size: 0.95rem; 
+    outline: none; 
+    transition: 0.3s;
+}
+.search-input::placeholder { color: var(--text-muted); opacity: 0.7; }
+.search-input:focus { border-color: var(--accent-color); background-color: var(--bg-card); box-shadow: 0 0 0 3px rgba(210, 168, 80, 0.15); }
+
+/* --- ВЫПАДАЮЩИЕ ПОДСКАЗКИ ПОИСКА --- */
+.search-suggestions {
+    position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+    background: var(--bg-card); border: 1px solid var(--border-color);
+    border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    list-style: none; padding: 0.4rem; z-index: 200; opacity: 0; visibility: hidden; 
+    transform: translateY(-10px); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+    max-height: 300px; overflow-y: auto; scrollbar-width: none;
+}
+
+.search-suggestions::-webkit-scrollbar { display: none; }
+.search-input-wrapper.has-suggestions .search-suggestions { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.suggestion-item {
+    padding: 0.6rem 0.8rem; border-radius: 8px; cursor: pointer; color: var(--text-main); 
+    font-weight: 500; transition: all 0.2s ease; display: flex; align-items: center; gap: 12px; 
+}
+
+.suggestion-icon { color: var(--text-muted); flex-shrink: 0; transition: color 0.2s ease; }
+.suggestion-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1; }
+
+.suggestion-item:hover { background: var(--bg-body); color: var(--accent-color); transform: translateX(2px); }
+.suggestion-item:hover .suggestion-icon { color: var(--accent-color); }
+
+/* --- КОНТЕЙНЕР ДЛЯ ФИЛЬТРОВ --- */
+.page-controls-filters { 
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 0.75rem; 
+    flex: 0 0 auto; 
+    align-items: center; 
+}
+
+/* --- КАСТОМНЫЙ СЕЛЕКТ (CustomSelect.js) --- */
+.custom-select-container { 
+    position: relative; 
+    min-width: 220px; 
+    flex: 1 1 auto; 
+    z-index: 100; 
+}
+
+.custom-select-trigger {
+    width: 100%; 
+    height: 44px;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 1rem; 
+    border: 1px solid var(--border-color); 
+    border-radius: 8px; 
+    background-color: var(--bg-body); 
+    color: var(--text-main); 
+    font-family: inherit; 
+    cursor: pointer; 
+    transition: all 0.2s ease;
+}
+
+.custom-select-trigger:hover { border-color: var(--text-muted); }
+
+.custom-select-value { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-weight: 600; 
+    font-size: 0.95rem; 
+    line-height: 1; 
+}
+
+.custom-select-dropdown {
+    position: absolute; top: calc(100% + 5px); left: 0; right: 0;
+    background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); list-style: none; padding: 0.5rem 0; z-index: 200; 
+    max-height: 250px; overflow-y: auto; scrollbar-width: none; opacity: 0; visibility: hidden; 
+    transform: translateY(-10px); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-select-dropdown::-webkit-scrollbar { display: none; }
+.custom-select-container.active .custom-select-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.custom-select-option { 
+    padding: 0.6rem 1rem; display: flex; align-items: center; gap: 10px; cursor: pointer; 
+    font-weight: 500; color: var(--text-main); transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.custom-select-option:hover { background-color: var(--bg-body); }
+.custom-select-option.selected { color: var(--accent-color); background-color: rgba(210, 168, 80, 0.05); }
+
+/* Универсальные иконки внутри селектов */
+.custom-select-icon, 
+.svg-icon {
+    width: 24px; 
+    height: 24px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
+
+img.custom-select-icon {
+    object-fit: cover; 
+    background-color: var(--bg-body);
+    box-shadow: inset 0 0 0 1px var(--border-color); 
+}
+
+.svg-icon {
+    color: var(--text-muted);
+    background: transparent;
+}
+
+.svg-icon svg {
+    width: 20px; 
+    height: 20px; 
+    display: block;
+}
+
+.custom-select-option.selected .svg-icon { 
+    color: var(--accent-color); 
+}
+
+/* --- АДАПТИВ ФОРМ И ПОИСКА --- */
+@media (max-width: 768px) {
+    .page-controls {
+        padding: 0.5rem;
+        gap: 0.75rem;
+    }
+    
+    .search-input-wrapper {
+        flex: 1 1 100%;
+    }
+    
+    .page-controls-filters { 
+        width: 100%; 
+        justify-content: space-between;
+    }
+    
+    .page-controls-filters > * {
+        flex: 1 1 auto; 
+    }
+
+    .custom-select-container { 
+        min-width: 100%; 
+    }
+}

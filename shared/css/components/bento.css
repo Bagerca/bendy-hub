@@ -1,0 +1,23 @@
+/* =========================================
+   BENTO.CSS
+   Универсальные контейнеры карточного типа
+   ========================================= */
+
+.bento-box {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.bento-box.large { 
+    padding: 3rem; 
+}
+
+.bento-box h3 { 
+    margin-bottom: 1.2rem; 
+    font-size: 1.2rem; 
+    color: var(--text-main); 
+    font-weight: 800; 
+}

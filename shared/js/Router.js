@@ -1,5 +1,3 @@
-import { CustomSelect } from './components/CustomSelect.js';
-
 export class Router {
     constructor(routes, rootElementId) {
         this.routes = routes;
@@ -11,7 +9,6 @@ export class Router {
 
         document.body.addEventListener('click', (e) => {
             const link = e.target.closest('a');
-            // Проверяем, что ссылка принадлежит нашему домену (или Github Pages репозиторию)
             if (link && link.href.includes(window.location.host)) {
                 if (link.getAttribute('target') === '_blank' || link.getAttribute('href') === '#') return;
                 
@@ -22,15 +19,32 @@ export class Router {
     }
 
     async navigate(url) {
-        const urlObj = new URL(url, window.location.href);
-        let routeKey = urlObj.pathname.split('/').pop().replace('.html', '');
-        if (!routeKey || routeKey === 'index') routeKey = 'home';
-
-        // Генерируем красивый URL с GET параметром для SPA-навигации
-        // Убираем жесткую привязку к корню "/", оставляем только параметры!
-        const newUrl = `?page=${routeKey}${urlObj.search.replace(`?page=${routeKey}`, '').replace(`&page=${routeKey}`, '')}`;
-
-        window.history.pushState({}, '', newUrl);
+        const base = window.location.origin + window.location.pathname;
+        const tempUrl = new URL(url, base);
+        
+        let pageName = tempUrl.pathname.split('/').pop().replace('.html', '');
+        if (!pageName || pageName === 'index') pageName = 'home';
+        
+        const params = new URLSearchParams(tempUrl.search);
+        
+        // Исправляем сломанные параметры, если они есть в истории браузера (например ?page=project?id=...)
+        if (params.has('page')) {
+            let pVal = params.get('page');
+            if (pVal.includes('?')) {
+                const parts = pVal.split('?');
+                pageName = parts[0];
+                // Восстанавливаем потерянные параметры (id)
+                const subParams = new URLSearchParams(parts[1]);
+                for (let [k, v] of subParams.entries()) {
+                    params.set(k, v);
+                }
+            }
+        }
+        
+        params.set('page', pageName);
+        const finalUrl = `?${params.toString()}`;
+        
+        window.history.pushState({}, '', finalUrl);
         await this.handleRoute(window.location.href);
     }
 
@@ -38,14 +52,25 @@ export class Router {
         const urlObj = new URL(url, window.location.href);
         
         let routeKey = urlObj.searchParams.get('page');
+        
+        // Лечим битые ссылки из кэша браузера
+        if (routeKey && routeKey.includes('?')) {
+            routeKey = routeKey.split('?')[0];
+        }
+
         if (!routeKey) {
             routeKey = urlObj.pathname.split('/').pop().replace('.html', '') || 'home';
-            if (routeKey === 'index') routeKey = 'home';
         }
+        if (routeKey === 'index') routeKey = 'home';
 
         const route = this.routes[routeKey];
         if (!route) {
             console.error(`Route not found: ${routeKey}`);
+            this.rootElem.innerHTML = `
+                <div class="error-card" style="margin:4rem auto; max-width:600px; text-align:center;">
+                    <p>Страница не найдена. Возможно, вы перешли по устаревшей или сломанной ссылке.</p>
+                    <button onclick="window.router.navigate('index.html')" style="margin-top:15px; padding:8px 16px; cursor:pointer; background:var(--bg-body); border:1px solid var(--border-color); color:var(--text-main); border-radius:8px;">На главную</button>
+                </div>`;
             return;
         }
 
@@ -55,7 +80,11 @@ export class Router {
         }
         this.currentController = null;
 
-        CustomSelect.instances = []; 
+        // Очищаем инстансы селектов
+        if (window.CustomSelect) {
+            window.CustomSelect.instances = []; 
+        }
+        
         this.rootElem.innerHTML = '<div class="loading-state" style="margin-top:100px;"><div class="spinner" style="margin: 0 auto 10px;"></div></div>';
 
         // Загрузка HTML

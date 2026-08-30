@@ -1,5 +1,6 @@
 import { SiteHeader } from './shared/js/components/SiteHeader.js';
 import { SearchControls } from './shared/js/components/SearchControls.js';
+import './shared/js/components/CustomSelect.js'; // ДОБАВЛЕН ИМПОРТ СЕЛЕКТА
 import { FloatingPlayer } from './pages/music/FloatingPlayer.js';
 import { LightboxManager } from './shared/js/Lightbox.js';
 import { TranslationService } from './pages/feed/services/TranslationService.js';
@@ -16,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.globalTranslator = new TranslationService();
 
     // 2. Умная генерация абсолютных путей
-    // Вычисляем корень проекта, отсекая index.html и GET-параметры
     const getBaseUrl = () => {
         let path = window.location.pathname;
         if (path.endsWith('.html')) {
