@@ -5,13 +5,14 @@ export class Router {
         this.routes = routes;
         this.rootElem = document.getElementById(rootElementId);
         this.htmlCache = new Map();
-        this.currentController = null; // Отслеживаем активный контроллер
+        this.currentController = null;
 
         window.addEventListener('popstate', () => this.handleRoute(window.location.href));
 
         document.body.addEventListener('click', (e) => {
             const link = e.target.closest('a');
-            if (link && link.href.startsWith(window.location.origin)) {
+            // Проверяем, что ссылка принадлежит нашему домену (или Github Pages репозиторию)
+            if (link && link.href.includes(window.location.host)) {
                 if (link.getAttribute('target') === '_blank' || link.getAttribute('href') === '#') return;
                 
                 e.preventDefault();
@@ -21,19 +22,20 @@ export class Router {
     }
 
     async navigate(url) {
-        const urlObj = new URL(url, window.location.origin);
+        const urlObj = new URL(url, window.location.href);
         let routeKey = urlObj.pathname.split('/').pop().replace('.html', '');
         if (!routeKey || routeKey === 'index') routeKey = 'home';
 
-        urlObj.pathname = '/';
-        urlObj.searchParams.set('page', routeKey); 
+        // Генерируем красивый URL с GET параметром для SPA-навигации
+        // Убираем жесткую привязку к корню "/", оставляем только параметры!
+        const newUrl = `?page=${routeKey}${urlObj.search.replace(`?page=${routeKey}`, '').replace(`&page=${routeKey}`, '')}`;
 
-        window.history.pushState({}, '', urlObj.href);
-        await this.handleRoute(urlObj.href);
+        window.history.pushState({}, '', newUrl);
+        await this.handleRoute(window.location.href);
     }
 
     async handleRoute(url) {
-        const urlObj = new URL(url, window.location.origin);
+        const urlObj = new URL(url, window.location.href);
         
         let routeKey = urlObj.searchParams.get('page');
         if (!routeKey) {
@@ -47,7 +49,7 @@ export class Router {
             return;
         }
 
-        // ОЧИСТКА ПАМЯТИ: Уничтожаем старый контроллер, чтобы убить обзерверы и таймеры
+        // ОЧИСТКА ПАМЯТИ
         if (this.currentController && typeof this.currentController.destroy === 'function') {
             this.currentController.destroy();
         }
@@ -63,7 +65,7 @@ export class Router {
                 htmlContent = this.htmlCache.get(routeKey);
             } else {
                 const response = await fetch(route.template);
-                if (!response.ok) throw new Error('Failed to load template');
+                if (!response.ok) throw new Error(`Failed to load template: ${route.template}`);
                 htmlContent = await response.text();
                 this.htmlCache.set(routeKey, htmlContent);
             }
@@ -71,7 +73,7 @@ export class Router {
             this.rootElem.innerHTML = htmlContent;
         } catch (error) {
             console.error(`Error loading HTML for ${routeKey}:`, error);
-            this.rootElem.innerHTML = '<div class="error-card"><p>Ошибка загрузки страницы.</p></div>';
+            this.rootElem.innerHTML = '<div class="error-card"><p>Ошибка загрузки страницы. Проверьте соединение с сетью.</p></div>';
             return;
         }
 
@@ -84,7 +86,7 @@ export class Router {
             header.setAttribute('active-page', navPage);
         }
 
-        // Запуск JS контроллера и его сохранение в память
+        // Запуск JS контроллера
         try {
             const module = await import(route.module);
             if (module.init) {

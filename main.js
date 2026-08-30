@@ -15,47 +15,46 @@ document.addEventListener('DOMContentLoaded', () => {
     window.globalLightbox = new LightboxManager('lightbox', 'lightbox-img');
     window.globalTranslator = new TranslationService();
 
-    // 2. Вспомогательная функция для генерации абсолютных путей.
-    // Решает проблему 404: Router.js больше не будет искать файлы внутри shared/js/
-const getModuleUrl = (path) => new URL(path, window.location.href).href;
+    // 2. Генерация абсолютных путей относительно текущего расположения index.html
+    const getUrl = (path) => new URL(path, window.location.href).href;
 
-    // 3. Настраиваем маршруты (ДОБАВЛЕНЫ template)
+    // 3. Настраиваем маршруты с безопасными путями
     const routes = {
         'home': { 
-            module: getModuleUrl('./pages/home/app.js'),
-            template: './pages/home/home.html'
+            module: getUrl('./pages/home/app.js'),
+            template: getUrl('./pages/home/home.html')
         },
         'catalog': { 
-            module: getModuleUrl('./pages/catalog/app.js'),
-            template: './pages/catalog/catalog.html'
+            module: getUrl('./pages/catalog/app.js'),
+            template: getUrl('./pages/catalog/catalog.html')
         },
         'project': { 
-            module: getModuleUrl('./pages/project/app.js'),
-            template: './pages/project/project.html'
+            module: getUrl('./pages/project/app.js'),
+            template: getUrl('./pages/project/project.html')
         },
         'characters': { 
-            module: getModuleUrl('./pages/characters/app.js'),
-            template: './pages/characters/characters.html'
+            module: getUrl('./pages/characters/app.js'),
+            template: getUrl('./pages/characters/characters.html')
         },
         'character': { 
-            module: getModuleUrl('./pages/character/app.js'),
-            template: './pages/character/character.html'
+            module: getUrl('./pages/character/app.js'),
+            template: getUrl('./pages/character/character.html')
         },
         'music': { 
-            module: getModuleUrl('./pages/music/app.js'),
-            template: './pages/music/music.html'
+            module: getUrl('./pages/music/app.js'),
+            template: getUrl('./pages/music/music.html')
         },
         'feed': { 
-            module: getModuleUrl('./pages/feed/app.js'),
-            template: './pages/feed/feed.html'
+            module: getUrl('./pages/feed/app.js'),
+            template: getUrl('./pages/feed/feed.html')
         },
         'timeline': { 
-            module: getModuleUrl('./pages/timeline/app.js'),
-            template: './pages/timeline/timeline.html'
+            module: getUrl('./pages/timeline/app.js'),
+            template: getUrl('./pages/timeline/timeline.html')
         },
         'records': { 
-            module: getModuleUrl('./pages/records/app.js'),
-            template: './pages/records/records.html'
+            module: getUrl('./pages/records/app.js'),
+            template: getUrl('./pages/records/records.html')
         }
     };
 
