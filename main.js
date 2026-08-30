@@ -15,8 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
     window.globalLightbox = new LightboxManager('lightbox', 'lightbox-img');
     window.globalTranslator = new TranslationService();
 
-    // 2. Генерация абсолютных путей относительно текущего расположения index.html
-    const getUrl = (path) => new URL(path, window.location.href).href;
+    // 2. Умная генерация абсолютных путей
+    // Вычисляем корень проекта, отсекая index.html и GET-параметры
+    const getBaseUrl = () => {
+        let path = window.location.pathname;
+        if (path.endsWith('.html')) {
+            path = path.substring(0, path.lastIndexOf('/'));
+        }
+        if (!path.endsWith('/')) {
+            path += '/';
+        }
+        return window.location.origin + path;
+    };
+
+    const baseUrl = getBaseUrl();
+    const getUrl = (path) => new URL(path, baseUrl).href;
 
     // 3. Настраиваем маршруты с безопасными путями
     const routes = {
