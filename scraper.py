@@ -1,3 +1,5 @@
+# FILE: scraper.py
+
 import urllib.request
 import urllib.parse
 import urllib.error
@@ -14,14 +16,20 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 from typing import List, Dict, Tuple
 
+# Отключаем проверку SSL для прокси, чтобы избежать ошибок сертификатов
 ssl._create_default_https_context = ssl._create_unverified_context
-logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s', datefmt='%H:%M:%S')
+
+# Настраиваем подробный логгер
+logging.basicConfig(
+    level=logging.INFO, 
+    format='%(asctime)s [%(levelname)s] %(message)s', 
+    datefmt='%H:%M:%S'
+)
 
 class BendySniperScraper:
     def __init__(self, handles: List[str]):
         self.handles = handles
         
-        # Убеждаемся, что системные папки существуют
         os.makedirs("data", exist_ok=True)
         self.devs_dir = os.path.join("assets", "developers")
         os.makedirs(self.devs_dir, exist_ok=True)
@@ -34,23 +42,45 @@ class BendySniperScraper:
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
             'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15',
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0',
-            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0'
+        ]
+
+        self.nitter_instances = [
+            "https://nitter.privacydev.net",
+            "https://nitter.projectsegfau.lt",
+            "https://nitter.poast.org",
+            "https://nitter.cz",
+            "https://nitter.net",
+            "https://nitter.pussthecat.org",
+            "https://nitter.tinfoil-hat.net",
+            "https://nitter.domain.glass",
+            "https://nitter.eu",
+            "https://nitter.unixfox.eu",
+            "https://rsshub.app/twitter/user"
         ]
 
     def get_headers(self):
         return {
             'User-Agent': random.choice(self.user_agents),
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
             'Accept-Language': 'en-US,en;q=0.5',
-            'Connection': 'keep-alive'
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1'
         }
 
     def load_existing_feed(self) -> List[Dict]:
-        if not os.path.exists(self.output_file): return []
+        if not os.path.exists(self.output_file): 
+            logging.info("База данных feed.json не найдена. Создаем новую.")
+            return []
         try:
             with open(self.output_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except Exception: return []
+                data = json.load(f)
+                logging.info(f"Загружено из кэша: {len(data)} постов.")
+                return data
+        except Exception as e: 
+            logging.error(f"Ошибка чтения кэша: {e}")
+            return []
 
     def parse_date(self, date_val) -> str:
         if not date_val: return datetime.utcnow().isoformat() + "Z"
@@ -67,13 +97,11 @@ class BendySniperScraper:
         except: pass
         return date_str
 
-    # НОВАЯ ЛОГИКА: Создание папки разработчика + data.json + загрузка аватара
     def process_developer_folder(self, handle: str, actual_name: str, avatar_url: str) -> str:
         safe_handle = handle.replace('@', '').lower()
         dev_dir = os.path.join(self.devs_dir, safe_handle)
         os.makedirs(dev_dir, exist_ok=True)
         
-        # 1. Генерируем data.json, если его еще нет (Задел на будущее)
         json_path = os.path.join(dev_dir, "data.json")
         if not os.path.exists(json_path):
             dev_data = {
@@ -82,17 +110,13 @@ class BendySniperScraper:
                 "handle": f"@{safe_handle}",
                 "role": "Разработчик",
                 "bio": "...",
-                "assets": {
-                    "avatar": "avatar.jpg"
-                },
-                "links": {
-                    "twitter": f"https://twitter.com/{safe_handle}"
-                }
+                "assets": {"avatar": "avatar.jpg"},
+                "links": {"twitter": f"https://twitter.com/{safe_handle}"}
             }
             with open(json_path, "w", encoding="utf-8") as f:
                 json.dump(dev_data, f, ensure_ascii=False, indent=4)
+            logging.info(f"  ↳ 📁 Создан профиль разработчика: {safe_handle}")
                 
-        # 2. Скачиваем аватарку
         if not avatar_url: return ""
         local_path = os.path.join(dev_dir, "avatar.jpg")
         web_path = f"assets/developers/{safe_handle}/avatar.jpg"
@@ -100,16 +124,18 @@ class BendySniperScraper:
         if os.path.exists(local_path): return web_path
         
         avatar_url = avatar_url.replace('_normal', '_400x400')
+        logging.info(f"  ↳ 🖼️ Скачивание аватара: {avatar_url}")
+        
         try:
             req = urllib.request.Request(avatar_url, headers=self.get_headers())
+            start_t = time.time()
             with urllib.request.urlopen(req, timeout=10) as response:
                 if response.status == 200:
                     with open(local_path, 'wb') as f: f.write(response.read())
+                    logging.info(f"    ✅ Аватар сохранен ({time.time() - start_t:.2f}с)")
                     return web_path
         except Exception as e: 
-            logging.warning(f"Не удалось скачать аватар для {handle}: {e}")
-            pass
-            
+            logging.warning(f"    ⚠️ Ошибка скачивания аватара: {e}")
         return ""
 
     def parse_sotwe(self, json_data: str, handle: str) -> Tuple[List[Dict], str, str]:
@@ -120,7 +146,10 @@ class BendySniperScraper:
             avatar_url = u_info.get('profile_image_url_https', '')
             actual_name = u_info.get('name', handle)
             
-            for tweet in data.get('data', {}).get('tweets', []):
+            raw_tweets = data.get('data', {}).get('tweets', [])
+            logging.info(f"    🔍 [Parse Sotwe] Найдено узлов: {len(raw_tweets)}")
+            
+            for tweet in raw_tweets:
                 t_handle = tweet.get('user', {}).get('screen_name', handle)
                 if t_handle.lower() != handle.lower(): continue
                 content = tweet.get('full_text') or tweet.get('text', '')
@@ -144,15 +173,26 @@ class BendySniperScraper:
                     "mediaUrl": media_url,
                     "originalAvatarUrl": avatar_url
                 })
-        except: pass
+        except json.JSONDecodeError as e:
+            logging.error(f"    ❌ [Parse Sotwe] Ошибка декодирования JSON: {e}")
+        except Exception as e: 
+            logging.error(f"    ❌ [Parse Sotwe] Неизвестная ошибка парсинга: {e}")
+            
         return posts, avatar_url, actual_name
 
     def parse_syndication(self, html_data: str, handle: str) -> Tuple[List[Dict], str, str]:
         posts, avatar_url, actual_name = [], "", handle
         match = re.search(r'<script id="__NEXT_DATA__" type="application/json">({.*?})</script>', html_data)
-        if not match: return posts, avatar_url, actual_name
+        if not match: 
+            logging.warning("    ⚠️ [Parse Syndication] Тег <script id=\"__NEXT_DATA__\"> не найден в HTML.")
+            return posts, avatar_url, actual_name
+            
         try:
-            for entry in json.loads(match.group(1)).get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', []):
+            raw_json = json.loads(match.group(1))
+            entries = raw_json.get('props', {}).get('pageProps', {}).get('timeline', {}).get('entries', [])
+            logging.info(f"    🔍 [Parse Syndication] Найдено узлов 'entries': {len(entries)}")
+            
+            for entry in entries:
                 if entry.get('type') != 'tweet': continue
                 tweet = entry['content']['tweet']
                 author = tweet.get('user', {})
@@ -179,7 +219,11 @@ class BendySniperScraper:
                     "mediaUrl": media_url,
                     "originalAvatarUrl": avatar_url
                 })
-        except: pass
+        except json.JSONDecodeError as e:
+            logging.error(f"    ❌ [Parse Syndication] Ошибка декодирования JSON: {e}")
+        except Exception as e: 
+            logging.error(f"    ❌ [Parse Syndication] Неизвестная ошибка парсинга: {e}")
+            
         return posts, avatar_url, actual_name
 
     def parse_rss(self, xml_data: str, handle: str) -> Tuple[List[Dict], str, str]:
@@ -187,14 +231,19 @@ class BendySniperScraper:
         try:
             root = ET.fromstring(xml_data)
             channel = root.find("channel")
-            if channel is None: return posts, avatar_url, actual_name
+            if channel is None: 
+                logging.warning("    ⚠️ [Parse RSS] Тег <channel> не найден.")
+                return posts, avatar_url, actual_name
             
             title_node = channel.find("title")
             if title_node is not None and title_node.text:
                 ft = html.unescape(title_node.text)
                 if " / " in ft: actual_name = ft.split(" / ")[0].strip()
                     
-            for item in channel.findall("item"):
+            items = channel.findall("item")
+            logging.info(f"    🔍 [Parse RSS] Найдено <item>: {len(items)}")
+            
+            for item in items:
                 link = item.find("link")
                 if link is None or not link.text: continue
                 
@@ -210,28 +259,66 @@ class BendySniperScraper:
                     "mediaUrl": None,
                     "originalAvatarUrl": ""
                 })
-        except: pass
+        except ET.ParseError as e:
+            logging.error(f"    ❌ [Parse RSS] Ошибка парсинга XML: {e}")
+        except Exception as e: 
+            logging.error(f"    ❌ [Parse RSS] Неизвестная ошибка парсинга: {e}")
+            
         return posts, avatar_url, actual_name
 
-    def fetch_timeline(self, handle: str) -> Tuple[List[Dict], str, str]:
+    def get_proxy_urls(self, target_url: str) -> List[Tuple[str, str]]:
+        encoded = urllib.parse.quote(target_url, safe='')
+        return [
+            (f"https://api.allorigins.win/raw?url={encoded}", "AllOrigins"),
+            (f"https://api.codetabs.com/v1/proxy?quest={encoded}", "CodeTabs"),
+            (f"https://corsproxy.io/?{encoded}", "CorsProxy"),
+            (target_url, "Direct")
+        ]
+
+    def build_strategies(self, handle: str) -> List[Tuple[str, str, str]]:
         synd_url = f"https://syndication.twitter.com/srv/timeline-profile/screen-name/{handle}"
         sotwe_url = f"https://api.sotwe.com/v3/user/{handle}"
         
-        strategies = [
-            ("Syndication via AllOrigins", f"https://api.allorigins.win/raw?url={urllib.parse.quote(synd_url, safe='')}", "syndication"),
-            ("Sotwe via AllOrigins", f"https://api.allorigins.win/raw?url={urllib.parse.quote(sotwe_url, safe='')}", "sotwe"),
-            ("Syndication via CodeTabs", f"https://api.codetabs.com/v1/proxy?quest={urllib.parse.quote(synd_url, safe='')}", "syndication"),
-            ("Sotwe via CodeTabs", f"https://api.codetabs.com/v1/proxy?quest={urllib.parse.quote(sotwe_url, safe='')}", "sotwe"),
-            ("Nitter (poast)", f"https://nitter.poast.org/{handle}/rss", "rss"),
-        ]
+        strategies = []
+        
+        for url, proxy_name in self.get_proxy_urls(synd_url):
+            strategies.append((f"Syndication via {proxy_name}", url, "syndication"))
+            
+        for url, proxy_name in self.get_proxy_urls(sotwe_url):
+            strategies.append((f"Sotwe via {proxy_name}", url, "sotwe"))
+
+        random.shuffle(self.nitter_instances)
+        
+        for instance in self.nitter_instances:
+            if "rsshub" in instance:
+                url = f"{instance}/{handle}"
+            else:
+                url = f"{instance}/{handle}/rss"
+            name = instance.replace("https://", "").replace("http://", "").split("/")[0]
+            strategies.append((f"RSS via {name}", url, "rss"))
+            
+        return strategies
+
+    def fetch_timeline(self, handle: str) -> Tuple[List[Dict], str, str]:
+        strategies = self.build_strategies(handle)
+        logging.info(f"==== АНАЛИЗ ПРОФИЛЯ: {handle} ====")
+        logging.info(f"Заряжено {len(strategies)} стратегий обхода. Начинаем обстрел...")
 
         for name, url, parser_type in strategies:
-            logging.info(f"[{handle}] 🎯 Снайперский выстрел: {name}...")
-            try:
-                req = urllib.request.Request(url, headers=self.get_headers())
-                with urllib.request.urlopen(req, timeout=15) as response:
-                    if response.status == 200:
+            max_attempts = 2
+            for attempt in range(max_attempts):
+                logging.info(f"🎯 Выстрел: {name} | Попытка {attempt+1}/{max_attempts}")
+                logging.info(f"🔗 URL: {url}")
+                
+                start_t = time.time()
+                try:
+                    req = urllib.request.Request(url, headers=self.get_headers())
+                    with urllib.request.urlopen(req, timeout=15) as response:
+                        latency = time.time() - start_t
+                        status = response.status
                         raw_data = response.read().decode('utf-8')
+                        
+                        logging.info(f"📥 Ответ: HTTP {status} | Время: {latency:.2f}с | Размер: {len(raw_data)} байт")
                         
                         if parser_type == "sotwe":
                             posts, avatar, actual_name = self.parse_sotwe(raw_data, handle)
@@ -241,26 +328,42 @@ class BendySniperScraper:
                             posts, avatar, actual_name = self.parse_rss(raw_data, handle)
                             
                         if posts:
-                            logging.info(f"🟢 [{handle}] ПОПАДАНИЕ! Найдено постов: {len(posts)}")
+                            logging.info(f"🟢 БИНГО! Одобрено постов: {len(posts)}")
                             return posts, avatar, actual_name
                         else:
-                            logging.warning(f"[{handle}] Промах (Твиттер скрыл ленту).")
-            
-            except urllib.error.HTTPError as e:
-                logging.warning(f"[{handle}] Ошибка шлюза ({e.code}).")
-            except socket.timeout:
-                logging.warning(f"[{handle}] ⏳ Таймаут шлюза.")
-            except Exception as e:
-                logging.warning(f"[{handle}] Ошибка: {e}")
-                
-            time.sleep(2)
+                            logging.warning(f"⚠️ Промах. Сервер ответил, но полезных данных нет (Возможно, пустая страница).")
+                            break # Если ответ 200, но нет постов, повторная попытка не поможет. Переходим к следующей стратегии.
 
-        logging.error(f"❌ [{handle}] Все снайперские выстрелы мимо.")
+                except urllib.error.HTTPError as e:
+                    latency = time.time() - start_t
+                    err_body = ""
+                    try:
+                        err_body = e.read().decode('utf-8', errors='ignore').replace('\n', ' ')[:150]
+                    except:
+                        pass
+                    
+                    logging.warning(f"❌ Ошибка HTTP {e.code} | Время: {latency:.2f}с")
+                    if err_body: logging.warning(f"   ↳ Ответ сервера: {err_body}...")
+                    
+                    if e.code == 404: 
+                        logging.warning("   ↳ Профиль не найден (404). Пропускаем.")
+                        break 
+                except socket.timeout:
+                    latency = time.time() - start_t
+                    logging.warning(f"⏳ Таймаут соединения ({latency:.2f}с)")
+                except Exception as e:
+                    latency = time.time() - start_t
+                    logging.warning(f"🛑 Неизвестная ошибка: {type(e).__name__} - {e} ({latency:.2f}с)")
+                
+                sleep_time = random.uniform(3.0, 6.0)
+                logging.info(f"⏱️ Ожидание {sleep_time:.1f}с перед следующим шагом...")
+                time.sleep(sleep_time)
+
+        logging.error(f"💀 Истрачены все патроны для {handle}. Данные не получены.")
         return [], "", handle
 
     def run(self):
         existing_posts = self.load_existing_feed()
-        logging.info(f"Загружено постов из кэша: {len(existing_posts)}")
         all_fetched_posts = []
         
         for handle in self.handles:
@@ -272,7 +375,6 @@ class BendySniperScraper:
                         latest_avatar_url = ep.get('originalAvatarUrl', '')
                         break
 
-            # Создаем папку, JSON и качаем аватар
             local_avatar_path = self.process_developer_folder(handle, actual_name, latest_avatar_url)
             
             for p in combined: p['localAvatarPath'] = local_avatar_path
@@ -282,7 +384,10 @@ class BendySniperScraper:
                     if latest_avatar_url: ep['originalAvatarUrl'] = latest_avatar_url
 
             all_fetched_posts.extend(combined)
-            time.sleep(3)
+            
+            sleep_between_devs = random.uniform(4.0, 8.0)
+            logging.info(f"💤 Перерыв между разработчиками: {sleep_between_devs:.1f}с\n")
+            time.sleep(sleep_between_devs)
             
         merged_dict = {post['id']: post for post in existing_posts}
         for post in all_fetched_posts:
@@ -297,13 +402,17 @@ class BendySniperScraper:
             with open(self.tmp_file, 'w', encoding='utf-8') as f:
                 json.dump(final_posts, f, ensure_ascii=False, indent=2)
             os.replace(self.tmp_file, self.output_file)
-            logging.info(f"🎉 База успешно обновлена! Уникальных постов: {len(final_posts)}")
+            logging.info(f"🎉 База успешно обновлена! Всего уникальных постов: {len(final_posts)}")
             logging.info(f"💾 Сохранено в: {self.output_file}")
         except Exception as e:
             if os.path.exists(self.tmp_file): os.remove(self.tmp_file)
-            logging.error(f"Ошибка сохранения файла: {e}")
+            logging.error(f"КРИТИЧЕСКАЯ ОШИБКА СОХРАНЕНИЯ ФАЙЛА: {e}")
 
 if __name__ == "__main__":
+    print("\n" + "="*50)
+    print("🚀 BENDY FEED SCRAPER v3.0 (Analytics Edition)")
+    print("="*50 + "\n")
+    
     devs = [
         "Bendy", 
         "themeatly", 
