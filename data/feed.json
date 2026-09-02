@@ -1,38 +1,5 @@
 [
   {
-    "id": "2090154623956849006",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "Bendy’s Nightmare Run is here!! Get it NOW for FREE!\nbendyrun.com https://t.co/riD0saJJrl",
-    "timestamp": "Wed, 19 Aug 2026 19:11:10 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2077354248178630917",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "store.steampowered.com/app/622650/Ben…",
-    "timestamp": "Wed, 15 Jul 2026 11:27:02 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2077354244747719055",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "One week left to get the ORIGINAL BENDY at 90% OFF on Steam!",
-    "timestamp": "Wed, 15 Jul 2026 11:27:01 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
     "id": "2092261441147404701",
     "authorName": "Bendy",
     "authorHandle": "@Bendy",
@@ -40,19 +7,8 @@
     "content": "Get the limited time drop T-Shirt and an amazing Metal Poster for Bendy’s Nightmare Run at BendyMerch.com https://t.co/s41Jxbp0kE",
     "timestamp": "Tue, 25 Aug 2026 14:42:54 +0000",
     "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2079698901519540548",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "Only 2 days left to get the ORIGINAL BENDY at 90% OFF on Steam!",
-    "timestamp": "Tue, 21 Jul 2026 22:43:51 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2089696055277273172",
@@ -62,63 +18,8 @@
     "content": "Bendy’s Nightmare Run! TOMORROW on YOUR phone! https://t.co/3YipVgzhN4",
     "timestamp": "Tue, 18 Aug 2026 12:48:58 +0000",
     "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2075267801736987085",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "The ORIGINAL BENDY is 90% OFF on Steam right now! https://t.co/Ybqmd9Y1sP",
-    "timestamp": "Thu, 09 Jul 2026 17:16:15 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2075267803842515218",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "store.steampowered.com/app/622650/Ben…",
-    "timestamp": "Thu, 09 Jul 2026 17:16:15 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2075264930844979612",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "store.steampowered.com/bundle/78458/B…",
-    "timestamp": "Thu, 09 Jul 2026 17:04:50 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2075264893561741644",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "Surprise! We decided to continue the Bendy Summer Sale a bit longer! Bundle and save. Hurry. https://t.co/Pmw0YR15hs",
-    "timestamp": "Thu, 09 Jul 2026 17:04:41 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2088687876531773549",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!\n@BendyRun https://t.co/CoU1xxMOkJ",
-    "timestamp": "Sat, 15 Aug 2026 18:02:50 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2088687654225227974",
@@ -128,41 +29,8 @@
     "content": "Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon! https://t.co/Jf9R8SLeY0",
     "timestamp": "Sat, 15 Aug 2026 18:01:57 +0000",
     "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2088641877239021889",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "joeydrewstudios.com/blw",
-    "timestamp": "Sat, 15 Aug 2026 15:00:03 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2088641851314044990",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "Happy Lone Wolfiversary. https://t.co/VK7hhnCfSj",
-    "timestamp": "Sat, 15 Aug 2026 14:59:57 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2094528001606132089",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "The BATIM UPDATE is live!\nDetails at joeydrewstudios.com/batimupdate\n\nALL Bendy games are up to 70% OFF on Steam! https://t.co/NaDAuPsShw",
-    "timestamp": "Mon, 31 Aug 2026 20:49:24 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2091937918692495479",
@@ -172,19 +40,8 @@
     "content": "Uh oh. Run Bendy!\nPlay now at bendyrun.com https://t.co/ZYJ6erxwlz",
     "timestamp": "Mon, 24 Aug 2026 17:17:20 +0000",
     "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
-  },
-  {
-    "id": "2089462273207079149",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "WEDNESDAY!",
-    "timestamp": "Mon, 17 Aug 2026 21:20:00 +0000",
-    "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2089396840974135420",
@@ -194,8 +51,8 @@
     "content": "Get ready! Bendy’s Nightmare Run is coming to your phone on WEDNESDAY! https://t.co/KUHcjl73uh",
     "timestamp": "Mon, 17 Aug 2026 17:00:00 +0000",
     "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2090946144796877170",
@@ -205,8 +62,19 @@
     "content": "We’re listening! Update now for the latest. Much more to come!\nbendyrun.com https://t.co/mCjLuwOiAt",
     "timestamp": "Fri, 21 Aug 2026 23:36:23 +0000",
     "mediaUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "originalAvatarUrl": "",
-    "localAvatarPath": ""
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
+  },
+  {
+    "id": "2094528001606132089",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "The BATIM UPDATE is live!\nDetails at https://t.co/hIZmqiuazI\n\nALL Bendy games are up to 70% OFF on Steam! https://t.co/NaDAuPsShw",
+    "timestamp": "2026-08-31T20:49:24Z",
+    "mediaUrl": "https://pbs.twimg.com/media/HRFBxT6WsAAjRwF.jpg",
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2092262444563316785",
@@ -217,7 +85,7 @@
     "timestamp": "2026-08-25T14:46:53Z",
     "mediaUrl": null,
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "localAvatarPath": ""
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2091939313676173736",
@@ -228,7 +96,7 @@
     "timestamp": "2026-08-24T17:22:53Z",
     "mediaUrl": "https://pbs.twimg.com/media/HQgMjqnWoAAoq68.jpg",
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "localAvatarPath": ""
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2090946300439068718",
@@ -239,7 +107,7 @@
     "timestamp": "2026-08-21T23:37:00Z",
     "mediaUrl": "https://pbs.twimg.com/media/HQSH4TKXMAA615K.jpg",
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "localAvatarPath": ""
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2090164175662096652",
@@ -262,6 +130,17 @@
     "mediaUrl": "https://nitter.net/pic/amplify_video_thumb%2F2090111667279409152%2Fimg%2FvdK_dD4K4cOdd2sN.jpg",
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2086661609821220864/Dn_VXW8N_normal.png",
     "localAvatarPath": "assets/developers/blacroix30/avatar.jpg"
+  },
+  {
+    "id": "2090154623956849006",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Bendy’s Nightmare Run is here!! Get it NOW for FREE!\nhttps://t.co/op7UIy16wI https://t.co/riD0saJJrl",
+    "timestamp": "2026-08-19T19:11:10Z",
+    "mediaUrl": "https://video.twimg.com/amplify_video/2090111667279409152/vid/avc1/3840x2160/AZc74jXQqnfcSY79.mp4",
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2090154497670615224",
@@ -349,7 +228,7 @@
     "timestamp": "2026-08-18T12:50:46Z",
     "mediaUrl": "https://pbs.twimg.com/media/HQAXCp3WgAAUKMZ.jpg",
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "localAvatarPath": ""
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2089537620766302656",
@@ -372,6 +251,17 @@
     "mediaUrl": null,
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2017243552334397440/7VYUAWgZ_normal.jpg",
     "localAvatarPath": "assets/developers/themeatly/avatar.jpg"
+  },
+  {
+    "id": "2089462273207079149",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "WEDNESDAY!",
+    "timestamp": "2026-08-17T21:20:00Z",
+    "mediaUrl": null,
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2089418342125670753",
@@ -448,7 +338,7 @@
     "timestamp": "2026-08-17T17:00:40Z",
     "mediaUrl": "https://pbs.twimg.com/media/HP73TBZW4AAwSZz.jpg",
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "localAvatarPath": ""
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2088804810468245722",
@@ -459,7 +349,7 @@
     "timestamp": "2026-08-16T01:47:29Z",
     "mediaUrl": "https://video.twimg.com/amplify_video/2088687439346900992/vid/avc1/3840x2160/oB9mMgTYE-BEe-xt.mp4",
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "localAvatarPath": ""
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2088723162221424966",
@@ -493,6 +383,39 @@
     "mediaUrl": "https://nitter.net/pic/amplify_video_thumb%2F2088687439346900992%2Fimg%2FIaIojPlPxcRLsoCX.jpg",
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2081694743340204032/SswUyMyX_normal.png",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg"
+  },
+  {
+    "id": "2088687876531773549",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!\n@BendyRun https://t.co/CoU1xxMOkJ",
+    "timestamp": "2026-08-15T18:02:50Z",
+    "mediaUrl": "https://video.twimg.com/amplify_video/2088683146363428865/vid/avc1/3840x2160/mF-XnSuq0Gh8Jmz3.mp4",
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
+  },
+  {
+    "id": "2088641877239021889",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "https://t.co/h41CtwNNTx",
+    "timestamp": "2026-08-15T15:00:03Z",
+    "mediaUrl": null,
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
+  },
+  {
+    "id": "2088641851314044990",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Happy Lone Wolfiversary. https://t.co/VK7hhnCfSj",
+    "timestamp": "2026-08-15T14:59:57Z",
+    "mediaUrl": "https://pbs.twimg.com/media/HPxORVXWUAEwhr6.jpg",
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2080387892703109315",
@@ -572,6 +495,17 @@
     "localAvatarPath": "assets/developers/blacroix30/avatar.jpg"
   },
   {
+    "id": "2079698901519540548",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Only 2 days left to get the ORIGINAL BENDY at 90% OFF on Steam!",
+    "timestamp": "2026-07-21T22:43:51Z",
+    "mediaUrl": null,
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
+  },
+  {
     "id": "2078586586090889519",
     "authorName": "themeatly",
     "authorHandle": "@themeatly",
@@ -603,6 +537,28 @@
     "mediaUrl": null,
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2086661609821220864/Dn_VXW8N_normal.png",
     "localAvatarPath": "assets/developers/blacroix30/avatar.jpg"
+  },
+  {
+    "id": "2077354248178630917",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "https://t.co/V3JJ46jhZU",
+    "timestamp": "2026-07-15T11:27:02Z",
+    "mediaUrl": null,
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
+  },
+  {
+    "id": "2077354244747719055",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "One week left to get the ORIGINAL BENDY at 90% OFF on Steam!",
+    "timestamp": "2026-07-15T11:27:01Z",
+    "mediaUrl": null,
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2077345811361305072",
@@ -679,7 +635,7 @@
     "timestamp": "2026-07-12T00:17:17Z",
     "mediaUrl": "https://video.twimg.com/amplify_video/2075265171287609344/vid/avc1/3840x2160/9JvIJLk-MZkH8IYW.mp4",
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "localAvatarPath": ""
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2076003177212604900",
@@ -803,6 +759,50 @@
     "localAvatarPath": "assets/developers/blacroix30/avatar.jpg"
   },
   {
+    "id": "2075267801736987085",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "The ORIGINAL BENDY is 90% OFF on Steam right now! https://t.co/Ybqmd9Y1sP",
+    "timestamp": "2026-07-09T17:16:15Z",
+    "mediaUrl": "https://video.twimg.com/amplify_video/2075265171287609344/vid/avc1/3840x2160/9JvIJLk-MZkH8IYW.mp4",
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
+  },
+  {
+    "id": "2075267803842515218",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "https://t.co/V3JJ46jhZU",
+    "timestamp": "2026-07-09T17:16:15Z",
+    "mediaUrl": null,
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
+  },
+  {
+    "id": "2075264930844979612",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "https://t.co/L4TXQHqrjN",
+    "timestamp": "2026-07-09T17:04:50Z",
+    "mediaUrl": null,
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
+  },
+  {
+    "id": "2075264893561741644",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Surprise! We decided to continue the Bendy Summer Sale a bit longer! Bundle and save. Hurry. https://t.co/Pmw0YR15hs",
+    "timestamp": "2026-07-09T17:04:41Z",
+    "mediaUrl": "https://video.twimg.com/tweet_video/HMzSW0lX0AADiqt.mp4",
+    "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
+  },
+  {
     "id": "2074924279305511004",
     "authorName": "m_ZeroLogics",
     "authorHandle": "@m_ZeroLogics",
@@ -844,7 +844,7 @@
     "timestamp": "2026-07-07T18:27:04Z",
     "mediaUrl": null,
     "originalAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "localAvatarPath": ""
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg"
   },
   {
     "id": "2074498179526000847",
