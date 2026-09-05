@@ -11,7 +11,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2090043299839057998#m",
@@ -25,7 +29,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2089851561753108720#m",
@@ -39,7 +47,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2021548189422440575#m",
@@ -53,7 +65,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2021201360151318567#m",
@@ -67,7 +83,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2021179718850998335#m",
@@ -81,7 +101,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2020862513055776998#m",
@@ -95,7 +119,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1989412448794022156",
@@ -103,20 +131,6 @@
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
     "content": "&gt; INITIATE M_SHOP;\n&gt; INJECT VINTAGE;\n&gt; DEBUG: \"REMAIN_CALM\";\n&gt; SHUTDOWN_TEMP;\n-&gt; DEACTIVATING;",
-    "timestamp": "2025-11-14T19:17:43Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "1989412448794022156#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE M_SHOP; > INJECT VINTAGE; > DEBUG: \"REMAIN_CALM\"; > SHUTDOWN_TEMP; -> DEACTIVATING;",
     "timestamp": "2025-11-14T19:17:43Z",
     "mediaUrl": null,
     "mediaType": "image",
@@ -140,39 +154,11 @@
     "referenceAuthor": ""
   },
   {
-    "id": "1984571747870654674#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > EVENT_CONCLUDED: \"BACK_FROM_THE_DEAD\"; > CYCLE_CLOSED: IDE_COMPLETE; > LOG_STATUS: \"THAW_CONCLUDED; FTM;\"; -> DEACTIVATING;",
-    "timestamp": "2025-11-01T10:42:30Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "1981835962121695613",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
     "content": "&gt; INITIATE #SOTM;\n&gt; DEPLOY V4.1.4_PROD;\n&gt; EVENT_ACTIVE: \"BACK_FROM_THE_DEAD\";\n&gt; END_CYCLE: OCTOBER_31_2025;\n-&gt; ACTIVATING;",
-    "timestamp": "2025-10-24T21:31:28Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "1981835962121695613#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > DEPLOY V4.1.4_PROD; > EVENT_ACTIVE: \"BACK_FROM_THE_DEAD\"; > END_CYCLE: OCTOBER_31_2025; -> ACTIVATING;",
     "timestamp": "2025-10-24T21:31:28Z",
     "mediaUrl": null,
     "mediaType": "image",
@@ -196,39 +182,11 @@
     "referenceAuthor": ""
   },
   {
-    "id": "1981831686229721492#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > ANNOUNCE_EVENT: \"BACK_FROM_THE_DEAD\"; > START_CYCLE: OCTOBER_24_2025; > END_CYCLE: OCTOBER_31_2025; > LOG_STATUS: \"FRIGID_PUMPKIN\"; -> STANDBY;",
-    "timestamp": "2025-10-24T21:14:29Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "1981825911688454347",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
     "content": "&gt; INITIATE #SOTM;\n&gt; DEPLOY V4.1.4_DEV;\n&gt; RUN_VULN_PATCH;\n&gt; EXE_TEST(EVENT_IDE);\n&gt; DEBUG: CYCLE_FROZE;\n-&gt; RECALIBRATE;",
-    "timestamp": "2025-10-24T20:51:32Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "1981825911688454347#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > DEPLOY V4.1.4_DEV; > RUN_VULN_PATCH; > EXE_TEST(EVENT_IDE); > DEBUG: CYCLE_FROZE; -> RECALIBRATE;",
     "timestamp": "2025-10-24T20:51:32Z",
     "mediaUrl": null,
     "mediaType": "image",
@@ -252,39 +210,11 @@
     "referenceAuthor": ""
   },
   {
-    "id": "1956398014274134293#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > EVENT_CONCLUDED: \"TOMORROWS_TODAY\"; > CYCLE_CLOSED: 13_HOURS_COMPLETE; > LOG_STATUS: \"SPECTACLE_CONCLUDED; LWT\"; -> DEACTIVATING;",
-    "timestamp": "2025-08-15T16:50:09Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "1956203841667371228",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
     "content": "&gt; INITIATE #SOTM;\n&gt; EVENT_ACTIVE: \"TOMORROWS_TODAY\";\n&gt; CYCLE_OPEN_DURATION: 13:00.00;\n&gt; LOG_STATUS: \"DAWN_TO_DUSK_SPECTACLE\";\n-&gt; ACTIVATING;",
-    "timestamp": "2025-08-15T03:58:35Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "1956203841667371228#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > EVENT_ACTIVE: \"TOMORROWS_TODAY\"; > CYCLE_OPEN_DURATION: 13:00.00; > LOG_STATUS: \"DAWN_TO_DUSK_SPECTACLE\"; -> ACTIVATING;",
     "timestamp": "2025-08-15T03:58:35Z",
     "mediaUrl": null,
     "mediaType": "image",
@@ -308,39 +238,11 @@
     "referenceAuthor": ""
   },
   {
-    "id": "1956113522116436376#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > ANNOUNCE_EVENT: \"TOMORROWS_TODAY\"; > START_CYCLE: AUGUST_15_2025; > LOG_STATUS: \"ENJOY_THE_SHOW\"; -> ACTIVATING;",
-    "timestamp": "2025-08-14T21:59:41Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "1955300280221733237",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
     "content": "&gt; INITIATE #SOTM;\n&gt; REF: INPUT_HELD(E);\n&gt; LOG_STATUS: \"TRAINING_VESSELS\";",
-    "timestamp": "2025-08-12T16:08:09Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "1955300280221733237#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > REF: INPUT_HELD(E); > LOG_STATUS: \"TRAINING_VESSELS\";",
     "timestamp": "2025-08-12T16:08:09Z",
     "mediaUrl": null,
     "mediaType": "image",
@@ -364,39 +266,11 @@
     "referenceAuthor": ""
   },
   {
-    "id": "1955222316666818833#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > DEPLOY_V4.1.4_PROD; > INVOKE_UNSEAL; > SHIFT_V4.1.4_DEV; > LOG_STATUS: \"DEVOTEES_INVITED; INK_PROPHET_STIRS\"; -> UPLOADING;",
-    "timestamp": "2025-08-12T10:58:21Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "1954594483024339298",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
     "content": "&gt; INITIATE #SOTM;\n&gt; ACKNOWLEDGE_GOAL;\n&gt; VESSELS_FULFILLED;\n&gt; ANOMALY_CONTAINED_TEMPORARILY;\n&gt; DEPLOY V4.1.4_DEV;\n-&gt; STANDBY;",
-    "timestamp": "2025-08-10T17:23:34Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "1954594483024339298#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > ACKNOWLEDGE_GOAL; > VESSELS_FULFILLED; > ANOMALY_CONTAINED_TEMPORARILY; > DEPLOY V4.1.4_DEV; -> STANDBY;",
     "timestamp": "2025-08-10T17:23:34Z",
     "mediaUrl": null,
     "mediaType": "image",
@@ -420,39 +294,11 @@
     "referenceAuthor": ""
   },
   {
-    "id": "1954580929361424419#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > DEPLOY V4.1.4_PROD; > CONNECT_VESSELS; > UNLOCK_SYSTEM_GOAL; > LOG_STATUS: \"VESSELS_VISIBLE\"; -> UPLOADING;",
-    "timestamp": "2025-08-10T16:29:42Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "1954264374866215090",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
     "content": "&gt; INITIATE #SOTM;\n&gt; CONFIRM_ACTIVE_SUBJECT;\n&gt; INJECT SUBJECT: #7514201920911;\n&gt; SET_INPUT(G);\n&gt; DEPLOY V4.1.4_PATCH;\n&gt; LOG_STATUS: \"MINOR_UPDATE\";\n-&gt; UPLOAD_COMPLETE;",
-    "timestamp": "2025-08-09T19:31:50Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "1954264374866215090#m",
-    "authorName": "GENT",
-    "authorHandle": "@GentCorporation",
-    "platform": "twitter",
-    "content": "> INITIATE #SOTM; > CONFIRM_ACTIVE_SUBJECT; > INJECT SUBJECT: #7514201920911; > SET_INPUT(G); > DEPLOY V4.1.4_PATCH; > LOG_STATUS: \"MINOR_UPDATE\"; -> UPLOAD_COMPLETE;",
     "timestamp": "2025-08-09T19:31:50Z",
     "mediaUrl": null,
     "mediaType": "image",

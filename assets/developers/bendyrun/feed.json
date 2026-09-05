@@ -8,10 +8,14 @@
     "timestamp": "2026-09-03T15:27:35Z",
     "mediaUrl": null,
     "mediaType": "image",
-    "localAvatarPath": "",
+    "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2094416866273857550#m",
@@ -22,10 +26,14 @@
     "timestamp": "2026-08-31T13:27:47Z",
     "mediaUrl": null,
     "mediaType": "image",
-    "localAvatarPath": "",
+    "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2092261441147404701#m",
@@ -36,10 +44,14 @@
     "timestamp": "2026-08-25T14:42:54Z",
     "mediaUrl": null,
     "mediaType": "image",
-    "localAvatarPath": "",
+    "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2091937918692495479#m",
@@ -50,10 +62,14 @@
     "timestamp": "2026-08-24T17:17:20Z",
     "mediaUrl": null,
     "mediaType": "image",
-    "localAvatarPath": "",
+    "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2090946144796877170#m",
@@ -64,24 +80,14 @@
     "timestamp": "2026-08-21T23:36:23Z",
     "mediaUrl": null,
     "mediaType": "image",
-    "localAvatarPath": "",
+    "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2090154497670615224#m",
-    "authorName": "Bendy's Nightmare Run",
-    "authorHandle": "@BendyRun",
-    "platform": "twitter",
-    "content": "RT by @BendyRun: Bendy’s Nightmare Run is here!! Get it NOW for FREE! https://bendyrun.com",
-    "timestamp": "2026-08-19T19:10:40Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2089696055277273172#m",
@@ -92,10 +98,14 @@
     "timestamp": "2026-08-18T12:48:58Z",
     "mediaUrl": null,
     "mediaType": "image",
-    "localAvatarPath": "",
+    "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2089396840974135420#m",
@@ -106,23 +116,13 @@
     "timestamp": "2026-08-17T17:00:00Z",
     "mediaUrl": null,
     "mediaType": "image",
-    "localAvatarPath": "",
+    "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2088687654225227974#m",
-    "authorName": "Bendy's Nightmare Run",
-    "authorHandle": "@BendyRun",
-    "platform": "twitter",
-    "content": "RT by @BendyRun: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!",
-    "timestamp": "2026-08-15T18:01:57Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   }
 ]

@@ -10,9 +10,6 @@ export class PostView {
         this.translator = translationService;
         this.authorNamesMap = authorNamesMap; 
         this.fallbackAvatar = Icons.avatar_fallback;
-        
-        // Иконка для ответов/цитат (используем изогнутую стрелку)
-        this.replyIcon = `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>`;
     }
 
     render(post, searchTerm = '') {
@@ -20,7 +17,7 @@ export class PostView {
             const clone = this.template.content.cloneNode(true);
             const rawText = this._extractText(post, clone);
             
-            this._setupContext(clone, post); // Контекст (Цитаты/Ответы)
+            this._setupContext(clone, post);
             this._setupText(clone, rawText, searchTerm);
             this._setupMeta(clone, post);
             this._setupMedia(clone, post);
@@ -35,17 +32,34 @@ export class PostView {
 
     _extractText(post, clone) {
         const rtBadge = clone.querySelector('.rt-badge');
-        const rtAuthorLink = clone.querySelector('.rt-author');
         let text = post.content;
         
-        // Парсим ретвиты
+        // Ищем паттерн ретвита (например: "RT @BendyRun:" или "RT by @Bendy:")
         const rtMatch = post.content.match(/^RT\s+(?:by\s+)?(@[\w_]+)[\s:]+([\s\S]*)$/i);
         if (rtMatch) {
             text = rtMatch[2].trim();
-            rtAuthorLink.textContent = rtMatch[1];
-            rtAuthorLink.href = `https://twitter.com/${rtMatch[1].replace('@', '')}`;
+            const originalAuthorHandle = rtMatch[1]; // Кого ретвитнули
+            
+            // Кто сделал ретвит (берем из данных поста)
+            const retweeterClean = post.authorHandle.replace('@', '').toLowerCase();
+            const retweeterName = this.authorNamesMap[`@${retweeterClean}`] || post.authorName;
+
             rtBadge.style.display = 'flex';
-            rtBadge.insertAdjacentHTML('afterbegin', Icons.action_repost);
+            rtBadge.innerHTML = `${Icons.action_repost} <span>${retweeterName} репостнул(а)</span>`;
+
+            // Флаг для _setupMeta, чтобы подменить аватарку и имя
+            post.isRetweet = true;
+            
+            // Если это странный формат "RT by @Bendy", значит пост изначально чужой.
+            // Но в основном мы будем использовать originalAuthorHandle.
+            if (post.content.toLowerCase().startsWith('rt by')) {
+                // Если Твиттер выдал "RT by", значит originalAuthorHandle - это тот, кто репостнул.
+                // В этом случае автор поста уже правильный, просто плашка была кривой.
+                post.isRetweet = false; 
+                rtBadge.innerHTML = `${Icons.action_repost} <span>Репост от <a href="https://twitter.com/${originalAuthorHandle.replace('@', '')}" target="_blank" rel="noopener noreferrer">${originalAuthorHandle}</a></span>`;
+            } else {
+                post.originalAuthorHandle = originalAuthorHandle;
+            }
         }
 
         if (text.trim().toLowerCase() === 'gif') text = '';
@@ -54,26 +68,52 @@ export class PostView {
 
     _setupContext(clone, post) {
         const refBadge = clone.querySelector('.reference-badge');
-        
-        // Если это не ответ и не цитата, ничего не делаем
+        const quoteCard = clone.querySelector('.quote-card');
+
         if (!post.referenceType || !post.referenceUrl) return;
 
-        refBadge.style.display = 'inline-flex';
-        refBadge.insertAdjacentHTML('afterbegin', this.replyIcon);
-        
-        const textSpan = refBadge.querySelector('.ref-text');
-        const linkA = refBadge.querySelector('.ref-link');
-
         if (post.referenceType === 'reply') {
-            textSpan.textContent = 'В ответ:';
-        } else if (post.referenceType === 'quote') {
-            textSpan.textContent = 'Цитата:';
-        } else {
-            textSpan.textContent = 'Ссылка:';
-        }
+            refBadge.style.display = 'inline-flex';
+            const linkA = refBadge.querySelector('.ref-link');
+            refBadge.querySelector('.ref-text').textContent = 'В ответ:';
+            linkA.textContent = post.referenceAuthor || 'Оригинал';
+            linkA.href = post.referenceUrl;
+        } 
+        else if (post.referenceType === 'quote') {
+            quoteCard.style.display = 'block';
+            
+            quoteCard.querySelector('.quote-author-name').textContent = post.referenceAuthorName || post.referenceAuthor || 'Пользователь';
+            quoteCard.querySelector('.quote-author-handle').textContent = post.referenceAuthor || '';
 
-        linkA.textContent = post.referenceAuthor || 'Оригинальный пост';
-        linkA.href = post.referenceUrl;
+            const quoteAvatar = quoteCard.querySelector('.quote-avatar');
+            if (post.referenceAvatarUrl) {
+                quoteAvatar.src = post.referenceAvatarUrl.replace('_normal', '_200x200');
+                quoteAvatar.style.display = 'block';
+                quoteAvatar.onerror = () => { quoteAvatar.src = this.fallbackAvatar; };
+            }
+
+            if (post.referenceText) {
+                quoteCard.querySelector('.quote-text').innerHTML = formatRichText(post.referenceText);
+            } else {
+                quoteCard.querySelector('.quote-text').style.display = 'none';
+            }
+
+            const qMedia = quoteCard.querySelector('.quote-media');
+            if (post.referenceMediaUrl) {
+                qMedia.src = post.referenceMediaUrl;
+                qMedia.style.display = 'block';
+                qMedia.onclick = (e) => {
+                    e.stopPropagation(); 
+                    this.lightbox.open(post.referenceMediaUrl);
+                };
+            } else {
+                qMedia.style.display = 'none';
+            }
+
+            quoteCard.addEventListener('click', () => {
+                window.open(post.referenceUrl, '_blank', 'noopener,noreferrer');
+            });
+        }
     }
 
     _setupText(clone, text, searchTerm) {
@@ -88,9 +128,12 @@ export class PostView {
     }
 
     _setupMeta(clone, post) {
-        // Имя и хендл
-        const handleClean = (post.authorHandle || '').replace('@', '').trim().toLowerCase();
-        const displayName = this.authorNamesMap[`@${handleClean}`] || post.authorName || post.authorHandle;
+        // МАГИЯ: Если это ретвит, подменяем данные на того, кого ретвитнули
+        const handleToUse = post.isRetweet ? post.originalAuthorHandle : post.authorHandle;
+        const handleClean = (handleToUse || '').replace('@', '').trim().toLowerCase();
+        
+        // Пытаемся найти красивое имя в базе, если нет - оставляем @ник
+        const displayName = this.authorNamesMap[`@${handleClean}`] || handleToUse;
 
         clone.querySelector('.post-author-name').textContent = displayName;
         
@@ -99,17 +142,16 @@ export class PostView {
         else badgeEl.style.display = 'none';
 
         const handleEl = clone.querySelector('.post-author-handle');
-        handleEl.textContent = post.authorHandle;
+        handleEl.textContent = handleToUse;
         if (post.platform === 'twitter') {
             handleEl.href = `https://twitter.com/${handleClean}`;
         }
 
-        // АВАТАРКА: Жестко задаем путь, игнорируя то, что написано в JSON
+        // Аватарка. Если автор чужой (не из нашей папки assets), сработает onerror и поставится заглушка
         const avatarEl = clone.querySelector('.post-avatar');
         avatarEl.src = `assets/developers/${handleClean}/avatar.jpg`;
         avatarEl.onerror = () => { avatarEl.src = this.fallbackAvatar; };
 
-        // Дата
         const dateEl = clone.querySelector('.post-date');
         if (post.timestamp) {
             dateEl.textContent = new Date(post.timestamp).toLocaleString('ru-RU', {

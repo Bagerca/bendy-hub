@@ -77,7 +77,7 @@ class BendySniperScraper:
         except: pass
         return date_str
 
-    def download_media(self, url: str, handle: str, post_id: str, media_type: str) -> str:
+    def download_media(self, url: str, handle: str, filename_prefix: str, media_type: str) -> str:
         """ Скачивает медиа локально во избежание блокировок РКН """
         if not url: return None
         
@@ -88,7 +88,7 @@ class BendySniperScraper:
         ext = ".mp4" if media_type == "video" else ".jpg"
         if "format=png" in url or url.endswith(".png"): ext = ".png"
             
-        filename = f"{post_id}{ext}"
+        filename = f"{filename_prefix}{ext}"
         local_path = os.path.join(media_dir, filename)
         web_path = f"assets/developers/{safe_handle}/media/{filename}"
 
@@ -101,6 +101,7 @@ class BendySniperScraper:
                 if response.status == 200:
                     with open(local_path, 'wb') as f: 
                         f.write(response.read())
+                    logging.info(f"    🖼️ Медиа скачано: {filename}")
                     return web_path
         except Exception as e:
             logging.warning(f"    ⚠️ Ошибка скачивания медиа {url}: {e}")
@@ -126,7 +127,7 @@ class BendySniperScraper:
                 json.dump(dev_data, f, ensure_ascii=False, indent=4)
             logging.info(f"  ↳ 📁 Создан профиль разработчика: {safe_handle}")
                 
-        if not avatar_url: return ""
+        if not avatar_url: return f"assets/developers/{safe_handle}/avatar.jpg"
         local_path = os.path.join(dev_dir, "avatar.jpg")
         web_path = f"assets/developers/{safe_handle}/avatar.jpg"
         
@@ -137,13 +138,16 @@ class BendySniperScraper:
         
         try:
             req = urllib.request.Request(avatar_url, headers=self.get_headers())
+            start_t = time.time()
             with urllib.request.urlopen(req, timeout=10) as response:
                 if response.status == 200:
                     with open(local_path, 'wb') as f: f.write(response.read())
+                    logging.info(f"    ✅ Аватар сохранен ({time.time() - start_t:.2f}с)")
                     return web_path
         except Exception as e: 
             logging.warning(f"    ⚠️ Ошибка скачивания аватара: {e}")
-        return ""
+            
+        return web_path
 
     def parse_sotwe(self, json_data: str, handle: str) -> Tuple[List[Dict], str, str]:
         posts, avatar_url, actual_name = [], "", handle
@@ -162,7 +166,6 @@ class BendySniperScraper:
                 content = tweet.get('full_text') or tweet.get('text', '')
                 post_id = tweet.get('id_str', '')
                 
-                # Медиа
                 media_url, media_type = None, "image"
                 ml = tweet.get('mediaEntities', []) or tweet.get('entities', {}).get('media', [])
                 if ml:
@@ -175,14 +178,28 @@ class BendySniperScraper:
                     if not media_url: 
                         media_url = m.get('media_url_https') or m.get('url')
 
-                # Контекст (Цитаты и ответы)
-                ref_url, ref_type, ref_author = "", "", ""
-                if 'quoted_status' in tweet:
+                ref_url, ref_type, ref_author, ref_text = "", "", "", ""
+                ref_author_name, ref_avatar_url = "", ""
+                ref_media_url, ref_media_type = None, "image"
+
+                q_status = tweet.get('quoted_status') or tweet.get('quote')
+                if q_status and isinstance(q_status, dict):
                     ref_type = "quote"
-                    q_status = tweet['quoted_status']
-                    ref_author = q_status.get('user', {}).get('screen_name', '')
-                    if ref_author and q_status.get('id_str'):
-                        ref_url = f"https://twitter.com/{ref_author}/status/{q_status['id_str']}"
+                    user_info = q_status.get('user', {})
+                    ref_author = user_info.get('screen_name', '')
+                    ref_author_name = user_info.get('name', ref_author)
+                    ref_avatar_url = user_info.get('profile_image_url_https', '')
+                    ref_text = q_status.get('full_text') or q_status.get('text', '')
+                    q_id = q_status.get('id_str', '')
+                    
+                    if ref_author and q_id:
+                        ref_url = f"https://twitter.com/{ref_author}/status/{q_id}"
+                    
+                    q_ml = q_status.get('mediaEntities', []) or q_status.get('entities', {}).get('media', [])
+                    if q_ml:
+                        ref_media_url = q_ml[0].get('media_url_https') or q_ml[0].get('url')
+                    logging.info(f"      💬 Найдена цитата от @{ref_author}")
+
                 elif tweet.get('in_reply_to_status_id_str'):
                     ref_type = "reply"
                     ref_author = tweet.get('in_reply_to_screen_name', '')
@@ -201,7 +218,12 @@ class BendySniperScraper:
                     "originalAvatarUrl": avatar_url,
                     "referenceType": ref_type,
                     "referenceUrl": ref_url,
-                    "referenceAuthor": f"@{ref_author}" if ref_author else ""
+                    "referenceAuthor": f"@{ref_author}" if ref_author else "",
+                    "referenceAuthorName": ref_author_name,
+                    "referenceAvatarUrl": ref_avatar_url,
+                    "referenceText": ref_text,
+                    "rawRefMediaUrl": ref_media_url,
+                    "refMediaType": ref_media_type
                 })
         except Exception as e: 
             logging.error(f"    ❌ [Parse Sotwe] Ошибка: {e}")
@@ -229,7 +251,6 @@ class BendySniperScraper:
                 actual_name = author.get('name', handle)
                 post_id = tweet.get('id_str', '')
 
-                # Медиа
                 media_url, media_type = None, "image"
                 ml = tweet.get('entities', {}).get('media', [])
                 if ml:
@@ -242,14 +263,39 @@ class BendySniperScraper:
                     if not media_url: 
                         media_url = m.get('media_url_https')
 
-                # Контекст
-                ref_url, ref_type, ref_author = "", "", ""
-                if 'quoted_tweet' in tweet:
+                ref_url, ref_type, ref_author, ref_text = "", "", "", ""
+                ref_author_name, ref_avatar_url = "", ""
+                ref_media_url, ref_media_type = None, "image"
+
+                q_tweet = tweet.get('quoted_tweet') or tweet.get('quoted_status') or tweet.get('quote')
+                if q_tweet and isinstance(q_tweet, dict):
                     ref_type = "quote"
-                    q_status = tweet['quoted_tweet']
-                    ref_author = q_status.get('user', {}).get('screen_name', '')
-                    if ref_author and q_status.get('id_str'):
-                        ref_url = f"https://twitter.com/{ref_author}/status/{q_status['id_str']}"
+                    user_info = q_tweet.get('user', {})
+                    ref_author = user_info.get('screen_name', '')
+                    ref_author_name = user_info.get('name', ref_author)
+                    ref_avatar_url = user_info.get('profile_image_url_https', '')
+                    ref_text = q_tweet.get('text', '')
+                    q_id = q_tweet.get('id_str', '')
+                    
+                    if ref_author and q_id:
+                        ref_url = f"https://twitter.com/{ref_author}/status/{q_id}"
+                    
+                    q_ml = q_tweet.get('entities', {}).get('media', [])
+                    if q_ml:
+                        ref_media_url = q_ml[0].get('media_url_https')
+                    logging.info(f"      💬 Найдена цитата от @{ref_author}")
+
+                elif tweet.get('entities', {}).get('urls'):
+                    for u in tweet['entities']['urls']:
+                        expanded = u.get('expanded_url', '')
+                        m_tweet = re.search(r'(?:twitter\.com|x\.com)/([A-Za-z0-9_]+)/status/(\d+)', expanded)
+                        if m_tweet:
+                            ref_type = "quote"
+                            ref_author = m_tweet.group(1)
+                            ref_url = expanded
+                            logging.info(f"      💬 Найдена ссылка на твит @{ref_author}")
+                            break
+
                 elif tweet.get('in_reply_to_status_id_str'):
                     ref_type = "reply"
                     ref_author = tweet.get('in_reply_to_screen_name', '')
@@ -268,7 +314,12 @@ class BendySniperScraper:
                     "originalAvatarUrl": avatar_url,
                     "referenceType": ref_type,
                     "referenceUrl": ref_url,
-                    "referenceAuthor": f"@{ref_author}" if ref_author else ""
+                    "referenceAuthor": f"@{ref_author}" if ref_author else "",
+                    "referenceAuthorName": ref_author_name,
+                    "referenceAvatarUrl": ref_avatar_url,
+                    "referenceText": ref_text,
+                    "rawRefMediaUrl": ref_media_url,
+                    "refMediaType": ref_media_type
                 })
         except Exception as e: 
             logging.error(f"    ❌ [Parse Syndication] Ошибка: {e}")
@@ -296,7 +347,6 @@ class BendySniperScraper:
                 content = html.unescape(item.find("title").text.strip()) if item.find("title") is not None and item.find("title").text else ""
                 post_id = link.text.rstrip('/').split('/')[-1]
                 
-                # RSS Nitter обычно не отдает нормально медиа/реплаи, ставим дефолтные значения
                 posts.append({
                     "id": post_id,
                     "authorName": actual_name,
@@ -309,7 +359,10 @@ class BendySniperScraper:
                     "originalAvatarUrl": "",
                     "referenceType": "",
                     "referenceUrl": "",
-                    "referenceAuthor": ""
+                    "referenceAuthor": "",
+                    "referenceText": "",
+                    "rawRefMediaUrl": None,
+                    "refMediaType": "image"
                 })
         except Exception as e: 
             logging.error(f"    ❌ [Parse RSS] Ошибка: {e}")
@@ -363,7 +416,11 @@ class BendySniperScraper:
                 try:
                     req = urllib.request.Request(url, headers=self.get_headers())
                     with urllib.request.urlopen(req, timeout=15) as response:
+                        latency = time.time() - start_t
+                        status = response.status
                         raw_data = response.read().decode('utf-8')
+                        
+                        logging.info(f"📥 Ответ: HTTP {status} | Время: {latency:.2f}с | Размер: {len(raw_data)} байт")
                         
                         if parser_type == "sotwe":
                             posts, avatar, actual_name = self.parse_sotwe(raw_data, handle)
@@ -380,42 +437,55 @@ class BendySniperScraper:
                             break 
 
                 except urllib.error.HTTPError as e:
+                    latency = time.time() - start_t
+                    err_body = ""
+                    try: err_body = e.read().decode('utf-8', errors='ignore').replace('\n', ' ')[:150]
+                    except: pass
+                    
+                    logging.warning(f"❌ Ошибка HTTP {e.code} | Время: {latency:.2f}с")
+                    if err_body: logging.warning(f"   ↳ Ответ сервера: {err_body}...")
+                    
                     if e.code == 404: 
                         logging.warning("   ↳ Профиль не найден (404). Пропускаем.")
                         break 
-                    logging.warning(f"❌ Ошибка HTTP {e.code}")
+                except socket.timeout:
+                    logging.warning(f"⏳ Таймаут соединения")
                 except Exception as e:
-                    logging.warning(f"🛑 Ошибка соединения: {e}")
+                    logging.warning(f"🛑 Неизвестная ошибка: {type(e).__name__} - {e}")
                 
-                time.sleep(random.uniform(3.0, 6.0))
+                sleep_time = random.uniform(3.0, 6.0)
+                time.sleep(sleep_time)
 
         logging.error(f"💀 Истрачены все патроны для {handle}. Данные не получены.")
         return [], "", handle
 
     def run(self):
         print("\n" + "="*50)
-        print("🚀 BENDY ATOMIC FEED SCRAPER v4.0 (God-Mode + Local Media)")
+        print("🚀 BENDY SNIPER FEED SCRAPER (God-Mode + Media + Quotes)")
         print("="*50 + "\n")
         
         for handle in self.handles:
             safe_handle = handle.lower()
             
-            # 1. Достаем новые посты через гибридный движок
             combined, latest_avatar_url, actual_name = self.fetch_timeline(handle)
             
             if not combined:
                 continue
 
-            # 2. Обрабатываем аватарку разработчика
             local_avatar_path = self.process_developer_folder(handle, actual_name, latest_avatar_url)
             
-            # 3. Скачиваем медиа файлы для новых постов
             final_posts = []
             for p in combined:
+                # 1. Скачиваем медиа самого твита
                 local_media_path = None
                 if p.get("rawMediaUrl"):
                     local_media_path = self.download_media(p["rawMediaUrl"], handle, p["id"], p["mediaType"])
                 
+                # 2. Скачиваем медиа цитируемого твита (если есть)
+                local_ref_media_path = None
+                if p.get("rawRefMediaUrl"):
+                    local_ref_media_path = self.download_media(p["rawRefMediaUrl"], handle, f"quote_{p['id']}", p.get("refMediaType", "image"))
+
                 clean_post = {
                     "id": p["id"],
                     "authorName": p["authorName"],
@@ -428,13 +498,17 @@ class BendySniperScraper:
                     "localAvatarPath": local_avatar_path,
                     "referenceType": p["referenceType"],
                     "referenceUrl": p["referenceUrl"],
-                    "referenceAuthor": p["referenceAuthor"]
+                    "referenceAuthor": p["referenceAuthor"],
+                    "referenceAuthorName": p.get("referenceAuthorName", ""),
+                    "referenceAvatarUrl": p.get("referenceAvatarUrl", ""),
+                    "referenceText": p.get("referenceText", ""),
+                    "referenceMediaUrl": local_ref_media_path
                 }
                 final_posts.append(clean_post)
 
-            # 4. Атомарное обновление индивидуального файла разработчика
+            # Атомарное сохранение в персональную папку
             dev_feed_path = os.path.join(self.devs_dir, safe_handle, "feed.json")
-            tmp_file = os.path.join(self.devs_dir, safe_handle, "feed.json.tmp")
+            tmp_file = dev_feed_path + ".tmp"
             
             existing_posts = []
             if os.path.exists(dev_feed_path):
@@ -445,6 +519,21 @@ class BendySniperScraper:
 
             merged_dict = {post['id']: post for post in existing_posts}
             for post in final_posts:
+                # Если пост уже был скачан, и в старом есть медиа/цитаты, а в новом нет (сработал плохой парсер)
+                if post['id'] in merged_dict:
+                    old = merged_dict[post['id']]
+                    if old.get('mediaUrl') and not post.get('mediaUrl'):
+                        post['mediaUrl'] = old['mediaUrl']
+                        post['mediaType'] = old.get('mediaType', 'image')
+                    if old.get('referenceType') and not post.get('referenceType'):
+                        post['referenceType'] = old['referenceType']
+                        post['referenceUrl'] = old['referenceUrl']
+                        post['referenceAuthor'] = old['referenceAuthor']
+                        post['referenceAuthorName'] = old.get('referenceAuthorName', '')
+                        post['referenceAvatarUrl'] = old.get('referenceAvatarUrl', '')
+                        post['referenceText'] = old.get('referenceText', '')
+                        post['referenceMediaUrl'] = old.get('referenceMediaUrl')
+                
                 merged_dict[post['id']] = post
 
             final_list = list(merged_dict.values())
@@ -458,11 +547,22 @@ class BendySniperScraper:
                 logging.info(f"💾 Успешно сохранено: {dev_feed_path} ({len(final_list)} постов)")
             except Exception as e:
                 if os.path.exists(tmp_file): os.remove(tmp_file)
-                logging.error(f"Ошибка сохранения файла для {handle}: {e}")
+                logging.error(f"Ошибка сохранения {handle}: {e}")
             
-            time.sleep(random.uniform(4.0, 8.0))
+            sleep_between_devs = random.uniform(4.0, 8.0)
+            logging.info(f"💤 Перерыв между разработчиками: {sleep_between_devs:.1f}с\n")
+            time.sleep(sleep_between_devs)
 
 if __name__ == "__main__":
-    devs = ["Bendy", "themeatly", "m_ZeroLogics", "BLacroix30", "bookpast", "BendyRun", "GentCorporation", "Doberart"] 
+    devs = [
+        "Bendy", 
+        "themeatly", 
+        "m_ZeroLogics", 
+        "BLacroix30", 
+        "bookpast", 
+        "BendyRun", 
+        "GentCorporation", 
+        "Doberart"
+    ] 
     monitor = BendySniperScraper(devs)
     monitor.run()

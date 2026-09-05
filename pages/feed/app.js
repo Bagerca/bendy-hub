@@ -31,9 +31,10 @@ export async function init() {
     controller.scroller = scroller;
 
     let currentSelectedAuthor = 'all';
+    let currentPostType = 'all';
     let currentSearchTerm = '';
 
-    const triggerSearch = () => controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthor);
+    const triggerSearch = () => controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthor, currentPostType);
 
     const searchControls = document.querySelector('search-controls');
     searchControls.suggestionProvider = null; 
@@ -43,10 +44,29 @@ export async function init() {
         triggerSearch();
     });
 
+    // --- ФИЛЬТР: АВТОРЫ ---
     const authorSelect = new window.CustomSelect('author-filter-container', (selectedId) => {
         currentSelectedAuthor = selectedId;
         triggerSearch();
     });
+
+    // --- ФИЛЬТР: ТИП ПОСТА (Без "Ответы фанатам") ---
+    const typeSelect = new window.CustomSelect('type-filter-container', (selectedId) => {
+        currentPostType = selectedId;
+        triggerSearch();
+    });
+
+    // Иконки для фильтра типов
+    const iconPencil = `<div class="svg-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg></div>`;
+    const iconQuote = `<div class="svg-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg></div>`;
+    const iconRepost = `<div class="svg-icon">${Icons.action_repost}</div>`;
+
+    typeSelect.populate([
+        { id: 'all', label: 'Все записи', iconHtml: `<div class="svg-icon">${Icons.cat_all}</div>` },
+        { id: 'clean', label: 'Только оригинальные', iconHtml: iconPencil },
+        { id: 'quotes', label: 'Только цитаты', iconHtml: iconQuote },
+        { id: 'retweets', label: 'Репосты', iconHtml: iconRepost }
+    ], 'all');
 
     try {
         const allDevsIcon = `<div class="svg-icon">${Icons.cat_all}</div>`;
@@ -54,24 +74,20 @@ export async function init() {
 
         const selectOptions = [{ id: 'all', label: 'Все разработчики', iconHtml: allDevsIcon }];
 
-        // 1. Формируем запросы на получение индивидуальных лент каждого разработчика
         const feedPromises = TRACKED_AUTHORS.map(author => {
             const handleClean = author.handle.replace('@', '').toLowerCase();
             
-            // Добавляем автора в выпадающий список
             selectOptions.push({
                 id: author.handle, 
                 label: author.name, 
                 iconHtml: `<img src="assets/developers/${handleClean}/avatar.jpg" alt="Avatar" class="custom-select-icon" onerror="this.onerror=null; this.src='${fallbackAvatarUri}';">`
             });
 
-            // Запрашиваем файл feed.json из его папки
             return fetchData(`assets/developers/${handleClean}/feed.json`).catch(() => []);
         });
 
         authorSelect.populate(selectOptions, 'all');
 
-        // 2. Дожидаемся всех загрузок и сливаем в один массив
         const results = await Promise.all(feedPromises);
         let combinedFeed = [];
         results.forEach(feedArray => {

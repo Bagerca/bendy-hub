@@ -42,36 +42,8 @@
     "referenceAuthor": ""
   },
   {
-    "id": "2090068187702333721#m",
-    "authorName": "Mike Desjardins",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "some random fun dev facts for the day. in both batim/batdr we have an editor tool we just call \"T'ing\" which in a sentence would be said as \"just T through it\" this just enters a free roaming camera mode, where it leaves the player behind and the camera can freely fly around anywhere and through walls. you can also go really fast if you hold shift while moving around. when you press T again, it'll place the player exactly where you where seamlessly. this makes for testing specific things super easy and quick if it needs to be tested dozens of times. in batim specifically, we have a tool for speeding up time. which gives hilarious results. but in play mode if you press SHIFT+F it will speed up time super fast, including audio. and we used to use this to do super fast tests where we didn't want to T through anything and allow for sequences to trigger properly. in BLW we had a cheat tool by pressing ~ beside 1 on the keyboard and a menu would appear that gives all kinds of options to cheat, like going to any level, unlocking progression, unlock weapons, add days, or making all items appear right beside the elevator with the click of a button to quickly test a floors end result. in Cage we have, oh sorry we ran out of time here, see you in nightmare run!",
-    "timestamp": "2026-08-19T13:27:42Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "2089699401388245298",
     "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "60fps on nightmare run feels so much better",
-    "timestamp": "2026-08-18T13:02:16Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2089699401388245298#m",
-    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "60fps on nightmare run feels so much better",
@@ -98,36 +70,8 @@
     "referenceAuthor": ""
   },
   {
-    "id": "2089697414219247968#m",
-    "authorName": "Mike Desjardins",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "TOMORROW",
-    "timestamp": "2026-08-18T12:54:22Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "2089397984995733818",
     "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "Wednesday!",
-    "timestamp": "2026-08-17T17:04:33Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2089397984995733818#m",
-    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "Wednesday!",
@@ -154,36 +98,8 @@
     "referenceAuthor": ""
   },
   {
-    "id": "2088688387561509351#m",
-    "authorName": "Mike Desjardins",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "Shout out to the development team at Broken Circle Studios working hard to bring this game back to life and to continue keeping it alive!",
-    "timestamp": "2026-08-15T18:04:52Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "2080387892703109315",
     "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "little update! i'm sure you all heard some buzz that something's coming, and iT's all in good fun, but no there's nothing coming today! that said, i guess it is a good time for some good old fashioned transparency. We're hard at work on a great number Of things for bendy, and while our focus has been on the cage, few tHings came up for us to work on for bendy that's been exciting. being the small team we are, we qUickly pivoted to get that out of the way, and it was a blast! but we're back on cage workiNg away! i've said it before, when the game goes gold on pc we'll let everyone know when it's being ported so you know the time is coming for us to ramp up marketing. now we get super exciteD over here and have been a little trigger happy on announcing things in the past, and we're doing our best to couRse correct that moving forward. so there's one thing i will say from now on when it comes to our gamEs. you'll only ever know \"coming soon\" or \"to be announced\" as the Date of a project. the only time we will reveal any kind of timeline, is when the release daTe has been announced. no more years, no more q1, q2, etc. We'd much rather just let you all know that we're working hard, and when the time is right, we'll annOunce actual dates, not vague timelines. so! back to work we go!",
-    "timestamp": "2026-07-23T20:21:40Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2080387892703109315#m",
-    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "little update! i'm sure you all heard some buzz that something's coming, and iT's all in good fun, but no there's nothing coming today! that said, i guess it is a good time for some good old fashioned transparency. We're hard at work on a great number Of things for bendy, and while our focus has been on the cage, few tHings came up for us to work on for bendy that's been exciting. being the small team we are, we qUickly pivoted to get that out of the way, and it was a blast! but we're back on cage workiNg away! i've said it before, when the game goes gold on pc we'll let everyone know when it's being ported so you know the time is coming for us to ramp up marketing. now we get super exciteD over here and have been a little trigger happy on announcing things in the past, and we're doing our best to couRse correct that moving forward. so there's one thing i will say from now on when it comes to our gamEs. you'll only ever know \"coming soon\" or \"to be announced\" as the Date of a project. the only time we will reveal any kind of timeline, is when the release daTe has been announced. no more years, no more q1, q2, etc. We'd much rather just let you all know that we're working hard, and when the time is right, we'll annOunce actual dates, not vague timelines. so! back to work we go!",
@@ -210,36 +126,8 @@
     "referenceAuthor": ""
   },
   {
-    "id": "2077863682420162860#m",
-    "authorName": "Mike Desjardins",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "big fan of the steam deck and the steam machine. price point aside due to the current state of things, it does everything right in my opinion. and it's helpful for me as a development target to make sure games work on steam machine, and steam deck, and of course cloud saves (which qol's will have). their great to have for testing, plus i'm also enjoying them in general. good stuff valve.",
-    "timestamp": "2026-07-16T21:11:21Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "2077345811361305072",
     "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "the playstation summer sale is active and our games are on sale there again. no 90% off this time, but batim and batdr are both 70% and blw is 35% ✌️",
-    "timestamp": "2026-07-15T10:53:31Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2077345811361305072#m",
-    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "the playstation summer sale is active and our games are on sale there again. no 90% off this time, but batim and batdr are both 70% and blw is 35% ✌️",
@@ -266,36 +154,8 @@
     "referenceAuthor": ""
   },
   {
-    "id": "2076988995758690492#m",
-    "authorName": "Mike Desjardins",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "i see bendy has made some noise in the fan poll. it’s nice to see the bendy community rally for something, even if unofficial. means a lot to us at jds to see such an active fan base. makes the long long… long long… oh so very long hours worth it. ✌️",
-    "timestamp": "2026-07-14T11:15:39Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
     "id": "2076736617427910840",
     "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "this is still technically cheaper than buying batdr on it's own lol https://store.steampowered.com/bundle/37767/Bendy_Studio_Collection/",
-    "timestamp": "2026-07-13T18:32:48Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2076736617427910840#m",
-    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "this is still technically cheaper than buying batdr on it's own lol https://store.steampowered.com/bundle/37767/Bendy_Studio_Collection/",
@@ -342,20 +202,6 @@
     "platform": "twitter",
     "content": "this would be the B in a/b :P",
     "timestamp": "2026-07-09T17:32:43Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2075267801736987085#m",
-    "authorName": "Mike Desjardins",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "RT by @m_ZeroLogics: The ORIGINAL BENDY is 90% OFF on Steam right now!",
-    "timestamp": "2026-07-09T17:16:15Z",
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
@@ -515,7 +361,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1988938621379047629",
@@ -529,7 +377,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1988937647629447611",
@@ -543,7 +393,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1988655517699567967",
@@ -557,7 +409,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1988463108671578332",
-    "referenceAuthor": "@chairthatspins"
+    "referenceAuthor": "@chairthatspins",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1987216494099419371",
@@ -571,7 +425,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/bumble_bbgun/status/1987163042531189103",
-    "referenceAuthor": "@bumble_bbgun"
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1986957018008015062",
@@ -585,7 +441,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/themeatly/status/1986949104409161767",
-    "referenceAuthor": "@themeatly"
+    "referenceAuthor": "@themeatly",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1986607686201295174",
@@ -599,7 +457,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1986487098237456438",
@@ -613,7 +473,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1986473420431769733",
-    "referenceAuthor": "@chairthatspins"
+    "referenceAuthor": "@chairthatspins",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1986115402636927302",
@@ -627,7 +489,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1986072602507403595",
@@ -641,7 +505,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1985437688410095819",
@@ -655,7 +521,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/CloudRacer07/status/1985433699341484274",
-    "referenceAuthor": "@CloudRacer07"
+    "referenceAuthor": "@CloudRacer07",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1985424184659341422",
@@ -669,7 +537,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1985395911372017837",
@@ -683,7 +553,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/JOEY_DREWSTUDIO/status/1985325626216386705",
-    "referenceAuthor": "@JOEY_DREWSTUDIO"
+    "referenceAuthor": "@JOEY_DREWSTUDIO",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1985190471832924662",
@@ -697,7 +569,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1985160441463488540",
@@ -711,7 +585,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/BLacroix30/status/1985150107243745672",
-    "referenceAuthor": "@BLacroix30"
+    "referenceAuthor": "@BLacroix30",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1985147193607512404",
@@ -725,7 +601,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/themeatly/status/1985142694327230738",
-    "referenceAuthor": "@themeatly"
+    "referenceAuthor": "@themeatly",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1985048536929464578",
@@ -739,7 +617,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/BendyDaily/status/1984995247550575001",
-    "referenceAuthor": "@BendyDaily"
+    "referenceAuthor": "@BendyDaily",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984697426188583053",
@@ -753,7 +633,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984562596079337772",
@@ -767,7 +649,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984418067536101688",
@@ -781,7 +665,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/TheLizard414/status/1984411620408254524",
-    "referenceAuthor": "@TheLizard414"
+    "referenceAuthor": "@TheLizard414",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984341302662627431",
@@ -795,7 +681,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1984329358505279967",
-    "referenceAuthor": "@chairthatspins"
+    "referenceAuthor": "@chairthatspins",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984329320119123981",
@@ -809,7 +697,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984324170079969427",
@@ -823,7 +713,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984321365437268225",
@@ -837,7 +729,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984317208567157080",
@@ -851,7 +745,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984309639203180815",
@@ -865,7 +761,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/BeninjaLIVE/status/1984309316547936566",
-    "referenceAuthor": "@BeninjaLIVE"
+    "referenceAuthor": "@BeninjaLIVE",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984306823969542607",
@@ -879,7 +777,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984305528713949533",
@@ -893,7 +793,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1984305527208182205",
-    "referenceAuthor": "@m_ZeroLogics"
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984305527208182205",
@@ -907,7 +809,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984304492376936556",
@@ -921,7 +825,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984297415785013286",
@@ -935,7 +841,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984292307328266659",
@@ -949,7 +857,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984280307294736757",
@@ -963,7 +873,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/Seekersillies/status/1984279899654537497",
-    "referenceAuthor": "@Seekersillies"
+    "referenceAuthor": "@Seekersillies",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984279295003611584",
@@ -977,7 +889,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984267755273797643",
@@ -991,7 +905,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984238109199147311",
@@ -1005,7 +921,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984216720157114484",
@@ -1019,7 +937,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1983920816078131511",
@@ -1033,7 +953,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1983911027386245126",
@@ -1047,7 +969,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1983536642997494229",
@@ -1061,7 +985,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1982872681122017634",
@@ -1075,7 +1001,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1982804155321266410",
@@ -1089,7 +1017,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/Bendy/status/1982803771739554216",
-    "referenceAuthor": "@Bendy"
+    "referenceAuthor": "@Bendy",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1982555511515238421",
@@ -1103,7 +1033,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1982214055684079838",
@@ -1117,7 +1049,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1981716313811624278",
@@ -1131,7 +1065,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1981689830674518135",
@@ -1145,7 +1081,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1981460666512003409",
@@ -1159,7 +1097,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1981457792096752066",
@@ -1173,7 +1113,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1981408823945343318",
-    "referenceAuthor": "@chairthatspins"
+    "referenceAuthor": "@chairthatspins",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1981385212874625360",
@@ -1187,7 +1129,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1980354584800559310",
@@ -1201,7 +1145,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1978570879907893361",
@@ -1215,7 +1161,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1978516850389483606",
@@ -1229,7 +1177,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1978515943262175290",
@@ -1243,7 +1193,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1978199572330483798",
@@ -1257,7 +1209,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1978198247865778358",
-    "referenceAuthor": "@m_ZeroLogics"
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1978198247865778358",
@@ -1271,7 +1225,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1975638063956303927",
@@ -1285,7 +1241,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1969499477271867772",
@@ -1299,7 +1257,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1965419548791980325",
@@ -1313,7 +1273,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1964043321023582598",
@@ -1327,7 +1289,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1963968170865066164",
@@ -1341,7 +1305,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/themeatly/status/1963960592630247523",
-    "referenceAuthor": "@themeatly"
+    "referenceAuthor": "@themeatly",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1963282888692248939",
@@ -1355,7 +1321,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1963224881593557070",
@@ -1369,7 +1337,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1961765041356570734",
@@ -1383,7 +1353,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1961387922818572357",
@@ -1397,7 +1369,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1961378305484951640",
@@ -1411,7 +1385,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1961163288089124918",
@@ -1425,7 +1401,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1961059852744008152",
@@ -1439,7 +1417,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1961004609985511514",
@@ -1453,7 +1433,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960814832489255410",
@@ -1467,7 +1449,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1960810509420388689",
-    "referenceAuthor": "@chairthatspins"
+    "referenceAuthor": "@chairthatspins",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960804437079023943",
@@ -1481,7 +1465,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960801607995810142",
@@ -1495,7 +1481,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960794751659336049",
@@ -1509,7 +1497,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1960794749893534194",
-    "referenceAuthor": "@m_ZeroLogics"
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960794749893534194",
@@ -1523,7 +1513,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960793989029769405",
@@ -1537,7 +1529,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960788959547502651",
@@ -1551,7 +1545,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960651823330591040",
@@ -1565,7 +1561,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1960650389427998813",
-    "referenceAuthor": "@m_ZeroLogics"
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960650389427998813",
@@ -1579,7 +1577,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960474868992106681",
@@ -1593,7 +1593,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1959702687915643206",
@@ -1607,7 +1609,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1958527145262612988",
@@ -1621,7 +1625,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1958498889805230350",
@@ -1635,7 +1641,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/OmotamiaDev/status/1958498431359447459",
-    "referenceAuthor": "@OmotamiaDev"
+    "referenceAuthor": "@OmotamiaDev",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1958483780559134978",
@@ -1649,7 +1657,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1958342919443952030",
@@ -1663,7 +1673,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1958151618513309859",
@@ -1677,7 +1689,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1957915202009125062",
@@ -1691,7 +1705,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1957812001276567830",
@@ -1705,7 +1721,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1957216104998404579",
@@ -1719,7 +1737,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/BeninjaLIVE/status/1957197944115052937",
-    "referenceAuthor": "@BeninjaLIVE"
+    "referenceAuthor": "@BeninjaLIVE",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1957105823638778200",
@@ -1733,7 +1753,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1957101548103671872",
@@ -1747,7 +1769,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1957036500660507118",
@@ -1761,7 +1785,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956508709800063100",
@@ -1775,7 +1801,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956408668523463163",
@@ -1789,7 +1817,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956403084969554343",
@@ -1803,7 +1833,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956400420084977721",
@@ -1817,7 +1849,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956363811964821722",
@@ -1831,7 +1865,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956343749157478428",
@@ -1845,7 +1881,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956215721731465460",
@@ -1859,7 +1897,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1955931246393258194",
@@ -1873,7 +1913,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1955771791672004863",
@@ -1887,7 +1929,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1954660140226904069",
@@ -1901,7 +1945,9 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1953539153997836382",
@@ -1915,6 +1961,8 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   }
 ]

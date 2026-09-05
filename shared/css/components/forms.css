@@ -37,7 +37,8 @@ search-controls {
 /* --- ПОИСКОВАЯ СТРОКА --- */
 .search-input-wrapper { 
     position: relative; 
-    flex: 1 1 250px; 
+    /* Даем поиску сжиматься, чтобы кнопки влезли в одну строку */
+    flex: 1 1 150px; 
     display: flex; 
     align-items: center; 
 }
@@ -91,7 +92,6 @@ search-controls {
     font-weight: 500; transition: all 0.2s ease; display: flex; align-items: center; gap: 12px; 
 }
 
-/* ИСПРАВЛЕНИЕ: Выравнивание иконки */
 .suggestion-icon { 
     color: var(--text-muted); 
     flex-shrink: 0; 
@@ -107,7 +107,6 @@ search-controls {
     display: block;
 }
 
-/* ИСПРАВЛЕНИЕ: Выравнивание текста */
 .suggestion-text { 
     white-space: nowrap; 
     overflow: hidden; 
@@ -125,15 +124,15 @@ search-controls {
     display: flex; 
     flex-wrap: wrap;
     gap: 0.75rem; 
-    flex: 0 0 auto; 
+    flex: 0 0 auto; /* Не растягиваем контейнер */
     align-items: center; 
 }
 
 /* --- КАСТОМНЫЙ СЕЛЕКТ (CustomSelect.js) --- */
 .custom-select-container { 
     position: relative; 
-    min-width: 160px; 
-    flex: 0 0 auto; 
+    min-width: 160px; /* Кнопки занимают ровно свою ширину */
+    flex: 0 0 auto; /* Не даем им тянуться на всю строку */
     z-index: 100; 
 }
 

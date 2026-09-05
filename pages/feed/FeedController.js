@@ -19,13 +19,13 @@ export class FeedController {
         this.renderInitial();
     }
 
-    handleSearchOrFilter(searchTerm, authorId) {
-        this.model.applyFilters(searchTerm, authorId);
+    handleSearchOrFilter(searchTerm, authorId, postType) {
+        this.model.applyFilters(searchTerm, authorId, postType);
         this.renderInitial();
     }
 
     renderInitial() {
-        this.container.innerHTML = ''; // Чистим контейнер
+        this.container.innerHTML = ''; 
         
         if (this.model.isEmpty()) {
             this.scroller.stop();
@@ -33,14 +33,12 @@ export class FeedController {
             return;
         }
 
-        // Показываем скелетоны при первой отрисовке для красоты UX (Опционально)
         this._renderSkeletons(3);
 
-        // Даем браузеру отрисовать скелетоны, затем рендерим реальные посты
         requestAnimationFrame(() => {
             this.container.innerHTML = '';
             this.appendNextChunk();
-            this.scroller.start(); // Запускаем слушатель скролла
+            this.scroller.start(); 
         });
     }
 
@@ -71,7 +69,7 @@ export class FeedController {
         const term = this.model.getSearchTerm();
         const desc = clone.querySelector('.empty-state-desc');
         desc.textContent = term 
-            ? `По запросу «${term}» ничего не найдено. Попробуйте изменить ключевые слова.` 
+            ? `По запросу «${term}» ничего не найдено. Попробуйте изменить фильтры.` 
             : `В базе данных пока нет записей по выбранным критериям.`;
             
         this.container.appendChild(clone);
