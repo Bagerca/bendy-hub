@@ -40,11 +40,11 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Добавляем обновленный файл
-          git add feed.json
+          # Добавляем ВСЕ измененные файлы (data/feed.json и новые аватарки в assets/developers/)
+          git add .
           
           # Коммитим только если есть изменения. [skip ci] предотвращает бесконечные циклы запусков
           git commit -m "🤖 Auto-update feed.json [skip ci]" || echo "No new posts to update."
           
-          # Пушим изменения в ветку main (если у тебя ветка master, замени origin main на origin master)
+          # Пушим изменения в ветку main
           git push origin main
