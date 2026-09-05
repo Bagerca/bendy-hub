@@ -1,0 +1,14 @@
+{
+    "id": "rockitmusicyt",
+    "name": "Rockit Music",
+    "channelUrl": "https://www.youtube.com/@RockitMusicYT",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_C1HNw_PflMQ",
+        "yt_H4h2eb9T4hc",
+        "yt_hsRsVSlWTYA",
+        "yt_wc4oHRkyItw"
+    ]
+}

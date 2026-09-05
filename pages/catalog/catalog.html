@@ -1,13 +1,22 @@
 <main class="page-content catalog-container">
     <search-controls placeholder="Поиск по названию (Enter)...">
-        <div class="sort-toggles">
-            <button id="sort-date-btn" class="sort-btn active" data-type="date" aria-label="Сортировка по дате" title="Сортировка по дате"></button>
-            <button id="sort-alpha-btn" class="sort-btn" data-type="alpha" aria-label="Сортировка по алфавиту" title="Сортировка по алфавиту"></button>
+        
+        <!-- Выпадающий список сортировки (Заменили старые кнопки) -->
+        <div class="custom-select-container" id="sort-filter-container">
+            <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                <div class="custom-select-value">
+                    <div class="custom-select-icon svg-icon"></div>
+                    <span class="custom-select-text-value">Сначала новые ▼</span>
+                </div>
+                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <ul class="custom-select-dropdown" role="listbox"></ul>
         </div>
+
+        <!-- Выпадающий список типов -->
         <div class="custom-select-container" id="type-filter-container">
             <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                 <div class="custom-select-value">
-                    <!-- Добавлен контейнер для иконки -->
                     <div class="custom-select-icon svg-icon"></div>
                     <span class="custom-select-text-value">Все проекты</span>
                 </div>
@@ -15,7 +24,9 @@
             </button>
             <ul class="custom-select-dropdown" role="listbox"></ul>
         </div>
+        
     </search-controls>
+    
     <div id="catalog-loader" class="loading-state"><div class="spinner" style="margin: 0 auto 10px;"></div><span>Синхронизация каталога...</span></div>
     <div id="catalog-content" style="display: none;"></div>
 </main>

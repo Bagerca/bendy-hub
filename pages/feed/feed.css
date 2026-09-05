@@ -96,3 +96,31 @@
 .empty-state-icon { width: 80px; height: 80px; background-color: var(--bg-body); color: var(--text-muted); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
 .empty-state-title { font-size: 1.25rem; color: var(--text-main); margin-bottom: 0.5rem; font-weight: 700; }
 .empty-state-desc { color: var(--text-muted); font-size: 0.95rem; max-width: 300px; line-height: 1.5; }
+
+/* Ретвиты */
+.rt-badge { 
+    display: flex; align-items: center; gap: 6px; font-size: 0.85rem; 
+    color: var(--text-muted); margin-bottom: 0.6rem; font-weight: 500;
+}
+.rt-badge svg { color: #00BA7C; }
+.rt-badge a { color: var(--text-main); text-decoration: none; font-weight: 600; }
+.rt-badge a:hover { color: var(--accent-color); text-decoration: underline; }
+
+/* === НОВОЕ: Плашка ответов и цитат === */
+.reference-badge {
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    font-size: 0.8rem; 
+    color: var(--accent-color); 
+    background: rgba(210, 168, 80, 0.1);
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-bottom: 1rem; 
+    font-weight: 600;
+    border: 1px solid rgba(210, 168, 80, 0.2);
+}
+.reference-badge svg { width: 14px; height: 14px; }
+.reference-badge .ref-text { opacity: 0.8; }
+.reference-badge a { color: var(--text-main); text-decoration: none; }
+.reference-badge a:hover { text-decoration: underline; }

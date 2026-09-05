@@ -6,7 +6,8 @@ export class CatalogModel {
     constructor() {
         this.allItems = [];
         this.filteredItems = [];
-        this.filters = { search: '', type: 'all', sort: 'date_asc' };
+        // Дефолтная сортировка: Сначала новые
+        this.filters = { search: '', type: 'all', sort: 'date_desc' };
     }
 
     async fetchAllItems() {
@@ -30,7 +31,6 @@ export class CatalogModel {
         }
     }
 
-    // Для выпадающего списка
     getSuggestions(query) {
         const results = SmartSearch.execute(query, this.allItems, ['title']);
         return results.slice(0, 5).map(item => ({ label: item.title, value: item.title }));
@@ -40,23 +40,33 @@ export class CatalogModel {
         this.filters = { ...this.filters, ...updates };
         const { search, type, sort } = this.filters;
 
-        // 1. Умный поиск по названию
         let result = SmartSearch.execute(search, this.allItems, ['title']);
 
-        // 2. Фильтрация по типу
         result = result.filter(item => {
             const itemType = item.type || 'game';
             return type === 'all' || itemType === type;
         });
 
-        // 3. Сортировка
+        // Функция натурального сравнения строк (понимает цифры "2" < "10" и игнорирует пунктуацию)
+        const naturalCompare = (t1, t2) => {
+            const str1 = t1 || '';
+            const str2 = t2 || '';
+            return str1.localeCompare(str2, 'ru', { numeric: true, ignorePunctuation: true });
+        };
+
         result.sort((a, b) => {
             if (sort.startsWith('alpha')) {
-                const cmp = a.title.localeCompare(b.title, 'ru');
+                const cmp = naturalCompare(a.title, b.title);
                 return sort === 'alpha_asc' ? cmp : -cmp;
             } else {
                 const timeA = this._parseRussianDate(a.release_date);
                 const timeB = this._parseRussianDate(b.release_date);
+                
+                // Тай-брейкер: если даты одинаковые (или обе TBA), сортируем по алфавиту от А до Я
+                if (timeA === timeB) {
+                    return naturalCompare(a.title, b.title);
+                }
+                
                 return sort === 'date_desc' ? timeB - timeA : timeA - timeB;
             }
         });
@@ -66,6 +76,7 @@ export class CatalogModel {
     }
 
     _parseRussianDate(dateStr) {
+        // Проекты без даты (TBA / ...) получают Infinity, чтобы всегда быть "в будущем" (наверху в новых)
         if (!dateStr || dateStr === '...' || dateStr.toUpperCase() === 'TBA') return Infinity; 
         try {
             const months = { 'янв':0, 'фев':1, 'мар':2, 'апр':3, 'мая':4, 'май':4, 'июн':5, 'июл':6, 'авг':7, 'сен':8, 'окт':9, 'ноя':10, 'дек':11 };

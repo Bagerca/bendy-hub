@@ -13,11 +13,11 @@ export class FloatingPlayer {
             titleWrapper: document.querySelector('.fp-title-wrapper'),
             title: document.getElementById('fp-title'),
             closeBtn: document.getElementById('fp-close'),
+            btnLocate: document.getElementById('fp-locate'),
             iframeContainer: document.getElementById('fp-iframe-container'),
             dragOverlay: document.getElementById('fp-drag-overlay'),
             btnPrev: document.getElementById('fp-prev'),
-            btnNext: document.getElementById('fp-next'),
-            btnLyrics: document.getElementById('btn-lyrics')
+            btnNext: document.getElementById('fp-next')
         };
 
         this.currentTrack = null;
@@ -26,7 +26,7 @@ export class FloatingPlayer {
         
         this.onNextRequest = null;
         this.onPrevRequest = null;
-        this.onLyricsRequest = null;
+        this.onLocateRequest = null;
         this.onClose = null;
 
         this._initEvents();
@@ -43,6 +43,9 @@ export class FloatingPlayer {
                         <div class="fp-title-wrapper"><span class="fp-title" id="fp-title">Воспроизведение...</span></div>
                     </div>
                     <div class="fp-actions">
+                        <button class="fp-action-btn" id="fp-locate" title="Найти в плейлисте">
+                            ${Icons.player_locate}
+                        </button>
                         <button class="fp-action-btn fp-close" id="fp-close" title="Закрыть">
                             ${Icons.close}
                         </button>
@@ -53,9 +56,6 @@ export class FloatingPlayer {
                     <div id="fp-iframe-container" style="width: 100%; height: 100%;"></div>
                 </div>
                 <div class="fp-controls">
-                    <button id="btn-lyrics" class="fp-btn" title="Текст песни">
-                        ${Icons.player_lyrics}
-                    </button>
                     <div class="fp-controls-center">
                         <button id="fp-prev" class="fp-btn" title="Предыдущий трек">
                             ${Icons.player_prev}
@@ -75,12 +75,18 @@ export class FloatingPlayer {
         this.els.closeBtn.addEventListener('click', () => this.close());
         this.els.btnNext.addEventListener('click', () => { if (this.onNextRequest) this.onNextRequest(); });
         this.els.btnPrev.addEventListener('click', () => { if (this.onPrevRequest) this.onPrevRequest(); });
-        this.els.btnLyrics.addEventListener('click', () => { 
-            if (this.onLyricsRequest && this.currentTrack) {
-                this.onLyricsRequest(this.currentTrack.id); 
-            } else if (window.location.pathname.indexOf('music.html') === -1) {
-                if (window.router) window.router.navigate('music.html');
-                else window.location.href = 'music.html';
+        
+        this.els.btnLocate.addEventListener('click', () => {
+            if (this.onLocateRequest && this.currentTrack) {
+                // Если мы на странице музыки (контроллер подключен)
+                this.onLocateRequest(this.currentTrack);
+            } else if (this.currentTrack) {
+                // Мы на другой странице, кидаем пользователя в музыку с параметром
+                if (window.router) {
+                    window.router.navigate(`music.html?locate=${this.currentTrack.id}`);
+                } else {
+                    window.location.href = `music.html?locate=${this.currentTrack.id}`;
+                }
             }
         });
     }

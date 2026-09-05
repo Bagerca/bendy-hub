@@ -106,22 +106,16 @@
     padding: 0.85rem 1rem;
     display: flex; 
     flex-direction: column; 
-    flex-grow: 1; 
-    justify-content: space-between; 
-    gap: 0.4rem;
+    gap: 4px;
     overflow: hidden;
-    
-    /* Магия градиента перенесена на контейнер. 
-       Слева и справа маска растворяет текст в зоне внутренних отступов (padding).
-       В покое текст полностью видимый! */
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 16px), transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 16px), transparent 100%);
 }
 
-.song-text-wrap { 
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
+/* Настройки для заголовка (Grid View) */
+.song-title-wrapper {
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 16px), transparent 100%);
+    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 16px), transparent 100%);
 }
 
 .song-title { 
@@ -132,8 +126,15 @@
     display: block; 
     width: 100%;
     transition: color 0.2s;
-    line-height: 1.3;
+    line-height: 1.2;
     will-change: transform;
+}
+
+.song-meta { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 10px;
 }
 
 .song-artist { 
@@ -145,9 +146,12 @@
     text-overflow: ellipsis; 
 }
 
-.song-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-.song-year { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); }
-.song-game { font-size: 0.7rem; background: var(--bg-body); padding: 3px 8px; border-radius: 6px; color: var(--text-main); font-weight: 700; border: 1px solid var(--border-color); }
+.song-year { 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
 
 
 /* =========================================
@@ -166,17 +170,30 @@
     align-items: center; 
     justify-content: space-between; 
     width: 100%; 
-    /* В списке нет левого отступа, поэтому маска только справа */
-    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 16px), transparent 100%);
-    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 16px), transparent 100%);
+    gap: 20px;
 }
 
-.music-grid.list-view .song-text-wrap { width: 50%; flex-shrink: 0; }
-.music-grid.list-view .song-meta { width: auto; justify-content: flex-end; gap: 1.5rem; margin-top: 0;}
+/* Название занимает все свободное место слева */
+.music-grid.list-view .song-title-wrapper {
+    flex-grow: 1;
+}
+
+/* Мета-информация (Автор и год) жестко прибиты вправо */
+.music-grid.list-view .song-meta { 
+    flex-shrink: 0; 
+    min-width: 140px; 
+    max-width: 250px;
+    justify-content: flex-end; 
+    gap: 15px;
+}
+
+.music-grid.list-view .song-artist {
+    text-align: right;
+}
 
 @media (max-width: 600px) {
     .music-grid { grid-template-columns: 1fr; gap: 1.25rem;}
     .music-grid.list-view .song-meta { display: none; }
-    .music-grid.list-view .song-text-wrap { width: 100%; }
+    .music-grid.list-view .song-info { width: 100%; }
     .music-grid.list-view .song-cover-wrapper { width: 100px; height: 56px; }
 }

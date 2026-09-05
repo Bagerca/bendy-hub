@@ -16,25 +16,8 @@
 .music-layout { padding-bottom: 120px; position: relative; }
 
 /* =========================================
-   КНОПКИ СОРТИРОВКИ И ВИДА
+   ПЕРЕКЛЮЧАТЕЛИ ВИДА
    ========================================= */
-.sort-toggles { display: flex; gap: 0.5rem; }
-
-.sort-btn {
-    display: flex; align-items: center; justify-content: center; gap: 4px; 
-    height: 44px; padding: 0 1rem; 
-    background-color: var(--bg-body); border: 1px solid var(--border-color);
-    border-radius: 8px; color: var(--text-muted); cursor: pointer;
-    transition: all 0.2s ease; font-family: inherit; font-weight: 500;
-}
-.sort-btn:hover { border-color: var(--text-muted); color: var(--text-main); }
-.sort-btn.active {
-    background-color: rgba(210, 168, 80, 0.1); border-color: var(--accent-color); color: var(--accent-color);
-}
-.sort-arrow { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; width: 0; margin-left: -4px; }
-.sort-btn.active .sort-arrow { opacity: 1; width: 16px; margin-left: 0; }
-.sort-btn[data-dir="desc"] .sort-arrow { transform: rotate(180deg); }
-
 .view-toggles {
     display: flex; gap: 4px; background: var(--bg-body);
     padding: 4px; border-radius: 8px; border: 1px solid var(--border-color);
@@ -49,7 +32,8 @@
 
 .optical-center { transform: translateX(1.5px); }
 
+/* Адаптив для маленьких экранов (чтобы кнопки растягивались) */
 @media (max-width: 768px) {
-    .sort-btn { flex: 1; padding: 0 0.5rem; }
+    .view-toggles { width: 100%; display: flex; }
     .view-btn { flex: 1; }
 }

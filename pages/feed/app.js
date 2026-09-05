@@ -3,7 +3,7 @@ import { fetchData } from '../../shared/js/api.js';
 import { FeedModel } from './FeedModel.js';
 import { PostView } from './PostView.js';
 import { FeedController } from './FeedController.js';
-import { Icons } from '../../shared/js/icons.js'; // Импортируем иконки
+import { Icons } from '../../shared/js/icons.js';
 
 const TRACKED_AUTHORS = [
     { handle: '@Bendy', name: 'Bendy' },
@@ -49,28 +49,37 @@ export async function init() {
     });
 
     try {
-        const data = await fetchData('data/feed.json'); 
-        const feedData = Array.isArray(data) ? data : [];
-
-        // Используем иконку cat_all из глобального хранилища
         const allDevsIcon = `<div class="svg-icon">${Icons.cat_all}</div>`;
         const fallbackAvatarUri = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238B949E' stroke-width='2'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E";
 
         const selectOptions = [{ id: 'all', label: 'Все разработчики', iconHtml: allDevsIcon }];
 
-        TRACKED_AUTHORS.forEach(author => {
+        // 1. Формируем запросы на получение индивидуальных лент каждого разработчика
+        const feedPromises = TRACKED_AUTHORS.map(author => {
             const handleClean = author.handle.replace('@', '').toLowerCase();
+            
+            // Добавляем автора в выпадающий список
             selectOptions.push({
                 id: author.handle, 
                 label: author.name, 
                 iconHtml: `<img src="assets/developers/${handleClean}/avatar.jpg" alt="Avatar" class="custom-select-icon" onerror="this.onerror=null; this.src='${fallbackAvatarUri}';">`
             });
+
+            // Запрашиваем файл feed.json из его папки
+            return fetchData(`assets/developers/${handleClean}/feed.json`).catch(() => []);
         });
 
         authorSelect.populate(selectOptions, 'all');
 
-        if (feedData.length > 0) {
-            model.setPosts(feedData);
+        // 2. Дожидаемся всех загрузок и сливаем в один массив
+        const results = await Promise.all(feedPromises);
+        let combinedFeed = [];
+        results.forEach(feedArray => {
+            if (Array.isArray(feedArray)) combinedFeed.push(...feedArray);
+        });
+
+        if (combinedFeed.length > 0) {
+            model.setPosts(combinedFeed);
             controller.start();
         } else {
             controller.renderEmptyState();

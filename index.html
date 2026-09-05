@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="pages/music/music.css">
     <link rel="stylesheet" href="pages/music/song-card.css">
     <link rel="stylesheet" href="pages/music/floating-player.css">
-    <link rel="stylesheet" href="pages/music/lyrics-panel.css">
     <link rel="stylesheet" href="pages/feed/feed.css">
     <link rel="stylesheet" href="pages/timeline/timeline.css">
     <link rel="stylesheet" href="pages/records/records.css">
@@ -82,10 +81,40 @@
     <template id="char-card-template"><a href="" class="char-card"><div class="char-avatar-wrapper"></div><span class="char-card-name"></span></a></template>
 
     <!-- Музыка: Карточка -->
-    <template id="song-card-template"><article class="song-card"><div class="song-cover-wrapper"><div class="no-audio-badge" style="display: none;">Нет медиа</div><img src="" alt="" class="song-cover" loading="lazy"><div class="song-overlay"></div><button class="song-play-btn dyn-icon-play"></button></div><div class="song-info"><div class="song-text-wrap"><h3 class="song-title"></h3><p class="song-artist"></p></div><div class="song-meta"><span class="song-year"></span><span class="song-game"></span></div></div></article></template>
+    <template id="song-card-template"><article class="song-card"><div class="song-cover-wrapper"><div class="no-audio-badge" style="display: none;">Нет медиа</div><img src="" alt="" class="song-cover" loading="lazy"><div class="song-overlay"></div><button class="song-play-btn dyn-icon-play"></button></div><div class="song-info"><div class="song-title-wrapper"><h3 class="song-title"></h3></div><div class="song-meta"><p class="song-artist"></p><span class="song-year"></span></div></div></article></template>
 
-    <!-- Лента: Пост и Скелетон. Иконки вырезаны и вставляются через PostView.js -->
-    <template id="post-template"><article class="post-card"><header class="post-header"><img src="" alt="Avatar" class="post-avatar" loading="lazy"><div class="post-meta"><h2 class="post-author-name"></h2><a class="post-author-handle" target="_blank" rel="noopener noreferrer"></a></div><span class="post-platform-badge"></span></header><div class="post-content"><div class="rt-badge" style="display: none;"><span>Оригинал: <a class="rt-author" target="_blank" rel="noopener noreferrer"></a></span></div><p class="post-text"></p><div class="post-translation" style="display: none;"><div class="post-translation-header">Перевод</div><p class="post-translation-text"></p></div><img src="" alt="Вложение" class="post-media img-media" loading="lazy" style="display: none;" title="Нажмите для увеличения"><video class="post-media video-media" autoplay loop muted playsinline style="display: none;"></video></div><footer class="post-footer"><time class="post-date" datetime=""></time><div class="post-actions"><button class="action-btn translate-btn" aria-label="Перевести" title="Перевести"><span>Перевести</span></button><button class="action-btn copy-btn" aria-label="Скопировать" title="Скопировать"></button></div></footer></article></template>
+    <!-- Лента: Пост и Скелетон -->
+    <template id="post-template">
+        <article class="post-card">
+            <header class="post-header">
+                <img src="" alt="Avatar" class="post-avatar" loading="lazy">
+                <div class="post-meta">
+                    <h2 class="post-author-name"></h2>
+                    <a class="post-author-handle" target="_blank" rel="noopener noreferrer"></a>
+                </div>
+                <span class="post-platform-badge"></span>
+            </header>
+            <div class="post-content">
+                <div class="rt-badge" style="display: none;"><span>Оригинал: <a class="rt-author" target="_blank" rel="noopener noreferrer"></a></span></div>
+                <div class="reference-badge" style="display: none;"><span class="ref-text"></span> <a class="ref-link" target="_blank" rel="noopener noreferrer"></a></div>
+                <p class="post-text"></p>
+                <div class="post-translation" style="display: none;">
+                    <div class="post-translation-header">Перевод</div>
+                    <p class="post-translation-text"></p>
+                </div>
+                <img src="" alt="Вложение" class="post-media img-media" loading="lazy" style="display: none;" title="Нажмите для увеличения">
+                <video class="post-media video-media" controls preload="metadata" style="display: none;"></video>
+            </div>
+            <footer class="post-footer">
+                <time class="post-date" datetime=""></time>
+                <div class="post-actions">
+                    <button class="action-btn translate-btn" aria-label="Перевести" title="Перевести"><span>Перевести</span></button>
+                    <button class="action-btn copy-btn" aria-label="Скопировать" title="Скопировать"></button>
+                </div>
+            </footer>
+        </article>
+    </template>
+    
     <template id="skeleton-template"><div class="post-card skeleton-card"><header class="post-header"><div class="skeleton-avatar skeleton-pulse"></div><div class="post-meta" style="gap: 8px;"><div class="skeleton-line skeleton-pulse" style="width: 120px;"></div><div class="skeleton-line skeleton-pulse" style="width: 80px; height: 10px;"></div></div></header><div class="post-content" style="gap: 12px; display: flex; flex-direction: column;"><div class="skeleton-line skeleton-pulse" style="width: 100%;"></div><div class="skeleton-line skeleton-pulse" style="width: 90%;"></div><div class="skeleton-line skeleton-pulse" style="width: 60%;"></div><div class="skeleton-pulse" style="width: 100%; height: 200px; border-radius: 12px; margin-top: 10px;"></div></div></div></template>
 
     <!-- Хронология: Карточки -->

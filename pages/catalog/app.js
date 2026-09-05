@@ -8,6 +8,7 @@ export async function init() {
     const cardView = new CatalogCardView('template-card-horizontal', 'template-card-vertical');
     const controller = new CatalogController(model, cardView);
 
+    // 1. Инициализация выпадающего списка ТИПОВ
     const typeSelect = new window.CustomSelect('type-filter-container', (selectedId) => {
         controller.handleFilterChange({ type: selectedId });
     });
@@ -15,8 +16,6 @@ export async function init() {
     const iconAll = `<div class="svg-icon">${Icons.cat_all}</div>`;
     const iconGame = `<div class="svg-icon">${Icons.stat_gamepad}</div>`;
     const iconBook = `<div class="svg-icon">${Icons.stat_book}</div>`;
-    
-    // Заменили иконку YouTube на новую иконку кинопленки
     const iconMovie = `<div class="svg-icon">${Icons.cat_movie}</div>`;
 
     typeSelect.populate([
@@ -26,42 +25,51 @@ export async function init() {
         { id: 'movie', label: 'Анимация', iconHtml: iconMovie }
     ], 'all');
 
-    const dateBtn = document.getElementById('sort-date-btn');
-    const alphaBtn = document.getElementById('sort-alpha-btn');
-    
-    dateBtn.innerHTML = `${Icons.sort_date}${Icons.sort_arrow}`;
-    alphaBtn.innerHTML = `${Icons.sort_alpha}${Icons.sort_arrow}`;
-
+    // 2. Инициализация выпадающего списка СОРТИРОВКИ
     let currentSortType = 'date';
-    let currentSortDir = 'asc'; 
+    let currentSortDir = 'desc'; 
 
-    function updateSortUI() {
-        dateBtn.classList.remove('active');
-        alphaBtn.classList.remove('active');
-        const activeBtn = currentSortType === 'date' ? dateBtn : alphaBtn;
-        activeBtn.classList.add('active');
-        activeBtn.setAttribute('data-dir', currentSortDir);
-        controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
-    }
+    const iconDate = `<div class="svg-icon">${Icons.sort_date}</div>`;
+    const iconAlpha = `<div class="svg-icon">${Icons.sort_alpha}</div>`;
 
-    function handleSortClick(clickedType) {
-        if (currentSortType === clickedType) {
+    const sortSelect = new window.CustomSelect('sort-filter-container', (selectedId) => {
+        if (currentSortType === selectedId) {
+            // Если кликаем по уже активной кнопке — меняем направление
             currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
         } else {
-            currentSortType = clickedType;
-            currentSortDir = 'asc';
+            // Если выбрали другую — применяем её дефолтное направление
+            currentSortType = selectedId;
+            currentSortDir = selectedId === 'date' ? 'desc' : 'asc';
         }
+        
         updateSortUI();
+        controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
+    });
+
+    function updateSortUI() {
+        const getArrow = (dir) => `<span class="sort-dir-wrap ${dir}">${Icons.sort_dir}</span>`;
+        
+        sortSelect.populate([
+            { 
+                id: 'date', 
+                label: `По дате ${currentSortType === 'date' ? getArrow(currentSortDir) : ''}`, 
+                iconHtml: iconDate 
+            },
+            { 
+                id: 'alpha', 
+                label: `По алфавиту ${currentSortType === 'alpha' ? getArrow(currentSortDir) : ''}`, 
+                iconHtml: iconAlpha 
+            }
+        ], currentSortType);
     }
 
-    dateBtn.addEventListener('click', () => handleSortClick('date'));
-    alphaBtn.addEventListener('click', () => handleSortClick('alpha'));
+    updateSortUI(); // Первичная отрисовка списка сортировки
 
+    // 3. Поиск
     const searchControls = document.querySelector('search-controls');
     searchControls.suggestionProvider = (query) => model.getSuggestions(query);
     searchControls.addEventListener('onSearch', (e) => controller.handleFilterChange({ search: e.detail }));
 
-    dateBtn.setAttribute('data-dir', 'asc');
     await controller.init();
     
     return controller;

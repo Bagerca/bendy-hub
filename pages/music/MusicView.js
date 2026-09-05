@@ -8,10 +8,7 @@ export class MusicView {
             loader: document.getElementById('music-loader'),
             ambientBg: document.getElementById('ambient-bg'),
             btnGrid: document.getElementById('btn-view-grid'),
-            btnList: document.getElementById('btn-view-list'),
-            panel: document.getElementById('lyrics-panel'),
-            overlay: document.getElementById('lyrics-overlay'),
-            closeBtn: document.querySelector('.panel-close')
+            btnList: document.getElementById('btn-view-list')
         };
         
         this.templates = {
@@ -20,20 +17,11 @@ export class MusicView {
             error: document.getElementById('error-state-template')
         };
 
-        if (this.els.closeBtn) this.els.closeBtn.innerHTML = Icons.close;
-
         this.onTrackClick = null; 
         this._initEvents();
     }
 
     _initEvents() {
-        const closePanel = () => {
-            this.els.panel.classList.remove('active');
-            this.els.overlay.classList.remove('active');
-        };
-        this.els.closeBtn.addEventListener('click', closePanel);
-        this.els.overlay.addEventListener('click', closePanel);
-
         this.els.btnGrid.addEventListener('click', () => this.setViewMode('grid'));
         this.els.btnList.addEventListener('click', () => this.setViewMode('list'));
     }
@@ -101,9 +89,7 @@ export class MusicView {
             clone.querySelector('.song-title').textContent = track.title;
             clone.querySelector('.song-artist').textContent = track.artist;
             clone.querySelector('.song-year').textContent = track.year || '';
-            clone.querySelector('.song-game').textContent = track.game || 'Bendy';
             
-            // Вставка иконки Плея в карточку трека
             const playBtn = clone.querySelector('.dyn-icon-play');
             if (playBtn) playBtn.innerHTML = Icons.play_btn;
 
@@ -159,23 +145,6 @@ export class MusicView {
         if (!trackId) {
             this.els.ambientBg.style.opacity = '0';
         }
-    }
-
-    openLyrics(track) {
-        document.getElementById('lyrics-title').textContent = track.title;
-        document.getElementById('lyrics-original').textContent = track.lyrics?.original || 'Текст недоступен.';
-        document.getElementById('lyrics-translation').textContent = track.lyrics?.translation || 'Перевод недоступен.';
-        
-        const ytBtn = document.getElementById('lyrics-youtube');
-        if (track.youtubeUrl) {
-            ytBtn.href = track.youtubeUrl;
-            ytBtn.style.display = 'inline-flex';
-        } else {
-            ytBtn.style.display = 'none';
-        }
-
-        this.els.overlay.classList.add('active');
-        this.els.panel.classList.add('active');
     }
 
     _renderEmptyState() {

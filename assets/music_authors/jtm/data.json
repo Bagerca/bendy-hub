@@ -1,0 +1,12 @@
+{
+    "id": "jtm",
+    "name": "JT Music",
+    "channelUrl": "https://www.youtube.com/@JTM",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_-FZ9iutflt0",
+        "yt_jpUpX--8ucI"
+    ]
+}

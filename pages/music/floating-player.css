@@ -142,7 +142,13 @@
 .fp-drag-overlay { position: absolute; inset: 0; z-index: 10; display: none; }
 .floating-player.is-dragging .fp-drag-overlay { display: block; }
 
-.fp-controls { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; background-color: var(--bg-card); }
+.fp-controls { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; /* Центрируем кнопки после удаления левой */
+    padding: 10px 15px; 
+    background-color: var(--bg-card); 
+}
 .fp-controls-center { display: flex; align-items: center; gap: 15px; }
 
 /* Иконки управления внизу плеера */

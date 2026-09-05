@@ -1,0 +1,11 @@
+{
+    "id": "thesgl",
+    "name": "TheSGL",
+    "channelUrl": "https://www.youtube.com/@TheSGL",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_8D2CERuOcF4"
+    ]
+}

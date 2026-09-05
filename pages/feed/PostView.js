@@ -10,6 +10,9 @@ export class PostView {
         this.translator = translationService;
         this.authorNamesMap = authorNamesMap; 
         this.fallbackAvatar = Icons.avatar_fallback;
+        
+        // Иконка для ответов/цитат (используем изогнутую стрелку)
+        this.replyIcon = `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>`;
     }
 
     render(post, searchTerm = '') {
@@ -17,6 +20,7 @@ export class PostView {
             const clone = this.template.content.cloneNode(true);
             const rawText = this._extractText(post, clone);
             
+            this._setupContext(clone, post); // Контекст (Цитаты/Ответы)
             this._setupText(clone, rawText, searchTerm);
             this._setupMeta(clone, post);
             this._setupMedia(clone, post);
@@ -34,6 +38,7 @@ export class PostView {
         const rtAuthorLink = clone.querySelector('.rt-author');
         let text = post.content;
         
+        // Парсим ретвиты
         const rtMatch = post.content.match(/^RT\s+(?:by\s+)?(@[\w_]+)[\s:]+([\s\S]*)$/i);
         if (rtMatch) {
             text = rtMatch[2].trim();
@@ -45,6 +50,30 @@ export class PostView {
 
         if (text.trim().toLowerCase() === 'gif') text = '';
         return text;
+    }
+
+    _setupContext(clone, post) {
+        const refBadge = clone.querySelector('.reference-badge');
+        
+        // Если это не ответ и не цитата, ничего не делаем
+        if (!post.referenceType || !post.referenceUrl) return;
+
+        refBadge.style.display = 'inline-flex';
+        refBadge.insertAdjacentHTML('afterbegin', this.replyIcon);
+        
+        const textSpan = refBadge.querySelector('.ref-text');
+        const linkA = refBadge.querySelector('.ref-link');
+
+        if (post.referenceType === 'reply') {
+            textSpan.textContent = 'В ответ:';
+        } else if (post.referenceType === 'quote') {
+            textSpan.textContent = 'Цитата:';
+        } else {
+            textSpan.textContent = 'Ссылка:';
+        }
+
+        linkA.textContent = post.referenceAuthor || 'Оригинальный пост';
+        linkA.href = post.referenceUrl;
     }
 
     _setupText(clone, text, searchTerm) {
@@ -59,8 +88,9 @@ export class PostView {
     }
 
     _setupMeta(clone, post) {
-        const handleLower = (post.authorHandle || '').toLowerCase();
-        const displayName = this.authorNamesMap[handleLower] || post.authorName || post.authorHandle;
+        // Имя и хендл
+        const handleClean = (post.authorHandle || '').replace('@', '').trim().toLowerCase();
+        const displayName = this.authorNamesMap[`@${handleClean}`] || post.authorName || post.authorHandle;
 
         clone.querySelector('.post-author-name').textContent = displayName;
         
@@ -71,26 +101,15 @@ export class PostView {
         const handleEl = clone.querySelector('.post-author-handle');
         handleEl.textContent = post.authorHandle;
         if (post.platform === 'twitter') {
-            handleEl.href = `https://twitter.com/${post.authorHandle.replace('@', '')}`;
+            handleEl.href = `https://twitter.com/${handleClean}`;
         }
 
+        // АВАТАРКА: Жестко задаем путь, игнорируя то, что написано в JSON
         const avatarEl = clone.querySelector('.post-avatar');
-        const handleClean = post.authorHandle.replace('@', '').toLowerCase();
-        const internetUrl = post.originalAvatarUrl || post.avatarUrl;
-        
-        const newLocalPath = `assets/developers/${handleClean}/avatar.jpg`;
+        avatarEl.src = `assets/developers/${handleClean}/avatar.jpg`;
+        avatarEl.onerror = () => { avatarEl.src = this.fallbackAvatar; };
 
-        avatarEl.onerror = () => {
-            if (!avatarEl.dataset.triedInternet && internetUrl) {
-                avatarEl.dataset.triedInternet = 'true';
-                avatarEl.src = internetUrl;
-            } else if (!avatarEl.src.includes('data:image')) {
-                avatarEl.src = this.fallbackAvatar;
-            }
-        };
-        
-        avatarEl.src = newLocalPath;
-
+        // Дата
         const dateEl = clone.querySelector('.post-date');
         if (post.timestamp) {
             dateEl.textContent = new Date(post.timestamp).toLocaleString('ru-RU', {
@@ -101,9 +120,9 @@ export class PostView {
     }
 
     _setupMedia(clone, post) {
-        if (!post.mediaUrl || post.mediaUrl === 'null') return;
+        if (!post.mediaUrl) return;
 
-        if (post.mediaUrl.match(/\.(mp4|m3u8|webm)/i) || post.mediaUrl.includes('/video/')) {
+        if (post.mediaType === 'video' || post.mediaUrl.endsWith('.mp4')) {
             const videoEl = clone.querySelector('.video-media');
             videoEl.src = post.mediaUrl;
             videoEl.style.display = 'block';

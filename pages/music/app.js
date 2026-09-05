@@ -6,7 +6,6 @@ import { Icons } from '../../shared/js/icons.js';
 export async function init() {
     const model = new MusicModel();
     const view = new MusicView();
-    
     const player = window.globalPlayer; 
     
     const controller = new MusicController(model, view, player);
@@ -17,42 +16,57 @@ export async function init() {
         controller.handleFilterChange({ search: e.detail });
     });
 
-    const dateBtn = document.getElementById('sort-date-btn');
-    const alphaBtn = document.getElementById('sort-alpha-btn');
-    const gridBtn = document.getElementById('btn-view-grid');
-    const listBtn = document.getElementById('btn-view-list');
-
-    // Вставляем иконки
-    dateBtn.innerHTML = `${Icons.sort_date}${Icons.sort_arrow}`;
-    alphaBtn.innerHTML = `${Icons.sort_alpha}${Icons.sort_arrow}`;
-    gridBtn.innerHTML = Icons.view_grid;
-    listBtn.innerHTML = Icons.view_list;
-    
+    // 1. Инициализация выпадающего списка СОРТИРОВКИ
     let currentSortType = 'date';
-    let currentSortDir = 'asc'; 
+    let currentSortDir = 'desc'; 
+
+    const iconDate = `<div class="svg-icon">${Icons.sort_date}</div>`;
+    const iconAlpha = `<div class="svg-icon">${Icons.sort_alpha}</div>`;
+
+    const sortSelect = new window.CustomSelect('sort-filter-container', (selectedId) => {
+        if (currentSortType === selectedId) {
+            currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+            currentSortType = selectedId;
+            currentSortDir = selectedId === 'date' ? 'desc' : 'asc';
+        }
+        
+        updateSortUI();
+        controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
+    });
 
     function updateSortUI() {
-        dateBtn.classList.remove('active');
-        alphaBtn.classList.remove('active');
-        const activeBtn = currentSortType === 'date' ? dateBtn : alphaBtn;
-        activeBtn.classList.add('active');
-        activeBtn.setAttribute('data-dir', currentSortDir);
-        controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
+        const getArrow = (dir) => `<span class="sort-dir-wrap ${dir}">${Icons.sort_dir}</span>`;
+        
+        sortSelect.populate([
+            { 
+                id: 'date', 
+                label: `По дате ${currentSortType === 'date' ? getArrow(currentSortDir) : ''}`, 
+                iconHtml: iconDate 
+            },
+            { 
+                id: 'alpha', 
+                label: `По алфавиту ${currentSortType === 'alpha' ? getArrow(currentSortDir) : ''}`, 
+                iconHtml: iconAlpha 
+            }
+        ], currentSortType);
     }
 
-    dateBtn.addEventListener('click', () => {
-        currentSortDir = currentSortType === 'date' && currentSortDir === 'asc' ? 'desc' : 'asc';
-        currentSortType = 'date';
-        updateSortUI();
-    });
-    
-    alphaBtn.addEventListener('click', () => {
-        currentSortDir = currentSortType === 'alpha' && currentSortDir === 'asc' ? 'desc' : 'asc';
-        currentSortType = 'alpha';
-        updateSortUI();
+    updateSortUI(); // Первичная отрисовка списка
+
+    // 2. Инициализация выпадающего списка АВТОРОВ
+    const authorSelect = new window.CustomSelect('author-filter-container', (selectedId) => {
+        controller.handleFilterChange({ author: selectedId });
     });
 
-    dateBtn.setAttribute('data-dir', 'asc');
+    controller.authorSelect = authorSelect; 
+
+    // 3. Кнопки отображения
+    const gridBtn = document.getElementById('btn-view-grid');
+    const listBtn = document.getElementById('btn-view-list');
+    gridBtn.innerHTML = Icons.view_grid;
+    listBtn.innerHTML = Icons.view_list;
+
     await controller.init();
 
     return controller;

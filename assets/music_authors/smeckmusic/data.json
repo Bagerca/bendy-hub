@@ -1,0 +1,11 @@
+{
+    "id": "smeckmusic",
+    "name": "SmeckMusic",
+    "channelUrl": "https://www.youtube.com/@SmeckMusic",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_wL3OlIS9Qtk"
+    ]
+}

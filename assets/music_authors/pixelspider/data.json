@@ -1,0 +1,12 @@
+{
+    "id": "pixelspider",
+    "name": "PixelSpider",
+    "channelUrl": "https://www.youtube.com/@PixelSpider",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_79-spV_7rPw",
+        "yt_GCf4Zq88ktg"
+    ]
+}

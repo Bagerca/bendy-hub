@@ -1,0 +1,11 @@
+{
+    "id": "chichiai",
+    "name": "Chi-Chi",
+    "channelUrl": "https://www.youtube.com/@ChichiAi",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_HyGX7c3j2wk"
+    ]
+}

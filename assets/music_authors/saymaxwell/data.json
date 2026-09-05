@@ -1,0 +1,11 @@
+{
+    "id": "saymaxwell",
+    "name": "SayMaxWell",
+    "channelUrl": "https://www.youtube.com/@SayMaxWell",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_KKp3mx5NMiE"
+    ]
+}

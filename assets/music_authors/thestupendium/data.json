@@ -1,0 +1,12 @@
+{
+    "id": "thestupendium",
+    "name": "The Stupendium",
+    "channelUrl": "https://www.youtube.com/@TheStupendium",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_3BMxoqsZox0",
+        "yt_u81OS9hC85g"
+    ]
+}
