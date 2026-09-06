@@ -1,0 +1,12 @@
+{
+    "id": "memeeveryt",
+    "name": "MemeEver",
+    "channelUrl": "https://www.youtube.com/@memeeveryt",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_4LssY1TM2gQ",
+        "yt_QXLbna7gzR8"
+    ]
+}

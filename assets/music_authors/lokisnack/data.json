@@ -1,0 +1,13 @@
+{
+    "id": "lokisnack",
+    "name": "Loki & Snack",
+    "channelUrl": "https://www.youtube.com/@LokiSnack",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_prl7zN4pumA",
+        "yt_K3_IhAgRz7c",
+        "yt_dUXo97CIxmg"
+    ]
+}

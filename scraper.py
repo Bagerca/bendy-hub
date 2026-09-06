@@ -107,6 +107,21 @@ class BendySniperScraper:
             logging.warning(f"    ⚠️ Ошибка скачивания медиа {url}: {e}")
             return None
 
+    def fetch_single_tweet(self, tweet_id: str) -> dict:
+        """ 
+        НОВЫЙ МЕТОД: Докачивает данные конкретного твита через Syndication API.
+        Используется для получения картинок и текстов из ответов (Replies).
+        """
+        url = f"https://cdn.syndication.twimg.com/tweet-result?id={tweet_id}"
+        try:
+            req = urllib.request.Request(url, headers=self.get_headers())
+            with urllib.request.urlopen(req, timeout=10) as response:
+                if response.status == 200:
+                    return json.loads(response.read().decode('utf-8'))
+        except Exception as e:
+            pass # Если твит удален или закрыт, молча возвращаем пустой словарь
+        return {}
+
     def process_developer_folder(self, handle: str, actual_name: str, avatar_url: str) -> str:
         safe_handle = handle.replace('@', '').lower()
         dev_dir = os.path.join(self.devs_dir, safe_handle)
@@ -208,9 +223,30 @@ class BendySniperScraper:
 
                 elif tweet.get('in_reply_to_status_id_str'):
                     ref_type = "reply"
+                    reply_id = tweet.get('in_reply_to_status_id_str')
                     ref_author = tweet.get('in_reply_to_screen_name', '')
-                    if ref_author:
-                        ref_url = f"https://twitter.com/{ref_author}/status/{tweet['in_reply_to_status_id_str']}"
+                    if ref_author and reply_id:
+                        ref_url = f"https://twitter.com/{ref_author}/status/{reply_id}"
+
+                        # --- УМНОЕ ДОКАЧИВАНИЕ ОТВЕТОВ ---
+                        logging.info(f"      🔍 Докачиваем детали ответа (ID: {reply_id})")
+                        time.sleep(0.5) # Защита от лимитов Твиттера
+                        orig_tweet = self.fetch_single_tweet(reply_id)
+                        
+                        if orig_tweet:
+                            ref_type = "quote" # Конвертируем в цитату для фронтенда
+                            ref_author = orig_tweet.get('user', {}).get('screen_name', ref_author)
+                            ref_author_name = orig_tweet.get('user', {}).get('name', ref_author)
+                            ref_avatar_url = orig_tweet.get('user', {}).get('profile_image_url_https', '')
+                            ref_text = orig_tweet.get('text', '')
+
+                            if 'photos' in orig_tweet and orig_tweet['photos']:
+                                ref_media_url = orig_tweet['photos'][0].get('url')
+                            elif 'video' in orig_tweet and orig_tweet['video'].get('poster'):
+                                ref_media_url = orig_tweet['video'].get('poster')
+                                ref_media_type = "image"
+
+                            logging.info(f"        ✨ Ответ от @{ref_author} успешно дополнен текстом и медиа!")
 
                 posts.append({
                     "id": post_id,
@@ -313,9 +349,30 @@ class BendySniperScraper:
 
                 elif tweet.get('in_reply_to_status_id_str'):
                     ref_type = "reply"
+                    reply_id = tweet.get('in_reply_to_status_id_str')
                     ref_author = tweet.get('in_reply_to_screen_name', '')
-                    if ref_author:
-                        ref_url = f"https://twitter.com/{ref_author}/status/{tweet['in_reply_to_status_id_str']}"
+                    if ref_author and reply_id:
+                        ref_url = f"https://twitter.com/{ref_author}/status/{reply_id}"
+
+                        # --- УМНОЕ ДОКАЧИВАНИЕ ОТВЕТОВ ---
+                        logging.info(f"      🔍 Докачиваем детали ответа (ID: {reply_id})")
+                        time.sleep(0.5)
+                        orig_tweet = self.fetch_single_tweet(reply_id)
+                        
+                        if orig_tweet:
+                            ref_type = "quote" # Конвертируем в цитату для фронтенда
+                            ref_author = orig_tweet.get('user', {}).get('screen_name', ref_author)
+                            ref_author_name = orig_tweet.get('user', {}).get('name', ref_author)
+                            ref_avatar_url = orig_tweet.get('user', {}).get('profile_image_url_https', '')
+                            ref_text = orig_tweet.get('text', '')
+
+                            if 'photos' in orig_tweet and orig_tweet['photos']:
+                                ref_media_url = orig_tweet['photos'][0].get('url')
+                            elif 'video' in orig_tweet and orig_tweet['video'].get('poster'):
+                                ref_media_url = orig_tweet['video'].get('poster')
+                                ref_media_type = "image"
+
+                            logging.info(f"        ✨ Ответ от @{ref_author} успешно дополнен текстом и медиа!")
 
                 posts.append({
                     "id": post_id,
