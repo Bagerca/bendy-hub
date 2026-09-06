@@ -7,6 +7,7 @@ export class HeroView {
             contentWrapper: document.getElementById('hero-content'),
             posterContainer: document.getElementById('hero-poster-container'),
             posterImg: document.getElementById('project-poster'),
+            posterFallback: document.getElementById('hero-cover-fallback'), // Добавили ссылку на заглушку
             logo: document.getElementById('project-logo'),
             title: document.getElementById('project-title'),
             date: document.getElementById('project-date'),
@@ -44,12 +45,32 @@ export class HeroView {
                 this.els.posterContainer.classList.remove('movie-poster');
             }
 
+            // Настройка иконки заглушки в зависимости от типа
+            const fallbackIcons = {
+                game: Icons.stat_gamepad,
+                book: Icons.stat_book,
+                movie: Icons.cat_movie
+            };
+            this.els.posterFallback.innerHTML = fallbackIcons[type] || fallbackIcons.game;
+
+            // Контейнер постера показываем всегда, так как теперь в нём есть заглушка
+            this.els.posterContainer.style.display = 'block';
+
             if (mainImage && mainImage !== '...') {
-                this.els.posterImg.src = `${this.baseAssetPath}${projectId}/${mainImage}`;
-                this.els.posterContainer.style.display = 'block';
-                this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${mainImage}')`;
+                const imgSrc = `${this.baseAssetPath}${projectId}/${mainImage}`;
+                this.els.posterImg.src = imgSrc;
+                this.els.posterImg.style.display = 'block';
+                this.els.bg.style.backgroundImage = `url('${imgSrc}')`;
+
+                // Если картинка не загрузится (ошибка 404), прячем <img>, заглушка покажется автоматически
+                this.els.posterImg.onerror = () => {
+                    this.els.posterImg.style.display = 'none';
+                    this.els.bg.style.backgroundImage = 'none';
+                };
             } else {
-                this.els.posterContainer.style.display = 'none';
+                // Картинки нет изначально
+                this.els.posterImg.style.display = 'none';
+                this.els.bg.style.backgroundImage = 'none';
             }
 
             this.els.logo.style.display = 'none';
@@ -64,7 +85,11 @@ export class HeroView {
             if (!bgImage) bgImage = (assets.banner !== '...') ? assets.banner : null;
             if (!bgImage) bgImage = (assets.cover !== '...') ? assets.cover : null;
             
-            if (bgImage) this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${bgImage}')`;
+            if (bgImage) {
+                this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${bgImage}')`;
+            } else {
+                this.els.bg.style.backgroundImage = 'none';
+            }
 
             if (assets.logo && assets.logo !== '...') {
                 this.els.logo.src = `${this.baseAssetPath}${projectId}/${assets.logo}`;

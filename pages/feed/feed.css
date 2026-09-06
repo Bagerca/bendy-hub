@@ -33,7 +33,7 @@
 .feed-container .search-input {
     height: 44px;
     font-size: 0.95rem;
-    padding: 0 1rem 0 3rem;
+    padding: 0 1rem 0 3.25rem;
 }
 
 .feed-container .search-btn {
@@ -42,8 +42,8 @@
 }
 
 .feed-container .search-btn svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 /* Контейнер кнопок фильтрации */
@@ -372,7 +372,6 @@
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* НОВОЕ: Явно задаем размеры всем SVG внутри кнопок действий */
 .action-btn svg {
     width: 16px;
     height: 16px;
@@ -394,7 +393,6 @@
     color: #00BA7C; 
 }
 
-/* ИСПРАВЛЕНО: Анимация загрузки перевода (раньше класс был указан неверно) */
 .action-btn.loading svg { 
     animation: spin 1s linear infinite; 
 }
