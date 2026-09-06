@@ -9,8 +9,19 @@
     top: 70px; /* Высота главной шапки сайта */
     z-index: 50;
     background-color: var(--bg-body); /* Fallback */
-    margin: -1.5rem -1.5rem 3rem -1.5rem; /* Компенсируем padding родителя, чтобы растянуть на всю ширину */
-    padding: 1.5rem 1.5rem 0 1.5rem;
+    
+    /* МАГИЯ: Растягиваем фон на весь экран (игнорируя рамки родителя 1200px) */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-top: -1.5rem; /* Компенсируем верхний padding родителя */
+    margin-bottom: 1rem;
+
+    /* ВЫРАВНИВАНИЕ: Удерживаем контент внутри по сетке сайта */
+    padding-top: 1.5rem;
+    padding-left: max(1.5rem, calc(50vw - 600px + 1.5rem));
+    padding-right: max(1.5rem, calc(50vw - 600px + 1.5rem));
+
     border-bottom: 1px solid var(--border-color);
     transition: background-color 0.3s ease;
 }
@@ -115,7 +126,7 @@
 
 .timeline-container {
     position: relative;
-    padding: 2rem 0;
+    padding: 0 0 2rem 0;
 }
 
 /* АНТИ-КОНФЛИКТ: Убиваем левую линию, которая прилетает из project.css */
@@ -131,7 +142,13 @@
     top: 0;
     bottom: 0;
     width: 4px;
-    background: linear-gradient(to bottom, var(--bg-body) 0%, var(--border-color) 5%, var(--border-color) 95%, var(--bg-body) 100%);
+    background: linear-gradient(
+        to bottom, 
+        transparent 0%, 
+        var(--border-color) 100px, 
+        var(--border-color) calc(100% - 100px), 
+        transparent 100%
+    );
     border-radius: 4px;
     z-index: 1;
 }
@@ -140,9 +157,13 @@
 .timeline-era-marker {
     display: flex;
     justify-content: center;
-    margin: 4rem 0 2rem 0;
+    margin: 2rem 0;
     position: relative;
     z-index: 2;
+}
+
+.timeline-era-marker:first-of-type {
+    margin-top: 0;
 }
 
 .timeline-era-marker h2 {
@@ -269,8 +290,10 @@
    ========================================= */
 @media (max-width: 768px) {
     .timeline-sticky-header {
-        margin: -1.5rem -1.5rem 2rem -1.5rem;
-        padding: 1rem 1rem 0 1rem;
+        margin-bottom: 2rem;
+        padding-top: 1rem;
+        padding-left: max(1rem, calc(50vw - 600px + 1rem));
+        padding-right: max(1rem, calc(50vw - 600px + 1rem));
     }
     
     .timeline-mode-toggle {
