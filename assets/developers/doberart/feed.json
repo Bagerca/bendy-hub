@@ -371,7 +371,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1985853931969196290",
@@ -385,7 +389,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984290403487777088",
@@ -399,7 +407,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1973393870755971239",
@@ -413,7 +425,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1963289635443835086",
@@ -427,7 +443,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1960830950033781085",
@@ -441,7 +461,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1938334349826613273",
@@ -453,9 +477,13 @@
     "mediaUrl": "assets/developers/doberart/media/1938334349826613273.jpg",
     "mediaType": "image",
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/aimseytwo/status/1937993736778039541",
+    "referenceAuthor": "@aimseytwo",
+    "referenceAuthorName": "aimsey two",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/1988362577798127616/lrHNWgf8_normal.jpg",
+    "referenceText": "whats a game that made you feel like this when you finished it https://t.co/sOcAnKippy",
+    "referenceMediaUrl": "assets/developers/doberart/media/quote_1938334349826613273.png"
   },
   {
     "id": "1932468182377275546",
@@ -469,7 +497,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1928553710826733912",
@@ -483,7 +515,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1892594160894427324",
@@ -497,7 +533,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1885810510915932227",
@@ -511,7 +551,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1882924238811865425",
@@ -525,7 +569,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1851656776543826316",
@@ -539,7 +587,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1840859256977047822",
@@ -553,7 +605,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1830758880269201582",
@@ -567,7 +623,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1790884802347823187",
@@ -581,7 +641,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1779488297380679909",
@@ -595,7 +659,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1764440863160013163",
@@ -609,7 +677,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1750640015359488283",
@@ -623,7 +695,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1745911412545696169",
@@ -637,7 +713,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1741871223523483697",
@@ -651,7 +731,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1739337820706054321",
@@ -665,7 +749,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1731360159853637968",
@@ -679,7 +767,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1727734082702893274",
@@ -693,7 +785,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1721947876383744035",
@@ -707,7 +803,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1719389520200704323",
@@ -721,7 +821,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1717217052631433725",
@@ -735,7 +839,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1708634034413109571",
@@ -749,7 +857,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1703446256964518083",
@@ -763,7 +875,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1698485576532447429",
@@ -777,7 +893,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1688982789004103681",
@@ -791,7 +911,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1682057585728409602",
@@ -805,7 +929,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1676285570790596610",
@@ -819,7 +947,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1674161960307290112",
@@ -833,7 +965,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1673517372081143817",
@@ -847,7 +983,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1667281573618515978",
@@ -861,7 +1001,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1664679486099451905",
@@ -875,7 +1019,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1653132790416678937",
@@ -889,7 +1037,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1650204682734784513",
@@ -903,7 +1055,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1646161644395937792",
@@ -931,7 +1087,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1639052817238196227",
@@ -945,7 +1105,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1636876852756205568",
@@ -959,7 +1123,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1634714566322974722",
@@ -973,7 +1141,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1621294622751203335",
@@ -987,7 +1159,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1619861680825184257",
@@ -1001,7 +1177,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1618010412615897088",
@@ -1015,7 +1195,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1616196134426546176",
@@ -1029,7 +1213,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1613559415956799488",
@@ -1043,7 +1231,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1612857222530306067",
@@ -1057,7 +1249,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1610351002229637120",
@@ -1071,7 +1267,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1608886009181376512",
@@ -1085,7 +1285,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1607044039769034753",
@@ -1099,7 +1303,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1605609446654214144",
@@ -1113,7 +1321,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1605246935648141312",
@@ -1127,7 +1339,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1603174821407227905",
@@ -1141,7 +1357,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1603072509749993474",
@@ -1155,7 +1375,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1602335319571005442",
@@ -1169,7 +1393,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1602090710160887809",
@@ -1183,7 +1411,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1600898220053655553",
@@ -1197,7 +1429,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1599451446709145601",
@@ -1211,7 +1447,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1597999326114230274",
@@ -1225,7 +1465,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1596906874192162817",
@@ -1239,7 +1483,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1595824853663518721",
@@ -1253,7 +1501,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1595092907320827904",
@@ -1267,7 +1519,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1594548858792644609",
@@ -1281,7 +1537,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1587855027686842370",
@@ -1295,7 +1555,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1587474263904247808",
@@ -1309,7 +1573,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1579244341087719424",
@@ -1323,7 +1591,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1540862531723530243",
@@ -1337,7 +1609,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1513925279290437633",
@@ -1351,7 +1627,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1501966215517986818",
@@ -1365,7 +1645,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1495933903382667272",
@@ -1379,7 +1663,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1494457932519550979",
@@ -1393,7 +1681,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1494386208432087047",
@@ -1407,7 +1699,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1492651053921226758",
@@ -1421,7 +1717,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1491784547809120259",
@@ -1435,7 +1735,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1491139972258164739",
@@ -1449,7 +1753,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1489729013384118273",
@@ -1463,7 +1771,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1488241503470301192",
@@ -1477,7 +1789,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1487483307986141187",
@@ -1491,7 +1807,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1482790179110899714",
@@ -1505,7 +1825,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1481768258592284675",
@@ -1519,7 +1843,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1479599660331327496",
@@ -1533,7 +1861,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1477731662624661505",
@@ -1547,7 +1879,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1395122262215430145",
@@ -1561,7 +1897,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1372305813604286468",
@@ -1575,7 +1915,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1366922888465575937",
@@ -1589,7 +1933,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1298697235685879811",
@@ -1603,7 +1951,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1295802400524111872",
@@ -1617,7 +1969,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1285969473879461891",
@@ -1631,7 +1987,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1266131073743945733",
@@ -1645,7 +2005,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1257896574836977664",
@@ -1659,7 +2023,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1245514591624445959",
@@ -1673,7 +2041,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1148064476090048514",
@@ -1687,7 +2059,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1145764522730369025",
@@ -1701,7 +2077,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1142176429049896960",
@@ -1715,7 +2095,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1120812135385391108",
@@ -1729,7 +2113,11 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "992523688124788737",
@@ -1743,6 +2131,10 @@
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   }
 ]
