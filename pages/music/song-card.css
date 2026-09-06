@@ -19,6 +19,7 @@
     position: relative; 
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     --card-hover-rgb: 210, 168, 80; 
+    --marquee-bg: var(--bg-card); 
 }
 
 [data-theme="dark"] .song-card { 
@@ -70,7 +71,7 @@
 }
 .song-card:not(.no-audio):hover .song-overlay { opacity: 1; }
 
-/* КНОПКА ПЛЕЙ (Оверлей на карточке) */
+/* КНОПКА ПЛЕЙ */
 .song-play-btn {
     position: absolute; top: 50%; left: 50%; 
     background: rgba(0, 0, 0, 0.5); 
@@ -83,10 +84,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 20;
 }
 
-/* Стили самих SVG внутри кнопки */
 .song-play-btn svg { width: 24px; height: 24px; display: block; }
-
-/* По умолчанию прячем паузу */
 .song-play-btn .icon-state-pause { display: none; }
 .song-play-btn .icon-state-play { display: block; }
 
@@ -108,14 +106,11 @@
     border-color: var(--accent-color); color: #000; box-shadow: 0 0 15px rgba(210, 168, 80, 0.5);
 }
 
-/* Меняем иконки: Если трек АКТИВЕН и ИГРАЕТ - показываем ПАУЗУ */
 .song-card.playing:not(.is-paused) .song-play-btn .icon-state-play { display: none; }
 .song-card.playing:not(.is-paused) .song-play-btn .icon-state-pause { display: block; }
 
-/* Меняем иконки: Если трек АКТИВЕН но НА ПАУЗЕ - возвращаем ПЛЕЙ */
 .song-card.playing.is-paused .song-play-btn .icon-state-play { display: block; }
 .song-card.playing.is-paused .song-play-btn .icon-state-pause { display: none; }
-
 
 /* ИНФО БЛОК */
 .song-info { 
@@ -124,14 +119,6 @@
     flex-direction: column; 
     gap: 4px;
     overflow: hidden;
-}
-
-/* Настройки для заголовка (Grid View) */
-.song-title-wrapper {
-    width: 100%;
-    overflow: hidden;
-    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 16px), transparent 100%);
-    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 16px), transparent 100%);
 }
 
 .song-title { 
@@ -143,7 +130,6 @@
     width: 100%;
     transition: color 0.2s;
     line-height: 1.2;
-    will-change: transform;
 }
 
 .song-meta { 
@@ -169,19 +155,36 @@
     flex-shrink: 0;
 }
 
-
 /* =========================================
-   СПИСОК ТРЕКОВ (List View) 
+   СПИСОК ТРЕКОВ (List View)
    ========================================= */
 .music-grid.list-view { grid-template-columns: 1fr; gap: 0.75rem; }
-.music-grid.list-view .song-card { flex-direction: row; align-items: center; padding: 10px; height: auto; }
-.music-grid.list-view .song-cover-wrapper { width: 140px; height: 78px; border-bottom: none; border-radius: 8px; margin-right: 16px; flex-shrink: 0; }
+
+/* ИСПРАВЛЕНО: Убираем padding у самой карточки, чтобы картинка прилипала к краям */
+.music-grid.list-view .song-card { 
+    flex-direction: row; 
+    align-items: center; 
+    padding: 0; 
+    height: 78px; 
+}
+
+/* ИСПРАВЛЕНО: Обложка становится вплотную к левому краю и занимает всю высоту */
+.music-grid.list-view .song-cover-wrapper { 
+    width: 138px; 
+    height: 100%; 
+    border-bottom: none; 
+    border-right: 1px solid var(--border-color); 
+    border-radius: 0; 
+    flex-shrink: 0; 
+}
+
 .music-grid.list-view .no-audio-badge { font-size: 0.55rem; padding: 2px 6px; left: 6px; top: 6px; }
 .music-grid.list-view .song-play-btn { width: 36px; height: 36px; }
 .music-grid.list-view .song-play-btn svg { width: 16px; height: 16px; }
 
+/* ИСПРАВЛЕНО: Добавляем отступы самому текстовому блоку, чтобы он не прилипал к картинке */
 .music-grid.list-view .song-info { 
-    padding: 0 10px 0 0; 
+    padding: 0 1rem; 
     flex-direction: row; 
     align-items: center; 
     justify-content: space-between; 
@@ -189,12 +192,10 @@
     gap: 20px;
 }
 
-/* Название занимает все свободное место слева */
-.music-grid.list-view .song-title-wrapper {
+.music-grid.list-view .smart-marquee-wrapper {
     flex-grow: 1;
 }
 
-/* Мета-информация (Автор и год) жестко прибиты вправо */
 .music-grid.list-view .song-meta { 
     flex-shrink: 0; 
     min-width: 140px; 
@@ -203,13 +204,14 @@
     gap: 15px;
 }
 
-.music-grid.list-view .song-artist {
-    text-align: right;
-}
+.music-grid.list-view .song-artist { text-align: right; }
 
 @media (max-width: 600px) {
     .music-grid { grid-template-columns: 1fr; gap: 1.25rem;}
     .music-grid.list-view .song-meta { display: none; }
-    .music-grid.list-view .song-info { width: 100%; }
-    .music-grid.list-view .song-cover-wrapper { width: 100px; height: 56px; }
+    .music-grid.list-view .song-info { width: 100%; padding: 0 0.75rem; }
+    
+    /* ИСПРАВЛЕНО: Для телефонов картинку тоже подстраиваем под всю высоту карточки */
+    .music-grid.list-view .song-card { height: 64px; }
+    .music-grid.list-view .song-cover-wrapper { width: 114px; height: 100%; }
 }

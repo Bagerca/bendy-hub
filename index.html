@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="shared/css/components/bento.css">
     <link rel="stylesheet" href="shared/css/components/modals.css">
     <link rel="stylesheet" href="shared/css/components/forms.css">
+    <link rel="stylesheet" href="shared/css/components/marquee.css">
     
     <!-- СТИЛИ СТРАНИЦ -->
     <link rel="stylesheet" href="pages/home/home.css">
@@ -30,7 +31,9 @@
     <link rel="stylesheet" href="pages/character/character.css">
     <link rel="stylesheet" href="pages/music/music.css">
     <link rel="stylesheet" href="pages/music/song-card.css">
-    <link rel="stylesheet" href="pages/music/floating-player.css">
+    <link rel="stylesheet" href="pages/music/player-core.css">
+    <link rel="stylesheet" href="pages/music/player-controls.css">
+    <link rel="stylesheet" href="pages/music/player-dock.css">
     <link rel="stylesheet" href="pages/feed/feed.css">
     <link rel="stylesheet" href="pages/timeline/timeline.css">
     <link rel="stylesheet" href="pages/records/records.css">
@@ -45,16 +48,13 @@
 
     <site-header active-page="home"></site-header>
 
-    <!-- СЮДА РОУТЕР БУДЕТ ВСТАВЛЯТЬ СТРАНИЦЫ -->
     <div id="app-root"></div>
 
-    <!-- ГЛОБАЛЬНЫЙ ЛАЙТБОКС -->
     <dialog id="lightbox" class="lightbox" aria-modal="true" aria-label="Просмотр медиафайла">
         <button class="lightbox-close" aria-label="Закрыть"></button>
         <img id="lightbox-img" src="" alt="Full image">
     </dialog>
     
-    <!-- ГЛОБАЛЬНЫЕ ОШИБКИ И ПУСТЫЕ СОСТОЯНИЯ -->
     <template id="empty-state-template">
         <div class="empty-state">
             <div class="empty-state-icon dyn-icon-empty-search">
@@ -69,26 +69,49 @@
         <div class="error-card" style="grid-column: 1/-1"><p class="error-message"></p></div>
     </template>
 
-    <!-- Главная: Карточки -->
+    <!-- Главная -->
     <template id="stat-card-template"><div class="stat-item"><div class="stat-icon-wrap"></div><div class="stat-text-wrap"><span class="stat-value"></span><span class="stat-label"></span></div></div></template>
     <template id="team-member-template"><div class="discord-member"><div class="member-avatar-wrapper"><img src="" alt="Avatar" class="member-avatar"><span class="status-indicator"></span></div><div class="member-info"><div class="member-header-row"><span class="member-name"></span><span class="role-badge"></span></div><span class="member-status"></span></div><a href="#" target="_blank" rel="noopener noreferrer" class="member-link-btn dyn-icon-external" title="Перейти в профиль"></a></div></template>
 
-    <!-- Каталог: Карточки -->
-    <template id="template-card-horizontal"><article class="card-horizontal"><div class="card-cover-container"><div class="card-badges"><span class="status-badge"></span></div><img src="" alt="" class="card-cover-img" loading="lazy"><div class="card-cover-fallback"></div></div><footer class="card-info"><h3 class="card-title"></h3><time class="card-year"></time></footer></article></template>
-    <template id="template-card-vertical"><article class="card-vertical"><div class="card-cover-container"><div class="card-badges"><span class="status-badge"></span></div><img src="" alt="" class="card-cover-img" loading="lazy"><div class="card-cover-fallback"></div></div><footer class="card-info"><h3 class="card-title"></h3><time class="card-year"></time></footer></article></template>
+    <!-- Каталог (ОБНОВЛЕННЫЕ ШАБЛОНЫ) -->
+    <template id="template-card-horizontal">
+        <article class="card-horizontal">
+            <div class="card-cover-container">
+                <div class="card-badges"><span class="status-badge"></span></div>
+                <img src="" alt="" class="card-cover-img" loading="lazy">
+                <div class="card-cover-fallback"></div>
+            </div>
+            <footer class="card-info">
+                <div class="smart-marquee-wrapper"><h3 class="card-title smart-marquee-text"></h3></div>
+                <div class="smart-marquee-wrapper"><time class="card-year smart-marquee-text"></time></div>
+            </footer>
+        </article>
+    </template>
+    
+    <template id="template-card-vertical">
+        <article class="card-vertical">
+            <div class="card-cover-container">
+                <div class="card-badges"><span class="status-badge"></span></div>
+                <img src="" alt="" class="card-cover-img" loading="lazy">
+                <div class="card-cover-fallback"></div>
+            </div>
+            <footer class="card-info">
+                <div class="smart-marquee-wrapper"><h3 class="card-title smart-marquee-text"></h3></div>
+                <div class="smart-marquee-wrapper"><time class="card-year smart-marquee-text"></time></div>
+            </footer>
+        </article>
+    </template>
 
-    <!-- Персонажи: Карточка -->
+    <!-- Персонажи -->
     <template id="char-card-template"><a href="" class="char-card"><div class="char-avatar-wrapper"></div><span class="char-card-name"></span></a></template>
 
-    <!-- Музыка: Карточка -->
+    <!-- Музыка -->
     <template id="song-card-template"><article class="song-card"><div class="song-cover-wrapper"><div class="no-audio-badge" style="display: none;">Нет медиа</div><img src="" alt="" class="song-cover" loading="lazy"><div class="song-overlay"></div><button class="song-play-btn dyn-icon-play"></button></div><div class="song-info"><div class="song-title-wrapper"><h3 class="song-title"></h3></div><div class="song-meta"><p class="song-artist"></p><span class="song-year"></span></div></div></article></template>
 
-    <!-- Лента: Пост и Скелетон -->
+    <!-- Лента -->
     <template id="post-template">
         <article class="post-card">
-            <!-- Динамический бейдж репоста (заполняется из JS) -->
             <div class="rt-badge" style="display: none;"></div>
-            
             <header class="post-header">
                 <img src="" alt="Avatar" class="post-avatar" loading="lazy">
                 <div class="post-meta">
@@ -105,7 +128,6 @@
 
                 <p class="post-text"></p>
                 
-                <!-- КАРТОЧКА ДЛЯ ЦИТАТ С ВЛОЖЕНИЕМ -->
                 <div class="quote-card" style="display: none;">
                     <div class="quote-header">
                         <img src="" alt="Avatar" class="quote-avatar" loading="lazy" style="display: none;">
@@ -138,12 +160,12 @@
     
     <template id="skeleton-template"><div class="post-card skeleton-card"><header class="post-header"><div class="skeleton-avatar skeleton-pulse"></div><div class="post-meta" style="gap: 8px;"><div class="skeleton-line skeleton-pulse" style="width: 120px;"></div><div class="skeleton-line skeleton-pulse" style="width: 80px; height: 10px;"></div></div></header><div class="post-content" style="gap: 12px; display: flex; flex-direction: column;"><div class="skeleton-line skeleton-pulse" style="width: 100%;"></div><div class="skeleton-line skeleton-pulse" style="width: 90%;"></div><div class="skeleton-line skeleton-pulse" style="width: 60%;"></div><div class="skeleton-pulse" style="width: 100%; height: 200px; border-radius: 12px; margin-top: 10px;"></div></div></div></template>
 
-    <!-- Хронология: Карточки -->
+    <!-- Хронология -->
     <template id="era-nav-template"><button class="era-btn" data-target=""></button></template>
     <template id="era-marker-template"><div class="timeline-era-marker"><h2 class="era-title"></h2></div></template>
     <template id="event-card-template"><div class="timeline-event-wrapper"><div class="timeline-node"></div><article class="timeline-card"><span class="event-date"></span><h3 class="event-title"></h3><p class="event-desc"></p><img src="" class="event-image" loading="lazy" alt="Event image" style="display: none;"></article></div></template>
 
-    <!-- Архивы: Карточки -->
+    <!-- Архивы -->
     <template id="category-btn-template"><button class="cat-btn"></button></template>
     <template id="record-card-template"><article class="record-card"><div class="card-image-wrapper"><img src="" class="card-image" loading="lazy" alt="Обложка" style="display: none;"><div class="card-fallback-icon"></div></div><div class="card-content"><h3 class="card-title"></h3><span class="card-author"></span></div></article></template>
 

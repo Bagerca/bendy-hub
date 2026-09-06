@@ -15,10 +15,9 @@ export class CharactersView {
             error: document.getElementById('error-state-template')
         };
 
-        this.fallbackSvg = `
-            <div class="char-fallback">
-                ${Icons.char_fallback}
-            </div>
+        // Вставляем нашу Base64 заглушку как обычную картинку
+        this.fallbackHtml = `
+            <img src="${Icons.avatar_fallback}" alt="Нет фото" class="char-fallback" style="width: 100%; height: 100%; object-fit: cover; background: var(--bg-body); padding: 6px;">
         `;
     }
 
@@ -66,7 +65,7 @@ export class CharactersView {
 
             if (avatarsToRender.length === 0) {
                 avatarWrapper.classList.remove('is-stack');
-                avatarWrapper.innerHTML = this.fallbackSvg;
+                avatarWrapper.innerHTML = this.fallbackHtml;
 
             } else if (avatarsToRender.length === 1) {
                 avatarWrapper.classList.remove('is-stack');
@@ -78,7 +77,7 @@ export class CharactersView {
                 
                 img.onerror = function() { 
                     this.onerror = null; 
-                    avatarWrapper.innerHTML = this.fallbackSvg; 
+                    avatarWrapper.innerHTML = this.fallbackHtml; 
                 }.bind(this);
                 
                 avatarWrapper.appendChild(img);

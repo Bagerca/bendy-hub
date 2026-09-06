@@ -1,4 +1,4 @@
-// FILE: pages/character/CharacterView.js
+import { Icons } from '../../shared/js/icons.js';
 
 export class CharacterView {
     constructor() {
@@ -50,7 +50,6 @@ export class CharacterView {
     _initBackButton() {
         this.els.backBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Возвращаем SPA-роутинг и мягкий переход назад
             if (window.history.length > 1 && document.referrer.includes(window.location.host)) {
                 window.history.back();
             } else {
@@ -105,12 +104,12 @@ export class CharacterView {
                 btn.classList.add('active');
                 
                 this.els.img.style.opacity = '0';
-                this.els.bg.style.opacity = '0'; // Плавно прячем фон
+                this.els.bg.style.opacity = '0'; 
                 
                 setTimeout(() => {
                     this._applyVersionData(version);
                     this.els.img.style.opacity = '1';
-                    this.els.bg.style.opacity = '1'; // Плавно возвращаем фон
+                    this.els.bg.style.opacity = '1'; 
                 }, 200);
             });
 
@@ -168,7 +167,6 @@ export class CharacterView {
     }
 
     _renderImages(assets, basePath) {
-        // Сбрасываем старые обработчики во избежание проблем
         this.els.img.onload = null;
         this.els.img.onerror = null;
 
@@ -176,14 +174,18 @@ export class CharacterView {
         const fullBody = (assets?.full_body && assets.full_body !== '...') ? assets.full_body : null;
 
         const showFallback = () => {
-            this.els.img.style.display = 'none';
-            this.els.fallback.style.display = 'flex';
+            this.els.fallback.style.display = 'none'; // Скрываем старый хардкодный блок
+            this.els.img.style.display = 'block';
+            this.els.img.src = Icons.avatar_fallback; // Просто вставляем Base64 картинку
+            this.els.img.classList.remove('is-render');
+            this.els.img.style.padding = '3rem'; // Отступы для иконки
             this.els.bg.style.backgroundImage = 'none';
         };
 
         const showImage = (validSrc) => {
             this.els.fallback.style.display = 'none';
             this.els.img.style.display = 'block';
+            this.els.img.style.padding = '0';
             this.els.bg.style.backgroundImage = `url('${validSrc}')`;
             
             if (validSrc.includes('.png')) {
@@ -193,19 +195,17 @@ export class CharacterView {
             }
         };
 
-        // Логика загрузки с защитой от бесконечных циклов
         if (fullBody) {
             const fullBodySrc = `${basePath}${fullBody}`;
-            
             this.els.img.onload = () => showImage(fullBodySrc);
             
             this.els.img.onerror = () => {
-                this.els.img.onerror = null; // Защита
+                this.els.img.onerror = null; 
                 if (avatar) {
                     const avatarSrc = `${basePath}${avatar}`;
                     this.els.img.onload = () => showImage(avatarSrc);
                     this.els.img.onerror = () => {
-                        this.els.img.onerror = null; // Защита
+                        this.els.img.onerror = null;
                         showFallback();
                     };
                     this.els.img.src = avatarSrc; 
@@ -213,14 +213,13 @@ export class CharacterView {
                     showFallback();
                 }
             };
-            
             this.els.img.src = fullBodySrc;
             
         } else if (avatar) {
             const avatarSrc = `${basePath}${avatar}`;
             this.els.img.onload = () => showImage(avatarSrc);
             this.els.img.onerror = () => {
-                this.els.img.onerror = null; // Защита
+                this.els.img.onerror = null; 
                 showFallback();
             };
             this.els.img.src = avatarSrc;
@@ -274,7 +273,6 @@ export class CharacterView {
                 const a = document.createElement('a');
                 a.href = `project.html?id=${project.id}`; 
                 
-                // ВАЖНО: Вешаем обработчик для мягкого перехода SPA в страницу проекта!
                 a.addEventListener('click', (e) => {
                     e.preventDefault();
                     if (window.router) {

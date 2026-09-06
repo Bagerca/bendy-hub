@@ -16,17 +16,26 @@
 .music-layout { padding-bottom: 120px; position: relative; }
 
 /* =========================================
-   ПЕРЕКЛЮЧАТЕЛИ ВИДА
+   ПЕРЕКЛЮЧАТЕЛИ ВИДА (Grid / List)
    ========================================= */
 .view-toggles {
     display: flex; gap: 4px; background: var(--bg-body);
     padding: 4px; border-radius: 8px; border: 1px solid var(--border-color);
 }
+
 .view-btn {
     background: transparent; border: none; color: var(--text-muted);
     padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: 0.2s;
     display: flex; align-items: center; justify-content: center;
 }
+
+/* ЖЕСТКО ЗАДАЕМ РАЗМЕР ИКОНОК */
+.view-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
 .view-btn:hover { color: var(--text-main); }
 .view-btn.active { background: var(--bg-card); color: var(--text-main); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 

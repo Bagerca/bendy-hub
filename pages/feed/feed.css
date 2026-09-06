@@ -372,6 +372,14 @@
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* НОВОЕ: Явно задаем размеры всем SVG внутри кнопок действий */
+.action-btn svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+    flex-shrink: 0;
+}
+
 .action-btn:hover { 
     background-color: var(--bg-body); 
     color: var(--text-main); 
@@ -386,7 +394,8 @@
     color: #00BA7C; 
 }
 
-.action-btn.loading .translate-icon { 
+/* ИСПРАВЛЕНО: Анимация загрузки перевода (раньше класс был указан неверно) */
+.action-btn.loading svg { 
     animation: spin 1s linear infinite; 
 }
 

@@ -1,0 +1,53 @@
+/* =========================================
+   MARQUEE.CSS
+   Универсальный компонент бегущей строки с плавными градиентами
+   ========================================= */
+
+.smart-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: block; 
+    position: relative; /* Обязательно для позиционирования градиентов */
+}
+
+/* ПРАВЫЙ ГРАДИЕНТ (Виден всегда) */
+.smart-marquee-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 24px; /* Ширина размытия */
+    /* Градиент от прозрачного к цвету фона карточки */
+    background: linear-gradient(to right, transparent 0%, var(--marquee-bg, var(--bg-card)) 100%);
+    pointer-events: none; /* Чтобы не мешал кликать по тексту */
+    z-index: 2;
+}
+
+/* ЛЕВЫЙ ГРАДИЕНТ (Появляется плавно при наведении) */
+.smart-marquee-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    /* Градиент от цвета фона карточки к прозрачному */
+    background: linear-gradient(to left, transparent 0%, var(--marquee-bg, var(--bg-card)) 100%);
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0; /* По дефолту скрыт */
+    transition: opacity 0.4s ease; /* Идеально плавное появление */
+}
+
+/* При активации скролла плавно показываем левый градиент */
+.smart-marquee-wrapper.is-scrolling::before {
+    opacity: 1;
+}
+
+.smart-marquee-text {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    will-change: transform;
+}

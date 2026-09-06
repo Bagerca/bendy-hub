@@ -11,6 +11,7 @@
     cursor: pointer;
     text-decoration: none;
     --card-hover-rgb: 210, 168, 80; 
+    --marquee-bg: var(--bg-card); /* Цвет для перекрывающего градиента */
 }
 
 [data-theme="dark"] .card-vertical { box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
@@ -67,31 +68,18 @@
     flex-direction: column; 
     gap: 0.25rem;
     overflow: hidden;
-    /* Двусторонний градиент (отступы тут чуть меньше) */
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 10px, #000 calc(100% - 15px), transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0, #000 10px, #000 calc(100% - 15px), transparent 100%);
 }
 
 .card-vertical .card-title { 
     font-size: 0.95rem;
     font-weight: 800; color: var(--text-main); line-height: 1.25;
-    white-space: nowrap;
-    display: block;
-    width: 100%;
-    will-change: transform;
 }
 
 .card-vertical .card-year { 
     font-size: 0.8rem; 
     font-weight: 600; color: var(--text-muted); 
-    white-space: nowrap;
-    display: block;
-    width: 100%;
-    will-change: transform;
 }
 
-/* ДОБАВИТЬ В КОНЕЦ ФАЙЛА */
-/* Увеличиваем и стилизуем SVG иконку внутри заглушки (для вертикальных карточек размер чуть меньше) */
 .card-vertical .card-cover-fallback svg {
     width: 42px;
     height: 42px;

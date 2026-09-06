@@ -33,3 +33,23 @@
     <div id="music-loader" class="loading-state"><div class="spinner" style="margin: 0 auto 10px;"></div><span>Настройка радиоволны...</span></div>
     <div class="music-grid" id="music-grid" style="display: none;"></div>
 </main>
+
+<template id="song-card-template">
+    <article class="song-card">
+        <div class="song-cover-wrapper">
+            <div class="no-audio-badge" style="display: none;">Нет медиа</div>
+            <img src="" alt="" class="song-cover" loading="lazy">
+            <div class="song-overlay"></div>
+            <button class="song-play-btn dyn-icon-play"></button>
+        </div>
+        <div class="song-info">
+            <div class="song-title-wrapper smart-marquee-wrapper">
+                <h3 class="song-title smart-marquee-text"></h3>
+            </div>
+            <div class="song-meta">
+                <p class="song-artist"></p>
+                <span class="song-year"></span>
+            </div>
+        </div>
+    </article>
+</template>

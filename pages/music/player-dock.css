@@ -1,0 +1,165 @@
+/* FILE: pages/music/player-dock.css (Свернутый режим и вертикальная панель) */
+
+.floating-player.is-docked {
+    width: 60px; 
+    border-radius: 16px;
+    height: max-content;
+    overflow: visible !important; /* Разрешаем панели выпадать */
+}
+
+/* Opacity применяется только если плеер включен */
+.floating-player.active.is-docked {
+    opacity: 0.7;
+}
+
+.floating-player.active.is-docked:hover {
+    opacity: 1;
+    transform: scale(1.03); 
+}
+
+.floating-player.is-docked.docked-left { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.floating-player.is-docked.docked-right { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+
+/* Скрываем элементы базового плеера полностью, чтобы не было пустой полосы */
+.floating-player.is-docked .fp-header,
+.floating-player.is-docked .fp-body,
+.floating-player.is-docked .fp-progress-wrapper,
+.floating-player.is-docked .fp-controls { 
+    display: none; 
+}
+
+/* Мини-панель */
+.fp-docked-controls {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 15px 0;
+    gap: 15px;
+    background-color: var(--bg-card);
+    border-radius: 16px; 
+}
+
+.floating-player.is-docked .fp-docked-controls {
+    display: flex;
+}
+
+/* ЗОНА ДЛЯ ПЕРЕТАСКИВАНИЯ (Визуальный грип) */
+.fp-dock-drag-handle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 0 2px 0;
+    cursor: grab;
+    color: var(--border-color);
+}
+.floating-player.is-docked:active .fp-dock-drag-handle { cursor: grabbing; }
+
+.fp-dock-drag-handle span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: currentColor;
+    transition: background-color 0.2s;
+}
+
+.floating-player.is-docked:hover .fp-dock-drag-handle {
+    color: var(--text-muted);
+}
+
+/* Эффект наведения для красной кнопки YouTube в свернутом режиме */
+.fp-btn.fp-dock-youtube {
+    color: #FF0000;
+    text-decoration: none;
+}
+.fp-btn.fp-dock-youtube:hover {
+    color: #ff3333;
+    transform: scale(1.1);
+}
+
+/* ВЫПАДАЮЩАЯ ПАНЕЛЬ ГРОМКОСТИ (DOCK) */
+.fp-dock-volume-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.fp-dock-slider-panel {
+    position: absolute;
+    top: 50%;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 44px; 
+    height: 130px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Позиционирование панели в зависимости от стороны (Слева или Справа) */
+.floating-player.docked-left .fp-dock-slider-panel {
+    left: calc(100% + 12px); 
+    transform: translateY(-50%) translateX(-10px);
+}
+.floating-player.docked-left .fp-dock-volume-wrapper.active .fp-dock-slider-panel {
+    transform: translateY(-50%) translateX(0);
+}
+
+.floating-player.docked-right .fp-dock-slider-panel {
+    right: calc(100% + 12px);
+    transform: translateY(-50%) translateX(10px);
+}
+.floating-player.docked-right .fp-dock-volume-wrapper.active .fp-dock-slider-panel {
+    transform: translateY(-50%) translateX(0);
+}
+
+.fp-dock-volume-wrapper.active .fp-dock-slider-panel {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Вертикальный ползунок */
+.fp-volume-slider-vertical {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    width: 100px; 
+    height: 24px; 
+    cursor: pointer;
+    margin: 0;
+    transform: rotate(-90deg);
+}
+
+/* Chrome / Safari / Edge */
+.fp-volume-slider-vertical::-webkit-slider-runnable-track {
+    width: 100%; height: 4px;
+    background: linear-gradient(to right, var(--accent-color) var(--vol, 100%), var(--border-color) var(--vol, 100%));
+    border-radius: 2px;
+}
+
+/* Firefox */
+.fp-volume-slider-vertical::-moz-range-track {
+    width: 100%; height: 4px;
+    background: linear-gradient(to right, var(--accent-color) var(--vol, 100%), var(--border-color) var(--vol, 100%));
+    border-radius: 2px;
+}
+
+.fp-volume-slider-vertical::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 14px; width: 14px; border-radius: 50%;
+    background: var(--text-main); margin-top: -5px; box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background 0.2s, transform 0.1s;
+}
+.fp-volume-slider-vertical::-moz-range-thumb {
+    height: 14px; width: 14px; border-radius: 50%; background: var(--text-main); border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); transition: background 0.2s, transform 0.1s;
+}
+
+.fp-volume-slider-vertical::-webkit-slider-thumb:hover { background: var(--accent-color); transform: scale(1.2); }
+.fp-volume-slider-vertical::-moz-range-thumb:hover { background: var(--accent-color); transform: scale(1.2); }

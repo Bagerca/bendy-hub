@@ -7,27 +7,9 @@ import re
 import time
 
 # ==========================================
-# 🎵 ИСТОЧНИКИ ДЛЯ ПАРСИНГА
+# 🎵 ФАЙЛ-ИСТОЧНИК ССЫЛОК
 # ==========================================
-
-# Ссылки на отдельные видео
-YT_LINKS = [
-    "https://youtu.be/ZstsPUKT5CI?si=1m2ukP4XgjmfNq0L",
-    "https://youtu.be/2Jco30RGuHo?si=jpWjlpfiZKTqckkX",
-    "https://youtu.be/346m3ByAXyw?si=gPN20r_lSB8cSpJS",
-    "https://youtu.be/3BMxoqsZox0?si=ktKljt2KJCe28hkg",
-    "https://youtu.be/vxmgIDSOrbI?si=5OhJXAADmg4zK1Lj",
-    "https://youtu.be/SoxFjaV9_ss?si=KFlN7zmKnftro1ud",
-    "https://youtu.be/igAyr8YmdXY?si=VxbaRGPzFOxIDbOy",
-    "https://youtu.be/7aSrvHyvj3I?si=keDB8-tHBe635g4Q"
-]
-
-# Ссылки на плейлисты (Замени на нужные)
-YT_PLAYLISTS = [
-    "https://youtube.com/playlist?list=PLRp0gf9ki7cqXRyLgeblyL_vio5Bbfl1Q&si=sf6jpJr4s5dgSisq"
-]
-
-# ==========================================
+LINKS_FILE = "youtube_links.txt"
 
 BASE_MUSIC_DIR = os.path.join("assets", "music")
 BASE_AUTHORS_DIR = os.path.join("assets", "music_authors")
@@ -41,7 +23,7 @@ def get_headers():
     }
 
 def get_yt_video_id(url):
-    match = re.search(r"(?:v=|\/)([0-9A-Za-z_-]{11})", url)
+    match = re.search(r"(?:v=|\/|vi\/|youtu\.be\/|\/v\/|embed\/)([0-9A-Za-z_-]{11})", url)
     return match.group(1) if match else None
 
 def safe_request(url, data=None, headers=None):
@@ -55,17 +37,11 @@ def safe_request(url, data=None, headers=None):
         return None
 
 def get_playlist_videos(playlist_url):
-    """
-    Парсит плейлист. Если видео больше 100, использует внутреннее API YouTube (continuation),
-    чтобы собрать ВСЕ треки из плейлиста.
-    """
     print(f"📥 Анализ плейлиста: {playlist_url}")
     html = safe_request(playlist_url)
     if not html: return []
 
     video_ids = []
-    
-    # 1. Извлекаем первые 100 видео из изначального HTML
     matches = re.findall(r'"videoId":"([a-zA-Z0-9_-]{11})"', html)
     seen = set()
     for vid in matches:
@@ -73,7 +49,6 @@ def get_playlist_videos(playlist_url):
             seen.add(vid)
             video_ids.append(vid)
 
-    # 2. Ищем данные для обхода лимита (API Key и Continuation Token)
     api_key_match = re.search(r'"INNERTUBE_API_KEY":"(.*?)"', html)
     client_ver_match = re.search(r'"clientVersion":"(.*?)"', html)
     token_match = re.search(r'"continuationCommand":{"token":"(.*?)"', html)
@@ -84,16 +59,11 @@ def get_playlist_videos(playlist_url):
         token = token_match.group(1)
         
         print("  ↳ Найден токен продолжения. Подгружаем остальные видео...")
-        
-        # 3. Эмулируем фоновые запросы браузера, пока не закончатся треки
         while token:
             api_url = f"https://www.youtube.com/youtubei/v1/browse?key={api_key}"
             payload = json.dumps({
                 "context": {
-                    "client": {
-                        "clientName": "WEB",
-                        "clientVersion": client_ver
-                    }
+                    "client": { "clientName": "WEB", "clientVersion": client_ver }
                 },
                 "continuation": token
             }).encode('utf-8')
@@ -104,7 +74,6 @@ def get_playlist_videos(playlist_url):
             response_json = safe_request(api_url, data=payload, headers=api_headers)
             if not response_json: break
             
-            # Добавляем новые видео
             new_matches = re.findall(r'"videoId":"([a-zA-Z0-9_-]{11})"', response_json)
             added_count = 0
             for vid in new_matches:
@@ -113,25 +82,22 @@ def get_playlist_videos(playlist_url):
                     video_ids.append(vid)
                     added_count += 1
                     
-            # Ищем следующий токен
             next_token_match = re.search(r'"continuationCommand":{"token":"(.*?)"', response_json)
             if next_token_match and added_count > 0:
                 token = next_token_match.group(1)
-                time.sleep(0.5) # Небольшая пауза, чтобы не забанили
+                time.sleep(0.5) 
             else:
                 token = None
                 
-    print(f"  ↳ Собрано уникальных треков из плейлиста: {len(video_ids)}")
+    print(f"  ↳ Собрано треков из плейлиста: {len(video_ids)}")
     return [f"https://youtu.be/{vid}" for vid in video_ids]
 
 def fetch_yt_metadata(url):
     oembed_url = f"https://www.youtube.com/oembed?url={url}&format=json"
     html = safe_request(oembed_url)
     if html:
-        try:
-            return json.loads(html)
-        except:
-            pass
+        try: return json.loads(html)
+        except: pass
     return None
 
 def fetch_yt_year(url):
@@ -144,14 +110,10 @@ def fetch_yt_year(url):
     return ""
 
 def fetch_channel_avatar(channel_url):
-    """ Парсит HTML страницы канала и вытягивает HD-аватарку """
     html = safe_request(channel_url)
     if html:
         match = re.search(r'<meta property="og:image" content="(.*?)"', html)
-        if match:
-            # Заменяем размер на более качественный (по умолчанию ютуб отдает 900x900)
-            url = match.group(1).replace('=s900-', '=s400-')
-            return url
+        if match: return match.group(1).replace('=s900-', '=s400-')
     return None
 
 def download_image(url, save_path):
@@ -166,34 +128,74 @@ def download_image(url, save_path):
         pass
     return False
 
+def manage_links_file():
+    """
+    Читает youtube_links.txt. Разворачивает плейлисты.
+    Удаляет дубликаты. Перезаписывает файл только чистыми ссылками на видео.
+    """
+    if not os.path.exists(LINKS_FILE):
+        with open(LINKS_FILE, "w", encoding="utf-8") as f:
+            f.write("# Добавляй сюда ссылки на YouTube видео или плейлисты (каждая с новой строки)\n")
+            f.write("# При следующем запуске скрипт автоматически раскроет плейлисты и удалит дубликаты.\n\n")
+        print(f"ℹ️ Создан файл {LINKS_FILE}. Добавьте в него ссылки и запустите скрипт снова.")
+        return []
+
+    with open(LINKS_FILE, "r", encoding="utf-8") as f:
+        lines = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+
+    if not lines:
+        print(f"ℹ️ Файл {LINKS_FILE} пуст. Добавьте ссылки.")
+        return []
+
+    video_urls = []
+    playlists = []
+
+    for line in lines:
+        if "playlist?list=" in line or "&list=" in line:
+            playlists.append(line)
+        else:
+            video_urls.append(line)
+
+    # Обрабатываем плейлисты
+    for p_url in playlists:
+        video_urls.extend(get_playlist_videos(p_url))
+
+    # Удаляем дубликаты (используя YouTube ID как ключ)
+    unique_vids = {}
+    for url in video_urls:
+        vid = get_yt_video_id(url)
+        if vid and vid not in unique_vids:
+            unique_vids[vid] = f"https://youtu.be/{vid}"
+
+    final_urls = list(unique_vids.values())
+
+    # Перезаписываем файл красиво и чисто
+    with open(LINKS_FILE, "w", encoding="utf-8") as f:
+        f.write("# Добавляй сюда ссылки на YouTube видео или плейлисты (каждая с новой строки)\n")
+        f.write("# Скрипт автоматически раскрывает плейлисты и удаляет дубликаты.\n\n")
+        for url in final_urls:
+            f.write(url + "\n")
+
+    return final_urls
+
 def generate_music():
-    print("🚀 Запуск глубокого парсинга музыки и авторов с YouTube...\n")
+    print("🚀 Запуск умного парсинга музыки с YouTube...\n")
     
     os.makedirs(BASE_MUSIC_DIR, exist_ok=True)
     os.makedirs(BASE_AUTHORS_DIR, exist_ok=True)
     os.makedirs("data", exist_ok=True)
 
-    # 1. Собираем все ссылки
-    all_urls = list(YT_LINKS)
-    for p_url in YT_PLAYLISTS:
-        if p_url.strip():
-            all_urls.extend(get_playlist_videos(p_url.strip()))
+    # 1. Загружаем и обрабатываем ссылки из текстового файла
+    final_urls = manage_links_file()
+    if not final_urls:
+        return
 
-    # 2. Удаляем дубликаты
-    unique_vids = set()
-    final_urls = []
-    for url in all_urls:
-        vid = get_yt_video_id(url)
-        if vid and vid not in unique_vids:
-            unique_vids.add(vid)
-            final_urls.append(url)
-
-    print(f"\nВсего треков в очереди на обработку: {len(final_urls)}\n")
+    print(f"\nВсего треков в базе (уникальных): {len(final_urls)}\n")
     
     music_index_ids = []
-    authors_db = {} # Словарь: { author_id: { data } }
+    authors_db = {} # Для обновления базы авторов в памяти
 
-    # 3. Обрабатываем каждое видео
+    # 2. Обрабатываем каждое видео
     for yt_url in final_urls:
         vid_id = get_yt_video_id(yt_url)
         track_id = f"yt_{vid_id}"
@@ -201,84 +203,123 @@ def generate_music():
         track_dir = os.path.join(BASE_MUSIC_DIR, track_id)
         os.makedirs(track_dir, exist_ok=True)
         
-        # Получаем данные видео
-        meta = fetch_yt_metadata(yt_url)
-        title = meta.get("title", "Неизвестный трек") if meta else "Неизвестный трек"
-        artist_name = meta.get("author_name", "Неизвестно") if meta else "Неизвестно"
-        author_url = meta.get("author_url", "") if meta else ""
+        json_path = os.path.join(track_dir, "data.json")
         
-        title = re.sub(r'\(.*?\)|\[.*?\]', '', title).strip()
-        artist_name = artist_name.replace(" - Topic", "").strip()
+        # Читаем старые данные, если они есть
+        existing_data = {}
+        if os.path.exists(json_path):
+            try:
+                with open(json_path, "r", encoding="utf-8") as f:
+                    existing_data = json.load(f)
+            except: pass
 
-        # Вычисляем красивый ID для автора на основе его URL
-        if "@" in author_url:
-            author_id = author_url.split("@")[-1].lower()
-        else:
-            author_id = author_url.strip('/').split('/')[-1].lower()
-            
-        author_id = re.sub(r'[^a-z0-9_]', '_', author_id)
-        if not author_id or author_id == "unknown":
-            author_id = "unknown_artist"
+        # Флаги для определения, нужно ли нам делать запросы к API ютуба
+        needs_meta = not existing_data or existing_data.get("title") in ["Неизвестный трек", ""] or existing_data.get("artist") in ["Неизвестно", ""]
+        needs_year = not existing_data or not existing_data.get("year")
+        
+        # Скачиваем метаданные только если чего-то не хватает
+        title = existing_data.get("title", "Неизвестный трек")
+        artist_name = existing_data.get("artist", "Неизвестно")
+        author_id = existing_data.get("authorId", "unknown_artist")
+        author_url = ""
 
-        # --- ОБНОВЛЕНИЕ БАЗЫ АВТОРОВ В ПАМЯТИ ---
+        if needs_meta:
+            meta = fetch_yt_metadata(yt_url)
+            if meta:
+                title = meta.get("title", title)
+                artist_name = meta.get("author_name", artist_name)
+                author_url = meta.get("author_url", "")
+                
+                title = re.sub(r'\(.*?\)|\[.*?\]', '', title).strip()
+                artist_name = artist_name.replace(" - Topic", "").strip()
+
+                if "@" in author_url:
+                    author_id = author_url.split("@")[-1].lower()
+                else:
+                    author_id = author_url.strip('/').split('/')[-1].lower()
+                author_id = re.sub(r'[^a-z0-9_]', '_', author_id)
+                if not author_id or author_id == "unknown":
+                    author_id = "unknown_artist"
+
+        # Добавляем трек автору в память
         if author_id not in authors_db:
             authors_db[author_id] = {
                 "id": author_id,
                 "name": artist_name,
                 "channel_url": author_url,
-                "avatar_url": None, # Соберем позже
+                "avatar_url": None,
                 "tracks": []
             }
         authors_db[author_id]["tracks"].append(track_id)
 
-        # Вытягиваем год публикации
-        year = fetch_yt_year(yt_url)
+        # Вытягиваем год только если его нет
+        year = existing_data.get("year", "")
+        if needs_year:
+            year = fetch_yt_year(yt_url)
 
-        # Скачиваем обложку трека (maxres или hq)
-        cover_filename = "cover.jpg"
+        # Скачиваем обложку, если её нет физически ИЛИ в json она не прописана
+        cover_filename = existing_data.get("cover", "cover.jpg")
+        if not cover_filename: cover_filename = "cover.jpg"
+        
         cover_path = os.path.join(track_dir, cover_filename)
         if not os.path.exists(cover_path):
             if not download_image(f"https://img.youtube.com/vi/{vid_id}/maxresdefault.jpg", cover_path):
                 if not download_image(f"https://img.youtube.com/vi/{vid_id}/hqdefault.jpg", cover_path):
-                    cover_filename = ""
+                    cover_filename = "" # Если не удалось скачать
 
-        # Собираем data.json для трека
-        json_path = os.path.join(track_dir, "data.json")
+        # Сборка финального JSON с УМНЫМ СЛИЯНИЕМ (Smart Merge)
         track_data = {
             "id": track_id,
             "title": title,
             "artist": artist_name,
             "authorId": author_id,
-            "type": "fan_song",
-            "game": "Bendy",
+            "type": existing_data.get("type", "fan_song"),
+            "game": existing_data.get("game", "Bendy"),
             "year": year, 
             "cover": cover_filename,
-            "audio": "",
+            "audio": existing_data.get("audio", ""),
             "youtubeUrl": yt_url,
-            "lyrics": {
+            "lyrics": existing_data.get("lyrics", {
                 "original": "Текст песни пока не добавлен...",
                 "translation": "Перевод появится позже..."
-            }
+            })
         }
 
-        with open(json_path, "w", encoding="utf-8") as f:
-            json.dump(track_data, f, ensure_ascii=False, indent=4)
-        
-        print(f"✅ Трек сохранен: {title} | {artist_name}")
+        # Сохраняем, только если данные изменились (экономим ресурсы диска)
+        if track_data != existing_data:
+            with open(json_path, "w", encoding="utf-8") as f:
+                json.dump(track_data, f, ensure_ascii=False, indent=4)
+            if not existing_data:
+                print(f"✅ СОЗДАН: {title} | {artist_name}")
+            else:
+                print(f"🔄 ОБНОВЛЕН: {title} | {artist_name}")
+        else:
+            print(f"✔️ Пропущен (Всё актуально): {title}")
+
         music_index_ids.append(track_id)
 
-    # 4. Обрабатываем собранных авторов
-    print(f"\n👥 Начинаем создание базы авторов ({len(authors_db)} чел.)...")
+    # 3. Обрабатываем собранных авторов
+    print(f"\n👥 Синхронизация базы авторов ({len(authors_db)} чел.)...")
     author_index_ids = []
 
     for author_id, author_data in authors_db.items():
         author_dir = os.path.join(BASE_AUTHORS_DIR, author_id)
         os.makedirs(author_dir, exist_ok=True)
         
-        avatar_filename = "avatar.jpg"
+        author_json_path = os.path.join(author_dir, "data.json")
+        existing_author = {}
+        if os.path.exists(author_json_path):
+            try:
+                with open(author_json_path, "r", encoding="utf-8") as f:
+                    existing_author = json.load(f)
+            except: pass
+
+        avatar_filename = existing_author.get("assets", {}).get("avatar", "avatar.jpg")
+        if not avatar_filename: avatar_filename = "avatar.jpg"
+        
         avatar_path = os.path.join(author_dir, avatar_filename)
         
-        # Если аватарки еще нет локально, парсим канал и скачиваем
+        # Скачиваем аватарку только если её нет
         if not os.path.exists(avatar_path) and author_data["channel_url"]:
             print(f"  🔍 Поиск аватарки для: {author_data['name']}")
             avatar_web_url = fetch_channel_avatar(author_data["channel_url"])
@@ -292,33 +333,46 @@ def generate_music():
         elif not os.path.exists(avatar_path):
             avatar_filename = ""
 
-        # Формируем JSON автора
-        author_json_path = os.path.join(author_dir, "data.json")
+        # Умное слияние треков (чтобы не потерять треки, которых нет на ютубе, но есть в базе)
+        merged_tracks = set(existing_author.get("tracks", []))
+        for t in author_data["tracks"]:
+            merged_tracks.add(t)
+
         final_author_data = {
             "id": author_id,
-            "name": author_data["name"],
-            "channelUrl": author_data["channel_url"],
+            "name": existing_author.get("name", author_data["name"]),
+            "channelUrl": existing_author.get("channelUrl", author_data["channel_url"]),
             "assets": {
                 "avatar": avatar_filename
             },
-            "tracks": author_data["tracks"]
+            "tracks": list(merged_tracks)
         }
         
-        with open(author_json_path, "w", encoding="utf-8") as f:
-            json.dump(final_author_data, f, ensure_ascii=False, indent=4)
+        if final_author_data != existing_author:
+            with open(author_json_path, "w", encoding="utf-8") as f:
+                json.dump(final_author_data, f, ensure_ascii=False, indent=4)
             
         author_index_ids.append(author_id)
 
-    # 5. Сохраняем обновленные индексы
+    # 4. Сохраняем обновленные индексы
     with open(INDEX_MUSIC_FILE, "w", encoding="utf-8") as f:
         json.dump(music_index_ids, f, ensure_ascii=False, indent=4)
         
+    # Объединяем индекс авторов со старым индексом, чтобы не потерять старых не-ютуб авторов
+    existing_author_index = []
+    if os.path.exists(INDEX_AUTHORS_FILE):
+        try:
+            with open(INDEX_AUTHORS_FILE, "r", encoding="utf-8") as f:
+                existing_author_index = json.load(f)
+        except: pass
+
+    final_author_index = list(set(existing_author_index + author_index_ids))
+
     with open(INDEX_AUTHORS_FILE, "w", encoding="utf-8") as f:
-        json.dump(author_index_ids, f, ensure_ascii=False, indent=4)
+        json.dump(final_author_index, f, ensure_ascii=False, indent=4)
 
     print(f"\n🎉 Готово!")
-    print(f"Собрано треков: {len(music_index_ids)}")
-    print(f"Собрано авторов: {len(author_index_ids)}")
+    print(f"Файл {LINKS_FILE} очищен от дубликатов.")
     print(f"Индексы {INDEX_MUSIC_FILE} и {INDEX_AUTHORS_FILE} успешно обновлены.")
 
 if __name__ == "__main__":

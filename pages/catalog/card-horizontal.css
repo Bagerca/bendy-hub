@@ -11,6 +11,7 @@
     cursor: pointer;
     text-decoration: none;
     --card-hover-rgb: 210, 168, 80; 
+    --marquee-bg: var(--bg-card); /* Цвет для перекрывающего градиента */
 }
 
 [data-theme="dark"] .card-horizontal { box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
@@ -65,35 +66,21 @@
     flex-direction: column; 
     gap: 0.3rem;
     overflow: hidden;
-    /* МАГИЯ ЗДЕСЬ: Двусторонний градиент. 
-       Слева: растворяется в зоне padding (0-12px).
-       Справа: растворяется на последних 20px */
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 20px), transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0, #000 12px, #000 calc(100% - 20px), transparent 100%);
 }
+
 .card-horizontal .card-title { 
     font-size: 1.15rem; 
     font-weight: 800; 
     color: var(--text-main); 
     line-height: 1.25;
-    white-space: nowrap;
-    display: block;
-    width: 100%;
-    will-change: transform;
 }
 
 .card-horizontal .card-year { 
     font-size: 0.85rem; 
     font-weight: 600; 
     color: var(--text-muted); 
-    white-space: nowrap;
-    display: block;
-    width: 100%;
-    will-change: transform;
 }
 
-/* ДОБАВИТЬ В КОНЕЦ ФАЙЛА */
-/* Увеличиваем и стилизуем SVG иконку внутри заглушки */
 .card-horizontal .card-cover-fallback svg {
     width: 48px;
     height: 48px;

@@ -213,6 +213,13 @@
     transition: all 0.3s ease;
 }
 
+/* ЖЕСТКАЯ ФИКСАЦИЯ РАЗМЕРА ИКОНКИ SVG */
+.card-fallback-icon svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
 .record-card:hover .card-fallback-icon {
     color: var(--accent-color);
     transform: scale(1.1);

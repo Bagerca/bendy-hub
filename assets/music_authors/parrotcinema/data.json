@@ -1,0 +1,11 @@
+{
+    "id": "parrotcinema",
+    "name": "Parrot Cinema",
+    "channelUrl": "https://www.youtube.com/@ParrotCinema",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "tracks": [
+        "yt_5tZdr_FErqk"
+    ]
+}

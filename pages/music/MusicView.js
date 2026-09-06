@@ -1,5 +1,6 @@
 import { getAverageRGB } from '../../shared/js/utils.js';
 import { Icons } from '../../shared/js/icons.js';
+import { SmartMarquee } from '../../shared/js/SmartMarquee.js';
 
 export class MusicView {
     constructor() {
@@ -35,38 +36,6 @@ export class MusicView {
             this.els.btnGrid.classList.add('active');
             this.els.btnList.classList.remove('active');
         }
-    }
-
-    _applySmartMarquee(card) {
-        let timers = [];
-        card.addEventListener('mouseenter', () => {
-            timers.forEach(t => clearTimeout(t));
-            timers = [];
-            const title = card.querySelector('.song-title');
-            if (!title) return;
-            
-            title.style.width = '100%';
-            if (title.scrollWidth > title.clientWidth) {
-                const distance = title.scrollWidth - title.clientWidth;
-                const duration = Math.max(distance / 30, 1.5); 
-                title.style.width = 'max-content';
-                void title.offsetWidth;
-                title.style.transition = `transform ${duration}s linear 0.3s`;
-                title.style.transform = `translateX(-${distance}px)`;
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            const title = card.querySelector('.song-title');
-            if (!title || title.style.width !== 'max-content') return;
-            
-            title.style.transition = `transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0s`;
-            title.style.transform = `translateX(0)`;
-            const t = setTimeout(() => {
-                title.style.width = '100%';
-            }, 400);
-            timers.push(t);
-        });
     }
 
     renderGrid(tracksToRender) {
@@ -124,7 +93,8 @@ export class MusicView {
                 });
             }
 
-            this._applySmartMarquee(card);
+            // Включаем умный скроллер для карточки
+            SmartMarquee.apply(card, '.smart-marquee-text');
             fragment.appendChild(clone);
         });
 
@@ -142,7 +112,6 @@ export class MusicView {
             }
         });
         
-        // Фон теперь убирается в самом плеере при закрытии
         if (!trackId) {
             const ambientBg = document.getElementById('ambient-bg');
             if (ambientBg) ambientBg.style.opacity = '0';

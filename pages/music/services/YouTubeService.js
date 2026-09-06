@@ -36,13 +36,16 @@ export class YouTubeService {
         return match ? match[1] : null;
     }
 
-    loadVideo(videoId, startSeconds = 0, volume = 100, isMuted = false) {
+    // Добавлен параметр autoplay для умного контроля автовоспроизведения
+    loadVideo(videoId, startSeconds = 0, volume = 100, isMuted = false, autoplay = true) {
         if (!this.isReady) return;
 
         if (this.player) {
-            this.player.loadVideoById({ videoId, startSeconds });
-            if (startSeconds > 0) {
-                setTimeout(() => this.player.pauseVideo(), 200);
+            if (autoplay) {
+                this.player.loadVideoById({ videoId, startSeconds });
+            } else {
+                // Подготавливает видео на нужном моменте, но НЕ начинает его играть
+                this.player.cueVideoById({ videoId, startSeconds });
             }
         } else {
             const container = document.getElementById(this.containerId);
@@ -54,7 +57,7 @@ export class YouTubeService {
                 width: '100%',
                 videoId: videoId,
                 playerVars: { 
-                    'autoplay': startSeconds === 0 ? 1 : 0, 
+                    'autoplay': autoplay ? 1 : 0, 
                     'controls': 0,           
                     'rel': 0,                
                     'modestbranding': 1,     
@@ -66,9 +69,11 @@ export class YouTubeService {
                     'onReady': (event) => {
                         event.target.setVolume(volume);
                         if (isMuted) event.target.mute();
-                        if (startSeconds > 0) {
-                            event.target.seekTo(startSeconds);
-                            event.target.pauseVideo();
+                        
+                        if (!autoplay) {
+                            event.target.cueVideoById({ videoId, startSeconds });
+                        } else if (startSeconds > 0) {
+                            event.target.seekTo(startSeconds, true);
                         }
                     },
                     'onStateChange': (e) => {
@@ -85,7 +90,9 @@ export class YouTubeService {
     mute() { if (this.player) this.player.mute(); }
     unMute() { if (this.player) this.player.unMute(); }
     
-    // Новые методы для перемотки
+    // Получение текущего аппаратного статуса напрямую из YouTube
+    getState() { return this.player && typeof this.player.getPlayerState === 'function' ? this.player.getPlayerState() : -1; }
+    
     getCurrentTime() { return this.player && typeof this.player.getCurrentTime === 'function' ? this.player.getCurrentTime() : 0; }
     getDuration() { return this.player && typeof this.player.getDuration === 'function' ? this.player.getDuration() : 0; }
     seekTo(seconds) { if (this.player) this.player.seekTo(seconds, true); }

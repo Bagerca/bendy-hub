@@ -128,6 +128,34 @@ export class RecordsView {
         });
     }
 
+    _getCategoryIcon(categoryId) {
+        switch (categoryId) {
+            case 'batds_audio':
+            case 'batdr_audio':
+            case 'jds_channel_promo':
+                return Icons.archive_audio || Icons.stat_music;
+            case 'batdr_radio':
+                return Icons.archive_radio || Icons.stat_music;
+            case 'batdr_tour':
+                return Icons.archive_tour || Icons.stat_music;
+            case 'wilson_library':
+            case 'mug_and_maiden':
+                return Icons.archive_book || Icons.stat_book;
+            case 'batdr_notes':
+                return Icons.archive_notes || Icons.stat_book;
+            case 'archgate_exhibits':
+                return Icons.archive_stands || Icons.stat_book;
+            case 'lost_ones_lines':
+                return Icons.archive_voice || Icons.stat_music;
+            case 'character_archives_batdr':
+            case 'studio_information':
+                return Icons.archive_info || Icons.stat_book;
+            case 'studio_archives_press':
+            default:
+                return Icons.archive_general || Icons.stat_book;
+        }
+    }
+
     renderGrid(category, onRecordClick) {
         this.els.title.textContent = this._cleanTitle(category.title);
         this.els.count.textContent = `${category.items.length} ЗАПИСЕЙ`;
@@ -157,8 +185,7 @@ export class RecordsView {
             } else {
                 imgEl.style.display = 'none';
                 fallbackEl.style.display = 'flex';
-                // Динамическая вставка иконки в зависимости от категории
-                fallbackEl.innerHTML = (category.type === 'audio') ? Icons.stat_music : Icons.empty_doc;
+                fallbackEl.innerHTML = this._getCategoryIcon(category.id);
             }
 
             card.addEventListener('click', () => onRecordClick(item));

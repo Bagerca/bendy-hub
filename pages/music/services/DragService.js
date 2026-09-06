@@ -96,10 +96,15 @@ export class DragService {
         
         this.container.style.bottom = 'auto';
         this.container.style.top = `${Math.max(20, topPos)}px`;
+        
+        // Уменьшили отрицательный отступ (было -12px, стало -2px) 
+        // для визуального отступа кнопок от края экрана.
         if (side === 'left') {
-            this.container.style.left = '-12px'; this.container.style.right = 'auto';
+            this.container.style.left = '-2px'; 
+            this.container.style.right = 'auto';
         } else {
-            this.container.style.left = 'auto'; this.container.style.right = '-12px';
+            this.container.style.left = 'auto'; 
+            this.container.style.right = '-2px';
         }
     }
 
