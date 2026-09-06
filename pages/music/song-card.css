@@ -70,7 +70,7 @@
 }
 .song-card:not(.no-audio):hover .song-overlay { opacity: 1; }
 
-/* КНОПКА ПЛЕЙ */
+/* КНОПКА ПЛЕЙ (Оверлей на карточке) */
 .song-play-btn {
     position: absolute; top: 50%; left: 50%; 
     background: rgba(0, 0, 0, 0.5); 
@@ -83,7 +83,13 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 20;
 }
 
-.song-play-btn svg { width: 22px; height: 22px; }
+/* Стили самих SVG внутри кнопки */
+.song-play-btn svg { width: 24px; height: 24px; display: block; }
+
+/* По умолчанию прячем паузу */
+.song-play-btn .icon-state-pause { display: none; }
+.song-play-btn .icon-state-play { display: block; }
+
 .song-card:not(.no-audio):hover .song-play-btn { opacity: 1; transform: translate(-50%, -50%); }
 .song-play-btn:hover { 
     background: var(--accent-color); border-color: var(--accent-color); color: #000; transform: translate(-50%, -50%) scale(1.1); 
@@ -96,10 +102,20 @@
 }
 .song-card.playing .song-title { color: var(--accent-color); }
 .song-card.playing .song-overlay { opacity: 1; background: rgba(0,0,0,0.6); }
+
 .song-card.playing .song-play-btn { 
     opacity: 1; transform: translate(-50%, -50%); background: var(--accent-color); 
     border-color: var(--accent-color); color: #000; box-shadow: 0 0 15px rgba(210, 168, 80, 0.5);
 }
+
+/* Меняем иконки: Если трек АКТИВЕН и ИГРАЕТ - показываем ПАУЗУ */
+.song-card.playing:not(.is-paused) .song-play-btn .icon-state-play { display: none; }
+.song-card.playing:not(.is-paused) .song-play-btn .icon-state-pause { display: block; }
+
+/* Меняем иконки: Если трек АКТИВЕН но НА ПАУЗЕ - возвращаем ПЛЕЙ */
+.song-card.playing.is-paused .song-play-btn .icon-state-play { display: block; }
+.song-card.playing.is-paused .song-play-btn .icon-state-pause { display: none; }
+
 
 /* ИНФО БЛОК */
 .song-info { 

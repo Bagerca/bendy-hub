@@ -41,7 +41,11 @@ export class MusicModel {
             ]);
             
             this.tracks = tracksRes.filter(t => t !== null);
-            this.authors = authorsRes.filter(a => a !== null).sort((a, b) => b.tracks.length - a.tracks.length);
+            
+            // ИСПРАВЛЕНО: Теперь сортируем авторов по алфавиту (игнорируя регистр)
+            this.authors = authorsRes
+                .filter(a => a !== null)
+                .sort((a, b) => a.name.localeCompare(b.name, 'ru', { sensitivity: 'base' }));
             
             return this.applyFilters({});
         } catch (error) {

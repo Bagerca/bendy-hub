@@ -6,7 +6,6 @@ export class MusicView {
         this.els = {
             container: document.getElementById('music-grid'),
             loader: document.getElementById('music-loader'),
-            ambientBg: document.getElementById('ambient-bg'),
             btnGrid: document.getElementById('btn-view-grid'),
             btnList: document.getElementById('btn-view-list')
         };
@@ -91,7 +90,12 @@ export class MusicView {
             clone.querySelector('.song-year').textContent = track.year || '';
             
             const playBtn = clone.querySelector('.dyn-icon-play');
-            if (playBtn) playBtn.innerHTML = Icons.play_btn;
+            if (playBtn) {
+                playBtn.innerHTML = `
+                    <div class="icon-state-play">${Icons.player_play}</div>
+                    <div class="icon-state-pause">${Icons.player_pause}</div>
+                `;
+            }
 
             const coverEl = clone.querySelector('.song-cover');
             const coverPath = track.cover ? `assets/music/${track.id}/${track.cover}` : '';
@@ -128,22 +132,20 @@ export class MusicView {
         this.els.container.style.display = 'grid';
     }
 
-    updateActiveCard(trackId) {
+    updateActiveCard(trackId, isPlaying = true) {
         document.querySelectorAll('.song-card').forEach(card => {
             if (card.dataset.id === trackId) {
                 card.classList.add('playing');
-                const img = card.querySelector('.song-cover');
-                if (img && img.src && !img.src.includes('data:image')) {
-                    this.els.ambientBg.style.backgroundImage = `url('${img.src}')`;
-                    this.els.ambientBg.style.opacity = '1';
-                }
+                card.classList.toggle('is-paused', !isPlaying);
             } else {
-                card.classList.remove('playing');
+                card.classList.remove('playing', 'is-paused');
             }
         });
         
+        // Фон теперь убирается в самом плеере при закрытии
         if (!trackId) {
-            this.els.ambientBg.style.opacity = '0';
+            const ambientBg = document.getElementById('ambient-bg');
+            if (ambientBg) ambientBg.style.opacity = '0';
         }
     }
 

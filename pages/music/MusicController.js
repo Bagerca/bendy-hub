@@ -5,7 +5,7 @@ export class MusicController {
         this.model = model;
         this.view = view;
         this.player = player;
-        this.authorSelect = null; // Привязывается из app.js
+        this.authorSelect = null; 
 
         this._bindEvents();
     }
@@ -16,7 +16,7 @@ export class MusicController {
         this.player.onNextRequest = () => {
             const nextTrack = this.model.getNextTrack();
             if (nextTrack) {
-                this.view.updateActiveCard(nextTrack.id);
+                this.view.updateActiveCard(nextTrack.id, true);
                 this.player.loadTrack(nextTrack);
             }
         };
@@ -24,7 +24,7 @@ export class MusicController {
         this.player.onPrevRequest = () => {
             const prevTrack = this.model.getPrevTrack();
             if (prevTrack) {
-                this.view.updateActiveCard(prevTrack.id);
+                this.view.updateActiveCard(prevTrack.id, true);
                 this.player.loadTrack(prevTrack);
             }
         };
@@ -33,7 +33,6 @@ export class MusicController {
             const searchInput = document.querySelector('.search-input');
             if (searchInput) searchInput.value = '';
             
-            // Сбрасываем фильтры, чтобы найти играющий трек наверняка
             this.handleFilterChange({ search: '', author: 'all' });
             
             if (this.authorSelect) {
@@ -57,7 +56,13 @@ export class MusicController {
         };
         
         this.player.onClose = () => {
-            this.view.updateActiveCard(null); 
+            this.view.updateActiveCard(null, false); 
+        };
+
+        this.player.onPlayStateChange = (isPlaying) => {
+            if (this.player.currentTrack) {
+                this.view.updateActiveCard(this.player.currentTrack.id, isPlaying);
+            }
         };
     }
 
@@ -65,7 +70,6 @@ export class MusicController {
         try {
             await this.model.fetchTracks();
             
-            // Заполняем выпадающий список авторов
             if (this.authorSelect) {
                 const allIcon = `<div class="svg-icon">${Icons.cat_all}</div>`;
                 const fallbackUrl = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%238B949E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E";
@@ -90,7 +94,7 @@ export class MusicController {
 
             if (this.player.currentTrack) {
                 this.model.syncCurrentTrack(this.player.currentTrack.id);
-                this.view.updateActiveCard(this.player.currentTrack.id);
+                this.view.updateActiveCard(this.player.currentTrack.id, this.player.isPlaying);
             }
             
             const urlParams = new URLSearchParams(window.location.search);
@@ -113,16 +117,21 @@ export class MusicController {
 
         if (this.player.currentTrack) {
             this.model.syncCurrentTrack(this.player.currentTrack.id);
-            this.view.updateActiveCard(this.player.currentTrack.id);
+            this.view.updateActiveCard(this.player.currentTrack.id, this.player.isPlaying);
         }
     }
 
     _handleTrackClick(trackId) {
+        if (this.player.currentTrack && this.player.currentTrack.id === trackId) {
+            this.player.togglePlay();
+            return;
+        }
+
         this.model.setCurrentIndexById(trackId);
         const track = this.model.getTrackById(trackId);
         
         if (track && track.youtubeUrl) {
-            this.view.updateActiveCard(trackId);
+            this.view.updateActiveCard(trackId, true);
             this.player.loadTrack(track);
         }
     }
