@@ -1,6 +1,24 @@
 [
   {
-    "id": "2090918512025854430#m",
+    "id": "2090946144796877170",
+    "authorName": "Mike Desjardins",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "RT @BendyRun: We’re listening! Update now for the latest. Much more to come! http://bendyrun.com",
+    "timestamp": "2026-08-21T23:36:23Z",
+    "mediaUrl": null,
+    "mediaType": "image",
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
+  },
+  {
+    "id": "2090918512025854430",
     "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
@@ -11,10 +29,14 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
-    "id": "2090852491852169449#m",
+    "id": "2090852491852169449",
     "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
@@ -25,11 +47,33 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
+  },
+  {
+    "id": "2090154497670615224",
+    "authorName": "Mike Desjardins",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "RT @BendyRun: Bendy’s Nightmare Run is here!! Get it NOW for FREE! https://bendyrun.com",
+    "timestamp": "2026-08-19T19:10:40Z",
+    "mediaUrl": null,
+    "mediaType": "image",
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2090068187702333721",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "some random fun dev facts for the day. in both batim/batdr we have an editor tool we just call \"T'ing\" which in a sentence would be said as \"just T through it\" this just enters a free roaming camera mode, where it leaves the player behind and the camera can freely fly around anywhere and through walls. you can also go really fast if you hold shift while moving around. when you press T again, it'll place the player exactly where you where seamlessly. this makes for testing specific things super easy and quick if it needs to be tested dozens of times. in batim specifically, we have a tool for speeding up time. which gives hilarious results. but in play mode if you press SHIFT+F it will speed up time super fast, including audio. and we used to use this to do super fast tests where we didn't want to T through anything and allow for sequences to trigger properly. in BLW we had a cheat tool by pressing ~ beside 1 on the keyboard and a menu would appear that gives all kinds of options to cheat, like going to any level, unlocking progression, unlock weapons, add days, or making all items appear right beside the elevator with the click of a button to quickly test a floors end result. in Cage we have, oh sorry we ran out of time here, see you in nightmare run!",
@@ -39,11 +83,15 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2089699401388245298",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "60fps on nightmare run feels so much better",
@@ -53,11 +101,15 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2089697414219247968",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "TOMORROW",
@@ -67,11 +119,33 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
+  },
+  {
+    "id": "2089696055277273172",
+    "authorName": "Mike Desjardins",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "RT @BendyRun: Bendy’s Nightmare Run! TOMORROW on YOUR phone!",
+    "timestamp": "2026-08-18T12:48:58Z",
+    "mediaUrl": null,
+    "mediaType": "image",
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2089397984995733818",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "Wednesday!",
@@ -81,11 +155,33 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
+  },
+  {
+    "id": "2089396840974135420",
+    "authorName": "Mike Desjardins",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "RT @BendyRun: Get ready! Bendy’s Nightmare Run is coming to your phone on WEDNESDAY!",
+    "timestamp": "2026-08-17T17:00:00Z",
+    "mediaUrl": null,
+    "mediaType": "image",
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2088688387561509351",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "Shout out to the development team at Broken Circle Studios working hard to bring this game back to life and to continue keeping it alive!",
@@ -95,11 +191,51 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
+  },
+  {
+    "id": "2088687654225227974",
+    "authorName": "Mike Desjardins",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "RT @BendyRun: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!",
+    "timestamp": "2026-08-15T18:01:57Z",
+    "mediaUrl": null,
+    "mediaType": "image",
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
+  },
+  {
+    "id": "2088641851314044990",
+    "authorName": "Mike Desjardins",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "RT @Bendy: Happy Lone Wolfiversary.",
+    "timestamp": "2026-08-15T14:59:57Z",
+    "mediaUrl": null,
+    "mediaType": "image",
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2080387892703109315",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "little update! i'm sure you all heard some buzz that something's coming, and iT's all in good fun, but no there's nothing coming today! that said, i guess it is a good time for some good old fashioned transparency. We're hard at work on a great number Of things for bendy, and while our focus has been on the cage, few tHings came up for us to work on for bendy that's been exciting. being the small team we are, we qUickly pivoted to get that out of the way, and it was a blast! but we're back on cage workiNg away! i've said it before, when the game goes gold on pc we'll let everyone know when it's being ported so you know the time is coming for us to ramp up marketing. now we get super exciteD over here and have been a little trigger happy on announcing things in the past, and we're doing our best to couRse correct that moving forward. so there's one thing i will say from now on when it comes to our gamEs. you'll only ever know \"coming soon\" or \"to be announced\" as the Date of a project. the only time we will reveal any kind of timeline, is when the release daTe has been announced. no more years, no more q1, q2, etc. We'd much rather just let you all know that we're working hard, and when the time is right, we'll annOunce actual dates, not vague timelines. so! back to work we go!",
@@ -109,11 +245,15 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2077863682420162860",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "big fan of the steam deck and the steam machine. price point aside due to the current state of things, it does everything right in my opinion. and it's helpful for me as a development target to make sure games work on steam machine, and steam deck, and of course cloud saves (which qol's will have). their great to have for testing, plus i'm also enjoying them in general. good stuff valve.",
@@ -123,11 +263,33 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
+  },
+  {
+    "id": "2077354244747719055",
+    "authorName": "Mike Desjardins",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "RT @Bendy: One week left to get the ORIGINAL BENDY at 90% OFF on Steam!",
+    "timestamp": "2026-07-15T11:27:01Z",
+    "mediaUrl": null,
+    "mediaType": "image",
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2077345811361305072",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "the playstation summer sale is active and our games are on sale there again. no 90% off this time, but batim and batdr are both 70% and blw is 35% ✌️",
@@ -137,11 +299,15 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2076988995758690492",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "i see bendy has made some noise in the fan poll. it’s nice to see the bendy community rally for something, even if unofficial. means a lot to us at jds to see such an active fan base. makes the long long… long long… oh so very long hours worth it. ✌️",
@@ -151,11 +317,15 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2076736617427910840",
-    "authorName": "m_ZeroLogics",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
     "content": "this is still technically cheaper than buying batdr on it's own lol https://store.steampowered.com/bundle/37767/Bendy_Studio_Collection/",
@@ -165,189 +335,29 @@
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
-    "id": "2076003177212604900",
-    "authorName": "m_ZeroLogics",
+    "id": "2075267801736987085",
+    "authorName": "Mike Desjardins",
     "authorHandle": "@m_ZeroLogics",
     "platform": "twitter",
-    "content": "the interesting thing about a baader meinhof to me is that baader meinhof is a baader meinhof in and of itself you’re welcome",
-    "timestamp": "2026-07-11T17:58:22Z",
+    "content": "RT @Bendy: The ORIGINAL BENDY is 90% OFF on Steam right now!",
+    "timestamp": "2026-07-09T17:16:15Z",
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2075287170126905666",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "month long bendy summer sale on steam is crazy. and with two 90% off is insane. but we get to have fun with stuff like this and try things out, and i’m grateful for it! thanks everyone for the continued support for bendy! 🖤",
-    "timestamp": "2026-07-09T18:33:12Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2075271948511129686",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "this would be the B in a/b :P",
-    "timestamp": "2026-07-09T17:32:43Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2074924279305511004",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "summer sale was/is a fantastic success with nearly 400K units sold and just under 24 hours to go. this time around we were doing a little trial and error with some advertising and i’ll keep doing some a/b testing moving forward. one thing i wanted to point out tho was how well the youtube ad did. with a pretty small spend we got over 23M impressions and the ad itself brought in about 1.4M views. it also drove over 550K visits straight to our steam page. we ran the same type of ad on tiktok, facebook, insta and x too but at a much smaller scale. the yt video ended up with well over 11M views tho which was way more than we thought was gonna happen. that means almost 10M of those views were organic. pretty sure the algorithm saw the initial engagement from the ad and just decided to push it more. that was definitely NOT the intention to have an advertisement as our most viewed video, hah! overall it brought in a good chunk of traffic. batdr alone had 224M steam impressions and 4.4M visits to the page. combined with the 90% off deal and steam putting us on the front page it was a solid push. still got a ton to learn when it comes to this stuff but it was a good experiment. we’ll keep testing and improving for the bigger releases so more people can check out some bendy :)",
-    "timestamp": "2026-07-08T18:31:13Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2074605226791706803",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "few more days left of the steam summer sale, and it's been great. the biggest take away for me was advertising and marketing. dipping my toes a bit in how to manage it, as we've never really done it before. most we ever did was a billboard for fun, hah. but i got loads of data, and more coming, to help me make sure that we have a better plan during any of our releases to spread the message better than we've done historically. blw was a fantastic test, and summer sale was the icing on the cake on what to do and how. there's a few more lessons i need to go through, and plan to do it, but it's a long term goal as we think the longevity of bendy rather than the quick wins to keep the lights on. grateful we get to take our time. so thank you all. 🖤",
-    "timestamp": "2026-07-07T21:23:25Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2074561062246998085",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "times a runnin out!",
-    "timestamp": "2026-07-07T18:27:55Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2074191936898953656",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "it's not lost on me that the most viewed video we have is an advertisement 😜",
-    "timestamp": "2026-07-06T18:01:09Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2073728032611655871",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "btw bendy games are $1 on mobile right now. i just haven’t had a chance to market them since steam has been the focus right now. on sale until july 9!",
-    "timestamp": "2026-07-05T11:17:45Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2073044051549462626",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "mini update! still loTs in tHe works, many games, InteRnal and external, busy busy as usual. doing a lot of Testing as some of you have alreadY seen with the summer sale, and it's going very well and we're learning a loT. lot's of things we don't really talk about on the business side, and i Won't get into details, but recently we hit a milestone that's opened up a lOt of doors for us moving into the future. with lots of plans to invest more in 2027 into bendy and the future of the franchise as a whole. so while We're mostly quiet, there's reason for it. i know for somE it may feel like a batdrought situation, but i can assure you it's not. we're focusEd on worKing and planning, and doing our best not to hype things that aren't yet ready to be hyped. it's super easy for uS to get excited about something and want to share it, but we're holding back a bit so we can focus on the big picture and bendy's future. as always, i appreciate you all so much, thanks for kicking it with bendy for all these years, and hopefully many years to come. and who knows maybe the new 250,000 sales of batdr can bring some people back into bendy with it's sequel, even if its 4 years later :P",
-    "timestamp": "2026-07-03T13:59:51Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2072625610770264498",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "was a watching a video while i was working and they were talking about blueprints in unreal, and i looked over and saw the web of “logic” and i was shocked. i thought my code was spaghetti, but that’s next level. i’m a visual person, i mean i started out on the art side of things before becoming a coder and i got lucky in meeting an artist to take over all the visuals. but my gosh, at what point do you just start to code instead of the visual spaghetti? 😅 big props to you blueprint users, that stuffs mind bending to me.",
-    "timestamp": "2026-07-02T10:17:07Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2072484678368403905",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "over 200,000 people decided to pick up #BATDR during the Steam Summer Sale so far. appreciate you all 🙏 #Bendy",
-    "timestamp": "2026-07-02T00:57:06Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2072360694968635619",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "Happy Canada Day 🇨🇦 Spending the day with my family ✌️",
-    "timestamp": "2026-07-01T16:44:26Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
-  },
-  {
-    "id": "2072299478950801625",
-    "authorName": "m_ZeroLogics",
-    "authorHandle": "@m_ZeroLogics",
-    "platform": "twitter",
-    "content": "PlayStation to end physical disc production in 2028. Xbox has the greatest opportunity of a life time right now…",
-    "timestamp": "2026-07-01T12:41:11Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "2056676283690402136",
@@ -362,6 +372,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -378,6 +390,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -394,6 +408,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -410,6 +426,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1988463108671578332",
     "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -426,6 +444,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/bumble_bbgun/status/1987163042531189103",
     "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -442,6 +462,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/themeatly/status/1986949104409161767",
     "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -458,6 +480,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -474,6 +498,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1986473420431769733",
     "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -490,6 +516,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -506,6 +534,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -522,6 +552,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/CloudRacer07/status/1985433699341484274",
     "referenceAuthor": "@CloudRacer07",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -538,6 +570,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -554,6 +588,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/JOEY_DREWSTUDIO/status/1985325626216386705",
     "referenceAuthor": "@JOEY_DREWSTUDIO",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -570,6 +606,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -586,6 +624,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/BLacroix30/status/1985150107243745672",
     "referenceAuthor": "@BLacroix30",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -602,6 +642,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/themeatly/status/1985142694327230738",
     "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -618,6 +660,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/BendyDaily/status/1984995247550575001",
     "referenceAuthor": "@BendyDaily",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -634,6 +678,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -650,6 +696,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -666,6 +714,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/TheLizard414/status/1984411620408254524",
     "referenceAuthor": "@TheLizard414",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -682,6 +732,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1984329358505279967",
     "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -698,6 +750,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -714,6 +768,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -730,6 +786,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -746,6 +804,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -762,6 +822,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/BeninjaLIVE/status/1984309316547936566",
     "referenceAuthor": "@BeninjaLIVE",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -778,6 +840,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -791,9 +855,11 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "reply",
-    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1984305527208182205",
-    "referenceAuthor": "@m_ZeroLogics",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -810,6 +876,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -826,6 +894,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -842,6 +912,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -858,6 +930,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -874,6 +948,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/Seekersillies/status/1984279899654537497",
     "referenceAuthor": "@Seekersillies",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -890,6 +966,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -906,6 +984,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -922,6 +1002,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -938,6 +1020,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -954,6 +1038,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -970,6 +1056,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -986,6 +1074,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1002,6 +1092,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1018,6 +1110,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/Bendy/status/1982803771739554216",
     "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1034,6 +1128,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1050,6 +1146,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1066,6 +1164,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1082,6 +1182,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1098,6 +1200,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1114,6 +1218,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1981408823945343318",
     "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1130,6 +1236,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1146,6 +1254,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1162,6 +1272,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1178,6 +1290,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1194,6 +1308,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1210,6 +1326,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1978198247865778358",
     "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1226,6 +1344,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1242,6 +1362,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1258,6 +1380,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1274,6 +1398,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1290,6 +1416,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1306,6 +1434,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/themeatly/status/1963960592630247523",
     "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1322,6 +1452,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1338,6 +1470,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1351,10 +1485,12 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1961760042962538959",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2017243552334397440/7VYUAWgZ_normal.jpg",
+    "referenceText": "WHY the change to Bendy’s gloves from  three stripes to two dots back in 2017?\n\nTo be honest, so many other characters use three stripes (so copyright wasn’t really an issue).. I mostly felt it just seemed too generic. I wanted people to look at his gloves and know exactly which",
     "referenceMediaUrl": null
   },
   {
@@ -1370,6 +1506,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1386,6 +1524,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1399,11 +1539,13 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1961162031509508482",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "referenceText": "The Dark Puddles rose up loud and strong! 15K!!\nThank you ALL for being part of it! WOW! #BATIF #BENDY https://t.co/pyRlOcJnVd",
+    "referenceMediaUrl": "assets/developers/m_zerologics/media/quote_1961163288089124918.jpg"
   },
   {
     "id": "1961059852744008152",
@@ -1418,6 +1560,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1434,6 +1578,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1450,6 +1596,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/chairthatspins/status/1960810509420388689",
     "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1466,6 +1614,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1479,11 +1629,13 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/BLacroix30/status/1960795747298762936",
+    "referenceAuthor": "@BLacroix30",
+    "referenceAuthorName": "Ben Lacroix",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2086661609821220864/Dn_VXW8N_normal.png",
+    "referenceText": "😉#BATIF #BENDY #B3NDY https://t.co/m8sLsK4y8c",
+    "referenceMediaUrl": "assets/developers/m_zerologics/media/quote_1960801607995810142.jpg"
   },
   {
     "id": "1960794751659336049",
@@ -1495,9 +1647,11 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "reply",
-    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1960794749893534194",
-    "referenceAuthor": "@m_ZeroLogics",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1514,6 +1668,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1530,6 +1686,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1546,6 +1704,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1562,6 +1722,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1960650389427998813",
     "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1578,6 +1740,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1591,11 +1755,13 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1960318075770716463",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "referenceText": "TOMORROW the NAME of Bendy 3 shall be revealed.\n#B3NDY #BENDY\n\nWatch the premiere on YouTube 🔗👇 https://t.co/QG1KFfGaif",
+    "referenceMediaUrl": "assets/developers/m_zerologics/media/quote_1960474868992106681.jpg"
   },
   {
     "id": "1959702687915643206",
@@ -1607,11 +1773,13 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1959702434026299782",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "referenceText": "Have you discovered Big Head Mode yet?\nPlay Today 🔗👇\n\n#Bendy #BendyLoneWolf https://t.co/rDzz3hyODz",
+    "referenceMediaUrl": "assets/developers/m_zerologics/media/quote_1959702687915643206.jpg"
   },
   {
     "id": "1958527145262612988",
@@ -1626,6 +1794,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1642,6 +1812,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/OmotamiaDev/status/1958498431359447459",
     "referenceAuthor": "@OmotamiaDev",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1658,6 +1830,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1671,10 +1845,12 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1958339943207473575",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2017243552334397440/7VYUAWgZ_normal.jpg",
+    "referenceText": "One of my personal goals with the Ink Demon in #B3NDY is to make him a horrific, roaming presence as a constant threat in new ways not yet seen before in #BENDY games. The Lord of the Dark Puddles will have his reign.",
     "referenceMediaUrl": null
   },
   {
@@ -1690,6 +1866,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1703,10 +1881,12 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1957811131436732436",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "referenceText": "Let's give it a name.\n#B3NDY #BENDY\nhttps://t.co/N63j8InGfF",
     "referenceMediaUrl": null
   },
   {
@@ -1722,6 +1902,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1738,6 +1920,8 @@
     "referenceType": "reply",
     "referenceUrl": "https://twitter.com/BeninjaLIVE/status/1957197944115052937",
     "referenceAuthor": "@BeninjaLIVE",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1754,6 +1938,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1767,11 +1953,13 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1957101436648432058",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
+    "referenceText": "Patch 2.0.1 on STEAM is NOW LIVE!\n#BendyLoneWolf #BENDY https://t.co/r8m0ivThIw",
+    "referenceMediaUrl": "assets/developers/m_zerologics/media/quote_1957101548103671872.png"
   },
   {
     "id": "1957036500660507118",
@@ -1786,6 +1974,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1802,6 +1992,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1815,10 +2007,12 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1956403084969554343",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "Mike Desjardins",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2081694743340204032/SswUyMyX_normal.png",
+    "referenceText": "We're working with steam on it folks! Standby! Thank you for your patience! :)",
     "referenceMediaUrl": null
   },
   {
@@ -1834,6 +2028,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1850,6 +2046,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1863,10 +2061,12 @@
     "mediaUrl": null,
     "mediaType": "image",
     "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceText": "",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1956362022121083353",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2017243552334397440/7VYUAWgZ_normal.jpg",
+    "referenceText": "🙂People asked for more excitement, reveals, marketing, and merch announcements leading up to releases... we tried to answer those pleas while also fueling a lot of fun and interactivity in the Bendy community. :) This will inevitably lead to the comments of \"overhyped game\" and",
     "referenceMediaUrl": null
   },
   {
@@ -1882,6 +2082,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1898,6 +2100,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1914,6 +2118,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1930,6 +2136,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1946,6 +2154,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   },
@@ -1962,6 +2172,8 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
     "referenceText": "",
     "referenceMediaUrl": null
   }

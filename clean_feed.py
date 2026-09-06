@@ -1,3 +1,4 @@
+# FILE: clean_feed.py
 import os
 import json
 import re
@@ -5,9 +6,9 @@ import re
 DEVS_DIR = os.path.join("assets", "developers")
 
 def clean_database():
-    print("\n" + "="*50)
-    print("🧹 BENDY FEED CLEANER (Удаление мусора и дубликатов)")
-    print("="*50 + "\n")
+    print("\n" + "="*60)
+    print("🧹 BENDY FEED CLEANER (Удаление шизо-репостов и дубликатов)")
+    print("="*60 + "\n")
 
     if not os.path.exists(DEVS_DIR):
         print("❌ Папка разработчиков не найдена.")
@@ -28,16 +29,14 @@ def clean_database():
             continue
 
         initial_count = len(posts)
+        folder_handle = folder.lower()
         
-        # 1. Удаляем дубликаты по ID (например: 12345 и 12345#m)
-        # Оставляем тот, у которого есть медиа, либо базовый.
+        # 1. Удаляем дубликаты по базовому ID
         unique_posts = {}
         for post in posts:
             base_id = post["id"].split("#")[0]
-            
             if base_id in unique_posts:
                 existing = unique_posts[base_id]
-                # Если в новом посте есть медиа, а в старом нет — заменяем
                 if post.get("mediaUrl") and not existing.get("mediaUrl"):
                     unique_posts[base_id] = post
             else:
@@ -45,18 +44,27 @@ def clean_database():
 
         cleaned_posts = list(unique_posts.values())
 
-        # 2. Удаляем сломанные "RT by" репосты без медиа, если есть нормальный аналог
+        # 2. Умное удаление сломанных репостов
         final_posts = []
         for post in cleaned_posts:
-            # Ищем битые посты типа "RT by @Bendy: текст"
-            is_broken_rt = bool(re.match(r"^RT by @[\w_]+:", post.get("content", ""), re.IGNORECASE))
-            has_media = bool(post.get("mediaUrl"))
+            content = post.get("content", "")
             
-            if is_broken_rt and not has_media:
-                # Если это сломанный ретвит без картинки, удаляем его из базы
-                pass
-            else:
-                final_posts.append(post)
+            # Ищем паттерн ретвита, точно так же, как это делает фронтенд:
+            # Ловит и "RT @name:" и "RT by @name:"
+            rt_match = re.match(r"^RT\s+(?:by\s+)?@([\w_]+)[\s:]", content, re.IGNORECASE)
+            
+            if rt_match:
+                rt_handle = rt_match.group(1).lower()
+                
+                # ПРАВИЛО 1: Пользователь репостнул сам себя (баг Твиттера/парсера)
+                if rt_handle == folder_handle:
+                    continue  # Пропускаем этот пост, он не попадет в финал
+                
+                # ПРАВИЛО 2: Сломанный "RT by" без картинки (абсолютный мусор)
+                if content.lower().startswith("rt by") and not post.get("mediaUrl"):
+                    continue  # Пропускаем
+                    
+            final_posts.append(post)
 
         # 3. Сортируем по дате перед сохранением
         final_posts.sort(key=lambda x: x['timestamp'], reverse=True)
@@ -67,11 +75,11 @@ def clean_database():
         if removed_count > 0:
             with open(feed_path, 'w', encoding='utf-8') as f:
                 json.dump(final_posts, f, ensure_ascii=False, indent=2)
-            print(f"✅ @{folder:<15} | Очищено мусора: {removed_count} постов")
+            print(f"✅ @{folder:<15} | Удалено багнутых постов: {removed_count}")
         else:
-            print(f"✔️ @{folder:<15} | Все чисто, дубликатов нет")
+            print(f"✔️ @{folder:<15} | Всё чисто")
 
-    print("\n🎉 Очистка завершена! Всего удалено дубликатов:", total_removed)
+    print(f"\n🎉 Очистка завершена! Всего удалено мусорных постов: {total_removed}")
 
 if __name__ == "__main__":
     clean_database()

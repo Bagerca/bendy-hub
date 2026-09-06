@@ -21,7 +21,7 @@ export class PostView {
             this._setupText(clone, rawText, searchTerm);
             this._setupMeta(clone, post);
             this._setupMedia(clone, post);
-            this._setupActions(clone, rawText);
+            this._setupActions(clone, rawText, post);
 
             return clone;
         } catch (error) { 
@@ -34,32 +34,36 @@ export class PostView {
         const rtBadge = clone.querySelector('.rt-badge');
         let text = post.content;
         
-        // Ищем паттерн ретвита (например: "RT @BendyRun:" или "RT by @Bendy:")
-        const rtMatch = post.content.match(/^RT\s+(?:by\s+)?(@[\w_]+)[\s:]+([\s\S]*)$/i);
-        if (rtMatch) {
-            text = rtMatch[2].trim();
-            const originalAuthorHandle = rtMatch[1]; // Кого ретвитнули
+        // 1. Ищем ИДЕАЛЬНЫЙ ретвит (Сгенерированный новым скрапером: "RT @BendyRun: текст")
+        const cleanRtMatch = text.match(/^RT\s+@([\w_]+)[\s:]+([\s\S]*)$/i);
+        // 2. Ищем СТАРЫЙ МУСОРНЫЙ ретвит из бэкапов RSS (например: "RT by @Bendy: текст")
+        const brokenRtMatch = text.match(/^RT\s+by\s+@([\w_]+)[\s:]+([\s\S]*)$/i);
+
+        if (cleanRtMatch) {
+            const originalAuthorHandle = cleanRtMatch[1]; 
+            text = cleanRtMatch[2].trim();
             
-            // Кто сделал ретвит (берем из данных поста)
             const retweeterClean = post.authorHandle.replace('@', '').toLowerCase();
             const retweeterName = this.authorNamesMap[`@${retweeterClean}`] || post.authorName;
 
             rtBadge.style.display = 'flex';
-            rtBadge.innerHTML = `${Icons.action_repost} <span>${retweeterName} репостнул(а)</span>`;
-
-            // Флаг для _setupMeta, чтобы подменить аватарку и имя
-            post.isRetweet = true;
+            rtBadge.innerHTML = `${Icons.action_repost} <span>${retweeterName} репостнул(а) <a href="https://twitter.com/${originalAuthorHandle}" target="_blank" rel="noopener noreferrer">@${originalAuthorHandle}</a></span>`;
             
-            // Если это странный формат "RT by @Bendy", значит пост изначально чужой.
-            // Но в основном мы будем использовать originalAuthorHandle.
-            if (post.content.toLowerCase().startsWith('rt by')) {
-                // Если Твиттер выдал "RT by", значит originalAuthorHandle - это тот, кто репостнул.
-                // В этом случае автор поста уже правильный, просто плашка была кривой.
-                post.isRetweet = false; 
-                rtBadge.innerHTML = `${Icons.action_repost} <span>Репост от <a href="https://twitter.com/${originalAuthorHandle.replace('@', '')}" target="_blank" rel="noopener noreferrer">${originalAuthorHandle}</a></span>`;
-            } else {
-                post.originalAuthorHandle = originalAuthorHandle;
-            }
+            // Запоминаем оригинального автора, чтобы _setupMeta вытянул его аватарку
+            post.isRetweet = true;
+            post.originalAuthorHandle = `@${originalAuthorHandle}`;
+
+        } else if (brokenRtMatch) {
+            // Если это старый битый репост в бэкапе, отрезаем плашку, чтобы не было шизофрении
+            text = brokenRtMatch[2].trim();
+            const retweeterClean = post.authorHandle.replace('@', '').toLowerCase();
+            const retweeterName = this.authorNamesMap[`@${retweeterClean}`] || post.authorName;
+
+            rtBadge.style.display = 'flex';
+            rtBadge.innerHTML = `${Icons.action_repost} <span>${retweeterName} репостнул(а) запись</span>`;
+
+            post.isRetweet = true;
+            post.originalAuthorHandle = null; // Автора нет, останется аватарка ретвиттера
         }
 
         if (text.trim().toLowerCase() === 'gif') text = '';
@@ -78,9 +82,11 @@ export class PostView {
             refBadge.querySelector('.ref-text').textContent = 'В ответ:';
             linkA.textContent = post.referenceAuthor || 'Оригинал';
             linkA.href = post.referenceUrl;
+            linkA.title = 'Перейти к оригинальному твиту в X/Twitter';
         } 
         else if (post.referenceType === 'quote') {
             quoteCard.style.display = 'block';
+            quoteCard.title = 'Перейти к цитируемому твиту в X/Twitter';
             
             quoteCard.querySelector('.quote-author-name').textContent = post.referenceAuthorName || post.referenceAuthor || 'Пользователь';
             quoteCard.querySelector('.quote-author-handle').textContent = post.referenceAuthor || '';
@@ -128,11 +134,11 @@ export class PostView {
     }
 
     _setupMeta(clone, post) {
-        // МАГИЯ: Если это ретвит, подменяем данные на того, кого ретвитнули
-        const handleToUse = post.isRetweet ? post.originalAuthorHandle : post.authorHandle;
+        // УМНЫЙ АВАТАР: Если это РЕТВИТ и мы знаем автора (например @BendyRun),
+        // карточка возьмет ЕГО имя и ЕГО аватарку, а не того, кто ретвитнул!
+        const handleToUse = (post.isRetweet && post.originalAuthorHandle) ? post.originalAuthorHandle : post.authorHandle;
         const handleClean = (handleToUse || '').replace('@', '').trim().toLowerCase();
         
-        // Пытаемся найти красивое имя в базе, если нет - оставляем @ник
         const displayName = this.authorNamesMap[`@${handleClean}`] || handleToUse;
 
         clone.querySelector('.post-author-name').textContent = displayName;
@@ -147,7 +153,6 @@ export class PostView {
             handleEl.href = `https://twitter.com/${handleClean}`;
         }
 
-        // Аватарка. Если автор чужой (не из нашей папки assets), сработает onerror и поставится заглушка
         const avatarEl = clone.querySelector('.post-avatar');
         avatarEl.src = `assets/developers/${handleClean}/avatar.jpg`;
         avatarEl.onerror = () => { avatarEl.src = this.fallbackAvatar; };
@@ -177,10 +182,24 @@ export class PostView {
         }
     }
 
-    _setupActions(clone, rawText) {
+    _setupActions(clone, rawText, post) {
         const actionsBlock = clone.querySelector('.post-actions');
+        
+        const cleanHandle = (post.authorHandle || '').replace('@', '');
+        const cleanId = post.id.split('#')[0]; 
+        
+        const twitterBtn = document.createElement('a');
+        twitterBtn.className = 'action-btn twitter-btn';
+        twitterBtn.href = `https://twitter.com/${cleanHandle}/status/${cleanId}`;
+        twitterBtn.target = '_blank';
+        twitterBtn.rel = 'noopener noreferrer';
+        twitterBtn.title = 'Посмотреть оригинал в X / Twitter';
+        twitterBtn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
+        actionsBlock.appendChild(twitterBtn);
+
         if (!rawText.trim()) {
-            actionsBlock.style.display = 'none';
+            clone.querySelector('.copy-btn').style.display = 'none';
+            clone.querySelector('.translate-btn').style.display = 'none';
             return;
         }
 

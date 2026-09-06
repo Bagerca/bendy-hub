@@ -1,6 +1,6 @@
 [
   {
-    "id": "2090287484802404359#m",
+    "id": "2090287484802404359",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
@@ -18,7 +18,7 @@
     "referenceMediaUrl": null
   },
   {
-    "id": "2090043299839057998#m",
+    "id": "2090043299839057998",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
@@ -36,7 +36,7 @@
     "referenceMediaUrl": null
   },
   {
-    "id": "2089851561753108720#m",
+    "id": "2089851561753108720",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
@@ -54,7 +54,7 @@
     "referenceMediaUrl": null
   },
   {
-    "id": "2021548189422440575#m",
+    "id": "2021548189422440575",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
@@ -72,7 +72,7 @@
     "referenceMediaUrl": null
   },
   {
-    "id": "2021201360151318567#m",
+    "id": "2021201360151318567",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
@@ -90,7 +90,7 @@
     "referenceMediaUrl": null
   },
   {
-    "id": "2021179718850998335#m",
+    "id": "2021179718850998335",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
@@ -108,7 +108,7 @@
     "referenceMediaUrl": null
   },
   {
-    "id": "2020862513055776998#m",
+    "id": "2020862513055776998",
     "authorName": "GENT",
     "authorHandle": "@GentCorporation",
     "platform": "twitter",
@@ -137,7 +137,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1984571747870654674",
@@ -151,7 +155,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1981835962121695613",
@@ -165,7 +173,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1981831686229721492",
@@ -179,7 +191,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1981825911688454347",
@@ -193,7 +209,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956398014274134293",
@@ -207,7 +227,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956203841667371228",
@@ -221,7 +245,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1956113522116436376",
@@ -235,7 +263,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1955300280221733237",
@@ -249,7 +281,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1955222316666818833",
@@ -263,7 +299,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1954594483024339298",
@@ -277,7 +317,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1954580929361424419",
@@ -291,7 +335,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1954264374866215090",
@@ -305,7 +353,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1954131753511055869",
@@ -319,7 +371,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1954009829246382528",
@@ -333,7 +389,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1953938203229999443",
@@ -347,7 +407,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1953270203342790763",
@@ -361,7 +425,11 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   },
   {
     "id": "1953138798910455910",
@@ -375,6 +443,10 @@
     "localAvatarPath": "assets/developers/gentcorporation/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
-    "referenceAuthor": ""
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMediaUrl": null
   }
 ]

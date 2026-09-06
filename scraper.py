@@ -162,8 +162,14 @@ class BendySniperScraper:
             
             for tweet in raw_tweets:
                 t_handle = tweet.get('user', {}).get('screen_name', handle)
-                if t_handle.lower() != handle.lower(): continue
                 content = tweet.get('full_text') or tweet.get('text', '')
+                
+                # ИДЕНТИФИКАЦИЯ РЕТВИТОВ
+                if t_handle.lower() != handle.lower():
+                    if not content.startswith(f"RT @{t_handle}"):
+                        content = f"RT @{t_handle}: {content}"
+                    t_handle = handle
+
                 post_id = tweet.get('id_str', '')
                 
                 media_url, media_type = None, "image"
@@ -245,11 +251,20 @@ class BendySniperScraper:
             for entry in entries:
                 if entry.get('type') != 'tweet': continue
                 tweet = entry['content']['tweet']
+                
                 author = tweet.get('user', {})
-                if author.get('screen_name', '').lower() != handle.lower(): continue
+                tweet_author_handle = author.get('screen_name', handle)
+                
                 if not avatar_url: avatar_url = author.get('profile_image_url_https', '')
                 actual_name = author.get('name', handle)
                 post_id = tweet.get('id_str', '')
+                content = tweet.get('text', '')
+
+                # ИДЕНТИФИКАЦИЯ РЕТВИТОВ
+                if tweet_author_handle.lower() != handle.lower():
+                    if not content.startswith(f"RT @{tweet_author_handle}"):
+                        content = f"RT @{tweet_author_handle}: {content}"
+                    tweet_author_handle = handle
 
                 media_url, media_type = None, "image"
                 ml = tweet.get('entities', {}).get('media', [])
@@ -305,9 +320,9 @@ class BendySniperScraper:
                 posts.append({
                     "id": post_id,
                     "authorName": actual_name,
-                    "authorHandle": f"@{author.get('screen_name', handle)}",
+                    "authorHandle": f"@{tweet_author_handle}",
                     "platform": "twitter",
-                    "content": tweet.get('text', ''),
+                    "content": content,
                     "timestamp": self.parse_date(tweet.get('created_at', '')),
                     "rawMediaUrl": media_url,
                     "mediaType": media_type,
@@ -344,8 +359,29 @@ class BendySniperScraper:
             for item in items:
                 link = item.find("link")
                 if link is None or not link.text: continue
-                content = html.unescape(item.find("title").text.strip()) if item.find("title") is not None and item.find("title").text else ""
-                post_id = link.text.rstrip('/').split('/')[-1]
+                link_text = link.text
+
+                # 1. Извлекаем чистый ID (убиваем #m и прочий мусор из RSS ссылок)
+                raw_id = link_text.rstrip('/').split('/')[-1]
+                post_id = raw_id.split('#')[0]
+
+                # 2. Вытаскиваем оригинального автора прямо из URL Nitter
+                orig_author = handle
+                parts = link_text.rstrip('/').split('/')
+                if "status" in parts:
+                    status_idx = parts.index("status")
+                    orig_author = parts[status_idx - 1]
+
+                title_el = item.find("title")
+                content = html.unescape(title_el.text.strip()) if title_el is not None and title_el.text else ""
+                
+                # 3. Лечим шизофрению ретвитов: превращаем "RT by @Bendy:" в "RT @BendyRun:"
+                if content.lower().startswith(f"rt by @{handle.lower()}"):
+                    content = re.sub(r'^rt\s+by\s+@[\w_]+:\s*', '', content, flags=re.IGNORECASE).strip()
+                    content = f"RT @{orig_author}: {content}"
+                elif orig_author.lower() != handle.lower():
+                    if not content.startswith(f"RT @{orig_author}"):
+                        content = f"RT @{orig_author}: {content}"
                 
                 posts.append({
                     "id": post_id,
@@ -476,18 +512,19 @@ class BendySniperScraper:
             
             final_posts = []
             for p in combined:
-                # 1. Скачиваем медиа самого твита
+                # Очищаем ID от мусора прямо перед загрузкой медиа
+                clean_post_id = p["id"].split('#')[0]
+
                 local_media_path = None
                 if p.get("rawMediaUrl"):
-                    local_media_path = self.download_media(p["rawMediaUrl"], handle, p["id"], p["mediaType"])
+                    local_media_path = self.download_media(p["rawMediaUrl"], handle, clean_post_id, p["mediaType"])
                 
-                # 2. Скачиваем медиа цитируемого твита (если есть)
                 local_ref_media_path = None
                 if p.get("rawRefMediaUrl"):
-                    local_ref_media_path = self.download_media(p["rawRefMediaUrl"], handle, f"quote_{p['id']}", p.get("refMediaType", "image"))
+                    local_ref_media_path = self.download_media(p["rawRefMediaUrl"], handle, f"quote_{clean_post_id}", p.get("refMediaType", "image"))
 
                 clean_post = {
-                    "id": p["id"],
+                    "id": clean_post_id, # Сохраняем ТОЛЬКО чистый ID
                     "authorName": p["authorName"],
                     "authorHandle": p["authorHandle"],
                     "platform": p["platform"],
@@ -506,7 +543,6 @@ class BendySniperScraper:
                 }
                 final_posts.append(clean_post)
 
-            # Атомарное сохранение в персональную папку
             dev_feed_path = os.path.join(self.devs_dir, safe_handle, "feed.json")
             tmp_file = dev_feed_path + ".tmp"
             
@@ -517,11 +553,17 @@ class BendySniperScraper:
                         existing_posts = json.load(f)
                 except: pass
 
-            merged_dict = {post['id']: post for post in existing_posts}
+            # Защита от дублей с #m в старых файлах:
+            merged_dict = {}
+            for post in existing_posts:
+                c_id = post['id'].split('#')[0]
+                post['id'] = c_id
+                merged_dict[c_id] = post
+
             for post in final_posts:
-                # Если пост уже был скачан, и в старом есть медиа/цитаты, а в новом нет (сработал плохой парсер)
-                if post['id'] in merged_dict:
-                    old = merged_dict[post['id']]
+                c_id = post['id']
+                if c_id in merged_dict:
+                    old = merged_dict[c_id]
                     if old.get('mediaUrl') and not post.get('mediaUrl'):
                         post['mediaUrl'] = old['mediaUrl']
                         post['mediaType'] = old.get('mediaType', 'image')
@@ -534,7 +576,7 @@ class BendySniperScraper:
                         post['referenceText'] = old.get('referenceText', '')
                         post['referenceMediaUrl'] = old.get('referenceMediaUrl')
                 
-                merged_dict[post['id']] = post
+                merged_dict[c_id] = post
 
             final_list = list(merged_dict.values())
             final_list.sort(key=lambda x: x['timestamp'], reverse=True)

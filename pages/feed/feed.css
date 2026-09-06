@@ -2,8 +2,95 @@
    КОНТЕЙНЕР ЛЕНТЫ
 ===================== */
 .feed-container {
-    max-width: 600px; 
+    max-width: 700px; 
     margin: 0 auto;
+}
+
+/* =====================
+   ПАНЕЛЬ ПОИСКА И ФИЛЬТРОВ ЛЕНТЫ
+   (100% сохранение эталонных пропорций 44px)
+===================== */
+.feed-container search-controls {
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+/* Выстраиваем элементы строго в один уровень */
+.feed-container .page-controls {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    align-items: center;
+}
+
+/* Полноразмерный поисковик с эталонными пропорциями */
+.feed-container .search-input-wrapper {
+    flex: 1 1 auto;
+    min-width: 160px;
+}
+
+.feed-container .search-input {
+    height: 44px;
+    font-size: 0.95rem;
+    padding: 0 1rem 0 3rem;
+}
+
+.feed-container .search-btn {
+    left: 8px;
+    padding: 6px;
+}
+
+.feed-container .search-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Контейнер кнопок фильтрации */
+.feed-container .page-controls-filters {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.6rem;
+    flex: 0 0 auto;
+    width: auto;
+}
+
+/* Кнопки селектов (эталонная высота 44px и шрифт 0.95rem) */
+.feed-container .custom-select-container {
+    min-width: 0;
+    flex: 0 1 auto;
+    width: auto;
+}
+
+.feed-container .custom-select-trigger {
+    height: 44px;
+    padding: 0 0.9rem;
+    gap: 10px;
+}
+
+.feed-container .custom-select-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    gap: 8px;
+}
+
+.feed-container .custom-select-text-value {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.feed-container .custom-select-icon,
+.feed-container .svg-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.feed-container .chevron-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
 }
 
 /* =====================
@@ -390,4 +477,42 @@
     font-size: 0.95rem; 
     max-width: 300px; 
     line-height: 1.5; 
+}
+
+/* =====================
+   АДАПТИВНОСТЬ
+===================== */
+@media (max-width: 600px) {
+    .feed-container .page-controls {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .feed-container .search-input-wrapper {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .feed-container .page-controls-filters {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    .feed-container .custom-select-container {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .feed-container .custom-select-trigger {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .feed-container .custom-select-text-value {
+        max-width: 100%;
+    }
 }

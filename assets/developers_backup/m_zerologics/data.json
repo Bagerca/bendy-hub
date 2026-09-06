@@ -1,0 +1,13 @@
+{
+    "id": "m_zerologics",
+    "name": "m_ZeroLogics",
+    "handle": "@m_zerologics",
+    "role": "Разработчик",
+    "bio": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "twitter": "https://twitter.com/m_zerologics"
+    }
+}

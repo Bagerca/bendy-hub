@@ -1,0 +1,13 @@
+{
+    "id": "themeatly",
+    "name": "themeatly",
+    "handle": "@themeatly",
+    "role": "Разработчик",
+    "bio": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "twitter": "https://twitter.com/themeatly"
+    }
+}

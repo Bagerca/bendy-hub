@@ -1,0 +1,13 @@
+{
+    "id": "bendy",
+    "name": "Bendy",
+    "handle": "@bendy",
+    "role": "Разработчик",
+    "bio": "...",
+    "assets": {
+        "avatar": "avatar.jpg"
+    },
+    "links": {
+        "twitter": "https://twitter.com/bendy"
+    }
+}
