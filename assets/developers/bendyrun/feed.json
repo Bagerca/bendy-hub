@@ -6,8 +6,12 @@
     "platform": "twitter",
     "content": "Yikes. “CAN” it Bendy! Play now at https://bendyrun.com",
     "timestamp": "2026-09-03T15:27:35Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendyrun/media/2095534177558954259_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -15,7 +19,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2094416866273857550",
@@ -24,8 +29,12 @@
     "platform": "twitter",
     "content": "Caught! Run Bendy! Play now at https://bendyrun.com",
     "timestamp": "2026-08-31T13:27:47Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendyrun/media/2094416866273857550_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -33,7 +42,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2092261441147404701",
@@ -42,8 +52,16 @@
     "platform": "twitter",
     "content": "Get the limited time drop T-Shirt and an amazing Metal Poster for Bendy’s Nightmare Run at https://BendyMerch.com",
     "timestamp": "2026-08-25T14:42:54Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendyrun/media/2092261441147404701_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bendyrun/media/2092261441147404701_1.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -51,7 +69,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2091937918692495479",
@@ -60,8 +79,12 @@
     "platform": "twitter",
     "content": "Uh oh. Run Bendy! Play now at http://bendyrun.com",
     "timestamp": "2026-08-24T17:17:20Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendyrun/media/2091937918692495479_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -69,7 +92,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2090946144796877170",
@@ -78,8 +102,12 @@
     "platform": "twitter",
     "content": "We’re listening! Update now for the latest. Much more to come! http://bendyrun.com",
     "timestamp": "2026-08-21T23:36:23Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendyrun/media/2090946144796877170_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -87,7 +115,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2090154497670615224",
@@ -96,8 +125,7 @@
     "platform": "twitter",
     "content": "RT @BendyRun: Bendy’s Nightmare Run is here!! Get it NOW for FREE! https://bendyrun.com",
     "timestamp": "2026-08-19T19:10:40Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -105,7 +133,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2089696055277273172",
@@ -114,8 +143,12 @@
     "platform": "twitter",
     "content": "Bendy’s Nightmare Run! TOMORROW on YOUR phone!",
     "timestamp": "2026-08-18T12:48:58Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendyrun/media/2089696055277273172_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -123,7 +156,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2089396840974135420",
@@ -132,8 +166,12 @@
     "platform": "twitter",
     "content": "Get ready! Bendy’s Nightmare Run is coming to your phone on WEDNESDAY!",
     "timestamp": "2026-08-17T17:00:00Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendyrun/media/2089396840974135420_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -141,7 +179,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2088687654225227974",
@@ -150,8 +189,7 @@
     "platform": "twitter",
     "content": "RT @BendyRun: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!",
     "timestamp": "2026-08-15T18:01:57Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -159,6 +197,7 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   }
 ]

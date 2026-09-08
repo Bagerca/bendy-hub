@@ -1,11 +1,10 @@
+// FILE: pages/music/FloatingPlayer.js
+
 import { YouTubeService } from './services/YouTubeService.js';
 import { DragService } from './services/DragService.js';
 import { PlayerUI } from './PlayerUI.js';
 import { PlayerStorage } from './PlayerStorage.js';
 
-/**
- * Фасад/Оркестратор. Управляет связью между UI, YouTube API, State и Drag.
- */
 export class FloatingPlayer {
     constructor() {
         this.currentTrack = null;
@@ -16,7 +15,6 @@ export class FloatingPlayer {
         this.updateInterval = null;
         this.marqueeInterval = null;
 
-        // Внешние коллбэки для страницы Music
         this.onNextRequest = null;
         this.onPrevRequest = null;
         this.onLocateRequest = null;
@@ -39,14 +37,29 @@ export class FloatingPlayer {
                 this.ui.updateVolumeUI(this.currentVolume, this.isMuted);
                 this._saveState();
             },
-            onScrubStart: () => { this.isScrubbing = true; },
+            onScrubStart: () => { 
+                this.isScrubbing = true; 
+                if (this.ambientYtService.isReady && !this._isMobile()) {
+                    this.ambientYtService.pause();
+                }
+                document.getElementById('ambient-wrapper')?.classList.remove('is-playing');
+            },
             onSeek: (seconds) => {
                 this.ytService.seekTo(seconds);
+                if (this.ambientYtService.isReady && !this._isMobile()) {
+                    this.ambientYtService.seekTo(seconds);
+                    if (this.isPlaying) {
+                        this.ambientYtService.play();
+                        document.getElementById('ambient-wrapper')?.classList.add('is-playing');
+                    }
+                }
                 this.isScrubbing = false;
             }
         });
 
         this.ytService = new YouTubeService('fp-iframe-container');
+        this.ambientYtService = new YouTubeService('ambient-video-container'); 
+
         this.dragService = new DragService(this.ui.container, this.ui.els.header);
         
         this.ytService.onReady = () => this._restoreState();
@@ -54,6 +67,10 @@ export class FloatingPlayer {
 
         this._bindYouTubeEvents();
         this._initMarqueeLoop();
+    }
+
+    _isMobile() {
+        return window.innerWidth <= 768; // Отключаем видео-фон на мобильных устройствах
     }
 
     _handleLocate() {
@@ -68,11 +85,27 @@ export class FloatingPlayer {
 
     _bindYouTubeEvents() {
         this.ytService.onStateChange = (stateCode, States) => {
-            // States.PLAYING = 1, BUFFERING = 3
-            if (stateCode === States.PLAYING || stateCode === States.BUFFERING) {
+            const wrapper = document.getElementById('ambient-wrapper');
+
+            // 1 = PLAYING
+            if (stateCode === States.PLAYING) {
                 this.isPlaying = true;
                 this.ui.setPlayState(true);
                 
+                if (wrapper && !this._isMobile()) {
+                    wrapper.classList.add('is-playing'); // Прячем обложку, показываем видео
+                }
+                
+                if(this.ambientYtService.isReady && !this.isScrubbing && !this._isMobile()) {
+                    this.ambientYtService.play();
+                    // Жесткая синхронизация времени
+                    const mainTime = this.ytService.getCurrentTime();
+                    const ambientTime = this.ambientYtService.getCurrentTime();
+                    if (Math.abs(mainTime - ambientTime) > 0.5) {
+                        this.ambientYtService.seekTo(mainTime);
+                    }
+                }
+
                 if (!this.updateInterval) {
                     this.updateInterval = setInterval(() => {
                         this._saveState();
@@ -81,11 +114,22 @@ export class FloatingPlayer {
                 }
                 if (this.onPlayStateChange) this.onPlayStateChange(true);
 
-            // States.PAUSED = 2, ENDED = 0, CUED = 5 (Готов к воспроизведению)
+            // 3 = BUFFERING
+            } else if (stateCode === States.BUFFERING) {
+                this.isPlaying = true; 
+                this.ui.setPlayState(true);
+                if (wrapper) wrapper.classList.remove('is-playing'); // Показываем обложку на время загрузки
+                if(this.ambientYtService.isReady && !this._isMobile()) this.ambientYtService.pause();
+
+            // 2 = PAUSED, 0 = ENDED, 5 = CUED
             } else if (stateCode === States.PAUSED || stateCode === States.ENDED || stateCode === States.CUED) {
                 this.isPlaying = false;
                 this.ui.setPlayState(false);
                 
+                if (wrapper) wrapper.classList.remove('is-playing'); // Возвращаем обложку
+
+                if(this.ambientYtService.isReady && !this._isMobile()) this.ambientYtService.pause();
+
                 clearInterval(this.updateInterval);
                 this.updateInterval = null;
                 
@@ -107,7 +151,6 @@ export class FloatingPlayer {
         if (!this.ytService.isReady || !this.ytService.player) return;
         const state = this.ytService.getState();
         
-        // Читаем фактическое состояние Ютуба (1 = Играет, 3 = Загружается/Буферизация)
         if (state === 1 || state === 3) {
             this.ytService.pause();
         } else {
@@ -136,7 +179,14 @@ export class FloatingPlayer {
         this.ui.updateTrackInfo(track);
         
         const videoId = this.ytService.extractId(track.youtubeUrl);
-        if (videoId) this.ytService.loadVideo(videoId, startSeconds, this.currentVolume, this.isMuted, autoplay);
+        if (videoId) {
+            this.ytService.loadVideo(videoId, startSeconds, this.currentVolume, this.isMuted, autoplay);
+            
+            // Если НЕ мобильный, грузим видео на фон
+            if (this.ambientYtService && !this._isMobile()) {
+                this.ambientYtService.loadVideo(videoId, startSeconds, 0, true, autoplay);
+            }
+        }
         
         this._updateAmbientBackground();
         this.ui.open();
@@ -153,22 +203,27 @@ export class FloatingPlayer {
         clearInterval(this.updateInterval);
         this.storage.clear();
         
-        const ambientBg = document.getElementById('ambient-bg');
-        if (ambientBg) ambientBg.style.opacity = '0';
+        const wrapper = document.getElementById('ambient-wrapper');
+        if (wrapper) wrapper.classList.remove('is-active', 'is-playing');
         
         setTimeout(() => {
             this.ytService.destroy();
+            if (this.ambientYtService) this.ambientYtService.destroy();
+
             this.currentTrack = null;
             this.isPlaying = false;
             if (this.onClose) this.onClose();
-        }, 300);
+        }, 500);
     }
 
     _updateAmbientBackground() {
-        const ambientBg = document.getElementById('ambient-bg');
-        if (ambientBg && this.currentTrack && this.currentTrack.cover) {
-            ambientBg.style.backgroundImage = `url('assets/music/${this.currentTrack.id}/${this.currentTrack.cover}')`;
-            ambientBg.style.opacity = '1';
+        const wrapper = document.getElementById('ambient-wrapper');
+        const cover = document.getElementById('ambient-cover');
+        
+        if (wrapper && cover && this.currentTrack && this.currentTrack.cover) {
+            cover.style.backgroundImage = `url('assets/music/${this.currentTrack.id}/${this.currentTrack.cover}')`;
+            wrapper.classList.add('is-active');
+            wrapper.classList.remove('is-playing'); // Начинаем с показа обложки
         }
     }
 
@@ -200,8 +255,6 @@ export class FloatingPlayer {
             if (state.isMuted) this.isMuted = true;
             
             this.ui.updateVolumeUI(this.currentVolume, this.isMuted);
-            
-            // ВОССТАНАВЛИВАЕМ ПЛЕЕР БЕЗ АВТОВОСПРОИЗВЕДЕНИЯ, ЧТОБЫ НЕ ОРАЛО
             this.loadTrack(state.track, state.time || 0, false);
         }
     }

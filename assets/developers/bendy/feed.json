@@ -1,31 +1,17 @@
 [
   {
-    "id": "2095535452811911555",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Yikes. “CAN” it Bendy!\nPlay now at https://t.co/BJbIAZA9ce https://t.co/dOj26COdWJ",
-    "timestamp": "2026-09-03T15:32:39Z",
-    "mediaUrl": "assets/developers/bendy/media/2095535452811911555.jpg",
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
-  },
-  {
     "id": "2095534177558954259",
     "authorName": "Bendy",
     "authorHandle": "@Bendy",
     "platform": "twitter",
     "content": "RT @BendyRun: Yikes. “CAN” it Bendy! Play now at https://bendyrun.com",
     "timestamp": "2026-09-03T15:27:35Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2095534177558954259_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -33,7 +19,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2094528001606132089",
@@ -42,8 +29,12 @@
     "platform": "twitter",
     "content": "The BATIM UPDATE is live! Details at https://joeydrewstudios.com/batimupdate ALL Bendy games are up to 70% OFF on Steam!",
     "timestamp": "2026-08-31T20:49:24Z",
-    "mediaUrl": "assets/developers/bendy/media/2094528001606132089.jpg",
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2094528001606132089_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -51,25 +42,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
-  },
-  {
-    "id": "2092262444563316785",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Get the limited time drop T-Shirt and an amazing Metal Poster for Bendy’s Nightmare Run at https://t.co/qurgyVUjFS https://t.…",
-    "timestamp": "2026-08-25T14:46:53Z",
-    "mediaUrl": null,
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2092261441147404701",
@@ -78,8 +52,16 @@
     "platform": "twitter",
     "content": "RT @BendyRun: Get the limited time drop T-Shirt and an amazing Metal Poster for Bendy’s Nightmare Run at https://BendyMerch.com",
     "timestamp": "2026-08-25T14:42:54Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2092261441147404701_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bendy/media/2092261441147404701_1.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -87,25 +69,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
-  },
-  {
-    "id": "2091939313676173736",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Uh oh. Run Bendy!\nPlay now at https://t.co/tbM0eihFj9 https://t.co/ZYJ6erxwlz",
-    "timestamp": "2026-08-24T17:22:53Z",
-    "mediaUrl": "assets/developers/bendy/media/2091939313676173736.jpg",
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2091937918692495479",
@@ -114,8 +79,12 @@
     "platform": "twitter",
     "content": "RT @BendyRun: Uh oh. Run Bendy! Play now at http://bendyrun.com",
     "timestamp": "2026-08-24T17:17:20Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2091937918692495479_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -123,25 +92,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
-  },
-  {
-    "id": "2090946300439068718",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: We’re listening! Update now for the latest. Much more to come!\nhttps://t.co/tbM0eihFj9 https://t.co/mCjLuwOiAt",
-    "timestamp": "2026-08-21T23:37:00Z",
-    "mediaUrl": "assets/developers/bendy/media/2090946300439068718.jpg",
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2090946144796877170",
@@ -150,8 +102,12 @@
     "platform": "twitter",
     "content": "RT @BendyRun: We’re listening! Update now for the latest. Much more to come! http://bendyrun.com",
     "timestamp": "2026-08-21T23:36:23Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2090946144796877170_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -159,7 +115,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2090154623956849006",
@@ -168,8 +125,7 @@
     "platform": "twitter",
     "content": "Bendy’s Nightmare Run is here!! Get it NOW for FREE! https://bendyrun.com",
     "timestamp": "2026-08-19T19:11:10Z",
-    "mediaUrl": "assets/developers/bendy/media/2090154623956849006.mp4",
-    "mediaType": "video",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -177,25 +133,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
-  },
-  {
-    "id": "2089696507955965955",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Bendy’s Nightmare Run! TOMORROW on YOUR phone! https://t.co/3YipVgzhN4",
-    "timestamp": "2026-08-18T12:50:46Z",
-    "mediaUrl": "assets/developers/bendy/media/2089696507955965955.jpg",
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2089696055277273172",
@@ -204,8 +143,12 @@
     "platform": "twitter",
     "content": "RT @BendyRun: Bendy’s Nightmare Run! TOMORROW on YOUR phone!",
     "timestamp": "2026-08-18T12:48:58Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2089696055277273172_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -213,7 +156,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2089462273207079149",
@@ -222,34 +166,21 @@
     "platform": "twitter",
     "content": "WEDNESDAY!",
     "timestamp": "2026-08-17T21:20:00Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "quote",
     "referenceUrl": "https://twitter.com/BendyRun/status/2089396840974135420",
     "referenceAuthor": "@BendyRun",
     "referenceAuthorName": "Bendy's Nightmare Run",
-    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2088686901834215424/PH-0RWRv_normal.png",
-    "referenceText": "Get ready! Bendy’s Nightmare Run is coming to your phone on WEDNESDAY! https://t.co/KUHcjl73uh",
-    "referenceMediaUrl": "assets/developers/bendy/media/quote_2089462273207079149.jpg"
-  },
-  {
-    "id": "2089397008716931433",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Get ready! Bendy’s Nightmare Run is coming to your phone on WEDNESDAY! https://t.co/KUHcjl73uh",
-    "timestamp": "2026-08-17T17:00:40Z",
-    "mediaUrl": "assets/developers/bendy/media/2089397008716931433.jpg",
-    "mediaType": "image",
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
     "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceText": "Get ready! Bendy’s Nightmare Run is coming to your phone on WEDNESDAY!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bendy/media/quote_2089462273207079149_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
   },
   {
     "id": "2089396840974135420",
@@ -258,8 +189,12 @@
     "platform": "twitter",
     "content": "RT @BendyRun: Get ready! Bendy’s Nightmare Run is coming to your phone on WEDNESDAY!",
     "timestamp": "2026-08-17T17:00:00Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2089396840974135420_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -267,25 +202,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
-  },
-  {
-    "id": "2088804810468245722",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon! https://t.co/Jf9R8SLeY0",
-    "timestamp": "2026-08-16T01:47:29Z",
-    "mediaUrl": "assets/developers/bendy/media/2088804810468245722.mp4",
-    "mediaType": "video",
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2088687876531773549",
@@ -294,8 +212,7 @@
     "platform": "twitter",
     "content": "Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon! @BendyRun",
     "timestamp": "2026-08-15T18:02:50Z",
-    "mediaUrl": "assets/developers/bendy/media/2088687876531773549.mp4",
-    "mediaType": "video",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -303,7 +220,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2088687654225227974",
@@ -312,8 +230,7 @@
     "platform": "twitter",
     "content": "RT @BendyRun: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!",
     "timestamp": "2026-08-15T18:01:57Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -321,25 +238,34 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2088641877239021889",
     "authorName": "Bendy",
     "authorHandle": "@Bendy",
     "platform": "twitter",
-    "content": "R to @Bendy: joeydrewstudios.com/blw",
+    "content": "joeydrewstudios.com/blw",
     "timestamp": "2026-08-15T15:00:03Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://joeydrewstudios.com/blw",
+        "image": "assets/developers/bendy/media/card_2088641877239021889_0.jpg",
+        "title": "Bendy: Lone Wolf",
+        "description": "",
+        "domain": "joeydrewstudios.com"
+      }
+    ]
   },
   {
     "id": "2088641851314044990",
@@ -348,8 +274,12 @@
     "platform": "twitter",
     "content": "Happy Lone Wolfiversary.",
     "timestamp": "2026-08-15T14:59:57Z",
-    "mediaUrl": "assets/developers/bendy/media/2088641851314044990.jpg",
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2088641851314044990_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -357,7 +287,8 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2079698901519540548",
@@ -366,34 +297,42 @@
     "platform": "twitter",
     "content": "Only 2 days left to get the ORIGINAL BENDY at 90% OFF on Steam!",
     "timestamp": "2026-07-21T22:43:51Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "quote",
     "referenceUrl": "https://twitter.com/Bendy/status/2075267801736987085",
     "referenceAuthor": "@Bendy",
     "referenceAuthorName": "Bendy",
-    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "referenceText": "The ORIGINAL BENDY is 90% OFF on Steam right now! https://t.co/Ybqmd9Y1sP",
-    "referenceMediaUrl": "assets/developers/bendy/media/quote_2079698901519540548.jpg"
+    "referenceAvatarUrl": "",
+    "referenceText": "The ORIGINAL BENDY is 90% OFF on Steam right now!",
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2077354248178630917",
     "authorName": "Bendy",
     "authorHandle": "@Bendy",
     "platform": "twitter",
-    "content": "R to @Bendy: store.steampowered.com/app/6…",
+    "content": "store.steampowered.com/app/6…",
     "timestamp": "2026-07-15T11:27:02Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/622650/Bendy_and_the_Ink_Machine/",
+        "image": "assets/developers/bendy/media/card_2077354248178630917_0.jpg",
+        "title": "Save 70% on Bendy and the Ink Machine on Steam",
+        "description": "Bendy and the Ink Machine® is the first person puzzle action horror game that will forever ruin your childhood love of cartoons.",
+        "domain": "store.steampowered.com"
+      }
+    ]
   },
   {
     "id": "2077354244747719055",
@@ -402,34 +341,16 @@
     "platform": "twitter",
     "content": "One week left to get the ORIGINAL BENDY at 90% OFF on Steam!",
     "timestamp": "2026-07-15T11:27:01Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "quote",
     "referenceUrl": "https://twitter.com/Bendy/status/2075267801736987085",
     "referenceAuthor": "@Bendy",
     "referenceAuthorName": "Bendy",
-    "referenceAvatarUrl": "https://pbs.twimg.com/profile_images/2088641981522018304/z4I5n6Ne_normal.jpg",
-    "referenceText": "The ORIGINAL BENDY is 90% OFF on Steam right now! https://t.co/Ybqmd9Y1sP",
-    "referenceMediaUrl": "assets/developers/bendy/media/quote_2077354244747719055.jpg"
-  },
-  {
-    "id": "2076098533275451604",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @Bendy: The ORIGINAL BENDY is 90% OFF on Steam right now! https://t.co/Ybqmd9Y1sP",
-    "timestamp": "2026-07-12T00:17:17Z",
-    "mediaUrl": "assets/developers/bendy/media/2076098533275451604.mp4",
-    "mediaType": "video",
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
     "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceText": "The ORIGINAL BENDY is 90% OFF on Steam right now!",
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2075267801736987085",
@@ -438,8 +359,7 @@
     "platform": "twitter",
     "content": "RT @Bendy: The ORIGINAL BENDY is 90% OFF on Steam right now!",
     "timestamp": "2026-07-09T17:16:15Z",
-    "mediaUrl": "assets/developers/bendy/media/2075267801736987085.mp4",
-    "mediaType": "video",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -447,43 +367,60 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2075267803842515218",
     "authorName": "Bendy",
     "authorHandle": "@Bendy",
     "platform": "twitter",
-    "content": "R to @Bendy: store.steampowered.com/app/6…",
+    "content": "store.steampowered.com/app/6…",
     "timestamp": "2026-07-09T17:16:15Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/622650/Bendy_and_the_Ink_Machine/",
+        "image": "assets/developers/bendy/media/card_2075267803842515218_0.jpg",
+        "title": "Save 70% on Bendy and the Ink Machine on Steam",
+        "description": "Bendy and the Ink Machine® is the first person puzzle action horror game that will forever ruin your childhood love of cartoons.",
+        "domain": "store.steampowered.com"
+      }
+    ]
   },
   {
     "id": "2075264930844979612",
     "authorName": "Bendy",
     "authorHandle": "@Bendy",
     "platform": "twitter",
-    "content": "R to @Bendy: store.steampowered.com/bundl…",
+    "content": "store.steampowered.com/bundl…",
     "timestamp": "2026-07-09T17:04:50Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/bundle/78458/Bendy_Summer_Sale/",
+        "image": "assets/developers/bendy/media/card_2075264930844979612_0.jpg",
+        "title": "Steam Store",
+        "description": "Steam is the ultimate destination for playing, discussing, and creating games.",
+        "domain": "store.steampowered.com"
+      }
+    ]
   },
   {
     "id": "2075264893561741644",
@@ -492,8 +429,12 @@
     "platform": "twitter",
     "content": "Surprise! We decided to continue the Bendy Summer Sale a bit longer! Bundle and save. Hurry.",
     "timestamp": "2026-07-09T17:04:41Z",
-    "mediaUrl": null,
-    "mediaType": "image",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2075264893561741644_0.mp4",
+        "type": "video"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -501,6 +442,7 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
-    "referenceMediaUrl": null
+    "referenceMedia": [],
+    "linkCards": []
   }
 ]

@@ -44,7 +44,11 @@
     </script>
 </head>
 <body>
-    <div id="ambient-bg" class="ambient-bg"></div>
+    <!-- УМНЫЙ ЭМБИЕНТ ФОН (ВИДЕО + ОБЛОЖКА) -->
+    <div id="ambient-wrapper" class="ambient-wrapper">
+        <div id="ambient-video-container" class="ambient-video"></div>
+        <div id="ambient-cover" class="ambient-cover"></div>
+    </div>
 
     <site-header active-page="home"></site-header>
 
@@ -73,7 +77,7 @@
     <template id="stat-card-template"><div class="stat-item"><div class="stat-icon-wrap"></div><div class="stat-text-wrap"><span class="stat-value"></span><span class="stat-label"></span></div></div></template>
     <template id="team-member-template"><div class="discord-member"><div class="member-avatar-wrapper"><img src="" alt="Avatar" class="member-avatar"><span class="status-indicator"></span></div><div class="member-info"><div class="member-header-row"><span class="member-name"></span><span class="role-badge"></span></div><span class="member-status"></span></div><a href="#" target="_blank" rel="noopener noreferrer" class="member-link-btn dyn-icon-external" title="Перейти в профиль"></a></div></template>
 
-    <!-- Каталог (ОБНОВЛЕННЫЕ ШАБЛОНЫ) -->
+    <!-- Каталог -->
     <template id="template-card-horizontal">
         <article class="card-horizontal">
             <div class="card-cover-container">
@@ -106,9 +110,9 @@
     <template id="char-card-template"><a href="" class="char-card"><div class="char-avatar-wrapper"></div><span class="char-card-name"></span></a></template>
 
     <!-- Музыка -->
-    <template id="song-card-template"><article class="song-card"><div class="song-cover-wrapper"><div class="no-audio-badge" style="display: none;">Нет медиа</div><img src="" alt="" class="song-cover" loading="lazy"><div class="song-overlay"></div><button class="song-play-btn dyn-icon-play"></button></div><div class="song-info"><div class="song-title-wrapper"><h3 class="song-title"></h3></div><div class="song-meta"><p class="song-artist"></p><span class="song-year"></span></div></div></article></template>
+    <template id="song-card-template"><article class="song-card"><div class="song-cover-wrapper"><div class="no-audio-badge" style="display: none;">Нет медиа</div><img src="" alt="" class="song-cover" loading="lazy"><div class="song-overlay"></div><button class="song-play-btn dyn-icon-play"></button></div><div class="song-info"><div class="song-title-wrapper smart-marquee-wrapper"><h3 class="song-title smart-marquee-text"></h3></div><div class="song-meta"><p class="song-artist"></p><span class="song-year"></span></div></div></article></template>
 
-    <!-- Лента -->
+    <!-- Лента (ОБНОВЛЕННЫЙ ШАБЛОН С КАРТОЧКАМИ) -->
     <template id="post-template">
         <article class="post-card">
             <div class="rt-badge" style="display: none;"></div>
@@ -137,7 +141,9 @@
                         </div>
                     </div>
                     <p class="quote-text"></p>
-                    <img src="" alt="Цитата" class="quote-media" loading="lazy" style="display: none;">
+                    
+                    <!-- Сетка медиа для ЦИТАТ -->
+                    <div class="quote-media-grid" style="display: none;"></div>
                 </div>
 
                 <div class="post-translation" style="display: none;">
@@ -145,8 +151,12 @@
                     <p class="post-translation-text"></p>
                 </div>
                 
-                <img src="" alt="Вложение" class="post-media img-media" loading="lazy" style="display: none;" title="Нажмите для увеличения">
-                <video class="post-media video-media" controls preload="metadata" style="display: none;"></video>
+                <!-- Сетка медиа для ОСНОВНОГО ПОСТА -->
+                <div class="post-media-grid" style="display: none;"></div>
+                
+                <!-- НОВЫЙ КОНТЕЙНЕР ДЛЯ КАРТОЧЕК ССЫЛОК -->
+                <div class="post-cards-container" style="display: none;"></div>
+                
             </div>
             <footer class="post-footer">
                 <time class="post-date" datetime=""></time>

@@ -21,6 +21,7 @@ export class PostView {
             this._setupText(clone, rawText, searchTerm);
             this._setupMeta(clone, post);
             this._setupMedia(clone, post);
+            this._setupCards(clone, post);
             this._setupActions(clone, rawText, post);
 
             return clone;
@@ -34,9 +35,7 @@ export class PostView {
         const rtBadge = clone.querySelector('.rt-badge');
         let text = post.content;
         
-        // 1. Ищем ИДЕАЛЬНЫЙ ретвит (Сгенерированный новым скрапером: "RT @BendyRun: текст")
         const cleanRtMatch = text.match(/^RT\s+@([\w_]+)[\s:]+([\s\S]*)$/i);
-        // 2. Ищем СТАРЫЙ МУСОРНЫЙ ретвит из бэкапов RSS (например: "RT by @Bendy: текст")
         const brokenRtMatch = text.match(/^RT\s+by\s+@([\w_]+)[\s:]+([\s\S]*)$/i);
 
         if (cleanRtMatch) {
@@ -49,12 +48,10 @@ export class PostView {
             rtBadge.style.display = 'flex';
             rtBadge.innerHTML = `${Icons.action_repost} <span>${retweeterName} репостнул(а) <a href="https://twitter.com/${originalAuthorHandle}" target="_blank" rel="noopener noreferrer">@${originalAuthorHandle}</a></span>`;
             
-            // Запоминаем оригинального автора, чтобы _setupMeta вытянул его аватарку
             post.isRetweet = true;
             post.originalAuthorHandle = `@${originalAuthorHandle}`;
 
         } else if (brokenRtMatch) {
-            // Если это старый битый репост в бэкапе, отрезаем плашку, чтобы не было шизофрении
             text = brokenRtMatch[2].trim();
             const retweeterClean = post.authorHandle.replace('@', '').toLowerCase();
             const retweeterName = this.authorNamesMap[`@${retweeterClean}`] || post.authorName;
@@ -63,7 +60,7 @@ export class PostView {
             rtBadge.innerHTML = `${Icons.action_repost} <span>${retweeterName} репостнул(а) запись</span>`;
 
             post.isRetweet = true;
-            post.originalAuthorHandle = null; // Автора нет, останется аватарка ретвиттера
+            post.originalAuthorHandle = null; 
         }
 
         if (text.trim().toLowerCase() === 'gif') text = '';
@@ -80,7 +77,7 @@ export class PostView {
             refBadge.style.display = 'inline-flex';
             const linkA = refBadge.querySelector('.ref-link');
             refBadge.querySelector('.ref-text').textContent = 'В ответ:';
-            linkA.textContent = post.referenceAuthor || 'Оригинал';
+            linkA.textContent = post.referenceAuthor || 'Пользователю';
             linkA.href = post.referenceUrl;
             linkA.title = 'Перейти к оригинальному твиту в X/Twitter';
         } 
@@ -104,16 +101,18 @@ export class PostView {
                 quoteCard.querySelector('.quote-text').style.display = 'none';
             }
 
-            const qMedia = quoteCard.querySelector('.quote-media');
-            if (post.referenceMediaUrl) {
-                qMedia.src = post.referenceMediaUrl;
-                qMedia.style.display = 'block';
-                qMedia.onclick = (e) => {
-                    e.stopPropagation(); 
-                    this.lightbox.open(post.referenceMediaUrl);
-                };
+            const qMediaGrid = quoteCard.querySelector('.quote-media-grid');
+            if (post.referenceMedia && post.referenceMedia.length > 0) {
+                const limit = Math.min(post.referenceMedia.length, 4);
+                qMediaGrid.dataset.count = limit;
+                qMediaGrid.style.display = 'grid';
+                
+                post.referenceMedia.slice(0, 4).forEach(m => {
+                    const el = this._createMediaElement(m);
+                    qMediaGrid.appendChild(el);
+                });
             } else {
-                qMedia.style.display = 'none';
+                qMediaGrid.style.display = 'none';
             }
 
             quoteCard.addEventListener('click', () => {
@@ -134,8 +133,6 @@ export class PostView {
     }
 
     _setupMeta(clone, post) {
-        // УМНЫЙ АВАТАР: Если это РЕТВИТ и мы знаем автора (например @BendyRun),
-        // карточка возьмет ЕГО имя и ЕГО аватарку, а не того, кто ретвитнул!
         const handleToUse = (post.isRetweet && post.originalAuthorHandle) ? post.originalAuthorHandle : post.authorHandle;
         const handleClean = (handleToUse || '').replace('@', '').trim().toLowerCase();
         
@@ -167,18 +164,81 @@ export class PostView {
     }
 
     _setupMedia(clone, post) {
-        if (!post.mediaUrl) return;
+        const grid = clone.querySelector('.post-media-grid');
+        
+        if (!post.media || post.media.length === 0) {
+            grid.style.display = 'none';
+            return;
+        }
 
-        if (post.mediaType === 'video' || post.mediaUrl.endsWith('.mp4')) {
-            const videoEl = clone.querySelector('.video-media');
-            videoEl.src = post.mediaUrl;
-            videoEl.style.display = 'block';
+        const limit = Math.min(post.media.length, 4);
+        grid.dataset.count = limit;
+        grid.style.display = 'grid';
+
+        post.media.slice(0, 4).forEach(m => {
+            const el = this._createMediaElement(m);
+            grid.appendChild(el);
+        });
+    }
+
+    // НОВЫЙ МЕТОД: Отрисовка карточек ссылок
+    _setupCards(clone, post) {
+        const cardsContainer = clone.querySelector('.post-cards-container');
+        if (!post.linkCards || post.linkCards.length === 0) {
+            cardsContainer.style.display = 'none';
+            return;
+        }
+        
+        cardsContainer.style.display = 'flex';
+        post.linkCards.forEach(card => {
+            const a = document.createElement('a');
+            a.className = 'link-card';
+            a.href = card.url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            
+            a.innerHTML = `
+                ${card.image ? `<img src="${card.image}" class="lc-image" alt="Cover" loading="lazy">` : ''}
+                <div class="lc-content">
+                    ${card.domain ? `<div class="lc-domain">${card.domain}</div>` : ''}
+                    <div class="lc-title">${card.title}</div>
+                    ${card.description ? `<div class="lc-desc">${card.description}</div>` : ''}
+                </div>
+            `;
+            cardsContainer.appendChild(a);
+        });
+    }
+
+    _createMediaElement(m) {
+        if (m.type === 'video' || m.type === 'gif' || m.url.endsWith('.mp4')) {
+            const videoEl = document.createElement('video');
+            videoEl.className = 'media-item video-media';
+            videoEl.src = m.url;
+            
+            if (m.type === 'gif') {
+                videoEl.autoplay = true;
+                videoEl.loop = true;
+                videoEl.muted = true;
+                videoEl.playsInline = true;
+            } else {
+                videoEl.controls = true;
+            }
+            videoEl.preload = 'metadata';
+            
+            videoEl.addEventListener('click', (e) => e.stopPropagation()); 
+            return videoEl;
         } else {
-            const imgEl = clone.querySelector('.img-media');
-            imgEl.src = post.mediaUrl;
-            imgEl.style.display = 'block';
-            imgEl.addEventListener('click', () => this.lightbox.open(post.mediaUrl));
+            const imgEl = document.createElement('img');
+            imgEl.className = 'media-item img-media';
+            imgEl.src = m.url;
+            imgEl.loading = 'lazy';
+            imgEl.title = 'Нажмите для увеличения';
+            imgEl.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.lightbox.open(m.url);
+            });
             imgEl.onerror = () => imgEl.style.display = 'none';
+            return imgEl;
         }
     }
 
@@ -194,7 +254,6 @@ export class PostView {
         twitterBtn.target = '_blank';
         twitterBtn.rel = 'noopener noreferrer';
         twitterBtn.title = 'Посмотреть оригинал в X / Twitter';
-        // Убраны жесткие width и height, управление перенесено в CSS
         twitterBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
         actionsBlock.appendChild(twitterBtn);
 

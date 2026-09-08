@@ -1,4 +1,17 @@
+// FILE: pages/music/services/YouTubeService.js
 import { Logger } from '../../../shared/js/Logger.js';
+
+// Глобальные переменные для управления загрузкой YouTube API для всех инстансов
+let isYtApiLoaded = false;
+let isYtApiLoading = false;
+const ytReadyCallbacks = [];
+
+// Единственный глобальный обработчик (не будет перезаписан)
+window.onYouTubeIframeAPIReady = () => {
+    isYtApiLoaded = true;
+    ytReadyCallbacks.forEach(cb => cb());
+    ytReadyCallbacks.length = 0;
+};
 
 export class YouTubeService {
     constructor(containerId) {
@@ -13,21 +26,24 @@ export class YouTubeService {
     }
 
     _loadApi() {
-        if (window.YT && window.YT.Player) {
+        if (isYtApiLoaded || (window.YT && window.YT.Player)) {
             this.isReady = true;
-            if (this.onReady) this.onReady();
+            setTimeout(() => { if (this.onReady) this.onReady(); }, 0);
             return;
         }
 
-        window.onYouTubeIframeAPIReady = () => {
+        ytReadyCallbacks.push(() => {
             this.isReady = true;
             if (this.onReady) this.onReady();
-        };
+        });
 
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        const firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        if (!isYtApiLoading) {
+            isYtApiLoading = true;
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
     }
 
     extractId(url) {
@@ -36,7 +52,6 @@ export class YouTubeService {
         return match ? match[1] : null;
     }
 
-    // Добавлен параметр autoplay для умного контроля автовоспроизведения
     loadVideo(videoId, startSeconds = 0, volume = 100, isMuted = false, autoplay = true) {
         if (!this.isReady) return;
 
@@ -44,15 +59,17 @@ export class YouTubeService {
             if (autoplay) {
                 this.player.loadVideoById({ videoId, startSeconds });
             } else {
-                // Подготавливает видео на нужном моменте, но НЕ начинает его играть
                 this.player.cueVideoById({ videoId, startSeconds });
             }
         } else {
             const container = document.getElementById(this.containerId);
             if (!container) return;
-            container.innerHTML = '<div id="yt-api-placeholder"></div>';
             
-            this.player = new YT.Player('yt-api-placeholder', {
+            // Динамический ID, чтобы плееры не перезаписывали друг друга
+            const placeholderId = `${this.containerId}-api-placeholder`;
+            container.innerHTML = `<div id="${placeholderId}"></div>`;
+            
+            this.player = new YT.Player(placeholderId, {
                 height: '100%',
                 width: '100%',
                 videoId: videoId,
@@ -84,21 +101,20 @@ export class YouTubeService {
         }
     }
 
-    play() { if (this.player) this.player.playVideo(); }
-    pause() { if (this.player) this.player.pauseVideo(); }
-    setVolume(vol) { if (this.player) this.player.setVolume(vol); }
-    mute() { if (this.player) this.player.mute(); }
-    unMute() { if (this.player) this.player.unMute(); }
+    play() { if (this.player && typeof this.player.playVideo === 'function') this.player.playVideo(); }
+    pause() { if (this.player && typeof this.player.pauseVideo === 'function') this.player.pauseVideo(); }
+    setVolume(vol) { if (this.player && typeof this.player.setVolume === 'function') this.player.setVolume(vol); }
+    mute() { if (this.player && typeof this.player.mute === 'function') this.player.mute(); }
+    unMute() { if (this.player && typeof this.player.unMute === 'function') this.player.unMute(); }
     
-    // Получение текущего аппаратного статуса напрямую из YouTube
     getState() { return this.player && typeof this.player.getPlayerState === 'function' ? this.player.getPlayerState() : -1; }
     
     getCurrentTime() { return this.player && typeof this.player.getCurrentTime === 'function' ? this.player.getCurrentTime() : 0; }
     getDuration() { return this.player && typeof this.player.getDuration === 'function' ? this.player.getDuration() : 0; }
-    seekTo(seconds) { if (this.player) this.player.seekTo(seconds, true); }
+    seekTo(seconds) { if (this.player && typeof this.player.seekTo === 'function') this.player.seekTo(seconds, true); }
     
     destroy() {
-        if (this.player) {
+        if (this.player && typeof this.player.destroy === 'function') {
             this.player.destroy();
             this.player = null;
         }

@@ -8,14 +8,12 @@
 
 /* =====================
    ПАНЕЛЬ ПОИСКА И ФИЛЬТРОВ ЛЕНТЫ
-   (100% сохранение эталонных пропорций 44px)
 ===================== */
 .feed-container search-controls {
     display: block;
     margin-bottom: 1.5rem;
 }
 
-/* Выстраиваем элементы строго в один уровень */
 .feed-container .page-controls {
     display: flex;
     flex-wrap: nowrap;
@@ -24,7 +22,6 @@
     align-items: center;
 }
 
-/* Полноразмерный поисковик с эталонными пропорциями */
 .feed-container .search-input-wrapper {
     flex: 1 1 auto;
     min-width: 160px;
@@ -46,7 +43,6 @@
     height: 24px;
 }
 
-/* Контейнер кнопок фильтрации */
 .feed-container .page-controls-filters {
     display: flex;
     flex-wrap: nowrap;
@@ -55,7 +51,6 @@
     width: auto;
 }
 
-/* Кнопки селектов (эталонная высота 44px и шрифт 0.95rem) */
 .feed-container .custom-select-container {
     min-width: 0;
     flex: 0 1 auto;
@@ -273,15 +268,6 @@
     overflow-wrap: anywhere; 
 }
 
-.quote-media {
-    width: 100%;
-    max-height: 350px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-top: 0.75rem;
-    border: 1px solid var(--border-color);
-}
-
 /* =====================
    ТЕКСТ И МЕДИА
 ===================== */
@@ -323,19 +309,53 @@
     line-height: 1.5; 
 }
 
-.post-media { 
-    width: 100%; 
-    margin-top: 0.85rem; 
-    border-radius: 12px; 
-    border: 1px solid var(--border-color); 
-    max-height: 500px; 
-    object-fit: contain; 
-    background-color: var(--bg-body); 
+/* УМНАЯ СЕТКА МЕДИА (Как в X/Twitter) */
+.post-media-grid, .quote-media-grid {
+    display: grid;
+    gap: 2px; /* Расстояние между картинками */
+    margin-top: 0.85rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: var(--border-color); /* Цвет линии между фото */
 }
 
-.img-media {
-    cursor: zoom-in;
+/* 1 элемент (Полноразмерный) */
+.post-media-grid[data-count="1"], .quote-media-grid[data-count="1"] { grid-template-columns: 1fr; }
+.post-media-grid[data-count="1"] .media-item { max-height: 500px; object-fit: cover; }
+.quote-media-grid[data-count="1"] .media-item { max-height: 350px; object-fit: cover; }
+
+/* 2 элемента (Пополам) */
+.post-media-grid[data-count="2"], .quote-media-grid[data-count="2"] { grid-template-columns: 1fr 1fr; aspect-ratio: 16 / 9; }
+
+/* 3 элемента (1 слева большая, 2 справа поменьше) */
+.post-media-grid[data-count="3"], .quote-media-grid[data-count="3"] {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    aspect-ratio: 16 / 9;
 }
+.post-media-grid[data-count="3"] .media-item:first-child,
+.quote-media-grid[data-count="3"] .media-item:first-child {
+    grid-row: span 2;
+}
+
+/* 4 элемента (Квадрат 2x2) */
+.post-media-grid[data-count="4"], .quote-media-grid[data-count="4"] {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    aspect-ratio: 16 / 9;
+}
+
+.media-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background-color: var(--bg-body);
+}
+
+img.media-item { cursor: zoom-in; }
+video.media-item { object-fit: contain; background-color: #000; }
 
 /* =====================
    ПОДВАЛ ПОСТА
@@ -522,4 +542,67 @@
     .feed-container .custom-select-text-value {
         max-width: 100%;
     }
+}
+
+/* =====================
+   КАРТОЧКИ ССЫЛОК (Twitter Cards)
+===================== */
+.post-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 0.85rem;
+}
+
+.link-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.link-card:hover {
+    background-color: rgba(210, 168, 80, 0.05);
+    border-color: var(--accent-color);
+}
+
+.lc-image {
+    width: 100%;
+    aspect-ratio: 1.91 / 1; /* Золотой стандарт пропорций карточек */
+    object-fit: cover;
+    background-color: var(--bg-body);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.lc-content {
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.lc-domain {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: lowercase;
+}
+
+.lc-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.lc-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

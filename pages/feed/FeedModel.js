@@ -24,20 +24,40 @@ export class FeedModel {
         
         let result = SmartSearch.execute(this.currentSearchTerm, this.allPosts, ['content', 'referenceText']);
 
+        // Фильтр по автору
         if (this.currentAuthor !== 'all') {
             result = result.filter(post => post.authorHandle.toLowerCase() === this.currentAuthor.toLowerCase());
         }
 
+        // Фильтр по типу поста
         if (this.currentPostType !== 'all') {
             result = result.filter(post => {
                 const isRT = /^RT\s+(?:by\s+)?(@[\w_]+)[\s:]/i.test(post.content);
                 const isReply = post.referenceType === 'reply';
                 const isQuote = post.referenceType === 'quote';
                 
-                // "Чистые" - это просто личный твит (не РТ, не Ответ фанату, не Цитата)
+                // Стандартные типы
                 if (this.currentPostType === 'clean') return !isRT && !isReply && !isQuote;
                 if (this.currentPostType === 'quotes') return isQuote;
                 if (this.currentPostType === 'retweets') return isRT;
+                
+                // Новые медиа-фильтры (Проверяем как основной массив media, так и referenceMedia в цитатах)
+                if (this.currentPostType === 'images') {
+                    const hasImage = (post.media && post.media.some(m => m.type === 'image')) || 
+                                     (post.referenceMedia && post.referenceMedia.some(m => m.type === 'image'));
+                    return hasImage;
+                }
+                
+                if (this.currentPostType === 'videos') {
+                    const hasVideo = (post.media && post.media.some(m => m.type === 'video' || m.type === 'gif')) || 
+                                     (post.referenceMedia && post.referenceMedia.some(m => m.type === 'video' || m.type === 'gif'));
+                    return hasVideo;
+                }
+                
+                if (this.currentPostType === 'links') {
+                    // Ищем посты, у которых есть сгенерированная карточка ссылки (Steam, Youtube и тд)
+                    return post.linkCards && post.linkCards.length > 0;
+                }
                 
                 return true;
             });
