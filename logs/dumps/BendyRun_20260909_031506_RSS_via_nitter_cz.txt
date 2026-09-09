@@ -16,6 +16,16 @@
       <height>128</height>
     </image>
       <item>
+        <title>Shhhhh! Not HERE Bendy! Play now at https://bendyrun.com</title>
+        <dc:creator>@BendyRun</dc:creator>
+        <description><![CDATA[<p>Shhhhh! Not HERE Bendy!<br>
+Play now at <a href="https://bendyrun.com">bendyrun.com</a></p>
+<img src="http://nitter.jaydenha.uk/pic/media%2FHRuXKeQbYAAAq8p.jpg" style="max-width:250px;" />]]></description>
+        <pubDate>Tue, 08 Sep 2026 21:27:01 GMT</pubDate>
+        <guid isPermaLink="false">2097436572337553577</guid>
+        <link>http://nitter.jaydenha.uk/BendyRun/status/2097436572337553577#m</link>
+      </item>
+      <item>
         <title>Yikes. “CAN” it Bendy! Play now at https://bendyrun.com</title>
         <dc:creator>@BendyRun</dc:creator>
         <description><![CDATA[<p>Yikes. “CAN” it Bendy!<br>
