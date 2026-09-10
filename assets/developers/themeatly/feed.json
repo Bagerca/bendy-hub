@@ -1,5 +1,23 @@
 [
   {
+    "id": "2098051252781564357",
+    "authorName": "theMeatly",
+    "authorHandle": "@themeatly",
+    "platform": "twitter",
+    "content": "THANK YOU for all the amazing birthday wishes and art! :) You're all so very kind. Although I didn't take the day off yesterday, I did find time for some pizza and cake! :D",
+    "timestamp": "2026-09-10T14:09:33Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/themeatly/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
     "id": "2097436572337553577",
     "authorName": "theMeatly",
     "authorHandle": "@themeatly",
@@ -107,6 +125,29 @@
     "content": "⚠️Please read. ⚠️ While seeing some of the more extreme content of #BendyTHECAGE during development, I feel compelled to once again remind players and parents that \"The Cage\" is a VERY rated M for Mature game. This will include a large amount of blood, gore, partial nudity, highly disturbing psychological themes, existential dread, and violence. This is a horror game, not a mascot \"horror\" game. Please be advised. This is not a marketing tactic to gain interest.. this is a sincere and caring warning for younger or sensitive #BENDY fans. Thank you!",
     "timestamp": "2026-09-02T23:46:58Z",
     "media": [],
+    "localAvatarPath": "assets/developers/themeatly/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2093076738389803465",
+    "authorName": "theMeatly",
+    "authorHandle": "@themeatly",
+    "platform": "twitter",
+    "content": "RT @sacgamersexpo: We’re pleased to welcome @aaronlandonvo as a Special Guest at @SacGamersExpo 2026! #AaronLandon voiced #SammyLawrence in the #Bendy franchise, #LeslieWithers in #TheEvilWithin, #JamesPierce in #MetroidOtherM, & the Drone in the short film #SonicDroneHome on the Sonic 2 DVD.",
+    "timestamp": "2026-08-27T20:42:36Z",
+    "media": [
+      {
+        "url": "assets/developers/themeatly/media/2093076738389803465_0.jpg",
+        "type": "image"
+      }
+    ],
     "localAvatarPath": "assets/developers/themeatly/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
