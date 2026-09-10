@@ -161,7 +161,7 @@ Play now at <a href="http://bendyrun.com">bendyrun.com</a></p>
 <hr/>
 <b>Link</b><br>
 <a href="https://joeydrewstudios.com/blw">
-<img src="http://nitter.jaydenha.uk/pic/card_img%2F2095493485532991490%2FmpMpTvmP%3Fformat%3Djpg%26name%3D800x419" style="max-width:250px;" />
+<img src="http://nitter.jaydenha.uk/pic/card_img%2F2098030953004249098%2F8y-AoEqR%3Fformat%3Djpg%26name%3D800x419" style="max-width:250px;" />
 <br>
 <b>Bendy: Lone Wolf</b>
 </a>
@@ -281,7 +281,7 @@ Play now at <a href="http://bendyrun.com">bendyrun.com</a></p>
 <hr/>
 <b>Link</b><br>
 <a href="https://store.steampowered.com/bundle/78458/Bendy_Summer_Sale/">
-<img src="http://nitter.jaydenha.uk/pic/card_img%2F2095533090365923330%2FO7xAKaEe%3Fformat%3Djpg%26name%3D800x419" style="max-width:250px;" />
+<img src="http://nitter.jaydenha.uk/pic/card_img%2F2095533090365923330%2FKNqGtXDG%3Fformat%3Djpg%26name%3D800x419" style="max-width:250px;" />
 <br>
 <b>Steam Store</b>
 </a>

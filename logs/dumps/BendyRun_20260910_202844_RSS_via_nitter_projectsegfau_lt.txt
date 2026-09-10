@@ -15,13 +15,13 @@
         
         <meta name="darkreader-lock">
         <title>Project Segfault Authentication</title>
-        <link rel="icon" href="/files/media/public//media/public/application-icons/psflt.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljLy9tZWRpYS9wdWJsaWMvYXBwbGljYXRpb24taWNvbnMvcHNmbHQucG5nIiwiZXhwIjoxNzg4OTI0MDgyLCJuYmYiOjE3ODg5MjMxNjd9.3OHdGOFy3DRTkcgwXE5SIFLwFzuoHep_JL0l5uVp6B4">
-        <link rel="shortcut icon" href="/files/media/public//media/public/application-icons/psflt.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljLy9tZWRpYS9wdWJsaWMvYXBwbGljYXRpb24taWNvbnMvcHNmbHQucG5nIiwiZXhwIjoxNzg4OTI0MDgyLCJuYmYiOjE3ODg5MjMxNjd9.3OHdGOFy3DRTkcgwXE5SIFLwFzuoHep_JL0l5uVp6B4">
+        <link rel="icon" href="/files/media/public//media/public/application-icons/psflt.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljLy9tZWRpYS9wdWJsaWMvYXBwbGljYXRpb24taWNvbnMvcHNmbHQucG5nIiwiZXhwIjoxNzg5MDcyOTc0LCJuYmYiOjE3ODkwNzIwNTl9.LG3Y7G8PDbWj-24EZ10fBo-RmaOS9uTu2dy8tX72rtY">
+        <link rel="shortcut icon" href="/files/media/public//media/public/application-icons/psflt.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljLy9tZWRpYS9wdWJsaWMvYXBwbGljYXRpb24taWNvbnMvcHNmbHQucG5nIiwiZXhwIjoxNzg5MDcyOTc0LCJuYmYiOjE3ODkwNzIwNTl9.LG3Y7G8PDbWj-24EZ10fBo-RmaOS9uTu2dy8tX72rtY">
 
         
 
         
-<link rel="prefetch" href="https://auth.p.projectsegfau.lt/files/media/public/flow-backgrounds/bg_shadow_dark_next.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljL2Zsb3ctYmFja2dyb3VuZHMvYmdfc2hhZG93X2RhcmtfbmV4dC5qcGciLCJleHAiOjE3ODg5MjQwODIsIm5iZiI6MTc4ODkyMzE2N30.-cZ-Rtmrr2QA4vvFzQpWxRgpmujoYk82yjOrx6Z5tAA" />
+<link rel="prefetch" href="https://auth.p.projectsegfau.lt/files/media/public/flow-backgrounds/bg_shadow_dark_next.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljL2Zsb3ctYmFja2dyb3VuZHMvYmdfc2hhZG93X2RhcmtfbmV4dC5qcGciLCJleHAiOjE3ODkwNzI5NzQsIm5iZiI6MTc4OTA3MjA1OX0.7M8BtkkUU9chOMlYSSljV0qpxlc0XdNQxndf2uJBPnk" />
 
 
 
@@ -32,7 +32,7 @@
     window.authentik = {
         locale: "en",
         config: JSON.parse('{\u0022error_reporting\u0022: {\u0022enabled\u0022: false, \u0022sentry_dsn\u0022: \u0022https://151ba72610234c4c97c5bcff4e1cffd8@authentik.error\u002Dreporting.a7k.io/4504163677503489\u0022, \u0022environment\u0022: \u0022customer\u0022, \u0022send_pii\u0022: false, \u0022traces_sample_rate\u0022: 0.1}, \u0022capabilities\u0022: [\u0022can_save_media\u0022, \u0022can_save_reports\u0022, \u0022can_asn\u0022, \u0022can_geo_ip\u0022, \u0022can_impersonate\u0022, \u0022is_enterprise\u0022], \u0022cache_timeout\u0022: 300, \u0022cache_timeout_flows\u0022: 300, \u0022cache_timeout_policies\u0022: 300}' || "{}"),
-        brand: JSON.parse('{\u0022matched_domain\u0022: \u0022auth.p.projectsegfau.lt\u0022, \u0022branding_title\u0022: \u0022Project Segfault Authentication\u0022, \u0022branding_logo\u0022: \u0022/files/media/public//media/public/application\u002Dicons/psflt.svg?token\u003DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljLy9tZWRpYS9wdWJsaWMvYXBwbGljYXRpb24taWNvbnMvcHNmbHQuc3ZnIiwiZXhwIjoxNzg4OTI0MDgyLCJuYmYiOjE3ODg5MjMxNjd9.Rvf6wdST5juzbRkZKEwXOdUHRpuILHDGAU1SGbzmzHk\u0022, \u0022branding_logo_themed_urls\u0022: null, \u0022branding_favicon\u0022: \u0022/files/media/public//media/public/application\u002Dicons/psflt.png?token\u003DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljLy9tZWRpYS9wdWJsaWMvYXBwbGljYXRpb24taWNvbnMvcHNmbHQucG5nIiwiZXhwIjoxNzg4OTI0MDgyLCJuYmYiOjE3ODg5MjMxNjd9.3OHdGOFy3DRTkcgwXE5SIFLwFzuoHep_JL0l5uVp6B4\u0022, \u0022branding_favicon_themed_urls\u0022: null, \u0022branding_custom_css\u0022: \u0022\u0022, \u0022ui_footer_links\u0022: [{\u0022href\u0022: \u0022https://projectsegfau.lt\u0022, \u0022name\u0022: \u0022Website\u0022}, {\u0022href\u0022: \u0022https://projectsegfau.lt/legal/privacy\u002Dpolicy\u0022, \u0022name\u0022: \u0022Privacy Policy\u0022}, {\u0022href\u0022: \u0022https://projectsegfau.lt/legal/tos\u0022, \u0022name\u0022: \u0022Terms of Service\u0022}], \u0022ui_theme\u0022: \u0022automatic\u0022, \u0022default_locale\u0022: \u0022\u0022, \u0022flags\u0022: {\u0022policies_buffered_access_view\u0022: false, \u0022flows_continuous_login\u0022: false, \u0022flows_refresh_others\u0022: false}}' || "{}"),
+        brand: JSON.parse('{\u0022matched_domain\u0022: \u0022auth.p.projectsegfau.lt\u0022, \u0022branding_title\u0022: \u0022Project Segfault Authentication\u0022, \u0022branding_logo\u0022: \u0022/files/media/public//media/public/application\u002Dicons/psflt.svg?token\u003DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljLy9tZWRpYS9wdWJsaWMvYXBwbGljYXRpb24taWNvbnMvcHNmbHQuc3ZnIiwiZXhwIjoxNzg5MDcyOTc0LCJuYmYiOjE3ODkwNzIwNTl9.Kacp5y45LDWFSFaosn0ZBW0gtVpF7UEKw\u002DbNeaDiTQc\u0022, \u0022branding_logo_themed_urls\u0022: null, \u0022branding_favicon\u0022: \u0022/files/media/public//media/public/application\u002Dicons/psflt.png?token\u003DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljLy9tZWRpYS9wdWJsaWMvYXBwbGljYXRpb24taWNvbnMvcHNmbHQucG5nIiwiZXhwIjoxNzg5MDcyOTc0LCJuYmYiOjE3ODkwNzIwNTl9.LG3Y7G8PDbWj\u002D24EZ10fBo\u002DRmaOS9uTu2dy8tX72rtY\u0022, \u0022branding_favicon_themed_urls\u0022: null, \u0022branding_custom_css\u0022: \u0022\u0022, \u0022ui_footer_links\u0022: [{\u0022href\u0022: \u0022https://projectsegfau.lt\u0022, \u0022name\u0022: \u0022Website\u0022}, {\u0022href\u0022: \u0022https://projectsegfau.lt/legal/privacy\u002Dpolicy\u0022, \u0022name\u0022: \u0022Privacy Policy\u0022}, {\u0022href\u0022: \u0022https://projectsegfau.lt/legal/tos\u0022, \u0022name\u0022: \u0022Terms of Service\u0022}], \u0022ui_theme\u0022: \u0022automatic\u0022, \u0022default_locale\u0022: \u0022\u0022, \u0022flags\u0022: {\u0022policies_buffered_access_view\u0022: false, \u0022flows_continuous_login\u0022: false, \u0022flows_refresh_others\u0022: false}}' || "{}"),
         versionFamily: "2026.2",
         versionSubdomain: "version-2026-2",
         build: "",
@@ -56,13 +56,13 @@
     };
 </script>
 
-<link rel="stylesheet" type="text/css" href="/static/dist/styles/static-2026.2.6.css" />
+<link rel="stylesheet" type="text/css" href="/static/dist/styles/static-2026.2.7.css" />
 
 
         
 
 
-<link rel="stylesheet" type="text/css" href="/static/dist/styles/interface-2026.2.6.css" />
+<link rel="stylesheet" type="text/css" href="/static/dist/styles/interface-2026.2.7.css" />
 
 
   <script data-id="theme-script">
@@ -109,17 +109,17 @@
 
 
         <style data-id="brand-css"></style>
-        <script src="/static/dist/poly-2026.2.6.js" type="module"></script>
+        <script src="/static/dist/poly-2026.2.7.js" type="module"></script>
         
-<script src="/static/dist/flow/FlowInterface-2026.2.6.js" type="module"></script>
+<script src="/static/dist/flow/FlowInterface-2026.2.7.js" type="module"></script>
 <style data-id="flow-css">
   :root {
-      --ak-global--background-image: url("https://auth.p.projectsegfau.lt/files/media/public/flow-backgrounds/bg_shadow_dark_next.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljL2Zsb3ctYmFja2dyb3VuZHMvYmdfc2hhZG93X2RhcmtfbmV4dC5qcGciLCJleHAiOjE3ODg5MjQwODIsIm5iZiI6MTc4ODkyMzE2N30.-cZ-Rtmrr2QA4vvFzQpWxRgpmujoYk82yjOrx6Z5tAA");
+      --ak-global--background-image: url("https://auth.p.projectsegfau.lt/files/media/public/flow-backgrounds/bg_shadow_dark_next.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXRoIjoibWVkaWEvcHVibGljL2Zsb3ctYmFja2dyb3VuZHMvYmdfc2hhZG93X2RhcmtfbmV4dC5qcGciLCJleHAiOjE3ODkwNzI5NzQsIm5iZiI6MTc4OTA3MjA1OX0.7M8BtkkUU9chOMlYSSljV0qpxlc0XdNQxndf2uJBPnk");
   }
 </style>
 
         
-        <meta name="sentry-trace" content="685c61fc826d4fb5984304321d6c3761-85f74f50d0d9c963" />
+        <meta name="sentry-trace" content="8fca7731d7c04db2a50a73cbabf8ec36-86fb4b1f65144ef8" />
         
         <meta name="baggage" content="" />
         

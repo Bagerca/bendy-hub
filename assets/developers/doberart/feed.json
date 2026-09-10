@@ -1,5 +1,33 @@
 [
   {
+    "id": "2097863862683046359",
+    "authorName": "Elizabeth King",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "RT @kriistofert: #BendysNightmareRun #Bendy #Art",
+    "timestamp": "2026-09-10T01:44:55Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2097863862683046359_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/kriistofert/status/2096813844664615026",
+    "referenceAuthor": "@kriistofert",
+    "referenceAuthorName": "kriisto.",
+    "referenceAvatarUrl": "",
+    "referenceText": "midnight teaser.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/doberart/media/quote_2097863862683046359_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
     "id": "2097800325205803412",
     "authorName": "Elizabeth King",
     "authorHandle": "@Doberart",

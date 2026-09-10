@@ -16,6 +16,31 @@
       <height>128</height>
     </image>
       <item>
+        <title>RT by @Doberart: #BendysNightmareRun #Bendy #Art</title>
+        <dc:creator>@kriistofert</dc:creator>
+        <description><![CDATA[<p><a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23BendysNightmareRun">#BendysNightmareRun</a> <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23Bendy">#Bendy</a> <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23Art">#Art</a></p>
+<img src="http://nitter.jaydenha.uk/pic/media%2FHR0cDvJaEAAc86-.jpg" style="max-width:250px;" />
+
+<hr/>
+<blockquote>
+<b>kriisto. (@kriistofert)</b>
+<p>
+<p>midnight teaser.<br>
+<br>
+<a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23BendysNightmareRun">#BendysNightmareRun</a> <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23Fanart">#Fanart</a> <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23Bendy">#Bendy</a></p>
+<img src="http://nitter.jaydenha.uk/pic/media%2FHRlhE7zbAAALvbf.jpg" style="max-width:250px;" />
+
+
+</p>
+<footer>
+— <cite><a href="http://nitter.jaydenha.uk/kriistofert/status/2096813844664615026#m">http://nitter.jaydenha.uk/kriistofert/status/2096813844664615026#m</a>
+</footer>
+</blockquote>]]></description>
+        <pubDate>Thu, 10 Sep 2026 01:44:55 GMT</pubDate>
+        <guid isPermaLink="false">2097863862683046359</guid>
+        <link>http://nitter.jaydenha.uk/kriistofert/status/2097863862683046359#m</link>
+      </item>
+      <item>
         <title>A very happy birthday to the puppet, the myth, the Meatly! 🎉</title>
         <dc:creator>@Doberart</dc:creator>
         <description><![CDATA[<p>A very happy birthday to the puppet, the myth, the Meatly! 🎉</p>
@@ -217,27 +242,6 @@ GOLDEN BENDY<br>
         <pubDate>Sat, 22 Aug 2026 03:13:56 GMT</pubDate>
         <guid isPermaLink="false">2091000894372319606</guid>
         <link>http://nitter.jaydenha.uk/X02Re/status/2091000894372319606#m</link>
-      </item>
-      <item>
-        <title>She’s so cool. ✨</title>
-        <dc:creator>@Doberart</dc:creator>
-        <description><![CDATA[<p>She’s so cool. ✨</p>
-<img src="http://nitter.jaydenha.uk/pic/media%2FHQS7-wBXAAAkN_I.jpg" style="max-width:250px;" />
-
-<hr/>
-<blockquote>
-<b>✰ (@popcomes)</b>
-<p>
-<p>post a female character you like a lot</p>
-
-</p>
-<footer>
-— <cite><a href="http://nitter.jaydenha.uk/popcomes/status/2090842920350015569#m">http://nitter.jaydenha.uk/popcomes/status/2090842920350015569#m</a>
-</footer>
-</blockquote>]]></description>
-        <pubDate>Sat, 22 Aug 2026 03:21:34 GMT</pubDate>
-        <guid isPermaLink="false">2091002815468429457</guid>
-        <link>http://nitter.jaydenha.uk/Doberart/status/2091002815468429457#m</link>
       </item>
 
   </channel>
