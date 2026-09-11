@@ -98183,3 +98183,42 @@
 2026-09-11 03:09:53 [WARNING]     ⚠️ Ошибка скачивания медиа https://pbs.twimg.com/ext_tw_video_thumb/2075265171287609344/img/L0VVKENBWRcLW4JI.jpg: HTTP Error 404: Not Found
 2026-09-11 03:09:53 [WARNING]     ⚠️ Ошибка скачивания медиа https://pbs.twimg.com/ext_tw_video_thumb/2075265171287609344/img/L0VVKENBWRcLW4JI.jpg: HTTP Error 404: Not Found
 2026-09-11 03:09:53 [INFO] 📊 ИТОГ (Bendy): База обновлена. Всего постов: 20
+2026-09-11 10:39:09 [INFO] ==================================================
+2026-09-11 10:39:09 [INFO] 🚀 BENDY SNIPER FEED SCRAPER (Clean Start Mode)
+2026-09-11 10:39:09 [INFO] ==================================================
+2026-09-11 10:39:09 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: Doberart ====
+2026-09-11 10:39:12 [ERROR]     ❌ [Parse RSS] Ошибка: syntax error: line 1, column 0
+2026-09-11 10:39:15 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 10:40:14 [ERROR] 💀 Все попытки исчерпаны. Данные для Doberart не получены.
+2026-09-11 10:40:14 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: themeatly ====
+2026-09-11 10:40:21 [ERROR]     ❌ [Parse RSS] Ошибка: syntax error: line 1, column 0
+2026-09-11 10:40:24 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 10:41:23 [ERROR] 💀 Все попытки исчерпаны. Данные для themeatly не получены.
+2026-09-11 10:41:23 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: m_ZeroLogics ====
+2026-09-11 10:41:26 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 10:42:32 [ERROR] 💀 Все попытки исчерпаны. Данные для m_ZeroLogics не получены.
+2026-09-11 10:42:32 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: BLacroix30 ====
+2026-09-11 10:42:35 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 10:43:31 [ERROR] 💀 Все попытки исчерпаны. Данные для BLacroix30 не получены.
+2026-09-11 10:43:31 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: bookpast ====
+2026-09-11 10:43:46 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 10:44:40 [ERROR] 💀 Все попытки исчерпаны. Данные для bookpast не получены.
+2026-09-11 10:44:40 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: BendyRun ====
+2026-09-11 10:44:48 [ERROR]     ❌ [Parse RSS] Ошибка: syntax error: line 1, column 0
+2026-09-11 10:45:41 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 10:45:49 [ERROR] 💀 Все попытки исчерпаны. Данные для BendyRun не получены.
+2026-09-11 10:45:49 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: GentCorporation ====
+2026-09-11 10:45:51 [ERROR]     ❌ [Parse RSS] Ошибка: syntax error: line 1, column 0
+2026-09-11 10:46:02 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 10:46:52 [ERROR] 💀 Все попытки исчерпаны. Данные для GentCorporation не получены.
+2026-09-11 10:46:52 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: Bendy ====
+2026-09-11 10:47:44 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 10:48:03 [ERROR] 💀 Все попытки исчерпаны. Данные для Bendy не получены.
