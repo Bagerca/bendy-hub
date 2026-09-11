@@ -16,6 +16,15 @@
       <height>128</height>
     </image>
       <item>
+        <title>It’s never too early for Halloween music.</title>
+        <dc:creator>@Doberart</dc:creator>
+        <description><![CDATA[<p>It’s never too early for Halloween music.</p>
+<img src="http://nitter.jaydenha.uk/pic/media%2FHR5LHmEXMAEly_6.jpg" style="max-width:250px;" />]]></description>
+        <pubDate>Thu, 10 Sep 2026 23:48:59 GMT</pubDate>
+        <guid isPermaLink="false">2098197074109936071</guid>
+        <link>http://nitter.jaydenha.uk/Doberart/status/2098197074109936071#m</link>
+      </item>
+      <item>
         <title>RT by @Doberart: #BendysNightmareRun #Bendy #Art</title>
         <dc:creator>@kriistofert</dc:creator>
         <description><![CDATA[<p><a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23BendysNightmareRun">#BendysNightmareRun</a> <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23Bendy">#Bendy</a> <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23Art">#Art</a></p>
@@ -231,17 +240,6 @@ Play now at <a href="http://bendyrun.com">bendyrun.com</a></p>
         <pubDate>Mon, 24 Aug 2026 17:17:20 GMT</pubDate>
         <guid isPermaLink="false">2091937918692495479</guid>
         <link>http://nitter.jaydenha.uk/BendyRun/status/2091937918692495479#m</link>
-      </item>
-      <item>
-        <title>RT by @Doberart: Finally got dat boiiiii GOLDEN BENDY #NIGHTMARERUN</title>
-        <dc:creator>@X02Re</dc:creator>
-        <description><![CDATA[<p>Finally got dat boiiiii<br>
-GOLDEN BENDY<br>
-<a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23NIGHTMARERUN">#NIGHTMARERUN</a></p>
-<img src="http://nitter.jaydenha.uk/pic/media%2FHQS6OtIWUAA3KJW.jpg" style="max-width:250px;" />]]></description>
-        <pubDate>Sat, 22 Aug 2026 03:13:56 GMT</pubDate>
-        <guid isPermaLink="false">2091000894372319606</guid>
-        <link>http://nitter.jaydenha.uk/X02Re/status/2091000894372319606#m</link>
       </item>
 
   </channel>
