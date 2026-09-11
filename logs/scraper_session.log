@@ -98303,3 +98303,65 @@
 2026-09-11 15:58:56 [ERROR]     ❌ [Parse RSS] Ошибка: syntax error: line 1, column 0
 2026-09-11 15:59:17 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
 2026-09-11 15:59:17 [ERROR] 💀 Все попытки исчерпаны. Данные для Bendy не получены.
+2026-09-11 20:29:10 [INFO] ==================================================
+2026-09-11 20:29:10 [INFO] 🚀 BENDY SNIPER FEED SCRAPER (Clean Start Mode)
+2026-09-11 20:29:10 [INFO] ==================================================
+2026-09-11 20:29:10 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: Doberart ====
+2026-09-11 20:29:52 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 20:29:52 [ERROR] 💀 Все попытки исчерпаны. Данные для Doberart не получены.
+2026-09-11 20:29:52 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: themeatly ====
+2026-09-11 20:30:06 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 20:30:37 [ERROR] 💀 Все попытки исчерпаны. Данные для themeatly не получены.
+2026-09-11 20:30:37 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: m_ZeroLogics ====
+2026-09-11 20:31:00 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 20:31:18 [ERROR]     ❌ [Parse RSS] Ошибка: not well-formed (invalid token): line 945, column 137
+2026-09-11 20:31:18 [ERROR] 💀 Все попытки исчерпаны. Данные для m_ZeroLogics не получены.
+2026-09-11 20:31:18 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: BLacroix30 ====
+2026-09-11 20:31:42 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 20:31:48 [ERROR]     ❌ [Parse RSS] Ошибка: syntax error: line 1, column 0
+2026-09-11 20:31:58 [ERROR] 💀 Все попытки исчерпаны. Данные для BLacroix30 не получены.
+2026-09-11 20:31:58 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: bookpast ====
+2026-09-11 20:32:17 [ERROR]     ❌ [Parse RSS] Ошибка: not well-formed (invalid token): line 1022, column 137
+2026-09-11 20:32:20 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 20:32:29 [ERROR] 💀 Все попытки исчерпаны. Данные для bookpast не получены.
+2026-09-11 20:32:29 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: BendyRun ====
+2026-09-11 20:32:42 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 20:33:00 [INFO]     🔍 [Parse RSS] Найдено постов в ленте: 10
+2026-09-11 20:33:00 [INFO]       📝 Пост [2097436572337553577]: Shhhhh! Not HERE Bendy! Play n...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 20:33:00 [INFO]       📝 Пост [2095534177558954259]: Yikes. “CAN” it Bendy! Play no...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 20:33:00 [INFO]       📝 Пост [2094416866273857550]: Caught! Run Bendy! Play now at...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 20:33:00 [INFO]       📝 Пост [2092261441147404701]: Get the limited time drop T-Sh...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 2 шт.
+2026-09-11 20:33:00 [INFO]       📝 Пост [2091937918692495479]: Uh oh. Run Bendy! Play now at ...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 20:33:00 [INFO]       📝 Пост [2090946144796877170]: We’re listening! Update now fo...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 20:33:00 [INFO]       📝 Пост [2090154497670615224]: RT @BendyRun: Bendy’s Nightmar...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 20:33:00 [INFO]       📝 Пост [2089696055277273172]: Bendy’s Nightmare Run! TOMORRO...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 20:33:00 [INFO]       📝 Пост [2089396840974135420]: Get ready! Bendy’s Nightmare R...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 20:33:00 [INFO]       📝 Пост [2088687654225227974]: RT @BendyRun: Get ready to RUN...
+2026-09-11 20:33:00 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 20:33:00 [INFO] 🟢 УСПЕХ! Источник [RSS via nitter.cz]. Собрано постов: 10
+2026-09-11 20:33:00 [WARNING]     ⚠️ Ошибка скачивания медиа https://pbs.twimg.com/ext_tw_video_thumb/2090111393160720384/img/d5NgMISyAPJ4uCVq.jpg: HTTP Error 404: Not Found
+2026-09-11 20:33:00 [WARNING]     ⚠️ Ошибка скачивания медиа https://pbs.twimg.com/ext_tw_video_thumb/2088687439346900992/img/IaIojPlPxcRLsoCX.jpg: HTTP Error 404: Not Found
+2026-09-11 20:33:00 [INFO] 📊 ИТОГ (BendyRun): База обновлена. Всего постов: 10
+2026-09-11 20:33:00 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: GentCorporation ====
+2026-09-11 20:33:02 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 20:33:31 [ERROR] 💀 Все попытки исчерпаны. Данные для GentCorporation не получены.
+2026-09-11 20:33:31 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: Bendy ====
+2026-09-11 20:34:03 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 20:34:03 [ERROR] 💀 Все попытки исчерпаны. Данные для Bendy не получены.
