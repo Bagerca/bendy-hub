@@ -98222,3 +98222,84 @@
 ==== АНАЛИЗ ПРОФИЛЯ: Bendy ====
 2026-09-11 10:47:44 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
 2026-09-11 10:48:03 [ERROR] 💀 Все попытки исчерпаны. Данные для Bendy не получены.
+2026-09-11 15:53:58 [INFO] ==================================================
+2026-09-11 15:53:58 [INFO] 🚀 BENDY SNIPER FEED SCRAPER (Clean Start Mode)
+2026-09-11 15:53:58 [INFO] ==================================================
+2026-09-11 15:53:58 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: Doberart ====
+2026-09-11 15:54:23 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 15:54:40 [ERROR] 💀 Все попытки исчерпаны. Данные для Doberart не получены.
+2026-09-11 15:54:40 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: themeatly ====
+2026-09-11 15:54:54 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 15:55:28 [ERROR] 💀 Все попытки исчерпаны. Данные для themeatly не получены.
+2026-09-11 15:55:28 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: m_ZeroLogics ====
+2026-09-11 15:55:31 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 15:55:49 [INFO]     🔍 [Parse RSS] Найдено постов в ленте: 20
+2026-09-11 15:55:49 [INFO]       📝 Пост [2090946144796877170]: RT @BendyRun: We’re listening!...
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2090918512025854430]: unfortunately bnr 2.0.2 for io...
+2026-09-11 15:55:49 [INFO]       📝 Пост [2090852491852169449]: i think i’m just gonna stop us...
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2090154497670615224]: RT @BendyRun: Bendy’s Nightmar...
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2090068187702333721]: some random fun dev facts for ...
+2026-09-11 15:55:49 [INFO]       📝 Пост [2089699401388245298]: 60fps on nightmare run feels s...
+2026-09-11 15:55:49 [INFO]       📝 Пост [2089697414219247968]: TOMORROW
+2026-09-11 15:55:49 [INFO]         ↳ Тип ссылки: QUOTE | Автор: @BendyRun
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа (цитата): 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2089696055277273172]: RT @BendyRun: Bendy’s Nightmar...
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2089397984995733818]: Wednesday!
+2026-09-11 15:55:49 [INFO]         ↳ Тип ссылки: QUOTE | Автор: @BendyRun
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа (цитата): 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2089396840974135420]: RT @BendyRun: Get ready! Bendy...
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2088687654225227974]: RT @BendyRun: Get ready to RUN...
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2088688387561509351]: Shout out to the development t...
+2026-09-11 15:55:49 [INFO]         ↳ Тип ссылки: QUOTE | Автор: @BendyRun
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа (цитата): 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2088641851314044990]: RT @Bendy: Happy Lone Wolfiver...
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2080387892703109315]: little update! i'm sure you al...
+2026-09-11 15:55:49 [INFO]       📝 Пост [2077863682420162860]: big fan of the steam deck and ...
+2026-09-11 15:55:49 [INFO]       📝 Пост [2077354244747719055]: RT @Bendy: One week left to ge...
+2026-09-11 15:55:49 [INFO]         ↳ Тип ссылки: QUOTE | Автор: @Bendy
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа (цитата): 1 шт.
+2026-09-11 15:55:49 [INFO]       📝 Пост [2077345811361305072]: the playstation summer sale is...
+2026-09-11 15:55:49 [INFO]       📝 Пост [2076988995758690492]: i see bendy has made some nois...
+2026-09-11 15:55:49 [INFO]       📝 Пост [2076736617427910840]: this is still technically chea...
+2026-09-11 15:55:49 [INFO]         ↳ Найдена карточка (Link Preview): store.steampowered.com
+2026-09-11 15:55:49 [INFO]       📝 Пост [2075267801736987085]: RT @Bendy: The ORIGINAL BENDY ...
+2026-09-11 15:55:49 [INFO]         ↳ Найдено медиа: 1 шт.
+2026-09-11 15:55:49 [INFO] 🟢 УСПЕХ! Источник [RSS via nitter.jaydenha.uk]. Собрано постов: 20
+2026-09-11 15:55:50 [WARNING]     ⚠️ Ошибка скачивания медиа https://pbs.twimg.com/ext_tw_video_thumb/2090111393160720384/img/d5NgMISyAPJ4uCVq.jpg: HTTP Error 404: Not Found
+2026-09-11 15:55:50 [WARNING]     ⚠️ Ошибка скачивания медиа https://pbs.twimg.com/ext_tw_video_thumb/2088687439346900992/img/IaIojPlPxcRLsoCX.jpg: HTTP Error 404: Not Found
+2026-09-11 15:55:50 [WARNING]     ⚠️ Ошибка скачивания медиа https://pbs.twimg.com/ext_tw_video_thumb/2088687439346900992/img/IaIojPlPxcRLsoCX.jpg: HTTP Error 404: Not Found
+2026-09-11 15:55:50 [WARNING]     ⚠️ Ошибка скачивания медиа https://pbs.twimg.com/ext_tw_video_thumb/2075265171287609344/img/L0VVKENBWRcLW4JI.jpg: HTTP Error 404: Not Found
+2026-09-11 15:55:50 [WARNING]     ⚠️ Ошибка скачивания медиа https://pbs.twimg.com/ext_tw_video_thumb/2075265171287609344/img/L0VVKENBWRcLW4JI.jpg: HTTP Error 404: Not Found
+2026-09-11 15:55:50 [INFO] 📊 ИТОГ (m_ZeroLogics): База обновлена. Всего постов: 20
+2026-09-11 15:55:50 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: BLacroix30 ====
+2026-09-11 15:56:14 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 15:56:37 [ERROR] 💀 Все попытки исчерпаны. Данные для BLacroix30 не получены.
+2026-09-11 15:56:37 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: bookpast ====
+2026-09-11 15:57:05 [ERROR]     ❌ [Parse RSS] Ошибка: not well-formed (invalid token): line 529, column 137
+2026-09-11 15:57:16 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 15:57:16 [ERROR] 💀 Все попытки исчерпаны. Данные для bookpast не получены.
+2026-09-11 15:57:16 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: BendyRun ====
+2026-09-11 15:57:27 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 15:57:56 [ERROR] 💀 Все попытки исчерпаны. Данные для BendyRun не получены.
+2026-09-11 15:57:56 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: GentCorporation ====
+2026-09-11 15:58:28 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 15:58:38 [ERROR] 💀 Все попытки исчерпаны. Данные для GentCorporation не получены.
+2026-09-11 15:58:38 [INFO] 
+==== АНАЛИЗ ПРОФИЛЯ: Bendy ====
+2026-09-11 15:58:56 [ERROR]     ❌ [Parse RSS] Ошибка: syntax error: line 1, column 0
+2026-09-11 15:59:17 [ERROR]     ❌ [Parse RSS] Ошибка: mismatched tag: line 126, column 6
+2026-09-11 15:59:17 [ERROR] 💀 Все попытки исчерпаны. Данные для Bendy не получены.
