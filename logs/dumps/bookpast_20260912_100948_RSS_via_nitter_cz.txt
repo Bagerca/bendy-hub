@@ -70,7 +70,7 @@
               <div class="profile-card-extra-links"><ul class="profile-statlist">
                   <li class="posts">
                     <span class="profile-stat-header">Tweets</span>
-                    <span class="profile-stat-num">108,432</span>
+                    <span class="profile-stat-num">108,436</span>
                   </li>
                   <li class="following"><a href="/elonmusk/following">
                       <span class="profile-stat-header">Following</span>
@@ -78,11 +78,11 @@
                     </a></li>
                   <li class="followers"><a href="/elonmusk/followers">
                       <span class="profile-stat-header">Followers</span>
-                      <span class="profile-stat-num">241,640,842</span>
+                      <span class="profile-stat-num">241,643,197</span>
                     </a></li>
                   <li class="likes">
                     <span class="profile-stat-header">Likes</span>
-                    <span class="profile-stat-num">247,672</span>
+                    <span class="profile-stat-num">247,693</span>
                   </li>
                 </ul></div>
             </div>
@@ -123,6 +123,129 @@
             <li class="tab-item"><a href="/elonmusk/search">Search</a></li>
           </ul>
           <div class="timeline">
+            <div class="timeline-item " data-username="SpaceX">
+              <a class="tweet-link" href="/SpaceX/status/2098074872203358540#m"></a>
+              <div class="tweet-body">
+                <div>
+                  <div class="retweet-header"><span><div class="icon-container"><span class="icon-retweet" title=""></span> Elon Musk retweeted</div></span></div>
+                  <div class="tweet-header">
+                    <a class="tweet-avatar" href="/SpaceX"><img class="avatar round" src="/pic/profile_images%2F1697749409851985920%2FHbrI04tM_bigger.jpg" alt="" loading="lazy" /></a>
+                    <div class="tweet-name-row">
+                      <div class="fullname-and-username">
+                        <a class="fullname" href="/SpaceX" title="SpaceX">SpaceX</a>
+                        <div class="verified-icon business">
+                          <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified business account"></span></div>
+                          <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified business account"></span></div>
+                        </div>
+                        <a class="username" href="/SpaceX" title="@SpaceX">@SpaceX</a>
+                      </div>
+                      <span class="tweet-date"><a href="/SpaceX/status/2098074872203358540#m" title="Sep 10, 2026 · 3:43 PM UTC">Sep 10</a></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tweet-content media-body" dir="auto">Liftoff!</div>
+                <div class="attachments card"><div class="gallery-video"><div class="attachment">
+                      <img src="/pic/amplify_video_thumb%2F2098074794201694220%2Fimg%2FThdDt2gXntv689An.jpg%3Fname%3Dsmall%26format%3Dwebp" loading="lazy" />
+                      <div class="video-overlay"><form method="post" action="/enablehls">
+                          <input name="referer" value="/elonmusk" style="display: none; " />
+                          <button type="submit">Enable hls playback</button>
+                        </form></div>
+                      <a class="video-download" href="/video/E9CD29B8A398E/https%3A%2F%2Fvideo.twimg.com%2Famplify_video%2F2098074794201694220%2Fvid%2Favc1%2F3840x2160%2FTw5EOLACXwtP_ztD.mp4%3Ftag%3D29" download="" title="Download video"><div class="icon-container"><span class="icon-download-alt" title=""></span></div></a>
+                    </div></div></div>
+                <div class="tweet-stats">
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 484</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,417</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 16,122</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,530,574</div></span>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item " data-username="cb_doge">
+              <a class="tweet-link" href="/cb_doge/status/2098469993419829459#m"></a>
+              <div class="tweet-body">
+                <div>
+                  <div class="retweet-header"><span><div class="icon-container"><span class="icon-retweet" title=""></span> Elon Musk retweeted</div></span></div>
+                  <div class="tweet-header">
+                    <a class="tweet-avatar" href="/cb_doge"><img class="avatar round" src="/pic/profile_images%2F1498070100393754625%2FC2V-fbll_bigger.jpg" alt="" loading="lazy" /></a>
+                    <div class="tweet-name-row">
+                      <div class="fullname-and-username">
+                        <a class="fullname" href="/cb_doge" title="DogeDesigner">DogeDesigner</a>
+                        <div class="verified-icon blue">
+                          <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified blue account"></span></div>
+                          <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified blue account"></span></div>
+                        </div>
+                        <a class="username" href="/cb_doge" title="@cb_doge">@cb_doge</a>
+                      </div>
+                      <span class="tweet-date"><a href="/cb_doge/status/2098469993419829459#m" title="Sep 11, 2026 · 5:53 PM UTC">16h</a></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="tweet-content media-body" dir="auto">BREAKING: The Yale AI Association kicked off its academic year with a live demo of Grok Bot at Yale University.
+
+The student group also announced a contest to build a useful app for Yale. Cursor brought the event to campus &amp; offered attendees a free month of Cursor Pro.</div>
+                <div class="attachments"><div class="gallery-row" style=""><div class="attachment"><a class="still-image" href="/pic/orig/media%2FHR9DVFabwAANQuw.jpg" target="_blank"><img src="/pic/media%2FHR9DVFabwAANQuw.jpg%3Fname%3Dsmall%26format%3Dwebp" alt="" loading="lazy" /></a></div></div></div>
+                <div class="tweet-stats">
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 132</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 238</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 1,492</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 267,863</div></span>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item " data-username="elonmusk">
+              <a class="tweet-link" href="/elonmusk/status/2098628727164846490#m"></a>
+              <div class="tweet-body">
+                <div><div class="tweet-header">
+                    <a class="tweet-avatar" href="/elonmusk"><img class="avatar round" src="/pic/profile_images%2F2053244804520427520%2Fm8mdWZCG_bigger.jpg" alt="" loading="lazy" /></a>
+                    <div class="tweet-name-row">
+                      <div class="fullname-and-username">
+                        <a class="fullname" href="/elonmusk" title="Elon Musk">Elon Musk</a>
+                        <div class="verified-icon blue">
+                          <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified blue account"></span></div>
+                          <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified blue account"></span></div>
+                        </div>
+                        <a class="username" href="/elonmusk" title="@elonmusk">@elonmusk</a>
+                      </div>
+                      <span class="tweet-date"><a href="/elonmusk/status/2098628727164846490#m" title="Sep 12, 2026 · 4:24 AM UTC">5h</a></span>
+                    </div>
+                  </div></div>
+                <div class="tweet-content media-body" dir="auto">Starlink</div>
+                <div class="quote quote-big">
+                  <a class="quote-link" href="/cb_doge/status/2098417625990873403#m"></a>
+                  <div class="tweet-name-row">
+                    <div class="fullname-and-username">
+                      <img class="avatar round mini" src="/pic/profile_images%2F1498070100393754625%2FC2V-fbll_mini.jpg" alt="" loading="lazy" />
+                      <a class="fullname" href="/cb_doge" title="DogeDesigner">DogeDesigner</a>
+                      <div class="verified-icon blue">
+                        <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified blue account"></span></div>
+                        <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified blue account"></span></div>
+                      </div>
+                      <a class="username" href="/cb_doge" title="@cb_doge">@cb_doge</a>
+                    </div>
+                    <span class="tweet-date"><a href="/cb_doge/status/2098417625990873403#m" title="Sep 11, 2026 · 2:25 PM UTC">19h</a></span>
+                  </div>
+                  <div class="quote-text" dir="auto">NEWS: 254 Starlink kits were handed over to bring internet to villages, schools &amp; hospitals across Vietnam.
+
+Telecommunications Authority, under the Ministry of Science &amp; Technology, jointly held the ceremony with Starlink Services Vietnam.
+
+Starlink is changing lives in Vietnam.</div>
+                  <div class="quote-media-container"><div class="attachments card"><div class="gallery-video"><div class="attachment">
+                          <img src="/pic/amplify_video_thumb%2F2098417601160622080%2Fimg%2Fc1xGP6CV0EUAP_UP.jpg%3Fname%3Dsmall%26format%3Dwebp" loading="lazy" />
+                          <div class="video-overlay"><form method="post" action="/enablehls">
+                              <input name="referer" value="/elonmusk" style="display: none; " />
+                              <button type="submit">Enable hls playback</button>
+                            </form></div>
+                          <a class="video-download" href="/video/81BD6B22DFF2B/https%3A%2F%2Fvideo.twimg.com%2Famplify_video%2F2098417601160622080%2Fvid%2Favc1%2F720x900%2F9hxJAas2IcpgLOkp.mp4%3Ftag%3D29" download="" title="Download video"><div class="icon-container"><span class="icon-download-alt" title=""></span></div></a>
+                        </div></div></div></div>
+                </div>
+                <div class="tweet-stats">
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 1,137</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 992</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 8,680</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 2,020,871</div></span>
+                </div>
+              </div>
+            </div>
             <div class="timeline-item " data-username="elonmusk">
               <a class="tweet-link" href="/elonmusk/status/2098545016419274792#m"></a>
               <div class="tweet-body">
@@ -137,7 +260,7 @@
                         </div>
                         <a class="username" href="/elonmusk" title="@elonmusk">@elonmusk</a>
                       </div>
-                      <span class="tweet-date"><a href="/elonmusk/status/2098545016419274792#m" title="Sep 11, 2026 · 10:51 PM UTC">4h</a></span>
+                      <span class="tweet-date"><a href="/elonmusk/status/2098545016419274792#m" title="Sep 11, 2026 · 10:51 PM UTC">11h</a></span>
                     </div>
                   </div></div>
                 <div class="tweet-content media-body" dir="auto">This is a real professor at Carnegie Mellon University …</div>
@@ -159,16 +282,16 @@ She is listed on Carnegie Mellon’s official faculty page in the Department of 
                       </div>
                       <a class="username" href="/TheWuhanClan" title="@TheWuhanClan">@TheWuhanClan</a>
                     </div>
-                    <span class="tweet-date"><a href="/TheWuhanClan/status/2098527196315017696#m" title="Sep 11, 2026 · 9:40 PM UTC">5h</a></span>
+                    <span class="tweet-date"><a href="/TheWuhanClan/status/2098527196315017696#m" title="Sep 11, 2026 · 9:40 PM UTC">12h</a></span>
                   </div>
                   <div class="replying-to">Replying to <a href="/libsoftiktok">@libsoftiktok</a> <a href="/CarnegieMellon">@CarnegieMellon</a></div>
                   <div class="quote-text" dir="auto">Already talking to lawyer about her death threat</div>
                 </div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 1,094</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 2,336</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 14,538</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 2,467,388</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 1,407</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 3,229</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 21,372</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 4,822,834</div></span>
                 </div>
               </div>
             </div>
@@ -195,10 +318,10 @@ She is listed on Carnegie Mellon’s official faculty page in the Department of 
                 <div class="tweet-content media-body" dir="auto">All systems are looking good, and weather is 70% favorable for liftoff. Propellant load is about to begin for Falcon 9’s launch of the USSF-153 mission from California → <a href="https://spacex.com/launches/ussf153">spacex.com/launches/ussf153</a></div>
                 <div class="attachments"><div class="gallery-row" style=""><div class="attachment"><a class="still-image" href="/pic/orig/media%2FHR3PiYyaIAArVB6.jpg" target="_blank"><img src="/pic/media%2FHR3PiYyaIAArVB6.jpg%3Fname%3Dsmall%26format%3Dwebp" alt="" loading="lazy" /></a></div></div></div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 365</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 817</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 7,764</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,721,124</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 389</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 872</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 8,146</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,827,799</div></span>
                 </div>
               </div>
             </div>
@@ -218,7 +341,7 @@ She is listed on Carnegie Mellon’s official faculty page in the Department of 
                         </div>
                         <a class="username" href="/rustyrockets" title="@rustyrockets">@rustyrockets</a>
                       </div>
-                      <span class="tweet-date"><a href="/rustyrockets/status/2098466774282805575#m" title="Sep 11, 2026 · 5:40 PM UTC">9h</a></span>
+                      <span class="tweet-date"><a href="/rustyrockets/status/2098466774282805575#m" title="Sep 11, 2026 · 5:40 PM UTC">16h</a></span>
                     </div>
                   </div>
                 </div>
@@ -237,15 +360,15 @@ This needs more attention.</div>
                       </div>
                       <a class="username" href="/Polymarket" title="@Polymarket">@Polymarket</a>
                     </div>
-                    <span class="tweet-date"><a href="/Polymarket/status/2098459855358972096#m" title="Sep 11, 2026 · 5:13 PM UTC">10h</a></span>
+                    <span class="tweet-date"><a href="/Polymarket/status/2098459855358972096#m" title="Sep 11, 2026 · 5:13 PM UTC">16h</a></span>
                   </div>
                   <div class="quote-text" dir="auto">JUST IN: Report reveals at least 62,199 people were arrested in Britain for “speech-related offenses” between 2021 &amp; 2025.</div>
                 </div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 236</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,062</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 9,358</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 632,901</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 271</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,315</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 12,118</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 786,073</div></span>
                 </div>
               </div>
             </div>
@@ -263,7 +386,7 @@ This needs more attention.</div>
                         </div>
                         <a class="username" href="/elonmusk" title="@elonmusk">@elonmusk</a>
                       </div>
-                      <span class="tweet-date"><a href="/elonmusk/status/2098460032014639334#m" title="Sep 11, 2026 · 5:13 PM UTC">9h</a></span>
+                      <span class="tweet-date"><a href="/elonmusk/status/2098460032014639334#m" title="Sep 11, 2026 · 5:13 PM UTC">16h</a></span>
                     </div>
                   </div></div>
                 <div class="tweet-content media-body" dir="auto">Technology is the most important advantage in war</div>
@@ -279,7 +402,7 @@ This needs more attention.</div>
                       </div>
                       <a class="username" href="/ID_AA_Carmack" title="@ID_AA_Carmack">@ID_AA_Carmack</a>
                     </div>
-                    <span class="tweet-date"><a href="/ID_AA_Carmack/status/2098443262214230095#m" title="Sep 11, 2026 · 4:07 PM UTC">11h</a></span>
+                    <span class="tweet-date"><a href="/ID_AA_Carmack/status/2098443262214230095#m" title="Sep 11, 2026 · 4:07 PM UTC">17h</a></span>
                   </div>
                   <div class="quote-text" dir="auto">I recently went through a translation of Musashi’s Book of Five Rings.
 
@@ -298,10 +421,10 @@ But don’t be the out of touch Kung Fu master, heir to lifetimes of tradition, 
 Musashi would probably have been pretty enthusiastic about assault rifles.</div>
                 </div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 2,600</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,611</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 14,561</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 3,978,858</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 2,841</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,938</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 18,064</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 5,143,153</div></span>
                 </div>
               </div>
             </div>
@@ -321,7 +444,7 @@ Musashi would probably have been pretty enthusiastic about assault rifles.</div>
                         </div>
                         <a class="username" href="/TheCaptainEli" title="@TheCaptainEli">@TheCaptainEli</a>
                       </div>
-                      <span class="tweet-date"><a href="/TheCaptainEli/status/2098359515162837359#m" title="Sep 11, 2026 · 10:34 AM UTC">16h</a></span>
+                      <span class="tweet-date"><a href="/TheCaptainEli/status/2098359515162837359#m" title="Sep 11, 2026 · 10:34 AM UTC">23h</a></span>
                     </div>
                   </div>
                 </div>
@@ -341,15 +464,15 @@ Elon is a Hero</div>
                       </div>
                       <a class="username" href="/brivael" title="@brivael">@brivael</a>
                     </div>
-                    <span class="tweet-date"><a href="/brivael/status/2098327035277959482#m" title="Sep 11, 2026 · 8:25 AM UTC">18h</a></span>
+                    <span class="tweet-date"><a href="/brivael/status/2098327035277959482#m" title="Sep 11, 2026 · 8:25 AM UTC">Sep 11</a></span>
                   </div>
                   <div class="quote-text" dir="auto">Il a prouvé qu’on pouvait envoyer des fusées sans Gosplan. Construire des voitures sans la bénédiction de Detroit. Relier un village, un front ou un hôpital depuis l’orbite, sans demander l’autorisation d’un ministère. Il a racheté la place publique et arraché le monopole de ceux qui décidaient qui avait le droit de parler.</div>
                 </div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 292</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 285</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 2,955</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 524,735</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 309</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 310</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 3,238</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 594,895</div></span>
                 </div>
               </div>
             </div>
@@ -367,7 +490,7 @@ Elon is a Hero</div>
                         </div>
                         <a class="username" href="/elonmusk" title="@elonmusk">@elonmusk</a>
                       </div>
-                      <span class="tweet-date"><a href="/elonmusk/status/2098457990407880886#m" title="Sep 11, 2026 · 5:05 PM UTC">10h</a></span>
+                      <span class="tweet-date"><a href="/elonmusk/status/2098457990407880886#m" title="Sep 11, 2026 · 5:05 PM UTC">16h</a></span>
                     </div>
                   </div></div>
                 <div class="tweet-content media-body" dir="auto">True, solar energy over time will round up to 100% of energy harnessed (obviously)</div>
@@ -383,17 +506,17 @@ Elon is a Hero</div>
                       </div>
                       <a class="username" href="/MdeZegher" title="@MdeZegher">@MdeZegher</a>
                     </div>
-                    <span class="tweet-date"><a href="/MdeZegher/status/2098443492351676505#m" title="Sep 11, 2026 · 4:08 PM UTC">11h</a></span>
+                    <span class="tweet-date"><a href="/MdeZegher/status/2098443492351676505#m" title="Sep 11, 2026 · 4:08 PM UTC">17h</a></span>
                   </div>
                   <div class="quote-text" dir="auto">On Labor Day, the charging peak load was 116 cars plugged in at once, at 11.4 MW. 
  
 All electrical loads will eventually transition to solar + storage. The giant fusion reactor in the sky is free.</div>
                 </div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 1,202</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,107</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 8,711</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 2,901,770</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 1,312</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,324</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 10,540</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 3,688,174</div></span>
                 </div>
               </div>
             </div>
@@ -411,7 +534,7 @@ All electrical loads will eventually transition to solar + storage. The giant fu
                         </div>
                         <a class="username" href="/elonmusk" title="@elonmusk">@elonmusk</a>
                       </div>
-                      <span class="tweet-date"><a href="/elonmusk/status/2098457680482308526#m" title="Sep 11, 2026 · 5:04 PM UTC">10h</a></span>
+                      <span class="tweet-date"><a href="/elonmusk/status/2098457680482308526#m" title="Sep 11, 2026 · 5:04 PM UTC">17h</a></span>
                     </div>
                   </div></div>
                 <div class="tweet-content media-body" dir="auto">Wow, this is crazy</div>
@@ -427,15 +550,15 @@ All electrical loads will eventually transition to solar + storage. The giant fu
                       </div>
                       <a class="username" href="/zerohedge" title="@zerohedge">@zerohedge</a>
                     </div>
-                    <span class="tweet-date"><a href="/zerohedge/status/2098377294091780500#m" title="Sep 11, 2026 · 11:45 AM UTC">15h</a></span>
+                    <span class="tweet-date"><a href="/zerohedge/status/2098377294091780500#m" title="Sep 11, 2026 · 11:45 AM UTC">22h</a></span>
                   </div>
                   <div class="quote-text" dir="auto">More Than 62,000 Arrested For Speech-Related Offenses In Britain, Report Finds <a href="https://www.zerohedge.com/political/more-62000-arrested-speech-related-offenses-britain-report-finds">zerohedge.com/political/more…</a></div>
                 </div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 2,526</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 6,428</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 38,904</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 5,000,803</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 3,103</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 8,065</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 47,589</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 6,558,177</div></span>
                 </div>
               </div>
             </div>
@@ -473,10 +596,10 @@ Thank you <a href="/Tesla" title="Tesla">@Tesla</a> <a href="/elonmusk" title="E
                       <a class="video-download" href="/video/5FC82DBEC4DAD/https%3A%2F%2Fvideo.twimg.com%2Famplify_video%2F2098217095330684930%2Fvid%2Favc1%2F3840x2160%2Fm03RSta5E8FPSduC.mp4%3Ftag%3D29" download="" title="Download video"><div class="icon-container"><span class="icon-download-alt" title=""></span></div></a>
                     </div></div></div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 345</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 770</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 6,610</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 488,558</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 402</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 956</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 8,197</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 594,026</div></span>
                 </div>
               </div>
             </div>
@@ -496,7 +619,7 @@ Thank you <a href="/Tesla" title="Tesla">@Tesla</a> <a href="/elonmusk" title="E
                         </div>
                         <a class="username" href="/teslaownersSV" title="@teslaownersSV">@teslaownersSV</a>
                       </div>
-                      <span class="tweet-date"><a href="/teslaownersSV/status/2098281019023700325#m" title="Sep 11, 2026 · 5:22 AM UTC">21h</a></span>
+                      <span class="tweet-date"><a href="/teslaownersSV/status/2098281019023700325#m" title="Sep 11, 2026 · 5:22 AM UTC">Sep 11</a></span>
                     </div>
                   </div>
                 </div>
@@ -517,10 +640,10 @@ That's why Series D at ~$23B matters.</div>
                       <a class="video-download" href="/video/37F8034E91978/https%3A%2F%2Fvideo.twimg.com%2Famplify_video%2F2098280958546100224%2Fvid%2Favc1%2F1080x1920%2FnKP8deZALps4HdE3.mp4%3Ftag%3D29" download="" title="Download video"><div class="icon-container"><span class="icon-download-alt" title=""></span></div></a>
                     </div></div></div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 98</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 213</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 1,514</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 337,136</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 108</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 234</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 1,660</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 382,776</div></span>
                 </div>
               </div>
             </div>
@@ -540,7 +663,7 @@ That's why Series D at ~$23B matters.</div>
                         </div>
                         <a class="username" href="/teslaeurope" title="@teslaeurope">@teslaeurope</a>
                       </div>
-                      <span class="tweet-date"><a href="/teslaeurope/status/2098429681607307452#m" title="Sep 11, 2026 · 3:13 PM UTC">11h</a></span>
+                      <span class="tweet-date"><a href="/teslaeurope/status/2098429681607307452#m" title="Sep 11, 2026 · 3:13 PM UTC">18h</a></span>
                     </div>
                   </div>
                 </div>
@@ -555,10 +678,10 @@ That's why Series D at ~$23B matters.</div>
 <a href="https://www.tesla.com/de_de/semi">tesla.com/de_de/semi</a></div>
                 <div class="attachments"><div class="gallery-row" style=""><div class="attachment"><a class="still-image" href="/pic/orig/media%2FHR8Qm1QbcAAnLoF.jpg" target="_blank"><img src="/pic/media%2FHR8Qm1QbcAAnLoF.jpg%3Fname%3Dsmall%26format%3Dwebp" alt="" loading="lazy" /></a></div></div></div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 247</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 862</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 6,841</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 541,114</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 270</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 949</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 7,516</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 617,865</div></span>
                 </div>
               </div>
             </div>
@@ -578,7 +701,7 @@ That's why Series D at ~$23B matters.</div>
                         </div>
                         <a class="username" href="/XFreeze" title="@XFreeze">@XFreeze</a>
                       </div>
-                      <span class="tweet-date"><a href="/XFreeze/status/2098385527808668040#m" title="Sep 11, 2026 · 12:17 PM UTC">14h</a></span>
+                      <span class="tweet-date"><a href="/XFreeze/status/2098385527808668040#m" title="Sep 11, 2026 · 12:17 PM UTC">21h</a></span>
                     </div>
                   </div>
                 </div>
@@ -645,7 +768,7 @@ Elon absolutely slaughters BBC reporter in live interview</div>
                       </div>
                       <a class="username" href="/XFreeze" title="@XFreeze">@XFreeze</a>
                     </div>
-                    <span class="tweet-date"><a href="/XFreeze/status/2098303227578261512#m" title="Sep 11, 2026 · 6:50 AM UTC">20h</a></span>
+                    <span class="tweet-date"><a href="/XFreeze/status/2098303227578261512#m" title="Sep 11, 2026 · 6:50 AM UTC">Sep 11</a></span>
                   </div>
                   <div class="quote-text" dir="auto">that random guy: “There’s way too much hate on this platform”
 
@@ -658,10 +781,10 @@ His interests:
 Brother, you are the algorithm 😂</div>
                 </div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 630</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 6,227</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 37,694</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,366,103</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 701</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 7,667</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 46,463</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,660,897</div></span>
                 </div>
               </div>
             </div>
@@ -737,9 +860,9 @@ The bottleneck used to be hands. Now it is judgment — and I still own that. If
                 </div>
                 <div class="tweet-stats">
                   <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 151</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 273</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 1,947</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 580,587</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 283</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 2,006</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 612,063</div></span>
                 </div>
               </div>
             </div>
@@ -775,10 +898,10 @@ The bottleneck used to be hands. Now it is judgment — and I still own that. If
                   </div>
                 </div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 504</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,127</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 9,530</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,023,038</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 523</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,190</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 9,865</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,059,486</div></span>
                 </div>
               </div>
             </div>
@@ -812,10 +935,10 @@ The bottleneck used to be hands. Now it is judgment — and I still own that. If
                       <a class="video-download" href="/video/17F8572CA89C3/https%3A%2F%2Fvideo.twimg.com%2Famplify_video%2F2098077104780800009%2Fvid%2Favc1%2F3840x2160%2FXn7WGb68gC-jvMXS.mp4%3Ftag%3D29" download="" title="Download video"><div class="icon-container"><span class="icon-download-alt" title=""></span></div></a>
                     </div></div></div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 374</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,027</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 13,795</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,474,624</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 384</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,057</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 14,084</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,506,106</div></span>
                 </div>
               </div>
             </div>
@@ -858,10 +981,10 @@ The bottleneck used to be hands. Now it is judgment — and I still own that. If
                       <a class="video-download" href="/video/718C7BED6D876/https%3A%2F%2Fvideo.twimg.com%2Famplify_video%2F2098145063981514752%2Fvid%2Favc1%2F3840x2160%2FN_n3GWBgdt4KPH8C.mp4%3Ftag%3D29" download="" title="Download video"><div class="icon-container"><span class="icon-download-alt" title=""></span></div></a>
                     </div></div></div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 279</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 505</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 4,890</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 731,784</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 291</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 523</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 5,125</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 780,993</div></span>
                 </div>
               </div>
             </div>
@@ -887,10 +1010,10 @@ The bottleneck used to be hands. Now it is judgment — and I still own that. If
                 </div>
                 <div class="tweet-content media-body" dir="auto">Watch live as SpaceX CFO <a href="/BretWJ" title="Bret Johnsen">@BretWJ</a> speaks at the Goldman Sachs Communacopia and Technology Conference → <a href="https://ir.spacex.com/events/default.aspx">ir.spacex.com/events/default…</a></div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 112</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 354</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 2,750</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,244,268</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 113</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 365</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 2,796</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,266,739</div></span>
                 </div>
               </div>
             </div>
@@ -908,7 +1031,7 @@ The bottleneck used to be hands. Now it is judgment — and I still own that. If
                         </div>
                         <a class="username" href="/elonmusk" title="@elonmusk">@elonmusk</a>
                       </div>
-                      <span class="tweet-date"><a href="/elonmusk/status/2098331769892130941#m" title="Sep 11, 2026 · 8:44 AM UTC">18h</a></span>
+                      <span class="tweet-date"><a href="/elonmusk/status/2098331769892130941#m" title="Sep 11, 2026 · 8:44 AM UTC">Sep 11</a></span>
                     </div>
                   </div></div>
                 <div class="tweet-content media-body" dir="auto">SpaceX CFO speaks at GS Tech Comf</div>
@@ -929,174 +1052,14 @@ The bottleneck used to be hands. Now it is judgment — and I still own that. If
                   <div class="quote-text" dir="auto">WATCH: <a href="/SpaceX" title="SpaceX">@SpaceX</a> CFO Bret Johnsen speaks at the Goldman Sachs Communacopia + Technology Conference: <a href="https://nitter.click/i/broadcasts/1qxoNYEgaeEJv">nitter.click/i/broadcasts/1qxoNYEga…</a></div>
                 </div>
                 <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 964</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,268</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 7,952</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 4,120,167</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 1,000</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 1,377</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 8,935</div></span>
+                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 4,544,091</div></span>
                 </div>
               </div>
             </div>
-            <div class="timeline-item " data-username="robotaxi">
-              <a class="tweet-link" href="/robotaxi/status/2098245744952332779#m"></a>
-              <div class="tweet-body">
-                <div>
-                  <div class="retweet-header"><span><div class="icon-container"><span class="icon-retweet" title=""></span> Elon Musk retweeted</div></span></div>
-                  <div class="tweet-header">
-                    <a class="tweet-avatar" href="/robotaxi"><img class="avatar round" src="/pic/profile_images%2F1936878903693381632%2FkknBJFib_bigger.jpg" alt="" loading="lazy" /></a>
-                    <div class="tweet-name-row">
-                      <div class="fullname-and-username">
-                        <a class="fullname" href="/robotaxi" title="Robotaxi">Robotaxi</a>
-                        <div class="verified-icon business">
-                          <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified business account"></span></div>
-                          <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified business account"></span></div>
-                        </div>
-                        <a class="username" href="/robotaxi" title="@robotaxi">@robotaxi</a>
-                      </div>
-                      <span class="tweet-date"><a href="/robotaxi/status/2098245744952332779#m" title="Sep 11, 2026 · 3:02 AM UTC">Sep 11</a></span>
-                    </div>
-                  </div>
-                </div>
-                <div class="tweet-content media-body" dir="auto">Most efficient production EV ever
-
-That efficiency is what will make Cybercab one of the lowest cost-per-mile modes of transport</div>
-                <div class="quote quote-big">
-                  <a class="quote-link" href="/niccruzpatane/status/2097819496509485065#m"></a>
-                  <div class="tweet-name-row">
-                    <div class="fullname-and-username">
-                      <img class="avatar round mini" src="/pic/profile_images%2F1805666868071391232%2F1qAqAOng_mini.jpg" alt="" loading="lazy" />
-                      <a class="fullname" href="/niccruzpatane" title="Nic Cruz Patane">Nic Cruz Patane</a>
-                      <div class="verified-icon blue">
-                        <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified blue account"></span></div>
-                        <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified blue account"></span></div>
-                      </div>
-                      <a class="username" href="/niccruzpatane" title="@niccruzpatane">@niccruzpatane</a>
-                    </div>
-                    <span class="tweet-date"><a href="/niccruzpatane/status/2097819496509485065#m" title="Sep 9, 2026 · 10:48 PM UTC">Sep 9</a></span>
-                  </div>
-                  <div class="quote-text" dir="auto">The <a href="/Tesla" title="Tesla">@Tesla</a> Cybercab has a wider front track than the rear. The teardrop shape is how Tesla achieved a drag coefficient under 0.2.
-
-It's the most efficient production EV ever certified, at 165 Wh/mi, and the first Tesla that's front-wheel drive.
-
-Seeing it in person is incredible.</div>
-                  <div class="quote-media-container"><div class="attachments card"><div class="gallery-video"><div class="attachment">
-                          <img src="/pic/amplify_video_thumb%2F2097819320818491395%2Fimg%2Fh7a2pRDK0vDQjTwp.jpg%3Fname%3Dsmall%26format%3Dwebp" loading="lazy" />
-                          <div class="video-overlay"><form method="post" action="/enablehls">
-                              <input name="referer" value="/elonmusk" style="display: none; " />
-                              <button type="submit">Enable hls playback</button>
-                            </form></div>
-                          <a class="video-download" href="/video/236792675D4DA/https%3A%2F%2Fvideo.twimg.com%2Famplify_video%2F2097819320818491395%2Fvid%2Favc1%2F2158x2288%2FEZx0gvBe5nsGDqfG.mp4%3Ftag%3D29" download="" title="Download video"><div class="icon-container"><span class="icon-download-alt" title=""></span></div></a>
-                        </div></div></div></div>
-                </div>
-                <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 179</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 501</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 5,601</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 764,254</div></span>
-                </div>
-              </div>
-            </div>
-            <div class="timeline-item " data-username="spencerpratt">
-              <a class="tweet-link" href="/spencerpratt/status/2098141674606149662#m"></a>
-              <div class="tweet-body">
-                <div>
-                  <div class="retweet-header"><span><div class="icon-container"><span class="icon-retweet" title=""></span> Elon Musk retweeted</div></span></div>
-                  <div class="tweet-header">
-                    <a class="tweet-avatar" href="/spencerpratt"><img class="avatar round" src="/pic/profile_images%2F2087563439225159680%2FpRMJRkqz_bigger.jpg" alt="" loading="lazy" /></a>
-                    <div class="tweet-name-row">
-                      <div class="fullname-and-username">
-                        <a class="fullname" href="/spencerpratt" title="Spencer Pratt">Spencer Pratt</a>
-                        <div class="verified-icon blue">
-                          <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified blue account"></span></div>
-                          <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified blue account"></span></div>
-                        </div>
-                        <a class="username" href="/spencerpratt" title="@spencerpratt">@spencerpratt</a>
-                      </div>
-                      <span class="tweet-date"><a href="/spencerpratt/status/2098141674606149662#m" title="Sep 10, 2026 · 8:08 PM UTC">Sep 10</a></span>
-                    </div>
-                  </div>
-                </div>
-                <div class="tweet-content media-body" dir="auto">Um…why?</div>
-                <div class="quote quote-big">
-                  <a class="quote-link" href="/Polymarket/status/2098025660765594097#m"></a>
-                  <div class="tweet-name-row">
-                    <div class="fullname-and-username">
-                      <img class="avatar round mini" src="/pic/profile_images%2F2005664281002491904%2Fbz2ZO_nU_mini.jpg" alt="" loading="lazy" />
-                      <a class="fullname" href="/Polymarket" title="Polymarket">Polymarket</a>
-                      <div class="verified-icon business">
-                        <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified business account"></span></div>
-                        <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified business account"></span></div>
-                      </div>
-                      <a class="username" href="/Polymarket" title="@Polymarket">@Polymarket</a>
-                    </div>
-                    <span class="tweet-date"><a href="/Polymarket/status/2098025660765594097#m" title="Sep 10, 2026 · 12:27 PM UTC">Sep 10</a></span>
-                  </div>
-                  <div class="quote-text" dir="auto">JUST IN: Denver sues to block armed ICE agents from serving immigration warrants at polling locations.</div>
-                </div>
-                <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 1,220</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 2,624</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 28,591</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 1,060,581</div></span>
-                </div>
-              </div>
-            </div>
-            <div class="timeline-item " data-username="elonmusk">
-              <a class="tweet-link" href="/elonmusk/status/2098310008370872652#m"></a>
-              <div class="tweet-body">
-                <div><div class="tweet-header">
-                    <a class="tweet-avatar" href="/elonmusk"><img class="avatar round" src="/pic/profile_images%2F2053244804520427520%2Fm8mdWZCG_bigger.jpg" alt="" loading="lazy" /></a>
-                    <div class="tweet-name-row">
-                      <div class="fullname-and-username">
-                        <a class="fullname" href="/elonmusk" title="Elon Musk">Elon Musk</a>
-                        <div class="verified-icon blue">
-                          <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified blue account"></span></div>
-                          <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified blue account"></span></div>
-                        </div>
-                        <a class="username" href="/elonmusk" title="@elonmusk">@elonmusk</a>
-                      </div>
-                      <span class="tweet-date"><a href="/elonmusk/status/2098310008370872652#m" title="Sep 11, 2026 · 7:17 AM UTC">19h</a></span>
-                    </div>
-                  </div></div>
-                <div class="tweet-content media-body" dir="auto">More than twice as long as they clapped for Stalin in Gulag Archipelago!</div>
-                <div class="quote quote-big">
-                  <a class="quote-link" href="/Variety/status/2098100091613831627#m"></a>
-                  <div class="tweet-name-row">
-                    <div class="fullname-and-username">
-                      <img class="avatar round mini" src="/pic/profile_images%2F1610752949550186496%2FX5zYP9oV_mini.jpg" alt="" loading="lazy" />
-                      <a class="fullname" href="/Variety" title="Variety">Variety</a>
-                      <div class="verified-icon business">
-                        <div class="icon-container"><span class="icon-circle verified-icon-circle" title="Verified business account"></span></div>
-                        <div class="icon-container"><span class="icon-ok verified-icon-check" title="Verified business account"></span></div>
-                      </div>
-                      <a class="username" href="/Variety" title="@Variety">@Variety</a>
-                    </div>
-                    <span class="tweet-date"><a href="/Variety/status/2098100091613831627#m" title="Sep 10, 2026 · 5:23 PM UTC">Sep 10</a></span>
-                  </div>
-                  <div class="quote-text" dir="auto">The Gaza documentary “NAZA” earned a massive 24.5-minute <a href="/search?f=tweets&q=%23VeniceFilmFestival">#VeniceFilmFestival</a> ovation as the crowd cheered and waved Palestinian flags.
-
-This marks the longest-ever standing ovation at Venice, beating the 22-minute ovation for “The Voice of Hind Rajab” last year, and perhaps the longest at any film festival, period.
-
-The new documentary was shot at night on the rooftops of Tel Aviv and shows “in detail the systems behind Israel’s calculated mass killing of Palestinian civilians in Gaza,” per an official synopsis. Abraham and Szor interviewed 24 Israeli military intelligence officers and soldiers — all of whom spoke on the condition of anonymity — who were involved in the surveillance or remote killing of Palestinian civilians in Gaza. Their appearance and voices were digitally altered to disguise their identities.
-
-<a href="https://variety.com/2026/film/festivals/naza-venice-premiere-gaza-documentary-ovation-1236843669/">variety.com/2026/film/festiv…</a></div>
-                  <div class="quote-media-container"><div class="attachments card"><div class="gallery-video"><div class="attachment">
-                          <img src="/pic/amplify_video_thumb%2F2098098550072860672%2Fimg%2FO-A87A0UraWkdif9.jpg%3Fname%3Dsmall%26format%3Dwebp" loading="lazy" />
-                          <div class="video-overlay"><form method="post" action="/enablehls">
-                              <input name="referer" value="/elonmusk" style="display: none; " />
-                              <button type="submit">Enable hls playback</button>
-                            </form></div>
-                          <a class="video-download" href="/video/7A94E2F6F9AF5/https%3A%2F%2Fvideo.twimg.com%2Famplify_video%2F2098098550072860672%2Fvid%2Favc1%2F720x1280%2FVYzr9wHXB17PHPDr.mp4%3Ftag%3D29" download="" title="Download video"><div class="icon-container"><span class="icon-download-alt" title=""></span></div></a>
-                        </div></div></div></div>
-                </div>
-                <div class="tweet-stats">
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-comment" title=""></span> 3,737</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-retweet" title=""></span> 4,416</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-heart" title=""></span> 44,856</div></span>
-                  <span class="tweet-stat"><div class="icon-container"><span class="icon-views" title=""></span> 6,727,574</div></span>
-                </div>
-              </div>
-            </div>
-            <div class="show-more"><a href="?cursor=DAAHCgABHR_Dcvw__-sLAAIAAAATMjA5ODMxMDAwODM3MDg3MjY1MggAAwAAAAIAAA">Load more</a></div>
+            <div class="show-more"><a href="?cursor=DAAHCgABHSAhme5__-sLAAIAAAATMjA5ODMzMTc2OTg5MjEzMDk0MQgAAwAAAAIAAA">Load more</a></div>
             <div class="top-ref"><div class="icon-container"><a class="icon-down" title="" href="#"></a></div></div>
           </div>
         </div>
