@@ -281,7 +281,7 @@ Play now at <a href="http://bendyrun.com">bendyrun.com</a></p>
 <hr/>
 <b>Link</b><br>
 <a href="https://store.steampowered.com/bundle/78458/Bendy_Summer_Sale/">
-<img src="http://nitter.jaydenha.uk/pic/card_img%2F2098080146976886784%2FM3Hv64s-%3Fformat%3Djpg%26name%3D800x419" style="max-width:250px;" />
+<img src="http://nitter.jaydenha.uk/pic/card_img%2F2098080093461438469%2Fh4SGmvHg%3Fformat%3Djpg%26name%3D800x419" style="max-width:250px;" />
 <br>
 <b>Steam Store</b>
 </a>
