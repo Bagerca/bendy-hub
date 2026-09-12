@@ -1,5 +1,125 @@
 [
   {
+    "id": "2098197074109936071",
+    "authorName": "Elizabeth King",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "It’s never too early for Halloween music.",
+    "timestamp": "2026-09-10T23:48:59Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2098197074109936071_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2097863862683046359",
+    "authorName": "Elizabeth King",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "RT @kriistofert: #BendysNightmareRun #Bendy #Art",
+    "timestamp": "2026-09-10T01:44:55Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2097863862683046359_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/kriistofert/status/2096813844664615026",
+    "referenceAuthor": "@kriistofert",
+    "referenceAuthorName": "kriisto.",
+    "referenceAvatarUrl": "",
+    "referenceText": "midnight teaser.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/doberart/media/quote_2097863862683046359_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2097800325205803412",
+    "authorName": "Elizabeth King",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "A very happy birthday to the puppet, the myth, the Meatly! 🎉",
+    "timestamp": "2026-09-09T21:32:27Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2097800325205803412_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2097436572337553577",
+    "authorName": "Elizabeth King",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "RT @BendyRun: Shhhhh! Not HERE Bendy! Play now at https://bendyrun.com",
+    "timestamp": "2026-09-08T21:27:01Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2097436572337553577_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2097145899554382047",
+    "authorName": "Elizabeth King",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "RT @roseynoseyy: daily ink demon number ONE",
+    "timestamp": "2026-09-08T02:12:00Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2097145899554382047_0.png",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
     "id": "2097127952349597901",
     "authorName": "Elizabeth King",
     "authorHandle": "@Doberart",
