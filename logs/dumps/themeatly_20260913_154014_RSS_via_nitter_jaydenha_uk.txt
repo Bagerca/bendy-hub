@@ -16,6 +16,59 @@
       <height>128</height>
     </image>
       <item>
+        <title>RT by @themeatly: We’re pleased to welcome @seancrisden as a Special Guest at @SacGamersExpo 2026! #SeanCrisden is known as the #InkDemon in #BendyandtheDarkRevival, &amp; #HayaoKoshimizu in #ShinMegamiTenseiV. He has voiced many characters in animated shows &amp; video games.</title>
+        <dc:creator>@sacgamersexpo</dc:creator>
+        <description><![CDATA[<p>We’re pleased to welcome <a href="http://nitter.jaydenha.uk/seancrisden" title="Sean Crisden">@seancrisden</a> as a Special Guest at <a href="http://nitter.jaydenha.uk/sacgamersexpo" title="@SacGamersExpo">@SacGamersExpo</a> 2026!<br>
+<br>
+<a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23SeanCrisden">#SeanCrisden</a> is known as the <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23InkDemon">#InkDemon</a> in <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23BendyandtheDarkRevival">#BendyandtheDarkRevival</a>, &amp; <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23HayaoKoshimizu">#HayaoKoshimizu</a> in <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23ShinMegamiTenseiV">#ShinMegamiTenseiV</a>. He has voiced many characters in animated shows &amp; video games.</p>
+<img src="http://nitter.jaydenha.uk/pic/media%2FHR4Yaa4bEAAK89_.jpg" style="max-width:250px;" />]]></description>
+        <pubDate>Thu, 10 Sep 2026 20:10:34 GMT</pubDate>
+        <guid isPermaLink="false">2098142108762919015</guid>
+        <link>http://nitter.jaydenha.uk/sacgamersexpo/status/2098142108762919015#m</link>
+      </item>
+      <item>
+        <title>THANK YOU for all the amazing birthday wishes and art! :) You&apos;re all so very kind. Although I didn&apos;t take the day off yesterday, I did find time for some pizza and cake! :D</title>
+        <dc:creator>@themeatly</dc:creator>
+        <description><![CDATA[<p>THANK YOU for all the amazing birthday wishes and art! :) You're all so very kind. Although I didn't take the day off yesterday, I did find time for some pizza and cake! :D</p>]]></description>
+        <pubDate>Thu, 10 Sep 2026 14:09:33 GMT</pubDate>
+        <guid isPermaLink="false">2098051252781564357</guid>
+        <link>http://nitter.jaydenha.uk/themeatly/status/2098051252781564357#m</link>
+      </item>
+      <item>
+        <title>RT by @themeatly: We’re pleased to welcome @aaronlandonvo as a Special Guest at @SacGamersExpo 2026! #AaronLandon voiced #SammyLawrence in the #Bendy franchise, #LeslieWithers in #TheEvilWithin, #JamesPierce in #MetroidOtherM, &amp; the Drone in the short film #SonicDroneHome on the Sonic 2 DVD.</title>
+        <dc:creator>@sacgamersexpo</dc:creator>
+        <description><![CDATA[<p>We’re pleased to welcome <a href="http://nitter.jaydenha.uk/aaronlandonvo" title="Aaron Landon">@aaronlandonvo</a> as a Special Guest at <a href="http://nitter.jaydenha.uk/SacGamersExpo" title="@SacGamersExpo">@SacGamersExpo</a> 2026!<br>
+<br>
+<a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23AaronLandon">#AaronLandon</a> voiced <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23SammyLawrence">#SammyLawrence</a> in the <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23Bendy">#Bendy</a> franchise, <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23LeslieWithers">#LeslieWithers</a> in <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23TheEvilWithin">#TheEvilWithin</a>, <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23JamesPierce">#JamesPierce</a> in <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23MetroidOtherM">#MetroidOtherM</a>, &amp; the Drone in the short film <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23SonicDroneHome">#SonicDroneHome</a> on the Sonic 2 DVD.</p>
+<img src="http://nitter.jaydenha.uk/pic/media%2FHQwYFowbwAAwGe4.jpg" style="max-width:250px;" />]]></description>
+        <pubDate>Thu, 27 Aug 2026 20:42:36 GMT</pubDate>
+        <guid isPermaLink="false">2093076738389803465</guid>
+        <link>http://nitter.jaydenha.uk/sacgamersexpo/status/2093076738389803465#m</link>
+      </item>
+      <item>
+        <title>RT by @themeatly: Shhhhh! Not HERE Bendy! Play now at https://bendyrun.com</title>
+        <dc:creator>@BendyRun</dc:creator>
+        <description><![CDATA[<p>Shhhhh! Not HERE Bendy!<br>
+Play now at <a href="https://bendyrun.com">bendyrun.com</a></p>
+<img src="http://nitter.jaydenha.uk/pic/media%2FHRuXKeQbYAAAq8p.jpg" style="max-width:250px;" />]]></description>
+        <pubDate>Tue, 08 Sep 2026 21:27:01 GMT</pubDate>
+        <guid isPermaLink="false">2097436572337553577</guid>
+        <link>http://nitter.jaydenha.uk/BendyRun/status/2097436572337553577#m</link>
+      </item>
+      <item>
+        <title>RT by @themeatly: We’re pleased to welcome @DavesVoice911 as a Special Guest at @SacGamersExpo 2026! #DaveRivas is best known as #JoeyDrew from #BendyandtheDarkRevival, #CoachBerg in #TheThrilloftheFight2, &amp; #VaKelShon, Captain of The U.S.S. Enterprise-F in #StarTrekOnline. 🎟️ in bio!</title>
+        <dc:creator>@sacgamersexpo</dc:creator>
+        <description><![CDATA[<p>We’re pleased to welcome <a href="http://nitter.jaydenha.uk/DavesVoice911" title="Dave Rivas">@DavesVoice911</a> as a Special Guest at <a href="http://nitter.jaydenha.uk/sacgamersexpo" title="@SacGamersExpo">@SacGamersExpo</a> 2026!<br>
+<br>
+<a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23DaveRivas">#DaveRivas</a> is best known as <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23JoeyDrew">#JoeyDrew</a> from <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23BendyandtheDarkRevival">#BendyandtheDarkRevival</a>, <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23CoachBerg">#CoachBerg</a> in <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23TheThrilloftheFight2">#TheThrilloftheFight2</a>, &amp; <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23VaKelShon">#VaKelShon</a>, Captain of The U.S.S. Enterprise-F in <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23StarTrekOnline">#StarTrekOnline</a>.<br>
+<br>
+🎟️ in bio!</p>
+<img src="http://nitter.jaydenha.uk/pic/media%2FHRUSmCMacAAzRZb.jpg" style="max-width:250px;" />]]></description>
+        <pubDate>Thu, 03 Sep 2026 20:03:54 GMT</pubDate>
+        <guid isPermaLink="false">2095603712572162142</guid>
+        <link>http://nitter.jaydenha.uk/sacgamersexpo/status/2095603712572162142#m</link>
+      </item>
+      <item>
         <title>The big 10th anniversary of #BENDY is coming up. Things will happen.</title>
         <dc:creator>@themeatly</dc:creator>
         <description><![CDATA[<p>The big 10th anniversary of <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23BENDY">#BENDY</a> is coming up. Things will happen.</p>]]></description>
@@ -202,64 +255,6 @@ Are you ready to revisit the memories after years?</p>
         <pubDate>Mon, 17 Aug 2026 17:00:00 GMT</pubDate>
         <guid isPermaLink="false">2089396840974135420</guid>
         <link>http://nitter.jaydenha.uk/BendyRun/status/2089396840974135420#m</link>
-      </item>
-      <item>
-        <title>RT by @themeatly: The legends were true! #BENDY</title>
-        <dc:creator>@themeatly</dc:creator>
-        <description><![CDATA[<p>The legends were true! <a href="http://nitter.jaydenha.uk/search?f=tweets&q=%23BENDY">#BENDY</a></p>
-<hr/>
-<blockquote>
-<b>Bendy (@Bendy)</b>
-<p>
-<p>Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!<br>
-<a href="http://nitter.jaydenha.uk/BendyRun" title="Bendy&apos;s Nightmare Run">@BendyRun</a></p>
-<a href="http://nitter.jaydenha.uk/Bendy/status/2088687876531773549#m">
-<br>Video<br>
-  <img src="http://nitter.jaydenha.uk/pic/amplify_video_thumb%2F2088683146363428865%2Fimg%2Fj5grnW-jaPmEOb_Z.jpg" style="max-width:250px;" />
-</a>
-
-
-</p>
-<footer>
-— <cite><a href="http://nitter.jaydenha.uk/Bendy/status/2088687876531773549#m">http://nitter.jaydenha.uk/Bendy/status/2088687876531773549#m</a>
-</footer>
-</blockquote>]]></description>
-        <pubDate>Sat, 15 Aug 2026 18:09:32 GMT</pubDate>
-        <guid isPermaLink="false">2088689562906214882</guid>
-        <link>http://nitter.jaydenha.uk/themeatly/status/2088689562906214882#m</link>
-      </item>
-      <item>
-        <title>RT by @themeatly: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon! @BendyRun</title>
-        <dc:creator>@Bendy</dc:creator>
-        <description><![CDATA[<p>Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!<br>
-<a href="http://nitter.jaydenha.uk/BendyRun" title="Bendy&apos;s Nightmare Run">@BendyRun</a></p>
-<a href="http://nitter.jaydenha.uk/Bendy/status/2088687876531773549#m">
-<br>Video<br>
-  <img src="http://nitter.jaydenha.uk/pic/amplify_video_thumb%2F2088683146363428865%2Fimg%2Fj5grnW-jaPmEOb_Z.jpg" style="max-width:250px;" />
-</a>]]></description>
-        <pubDate>Sat, 15 Aug 2026 18:02:50 GMT</pubDate>
-        <guid isPermaLink="false">2088687876531773549</guid>
-        <link>http://nitter.jaydenha.uk/Bendy/status/2088687876531773549#m</link>
-      </item>
-      <item>
-        <title>RT by @themeatly: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!</title>
-        <dc:creator>@BendyRun</dc:creator>
-        <description><![CDATA[<p>Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!</p>
-<a href="http://nitter.jaydenha.uk/BendyRun/status/2088687654225227974#m">
-<br>Video<br>
-  <img src="http://nitter.jaydenha.uk/pic/amplify_video_thumb%2F2088687439346900992%2Fimg%2FIaIojPlPxcRLsoCX.jpg" style="max-width:250px;" />
-</a>]]></description>
-        <pubDate>Sat, 15 Aug 2026 18:01:57 GMT</pubDate>
-        <guid isPermaLink="false">2088687654225227974</guid>
-        <link>http://nitter.jaydenha.uk/BendyRun/status/2088687654225227974#m</link>
-      </item>
-      <item>
-        <title>DIA_HENRY_SAVE_02</title>
-        <dc:creator>@themeatly</dc:creator>
-        <description><![CDATA[<p>DIA_HENRY_SAVE_02</p>]]></description>
-        <pubDate>Thu, 23 Jul 2026 13:23:54 GMT</pubDate>
-        <guid isPermaLink="false">2080282759793135834</guid>
-        <link>http://nitter.jaydenha.uk/themeatly/status/2080282759793135834#m</link>
       </item>
 
   </channel>
