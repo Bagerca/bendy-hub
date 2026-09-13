@@ -2105,5 +2105,881 @@
     "referenceText": "",
     "referenceMedia": [],
     "linkCards": []
+  },
+  {
+    "id": "1956722527608377346",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "You'll be back.",
+    "timestamp": "2025-08-16T14:19:39Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956719415807910234",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "We have people working around the clock on this issue. Nothing yet. :)",
+    "timestamp": "2025-08-16T14:07:17Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/haziedazielazie",
+    "referenceAuthor": "@haziedazielazie",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956716430549721277",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Touché.",
+    "timestamp": "2025-08-16T13:55:25Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/grbr2006",
+    "referenceAuthor": "@grbr2006",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956708222707871915",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Definitely wrong. It's a bug that wasn't there during final testing. Very sorry! Working on a patch immediately. 👍 We use real humans to translate our work, this was a technical issue.",
+    "timestamp": "2025-08-16T13:22:48Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/giza_666",
+    "referenceAuthor": "@giza_666",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956705582775259412",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Good luck! :D",
+    "timestamp": "2025-08-16T13:12:19Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy_King_",
+    "referenceAuthor": "@Bendy_King_",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956705345734140276",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "You can bash mechanical monsters with an oversized mallet in FNAF? 🤔",
+    "timestamp": "2025-08-16T13:11:22Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/grbr2006",
+    "referenceAuthor": "@grbr2006",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956704370965270645",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "SUPER happy to report that #BendyLoneWolf has launched with almost no bugs! A solid release!🎉 That said, there's definitely some major translation issues on PC that were not present during final testing. Working on fixing these immediately! Especially the Cyrillic fonts! Sorry!!",
+    "timestamp": "2025-08-16T13:07:30Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956699396516553098",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "joeydrewstudios.com/blw",
+    "timestamp": "2025-08-16T12:47:44Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "http://joeydrewstudios.com/blw",
+        "image": "assets/developers/bendy/media/card_1956699396516553098_0.jpg",
+        "title": "Bendy: Lone Wolf",
+        "description": "",
+        "domain": "joeydrewstudios.com"
+      }
+    ]
+  },
+  {
+    "id": "1956699376048341145",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Mechanical wonders turned into mechanical horrors! (Bertie is NOT happy.) Play Today 🔗👇 #Bendy #BendyLoneWolf",
+    "timestamp": "2025-08-16T12:47:39Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1956699376048341145_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956484333864153227",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Hello! :D Have a good day too!! :D",
+    "timestamp": "2025-08-15T22:33:09Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/ZaccActs",
+    "referenceAuthor": "@ZaccActs",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956483674586644555",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Oh my goodness! D: I didn't have that much wisdom as a kid.. yes, dreams don't always come true.. but sometimes that means we are focusing on the wrong dream. :)",
+    "timestamp": "2025-08-15T22:30:32Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/ZaccActs",
+    "referenceAuthor": "@ZaccActs",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956418533010600088",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Thank you so much! :D",
+    "timestamp": "2025-08-15T18:11:41Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/LeonTheSoupcan",
+    "referenceAuthor": "@LeonTheSoupcan",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956408682410893581",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "STEAM: http://store.steampowered.com/app/3232610/Bendy_Lone_Wolf/",
+    "timestamp": "2025-08-15T17:32:32Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "http://store.steampowered.com/app/3232610/Bendy_Lone_Wolf/",
+        "image": "assets/developers/bendy/media/card_1956408682410893581_0.jpg",
+        "title": "Bendy: Lone Wolf on Steam",
+        "description": "Bendy: Lone Wolf® tests your ability to survive against ever increasing odds. Monsters and obstacles emerge from every direction as you journey into the rubberhose halls of the world's most evil...",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "1956408648357314951",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "PLAYSTATION: http://store.playstation.com/concept/10014263",
+    "timestamp": "2025-08-15T17:32:24Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956408612089184516",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "XBOX: http://microsoft.com/store/productid/9nc1pnsvwp55",
+    "timestamp": "2025-08-15T17:32:16Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956408534091866228",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "SWITCH: http://nintendo.com/store/products/bendy-lone-wolf-switch/",
+    "timestamp": "2025-08-15T17:31:57Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "http://nintendo.com/store/products/bendy-lone-wolf-switch/",
+        "image": "assets/developers/bendy/media/card_1956408534091866228_0.jpg",
+        "title": "Bendy: Lone Wolf for Nintendo Switch - Nintendo Official Site",
+        "description": "Shop Bendy: Lone Wolf for Nintendo Switch at Nintendo Store. See game details, editions, and availability.",
+        "domain": "nintendo.com"
+      }
+    ]
+  },
+  {
+    "id": "1956408498780270619",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Bendy: Lone Wolf is HERE! 🐺🖤",
+    "timestamp": "2025-08-15T17:31:49Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1956408498780270619_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956408450013110422",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "RESOLVED! 🎉 Please restart your Steam.",
+    "timestamp": "2025-08-15T17:31:37Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956404028499284460",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Steam is working on getting the free redeem feature for previous BATDS owners up and running. Doing our best! Should be shortly! Sorry for the delay!",
+    "timestamp": "2025-08-15T17:14:03Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1956377871871623451",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "1.5 hours until #BendyLoneWolf! Get your snacks and comfy seats ready!! #BENDY",
+    "timestamp": "2025-08-15T15:30:07Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1891466074056540364",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Swim Edgar! Swim! Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2025-02-17T12:33:48Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1891466074056540364_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1888946649113718812",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Old memories to enjoy. New memories to come. Happy #Bendyversary. 🎉 Together, our fans and our players make #BENDY something special! https://youtu.be/WdwXo07dN_0",
+    "timestamp": "2025-02-10T13:42:30Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=WdwXo07dN_0",
+        "image": "assets/developers/bendy/media/card_1888946649113718812_0.jpg",
+        "title": "“Bendy and the Eight Years” - HAPPY BENDYVERSARY TO OUR FANS",
+        "description": "Old memories to enjoy. New memories to come. Happy #Bendyversary. 🎉...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1888917422045806938",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Everyone’s celebrating with Bendy! Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2025-02-10T11:46:22Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1888917422045806938_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1886405557549994422",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Lightbulb moment for Charley. Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2025-02-03T13:25:07Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1886405557549994422_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1883876883118637192",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Mmmmmmm. Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2025-01-27T13:57:04Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1883876883118637192_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1881307680549249238",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Alice escapes. Again. Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2025-01-20T11:47:58Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1881307680549249238_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1878785736012611784",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Not his day. Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2025-01-13T12:46:40Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1878785736012611784_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1876256414303490534",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Boris is in the museum. What museum? Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2025-01-06T13:16:02Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1876256414303490534_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1874319645769163142",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Happy New Year! 🎉 #BENDY",
+    "timestamp": "2025-01-01T05:00:01Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1874319645769163142_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1873700070874665407",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Go Bendy! Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2024-12-30T11:58:03Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1873700070874665407_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1871612499273134450",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Merry Christmas from Joey Drew Studios. Have a great holiday! 🎄 #BENDY",
+    "timestamp": "2024-12-24T17:42:47Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1871612499273134450_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1871021260865679831",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Sweet. Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2024-12-23T02:33:25Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1871021260865679831_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1868665655916122140",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Boris is back! And the dark survival is now even darker. Get ready for #BendyLONEWOLF #BENDY https://youtu.be/lJE1XQiCkF8",
+    "timestamp": "2024-12-16T14:33:05Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/lJE1XQiCkF8",
+        "image": "assets/developers/bendy/media/card_1868665655916122140_0.jpg",
+        "title": "\"BENDY: LONE WOLF\" - Official Trailer - Coming 2025",
+        "description": "Coming in 2025 on Steam, Xbox, PlayStation, Nintendo Switch, App St...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1868633482102235244",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "YOUR holiday hometown! Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2024-12-16T12:25:14Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1868633482102235244_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1866082682385424880",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Edgar has a lot of legs. Good luck! Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2024-12-09T11:29:16Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1866082682385424880_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1865083057134289025",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Black Friday is past. But BlackER INKIER Friday is here! Every single item on the Official #BENDY Store is up to 65% OFF for the holidays!🖤 http://bendymerch.com",
+    "timestamp": "2024-12-06T17:17:07Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1865083057134289025_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bendy/media/1865083057134289025_1.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1865042195775913991",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "The “Winter Abyss” has returned to the studio for a limited time! Now until December 26th enjoy the holiday season in Bendy and the Dark Revival on Steam. #BENDY #BATDR http://bit.ly/batdrsteam",
+    "timestamp": "2024-12-06T14:34:44Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1865042195775913991_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1863552663754862740",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Alice has her own wonderland. Makes sense. Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2024-12-02T11:55:52Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1863552663754862740_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1861092968150536625",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Dark Revival MINI ACTION FIGURES by @JAKKStoys are available now!! 💪🖤 Collect these cute little guys NOW only at Five Below!! If you don’t see them ask a sales associate. #Bendy #BATDR",
+    "timestamp": "2024-11-25T17:01:55Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1861092968150536625_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bendy/media/1861092968150536625_1.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bendy/media/1861092968150536625_2.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bendy/media/1861092968150536625_3.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1861039902864838761",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Charley has a cat? Let’s see your artist’s interpretation! 🎨🖌️ This week’s art challenge has been placed on your desk. Go! #JoeysArtChallenge",
+    "timestamp": "2024-11-25T13:31:03Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/1861039902864838761_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
   }
 ]
