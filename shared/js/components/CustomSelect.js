@@ -88,7 +88,7 @@ export class CustomSelect {
 
         activeIds.forEach(id => this.selectedValues.add(id));
 
-        // >>> ДОБАВЛЯЕМ ПАНЕЛЬ БЫСТРЫХ ДЕЙСТВИЙ ДЛЯ МУЛЬТИСЕЛЕКТА <<<
+        // Панель быстрых действий (Мультиселект)
         if (this.isMultiple) {
             const actionBar = document.createElement('div');
             actionBar.className = 'cs-action-bar';
@@ -101,10 +101,15 @@ export class CustomSelect {
             actionBar.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (e.target.dataset.action === 'all') {
-                    this.selectedValues.clear();
-                    this.optionsData.forEach(o => this.selectedValues.add(o.id));
+                    // УМНОЕ ВЫДЕЛЕНИЕ: Добавляем только чекбоксы, не трогая dual-toggle
+                    this.optionsData.forEach(o => {
+                        if (o.type !== 'dual-toggle') this.selectedValues.add(o.id);
+                    });
                 } else if (e.target.dataset.action === 'none') {
-                    this.selectedValues.clear();
+                    // УМНЫЙ СБРОС: Удаляем только чекбоксы, сохраняя состояния сортировки (dual-toggle)
+                    this.optionsData.forEach(o => {
+                        if (o.type !== 'dual-toggle') this.selectedValues.delete(o.id);
+                    });
                 }
                 this._updateListUI();
                 this._updateTriggerUI();
@@ -127,8 +132,9 @@ export class CustomSelect {
                 const isActiveState2 = this.selectedValues.has(opt.state2.id);
                 const currentStateClass = isActiveState2 ? 'state-2' : 'state-1';
                 
+                // Добавлен стиль padding-bottom для визуального отступа от чекбоксов
                 li.innerHTML = `
-                    <div class="cs-dual-switch ${currentStateClass}">
+                    <div class="cs-dual-switch ${currentStateClass}" style="margin-bottom: 0.5rem;">
                         <div class="cs-dual-indicator"></div>
                         <div class="cs-dual-btn ${!isActiveState2 ? 'active' : ''}" data-target="${opt.state1.id}">
                             ${opt.state1.iconHtml} <span>${opt.state1.label}</span>
@@ -147,7 +153,6 @@ export class CustomSelect {
             } else {
                 let extraUI = '';
                 if (this.isMultiple) {
-                    // Используем новые иконки из Icons
                     extraUI = `
                         <div class="cs-checkbox">
                             <div class="cs-icon-check">${Icons.check || ''}</div>
@@ -174,7 +179,7 @@ export class CustomSelect {
     }
 
     _handleSelection(option, liElement) {
-        if (this.isMultiple) {
+        if (this.isMultiple && option.type !== 'dual-toggle') {
             if (this.selectedValues.has(option.id)) {
                 this.selectedValues.delete(option.id);
             } else {
@@ -216,7 +221,7 @@ export class CustomSelect {
 
     _updateListUI() {
         this.dropdown.querySelectorAll('li.custom-select-option').forEach(li => {
-            if (li.dataset.id) {
+            if (li.dataset.id && !li.classList.contains('is-dual-toggle')) {
                 li.classList.toggle('selected', this.selectedValues.has(li.dataset.id));
             }
         });
@@ -241,15 +246,19 @@ export class CustomSelect {
         }
 
         if (this.isMultiple) {
-            if (this.selectedValues.size === 1) {
-                const id = Array.from(this.selectedValues)[0];
-                const opt = this.optionsData.find(o => o.id === id);
+            // Исключаем dual-toggle из подсчета выбранных элементов для UI
+            const normalSelections = Array.from(this.selectedValues).filter(val => 
+                this.optionsData.some(o => o.id === val && o.type !== 'dual-toggle')
+            );
+
+            if (normalSelections.length === 1) {
+                const opt = this.optionsData.find(o => o.id === normalSelections[0]);
                 if (opt) {
                     if (this.textContainer) this.textContainer.innerHTML = opt.label;
                     if (this.iconContainer && opt.iconHtml) this.iconContainer.innerHTML = opt.iconHtml;
                 }
             } else {
-                if (this.textContainer) this.textContainer.innerHTML = `Выбрано: ${this.selectedValues.size}`;
+                if (this.textContainer) this.textContainer.innerHTML = `Выбрано: ${normalSelections.length}`;
                 if (this.iconContainer) {
                     this.iconContainer.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>`;
                 }

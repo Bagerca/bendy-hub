@@ -4,7 +4,6 @@ import { FeedModel } from './FeedModel.js';
 import { PostView } from './PostView.js';
 import { FeedController } from './FeedController.js';
 import { Icons } from '../../shared/js/icons.js';
-import { SharedFilters } from '../../shared/js/SharedFilters.js';
 
 const TRACKED_AUTHORS = [
     { handle: '@Bendy', name: 'Bendy' },
@@ -36,7 +35,6 @@ export async function init() {
     let currentSearchTerm = '';
     let currentSortDir = 'desc'; // По умолчанию новые
 
-    // Передаем новый параметр сортировки в метод контроллера
     const triggerSearch = () => controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthors, currentPostTypes, currentSortDir);
 
     const searchControls = document.querySelector('search-controls');
@@ -46,16 +44,6 @@ export async function init() {
         currentSearchTerm = e.detail;
         triggerSearch();
     });
-
-    // 1. Инициализация СОРТИРОВКИ (Новые/Старые)
-    SharedFilters.initDateSortFilter(
-        'sort-filter-container', 
-        ['desc'], 
-        (sortValue) => {
-            currentSortDir = sortValue;
-            triggerSearch();
-        }
-    );
 
     const iconLayers = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline></svg></div>`;
     const iconUsers = `<div class="svg-icon">${Icons.stat_users}</div>`;
@@ -67,7 +55,14 @@ export async function init() {
     const iconVideo = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg></div>`;
     const iconLink = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></div>`;
 
-    const typeOptions = [
+    // 1. Инициализация ОБЪЕДИНЕННОГО списка (Сортировка + Типы)
+    const filterOptions = [
+        {
+            id: 'sort_dir',
+            type: 'dual-toggle',
+            state1: { id: 'desc', label: 'С новых', iconHtml: `<div class="svg-icon">${Icons.sort_desc}</div>` },
+            state2: { id: 'asc', label: 'Со старых', iconHtml: `<div class="svg-icon">${Icons.sort_asc}</div>` }
+        },
         { id: 'clean', label: 'Оригинальные', iconHtml: iconPencil },
         { id: 'quotes', label: 'Цитаты', iconHtml: iconQuote },
         { id: 'retweets', label: 'Репосты', iconHtml: iconRepost },
@@ -76,21 +71,24 @@ export async function init() {
         { id: 'links', label: 'Карточки ссылок', iconHtml: iconLink }
     ];
     
-    currentPostTypes = typeOptions.map(o => o.id);
+    currentPostTypes = filterOptions.filter(o => o.type !== 'dual-toggle').map(o => o.id);
 
-    // 2. Инициализация выпадающего списка ТИПОВ
     const typeSelect = new window.CustomSelect('type-filter-container', {
         multiple: true,
         keepPlaceholder: true,
-        placeholder: 'Тип записи',
+        placeholder: 'Настройки ленты',
         triggerIcon: iconLayers,
         onChange: (selectedIds) => {
-            currentPostTypes = selectedIds;
+            currentSortDir = selectedIds.includes('asc') ? 'asc' : 'desc';
+            currentPostTypes = selectedIds.filter(id => id !== 'asc' && id !== 'desc' && id !== 'sort_dir');
             triggerSearch();
         }
     });
-    typeSelect.populate(typeOptions, currentPostTypes);
 
+    const initialSettings = [currentSortDir, ...currentPostTypes];
+    typeSelect.populate(filterOptions, initialSettings);
+
+    // 2. Инициализация списка АВТОРОВ
     try {
         const fallbackAvatarUri = Icons.avatar_fallback;
         const authorOptions = [];
@@ -109,7 +107,6 @@ export async function init() {
 
         currentSelectedAuthors = authorOptions.map(o => o.id);
 
-        // 3. Инициализация выпадающего списка АВТОРОВ
         const authorSelect = new window.CustomSelect('author-filter-container', {
             multiple: true,
             keepPlaceholder: true,
@@ -123,6 +120,7 @@ export async function init() {
 
         authorSelect.populate(authorOptions, currentSelectedAuthors);
 
+        // Сборка ленты
         const results = await Promise.all(feedPromises);
         let combinedFeed = [];
         results.forEach(feedArray => {
@@ -131,7 +129,6 @@ export async function init() {
 
         if (combinedFeed.length > 0) {
             model.setPosts(combinedFeed);
-            // Передаем все фильтры, включая Сортировку
             controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthors, currentPostTypes, currentSortDir);
         } else {
             controller.renderEmptyState();

@@ -1,10 +1,11 @@
 import { SiteHeader } from './shared/js/components/SiteHeader.js';
 import { SearchControls } from './shared/js/components/SearchControls.js';
-import './shared/js/components/CustomSelect.js'; // ДОБАВЛЕН ИМПОРТ СЕЛЕКТА
+import './shared/js/components/CustomSelect.js'; 
 import { FloatingPlayer } from './pages/music/FloatingPlayer.js';
 import { LightboxManager } from './shared/js/Lightbox.js';
 import { TranslationService } from './pages/feed/services/TranslationService.js';
 import { Router } from './shared/js/Router.js';
+import { InvestigationManager } from './shared/js/InvestigationManager.js';
 
 // Регистрируем кастомные веб-компоненты
 if (!customElements.get('site-header')) customElements.define('site-header', SiteHeader);
@@ -15,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.globalPlayer = new FloatingPlayer();
     window.globalLightbox = new LightboxManager('lightbox', 'lightbox-img');
     window.globalTranslator = new TranslationService();
+    
+    // Инициализация Глобальной панели расследования
+    window.globalInvestigation = new InvestigationManager();
 
     // 2. Умная генерация абсолютных путей
     const getBaseUrl = () => {

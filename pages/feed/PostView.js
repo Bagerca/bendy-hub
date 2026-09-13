@@ -21,17 +21,44 @@ export class PostView {
             this._setupText(clone, rawText, searchTerm);
             this._setupMeta(clone, post);
             
-            // Сначала пробуем извлечь YouTube видео из текста/карточек
             const hasYouTube = this._setupYouTubeEmbed(clone, post, rawText);
             
-            // Если YouTube видео успешно отрендерено, пропускаем обычные медиа и карточки,
-            // чтобы не дублировать контент.
             if (!hasYouTube) {
                 this._setupMedia(clone, post);
                 this._setupCards(clone, post);
             }
             
             this._setupActions(clone, rawText, post);
+
+            // >>> ЛОГИКА ПЕРЕХВАТА ДЛЯ РЕЖИМА "СБОРА УЛИК" <<<
+            const cardEl = clone.querySelector('.post-card');
+            cardEl.addEventListener('click', (e) => {
+                if (document.body.classList.contains('investigation-mode-active')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const handleClean = (post.authorHandle || '').replace('@', '').toLowerCase();
+                    post.resolvedAuthorName = this.authorNamesMap[`@${handleClean}`] || post.authorName;
+                    
+                    // ДЕЛАЕМ ТОЧНЫЙ СЛЕПОК КАРТОЧКИ (Со всеми медиа и цитатами)
+                    const snapClone = cardEl.cloneNode(true);
+                    
+                    // Вычищаем из слепка интерактивный мусор
+                    const overlay = snapClone.querySelector('.investigation-overlay');
+                    if (overlay) overlay.remove();
+                    
+                    const actions = snapClone.querySelector('.post-actions');
+                    if (actions) actions.remove();
+                    
+                    const headerAction = snapClone.querySelector('.post-header-action');
+                    if (headerAction) headerAction.remove();
+                    
+                    if (window.globalInvestigation) {
+                        // Сохраняем готовый HTML в менеджер!
+                        window.globalInvestigation.addEvidence('post', post.id, post, snapClone.innerHTML);
+                    }
+                }
+            }, { capture: true });
 
             return clone;
         } catch (error) { 
@@ -44,7 +71,6 @@ export class PostView {
         const rtBadge = clone.querySelector('.rt-badge');
         let text = post.content || '';
 
-        // ОЧИСТКА: Убираем системные заглушки Twitter/Nitter, если твит состоит только из них
         const lowerText = text.trim().toLowerCase();
         if (['gif', '[gif]', 'image', '[image]', 'video', '[video]', 'image video'].includes(lowerText)) {
             text = '';

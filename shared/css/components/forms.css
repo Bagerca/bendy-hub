@@ -147,9 +147,9 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
    ========================================= */
 .cs-action-bar {
     display: flex;
-    gap: 8px;
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
+    gap: 6px;
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.4rem;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -158,10 +158,12 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
     background: var(--bg-body);
     border: 1px solid var(--border-color);
     color: var(--text-muted);
-    padding: 8px;
+    padding: 5px 8px;
     border-radius: 6px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: inherit;
@@ -201,16 +203,13 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
     height: 14px;
 }
 
-/* По умолчанию (не выбрано): Крестик видим, Галочка скрыта */
 .cs-icon-cross { opacity: 1; transform: scale(1); color: var(--text-muted); }
 .cs-icon-check { opacity: 0; transform: scale(0.5); color: var(--bg-body); }
 
-/* При наведении подсвечиваем крестик красным для ясности */
 .custom-select-option:not(.selected):hover .cs-icon-cross {
     color: var(--error-color);
 }
 
-/* Когда выбрано: Крестик улетает, Галочка появляется */
 .custom-select-option.selected .cs-checkbox {
     background-color: var(--accent-color); 
     border-color: var(--accent-color);
@@ -223,15 +222,15 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
    ДВОЙНОЙ ПЕРЕКЛЮЧАТЕЛЬ (DUAL TOGGLE)
    ========================================= */
 .custom-select-dropdown:has(.is-dual-toggle) {
-    min-width: 280px; 
-    padding: 0.75rem; 
+    min-width: 260px;
+    padding: 0.5rem;
 }
 
 .custom-select-option.is-dual-toggle {
     padding: 0;
     background-color: transparent !important;
     cursor: default;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 .custom-select-option.is-dual-toggle:last-child {
     margin-bottom: 0;
@@ -242,20 +241,20 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
     display: flex;
     width: 100%;
     background-color: var(--bg-body);
-    border-radius: 12px;
-    padding: 4px;
+    border-radius: 10px;
+    padding: 3px;
     border: 1px solid var(--border-color);
 }
 
 .cs-dual-indicator {
     position: absolute;
-    top: 4px; 
-    bottom: 4px;
-    left: 4px;
-    width: calc(50% - 4px); 
+    top: 3px; 
+    bottom: 3px;
+    left: 3px;
+    width: calc(50% - 3px); 
     background-color: var(--bg-card);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border-radius: 7px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
 }
@@ -268,9 +267,9 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 12px 0; 
-    font-size: 0.9rem;
+    gap: 6px;
+    padding: 8px 0;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--text-muted);
     z-index: 2;
@@ -282,8 +281,8 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
 .cs-dual-btn.active { color: var(--text-main); }
 
 .cs-dual-btn .svg-icon { 
-    width: 18px; 
-    height: 18px; 
+    width: 16px; 
+    height: 16px; 
     display: flex;
     align-items: center;
     justify-content: center;
