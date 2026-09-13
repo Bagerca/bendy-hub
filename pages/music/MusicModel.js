@@ -10,42 +10,22 @@ export class MusicModel {
         this.playbackQueue = []; 
         this.currentIndex = -1; 
         this.isShuffle = false;
-        
-        this.filters = { search: '', sort: 'date_desc', author: 'all' };
+        this.filters = { search: '', sort: 'date_desc', authors: null };
     }
 
     async fetchTracks() {
         try {
-            const [trackIds, authorIds] = await Promise.all([
-                fetchData('data/music_index.json'),
-                fetchData('data/music_authors_index.json').catch(() => [])
-            ]);
-            
-            const trackPromises = trackIds.map(id => 
-                fetchData(`assets/music/${id}/data.json`).catch(err => {
-                    Logger.warn(`Не удалось загрузить трек: ${id}`, err);
-                    return null;
-                })
-            );
-
-            const authorPromises = authorIds.map(id => 
-                fetchData(`assets/music_authors/${id}/data.json`).catch(err => {
-                    Logger.warn(`Не удалось загрузить автора: ${id}`, err);
-                    return null;
-                })
-            );
-            
+            // Всего 2 запроса вместо 500+
             const [tracksRes, authorsRes] = await Promise.all([
-                Promise.all(trackPromises),
-                Promise.all(authorPromises)
+                fetchData('data/music_list.json').catch(() => []),
+                fetchData('data/music_authors_list.json').catch(() => [])
             ]);
             
-            this.tracks = tracksRes.filter(t => t !== null);
+            this.tracks = tracksRes;
             
-            // ИСПРАВЛЕНО: Теперь сортируем авторов по алфавиту (игнорируя регистр)
-            this.authors = authorsRes
-                .filter(a => a !== null)
-                .sort((a, b) => a.name.localeCompare(b.name, 'ru', { sensitivity: 'base' }));
+            this.authors = authorsRes.sort((a, b) => 
+                a.name.localeCompare(b.name, 'ru', { sensitivity: 'base' })
+            );
             
             return this.applyFilters({});
         } catch (error) {
@@ -55,9 +35,9 @@ export class MusicModel {
     }
 
     getSuggestions(query) {
-        const pool = this.filters.author === 'all' 
-            ? this.tracks 
-            : this.tracks.filter(t => t.authorId === this.filters.author);
+        const pool = (this.filters.authors !== null && this.filters.authors.length > 0) 
+            ? this.tracks.filter(t => this.filters.authors.includes(t.authorId))
+            : this.tracks;
 
         const results = SmartSearch.execute(query, pool, ['title', 'artist']);
         return results.slice(0, 5).map(t => ({ 
@@ -68,36 +48,36 @@ export class MusicModel {
 
     applyFilters(updates) {
         this.filters = { ...this.filters, ...updates };
-        const { search, sort, author } = this.filters;
+        const { search, sort, authors } = this.filters;
 
         let result = SmartSearch.execute(search, this.tracks, ['title', 'artist']);
 
-        if (author && author !== 'all') {
-            result = result.filter(t => t.authorId === author);
+        if (authors !== null) {
+            if (authors.length > 0) {
+                result = result.filter(t => authors.includes(t.authorId));
+            } else {
+                result = []; 
+            }
         }
 
-        // Функция натурального сравнения строк
         const naturalCompare = (t1, t2) => {
             const str1 = t1 || '';
             const str2 = t2 || '';
             return str1.localeCompare(str2, 'ru', { numeric: true, ignorePunctuation: true });
         };
 
+        const [sortType, sortDir] = sort.split('_');
+        const isDesc = sortDir === 'desc';
+
         result.sort((a, b) => {
-            if (sort.startsWith('alpha')) {
+            if (sortType === 'alpha') {
                 const cmp = naturalCompare(a.title, b.title);
-                return sort === 'alpha_asc' ? cmp : -cmp;
+                return isDesc ? -cmp : cmp; 
             } else {
-                // Если года нет, считаем трек старым (год 0), чтобы он падал вниз списка
                 const yearA = a.year ? parseInt(a.year, 10) : 0;
                 const yearB = b.year ? parseInt(b.year, 10) : 0;
-                
-                // Тай-брейкер: если года совпадают, сортируем по алфавиту
-                if (yearA === yearB) {
-                    return naturalCompare(a.title, b.title);
-                }
-                
-                return sort === 'date_desc' ? yearB - yearA : yearA - yearB;
+                if (yearA === yearB) return naturalCompare(a.title, b.title);
+                return isDesc ? yearB - yearA : yearA - yearB;
             }
         });
 
@@ -138,9 +118,7 @@ export class MusicModel {
     syncCurrentTrack(trackId) {
         if (!trackId) return;
         const index = this.playbackQueue.findIndex(t => t.id === trackId);
-        if (index !== -1) {
-            this.currentIndex = index;
-        }
+        if (index !== -1) this.currentIndex = index;
     }
 
     getTrackByIndex(index) {

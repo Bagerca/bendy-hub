@@ -1,6 +1,6 @@
-import { getAverageRGB } from '../../../shared/js/utils.js';
 import { Icons } from '../../../shared/js/icons.js';
 import { SmartMarquee } from '../../../shared/js/SmartMarquee.js';
+import { prefetchData } from '../../../shared/js/api.js'; // <-- ДОБАВЛЕНО
 
 export class CatalogCardView {
     constructor(horizontalTemplateId, verticalTemplateId) {
@@ -52,7 +52,12 @@ export class CatalogCardView {
         fallbackContainer.innerHTML = this.fallbackIcons[type] || this.fallbackIcons.game;
 
         const imgEl = clone.querySelector('.card-cover-img');
+        const coverContainer = clone.querySelector('.card-cover-container');
         
+        const cardColor = item.color || '210, 168, 80';
+        card.style.setProperty('--card-hover-rgb', cardColor);
+        coverContainer.style.background = `linear-gradient(135deg, rgba(${cardColor}, 0.3) 0%, var(--bg-body) 100%)`;
+
         let cardImageFile;
         if (isVertical) {
             cardImageFile = (item.assets?.cover !== '...') ? item.assets?.cover : null;
@@ -67,30 +72,34 @@ export class CatalogCardView {
             imgEl.src = imgSrc;
             fallbackContainer.style.display = 'none';
             
-            getAverageRGB(imgSrc, (color) => {
-                card.style.setProperty('--card-hover-rgb', color || '210, 168, 80');
-            });
-
             imgEl.onerror = () => {
                 imgEl.style.display = 'none';
                 fallbackContainer.style.display = 'flex';
+                coverContainer.style.background = 'var(--bg-body)';
             };
         } else {
             imgEl.style.display = 'none';
             fallbackContainer.style.display = 'flex';
+            coverContainer.style.background = 'var(--bg-body)';
         }
 
-        // Подключаем наш новый универсальный скроллер
         SmartMarquee.apply(card, '.smart-marquee-text');
+
+        // >>> НОВАЯ ЛОГИКА: ПРЕДЗАГРУЗКА (Prefetch) <<<
+        let hoverTimeout;
+        card.addEventListener('pointerenter', () => {
+            // Если курсор на карточке дольше 100мс - значит юзер ей заинтересовался
+            hoverTimeout = setTimeout(() => {
+                prefetchData(`assets/catalog/${item.id}/data.json`);
+            }, 100);
+        });
+        card.addEventListener('pointerleave', () => clearTimeout(hoverTimeout));
 
         card.addEventListener('click', (e) => {
             e.preventDefault();
             const url = `project.html?id=${item.id}`;
-            if (window.router) {
-                window.router.navigate(url);
-            } else {
-                window.location.href = url;
-            }
+            if (window.router) window.router.navigate(url);
+            else window.location.href = url;
         });
 
         return clone;

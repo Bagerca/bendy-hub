@@ -1,5 +1,5 @@
 /* =========================================
-   ЭМБИЕНТ ФОН (ВИДЕО + КРОССФЕЙД ОБЛОЖКИ)
+   ЭМБИЕНТ ФОН (КРОССФЕЙД ОБЛОЖКИ)
    ========================================= */
 .ambient-wrapper {
     position: fixed; inset: -10%; width: 120%; height: 120%;
@@ -9,34 +9,33 @@
 }
 [data-theme="light"] .ambient-wrapper { filter: blur(80px) brightness(0.85); }
 
-.ambient-video {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh;
-    opacity: 0; transition: opacity 0.6s ease;
-}
-.ambient-video iframe { width: 100% !important; height: 100% !important; border: none; }
-
 .ambient-cover {
     position: absolute; inset: 0;
     background-size: cover; background-position: center;
     opacity: 1; transition: opacity 0.6s ease;
 }
 
-/* Состояния, управляемые из JS */
 .ambient-wrapper.is-active { opacity: 1; }
-.ambient-wrapper.is-playing .ambient-video { opacity: 1; }
-.ambient-wrapper.is-playing .ambient-cover { opacity: 0; }
-
-/* ЭКСПЕРИМЕНТ: Отключаем видео-фон на телефонах и планшетах */
-@media (max-width: 768px) {
-    .ambient-wrapper.is-playing .ambient-video { display: none !important; opacity: 0 !important; }
-    .ambient-wrapper.is-playing .ambient-cover { opacity: 1 !important; }
-}
 
 /* =========================================
-   МАКЕТ СТРАНИЦЫ
+   МАКЕТ СТРАНИЦЫ И СЕКЦИЙ
    ========================================= */
 .music-layout { padding-bottom: 120px; position: relative; }
+
+.music-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem; /* Отступы между секциями */
+}
+
+.music-section-title {
+    display: flex; align-items: center; gap: 1.25rem; font-size: 1.8rem;
+    font-weight: 900; color: var(--text-main); margin-bottom: 1.5rem;
+}
+
+.music-section-title::after {
+    content: ''; flex-grow: 1; height: 2px; background-color: var(--border-color); border-radius: 2px; 
+}
 
 /* =========================================
    ПЕРЕКЛЮЧАТЕЛИ ВИДА (Grid / List)
@@ -52,7 +51,6 @@
     display: flex; align-items: center; justify-content: center;
 }
 
-/* ЖЕСТКО ЗАДАЕМ РАЗМЕР ИКОНОК */
 .view-btn svg {
     width: 20px;
     height: 20px;
@@ -62,9 +60,6 @@
 .view-btn:hover { color: var(--text-main); }
 .view-btn.active { background: var(--bg-card); color: var(--text-main); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-.optical-center { transform: translateX(1.5px); }
-
-/* Адаптив для маленьких экранов (чтобы кнопки растягивались) */
 @media (max-width: 768px) {
     .view-toggles { width: 100%; display: flex; }
     .view-btn { flex: 1; }

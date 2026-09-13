@@ -1,28 +1,5 @@
 [
   {
-    "id": "2097436572337553577",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Shhhhh! Not HERE Bendy! Play now at https://bendyrun.com",
-    "timestamp": "2026-09-08T21:27:01Z",
-    "media": [
-      {
-        "url": "assets/developers/blacroix30/media/2097436572337553577_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
     "id": "2096732981247307963",
     "authorName": "Ben Lacroix",
     "authorHandle": "@BLacroix30",
@@ -37,139 +14,6 @@
     "referenceAuthorName": "theMeatly",
     "referenceAvatarUrl": "",
     "referenceText": "The big 10th anniversary of is coming up. Things will happen.",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2095534177558954259",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Yikes. “CAN” it Bendy! Play now at https://bendyrun.com",
-    "timestamp": "2026-09-03T15:27:35Z",
-    "media": [
-      {
-        "url": "assets/developers/blacroix30/media/2095534177558954259_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2095297463036866619",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @themeatly: ⚠️Please read. ⚠️ While seeing some of the more extreme content of #BendyTHECAGE during development, I feel compelled to once again remind players and parents that \"The Cage\" is a VERY rated M for Mature game. This will include a large amount of blood, gore, partial nudity, highly disturbing psychological themes, existential dread, and violence. This is a horror game, not a mascot \"horror\" game. Please be advised. This is not a marketing tactic to gain interest.. this is a sincere and caring warning for younger or sensitive #BENDY fans. Thank you!",
-    "timestamp": "2026-09-02T23:46:58Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2094528001606132089",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @Bendy: The BATIM UPDATE is live! Details at https://joeydrewstudios.com/batimupdate ALL Bendy games are up to 70% OFF on Steam!",
-    "timestamp": "2026-08-31T20:49:24Z",
-    "media": [
-      {
-        "url": "assets/developers/blacroix30/media/2094528001606132089_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2094416866273857550",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Caught! Run Bendy! Play now at https://bendyrun.com",
-    "timestamp": "2026-08-31T13:27:47Z",
-    "media": [
-      {
-        "url": "assets/developers/blacroix30/media/2094416866273857550_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2091937918692495479",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Uh oh. Run Bendy! Play now at http://bendyrun.com",
-    "timestamp": "2026-08-24T17:17:20Z",
-    "media": [
-      {
-        "url": "assets/developers/blacroix30/media/2091937918692495479_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2090946144796877170",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @BendyRun: We’re listening! Update now for the latest. Much more to come! http://bendyrun.com",
-    "timestamp": "2026-08-21T23:36:23Z",
-    "media": [
-      {
-        "url": "assets/developers/blacroix30/media/2090946144796877170_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
     "referenceMedia": [],
     "linkCards": []
   },
@@ -206,66 +50,12 @@
     "referenceAuthorName": "Bendy",
     "referenceAvatarUrl": "",
     "referenceText": "Bendy’s Nightmare Run is here!! Get it NOW for FREE!",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2090154497670615224",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Bendy’s Nightmare Run is here!! Get it NOW for FREE! https://bendyrun.com",
-    "timestamp": "2026-08-19T19:10:40Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2089727190271242420",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @m_ZeroLogics: this will be the game's app icon, which is why it's the profile picture of the account to keep things consistent. this is also done by the brilliant @Doberart",
-    "timestamp": "2026-08-18T14:52:42Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2089696055277273172",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Bendy’s Nightmare Run! TOMORROW on YOUR phone!",
-    "timestamp": "2026-08-18T12:48:58Z",
-    "media": [
+    "referenceMedia": [
       {
-        "url": "assets/developers/blacroix30/media/2089696055277273172_0.jpg",
-        "type": "image"
+        "url": "assets/developers/blacroix30/media/quote_2090155127994822805_0.jpg",
+        "type": "video_thumb"
       }
     ],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
     "linkCards": []
   },
   {
@@ -284,29 +74,6 @@
     "referenceAvatarUrl": "",
     "referenceText": "The Cage is looking very good. :) Definitely an offshoot from the main Bendy art style, but I'm proud of the deep moody, surreal tone. The line work is a fun departure from the cartoony feel of the studio and leans more into the unrelenting metal and strict world of the Keepers.",
     "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2089418342125670753",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @themeatly: Bendy's Nightmare Run will be a completely NEW app with no connection to the old one. Obviously it will be the same original game with exciting improvements! (And big new additions on the way!) Sadly, it won't have your old accounts (we tried!) but it will have a small special gift for coming back! :) #BENDY",
-    "timestamp": "2026-08-17T18:25:26Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "quote",
-    "referenceUrl": "https://twitter.com/Damii131/status/2089407961667973396",
-    "referenceAuthor": "@Damii131",
-    "referenceAuthorName": "Dami (Commissions open)",
-    "referenceAvatarUrl": "",
-    "referenceText": "will it restore the original game or do I have to download it again?",
-    "referenceMedia": [
-      {
-        "url": "assets/developers/blacroix30/media/quote_2089418342125670753_0.jpg",
-        "type": "image"
-      }
-    ],
     "linkCards": []
   },
   {
@@ -347,30 +114,12 @@
     "referenceAuthorName": "Bendy's Nightmare Run",
     "referenceAvatarUrl": "",
     "referenceText": "Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2088641851314044990",
-    "authorName": "Ben Lacroix",
-    "authorHandle": "@BLacroix30",
-    "platform": "twitter",
-    "content": "RT @Bendy: Happy Lone Wolfiversary.",
-    "timestamp": "2026-08-15T14:59:57Z",
-    "media": [
+    "referenceMedia": [
       {
-        "url": "assets/developers/blacroix30/media/2088641851314044990_0.jpg",
-        "type": "image"
+        "url": "assets/developers/blacroix30/media/quote_2088723162221424966_0.jpg",
+        "type": "video_thumb"
       }
     ],
-    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
     "linkCards": []
   },
   {
@@ -385,6 +134,29 @@
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2079970280106066007",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-22T16:42:13Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2079970280106066007_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
@@ -410,17 +182,2407 @@
     "linkCards": []
   },
   {
-    "id": "2077371526773350633",
-    "authorName": "Ben Lacroix",
+    "id": "2079016390099353695",
+    "authorName": "BLacroix30",
     "authorHandle": "@BLacroix30",
     "platform": "twitter",
-    "content": "RT @m_ZeroLogics: the playstation summer sale is active and our games are on sale there again. no 90% off this time, but batim and batdr ar…",
-    "timestamp": "2026-07-15T12:35:42Z",
+    "content": "Gif",
+    "timestamp": "2026-07-20T01:31:48Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2079016390099353695_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Doberart",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075585126952526252",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-10T14:17:11Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2075585126952526252_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/2075574581646033297",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "*GASP* Very.. very busy. Crazy busy. So much BENDY stuff. So much.. All GREAT.. but so much!! Ok! Going back to it! Bye!!",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075270044947198433",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "👀 #BENDY #BATIM💛🖤",
+    "timestamp": "2026-07-09T17:25:10Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2075267801736987085",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The ORIGINAL BENDY is 90% OFF on Steam right now!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2075270044947198433_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2072152283538763845",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-01T02:56:17Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2072152283538763845_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/GuiHamen",
+    "referenceAuthor": "@GuiHamen",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2072060322484003121",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "INKcredible deal! Alright, cheesy pun over.😋 An amazing time to get the #BENDY sequel if you didn't get a chance to play it before! Worth it for sure. #BATDR 🖤💛",
+    "timestamp": "2026-06-30T20:50:52Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2072047753681568036",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The BENDY SEQUEL is 90% OFF on Steam Summer Sale!!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2072060322484003121_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2070176782708314140",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-06-25T16:06:21Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2070176782708314140_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/khairi795626",
+    "referenceAuthor": "@khairi795626",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070154253981606182",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-06-25T14:36:50Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2070154253981606182_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070132627797930073",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-06-25T13:10:54Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2070132627797930073_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/2070124191743988212",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "Mike Desjardins",
+    "referenceAvatarUrl": "",
+    "referenceText": "it's a good day for a Bendy summer 🌞",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2069767812969533937",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "So many new ones!",
+    "timestamp": "2026-06-24T13:01:15Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2069767812969533937_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2060032252315090976",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "👀",
+    "timestamp": "2026-05-28T16:15:37Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/SigEditionGames/status/2060028858615624131",
+    "referenceAuthor": "@SigEditionGames",
+    "referenceAuthorName": "Silver Lining Direct ⛅",
+    "referenceAvatarUrl": "",
+    "referenceText": "The ink's getting closer... ⚫👄⚫ Step back into the darkness TOMORROW with Bendy Double Pack. Double the horror. Better visuals & QOL. All on one disc/cartridge. Face your nightmares and pre-order here:",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2060032252315090976_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2056740576809078980",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Just seeing something you worked on and care about a lot yourself get put into a movie format by not only a great Director but also a fan of the universe is quite exciting by itself. I cannot wait to see André's vision! Based on what I know about him, he is the right guy for the job! To borrow Mike's GIF :",
+    "timestamp": "2026-05-19T14:15:40Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2056740576809078980_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2056724421771940261",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "💛🖤#BENDYMOVIE",
+    "timestamp": "2026-05-19T13:11:28Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/2056676283690402136",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "Mike Desjardins",
+    "referenceAvatarUrl": "",
+    "referenceText": "André Øvredal, hard at work.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2056724421771940261_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2056031462399332818",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-05-17T15:17:54Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2056031462399332818_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/artdstuf",
+    "referenceAuthor": "@artdstuf",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2054650583693369414",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Ink Demon is up there for sure, but Henry was pretty fun too. His reveal in BATDR was quite a moment. But my favorite one is - REDACTED - . 😉 My favorite sequence from BATDR was the Ink Demon vs Shipahoy Dudley, that was animated in 1 week, I wanted to expand it a little more and had more ideas for it, but I had limited time for this one.",
+    "timestamp": "2026-05-13T19:50:47Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2054642383262810461",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-05-13T19:18:12Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2054642383262810461_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/InkBendyCat",
+    "referenceAuthor": "@InkBendyCat",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2054606127636070786",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Hmm, hard to say, and I might forget some, but in general it's rigging and animation and any related tasks connected to those 2 (managing, debugging, etc) for most of my time. But, I also do some modeling and texturing here and there when needed, some game design as a group, tech art to some degree, tester, I think that's most of it. 🤔",
+    "timestamp": "2026-05-13T16:54:08Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2054592063790866632",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-05-13T15:58:15Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2054592063790866632_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2049690925018820966",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-04-30T03:22:52Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2049690925018820966_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Doberart",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2049140085803683884",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-04-28T14:54:02Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2049140085803683884_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2048865416601031156",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-04-27T20:42:36Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2048865416601031156_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2048766165317505168",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-04-27T14:08:12Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2048766165317505168_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2048764984801272244",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Lots of exciting things in the works! Thank you for your patience and support. 🖤💛",
+    "timestamp": "2026-04-27T14:03:31Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2048764984801272244_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/2048747462362312945",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "Mike Desjardins",
+    "referenceAvatarUrl": "",
+    "referenceText": "there's currently 6 games in development for bendy. two of which are cage and batif. cage having the priority at the moment, while batif remains in our internal version pre-production where we continuously discuss the game but don't implement anything as that time is slated for cage. the remaining titles are either outsourced or already developed, we're in no rush with these projects, we want to take our time and do things the best we can. also because there's a number of other projects in mind that we want to wait for the right time and/or team. aside from the games, we're still deep in development on the movie, which is in an exciting phase right now. i'm still on the hunt for both 2d and 3d animation studios to work with on various series, yes both. and we're also working on some other bendy collabs and stuff, primarily products more so than games. There's currently only 1 game related collab that's in talks, and has been for a while, and probably the only one we'll entertain until something intriguing comes along. in any event, this long winded post is just me giving you all a random update on things being worked on, and is also by no means confirming anything, but I'm sure dots that don't exist will be connected :P Take this as your average update from mike saying \"yup, still working on lots of stuff with nothing to show\" as is typical fashion here at Joey Drew Studios. Also for what it's worth, unit sales of all bendy games have increased, even without discounts active, so there's still waves of new audiences yet to experience Bendy. and hopefully soon this year new players will get the best experience once our updates come out for all the games on all platforms. ANYWAYS, i'm gonna go get another coffee and work on the cage. ✌️",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2045185782495711544",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "🥳",
+    "timestamp": "2026-04-17T17:01:02Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/2045182448271528235",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "Exciting things happening! 😬 Not allowed to talk about it yet. But GOOD THINGS!!!",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2045185744264663410",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "🥳",
+    "timestamp": "2026-04-17T17:00:53Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/2045185192223006953",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "Mike Desjardins",
+    "referenceAvatarUrl": "",
+    "referenceText": "crazy spending almost a year trying to get something finalized. and then it gets finalized. and now the fun begins. 😮‍💨",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2044147498587926829",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Will you fight the madness? #BENDY #BendyTHECAGE 💛🖤",
+    "timestamp": "2026-04-14T20:15:16Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2044147179342704997",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Fight the madness and wishlist today. 🖤 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2044147498587926829_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2044083654041751654",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gotta run ... AGAIN! #BENDY #NIGHTMARERUN",
+    "timestamp": "2026-04-14T16:01:35Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2044083257411612810",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "👣👣👣",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2044083654041751654_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2044069467282440292",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Remain Calm! #BENDY #BendyTHECAGE",
+    "timestamp": "2026-04-14T15:05:12Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2044068153957687497",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Remain calm and wishlist today. 🖤 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2044069467282440292_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2043006349055836409",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-04-11T16:40:45Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2043006349055836409_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2039726591241031993",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-04-02T15:28:10Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2039726591241031993_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2039706907720429899",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "We appreciate you all ! 🖤💛 Lots in the works and to come.",
+    "timestamp": "2026-04-02T14:09:57Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2039706907720429899_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/2039697500559307211",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "Hi, Bendy fans! I really hope you all enjoyed our April Fool's Day video this year. :) I had a blast making it, and reuniting some important horror faces. Thanks so much to the incredible creators whose characters have been so iconic and mean so much to all of us. Now that the fun of April Fool's Day is over, I personally wanted to talk about the upcoming 414 day. We've been working every day on \"Bendy: The Cage\" and several other major projects, and we wanted to have some cool things to show for 414. But we realized the deadline was putting major pressure on the team, and was taking away from time we want to spend just making the games/projects good. So 414 will be a very minimal event this year. There's no major news coming at this time. Just some small goodies. :) We love what we do and care about it deeply. We don't want to release underbaked or false promises. We actually want to respect our players and fans. Hype is fun.. but actual substance is what makes the things we love worthwhile. That said, there is plenty of Bendy stuff coming!.. big and small. TONS, actually! It just isn't ready yet. When it does, you'll be nicely overwhelmed with how much will hit you. :) Thanks to everyone! Thank you for being a Bendy fan! -theMeatly",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2039344766861676855",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Assemble!!!",
+    "timestamp": "2026-04-01T14:10:56Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2039327866618302618",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "WATCH THE REVEAL TRAILER! They came from worlds apart… for an all new game! 🦾🖤",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2039344766861676855_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2036878143663796308",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-03-25T18:49:27Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2036878143663796308_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2036206651192254500",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "I would love to, but my plate is already full with the games. A proper animation studio would do it justice better than just myself. Animating a series is quite an undertaking and would require a proper dedicated team of talented animators to make it a reality in a respectable timeline. 🖤💛",
+    "timestamp": "2026-03-23T22:21:11Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/wiki_bendy77508",
+    "referenceAuthor": "@wiki_bendy77508",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2034685133047861382",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "😯 #BENDY",
+    "timestamp": "2026-03-19T17:35:12Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2034683854154604782",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Bendy and the Ink Machine is 70% OFF on the Steam Spring Sale right now! 🖤🎮 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2034685133047861382_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2026108595859853461",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-02-24T01:35:07Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2026108595859853461_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2026091264710512859",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "I did make the Ink Demon model, rig and a lot, but not all of the animations for BATDR. And yes, TheMeatly is indeed making all the characters now. I do have a few tasks not related to rigging or animation here and there, but not as big as a full character model.",
+    "timestamp": "2026-02-24T00:26:15Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2026076608075887020",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Forgot to mention, I wasn't always the sole animator, but I am now.",
+    "timestamp": "2026-02-23T23:28:00Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/BLacroix30",
+    "referenceAuthor": "@BLacroix30",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2026076083662062036",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "I am indeed🙂 My focus is rigging and animation, with the odd other task here and there. It does seem like a lot, and don't get me wrong it is, but being a small team has a lot of benefits too, especially in terms of agility with a project. + having worked with Mike and TheMeatly for over 8 years now, allows each of us to know how the others work and what to expect from each other.",
+    "timestamp": "2026-02-23T23:25:55Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/omegawott",
+    "referenceAuthor": "@omegawott",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2026037168985047073",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-02-23T20:51:17Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2026037168985047073_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/omegawott",
+    "referenceAuthor": "@omegawott",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2026002448377061566",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "I don't think going over each animation would be beneficial on if I made it or not in this case. 1st off, the list would be quite long as I made both gameplay and cutscene animations in BATDR, but simply knowing what animation needed more time or what the issues are on any animation helps me a tone at identifying what to stay away from and what to be more detailed oriented towards. Any feedback is welcomed so don't be shy to let me know what you think was off, regardless of who animated it.",
+    "timestamp": "2026-02-23T18:33:19Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2025961061401153886",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "I do not. My role is to create all the 3D rigs and animations for all the characters you see in the game.",
+    "timestamp": "2026-02-23T15:48:52Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/BeanSoup57",
+    "referenceAuthor": "@BeanSoup57",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2025957877022597177",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Thank you all for the feedback on previous animations. They help me know what to look for and adjust for future projects. While animations will always fit the tone of the game and/or characters we are making and aiming for, these help identify a key points to look for any upcoming projects. Keep them coming if you have more, will be reading them for sure! Thank you 🙂💛🖤",
+    "timestamp": "2026-02-23T15:36:13Z",
     "media": [],
     "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2025659280540541048",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-02-22T19:49:42Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2025659280540541048_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2025639667849113881",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Thank you for your feedback, I do take any criticism like this seriously and to heart. Can you let me know what animations or section you thought didn't hit your expectations. While sometimes it's a balance between getting the game done / shipped and making sure it meets expectations and sells the emotions, I do agree that some animations would have benefited and hit better if they were in the oven a little longer. 🙏",
+    "timestamp": "2026-02-22T18:31:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/SaltyDesk",
+    "referenceAuthor": "@SaltyDesk",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2025274623210733664",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-02-21T18:21:12Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2025274623210733664_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023837184613368132",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "That's one character out of a pool of ... many 😉",
+    "timestamp": "2026-02-17T19:09:20Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/stratilat20",
+    "referenceAuthor": "@stratilat20",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023836222272250213",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-02-17T19:05:31Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2023836222272250213_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023777615979450730",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Sorry, my dog wanted my last burger bite and I couldn't resist that face and those eyes! 🥺",
+    "timestamp": "2026-02-17T15:12:38Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023074662461386795",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-02-15T16:39:21Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2023074662461386795_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021238496850063425",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Happy #Bendyversary !! 9 years old! Wow! To see it from what it was to where it's headed, that's quite a journey. So much more to come, all 4 of us are working hard on The Cage and we cannot wait to see what's in stores. Thank you and we appreciate all of you!! 🖤💛 #BENDY",
+    "timestamp": "2026-02-10T15:03:05Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2021222635779096611",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Thank you to all our fans. It’s been, and continues to be, a wild ride! Happy !! 🖤🎉",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2021238496850063425_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2019823145990123732",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "👀!",
+    "timestamp": "2026-02-06T17:18:59Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2019774292506890291",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Best time to jump in! #Bendyversary #BENDY #BATIM #BATDR #BLW",
+    "timestamp": "2026-02-06T14:04:51Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2019773464945570251",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Happy !! 🖤🎉 90% OFF BUNDLE ON STEAM NOW for a VERY limited time! 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2019774292506890291_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2019770074760937620",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-02-06T13:48:05Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2019770074760937620_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/2019766277569380540",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "The story of has me so excited, nostalgic, and deeply emotional. This is going to be something very special when it's done. It's a long road yet to completion, but its already really recapturing so much magic for me. This is big.🙂 will return.",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2018746211881402777",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Good question, so many good ones in #BLW but I do have to say that ''Swinging in Hellfire Follies'' might be my favorite. The whimsical nature of it is awesome. But ''The Dark Survival'' is up there too! You?",
+    "timestamp": "2026-02-03T17:59:38Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2018740960445026583",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Lone Wolf's soundtrack now on steam!🐺🎶 #BENDY #BLW",
+    "timestamp": "2026-02-03T17:38:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2018737317301612604",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Howl along with the Lone Wolf. 🐺🎶 Soundtrack now on Steam … 20% Off for a limited time. 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2018740960445026583_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2016330647543902311",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-01-28T02:01:02Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2016330647543902311_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Doberart",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2015898198120775946",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "👀🎶 #BENDY #BATDR",
+    "timestamp": "2026-01-26T21:22:38Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/2015897028031660315",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "Mike Desjardins",
+    "referenceAvatarUrl": "",
+    "referenceText": "coming soon",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/4297080/Bendy_and_the_Dark_Revival__Official_Soundtrack/",
+        "image": "assets/developers/blacroix30/media/card_2015898198120775946_0.jpg",
+        "title": "Bendy and the Dark Revival - Official Soundtrack on Steam",
+        "description": "The official soundtrack to the horror adventure sequel Bendy and the Dark Revival, where players relive their rubberhose nightmare through 27 selected tracks, capturing iconic moments with intense...",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2013636786719691104",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "!!😯!! #BATIM #BATDR #BENDY",
+    "timestamp": "2026-01-20T15:36:36Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/silverliningint/status/2013628536892870768",
+    "referenceAuthor": "@silverliningint",
+    "referenceAuthorName": "Silver Lining Interactive ⛅",
+    "referenceAvatarUrl": "",
+    "referenceText": "Prepare for horror... and make it double! 😈 Step into the darkness with both BATIM and BATDR on one disc/cartridge. Pre-order the double pack from your local retailer or Silver Lining Direct:",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2013636786719691104_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2012312474721153492",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-01-16T23:54:15Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2012312474721153492_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/2012197055029014704",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "Sorry, I haven’t been able to share too many updates on my end with . It’s just a TON of work everyday and I’m keeping my head down and getting things done for you all. 🙂 All is well! LOTS of BENDY stuff is coming.",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2009676817549140407",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-01-09T17:21:05Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2009676817549140407_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/silverliningint",
+    "referenceAuthor": "@silverliningint",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2006603503548981691",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Happy New Year!! 🎊 Wishing you that 2026 brings wonderful surprises! 🌀 #BENDY",
+    "timestamp": "2026-01-01T05:48:50Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2006591214305554838",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Happy … New … Year 😵‍💫",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2006603503548981691_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2005526741985755417",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-12-29T06:30:10Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/2005526741985755417_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2003988896867348988",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Have a wonderful Christmas and a Happy holiday! 🎄🎁❄️⛄#BENDY",
+    "timestamp": "2025-12-25T00:39:19Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2003987668536119660",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Have a Christmas filled with excitement! 🎄",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_2003988896867348988_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1990477286919872928",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Best time to go mad!!!",
+    "timestamp": "2025-11-17T17:49:01Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1990473262837457355",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "THIS IS MADNESS! LAST CHANCE! 😵‍💫",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_1990477286919872928_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1990466314549239842",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-11-17T17:05:25Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1990466314549239842_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1989757573768389037",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Has it already been 3 years for #batdr!! Wow. Time sure flies by. What a game it was to work on. Really happy that people enjoyed it! Now I'm focused on what's next and cannot wait to share more #Bendy with everyone.",
+    "timestamp": "2025-11-15T18:09:08Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1989757573768389037_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1989092435864219898",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-11-13T22:06:06Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1989092435864219898_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1988690979298374124",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-11-12T19:30:52Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1988690979298374124_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1988450812608098373",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-11-12T03:36:32Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1988450812608098373_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1987961472849490366",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "👇This!!! Always will give my 110% for you all.🙂💛🖤",
+    "timestamp": "2025-11-10T19:12:04Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1987957542815715804",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "Just a quick note to say, I am so thankful and honored you all allow me to make games for you. :) I know it's a position a lot of people would love to be in, and I don't take it lightly. I've worked so many terrible jobs in my life, never had much to call my own .. but with your support, I live a true dream. I'm not perfect, but I will always try to do my best to earn this. :) Thank you!",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1986609553811628371",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-11-07T01:40:01Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1986609553811628371_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1986447880744317305",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Happy birthday! 🎉",
+    "timestamp": "2025-11-06T14:57:35Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1986447880744317305_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Doberart",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1985442944598343741",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-11-03T20:24:20Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1985442944598343741_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1985440053607137410",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "I did for BATDR, yes. I won't say I won't do any for The Cage. If or when needed, I will help out. I have done very small bits already, but my main focus is on rigging/animations to make those the best they can be. Meatly is an amazing artist and has a great creative mind!",
+    "timestamp": "2025-11-03T20:12:51Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/BeninjaLIVE",
+    "referenceAuthor": "@BeninjaLIVE",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1985437966018179463",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Thanks, is does look great! But no, too busy with rigging and animations hehe. Meatly is the one tackling the visual aspects for the game. I take his awesome work, and make them come to life to scare you🙃.",
+    "timestamp": "2025-11-03T20:04:33Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1985429681584144735",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "🐑🐑🐑⌛️💤 #BendyTHECAGE #BENDY",
+    "timestamp": "2025-11-03T19:31:38Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1985421598153637943",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Sammy Lawrence (voiced by Aaron Landon) returns in . Can I get an amen?",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_1985429681584144735_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1985150107243745672",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "A lot of animations in this game. So many great moments and awesome combat ahead. Can't wait to show more but not quite there yet.",
+    "timestamp": "2025-11-03T01:00:42Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1984318635897135223",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Alright, going back in!! Hope you liked the #TheCage teaser. 🪓",
+    "timestamp": "2025-10-31T17:56:44Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1984305517817168051",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Get ready for #TheCage 🪓!! https://www.youtube.com/watch?v=QJjS8b9EyYE",
+    "timestamp": "2025-10-31T17:04:36Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=QJjS8b9EyYE",
+        "image": "assets/developers/blacroix30/media/card_1984305517817168051_0.jpg",
+        "title": "BENDY: THE CAGE - TEASER",
+        "description": "FIGHT THE MADNESS.Wishlist on Steam: https://store.steampowered.c...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1984304526187237753",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Remain Calm!!! #BENDY #TheCage",
+    "timestamp": "2025-10-31T17:00:40Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1984304385296367944",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Remain calm and watch this teaser:",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/QJjS8b9EyYE",
+        "image": "assets/developers/blacroix30/media/card_1984304526187237753_0.jpg",
+        "title": "BENDY: THE CAGE - TEASER",
+        "description": "FIGHT THE MADNESS.Wishlist on Steam: https://store.steampowered.c...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1984301017039532480",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Remain Calm . . . #BENDY",
+    "timestamp": "2025-10-31T16:46:43Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1984298587161804935",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-10-31T16:37:04Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1984298587161804935_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1984297415785013286",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "Mike Desjardins",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_1984298587161804935_0.mp4",
+        "type": "video"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1984232794973979061",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Happy Halloween 🎃👻 !!!",
+    "timestamp": "2025-10-31T12:15:38Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1984232794973979061_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1983931167205159340",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Come and ''Join the dark puddles!'' Some say ... this is an EPIC deal. 🖤💛",
+    "timestamp": "2025-10-30T16:17:04Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/EpicGames",
+    "referenceAuthor": "@EpicGames",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1983929627396415565",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "That's crazy! Grab it now!! #BENDY #BATIM",
+    "timestamp": "2025-10-30T16:10:57Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/EpicGames/status/1983921851748520244",
+    "referenceAuthor": "@EpicGames",
+    "referenceAuthorName": "Epic Games Store",
+    "referenceAvatarUrl": "",
+    "referenceText": "Sheep, sheep, sheep, it's time for sleep 🐑 Get and the Ink Machine for FREE until November 6. Also available for free on Android worldwide and iOS in select countries.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_1983929627396415565_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1983560087349461310",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-10-29T15:42:32Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1983560087349461310_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1983181845165683160",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Nothing to worry about, everything is normal and under control. Remain calm. .. . 🧊🔥",
+    "timestamp": "2025-10-28T14:39:32Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1982869817045791118",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-10-27T17:59:38Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1982869817045791118_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1982810098775781570",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-10-27T14:02:21Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1982810098775781570_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1982809572457758856",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Hmmm what's this!! 🎃🕯️😏",
+    "timestamp": "2025-10-27T14:00:15Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1982803771739554216",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "REMAIN CALM. Teaser drops this Halloween.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_1982809572457758856_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1981831634291962132",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-10-24T21:14:16Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1981831634291962132_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1981830192852349052",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "👀🧊",
+    "timestamp": "2025-10-24T21:08:33Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/GentCorporation/status/1981825911688454347",
+    "referenceAuthor": "@GentCorporation",
+    "referenceAuthorName": "GENT",
+    "referenceAvatarUrl": "",
+    "referenceText": "> INITIATE ; > DEPLOY V4.1.4_DEV; > RUN_VULN_PATCH; > EXE_TEST(EVENT_IDE); > DEBUG: CYCLE_FROZE; -> RECALIBRATE;",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1981795627659858012",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-10-24T18:51:12Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1981795627659858012_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1981718971398210002",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "🎃 spooky season!!",
+    "timestamp": "2025-10-24T13:46:35Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1981689830674518135",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "Mike Desjardins",
+    "referenceAvatarUrl": "",
+    "referenceText": "that time of year",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_1981718971398210002_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1975306595254083666",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Nice! Just got my copy of #BENDY #batdr! Got the 1st game on Switch so I decided to keep it for the same console. #BendyLoneWolf is next.",
+    "timestamp": "2025-10-06T21:06:06Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1975306595254083666_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1971577895446589774",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Heck yeah! Definitely getting one for my #bendy collection. For what console should I get?",
+    "timestamp": "2025-09-26T14:09:35Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1971577895446589774_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1971549560326791178",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "PHYSICAL Bendy and the Dark Revival is here! 🖤🎞️ Nintendo SWITCH & Playstation 5 NOW AVAILABLE in stores!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_1971577895446589774_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1965060221019263479",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Start of a new week, let's do this!",
+    "timestamp": "2025-09-08T14:30:40Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1965060221019263479_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1964051842502910268",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Haha! That charge at the end!🤣 I'm sure you'll find something else to bring your antics too.",
+    "timestamp": "2025-09-05T19:43:44Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1964051842502910268_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1962895497439359292",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Being brought up to speed on ehat they have been cooking. Lots of work in front of me, but all very exciting stuff for sure! Stay tooned! #BENDY #BATIF",
+    "timestamp": "2025-09-02T15:08:50Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1962887421659394514",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "We'll continuously be bringing you all sneak peaks at our projects and giving you updates on development as there are things to report. Obviously, it won't be ALL the time, but it will be as often as we can... and without spoiling things! We have secrets.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_1962895497439359292_0.mp4",
+        "type": "video"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1961094475817660497",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "I only modeled Betty and the Ink Demon and helped with textures on others + some environmental work. I was mostly on rigging and animation for BATDR.",
+    "timestamp": "2025-08-28T15:52:13Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/zinkattxck",
+    "referenceAuthor": "@zinkattxck",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1961093359969169558",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Environmental work is more on Meatly's plate, he is a wizard for environments. But I will help where needed, I am focused on anything animation.",
+    "timestamp": "2025-08-28T15:47:47Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1960859347568799897",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Eventually yes, I did a few more for BLW, like all the death sequences, a few enemy deaths, etc. I sadly haven't had the chance to update my portfolio yet.",
+    "timestamp": "2025-08-28T00:17:54Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1960857960206258435",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "My most up to date portfolio is here. https://www.artstation.com/blacroix I do have some projects under NDA that I can't share, but you'll see my most up to date work here.",
+    "timestamp": "2025-08-28T00:12:23Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://www.artstation.com/blacroix",
+        "image": "assets/developers/blacroix30/media/card_1960857960206258435_0.jpg",
+        "title": "Benoit Lacroix",
+        "description": "Head of Animation @ Joey Drew Studios",
+        "domain": "artstation.com"
+      }
+    ]
+  },
+  {
+    "id": "1960840769469866161",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "#Bendy is very special to me. I have been part of working on the franchise to some capacity since 2018. Being back on Bendy is a really huge honor. I'm putting everything I have into what's coming and I cannot wait for all of you to experience what we are cooking. #BATIF #B3NDY",
+    "timestamp": "2025-08-27T23:04:04Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1960820606674276677",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Thanks 🙂",
+    "timestamp": "2025-08-27T21:43:57Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/roseynoseyy",
+    "referenceAuthor": "@roseynoseyy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1960795747298762936",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "😉#BATIF #BENDY #B3NDY",
+    "timestamp": "2025-08-27T20:05:10Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1960795747298762936_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1960791937696288815",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "⚠️HAPPENING NOW! ⚠️ Watch the TITLE REVEAL of Bendy 3 RIGHT NOW! Link:",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=TW3lSbQuiac",
+        "image": "assets/developers/blacroix30/media/card_1960795747298762936_0.jpg",
+        "title": "B3NDY TITLE REVEAL: \"BENDY AND THE...\"",
+        "description": "Revealing the title to the conclusion of the Bendy mainline sagaS...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1960365627303964982",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Soon!👀 #B3NDY #BENDY",
+    "timestamp": "2025-08-26T15:36:02Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1960318075770716463",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "TOMORROW the NAME of Bendy 3 shall be revealed. Watch the premiere on YouTube 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/blacroix30/media/quote_1960365627303964982_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1957814463349809185",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "👀👀!!! #B3NDY #BENDY",
+    "timestamp": "2025-08-19T14:38:37Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1957811131436732436",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Let's give it a name.",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=TW3lSbQuiac",
+        "image": "assets/developers/blacroix30/media/card_1957814463349809185_0.jpg",
+        "title": "B3NDY TITLE REVEAL: \"BENDY AND THE...\"",
+        "description": "Revealing the title to the conclusion of the Bendy mainline sagaS...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1957491544237486168",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "3DS Max was used for BATDR😉",
+    "timestamp": "2025-08-18T17:15:27Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/inkenshi",
+    "referenceAuthor": "@inkenshi",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1957105531295867060",
+    "authorName": "BLacroix30",
+    "authorHandle": "@BLacroix30",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-08-17T15:41:34Z",
+    "media": [
+      {
+        "url": "assets/developers/blacroix30/media/1957105531295867060_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/blacroix30/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/TheJuJuDev",
+    "referenceAuthor": "@TheJuJuDev",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",

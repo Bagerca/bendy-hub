@@ -1,4 +1,3 @@
-// FILE: pages/music/PlayerUI.js
 import { Icons } from '../../shared/js/icons.js';
 
 /**
@@ -6,7 +5,7 @@ import { Icons } from '../../shared/js/icons.js';
  */
 export class PlayerUI {
     constructor(callbacks) {
-        this.callbacks = callbacks; // { onPlayPause, onMute, onClose, onLocate, onPrev, onNext, onVolumeChange, onScrubStart, onSeek }
+        this.callbacks = callbacks; // { onPlayPause, onMute, onClose, onLocate, onFullscreen, onPrev, onNext, onVolumeChange, onScrubStart, onSeek }
         this.container = document.getElementById('floating-player');
         
         if (!this.container) {
@@ -27,6 +26,7 @@ export class PlayerUI {
                         <div class="smart-marquee-wrapper"><span class="fp-title smart-marquee-text" id="fp-title">Воспроизведение...</span></div>
                     </div>
                     <div class="fp-actions">
+                        <button class="fp-action-btn" id="fp-fullscreen" title="На весь экран">${Icons.player_fullscreen}</button>
                         <button class="fp-action-btn" id="fp-locate" title="Найти в плейлисте">${Icons.player_locate}</button>
                         <button class="fp-action-btn fp-close" id="fp-close" title="Закрыть">${Icons.close}</button>
                     </div>
@@ -90,6 +90,7 @@ export class PlayerUI {
             title: document.getElementById('fp-title'),
             closeBtn: document.getElementById('fp-close'),
             btnLocate: document.getElementById('fp-locate'),
+            btnFullscreen: document.getElementById('fp-fullscreen'),
             btnYoutube: document.getElementById('fp-youtube'),
             
             iframeContainer: document.getElementById('fp-iframe-container'),
@@ -122,6 +123,7 @@ export class PlayerUI {
         // Базовые кнопки
         this.els.closeBtn.addEventListener('click', () => this.callbacks.onClose());
         this.els.btnLocate.addEventListener('click', () => this.callbacks.onLocate());
+        this.els.btnFullscreen.addEventListener('click', () => this.callbacks.onFullscreen());
         this.els.btnNext.addEventListener('click', () => this.callbacks.onNext());
         this.els.btnPrev.addEventListener('click', () => this.callbacks.onPrev());
         this.els.btnPlayPause.addEventListener('click', () => this.callbacks.onPlayPause());

@@ -1,5 +1,28 @@
 [
   {
+    "id": "2098927986825183472",
+    "authorName": "Elizabeth King",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Can’t believe I found him! So happy. ✨",
+    "timestamp": "2026-09-13T00:13:22Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2098927986825183472_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
     "id": "2098197074109936071",
     "authorName": "Elizabeth King",
     "authorHandle": "@Doberart",
@@ -23,34 +46,6 @@
     "linkCards": []
   },
   {
-    "id": "2097863862683046359",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @kriistofert: #BendysNightmareRun #Bendy #Art",
-    "timestamp": "2026-09-10T01:44:55Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2097863862683046359_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "quote",
-    "referenceUrl": "https://twitter.com/kriistofert/status/2096813844664615026",
-    "referenceAuthor": "@kriistofert",
-    "referenceAuthorName": "kriisto.",
-    "referenceAvatarUrl": "",
-    "referenceText": "midnight teaser.",
-    "referenceMedia": [
-      {
-        "url": "assets/developers/doberart/media/quote_2097863862683046359_0.jpg",
-        "type": "image"
-      }
-    ],
-    "linkCards": []
-  },
-  {
     "id": "2097800325205803412",
     "authorName": "Elizabeth King",
     "authorHandle": "@Doberart",
@@ -60,52 +55,6 @@
     "media": [
       {
         "url": "assets/developers/doberart/media/2097800325205803412_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2097436572337553577",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Shhhhh! Not HERE Bendy! Play now at https://bendyrun.com",
-    "timestamp": "2026-09-08T21:27:01Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2097436572337553577_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2097145899554382047",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @roseynoseyy: daily ink demon number ONE",
-    "timestamp": "2026-09-08T02:12:00Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2097145899554382047_0.png",
         "type": "image"
       }
     ],
@@ -167,24 +116,6 @@
         "type": "image"
       }
     ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2096619354414604577",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @themeatly: The big 10th anniversary of #BENDY is coming up. Things will happen.",
-    "timestamp": "2026-09-06T15:19:42Z",
-    "media": [],
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -265,47 +196,6 @@
     "linkCards": []
   },
   {
-    "id": "2095534177558954259",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Yikes. “CAN” it Bendy! Play now at https://bendyrun.com",
-    "timestamp": "2026-09-03T15:27:35Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2095534177558954259_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2095297463036866619",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @themeatly: ⚠️Please read. ⚠️ While seeing some of the more extreme content of #BendyTHECAGE during development, I feel compelled to once again remind players and parents that \"The Cage\" is a VERY rated M for Mature game. This will include a large amount of blood, gore, partial nudity, highly disturbing psychological themes, existential dread, and violence. This is a horror game, not a mascot \"horror\" game. Please be advised. This is not a marketing tactic to gain interest.. this is a sincere and caring warning for younger or sensitive #BENDY fans. Thank you!",
-    "timestamp": "2026-09-02T23:46:58Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
     "id": "2095196253659218265",
     "authorName": "Elizabeth King",
     "authorHandle": "@Doberart",
@@ -315,52 +205,6 @@
     "media": [
       {
         "url": "assets/developers/doberart/media/2095196253659218265_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2094528001606132089",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @Bendy: The BATIM UPDATE is live! Details at https://joeydrewstudios.com/batimupdate ALL Bendy games are up to 70% OFF on Steam!",
-    "timestamp": "2026-08-31T20:49:24Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2094528001606132089_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2094416866273857550",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Caught! Run Bendy! Play now at https://bendyrun.com",
-    "timestamp": "2026-08-31T13:27:47Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2094416866273857550_0.jpg",
         "type": "image"
       }
     ],
@@ -398,26 +242,17 @@
     "linkCards": []
   },
   {
-    "id": "2092261441147404701",
-    "authorName": "Elizabeth King",
+    "id": "2092761637530771656",
+    "authorName": "Doberart",
     "authorHandle": "@Doberart",
     "platform": "twitter",
-    "content": "RT @BendyRun: Get the limited time drop T-Shirt and an amazing Metal Poster for Bendy’s Nightmare Run at https://BendyMerch.com",
-    "timestamp": "2026-08-25T14:42:54Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2092261441147404701_0.jpg",
-        "type": "image"
-      },
-      {
-        "url": "assets/developers/doberart/media/2092261441147404701_1.jpg",
-        "type": "image"
-      }
-    ],
+    "content": "That’s so cool!! Congrats!",
+    "timestamp": "2026-08-26T23:50:30Z",
+    "media": [],
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/MLSpence3D",
+    "referenceAuthor": "@MLSpence3D",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
@@ -425,22 +260,17 @@
     "linkCards": []
   },
   {
-    "id": "2091975140305207418",
-    "authorName": "Elizabeth King",
+    "id": "2091982653079568842",
+    "authorName": "Doberart",
     "authorHandle": "@Doberart",
     "platform": "twitter",
-    "content": "RT @almightykadim: Happy 19th Anniversary! #Bioshock",
-    "timestamp": "2026-08-24T19:45:15Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2091975140305207418_0.jpg",
-        "type": "image"
-      }
-    ],
+    "content": "Peak!! Great job! ✨",
+    "timestamp": "2026-08-24T20:15:06Z",
+    "media": [],
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/almightykadim",
+    "referenceAuthor": "@almightykadim",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
@@ -448,22 +278,17 @@
     "linkCards": []
   },
   {
-    "id": "2091937918692495479",
-    "authorName": "Elizabeth King",
+    "id": "2091201660420870332",
+    "authorName": "Doberart",
     "authorHandle": "@Doberart",
     "platform": "twitter",
-    "content": "RT @BendyRun: Uh oh. Run Bendy! Play now at http://bendyrun.com",
-    "timestamp": "2026-08-24T17:17:20Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2091937918692495479_0.jpg",
-        "type": "image"
-      }
-    ],
+    "content": "Crazy to see these again. XD Never imagined I’d be drawing them like this now.",
+    "timestamp": "2026-08-22T16:31:43Z",
+    "media": [],
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/TheLizard414",
+    "referenceAuthor": "@TheLizard414",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
@@ -472,7 +297,7 @@
   },
   {
     "id": "2091002815468429457",
-    "authorName": "Elizabeth King",
+    "authorName": "Doberart",
     "authorHandle": "@Doberart",
     "platform": "twitter",
     "content": "She’s so cool. ✨",
@@ -484,29 +309,6 @@
       }
     ],
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "quote",
-    "referenceUrl": "https://twitter.com/popcomes/status/2090842920350015569",
-    "referenceAuthor": "@popcomes",
-    "referenceAuthorName": "✰",
-    "referenceAvatarUrl": "",
-    "referenceText": "post a female character you like a lot",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2091000894372319606",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @X02Re: Finally got dat boiiiii GOLDEN BENDY #NIGHTMARERUN",
-    "timestamp": "2026-08-22T03:13:56Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2091000894372319606_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
@@ -517,63 +319,256 @@
     "linkCards": []
   },
   {
-    "id": "2090968197688099055",
-    "authorName": "Elizabeth King",
+    "id": "2090971450203083035",
+    "authorName": "Doberart",
     "authorHandle": "@Doberart",
     "platform": "twitter",
-    "content": "RT @krispikrackers2: Mechanic Bendy redraw #NIGHTMARERUN",
-    "timestamp": "2026-08-22T01:04:01Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2090968197688099055_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2090946144796877170",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @BendyRun: We’re listening! Update now for the latest. Much more to come! http://bendyrun.com",
-    "timestamp": "2026-08-21T23:36:23Z",
-    "media": [
-      {
-        "url": "assets/developers/doberart/media/2090946144796877170_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2090154497670615224",
-    "authorName": "Elizabeth King",
-    "authorHandle": "@Doberart",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Bendy’s Nightmare Run is here!! Get it NOW for FREE! https://bendyrun.com",
-    "timestamp": "2026-08-19T19:10:40Z",
+    "content": "Very nice! Great job!",
+    "timestamp": "2026-08-22T01:16:56Z",
     "media": [],
     "localAvatarPath": "assets/developers/doberart/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/krispikrackers2",
+    "referenceAuthor": "@krispikrackers2",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090573539254358497",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Very cute! Nice work!",
+    "timestamp": "2026-08-20T22:55:47Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/krispikrackers2",
+    "referenceAuthor": "@krispikrackers2",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090434773281853469",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Thank you!!",
+    "timestamp": "2026-08-20T13:44:23Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Halfusek",
+    "referenceAuthor": "@Halfusek",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090417184094720210",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Thank you!!",
+    "timestamp": "2026-08-20T12:34:29Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/ShadowSFSReal",
+    "referenceAuthor": "@ShadowSFSReal",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090417143305134446",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Thank you! 😊",
+    "timestamp": "2026-08-20T12:34:19Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/timethehobo",
+    "referenceAuthor": "@timethehobo",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090232245558640740",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gaskette gonna regret going up against this lone wolf.",
+    "timestamp": "2026-08-20T00:19:36Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090231704610853203",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "That’s my boy! Look at him go!",
+    "timestamp": "2026-08-20T00:17:27Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090214036650569787",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gotta run faster, buddy! Cute art! 😊",
+    "timestamp": "2026-08-19T23:07:15Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/haniwa7773",
+    "referenceAuthor": "@haniwa7773",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090190253306892354",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "It’s the only other game on my phone. 😅 (I don’t have space for many games) Haha.",
+    "timestamp": "2026-08-19T21:32:44Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/MoonArt123",
+    "referenceAuthor": "@MoonArt123",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090171791817760903",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Thank you!",
+    "timestamp": "2026-08-19T20:19:23Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/MadHatterison1",
+    "referenceAuthor": "@MadHatterison1",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090166246637469707",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Thank you!! I appreciate that. (Glad to see your talents in the video game world as well, it’s awesome!)",
+    "timestamp": "2026-08-19T19:57:21Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/MLSpence3D",
+    "referenceAuthor": "@MLSpence3D",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090164997078896811",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-08-19T19:52:23Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2090164997078896811_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/MLSpence3D",
+    "referenceAuthor": "@MLSpence3D",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090161986109673780",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "😉",
+    "timestamp": "2026-08-19T19:40:25Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/almightykadim",
+    "referenceAuthor": "@almightykadim",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090149718735061316",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Not everything…yet. 😉",
+    "timestamp": "2026-08-19T18:51:40Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/BeninjaLIVE",
+    "referenceAuthor": "@BeninjaLIVE",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
@@ -582,7 +577,7 @@
   },
   {
     "id": "2090149395815674360",
-    "authorName": "Elizabeth King",
+    "authorName": "Doberart",
     "authorHandle": "@Doberart",
     "platform": "twitter",
     "content": "Feels surreal, honestly.",
@@ -600,6 +595,2063 @@
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090136477577404510",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Unfortunately IOS is being a pain for a lot of people. 😔",
+    "timestamp": "2026-08-19T17:59:03Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/BlattOriginal",
+    "referenceAuthor": "@BlattOriginal",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090134784404078915",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Had to go to Joey Drew Studios app page to find it. XD",
+    "timestamp": "2026-08-19T17:52:20Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2090134784404078915_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2090067897175429131",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Cute drawing of Bendy! Run, run!",
+    "timestamp": "2026-08-19T13:26:32Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/PinkStarllight",
+    "referenceAuthor": "@PinkStarllight",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2089841967228178878",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "You’re welcome! Keep up the great work! :)",
+    "timestamp": "2026-08-18T22:28:47Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/turquruby",
+    "referenceAuthor": "@turquruby",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2089838242535223428",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Yooo! Great art!! 👌🏻✨",
+    "timestamp": "2026-08-18T22:13:58Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/turquruby",
+    "referenceAuthor": "@turquruby",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2089783553001230471",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Radical. ✨",
+    "timestamp": "2026-08-18T18:36:39Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/MLSpence3D",
+    "referenceAuthor": "@MLSpence3D",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2089428966868230600",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Heck yeah!! I’m super excited for it!",
+    "timestamp": "2026-08-17T19:07:40Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2089426902704406929",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Yesss! 👀✨",
+    "timestamp": "2026-08-17T18:59:27Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2089426902704406929_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2089368658405417444",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Maybe one day I’ll draw more for it. I really enjoyed it. :)",
+    "timestamp": "2026-08-17T15:08:01Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/ChaparraSkies",
+    "referenceAuthor": "@ChaparraSkies",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2089121281354440997",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-08-16T22:45:02Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2089121281354440997_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/TheLizard414",
+    "referenceAuthor": "@TheLizard414",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2089028225900892390",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "It was called Rise of Bendy, it was a sci-fi AU. Set in like a alternative 1960s Earth where the studio has become a giant factory of sorts.",
+    "timestamp": "2026-08-16T16:35:15Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Eletricalsymth",
+    "referenceAuthor": "@Eletricalsymth",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088724777347264626",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Thank you! Appreciate that. :)",
+    "timestamp": "2026-08-15T20:29:28Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/InkyBendyNews",
+    "referenceAuthor": "@InkyBendyNews",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088721753824522381",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "😉",
+    "timestamp": "2026-08-15T20:17:27Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088721624694501470",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Your art is lovely! And thanks! 🥹",
+    "timestamp": "2026-08-15T20:16:56Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/almightykadim",
+    "referenceAuthor": "@almightykadim",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088705040911331561",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Super fun!",
+    "timestamp": "2026-08-15T19:11:02Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/prot3tix",
+    "referenceAuthor": "@prot3tix",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088704997450035664",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "👌🏻",
+    "timestamp": "2026-08-15T19:10:52Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/InkBendyCat",
+    "referenceAuthor": "@InkBendyCat",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088701386154201464",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "🫡🫡",
+    "timestamp": "2026-08-15T18:56:31Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/BeninjaLIVE",
+    "referenceAuthor": "@BeninjaLIVE",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088699604971766216",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "No worries! Sorry for the confusion. Haha.",
+    "timestamp": "2026-08-15T18:49:26Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088698116874674610",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I didn’t do the main logo, just the icon/logo for the account. :) But the new logo is super cool!",
+    "timestamp": "2026-08-15T18:43:31Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088696137985208601",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Icon/logo for the account and new splash image with Bendy and bosses. :)",
+    "timestamp": "2026-08-15T18:35:40Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088694998615122024",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "😉",
+    "timestamp": "2026-08-15T18:31:08Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088692569915949461",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Thank you!! These guys are so fun to draw!",
+    "timestamp": "2026-08-15T18:21:29Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088692347311706448",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Image",
+    "timestamp": "2026-08-15T18:20:36Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2088692347311706448_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088692089395597762",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "👋🏻",
+    "timestamp": "2026-08-15T18:19:34Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/DWhackyChicken",
+    "referenceAuthor": "@DWhackyChicken",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088680608587252073",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "No, it’s totally fine! Haha. I just wasn’t expecting to see that old drawing in there. I’m glad you like it! 😊",
+    "timestamp": "2026-08-15T17:33:57Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/DededeandKirby",
+    "referenceAuthor": "@DededeandKirby",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088673413141254284",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "No way this list includes a drawing of Bendy I did for my AU back in 2018. 😅💀",
+    "timestamp": "2026-08-15T17:05:22Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2088673413141254284_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/inkyIceArt/status/2088420973145977215",
+    "referenceAuthor": "@inkyIceArt",
+    "referenceAuthorName": "ဗ ❄️ 𝕴𝖈𝖊 ❄️ဗ",
+    "referenceAvatarUrl": "",
+    "referenceText": "He hecho una tier list de versiones de bendy por si quieren hacerla, esta incluye bendys del contenido oficial, mods, fangames, AUs y rediseños de gente Sin embargo siento que está incompleta, díganme unos cuantos para expandirla con más bendys Link abajo",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/doberart/media/quote_2088673413141254284_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2088642599913455650",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Can’t believe it’s been a year! Happy Lone Wolfiversary!",
+    "timestamp": "2026-08-15T15:02:55Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088405208703341053",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I didn’t know they had these in volumes. Absolutely love Tracy’s art style, super excited to read this! ✨",
+    "timestamp": "2026-08-14T23:19:37Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2088405208703341053_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2088353032849301810",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Man, how time flies. 🥺",
+    "timestamp": "2026-08-14T19:52:17Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2087264517084389546",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "",
+    "timestamp": "2026-08-11T19:46:55Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2087264517084389546_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2086919322488782900",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Incredible work!! Thanks again for the attack!",
+    "timestamp": "2026-08-10T20:55:14Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/katcl0uds",
+    "referenceAuthor": "@katcl0uds",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2085845834189480100",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I need it to be fall, I yearn for bacon soup season.",
+    "timestamp": "2026-08-07T21:49:34Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2080434607179100355",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Your work is incredible! So cool to see it on official merch. Keep up the amazing work! ✨",
+    "timestamp": "2026-07-23T23:27:17Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Snartles",
+    "referenceAuthor": "@Snartles",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2080431472603795520",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I’m so excited for the new Spider-Man movie! I love Spider-Man. ✨",
+    "timestamp": "2026-07-23T23:14:50Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2080409303253479435",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "It’s fine to be disappointed, a normal response considering the hype.",
+    "timestamp": "2026-07-23T21:46:44Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/FrancisFde",
+    "referenceAuthor": "@FrancisFde",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2080405785620754821",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "As sad as it is that the Cage might take longer to release, I’m glad they care about making a good game rather than just releasing something unfinished. And I think it’s great they’re being transparent about that as well. I’m sure the game will be worth the wait. :)",
+    "timestamp": "2026-07-23T21:32:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2080334426735514074",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "When is Joe gonna post the last audio clip? I’m waiting.",
+    "timestamp": "2026-07-23T16:49:12Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2080334426735514074_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2080297262677147714",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-23T14:21:32Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2080297262677147714_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2080287942652604427",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "You mean like the signs we’ve already seen or ?",
+    "timestamp": "2026-07-23T13:44:30Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2079699133019963587",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "You, too, could be playing Bendy! 🫵🏻",
+    "timestamp": "2026-07-21T22:44:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2079698901519540548",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Only 2 days left to get the ORIGINAL BENDY at 90% OFF on Steam!",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2079281377325748535",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Happy birthday!!",
+    "timestamp": "2026-07-20T19:04:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/InkHyaena",
+    "referenceAuthor": "@InkHyaena",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2079234801324736625",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Another batch of Art Fight attacks. :) #artfight2026",
+    "timestamp": "2026-07-20T15:59:41Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2079234801324736625_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/2079234801324736625_1.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/2079234801324736625_2.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/2079234801324736625_3.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2079023297803571678",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-20T01:59:15Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2079023297803571678_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/BLacroix30",
+    "referenceAuthor": "@BLacroix30",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2079011028357001428",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-20T01:10:29Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2079011028357001428_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2078995716681117888",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-20T00:09:39Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2078995716681117888_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2078994835600478540",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I think Bendy is pretty cool. 😎",
+    "timestamp": "2026-07-20T00:06:09Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2077795669905940815",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I hope one day when I can update my art setup that I’ll be able to do some art streams again. :)",
+    "timestamp": "2026-07-16T16:41:05Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2077521025231691965",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Henry Stein from the Bendy franchise. This screenshot is his appearance in Bendy and the Dark Revival.",
+    "timestamp": "2026-07-15T22:29:45Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/FelizardFantasy",
+    "referenceAuthor": "@FelizardFantasy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2077476841481240642",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Oh for sure. You gotta keep that hype and talk going. XD",
+    "timestamp": "2026-07-15T19:34:11Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2077475658112856335",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I just know it’ll be worth the wait. I’d rather them take their time to make it peak than push out a half finished game. For now, I take their silence as them being hard at work. :)",
+    "timestamp": "2026-07-15T19:29:29Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2077046817468871145",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I love the summer time, but I’m so ready for fall! I love the fall and the cool weather, the leaves changing color, Halloween…I’m just so ready. ✨",
+    "timestamp": "2026-07-14T15:05:25Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2076749539969544500",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "In this house we always give the devs a round of applause!",
+    "timestamp": "2026-07-13T19:24:09Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2076295080973881553",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Image",
+    "timestamp": "2026-07-12T13:18:17Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2076295080973881553_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075675495086084509",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "He did! He’s loving this one so far too! :)",
+    "timestamp": "2026-07-10T20:16:16Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075664069827100707",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Finally having the hubby play peak part 2. #BENDY",
+    "timestamp": "2026-07-10T19:30:52Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2075664069827100707_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075657320533463064",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "This is cracking me up. Help. 😭😂💀 #tadc",
+    "timestamp": "2026-07-10T19:04:03Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2075657320533463064_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/2075657320533463064_1.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/2075657320533463064_2.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075581661358551553",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-10T14:03:25Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2075581661358551553_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075554736556716276",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Atmospheres and soundtracks are peak in Bendy games! I look forward to more of that as well. 😊",
+    "timestamp": "2026-07-10T12:16:25Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/PixulSfant",
+    "referenceAuthor": "@PixulSfant",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075553339475943573",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "For me, it’s how they put their hearts into everything they make. I’d rather have three or four great Bendy games than fifty plus cash grabs. The intentionality shows in their games.",
+    "timestamp": "2026-07-10T12:10:52Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Doberart",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075552219353534589",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "What’s something Bendy/JDS does well that you’d like to see continued and/or improved upon in future games? 🤔 #BENDY",
+    "timestamp": "2026-07-10T12:06:25Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2075338737949594031",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I can’t tell you how many countless times I’ve played this. Go back to where it all began, join the dark puddles! 😎",
+    "timestamp": "2026-07-09T21:58:07Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2075267801736987085",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The ORIGINAL BENDY is 90% OFF on Steam right now!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/doberart/media/quote_2075338737949594031_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2075300868870607141",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Extending the sale is crazy! Truly a Bendy summer! 😎🔥 Go check these games out, I can’t recommend them enough!",
+    "timestamp": "2026-07-09T19:27:39Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2075264930844979612",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/bundle/78458/Bendy_Summer_Sale/",
+        "image": "assets/developers/doberart/media/card_2075300868870607141_0.jpg",
+        "title": "Steam Store",
+        "description": "Steam is the ultimate destination for playing, discussing, and creating games.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2074906336391794962",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Exactly 8 years ago…that’s crazy! 😭",
+    "timestamp": "2026-07-08T17:19:55Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Doberart/status/1015819206401683456",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "Elizabeth King",
+    "referenceAvatarUrl": "",
+    "referenceText": "The devil stands behind you.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/doberart/media/quote_2074906336391794962_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2074507582446633026",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Dumb rabbit doodles from the other day. #tadc",
+    "timestamp": "2026-07-07T14:55:24Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2074507582446633026_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2074470054666682543",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "She was fun to draw! :) Thanks again for drawing Linda!",
+    "timestamp": "2026-07-07T12:26:17Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/friendly1ntro",
+    "referenceAuthor": "@friendly1ntro",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2074468048543645944",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Siiiick! Love the perspective on the Ink Demon. Awesome work!",
+    "timestamp": "2026-07-07T12:18:19Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/BeninjaLIVE",
+    "referenceAuthor": "@BeninjaLIVE",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2074135038896062640",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "A couple of Art Fight attacks and revenges. :)",
+    "timestamp": "2026-07-06T14:15:03Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2074135038896062640_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/2074135038896062640_1.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/2074135038896062640_2.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/2074135038896062640_3.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2073480818786288088",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Happy 250 years, America! 🇺🇸",
+    "timestamp": "2026-07-04T18:55:25Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2073480818786288088_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2073167878182805806",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I’ve seen a few people playing Bendy for the first time and it’s so fun to watch! I hope this fandom grows again, that would be delightful. 😊 To fans new and old: what’s your favorite thing about Bendy?",
+    "timestamp": "2026-07-03T22:11:54Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2073154235546423381",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Image",
+    "timestamp": "2026-07-03T21:17:41Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2073154235546423381_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2073152589231710316",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-03T21:11:09Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2073152589231710316_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2073051365501198670",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-07-03T14:28:55Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2073051365501198670_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2072499305475145848",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Bendy summer tunes.",
+    "timestamp": "2026-07-02T01:55:14Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2072499305475145848_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2072371006589579397",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I gotta revisit this concept more again in the future. I love Buddy. 🥹",
+    "timestamp": "2026-07-01T17:25:25Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2072069094153609362",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Spooky! Great animation!",
+    "timestamp": "2026-06-30T21:25:43Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/_Silly_Kiddo_",
+    "referenceAuthor": "@_Silly_Kiddo_",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2072033888600301663",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-06-30T19:05:50Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2072033888600301663_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/DiscussingBendy/status/2072023996170654185",
+    "referenceAuthor": "@DiscussingBendy",
+    "referenceAuthorName": "DiscussingBendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The new looks at the new 'BENDY AND THE DARK REVIVAL' animations in the new promo video for the new Bendy Summer Steam Sale.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/doberart/media/quote_2072033888600301663_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/quote_2072033888600301663_1.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/quote_2072033888600301663_2.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/doberart/media/quote_2072033888600301663_3.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2071668708640968866",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Thank you! I do love to draw fan art for both when I have time and inspiration. 😊",
+    "timestamp": "2026-06-29T18:54:44Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/OogaSpookums",
+    "referenceAuthor": "@OogaSpookums",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2071668586037252164",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "RIP",
+    "timestamp": "2026-06-29T18:54:15Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2071668586037252164_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2071627256028360945",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2026-06-29T16:10:01Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2071627256028360945_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Benjuicyy",
+    "referenceAuthor": "@Benjuicyy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2071594041829970391",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "They’re practically giving away peak! Best summer ever to check out Bendy!",
+    "timestamp": "2026-06-29T13:58:02Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2071578236115362295",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "80% OFF and together!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/doberart/media/quote_2071594041829970391_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2071374186551857569",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "The playlist for anyone wanting to check it out! It’s been fun getting to work on some of these art projects over the years. :) https://open.spotify.com/playlist/00s76hGHCK7t0KVMIYZsa5?si=66154bf2b3664505",
+    "timestamp": "2026-06-28T23:24:25Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Doberart",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://open.spotify.com/playlist/00s76hGHCK7t0KVMIYZsa5?si=66154bf2b3664505",
+        "image": null,
+        "title": "Indie Horror Music",
+        "description": "Playlist · House of McKnight Publishing · 8 items · 37 saves",
+        "domain": "open.spotify.com"
+      }
+    ]
+  },
+  {
+    "id": "2071373974815006933",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Five Nights at Bendy’s! Some artwork I did for Victor McKnight’s Indie Horror playlist on Spotify. #BENDY #FNAF",
+    "timestamp": "2026-06-28T23:23:34Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2071373974815006933_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070967338833265055",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Longest three seconds of my life. 😔",
+    "timestamp": "2026-06-27T20:27:44Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070245585957900710",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "He’s so silly. #BENDY",
+    "timestamp": "2026-06-25T20:39:45Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2070245585957900710_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070234760413061149",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "It’s always Bendy summer! 😎😎",
+    "timestamp": "2026-06-25T19:56:44Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2070234217724645555",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Retreat to 90% OFF on Bendy and the Dark Revival! 🖤🎮 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/doberart/media/quote_2070234760413061149_0.mp4",
+        "type": "video"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2070221816124104777",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "To move on is to grow. #tadc #caine",
+    "timestamp": "2026-06-25T19:05:18Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2070221816124104777_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070198643106193700",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "A steal for such an incredible game!! Make sure to snag it, highly recommend! 😉",
+    "timestamp": "2026-06-25T17:33:13Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2070191707493154964",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Bendy and the Dark Revival is 90% OFF on the Steam Summer Sale right now! 🖤🎮 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/doberart/media/quote_2070198643106193700_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2070151372859654581",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "This is already so 🔥!! Absolute cinema!",
+    "timestamp": "2026-06-25T14:25:23Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chelobekorkestr",
+    "referenceAuthor": "@chelobekorkestr",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2069878677471375444",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Art Fight 2026 ID card done! Super excited to participate again this year. ✨ #artfight",
+    "timestamp": "2026-06-24T20:21:47Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2069878677471375444_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2069422060435034359",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Love this guy! So glad to see he finally covered this one. 😉",
+    "timestamp": "2026-06-23T14:07:21Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2068430967618818170",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Went a different take with your suggestion because it was such a fun Pokemon to design, I had to. XD",
+    "timestamp": "2026-06-20T20:29:06Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/chairthatspins",
+    "referenceAuthor": "@chairthatspins",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2068398764864205185",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "He’s doing his best. 😭 Little goofy denture run.",
+    "timestamp": "2026-06-20T18:21:09Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/codaanim",
+    "referenceAuthor": "@codaanim",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2068394643658555844",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "My post is still up if you would like to add a character suggestion. :)",
+    "timestamp": "2026-06-20T18:04:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/FrancisFde",
+    "referenceAuthor": "@FrancisFde",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2068328265819820102",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "First round of character sketches done! Thank you for the suggestions, I’ll be doing more of the suggestions soon. :)",
+    "timestamp": "2026-06-20T13:41:00Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2068328265819820102_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2067753690132361291",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "I crave Bendy: The Cage.",
+    "timestamp": "2026-06-18T23:37:51Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2067753690132361291_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2067717357372428677",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "He’s a loser (affectionately). #tadc #jax",
+    "timestamp": "2026-06-18T21:13:28Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2067717357372428677_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2067700714147573799",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Made a new Art Fight icon to match my team theme! Let’s goooo Mystery! #artfight",
+    "timestamp": "2026-06-18T20:07:20Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2067700714147573799_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2067380015235297670",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Character suggestion doodles are underway. 🫡",
+    "timestamp": "2026-06-17T22:53:00Z",
+    "media": [
+      {
+        "url": "assets/developers/doberart/media/2067380015235297670_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2067072423019630800",
+    "authorName": "Doberart",
+    "authorHandle": "@Doberart",
+    "platform": "twitter",
+    "content": "Thanks for sending suggestions! Feel free to continue sending them, I’ll work on sketching some characters tomorrow from these suggestions and some I’ve gotten from my Tumblr. :)",
+    "timestamp": "2026-06-17T02:30:44Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/doberart/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Doberart/status/2067024318962311173",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "Elizabeth King",
+    "referenceAvatarUrl": "",
+    "referenceText": "Finishing up some references for Art Fight, but might do some doodles after. If anyone has a character suggestion, feel free to drop it in the comments. I’ll doodle a few. ✨",
     "referenceMedia": [],
     "linkCards": []
   }

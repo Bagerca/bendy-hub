@@ -3,8 +3,8 @@ import os
 # Имя выходного файла
 OUTPUT_FILE = "entire_project_context.txt"
 
-# Оставили только системные и мусорные папки.
-# Папки 'data' и 'assets' УБРАНЫ ИЗ ИСКЛЮЧЕНИЙ, теперь скрипт зайдет в них.
+# Системные и мусорные папки, которые мы игнорируем
+# Папки 'data' и 'assets' скрипт читает, а вот 'logs' теперь пропускает!
 EXCLUDE_DIRS = {
     ".git",
     ".idea",
@@ -14,6 +14,7 @@ EXCLUDE_DIRS = {
     "__pycache__",
     "dist",
     "build",
+    "logs", # <-- ДОБАВЛЕНО ИСКЛЮЧЕНИЕ ДЛЯ ПАПКИ ЛОГОВ
 }
 
 # Файлы, которые собирать не нужно
@@ -42,7 +43,7 @@ print("🚀 Запуск сборщика файлов проекта...")
 with open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:
     for root, dirs, files in os.walk("."):
         
-        # Фильтруем папки (убираем системные, но оставляем data и assets)
+        # Фильтруем папки (убираем системные и логи, но оставляем data и assets)
         dirs[:] = [d for d in dirs if d.lower() not in EXCLUDE_DIRS]
 
         for file in files:

@@ -6,21 +6,15 @@ export class CharactersModel {
     constructor() {
         this.allCharacters = [];
         this.filteredCharacters = [];
-        this.filters = { search: '', category: 'all', letter: 'all' };
+        this.filters = { search: '', category: ['human', 'ink', 'toon', 'other'], letter: 'all' };
     }
 
     async fetchAll() {
         try {
-            const charIds = await fetchData('data/characters_index.json'); 
-            const charPromises = charIds.map(id => 
-                fetchData(`assets/characters/${id}/data.json`).catch(() => null)
-            );
-            const results = await Promise.all(charPromises);
+            // Всего 1 запрос вместо десятков!
+            const results = await fetchData('data/characters_list.json'); 
             
-            this.allCharacters = results
-                .filter(char => char !== null)
-                .sort((a, b) => a.name.localeCompare(b.name, 'ru'));
-            
+            this.allCharacters = results.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
             this.filteredCharacters = [...this.allCharacters];
             return this.allCharacters;
         } catch (error) {
@@ -38,7 +32,6 @@ export class CharactersModel {
     }
 
     getSuggestions(query) {
-        // Ищем и по имени, и по алиасам (например, "объект 414" -> Генри)
         const results = SmartSearch.execute(query, this.allCharacters, ['name', 'meta.aliases']);
         return results.slice(0, 5).map(char => ({ label: char.name, value: char.name }));
     }
@@ -47,12 +40,11 @@ export class CharactersModel {
         this.filters = { ...this.filters, ...updates };
         const { search, category, letter } = this.filters;
 
-        // Умный поиск
         let result = SmartSearch.execute(search, this.allCharacters, ['name', 'meta.aliases']);
 
         result = result.filter(char => {
             const charCat = this._determineCategory(char);
-            const categoryPass = category === 'all' || charCat === category;
+            const categoryPass = category.length > 0 && category.includes(charCat);
             const firstLetter = char.name.charAt(0).toLowerCase();
             const letterPass = letter === 'all' || firstLetter === letter;
             return categoryPass && letterPass;

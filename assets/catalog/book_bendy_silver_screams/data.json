@@ -19,9 +19,9 @@
     },
     "assets": {
         "logo": "logo.png",
-    "cover": "cover.jpg",
-    "banner": "banner.jpg",
-    "hero_bg": "hero.jpg",
+        "cover": "cover.jpg",
+        "banner": "banner.jpg",
+        "hero_bg": "hero.jpg",
         "videos": [
             "..."
         ],
@@ -51,5 +51,6 @@
                 "text": "..."
             }
         ]
-    }
+    },
+    "color": "111, 104, 87"
 }

@@ -7,11 +7,11 @@
     display: flex; 
     flex-direction: column;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Тень из dark theme стала дефолтной */
     cursor: pointer;
     text-decoration: none;
     --card-hover-rgb: 210, 168, 80; 
-    --marquee-bg: var(--bg-card); /* Цвет для перекрывающего градиента */
+    --marquee-bg: var(--bg-card); 
 }
 
 [data-theme="dark"] .card-horizontal { box-shadow: 0 4px 12px rgba(0,0,0,0.2); }

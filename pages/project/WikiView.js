@@ -54,6 +54,7 @@ export class WikiView {
         const wiki = data.wiki || {};
         const type = data.type || 'game';
 
+        // Рендер описания
         if (data.description && data.description !== '...') {
             this.els.desc.className = 'project-desc';
             this.els.desc.textContent = data.description;
@@ -67,13 +68,32 @@ export class WikiView {
             `;
         }
         
+        // Рендер тегов с красивой отцентрированной заглушкой
         this.els.tags.innerHTML = '';
-        (data.tags || []).slice(0, 15).forEach(tag => {
-            if(tag === '...') return;
-            const span = document.createElement('span');
-            span.className = 'game-tag'; span.textContent = tag;
-            this.els.tags.appendChild(span);
-        });
+        const validTags = (data.tags || []).filter(t => t && t !== '...');
+        const tagsHeader = this.els.tags.previousElementSibling; // Находим <h3>Жанры и теги</h3>
+        
+        if (validTags.length > 0) {
+            if (tagsHeader) tagsHeader.style.textAlign = 'left';
+            
+            validTags.slice(0, 15).forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'game-tag'; 
+                span.textContent = tag;
+                this.els.tags.appendChild(span);
+            });
+        } else {
+            if (tagsHeader) tagsHeader.style.textAlign = 'center';
+            
+            this.els.tags.innerHTML = `
+                <div style="width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0 0.5rem;">
+                    <div style="width: 48px; height: 48px; background: var(--bg-body); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); margin-bottom: 0.85rem; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <div style="width: 24px; height: 24px; opacity: 0.8;">${Icons.error_404}</div>
+                    </div>
+                    <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 700;">Жанры не указаны</span>
+                </div>
+            `;
+        }
 
         this._renderTranslators(teamsData, type, projectId);
         this._renderMediaGallery(assets, projectId);

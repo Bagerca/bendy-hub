@@ -1,4 +1,5 @@
 import { Icons } from '../../shared/js/icons.js';
+import { prefetchData } from '../../shared/js/api.js'; // <-- ДОБАВЛЕНО
 
 export class CharactersView {
     constructor() {
@@ -15,7 +16,6 @@ export class CharactersView {
             error: document.getElementById('error-state-template')
         };
 
-        // Вставляем нашу Base64 заглушку как обычную картинку
         this.fallbackHtml = `
             <img src="${Icons.avatar_fallback}" alt="Нет фото" class="char-fallback" style="width: 100%; height: 100%; object-fit: cover; background: var(--bg-body); padding: 6px;">
         `;
@@ -40,13 +40,20 @@ export class CharactersView {
             
             const targetUrl = `character.html?id=${char.id}`;
             card.href = targetUrl;
+            
+            // >>> ПРЕДЗАГРУЗКА ДАННЫХ ПЕРСОНАЖА ПРИ НАВЕДЕНИИ <<<
+            let hoverTimeout;
+            card.addEventListener('pointerenter', () => {
+                hoverTimeout = setTimeout(() => {
+                    prefetchData(`assets/characters/${char.id}/data.json`);
+                }, 100);
+            });
+            card.addEventListener('pointerleave', () => clearTimeout(hoverTimeout));
+
             card.addEventListener('click', (e) => {
                 e.preventDefault();
-                if (window.router) {
-                    window.router.navigate(targetUrl);
-                } else {
-                    window.location.href = targetUrl;
-                }
+                if (window.router) window.router.navigate(targetUrl);
+                else window.location.href = targetUrl;
             });
 
             clone.querySelector('.char-card-name').textContent = char.name;
@@ -66,38 +73,29 @@ export class CharactersView {
             if (avatarsToRender.length === 0) {
                 avatarWrapper.classList.remove('is-stack');
                 avatarWrapper.innerHTML = this.fallbackHtml;
-
             } else if (avatarsToRender.length === 1) {
                 avatarWrapper.classList.remove('is-stack');
-                
                 const img = document.createElement('img');
                 img.className = 'char-img single-img';
                 img.loading = 'lazy';
                 img.src = `assets/characters/${char.id}/${avatarsToRender[0]}`;
-                
                 img.onerror = function() { 
                     this.onerror = null; 
                     avatarWrapper.innerHTML = this.fallbackHtml; 
                 }.bind(this);
-                
                 avatarWrapper.appendChild(img);
-
             } else {
                 avatarWrapper.classList.add('is-stack');
-                
                 avatarsToRender.forEach((photo, index) => {
                     const img = document.createElement('img');
                     img.className = 'char-img stack-img';
                     img.loading = 'lazy';
                     img.src = `assets/characters/${char.id}/${photo}`;
-                    
                     img.style.zIndex = 10 - index;
-                    
                     img.onerror = function() { 
                         this.onerror = null; 
                         this.style.display = 'none'; 
                     };
-                    
                     avatarWrapper.appendChild(img);
                 });
             }
@@ -109,6 +107,7 @@ export class CharactersView {
         this.els.container.style.display = 'grid';
     }
 
+    // ... остальной код класса без изменений
     renderAlphabet(letters, currentLetter, onLetterClick) {
         this.els.alphabetFilters.innerHTML = ''; 
 

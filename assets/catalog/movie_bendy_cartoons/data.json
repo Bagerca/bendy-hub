@@ -18,10 +18,10 @@
         "recommended": "..."
     },
     "assets": {
-    "logo": "logo.png",
-    "cover": "cover.jpg",
-    "banner": "banner.jpg",
-    "hero_bg": "hero.jpg",
+        "logo": "logo.png",
+        "cover": "cover.jpg",
+        "banner": "banner.jpg",
+        "hero_bg": "hero.jpg",
         "videos": [
             "https://youtu.be/oN4jmLFQ5a4?si=7KMdJIZkmXArxYra",
             "https://youtu.be/MX9x1oCGzX0?si=K3amBoQqj2Hp7eGA",
@@ -58,5 +58,6 @@
                 "text": "..."
             }
         ]
-    }
+    },
+    "color": "123, 123, 123"
 }

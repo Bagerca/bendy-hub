@@ -1,0 +1,105 @@
+.community-layout {
+    padding-bottom: 4rem;
+}
+
+.community-header {
+    margin-bottom: 2rem;
+    text-align: center;
+    animation: fadeInSlideUp 0.4s ease forwards;
+}
+
+.page-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.widget-section {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInSlideUp 0.5s ease forwards;
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.85rem;
+}
+
+.widget-header h3 {
+    font-size: 1.25rem;
+    color: var(--text-main);
+    font-weight: 800;
+    margin: 0;
+}
+
+.widget-external-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.widget-external-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.widget-external-link:hover {
+    color: var(--accent-color);
+    transform: translateX(2px);
+}
+
+.widget-wrapper {
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    height: 600px; /* Фиксированная высота для ленты */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Настройки для IFrame Телеграма */
+.tg-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    .community-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .widget-wrapper {
+        height: 500px;
+    }
+}

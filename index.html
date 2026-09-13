@@ -34,19 +34,15 @@
     <link rel="stylesheet" href="pages/music/player-core.css">
     <link rel="stylesheet" href="pages/music/player-controls.css">
     <link rel="stylesheet" href="pages/music/player-dock.css">
-    <link rel="stylesheet" href="pages/feed/feed.css">
+    <link rel="stylesheet" href="pages/feed/feed-layout.css">
+    <link rel="stylesheet" href="pages/feed/post-card.css">
+    <link rel="stylesheet" href="pages/feed/post-content.css">
     <link rel="stylesheet" href="pages/timeline/timeline.css">
     <link rel="stylesheet" href="pages/records/records.css">
-    
-    <script>
-        const savedTheme = localStorage.getItem('bendy-theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    </script>
 </head>
 <body>
-    <!-- УМНЫЙ ЭМБИЕНТ ФОН (ВИДЕО + ОБЛОЖКА) -->
+    <!-- УМНЫЙ ЭМБИЕНТ ФОН (ОБЛОЖКА) -->
     <div id="ambient-wrapper" class="ambient-wrapper">
-        <div id="ambient-video-container" class="ambient-video"></div>
         <div id="ambient-cover" class="ambient-cover"></div>
     </div>
 
@@ -112,7 +108,7 @@
     <!-- Музыка -->
     <template id="song-card-template"><article class="song-card"><div class="song-cover-wrapper"><div class="no-audio-badge" style="display: none;">Нет медиа</div><img src="" alt="" class="song-cover" loading="lazy"><div class="song-overlay"></div><button class="song-play-btn dyn-icon-play"></button></div><div class="song-info"><div class="song-title-wrapper smart-marquee-wrapper"><h3 class="song-title smart-marquee-text"></h3></div><div class="song-meta"><p class="song-artist"></p><span class="song-year"></span></div></div></article></template>
 
-    <!-- Лента (ОБНОВЛЕННЫЙ ШАБЛОН С КАРТОЧКАМИ) -->
+    <!-- Лента -->
     <template id="post-template">
         <article class="post-card">
             <div class="rt-badge" style="display: none;"></div>
@@ -142,7 +138,6 @@
                     </div>
                     <p class="quote-text"></p>
                     
-                    <!-- Сетка медиа для ЦИТАТ -->
                     <div class="quote-media-grid" style="display: none;"></div>
                 </div>
 
@@ -151,10 +146,8 @@
                     <p class="post-translation-text"></p>
                 </div>
                 
-                <!-- Сетка медиа для ОСНОВНОГО ПОСТА -->
                 <div class="post-media-grid" style="display: none;"></div>
                 
-                <!-- НОВЫЙ КОНТЕЙНЕР ДЛЯ КАРТОЧЕК ССЫЛОК -->
                 <div class="post-cards-container" style="display: none;"></div>
                 
             </div>

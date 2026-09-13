@@ -29,12 +29,9 @@
 /* Красивое размытие фона, если браузер поддерживает */
 @supports (backdrop-filter: blur(15px)) {
     .timeline-sticky-header {
-        background-color: rgba(240, 242, 245, 0.85); /* Базовый светлый */
+        background-color: rgba(17, 20, 24, 0.85); /* Применили темный фон дефолтом */
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
-    }
-    [data-theme="dark"] .timeline-sticky-header { 
-        background-color: rgba(17, 20, 24, 0.85); 
     }
 }
 
@@ -42,7 +39,7 @@
 .timeline-mode-toggle {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.85rem; /* Уменьшили для компенсации добавленного padding-top в era-nav */
 }
 
 .toggle-track {
@@ -81,6 +78,7 @@
 .era-nav {
     display: flex;
     gap: 10px;
+    padding-top: 10px; /* ИСПРАВЛЕНО: Даем кнопкам пространство сверху для прыжка и тени */
     padding-bottom: 1rem; /* Отступ до бордера */
     overflow-x: auto;
     scrollbar-width: none;
@@ -297,7 +295,7 @@
     }
     
     .timeline-mode-toggle {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     .mode-btn {

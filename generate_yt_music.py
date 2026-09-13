@@ -6,6 +6,11 @@ import urllib.error
 import re
 import time
 
+try:
+    from PIL import Image
+except ImportError:
+    print("ВНИМАНИЕ: Установите Pillow (pip install Pillow) для автоматической генерации цветов обложек.")
+
 # ==========================================
 # 🎵 ФАЙЛ-ИСТОЧНИК ССЫЛОК
 # ==========================================
@@ -127,6 +132,24 @@ def download_image(url, save_path):
     except:
         pass
     return False
+
+def get_average_color(image_path):
+    """Вычисляет средний цвет картинки, сжимая ее до 1x1 пикселя"""
+    try:
+        with Image.open(image_path) as img:
+            img = img.convert('RGB')
+            img = img.resize((1, 1), resample=Image.Resampling.LANCZOS)
+            r, g, b = img.getpixel((0, 0))
+            
+            # Добавляем яркость +20 (согласно прошлой логике JS)
+            r = min(255, r + 20)
+            g = min(255, g + 20)
+            b = min(255, b + 20)
+            
+            return f"{r}, {g}, {b}"
+    except Exception as e:
+        print(f"    ⚠️ Не удалось определить цвет обложки: {e}")
+        return "210, 168, 80" # Дефолтный золотой цвет Bendy
 
 def manage_links_file():
     """
@@ -266,6 +289,13 @@ def generate_music():
             if not download_image(f"https://img.youtube.com/vi/{vid_id}/maxresdefault.jpg", cover_path):
                 if not download_image(f"https://img.youtube.com/vi/{vid_id}/hqdefault.jpg", cover_path):
                     cover_filename = "" # Если не удалось скачать
+                    
+        # Вычисление среднего цвета обложки
+        track_color = existing_data.get("color", "")
+        if cover_filename and os.path.exists(cover_path) and not track_color:
+            track_color = get_average_color(cover_path)
+        if not track_color:
+            track_color = "210, 168, 80"
 
         # Сборка финального JSON с УМНЫМ СЛИЯНИЕМ (Smart Merge)
         track_data = {
@@ -277,6 +307,7 @@ def generate_music():
             "game": existing_data.get("game", "Bendy"),
             "year": year, 
             "cover": cover_filename,
+            "color": track_color,
             "audio": existing_data.get("audio", ""),
             "youtubeUrl": yt_url,
             "lyrics": existing_data.get("lyrics", {

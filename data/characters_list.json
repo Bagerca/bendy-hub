@@ -1,0 +1,896 @@
+[
+  {
+    "id": "abby_lambert",
+    "name": "Эбби Ламберт",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "alan_gray",
+    "name": "Алан Грей",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "alice_angel",
+    "name": "Искаженная Алиса",
+    "meta": {
+      "species": "Чернильная копия (Сьюзи Кэмпбелл)",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "allison_angel",
+    "name": "Ангел Эллисон",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "andrew",
+    "name": "Эндрю",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "angela",
+    "name": "Анджела",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "angus_newman",
+    "name": "Ангус Ньюман",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "audrey_drew",
+    "name": "Одри Дрю",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "bendy_animatronic",
+    "name": "Аниматроник Бенди",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "bendy_toon",
+    "name": "Мультяшный Бенди",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "bertram_piedmont",
+    "name": "Бертрам Пидмонт",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "betty",
+    "name": "Бетти",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "boris_clones",
+    "name": "Клоны Бориса",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "boris_wolf",
+    "name": "Волк Борис (Чернильный)",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "buddy_boris",
+    "name": "Бадди Борис",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "constance_gray",
+    "name": "Констанс Грей",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "dale_little",
+    "name": "Дейл Литтл",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "daniel_lewek",
+    "name": "Дэниэл Левек",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "dave",
+    "name": "Дэйв",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "donaldson",
+    "name": "Дональдсон",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "dot",
+    "name": "Дот",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "eckhardt",
+    "name": "Экхарт",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "emma_lamont",
+    "name": "Эмма Ламонт",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "fish",
+    "name": "Рыба",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "fisher",
+    "name": "Фишер",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "frank",
+    "name": "Фрэнк",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "gladys",
+    "name": "Глэдис",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "grant_cohen",
+    "name": "Грант Коэн",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "heidi",
+    "name": "Хайди",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "henry_stein",
+    "name": "Генри Штейн",
+    "meta": {
+      "species": "Карикатура (Чернильная копия)",
+      "aliases": [
+        "Объект 414",
+        "Разрушитель цикла"
+      ]
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "ink_demon",
+    "name": "Чернильный Демон",
+    "meta": {
+      "species": "Чернильная сущность (Неудачный эксперимент)",
+      "aliases": [
+        "Бенди",
+        "Демон",
+        "Улыбающаяся Тварь"
+      ]
+    },
+    "assets": {},
+    "versions": [
+      {
+        "assets": {
+          "avatar": "avatar.jpg",
+          "full_body": "full_body.png"
+        }
+      },
+      {
+        "assets": {
+          "avatar": "avatar_batim.jpg",
+          "full_body": "full_body_batim.png"
+        }
+      },
+      {
+        "assets": {
+          "avatar": "avatar_book.jpg",
+          "full_body": "full_body_book.png"
+        }
+      }
+    ]
+  },
+  {
+    "id": "irene_lewek",
+    "name": "Ирена Левек",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "jack_fain",
+    "name": "Джек Фейн",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "jacob",
+    "name": "Джейкоб",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "joey_drew",
+    "name": "Джоуи Дрю",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "lacey_benton",
+    "name": "Лейси Бентон",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "lenny",
+    "name": "Ленни",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "linda_stein",
+    "name": "Линда Штейн",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "lost_ones",
+    "name": "Потерянные",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "lotty",
+    "name": "Лотти",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "miss_rodriguez",
+    "name": "Мисс Родригес",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "mrs_panek",
+    "name": "Миссис Панек",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "mr_anger",
+    "name": "Мистер Ангер",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "mr_monroe",
+    "name": "Мистер Монро",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "mr_schwartz",
+    "name": "Мистер Шварц",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "nathan_arch",
+    "name": "Нэйтан Арч",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "norman_polk",
+    "name": "Норман Полк",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "omally",
+    "name": "О'Мэлли",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "piper",
+    "name": "Пайпер",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "porter",
+    "name": "Портер",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "richie",
+    "name": "Ричи",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "riley_wells",
+    "name": "Райли Уэллс",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "sammy_lawrence",
+    "name": "Сэмми Лоуренс",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "sandy_pommela",
+    "name": "Сэнди Поммела",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "scott",
+    "name": "Скотт",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "searchers",
+    "name": "Искатели",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "shawn_flynn",
+    "name": "Шон Флинн",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "simmons",
+    "name": "Симмонс",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "striker",
+    "name": "Страйкер",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "susie_campbell",
+    "name": "Сьюзи Кэмпбелл",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "thomas_connor",
+    "name": "Томас Коннор",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "tilly",
+    "name": "Тилли",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "tom",
+    "name": "Том",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "wally_franks",
+    "name": "Уолли Фрэнкс",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "wilfred_briar",
+    "name": "Уилфред Брайар",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "william_chambers",
+    "name": "Уильям Чемберс",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  },
+  {
+    "id": "wilson_arch",
+    "name": "Уилсон Арч",
+    "meta": {
+      "species": "...",
+      "aliases": []
+    },
+    "assets": {
+      "avatar": "avatar.jpg",
+      "full_body": "full_body.png"
+    },
+    "versions": []
+  }
+]

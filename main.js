@@ -68,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
         'records': { 
             module: getUrl('./pages/records/app.js'),
             template: getUrl('./pages/records/records.html')
+        },
+        'community': { 
+            module: getUrl('./pages/community/app.js'),
+            template: getUrl('./pages/community/community.html')
         }
     };
 

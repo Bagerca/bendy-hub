@@ -1,4 +1,3 @@
-import { ThemeManager } from '../ThemeManager.js';
 import { Icons } from '../icons.js';
 
 export class SiteHeader extends HTMLElement {
@@ -22,16 +21,12 @@ export class SiteHeader extends HTMLElement {
                         <a href="music.html" data-page="music" class="nav-link">Музыка</a>
                         <a href="timeline.html" data-page="timeline" class="nav-link">Хронология</a>
                         <a href="records.html" data-page="records" class="nav-link">Архивы</a>
+                        <a href="community.html" data-page="community" class="nav-link">Комьюнити</a>
                     </nav>
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
-                        ${Icons.theme_moon}
-                        ${Icons.theme_sun}
-                    </button>
                 </div>
             </header>
         `;
 
-        new ThemeManager('theme-toggle');
         this.updateActiveLink(activePage);
     }
 

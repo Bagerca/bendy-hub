@@ -33,10 +33,15 @@ export class MusicController {
             const searchInput = document.querySelector('.search-input');
             if (searchInput) searchInput.value = '';
             
-            this.handleFilterChange({ search: '', author: 'all' });
+            // Сбрасываем фильтры. Включаем всех авторов обратно.
+            const allAuthorIds = this.model.authors.map(a => a.id);
+            this.handleFilterChange({ search: '', authors: allAuthorIds });
             
             if (this.authorSelect) {
-                this.authorSelect.selectValue({ id: 'all', label: 'Все авторы' }, this.authorSelect.dropdown.firstElementChild);
+                this.authorSelect.selectedValues.clear();
+                allAuthorIds.forEach(id => this.authorSelect.selectedValues.add(id));
+                this.authorSelect.dropdown.querySelectorAll('li').forEach(li => li.classList.add('selected'));
+                this.authorSelect._updateTriggerUI();
             }
             
             setTimeout(() => {
@@ -70,13 +75,11 @@ export class MusicController {
         try {
             await this.model.fetchTracks();
             
+            let initialAuthorIds = [];
+            
             if (this.authorSelect) {
-                const allIcon = `<div class="svg-icon">${Icons.cat_all}</div>`;
                 const fallbackUrl = Icons.avatar_fallback;
-                
-                const authorOptions = [
-                    { id: 'all', label: 'Все авторы', iconHtml: allIcon }
-                ];
+                const authorOptions = [];
 
                 this.model.authors.forEach(author => {
                     const avatarSrc = author.assets?.avatar ? `assets/music_authors/${author.id}/${author.assets.avatar}` : fallbackUrl;
@@ -87,10 +90,14 @@ export class MusicController {
                     });
                 });
 
-                this.authorSelect.populate(authorOptions, 'all');
+                initialAuthorIds = authorOptions.map(o => o.id);
+                this.authorSelect.populate(authorOptions, initialAuthorIds);
+                
+                // Передаем правильный список выбранных авторов, чтобы грид обновился
+                this.handleFilterChange({ authors: initialAuthorIds });
+            } else {
+                this.view.renderGrid(this.model.filteredTracks);
             }
-
-            this.view.renderGrid(this.model.filteredTracks);
 
             if (this.player.currentTrack) {
                 this.model.syncCurrentTrack(this.player.currentTrack.id);

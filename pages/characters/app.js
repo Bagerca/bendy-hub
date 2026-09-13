@@ -12,21 +12,30 @@ export async function init() {
     searchControls.suggestionProvider = (query) => model.getSuggestions(query);
     searchControls.addEventListener('onSearch', (e) => controller.handleFilterChange({ search: e.detail }));
 
-    const categorySelect = new window.CustomSelect('category-filter-container', (selectedId) => {
-        controller.handleFilterChange({ category: selectedId });
+    const categorySelect = new window.CustomSelect('category-filter-container', {
+        multiple: true,
+        keepPlaceholder: true,
+        placeholder: 'Категории',
+        triggerIcon: `<div class="svg-icon">${Icons.cat_all}</div>`,
+        onChange: (selectedIds) => {
+            controller.handleFilterChange({ category: selectedIds });
+        }
     });
 
-    const iconAll = `<div class="svg-icon">${Icons.cat_all}</div>`;
     const iconHuman = `<div class="svg-icon">${Icons.cat_human}</div>`;
     const iconInk = `<div class="svg-icon">${Icons.cat_ink}</div>`;
     const iconToon = `<div class="svg-icon">${Icons.cat_toon}</div>`;
+    // Иконка для неопознанных персонажей (чтобы они не пропали при фильтрации)
+    const iconOther = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg></div>`;
     
-    categorySelect.populate([
-        { id: 'all', label: 'Все категории', iconHtml: iconAll },
+    const catOptions = [
         { id: 'human', label: 'Люди', iconHtml: iconHuman },
         { id: 'ink', label: 'Чернильные сущности', iconHtml: iconInk },
-        { id: 'toon', label: 'Мультяшки', iconHtml: iconToon }
-    ], 'all');
+        { id: 'toon', label: 'Мультяшки', iconHtml: iconToon },
+        { id: 'other', label: 'Прочее', iconHtml: iconOther }
+    ];
+
+    categorySelect.populate(catOptions, catOptions.map(o => o.id));
 
     await controller.init();
     return controller;

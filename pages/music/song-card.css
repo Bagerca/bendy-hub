@@ -17,7 +17,7 @@
     flex-direction: column; 
     cursor: pointer;
     position: relative; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     --card-hover-rgb: 210, 168, 80; 
     --marquee-bg: var(--bg-card); 
 }
@@ -156,20 +156,18 @@
 }
 
 /* =========================================
-   СПИСОК ТРЕКОВ (List View)
+   СПИСОК ТРЕКОВ (List View) - ОБНОВЛЕННЫЕ СЕЛЕКТОРЫ
    ========================================= */
-.music-grid.list-view { grid-template-columns: 1fr; gap: 0.75rem; }
+.music-content.list-view .music-grid { grid-template-columns: 1fr; gap: 0.75rem; }
 
-/* ИСПРАВЛЕНО: Убираем padding у самой карточки, чтобы картинка прилипала к краям */
-.music-grid.list-view .song-card { 
+.music-content.list-view .song-card { 
     flex-direction: row; 
     align-items: center; 
     padding: 0; 
     height: 78px; 
 }
 
-/* ИСПРАВЛЕНО: Обложка становится вплотную к левому краю и занимает всю высоту */
-.music-grid.list-view .song-cover-wrapper { 
+.music-content.list-view .song-cover-wrapper { 
     width: 138px; 
     height: 100%; 
     border-bottom: none; 
@@ -178,12 +176,11 @@
     flex-shrink: 0; 
 }
 
-.music-grid.list-view .no-audio-badge { font-size: 0.55rem; padding: 2px 6px; left: 6px; top: 6px; }
-.music-grid.list-view .song-play-btn { width: 36px; height: 36px; }
-.music-grid.list-view .song-play-btn svg { width: 16px; height: 16px; }
+.music-content.list-view .no-audio-badge { font-size: 0.55rem; padding: 2px 6px; left: 6px; top: 6px; }
+.music-content.list-view .song-play-btn { width: 36px; height: 36px; }
+.music-content.list-view .song-play-btn svg { width: 16px; height: 16px; }
 
-/* ИСПРАВЛЕНО: Добавляем отступы самому текстовому блоку, чтобы он не прилипал к картинке */
-.music-grid.list-view .song-info { 
+.music-content.list-view .song-info { 
     padding: 0 1rem; 
     flex-direction: row; 
     align-items: center; 
@@ -192,11 +189,11 @@
     gap: 20px;
 }
 
-.music-grid.list-view .smart-marquee-wrapper {
+.music-content.list-view .smart-marquee-wrapper {
     flex-grow: 1;
 }
 
-.music-grid.list-view .song-meta { 
+.music-content.list-view .song-meta { 
     flex-shrink: 0; 
     min-width: 140px; 
     max-width: 250px;
@@ -204,14 +201,13 @@
     gap: 15px;
 }
 
-.music-grid.list-view .song-artist { text-align: right; }
+.music-content.list-view .song-artist { text-align: right; }
 
 @media (max-width: 600px) {
     .music-grid { grid-template-columns: 1fr; gap: 1.25rem;}
-    .music-grid.list-view .song-meta { display: none; }
-    .music-grid.list-view .song-info { width: 100%; padding: 0 0.75rem; }
+    .music-content.list-view .song-meta { display: none; }
+    .music-content.list-view .song-info { width: 100%; padding: 0 0.75rem; }
     
-    /* ИСПРАВЛЕНО: Для телефонов картинку тоже подстраиваем под всю высоту карточки */
-    .music-grid.list-view .song-card { height: 64px; }
-    .music-grid.list-view .song-cover-wrapper { width: 114px; height: 100%; }
+    .music-content.list-view .song-card { height: 64px; }
+    .music-content.list-view .song-cover-wrapper { width: 114px; height: 100%; }
 }

@@ -16,47 +16,49 @@ export async function init() {
         controller.handleFilterChange({ search: e.detail });
     });
 
-    // 1. Инициализация выпадающего списка СОРТИРОВКИ
-    let currentSortType = 'date';
-    let currentSortDir = 'desc'; 
-
+    // 1. Инициализация выпадающего списка СОРТИРОВКИ (Двойные ползунки)
     const iconDate = `<div class="svg-icon">${Icons.sort_date}</div>`;
     const iconAlpha = `<div class="svg-icon">${Icons.sort_alpha}</div>`;
+    
+    // Кастомные иконки для убывания/возрастания
+    const iconDesc = `<div class="svg-icon">${Icons.sort_desc}</div>`;
+    const iconAsc = `<div class="svg-icon">${Icons.sort_asc}</div>`;
 
-    const sortSelect = new window.CustomSelect('sort-filter-container', (selectedId) => {
-        if (currentSortType === selectedId) {
-            currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
-        } else {
-            currentSortType = selectedId;
-            currentSortDir = selectedId === 'date' ? 'desc' : 'asc';
+    const sortSelect = new window.CustomSelect('sort-filter-container', {
+        keepPlaceholder: true,
+        placeholder: 'Сортировка',
+        triggerIcon: `<div class="svg-icon">${Icons.filter_sort}</div>`,
+        onChange: (selectedIds) => {
+            const type = selectedIds.includes('alpha') ? 'alpha' : 'date';
+            const dir = selectedIds.includes('asc') ? 'asc' : 'desc';
+            controller.handleFilterChange({ sort: `${type}_${dir}` });
         }
-        
-        updateSortUI();
-        controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
     });
 
-    function updateSortUI() {
-        const getArrow = (dir) => `<span class="sort-dir-wrap ${dir}">${Icons.sort_dir}</span>`;
-        
-        sortSelect.populate([
-            { 
-                id: 'date', 
-                label: `По дате ${currentSortType === 'date' ? getArrow(currentSortDir) : ''}`, 
-                iconHtml: iconDate 
-            },
-            { 
-                id: 'alpha', 
-                label: `По алфавиту ${currentSortType === 'alpha' ? getArrow(currentSortDir) : ''}`, 
-                iconHtml: iconAlpha 
-            }
-        ], currentSortType);
-    }
+    sortSelect.populate([
+        {
+            id: 'sort_type',
+            type: 'dual-toggle',
+            state1: { id: 'date', label: 'По дате', iconHtml: iconDate },
+            state2: { id: 'alpha', label: 'По алфавиту', iconHtml: iconAlpha }
+        },
+        {
+            id: 'sort_dir',
+            type: 'dual-toggle',
+            state1: { id: 'desc', label: 'Убывание', iconHtml: iconDesc },
+            state2: { id: 'asc', label: 'Возрастание', iconHtml: iconAsc }
+        }
+    ], ['date', 'desc']);
 
-    updateSortUI(); // Первичная отрисовка списка
-
-    // 2. Инициализация выпадающего списка АВТОРОВ
-    const authorSelect = new window.CustomSelect('author-filter-container', (selectedId) => {
-        controller.handleFilterChange({ author: selectedId });
+    // 2. Инициализация выпадающего списка АВТОРОВ (Мульти-селект)
+    const authorSelect = new window.CustomSelect('author-filter-container', {
+        multiple: true,
+        keepPlaceholder: true,
+        placeholder: 'Авторы',
+        triggerIcon: `<div class="svg-icon">${Icons.stat_users}</div>`,
+        onChange: (selectedIds) => {
+            controller.handleFilterChange({ authors: selectedIds });
+        }
     });
 
     controller.authorSelect = authorSelect; 

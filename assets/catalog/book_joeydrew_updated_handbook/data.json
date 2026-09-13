@@ -18,10 +18,10 @@
         "recommended": "..."
     },
     "assets": {
-    "logo": "logo.png",
-    "cover": "cover.jpg",
-    "banner": "banner.jpg",
-    "hero_bg": "hero.jpg",
+        "logo": "logo.png",
+        "cover": "cover.jpg",
+        "banner": "banner.jpg",
+        "hero_bg": "hero.jpg",
         "videos": [
             "..."
         ],
@@ -51,5 +51,6 @@
                 "text": "..."
             }
         ]
-    }
+    },
+    "color": "159, 144, 111"
 }

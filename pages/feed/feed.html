@@ -1,8 +1,6 @@
 <main class="page-content">
     <section class="feed-container">
         <search-controls placeholder="Поиск по твитам (Enter)...">
-            
-            <!-- Выпадающий список типов постов (БЕЗ "Ответы фанатам") -->
             <div class="custom-select-container" id="type-filter-container">
                 <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                     <div class="custom-select-value">
@@ -13,8 +11,6 @@
                 </button>
                 <ul class="custom-select-dropdown" role="listbox"></ul>
             </div>
-
-            <!-- Выпадающий список авторов -->
             <div class="custom-select-container" id="author-filter-container">
                 <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
                     <div class="custom-select-value">
@@ -25,9 +21,59 @@
                 </button>
                 <ul class="custom-select-dropdown" role="listbox"></ul>
             </div>
-
         </search-controls>
         <div id="feed-content" aria-live="polite"></div>
         <div id="scroll-sentinel" class="scroll-sentinel"></div>
     </section>
 </main>
+
+<template id="post-template">
+    <article class="post-card">
+        <div class="rt-badge" style="display: none;"></div>
+        <header class="post-header">
+            <img src="" alt="Avatar" class="post-avatar" loading="lazy">
+            <div class="post-meta">
+                <h2 class="post-author-name"></h2>
+                <a class="post-author-handle" target="_blank" rel="noopener noreferrer"></a>
+            </div>
+            <a class="post-header-action" target="_blank" rel="noopener noreferrer" title="Смотреть оригинал в X"></a>
+        </header>
+        
+        <div class="post-content">
+            <div class="reference-badge" style="display: none;">
+                <span class="ref-text"></span> <a class="ref-link" target="_blank" rel="noopener noreferrer"></a>
+            </div>
+
+            <div class="quote-card" style="display: none;">
+                <div class="quote-header">
+                    <img src="" alt="Avatar" class="quote-avatar" loading="lazy" style="display: none;">
+                    <div class="quote-meta">
+                        <span class="quote-author-name"></span>
+                        <span class="quote-author-handle"></span>
+                    </div>
+                </div>
+                <p class="quote-text"></p>
+                <div class="quote-media-grid" style="display: none;"></div>
+            </div>
+
+            <p class="post-text"></p>
+
+            <div class="post-translation" style="display: none;">
+                <div class="post-translation-header">Перевод</div>
+                <p class="post-translation-text"></p>
+            </div>
+            
+            <!-- ВОЗВРАЩАЕМ УМНУЮ СЕТКУ ВМЕСТО СЛАЙДЕРА -->
+            <div class="post-media-grid" style="display: none;"></div>
+            
+            <div class="post-cards-container" style="display: none;"></div>
+        </div>
+        <footer class="post-footer">
+            <time class="post-date" datetime=""></time>
+            <div class="post-actions">
+                <button class="action-btn translate-btn" aria-label="Перевести" title="Перевести"><span>Перевести</span></button>
+                <button class="action-btn copy-btn" aria-label="Скопировать" title="Скопировать"></button>
+            </div>
+        </footer>
+    </article>
+</template>

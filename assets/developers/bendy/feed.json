@@ -1,28 +1,5 @@
 [
   {
-    "id": "2095534177558954259",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Yikes. “CAN” it Bendy! Play now at https://bendyrun.com",
-    "timestamp": "2026-09-03T15:27:35Z",
-    "media": [
-      {
-        "url": "assets/developers/bendy/media/2095534177558954259_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
     "id": "2094528001606132089",
     "authorName": "Bendy",
     "authorHandle": "@Bendy",
@@ -46,107 +23,16 @@
     "linkCards": []
   },
   {
-    "id": "2092261441147404701",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Get the limited time drop T-Shirt and an amazing Metal Poster for Bendy’s Nightmare Run at https://BendyMerch.com",
-    "timestamp": "2026-08-25T14:42:54Z",
-    "media": [
-      {
-        "url": "assets/developers/bendy/media/2092261441147404701_0.jpg",
-        "type": "image"
-      },
-      {
-        "url": "assets/developers/bendy/media/2092261441147404701_1.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2091937918692495479",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Uh oh. Run Bendy! Play now at http://bendyrun.com",
-    "timestamp": "2026-08-24T17:17:20Z",
-    "media": [
-      {
-        "url": "assets/developers/bendy/media/2091937918692495479_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2090946144796877170",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: We’re listening! Update now for the latest. Much more to come! http://bendyrun.com",
-    "timestamp": "2026-08-21T23:36:23Z",
-    "media": [
-      {
-        "url": "assets/developers/bendy/media/2090946144796877170_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
     "id": "2090154623956849006",
     "authorName": "Bendy",
     "authorHandle": "@Bendy",
     "platform": "twitter",
     "content": "Bendy’s Nightmare Run is here!! Get it NOW for FREE! https://bendyrun.com",
     "timestamp": "2026-08-19T19:11:10Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2089696055277273172",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Bendy’s Nightmare Run! TOMORROW on YOUR phone!",
-    "timestamp": "2026-08-18T12:48:58Z",
     "media": [
       {
-        "url": "assets/developers/bendy/media/2089696055277273172_0.jpg",
-        "type": "image"
+        "url": "assets/developers/bendy/media/2090154623956849006_0.jpg",
+        "type": "video_thumb"
       }
     ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
@@ -183,54 +69,18 @@
     "linkCards": []
   },
   {
-    "id": "2089396840974135420",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Get ready! Bendy’s Nightmare Run is coming to your phone on WEDNESDAY!",
-    "timestamp": "2026-08-17T17:00:00Z",
-    "media": [
-      {
-        "url": "assets/developers/bendy/media/2089396840974135420_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
     "id": "2088687876531773549",
     "authorName": "Bendy",
     "authorHandle": "@Bendy",
     "platform": "twitter",
     "content": "Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon! @BendyRun",
     "timestamp": "2026-08-15T18:02:50Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2088687654225227974",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!",
-    "timestamp": "2026-08-15T18:01:57Z",
-    "media": [],
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2088687876531773549_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
@@ -305,7 +155,12 @@
     "referenceAuthorName": "Bendy",
     "referenceAvatarUrl": "",
     "referenceText": "The ORIGINAL BENDY is 90% OFF on Steam right now!",
-    "referenceMedia": [],
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bendy/media/quote_2079698901519540548_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
     "linkCards": []
   },
   {
@@ -349,25 +204,12 @@
     "referenceAuthorName": "Bendy",
     "referenceAvatarUrl": "",
     "referenceText": "The ORIGINAL BENDY is 90% OFF on Steam right now!",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2075267801736987085",
-    "authorName": "Bendy",
-    "authorHandle": "@Bendy",
-    "platform": "twitter",
-    "content": "RT @Bendy: The ORIGINAL BENDY is 90% OFF on Steam right now!",
-    "timestamp": "2026-07-09T17:16:15Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bendy/media/quote_2077354244747719055_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
     "linkCards": []
   },
   {
@@ -395,6 +237,29 @@
         "domain": "store.steampowered.com"
       }
     ]
+  },
+  {
+    "id": "2075267801736987085",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "The ORIGINAL BENDY is 90% OFF on Steam right now!",
+    "timestamp": "2026-07-09T17:16:15Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2075267801736987085_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
   },
   {
     "id": "2075264930844979612",
@@ -433,6 +298,1802 @@
       {
         "url": "assets/developers/bendy/media/2075264893561741644_0.mp4",
         "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2074560849855853043",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Less than 2 days left to get the BENDY SEQUEL at 90% OFF!",
+    "timestamp": "2026-07-07T18:27:04Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2072047753681568036",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The BENDY SEQUEL is 90% OFF on Steam Summer Sale!!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bendy/media/quote_2074560849855853043_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "2072087018822082849",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "You're stuck in the world of #BATDR! Who are YOU hanging out with?? #BENDY",
+    "timestamp": "2026-06-30T22:36:57Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2072047755199975536",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/1…",
+    "timestamp": "2026-06-30T20:00:56Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/1063660/Bendy_and_the_Dark_Revival/",
+        "image": "assets/developers/bendy/media/card_2072047755199975536_0.jpg",
+        "title": "Bendy and the Dark Revival on Steam",
+        "description": "Bendy and the Dark Revival® is a first-person survival horror game set in the creepiest cartoon studio to ever exist. Discover the truth. Escape the studio. Above all, fear the Ink Demon…and survive.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2072047753681568036",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "The BENDY SEQUEL is 90% OFF on Steam Summer Sale!! #BENDY #BATDR",
+    "timestamp": "2026-06-30T20:00:55Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2072047753681568036_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2071578258081034449",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "bit.ly/BendyStudioCollection…",
+    "timestamp": "2026-06-29T12:55:19Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "http://bit.ly/BendyStudioCollectionSteam",
+        "image": "assets/developers/bendy/media/card_2071578258081034449_0.jpg",
+        "title": "Bendy: Studio Collection on Steam",
+        "description": "",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2071578236115362295",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "80% OFF #BATIM and #BATDR together!",
+    "timestamp": "2026-06-29T12:55:14Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2071578236115362295_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070499927872930207",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/bundl…",
+    "timestamp": "2026-06-26T13:30:25Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/bundle/78458/Bendy_Summer_Sale/",
+        "image": "assets/developers/bendy/media/card_2070499927872930207_0.jpg",
+        "title": "Steam Store",
+        "description": "Steam is the ultimate destination for playing, discussing, and creating games.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2070499895249621387",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Join us! Get a combined 65% OFF when you grab the full inky collection during the Steam Summer Sale. 🎮🎮🎮 🔗👇 #BENDY #BATIM #BATDR #BendyLoneWolf",
+    "timestamp": "2026-06-26T13:30:17Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2070499895249621387_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070237957227683913",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/1…",
+    "timestamp": "2026-06-25T20:09:26Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/1063660/Bendy_and_the_Dark_Revival/",
+        "image": "assets/developers/bendy/media/card_2070237957227683913_0.jpg",
+        "title": "Bendy and the Dark Revival on Steam",
+        "description": "Bendy and the Dark Revival® is a first-person survival horror game set in the creepiest cartoon studio to ever exist. Discover the truth. Escape the studio. Above all, fear the Ink Demon…and survive.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2070237934352007188",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Yes. 90% OFF. Happy Summer! 🖤🎮 🔗👇 #BENDY #BATDR",
+    "timestamp": "2026-06-25T20:09:21Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2070237934352007188_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070235779507351824",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/1…",
+    "timestamp": "2026-06-25T20:00:47Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/1063660/Bendy_and_the_Dark_Revival/",
+        "image": "assets/developers/bendy/media/card_2070235779507351824_0.jpg",
+        "title": "Bendy and the Dark Revival on Steam",
+        "description": "Bendy and the Dark Revival® is a first-person survival horror game set in the creepiest cartoon studio to ever exist. Discover the truth. Escape the studio. Above all, fear the Ink Demon…and survive.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2070235751938162785",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "The sequel to Bendy and the Ink Machine is 90% OFF! 🖤🎮 🔗👇 #BENDY #BATDR",
+    "timestamp": "2026-06-25T20:00:41Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2070235751938162785_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070234240285876254",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/1…",
+    "timestamp": "2026-06-25T19:54:40Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/1063660/Bendy_and_the_Dark_Revival/",
+        "image": "assets/developers/bendy/media/card_2070234240285876254_0.jpg",
+        "title": "Bendy and the Dark Revival on Steam",
+        "description": "Bendy and the Dark Revival® is a first-person survival horror game set in the creepiest cartoon studio to ever exist. Discover the truth. Escape the studio. Above all, fear the Ink Demon…and survive.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2070234217724645555",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Retreat to 90% OFF on Bendy and the Dark Revival! 🖤🎮 🔗👇 #BENDY #BATDR",
+    "timestamp": "2026-06-25T19:54:35Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2070234217724645555_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2070191733095211168",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/1…",
+    "timestamp": "2026-06-25T17:05:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/1063660/Bendy_and_the_Dark_Revival/",
+        "image": "assets/developers/bendy/media/card_2070191733095211168_0.jpg",
+        "title": "Bendy and the Dark Revival on Steam",
+        "description": "Bendy and the Dark Revival® is a first-person survival horror game set in the creepiest cartoon studio to ever exist. Discover the truth. Escape the studio. Above all, fear the Ink Demon…and survive.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2070191707493154964",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Bendy and the Dark Revival is 90% OFF on the Steam Summer Sale right now! 🖤🎮 🔗👇 #BENDY #BATDR",
+    "timestamp": "2026-06-25T17:05:40Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2070191707493154964_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2064377176795828353",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "limitedrungames.com/collecti…",
+    "timestamp": "2026-06-09T16:00:47Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2064377131107278932",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Preorders open now for the physical trio for XBOX! #BENDY# #BATIM #BATDR #BENDYLoneWolf 🎮🎮🎮 🔗👇",
+    "timestamp": "2026-06-09T16:00:36Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2064377131107278932_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2061858357011501161",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Heavenly Toys sure makes some ugly #BENDY dolls! Would you buy this?? 🖤",
+    "timestamp": "2026-06-02T17:11:54Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2061858357011501161_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2061523229353644288",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Preorder the physical trio for XBOX next week. #BENDY# #BATIM #BATDR #BENDYLoneWolf 🎮🎮🎮",
+    "timestamp": "2026-06-01T19:00:13Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2061523229353644288_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2060335363583844850",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "direct.silverliningint.com/s…",
+    "timestamp": "2026-05-29T12:20:04Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://direct.silverliningint.com/search?q=bendy+double+pack",
+        "image": "assets/developers/bendy/media/card_2060335363583844850_0.jpg",
+        "title": "Search: 8 results found for \"bendy double pack\"",
+        "description": "Shop official Collector's Editions, and physical releases of indie hits like Dave the Diver and Outbound. Direct from Silver Lining Interactive.",
+        "domain": "direct.silverliningint.com"
+      }
+    ]
+  },
+  {
+    "id": "2060335327118610770",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "2 Games in 1! The Bendy Double Pack for PlayStation 5 and Nintendo Switch IS HERE!!! #BENDY# #BATIM #BATDR 🖤🖤 Check local retail stores or get it direct. 🔗👇",
+    "timestamp": "2026-05-29T12:19:55Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2060335327118610770_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2044147204022059502",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/2…",
+    "timestamp": "2026-04-14T20:14:06Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/2663960/Bendy_The_Cage/",
+        "image": null,
+        "title": "Bendy: The Cage on Steam",
+        "description": "Escape a twisted prison filled with the darkest experiments gone wrong, now set loose in the shadows to hunt you down. Unleash your deadly axe in this action psychological horror taking place during...",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2044147179342704997",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Fight the madness and wishlist today. 🖤 🔗👇 #BENDY #BendyTHECAGE",
+    "timestamp": "2026-04-14T20:14:00Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2044147179342704997_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2044083257411612810",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "#BENDY #NIGHTMARERUN 👣👣👣",
+    "timestamp": "2026-04-14T16:00:00Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2044083257411612810_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2044068189168935407",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/2…",
+    "timestamp": "2026-04-14T15:00:07Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/2663960/Bendy_The_Cage/",
+        "image": null,
+        "title": "Bendy: The Cage on Steam",
+        "description": "Escape a twisted prison filled with the darkest experiments gone wrong, now set loose in the shadows to hunt you down. Unleash your deadly axe in this action psychological horror taking place during...",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2044068153957687497",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Remain calm and wishlist today. 🖤 🔗👇 #BENDY #BendyTHECAGE",
+    "timestamp": "2026-04-14T14:59:59Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2044068153957687497_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2044053078689665139",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/bundl…",
+    "timestamp": "2026-04-14T14:00:05Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/bundle/4551/",
+        "image": "assets/developers/bendy/media/card_2044053078689665139_0.jpg",
+        "title": "Steam Store",
+        "description": "Steam is the ultimate destination for playing, discussing, and creating games.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2044053056728269181",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "A ridiculous 414 Bundle is available TODAY ONLY on Steam … ends at 4:14 PM EST!! 🖤 🔗👇 #BENDY",
+    "timestamp": "2026-04-14T14:00:00Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2044053056728269181_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2044037959209382383",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Happy 414 everyone! 🖤 #BENDY #414",
+    "timestamp": "2026-04-14T13:00:00Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2044037959209382383_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2039327866618302618",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "WATCH THE REVEAL TRAILER! They came from worlds apart… for an all new #BENDY game! 🦾🖤 #BendyNS @mobgamesstudios @NeighborGamesHQ @MeTattletail @Euphoric_Bros @Basically_Games @FNAF_ScottGames",
+    "timestamp": "2026-04-01T13:03:46Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2039327866618302618_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2035423313883701457",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/bundl…",
+    "timestamp": "2026-03-21T18:28:29Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/bundle/70884/Bendy_Spring_Sale/",
+        "image": "assets/developers/bendy/media/card_2035423313883701457_0.jpg",
+        "title": "Steam Store",
+        "description": "Steam is the ultimate destination for playing, discussing, and creating games.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2035423279192608952",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/3…",
+    "timestamp": "2026-03-21T18:28:20Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/3232610/Bendy_Lone_Wolf/",
+        "image": "assets/developers/bendy/media/card_2035423279192608952_0.jpg",
+        "title": "Bendy: Lone Wolf on Steam",
+        "description": "Bendy: Lone Wolf® tests your ability to survive against ever increasing odds. Monsters and obstacles emerge from every direction as you journey into the rubberhose halls of the world's most evil...",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2035423246904954922",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Bendy: Lone Wolf is 35% OFF on the Steam Spring Sale right now! 🖤🎮 🔗👇 #BENDY #BLW",
+    "timestamp": "2026-03-21T18:28:13Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2035423246904954922_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2034990977564164292",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/bundl…",
+    "timestamp": "2026-03-20T13:50:32Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/bundle/70884/Bendy_Spring_Sale/",
+        "image": "assets/developers/bendy/media/card_2034990977564164292_0.jpg",
+        "title": "Steam Store",
+        "description": "Steam is the ultimate destination for playing, discussing, and creating games.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2034990933259763803",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/1…",
+    "timestamp": "2026-03-20T13:50:21Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/1063660/Bendy_and_the_Dark_Revival/",
+        "image": "assets/developers/bendy/media/card_2034990933259763803_0.jpg",
+        "title": "Bendy and the Dark Revival on Steam",
+        "description": "Bendy and the Dark Revival® is a first-person survival horror game set in the creepiest cartoon studio to ever exist. Discover the truth. Escape the studio. Above all, fear the Ink Demon…and survive.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2034990888120696886",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Bendy and the Dark Revival is 70% OFF on the Steam Spring Sale right now! 🖤🎮 🔗👇 #BENDY #BATDR",
+    "timestamp": "2026-03-20T13:50:10Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2034990888120696886_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2034683960937107790",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/bundl…",
+    "timestamp": "2026-03-19T17:30:33Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/bundle/70884/Bendy_Spring_Sale/",
+        "image": "assets/developers/bendy/media/card_2034683960937107790_0.jpg",
+        "title": "Steam Store",
+        "description": "Steam is the ultimate destination for playing, discussing, and creating games.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2034683921414132008",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.steampowered.com/app/6…",
+    "timestamp": "2026-03-19T17:30:24Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/622650/Bendy_and_the_Ink_Machine/",
+        "image": "assets/developers/bendy/media/card_2034683921414132008_0.jpg",
+        "title": "Bendy and the Ink Machine on Steam",
+        "description": "Bendy and the Ink Machine® is the first person puzzle action horror game that will forever ruin your childhood love of cartoons.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "2034683854154604782",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Bendy and the Ink Machine is 70% OFF on the Steam Spring Sale right now! 🖤🎮 🔗👇 #BENDY #BATIM",
+    "timestamp": "2026-03-19T17:30:08Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2034683854154604782_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2029928204362809798",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Hello! This is Bendy. Don't be afraid of success. Because you aren't going to achieve any. Have an empty day. Empty is good.",
+    "timestamp": "2026-03-06T14:32:52Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2026010946351620478",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Hello! This is Bendy. If a monster chases you.. why run? Destruction is inevitable anyway. It all will be ok!",
+    "timestamp": "2026-02-23T19:07:05Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2024604208847049040",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "nintendo.com/store/products/…",
+    "timestamp": "2026-02-19T21:57:13Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://www.nintendo.com/store/products/bendy-revive-and-survive-bundle-switch/",
+        "image": "assets/developers/bendy/media/card_2024604208847049040_0.jpg",
+        "title": "Bendy: Revive and Survive Bundle for Nintendo Switch - Nintendo Official Site",
+        "description": "Shop Bendy: Revive and Survive Bundle for Nintendo Switch at Nintendo Store. See game details, editions, and availability.",
+        "domain": "nintendo.com"
+      }
+    ]
+  },
+  {
+    "id": "2024604181026189587",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "nintendo.com/store/products/…",
+    "timestamp": "2026-02-19T21:57:06Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://www.nintendo.com/store/products/bendy-ink-demons-collection-switch/",
+        "image": "assets/developers/bendy/media/card_2024604181026189587_0.jpg",
+        "title": "Bendy: Ink Demon's Collection for Nintendo Switch - Nintendo Official Site",
+        "description": "Shop Bendy: Ink Demon's Collection for Nintendo Switch at Nintendo Store. See game details, editions, and availability.",
+        "domain": "nintendo.com"
+      }
+    ]
+  },
+  {
+    "id": "2024604152706318713",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "nintendo.com/store/products/…",
+    "timestamp": "2026-02-19T21:56:59Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://www.nintendo.com/store/products/bendy-studio-collection-switch/",
+        "image": "assets/developers/bendy/media/card_2024604152706318713_0.jpg",
+        "title": "Bendy: Studio Collection for Nintendo Switch - Nintendo Official Site",
+        "description": "Shop Bendy: Studio Collection for Nintendo Switch at Nintendo Store. See game details, editions, and availability.",
+        "domain": "nintendo.com"
+      }
+    ]
+  },
+  {
+    "id": "2024604121647522215",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Complete your inky collection with the NEW Nintendo Switch Bundles. 🖤🎮 (But make sure to catch the 9th sale first! Ending SOON!) 🔗👇 #BENDY #BATIM #BATDR #BLW",
+    "timestamp": "2026-02-19T21:56:52Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2024604121647522215_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023770659562696775",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Let's all be calm about this.",
+    "timestamp": "2026-02-17T14:44:59Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/shockarock",
+    "referenceAuthor": "@shockarock",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023769623699571178",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Frustrates me so much that he can't ever get to the point, right? ... wait.. HEY! THAT'S ME!",
+    "timestamp": "2026-02-17T14:40:52Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/VinderTomat",
+    "referenceAuthor": "@VinderTomat",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023769298922246328",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Hi, Mint!",
+    "timestamp": "2026-02-17T14:39:35Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/mintisawesome",
+    "referenceAuthor": "@mintisawesome",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023765775715045615",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Have I?",
+    "timestamp": "2026-02-17T14:25:35Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/InkSwimmer37934",
+    "referenceAuthor": "@InkSwimmer37934",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023756047522087330",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Hello! This is Bendy. I saw all of it. I know what you've done. Explain yourself.",
+    "timestamp": "2026-02-17T13:46:55Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023753470768279666",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Total takeover! So much of me everywhere! This.. is good.",
+    "timestamp": "2026-02-17T13:36:41Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/NuTJoBDSQUIRREL",
+    "referenceAuthor": "@NuTJoBDSQUIRREL",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023752661149921679",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "The ink was good to me.",
+    "timestamp": "2026-02-17T13:33:28Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023752049683247346",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Right in the middle of so much horror. Perfect.",
+    "timestamp": "2026-02-17T13:31:02Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/de3dsoul",
+    "referenceAuthor": "@de3dsoul",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2023445060604543028",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Listen to the Bendy: Lone Wolf Official Soundtrack … selected and arranged by @theMeatly 🖤🎶 #BENDY #BLW https://youtu.be/AkmLnVd6IMY",
+    "timestamp": "2026-02-16T17:11:10Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=AkmLnVd6IMY",
+        "image": "assets/developers/bendy/media/card_2023445060604543028_0.jpg",
+        "title": "Bendy: Lone Wolf (Official Soundtrack)",
+        "description": "Music Composed and Arranged by theMeatly.The Bendy: Lone Wolf Offi...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "2023422417134326104",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Listen to the Bendy and the Dark Revival Official Soundtrack … selected and arranged by @theMeatly 🖤🎶 #BENDY #BATDR https://youtu.be/G_Rx1SN53XI",
+    "timestamp": "2026-02-16T15:41:12Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=G_Rx1SN53XI",
+        "image": "assets/developers/bendy/media/card_2023422417134326104_0.jpg",
+        "title": "Bendy and the Dark Revival (Official Soundtrack)",
+        "description": "Music Composed and Arranged by theMeatly.The Bendy and the Dark Re...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "2023407694166753464",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Listen to the Bendy and the Ink Machine Official Soundtrack … selected and arranged by @theMeatly 🖤🎶 #BENDY #BATIM https://youtu.be/wKMPgv0u3Bc",
+    "timestamp": "2026-02-16T14:42:42Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/wKMPgv0u3Bc",
+        "image": "assets/developers/bendy/media/card_2023407694166753464_0.jpg",
+        "title": "Bendy and the Ink Machine (Official Soundtrack)",
+        "description": "Music Composed and Arranged by theMeatly.The Bendy and the Ink Mac...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "2022317942281519125",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Hello! This is Bendy. Tell me about... your soul.",
+    "timestamp": "2026-02-13T14:32:24Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2022305804896837659",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "joeydrewstudios.com",
+    "timestamp": "2026-02-13T13:44:11Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "http://joeydrewstudios.com",
+        "image": "assets/developers/bendy/media/card_2022305804896837659_0.jpg",
+        "title": "Joey Drew Studios",
+        "description": "The official home of everything Bendy®.",
+        "domain": "joeydrewstudios.com"
+      }
+    ]
+  },
+  {
+    "id": "2022305773422850164",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "HUGE DISCOUNTS ON ALL PLATFORMS FOR A LIMITED TIME! Don’t miss it! 🎉 🔗👇 #BENDY #BATIM #BATDR #BLW",
+    "timestamp": "2026-02-13T13:44:03Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2022305773422850164_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021574181020631258",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.playstation.com/concep…",
+    "timestamp": "2026-02-11T13:16:58Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021574144077320514",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.playstation.com/concep…",
+    "timestamp": "2026-02-11T13:16:49Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021574117833466195",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "store.playstation.com/concep…",
+    "timestamp": "2026-02-11T13:16:43Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021574086573400106",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Happy #Bendyversary !! 🖤🎉 AND FINALLY 90% OFF ON PLAYSTATION STARTING NOW! 🔗👇 #BENDY #BATIM #BATDR #BLW",
+    "timestamp": "2026-02-11T13:16:35Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2021574086573400106_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021286043593425034",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "nintendo.com/store/products/…",
+    "timestamp": "2026-02-10T18:12:01Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "http://nintendo.com/store/products/bendy-lone-wolf-switch",
+        "image": "assets/developers/bendy/media/card_2021286043593425034_0.jpg",
+        "title": "Bendy: Lone Wolf for Nintendo Switch - Nintendo Official Site",
+        "description": "Shop Bendy: Lone Wolf for Nintendo Switch at Nintendo Store. See game details, editions, and availability.",
+        "domain": "nintendo.com"
+      }
+    ]
+  },
+  {
+    "id": "2021286006687777150",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "nintendo.com/store/products/…",
+    "timestamp": "2026-02-10T18:11:52Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://www.nintendo.com/store/products/bendy-and-the-dark-revival-switch",
+        "image": "assets/developers/bendy/media/card_2021286006687777150_0.jpg",
+        "title": "Bendy and the Dark Revival for Nintendo Switch - Nintendo Official Site",
+        "description": "Shop Bendy and the Dark Revival for Nintendo Switch at Nintendo Store. See game details, editions, and availability.",
+        "domain": "nintendo.com"
+      }
+    ]
+  },
+  {
+    "id": "2021285951260012966",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "nintendo.com/games/detail/be…",
+    "timestamp": "2026-02-10T18:11:39Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://www.nintendo.com/games/detail/bendy-and-the-ink-machine-switch",
+        "image": "assets/developers/bendy/media/card_2021285951260012966_0.jpg",
+        "title": "Bendy and the Ink Machine for Nintendo Switch - Nintendo Official Site",
+        "description": "Shop Bendy and the Ink Machine for Nintendo Switch at Nintendo Store. See game details, editions, and availability.",
+        "domain": "nintendo.com"
+      }
+    ]
+  },
+  {
+    "id": "2021285900974485629",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Happy #Bendyversary !! 🖤🎉 90% OFF ON NINTENDO SWITCH STARTING NOW! 🔗👇 #BENDY #BATIM #BATDR #BLW",
+    "timestamp": "2026-02-10T18:11:27Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2021285900974485629_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021277101681201615",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "microsoft.com/store/producti…",
+    "timestamp": "2026-02-10T17:36:29Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021277072249790834",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "xbox.com/games/store/bendy-a…",
+    "timestamp": "2026-02-10T17:36:22Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021277041954378069",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "microsoft.com/store/producti…",
+    "timestamp": "2026-02-10T17:36:14Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021276985561882871",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Happy #Bendyversary !! 🖤🎉 90% OFF ON XBOX STARTING NOW! 🔗👇 #BENDY #BATIM #BATDR #BLW",
+    "timestamp": "2026-02-10T17:36:01Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2021276985561882871_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021248490685227435",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "play.google.com/store/apps/d…",
+    "timestamp": "2026-02-10T15:42:47Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021248459093803267",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "play.google.com/store/apps/d…",
+    "timestamp": "2026-02-10T15:42:40Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021248417326923867",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "play.google.com/store/apps/d…",
+    "timestamp": "2026-02-10T15:42:30Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021248389065703660",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Happy #Bendyversary !! 🖤🎉 NOW ON SALE ON GOOGLE PLAY! 🔗👇 #BENDY #BATIM #BATDR #BLW",
+    "timestamp": "2026-02-10T15:42:23Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2021248389065703660_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021234224095809674",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "apps.apple.com/app/id1497319…",
+    "timestamp": "2026-02-10T14:46:06Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021234200049848834",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "apps.apple.com/us/app/bendy-…",
+    "timestamp": "2026-02-10T14:46:00Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021234171079753778",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "itunes.apple.com/app/bendy-a…",
+    "timestamp": "2026-02-10T14:45:53Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bendy/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2021234129942065546",
+    "authorName": "Bendy",
+    "authorHandle": "@Bendy",
+    "platform": "twitter",
+    "content": "Happy #Bendyversary !! 🖤🎉 SALES ON THE APPLE APP STORE STARTING NOW! 🔗👇 #BENDY #BATIM #BATDR #BLW",
+    "timestamp": "2026-02-10T14:45:43Z",
+    "media": [
+      {
+        "url": "assets/developers/bendy/media/2021234129942065546_0.jpg",
+        "type": "image"
       }
     ],
     "localAvatarPath": "assets/developers/bendy/avatar.jpg",

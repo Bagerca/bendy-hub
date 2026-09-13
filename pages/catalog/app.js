@@ -8,62 +8,64 @@ export async function init() {
     const cardView = new CatalogCardView('template-card-horizontal', 'template-card-vertical');
     const controller = new CatalogController(model, cardView);
 
-    // 1. Инициализация выпадающего списка ТИПОВ
-    const typeSelect = new window.CustomSelect('type-filter-container', (selectedId) => {
-        controller.handleFilterChange({ type: selectedId });
-    });
-
     const iconAll = `<div class="svg-icon">${Icons.cat_all}</div>`;
     const iconGame = `<div class="svg-icon">${Icons.stat_gamepad}</div>`;
     const iconBook = `<div class="svg-icon">${Icons.stat_book}</div>`;
     const iconMovie = `<div class="svg-icon">${Icons.cat_movie}</div>`;
 
-    typeSelect.populate([
-        { id: 'all', label: 'Все проекты', iconHtml: iconAll },
+    // 1. Инициализация выпадающего списка ТИПОВ (Мульти-селект)
+    const typeSelect = new window.CustomSelect('type-filter-container', {
+        multiple: true,
+        keepPlaceholder: true,
+        placeholder: 'Все проекты',
+        triggerIcon: iconAll,
+        onChange: (selectedIds) => {
+            controller.handleFilterChange({ type: selectedIds });
+        }
+    });
+
+    const typeOptions = [
         { id: 'game', label: 'Игры', iconHtml: iconGame },
         { id: 'book', label: 'Книги и Комиксы', iconHtml: iconBook },
         { id: 'movie', label: 'Анимация', iconHtml: iconMovie }
-    ], 'all');
+    ];
+    
+    // Передаем все id по умолчанию, чтобы галочки стояли везде
+    typeSelect.populate(typeOptions, typeOptions.map(o => o.id));
 
-    // 2. Инициализация выпадающего списка СОРТИРОВКИ
-    let currentSortType = 'date';
-    let currentSortDir = 'desc'; 
-
+    // 2. Инициализация выпадающего списка СОРТИРОВКИ (Двойные ползунки)
     const iconDate = `<div class="svg-icon">${Icons.sort_date}</div>`;
     const iconAlpha = `<div class="svg-icon">${Icons.sort_alpha}</div>`;
+    
+    const iconDesc = `<div class="svg-icon">${Icons.sort_desc}</div>`;
+    const iconAsc = `<div class="svg-icon">${Icons.sort_asc}</div>`;
 
-    const sortSelect = new window.CustomSelect('sort-filter-container', (selectedId) => {
-        if (currentSortType === selectedId) {
-            // Если кликаем по уже активной кнопке — меняем направление
-            currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
-        } else {
-            // Если выбрали другую — применяем её дефолтное направление
-            currentSortType = selectedId;
-            currentSortDir = selectedId === 'date' ? 'desc' : 'asc';
+    const sortSelect = new window.CustomSelect('sort-filter-container', {
+        keepPlaceholder: true,
+        placeholder: 'Сортировка',
+        triggerIcon: `<div class="svg-icon">${Icons.filter_sort}</div>`,
+        onChange: (selectedIds) => {
+            // selectedIds будет содержать 2 значения, например ['date', 'desc'] или ['alpha', 'asc']
+            const type = selectedIds.includes('alpha') ? 'alpha' : 'date';
+            const dir = selectedIds.includes('asc') ? 'asc' : 'desc';
+            controller.handleFilterChange({ sort: `${type}_${dir}` });
         }
-        
-        updateSortUI();
-        controller.handleFilterChange({ sort: `${currentSortType}_${currentSortDir}` });
     });
 
-    function updateSortUI() {
-        const getArrow = (dir) => `<span class="sort-dir-wrap ${dir}">${Icons.sort_dir}</span>`;
-        
-        sortSelect.populate([
-            { 
-                id: 'date', 
-                label: `По дате ${currentSortType === 'date' ? getArrow(currentSortDir) : ''}`, 
-                iconHtml: iconDate 
-            },
-            { 
-                id: 'alpha', 
-                label: `По алфавиту ${currentSortType === 'alpha' ? getArrow(currentSortDir) : ''}`, 
-                iconHtml: iconAlpha 
-            }
-        ], currentSortType);
-    }
-
-    updateSortUI(); // Первичная отрисовка списка сортировки
+    sortSelect.populate([
+        {
+            id: 'sort_type',
+            type: 'dual-toggle',
+            state1: { id: 'date', label: 'По дате', iconHtml: iconDate },
+            state2: { id: 'alpha', label: 'По алфавиту', iconHtml: iconAlpha }
+        },
+        {
+            id: 'sort_dir',
+            type: 'dual-toggle',
+            state1: { id: 'desc', label: 'Убывание', iconHtml: iconDesc },
+            state2: { id: 'asc', label: 'Возрастание', iconHtml: iconAsc }
+        }
+    ], ['date', 'asc']); // ИСПРАВЛЕНО: Теперь UI соответствует дефолту модели ('date_asc')
 
     // 3. Поиск
     const searchControls = document.querySelector('search-controls');
@@ -71,6 +73,5 @@ export async function init() {
     searchControls.addEventListener('onSearch', (e) => controller.handleFilterChange({ search: e.detail }));
 
     await controller.init();
-    
     return controller;
 }

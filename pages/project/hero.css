@@ -33,6 +33,7 @@
 .project-hero-overlay {
     position: absolute;
     inset: 0;
+    /* Оставляем только темный градиент */
     background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%),
                 linear-gradient(to top, var(--bg-body) 0%, rgba(var(--bg-body-rgb), 0) 15%);
     z-index: 1;

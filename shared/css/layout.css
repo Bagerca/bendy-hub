@@ -1,28 +1,21 @@
 /* =========================================
    ШАПКА (HEADER)
    ========================================= */
-/* МАГИЯ ЗДЕСЬ: Обязательно делаем кастомный тег блочным, 
-   иначе ломается sticky при скролле и контент лезет под шапку! */
 site-header {
     display: block;
     position: sticky;
     top: 0;
-    z-index: 1000; /* Шапка всегда поверх всего (даже поверх выпадающих меню) */
+    z-index: 1000;
     width: 100%;
 }
 
 .site-header {
     background-color: var(--bg-card);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    height: 70px; /* Жестко фиксируем высоту шапки для идеального стыка с нижними панелями */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3); /* Применили тень из dark theme по дефолту */
+    height: 70px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--border-color);
-    transition: background-color 0.3s ease;
-}
-
-[data-theme="dark"] .site-header {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .header-content {
@@ -30,28 +23,10 @@ site-header {
     width: 100%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between; 
+    justify-content: flex-start; /* Изменено, т.к. больше нет кнопки справа */
     align-items: center;
-    padding: 0 1.5rem; /* Отступы только по бокам, высота контролируется .site-header */
+    padding: 0 1.5rem; 
     gap: 1rem;
-}
-
-.theme-toggle {
-    background-color: var(--bg-body);
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 0.6rem;
-    border-radius: 50%;
-    transition: all 0.2s ease;
-    display: flex;
-    flex-shrink: 0; /* Не дает кнопке сжиматься на мобилках */
-}
-
-.theme-toggle:hover {
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-    transform: scale(1.05);
 }
 
 /* =========================================
@@ -66,8 +41,7 @@ site-header {
     border: 1px solid var(--border-color);
     overflow-x: auto;
     scrollbar-width: none;  
-    /* Устраняем проблему, когда длинное меню выталкивает кнопку темы за экран на мобилках */
-    max-width: calc(100vw - 90px); 
+    max-width: 100%; /* Убрали ограничение под кнопку */
 }
 
 .site-nav::-webkit-scrollbar { 
@@ -93,10 +67,6 @@ site-header {
 .nav-link.active {
     color: var(--text-main);
     background-color: var(--bg-card);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Применили тень из dark theme по дефолту */
     cursor: default;
-}
-
-[data-theme="dark"] .nav-link.active {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }

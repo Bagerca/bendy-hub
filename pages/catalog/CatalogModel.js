@@ -6,22 +6,13 @@ export class CatalogModel {
     constructor() {
         this.allItems = [];
         this.filteredItems = [];
-        // Дефолтная сортировка: Сначала новые
-        this.filters = { search: '', type: 'all', sort: 'date_desc' };
+        this.filters = { search: '', type: ['game', 'book', 'movie'], sort: 'date_asc' };
     }
 
     async fetchAllItems() {
         try {
-            const folders = await fetchData('data/catalog_index.json'); 
-            const promises = folders.map(folderId => 
-                fetchData(`assets/catalog/${folderId}/data.json`).catch(err => {
-                    Logger.warn(`Не удалось загрузить данные проекта: ${folderId}`, err);
-                    return null; 
-                })
-            );
-            
-            const results = await Promise.all(promises);
-            this.allItems = results.filter(item => item !== null);
+            // Теперь грузим всего 1 файл вместо десятков!
+            this.allItems = await fetchData('data/catalog_list.json'); 
             this.filteredItems = [...this.allItems];
             
             return this.applyFilters({});
@@ -44,30 +35,31 @@ export class CatalogModel {
 
         result = result.filter(item => {
             const itemType = item.type || 'game';
-            return type === 'all' || itemType === type;
+            return type.length > 0 && type.includes(itemType);
         });
 
-        // Функция натурального сравнения строк (понимает цифры "2" < "10" и игнорирует пунктуацию)
         const naturalCompare = (t1, t2) => {
             const str1 = t1 || '';
             const str2 = t2 || '';
             return str1.localeCompare(str2, 'ru', { numeric: true, ignorePunctuation: true });
         };
 
+        const [sortType, sortDir] = sort.split('_');
+        const isDesc = sortDir === 'desc';
+
         result.sort((a, b) => {
-            if (sort.startsWith('alpha')) {
+            if (sortType === 'alpha') {
                 const cmp = naturalCompare(a.title, b.title);
-                return sort === 'alpha_asc' ? cmp : -cmp;
+                return isDesc ? -cmp : cmp; 
             } else {
                 const timeA = this._parseRussianDate(a.release_date);
                 const timeB = this._parseRussianDate(b.release_date);
                 
-                // Тай-брейкер: если даты одинаковые (или обе TBA), сортируем по алфавиту от А до Я
                 if (timeA === timeB) {
                     return naturalCompare(a.title, b.title);
                 }
                 
-                return sort === 'date_desc' ? timeB - timeA : timeA - timeB;
+                return isDesc ? timeB - timeA : timeA - timeB; 
             }
         });
 
@@ -76,7 +68,6 @@ export class CatalogModel {
     }
 
     _parseRussianDate(dateStr) {
-        // Проекты без даты (TBA / ...) получают Infinity, чтобы всегда быть "в будущем" (наверху в новых)
         if (!dateStr || dateStr === '...' || dateStr.toUpperCase() === 'TBA') return Infinity; 
         try {
             const months = { 'янв':0, 'фев':1, 'мар':2, 'апр':3, 'мая':4, 'май':4, 'июн':5, 'июл':6, 'авг':7, 'сен':8, 'окт':9, 'ноя':10, 'дек':11 };

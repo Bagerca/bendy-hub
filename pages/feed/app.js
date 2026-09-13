@@ -30,11 +30,11 @@ export async function init() {
     const scroller = new InfiniteScroll('scroll-sentinel', () => controller.appendNextChunk());
     controller.scroller = scroller;
 
-    let currentSelectedAuthor = 'all';
-    let currentPostType = 'all';
+    let currentSelectedAuthors = [];
+    let currentPostTypes = [];
     let currentSearchTerm = '';
 
-    const triggerSearch = () => controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthor, currentPostType);
+    const triggerSearch = () => controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthors, currentPostTypes);
 
     const searchControls = document.querySelector('search-controls');
     searchControls.suggestionProvider = null; 
@@ -44,20 +44,11 @@ export async function init() {
         triggerSearch();
     });
 
-    // --- ФИЛЬТР: АВТОРЫ ---
-    const authorSelect = new window.CustomSelect('author-filter-container', (selectedId) => {
-        currentSelectedAuthor = selectedId;
-        triggerSearch();
-    });
+    // Иконки для кнопок-триггеров (Шапка выпадающего списка)
+    const iconLayers = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline></svg></div>`;
+    const iconUsers = `<div class="svg-icon">${Icons.stat_users}</div>`;
 
-    // --- ФИЛЬТР: ТИП ПОСТА ---
-    const typeSelect = new window.CustomSelect('type-filter-container', (selectedId) => {
-        currentPostType = selectedId;
-        triggerSearch();
-    });
-
-    // Иконки для фильтра типов
-    const iconAll = `<div class="svg-icon">${Icons.cat_all}</div>`;
+    // Иконки для самих пунктов меню
     const iconPencil = `<div class="svg-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg></div>`;
     const iconQuote = `<div class="svg-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg></div>`;
     const iconRepost = `<div class="svg-icon">${Icons.action_repost}</div>`;
@@ -65,24 +56,39 @@ export async function init() {
     const iconVideo = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg></div>`;
     const iconLink = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></div>`;
 
-    typeSelect.populate([
-        { id: 'all', label: 'Все записи', iconHtml: iconAll },
+    // --- ФИЛЬТР: ТИП ПОСТА (Мульти-селект) ---
+    const typeOptions = [
         { id: 'clean', label: 'Оригинальные', iconHtml: iconPencil },
         { id: 'quotes', label: 'Цитаты', iconHtml: iconQuote },
         { id: 'retweets', label: 'Репосты', iconHtml: iconRepost },
         { id: 'images', label: 'С картинками', iconHtml: iconImage },
         { id: 'videos', label: 'С видео / GIF', iconHtml: iconVideo },
         { id: 'links', label: 'Карточки ссылок', iconHtml: iconLink }
-    ], 'all');
+    ];
+    
+    currentPostTypes = typeOptions.map(o => o.id); // Все включены по дефолту
 
+    const typeSelect = new window.CustomSelect('type-filter-container', {
+        multiple: true,
+        keepPlaceholder: true, // Текст кнопки не меняется
+        placeholder: 'Тип записи',
+        triggerIcon: iconLayers,
+        onChange: (selectedIds) => {
+            currentPostTypes = selectedIds;
+            triggerSearch();
+        }
+    });
+    typeSelect.populate(typeOptions, currentPostTypes);
+
+    // --- ФИЛЬТР: РАЗРАБОТЧИКИ (Мульти-селект) ---
     try {
         const fallbackAvatarUri = Icons.avatar_fallback;
-        const selectOptions = [{ id: 'all', label: 'Все разработчики', iconHtml: iconAll }];
+        const authorOptions = [];
 
         const feedPromises = TRACKED_AUTHORS.map(author => {
             const handleClean = author.handle.replace('@', '').toLowerCase();
             
-            selectOptions.push({
+            authorOptions.push({
                 id: author.handle, 
                 label: author.name, 
                 iconHtml: `<img src="assets/developers/${handleClean}/avatar.jpg" alt="Avatar" class="custom-select-icon" onerror="this.onerror=null; this.src='${fallbackAvatarUri}';">`
@@ -91,7 +97,20 @@ export async function init() {
             return fetchData(`assets/developers/${handleClean}/feed.json`).catch(() => []);
         });
 
-        authorSelect.populate(selectOptions, 'all');
+        currentSelectedAuthors = authorOptions.map(o => o.id); // Все включены по дефолту
+
+        const authorSelect = new window.CustomSelect('author-filter-container', {
+            multiple: true,
+            keepPlaceholder: true,
+            placeholder: 'Разработчики',
+            triggerIcon: iconUsers,
+            onChange: (selectedIds) => {
+                currentSelectedAuthors = selectedIds;
+                triggerSearch();
+            }
+        });
+
+        authorSelect.populate(authorOptions, currentSelectedAuthors);
 
         const results = await Promise.all(feedPromises);
         let combinedFeed = [];
@@ -101,7 +120,8 @@ export async function init() {
 
         if (combinedFeed.length > 0) {
             model.setPosts(combinedFeed);
-            controller.start();
+            // Передаем дефолтные фильтры при первом старте
+            controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthors, currentPostTypes);
         } else {
             controller.renderEmptyState();
         }

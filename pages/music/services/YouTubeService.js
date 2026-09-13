@@ -1,12 +1,9 @@
-// FILE: pages/music/services/YouTubeService.js
 import { Logger } from '../../../shared/js/Logger.js';
 
-// Глобальные переменные для управления загрузкой YouTube API для всех инстансов
 let isYtApiLoaded = false;
 let isYtApiLoading = false;
 const ytReadyCallbacks = [];
 
-// Единственный глобальный обработчик (не будет перезаписан)
 window.onYouTubeIframeAPIReady = () => {
     isYtApiLoaded = true;
     ytReadyCallbacks.forEach(cb => cb());
@@ -22,7 +19,7 @@ export class YouTubeService {
         this.onStateChange = null;
         this.onReady = null;
         
-        this._loadApi();
+        // УБРАЛИ this._loadApi() ИЗ КОНСТРУКТОРА
     }
 
     _loadApi() {
@@ -53,7 +50,13 @@ export class YouTubeService {
     }
 
     loadVideo(videoId, startSeconds = 0, volume = 100, isMuted = false, autoplay = true) {
-        if (!this.isReady) return;
+        // >>> ЛЕНИВАЯ ИНИЦИАЛИЗАЦИЯ <<<
+        if (!isYtApiLoaded) {
+            this._loadApi();
+            // Ждем, пока скрипт скачается, и повторяем вызов
+            ytReadyCallbacks.push(() => this.loadVideo(videoId, startSeconds, volume, isMuted, autoplay));
+            return;
+        }
 
         if (this.player) {
             if (autoplay) {
@@ -65,7 +68,6 @@ export class YouTubeService {
             const container = document.getElementById(this.containerId);
             if (!container) return;
             
-            // Динамический ID, чтобы плееры не перезаписывали друг друга
             const placeholderId = `${this.containerId}-api-placeholder`;
             container.innerHTML = `<div id="${placeholderId}"></div>`;
             

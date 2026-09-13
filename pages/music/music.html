@@ -31,7 +31,9 @@
     </search-controls>
     
     <div id="music-loader" class="loading-state"><div class="spinner" style="margin: 0 auto 10px;"></div><span>Настройка радиоволны...</span></div>
-    <div class="music-grid" id="music-grid" style="display: none;"></div>
+    
+    <!-- Изменен ID и убран класс music-grid. Теперь это обертка для секций -->
+    <div id="music-content" class="music-content" style="display: none;"></div>
 </main>
 
 <template id="song-card-template">

@@ -1,0 +1,332 @@
+[
+  {
+    "id": "book_bendy_silver_screams",
+    "title": "Bendy and the Silver Screams",
+    "type": "book",
+    "status": "released",
+    "release_date": "3 март. 2026 г.",
+    "color": "111, 104, 87",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "book_crack_up_comics",
+    "title": "Crack-Up Comics Collection",
+    "type": "book",
+    "status": "released",
+    "release_date": "1 сент. 2020 г.",
+    "color": "157, 139, 114",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "book_dctl_graphic_novel",
+    "title": "Dreams Come to Life (Graphic Novel)",
+    "type": "book",
+    "status": "released",
+    "release_date": "6 авг. 2024 г.",
+    "color": "94, 89, 77",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "book_dreams_come_to_life",
+    "title": "Dreams Come to Life",
+    "type": "book",
+    "status": "released",
+    "release_date": "3 сент. 2019 г.",
+    "color": "133, 115, 89",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "book_fade_to_black",
+    "title": "Fade to Black",
+    "type": "book",
+    "status": "released",
+    "release_date": "3 окт. 2023 г.",
+    "color": "131, 113, 88",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "book_illusion_of_living",
+    "title": "The Illusion of Living",
+    "type": "book",
+    "status": "released",
+    "release_date": "2 фев. 2021 г.",
+    "color": "85, 77, 70",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "book_joeydrew_employee_handbook",
+    "title": "Joey Drew Studios Employee Handbook",
+    "type": "book",
+    "status": "released",
+    "release_date": "30 июл. 2019 г.",
+    "color": "122, 118, 103",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "book_joeydrew_updated_handbook",
+    "title": "Joey Drew Studios Updated Employee Handbook",
+    "type": "book",
+    "status": "released",
+    "release_date": "6 фев. 2024 г.",
+    "color": "159, 144, 111",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "book_sent_from_above",
+    "title": "Sent From Above",
+    "type": "book",
+    "status": "frozen",
+    "release_date": "...",
+    "color": "85, 75, 51",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "book_the_lost_ones",
+    "title": "The Lost Ones",
+    "type": "book",
+    "status": "released",
+    "release_date": "7 дек. 2021 г.",
+    "color": "94, 84, 70",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_bendys_nightmare_run",
+    "title": "Bendy's Nightmare Run",
+    "type": "game",
+    "status": "released",
+    "release_date": "19 авг. 2026 г.",
+    "color": "147, 137, 113",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_bendy_and_the_dark_revival",
+    "title": "Bendy and the Dark Revival",
+    "type": "game",
+    "status": "released",
+    "release_date": "15 ноя. 2022 г.",
+    "color": "75, 64, 49",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_bendy_and_the_ink_factory",
+    "title": "Bendy and the Ink Factory",
+    "type": "game",
+    "status": "development",
+    "release_date": "...",
+    "color": "143, 108, 68",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_bendy_and_the_ink_machine",
+    "title": "Bendy and the Ink Machine",
+    "type": "game",
+    "status": "released",
+    "release_date": "10 фев. 2017 г.",
+    "color": "109, 88, 57",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_bendy_in_nightmare_run",
+    "title": "Bendy in Nightmare Run",
+    "type": "game",
+    "status": "cancelled",
+    "release_date": "15 авг. 2018 г.",
+    "color": "89, 89, 90",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_bendy_lone_wolf",
+    "title": "Bendy: Lone Wolf",
+    "type": "game",
+    "status": "released",
+    "release_date": "15 авг. 2025 г.",
+    "color": "78, 67, 54",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_bendy_secrets_of_the_machine",
+    "title": "Bendy: Secrets of the Machine",
+    "type": "game",
+    "status": "released",
+    "release_date": "14 апр. 2024 г.",
+    "color": "57, 49, 43",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_bendy_silent_city",
+    "title": "Bendy: The Silent City",
+    "type": "game",
+    "status": "development",
+    "release_date": "...",
+    "color": "84, 62, 61",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_bendy_the_cage",
+    "title": "Bendy: The Cage",
+    "type": "game",
+    "status": "development",
+    "release_date": "...",
+    "color": "66, 55, 33",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "game_boris_and_the_dark_survival",
+    "title": "Boris and the Dark Survival",
+    "type": "game",
+    "status": "cancelled",
+    "release_date": "10 фев. 2020 г.",
+    "color": "74, 52, 29",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "movie_bendy",
+    "title": "Bendy and the Ink Machine (Movie)",
+    "type": "movie",
+    "status": "development",
+    "release_date": "...",
+    "color": "210, 168, 80",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  },
+  {
+    "id": "movie_bendy_cartoons",
+    "title": "Мультфильмы про Бенди",
+    "type": "movie",
+    "status": "released",
+    "release_date": "...",
+    "color": "123, 123, 123",
+    "assets": {
+      "cover": "cover.jpg",
+      "banner": "banner.jpg"
+    },
+    "characters_included": [
+      "..."
+    ]
+  }
+]

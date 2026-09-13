@@ -142,24 +142,6 @@
     "linkCards": []
   },
   {
-    "id": "2090154497670615224",
-    "authorName": "Bendy's Nightmare Run",
-    "authorHandle": "@BendyRun",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Bendy’s Nightmare Run is here!! Get it NOW for FREE! https://bendyrun.com",
-    "timestamp": "2026-08-19T19:10:40Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
     "id": "2089696055277273172",
     "authorName": "Bendy's Nightmare Run",
     "authorHandle": "@BendyRun",
@@ -207,12 +189,17 @@
   },
   {
     "id": "2088687654225227974",
-    "authorName": "Bendy's Nightmare Run",
+    "authorName": "BendyRun",
     "authorHandle": "@BendyRun",
     "platform": "twitter",
-    "content": "RT @BendyRun: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!",
+    "content": "Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon!",
     "timestamp": "2026-08-15T18:01:57Z",
-    "media": [],
+    "media": [
+      {
+        "url": "assets/developers/bendyrun/media/2088687654225227974_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
     "localAvatarPath": "assets/developers/bendyrun/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",

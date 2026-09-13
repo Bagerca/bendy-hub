@@ -1,23 +1,5 @@
 [
   {
-    "id": "2090154623956849006",
-    "authorName": "Bookpast",
-    "authorHandle": "@bookpast",
-    "platform": "twitter",
-    "content": "RT @Bendy: Bendy’s Nightmare Run is here!! Get it NOW for FREE! https://bendyrun.com",
-    "timestamp": "2026-08-19T19:11:10Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
     "id": "2089698950315999241",
     "authorName": "Bookpast",
     "authorHandle": "@bookpast",
@@ -38,70 +20,6 @@
         "type": "image"
       }
     ],
-    "linkCards": []
-  },
-  {
-    "id": "2089418342125670753",
-    "authorName": "Bookpast",
-    "authorHandle": "@bookpast",
-    "platform": "twitter",
-    "content": "RT @themeatly: Bendy's Nightmare Run will be a completely NEW app with no connection to the old one. Obviously it will be the same original game with exciting improvements! (And big new additions on the way!) Sadly, it won't have your old accounts (we tried!) but it will have a small special gift for coming back! :) #BENDY",
-    "timestamp": "2026-08-17T18:25:26Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "quote",
-    "referenceUrl": "https://twitter.com/Damii131/status/2089407961667973396",
-    "referenceAuthor": "@Damii131",
-    "referenceAuthorName": "Dami (Commissions open)",
-    "referenceAvatarUrl": "",
-    "referenceText": "will it restore the original game or do I have to download it again?",
-    "referenceMedia": [
-      {
-        "url": "assets/developers/bookpast/media/quote_2089418342125670753_0.jpg",
-        "type": "image"
-      }
-    ],
-    "linkCards": []
-  },
-  {
-    "id": "2089396840974135420",
-    "authorName": "Bookpast",
-    "authorHandle": "@bookpast",
-    "platform": "twitter",
-    "content": "RT @BendyRun: Get ready! Bendy’s Nightmare Run is coming to your phone on WEDNESDAY!",
-    "timestamp": "2026-08-17T17:00:00Z",
-    "media": [
-      {
-        "url": "assets/developers/bookpast/media/2089396840974135420_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2088687876531773549",
-    "authorName": "Bookpast",
-    "authorHandle": "@bookpast",
-    "platform": "twitter",
-    "content": "RT @Bendy: Get ready to RUN! Bendy’s Nightmare Run is coming very VERY soon! @BendyRun",
-    "timestamp": "2026-08-15T18:02:50Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
     "linkCards": []
   },
   {
@@ -159,42 +77,6 @@
     "linkCards": []
   },
   {
-    "id": "2072047753681568036",
-    "authorName": "Bookpast",
-    "authorHandle": "@bookpast",
-    "platform": "twitter",
-    "content": "RT @Bendy: The BENDY SEQUEL is 90% OFF on Steam Summer Sale!! #BENDY #BATDR",
-    "timestamp": "2026-06-30T20:00:55Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2070191707493154964",
-    "authorName": "Bookpast",
-    "authorHandle": "@bookpast",
-    "platform": "twitter",
-    "content": "RT @Bendy: Bendy and the Dark Revival is 90% OFF on the Steam Summer Sale right now! 🖤🎮 🔗👇 #BENDY #BATDR",
-    "timestamp": "2026-06-25T17:05:40Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
     "id": "2061858590395125914",
     "authorName": "Bookpast",
     "authorHandle": "@bookpast",
@@ -209,30 +91,12 @@
     "referenceAuthorName": "Bendy",
     "referenceAvatarUrl": "",
     "referenceText": "Heavenly Toys sure makes some ugly dolls! Would you buy this?? 🖤",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2060335327118610770",
-    "authorName": "Bookpast",
-    "authorHandle": "@bookpast",
-    "platform": "twitter",
-    "content": "RT @Bendy: 2 Games in 1! The Bendy Double Pack for PlayStation 5 and Nintendo Switch IS HERE!!! #BENDY# #BATIM #BATDR 🖤🖤 Check local retail stores or get it direct. 🔗👇",
-    "timestamp": "2026-05-29T12:19:55Z",
-    "media": [
+    "referenceMedia": [
       {
-        "url": "assets/developers/bookpast/media/2060335327118610770_0.mp4",
-        "type": "video"
+        "url": "assets/developers/bookpast/media/quote_2061858590395125914_0.jpg",
+        "type": "video_thumb"
       }
     ],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
     "linkCards": []
   },
   {
@@ -259,24 +123,6 @@
     "linkCards": []
   },
   {
-    "id": "2055267638322839971",
-    "authorName": "Bookpast",
-    "authorHandle": "@bookpast",
-    "platform": "twitter",
-    "content": "RT @MattGoles: That's An Order Ensign is OUT NOW! Go check it out on steam and tell all your friends! https://store.steampowered.com/app/4541390/Thats_An_Order_Ensign/ #indiegame",
-    "timestamp": "2026-05-15T12:42:44Z",
-    "media": [],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
     "id": "2044162283396342201",
     "authorName": "Bookpast",
     "authorHandle": "@bookpast",
@@ -295,81 +141,58 @@
     "linkCards": []
   },
   {
-    "id": "2044147179342704997",
-    "authorName": "Bookpast",
+    "id": "2039328012676612530",
+    "authorName": "bookpast",
     "authorHandle": "@bookpast",
     "platform": "twitter",
-    "content": "RT @Bendy: Fight the madness and wishlist today. 🖤 🔗👇 #BENDY #BendyTHECAGE",
-    "timestamp": "2026-04-14T20:14:00Z",
-    "media": [
+    "content": "It's on!",
+    "timestamp": "2026-04-01T13:04:21Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2039327866618302618",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "WATCH THE REVEAL TRAILER! They came from worlds apart… for an all new game! 🦾🖤",
+    "referenceMedia": [
       {
-        "url": "assets/developers/bookpast/media/2044147179342704997_0.jpg",
-        "type": "image"
+        "url": "assets/developers/bookpast/media/quote_2039328012676612530_0.jpg",
+        "type": "video_thumb"
       }
     ],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
     "linkCards": []
   },
   {
-    "id": "2044068153957687497",
-    "authorName": "Bookpast",
+    "id": "2021222892101333140",
+    "authorName": "bookpast",
     "authorHandle": "@bookpast",
     "platform": "twitter",
-    "content": "RT @Bendy: Remain calm and wishlist today. 🖤 🔗👇 #BENDY #BendyTHECAGE",
-    "timestamp": "2026-04-14T14:59:59Z",
-    "media": [
+    "content": "Overwhelming.",
+    "timestamp": "2026-02-10T14:01:04Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2021222635779096611",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Thank you to all our fans. It’s been, and continues to be, a wild ride! Happy !! 🖤🎉",
+    "referenceMedia": [
       {
-        "url": "assets/developers/bookpast/media/2044068153957687497_0.jpg",
-        "type": "image"
+        "url": "assets/developers/bookpast/media/quote_2021222892101333140_0.jpg",
+        "type": "video_thumb"
       }
     ],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
     "linkCards": []
   },
   {
-    "id": "2044037959209382383",
-    "authorName": "Bookpast",
+    "id": "2021189779593846936",
+    "authorName": "bookpast",
     "authorHandle": "@bookpast",
     "platform": "twitter",
-    "content": "RT @Bendy: Happy 414 everyone! 🖤 #BENDY #414",
-    "timestamp": "2026-04-14T13:00:00Z",
-    "media": [
-      {
-        "url": "assets/developers/bookpast/media/2044037959209382383_0.jpg",
-        "type": "image"
-      }
-    ],
-    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
-    "referenceType": "",
-    "referenceUrl": "",
-    "referenceAuthor": "",
-    "referenceAuthorName": "",
-    "referenceAvatarUrl": "",
-    "referenceText": "",
-    "referenceMedia": [],
-    "linkCards": []
-  },
-  {
-    "id": "2039697500559307211",
-    "authorName": "Bookpast",
-    "authorHandle": "@bookpast",
-    "platform": "twitter",
-    "content": "RT @themeatly: Hi, Bendy fans! I really hope you all enjoyed our April Fool's Day video this year. :) I had a blast making it, and reuniting some important horror faces. Thanks so much to the incredible creators whose characters have been so iconic and mean so much to all of us. Now that the fun of April Fool's Day is over, I personally wanted to talk about the upcoming 414 day. We've been working every day on \"Bendy: The Cage\" and several other major projects, and we wanted to have some cool things to show for 414. But we realized the deadline was putting major pressure on the team, and was taking away from time we want to spend just making the games/projects good. So 414 will be a very minimal event this year. There's no major news coming at this time. Just some small goodies. :) We love what we do and care about it deeply. We don't want to release underbaked or false promises. We actually want to respect our players and fans. Hype is fun.. but actual substance is what makes the things we love worthwhile. That said, there is plenty of Bendy stuff coming!.. big and small. TONS, actually! It just isn't ready yet. When it does, you'll be nicely overwhelmed with how much will hit you. :) Thanks to everyone! Thank you for being a Bendy fan! -theMeatly",
-    "timestamp": "2026-04-02T13:32:34Z",
+    "content": "#Bendyversary 9⃣ !!!",
+    "timestamp": "2026-02-10T11:49:30Z",
     "media": [],
     "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
     "referenceType": "",
@@ -382,22 +205,2221 @@
     "linkCards": []
   },
   {
-    "id": "982965594642411520",
-    "authorName": "Bookpast",
+    "id": "2018371116817940530",
+    "authorName": "bookpast",
     "authorHandle": "@bookpast",
     "platform": "twitter",
-    "content": "RT @MattGoles: 414? What does it mean?!",
-    "timestamp": "2018-04-08T12:57:15Z",
-    "media": [
+    "content": "Yeah. I must have these. 😳",
+    "timestamp": "2026-02-02T17:09:08Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/CptnAlexDesigns/status/2018368850467696942",
+    "referenceAuthor": "@CptnAlexDesigns",
+    "referenceAuthorName": "CptnAlex Designs",
+    "referenceAvatarUrl": "",
+    "referenceText": "The Ink Machine...it worked! Our new Bendy® collection is (a)live right now on our website - but don't delay, this machine only has so much ink, so these controllers are limited edition! Shop Now:",
+    "referenceMedia": [
       {
-        "url": "assets/developers/bookpast/media/982965594642411520_0.jpg",
+        "url": "assets/developers/bookpast/media/quote_2018371116817940530_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_2018371116817940530_1.jpg",
         "type": "image"
       }
     ],
+    "linkCards": []
+  },
+  {
+    "id": "2016573721666830696",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Seat 11. The most barriers between me and the insane people.",
+    "timestamp": "2026-01-28T18:06:56Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/aruma16_",
+    "referenceAuthor": "@aruma16_",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "2006591456115568937",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Happy New Year! 🥳",
+    "timestamp": "2026-01-01T05:00:58Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/2006591214305554838",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Happy … New … Year 😵‍💫",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_2006591456115568937_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1990473632645062805",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🥸",
+    "timestamp": "2025-11-17T17:34:29Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1990473262837457355",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "THIS IS MADNESS! LAST CHANCE! 😵‍💫",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1990473632645062805_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1989697012913082866",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Bendy plays games too. Happy 3rd anniversary of BATDR!",
+    "timestamp": "2025-11-15T14:08:29Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1989694884635120063",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Waiting? Play the Dark Revival anywhere on your PHONE. 🖤📲 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1989697012913082866_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1988688320734589093",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Finally. ☑️",
+    "timestamp": "2025-11-12T19:20:18Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/valvesoftware/status/1988673021197140191",
+    "referenceAuthor": "@valvesoftware",
+    "referenceAuthorName": "Valve",
+    "referenceAvatarUrl": "",
+    "referenceText": "Announcing: New Hardware, coming in 2026: Steam Controller Steam Machine Steam Frame Watch our jazzy announcement video and wishlist now:",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1988688320734589093_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1984306179393073396",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "😆",
+    "timestamp": "2025-10-31T17:07:14Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1984247717233873043",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Terrifying. 😆",
+    "timestamp": "2025-10-31T13:14:55Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1984235098166943846",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "👋🎃",
+    "timestamp": "2025-10-31T12:24:47Z",
+    "media": [],
     "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
     "referenceType": "",
     "referenceUrl": "",
     "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1982804048790049252",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Ooooooooo. 😉",
+    "timestamp": "2025-10-27T13:38:18Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1982803771739554216",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "REMAIN CALM. Teaser drops this Halloween.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1982804048790049252_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1959703205912170590",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "😆",
+    "timestamp": "2025-08-24T19:43:48Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1959702434026299782",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Have you discovered Big Head Mode yet? Play Today 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1959703205912170590_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1957811599462265101",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "The title of B3 is ............................................................",
+    "timestamp": "2025-08-19T14:27:14Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1957811131436732436",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Let's give it a name.",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=TW3lSbQuiac",
+        "image": "assets/developers/bookpast/media/card_1957811599462265101_0.jpg",
+        "title": "B3NDY TITLE REVEAL: \"BENDY AND THE...\"",
+        "description": "Revealing the title to the conclusion of the Bendy mainline sagaS...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1956409579836706932",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "WOLF TIME!!!! 🐺",
+    "timestamp": "2025-08-15T17:36:06Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1956408498780270619",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Bendy: Lone Wolf is HERE! 🐺🖤",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1956409579836706932_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1956400638012637296",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Here We Go!",
+    "timestamp": "2025-08-15T17:00:34Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/m_ZeroLogics/status/1956400420084977721",
+    "referenceAuthor": "@m_ZeroLogics",
+    "referenceAuthorName": "Mike Desjardins",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1956400638012637296_0.png",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1956330219456823769",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Going to wear me some wolf's clothing. 🐺",
+    "timestamp": "2025-08-15T12:20:45Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1956329105172971929",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "LAUNCH DAY!!! The Lone Wolf is HERE! 👕🖤🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1956330219456823769_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1956330219456823769_1.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1956330219456823769_2.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1956330219456823769_3.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1955993985572384887",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "TOMORROW IS WOLF DAY.",
+    "timestamp": "2025-08-14T14:04:41Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1955993615320207574",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "LONE WOLF TOMORROW. 🐺🖤 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1955993985572384887_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1955967991041986611",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "T O M O R R O W",
+    "timestamp": "2025-08-14T12:21:23Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1955967088666837214",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "SUPER LIMITED LONE WOLF TOMORROW SHIRT! Get it now. RIGHT NOW. “Tomorrow” is TODAY ONLY!!! Link below. 🔗👇 ⏰👕🖤",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1955967991041986611_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1955043354003013762",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Edgar is the cutest. Fact.",
+    "timestamp": "2025-08-11T23:07:13Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1953825713686999299",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "😉",
+    "timestamp": "2025-08-08T14:28:45Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1953822387855618456",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "WHAT’S IN THE BOX!? Preorder and Wishlist Now 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1953825713686999299_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1952838687785664930",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "I can never win these kind of games IRL. Can you?😛",
+    "timestamp": "2025-08-05T21:06:39Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1952437951427747943",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Deeper than ever before.",
+    "timestamp": "2025-08-04T18:34:16Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1952426930369646984",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Choose your floor. Choose your adventure. Search for secrets! Preorder and Wishlist Now 🔗👇",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1952437951427747943_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1911857225951306045",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Yessss!!! Color!!!!!! 🎨",
+    "timestamp": "2025-04-14T19:00:57Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1911856986523914496",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Open the archives! AND FRIENDS RETURN! New cartoons are coming! Stay tooned!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1911857225951306045_0.mp4",
+        "type": "video"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1911843223103844733",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "I don't want often.... But when I do I really want. 👕",
+    "timestamp": "2025-04-14T18:05:19Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1911842746077245808",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "EXCLUSIVE 414 T-shirts available NOW at Hurry! These limited designs are only available until April 18th! ⏰👕🖤",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1911843223103844733_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1911843223103844733_1.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1911843223103844733_2.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1911804565235573060",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Finally. AGAIN.",
+    "timestamp": "2025-04-14T15:31:42Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1911804336058818638",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "New Bendy and the Ink Machine enhanced physical coming soon to stores!!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1911804565235573060_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1911797836628238838",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Finally!!!!",
+    "timestamp": "2025-04-14T15:04:58Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1911796587459735655",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "New Bendy and the Ink Machine newly enhanced digital versions coming soon!! PLAYSTATION 5 / XBOX SERIES S/X / SWITCH",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1911797836628238838_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1883926235019096089",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Sweeet deal! All this AND a year supply of @GFuelEnergy ! 😋 #BENDY",
+    "timestamp": "2025-01-27T17:13:10Z",
+    "media": [
+      {
+        "url": "assets/developers/bookpast/media/1883926235019096089_0.jpg",
+        "type": "image"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/GFuelEnergy/status/1883919684442964208",
+    "referenceAuthor": "@GFuelEnergy",
+    "referenceAuthorName": "G FUEL®",
+    "referenceAvatarUrl": "",
+    "referenceText": "✒️ X G FUEL GIVEAWAY ✒️ 🖤 HOW TO WIN: LIKE + COMMENT \"BENDY + RT THIS POST!! GRAND PRIZE: ⚡ G FUEL for a YEAR 💫 Set of Bendy Action Figures 🖤 G FUEL X Bendy Collector's Box 🏆 Winners will be picked on Feb. 10.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1883926235019096089_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1874319864040706143",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Happy New Year!!!!!",
+    "timestamp": "2025-01-01T05:00:53Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1874319645769163142",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Happy New Year! 🎉",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1874319864040706143_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1871612803154604330",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🎄🎄🎄",
+    "timestamp": "2024-12-24T17:43:59Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1871612499273134450",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Merry Christmas from Joey Drew Studios. Have a great holiday! 🎄",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1871612803154604330_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1852004417081315532",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "📽️🎞️🎬",
+    "timestamp": "2024-10-31T15:07:16Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1852002665061924920",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Let us begin… the ritual must be completed! Director Announcement NOW!! 🎬",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=dQDRdttpIJc",
+        "image": "assets/developers/bookpast/media/card_1852004417081315532_0.jpg",
+        "title": "BENDY AND THE INK MACHINE - DIRECTOR ANNOUNCEMENT",
+        "description": "We are honored to have some amazing creative behind the camera for ...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1851745783135039707",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🍿🍿🍿",
+    "timestamp": "2024-10-30T21:59:33Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1851745443534819559",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Director Announcement!! 🎬 …. Sooooon.",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=dQDRdttpIJc",
+        "image": "assets/developers/bookpast/media/card_1851745783135039707_0.jpg",
+        "title": "BENDY AND THE INK MACHINE - DIRECTOR ANNOUNCEMENT",
+        "description": "We are honored to have some amazing creative behind the camera for ...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1848409482163864010",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "WHO WILL DIRECT???",
+    "timestamp": "2024-10-21T17:02:16Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1848408907355439331",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The darkened studio has a director. Stay tuned.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1848409482163864010_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1848364306716410274",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Something to snack on this Halloween ... 🎃",
+    "timestamp": "2024-10-21T14:02:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1848363618158493761",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Find the skulls. Survive .",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1848364306716410274_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1817609001754112331",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Nice setup!",
+    "timestamp": "2024-07-28T17:12:10Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/AlvinMunk500/status/1816940539226243399",
+    "referenceAuthor": "@AlvinMunk500",
+    "referenceAuthorName": "AlvinMunk500🐿 #BENDYMOVIE Arc",
+    "referenceAvatarUrl": "",
+    "referenceText": "Got these INKcredible figures today!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1817609001754112331_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1791516868307751068",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Awwwwww.",
+    "timestamp": "2024-05-17T17:11:20Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Red_Ed0021/status/1790049041729917141",
+    "referenceAuthor": "@Red_Ed0021",
+    "referenceAuthorName": "E2E1 (Comms open)",
+    "referenceAvatarUrl": "",
+    "referenceText": "Who knew Bendy and Edgar could get along this well? - -",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1791516868307751068_0.png",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1788600635065270711",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "The most game-accurate action figures we've ever had. Got the whole set on my desk.😎",
+    "timestamp": "2024-05-09T16:03:16Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1788599870582096216",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "All New Dark Revival ACTION FIGURES by are here!! 💪🖤",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1788600635065270711_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1788600635065270711_1.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1788600635065270711_2.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1788600635065270711_3.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1780944583305593322",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "3!",
+    "timestamp": "2024-04-18T13:00:51Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1780944393878294703",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Bendy will return… in the third game.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1780944583305593322_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1780944200466358376",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "...",
+    "timestamp": "2024-04-18T12:59:20Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1774764735658926170",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Yessssssss. 😆",
+    "timestamp": "2024-04-01T11:44:21Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1774764180974805006",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Ride the Ink Demon THIS summer!!! 🎢",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1774764735658926170_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1767543244697522507",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Looks terrific. 😲",
+    "timestamp": "2024-03-12T13:28:43Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/CROXXXTAR",
+    "referenceAuthor": "@CROXXXTAR",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1756317224539730090",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Just some big inky beast. No need to panic Henry. 😳",
+    "timestamp": "2024-02-10T14:00:31Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1756317117983441061",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Henry had his first adventure 7 years ago today. Hope he’s prepared for what’s coming. Happy Bendyversary",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1756317224539730090_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1752406886291542364",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "It's on. ⌨️🎮",
+    "timestamp": "2024-01-30T19:02:14Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1752406322811711720",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "🟡 It’s time for the ! 🟡 You could win on the platform of your choice! 3 Winners will be chosen tomorrow at random. To enter do all 4 of the following on this post: 🚶🏻‍♂️ Follow ♥️ Like 🔁 Retweet ✍️ Comment Good luck!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1752406886291542364_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1751395046757470624",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "So cute! 😆",
+    "timestamp": "2024-01-28T00:01:33Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Red_Ed0021",
+    "referenceAuthor": "@Red_Ed0021",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1750901735667749243",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Congratulations!! Everyone else good luck NEXT TIME! 🙌",
+    "timestamp": "2024-01-26T15:21:18Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1750538146876473783",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Already have it? Give it to that friend who's never actually played it. Then tell them to let you watch as they get jumpscared. 😄",
+    "timestamp": "2024-01-25T15:16:32Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1750533985716113825",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "🟡 It’s time for the ! 🟡 You could win on the platform of your choice! 3 Winners will be chosen tomorrow at random. To enter do all 4 of the following on this post: 🚶🏻‍♂️ Follow ♥️ Like 🔁 Retweet ✍️ Comment Good luck!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1750538146876473783_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1749945815114629583",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Ewwww. That's not a marble is it?",
+    "timestamp": "2024-01-24T00:02:49Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1749943220186804341",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "New horrors will be unleashed in .",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1749945815114629583_0.png",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1741904987691635034",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "It's coming! Wishlisting is the Steam equivalent of voting. Vote for Bendy. 😆",
+    "timestamp": "2024-01-01T19:31:26Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1741903159058907487",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The horrors of \"The Pit\" are forming. Add to your Steam Wishlist NOW! 🎮",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1741904987691635034_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1741669619667017744",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Happy New Year Everyone: 2024 Edition!! 🙌 We have a lot to look forward to.",
+    "timestamp": "2024-01-01T03:56:10Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1741668278630547581",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Happy New Year from Joey Drew Studios! 🎉",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1741669619667017744_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1739302046342218131",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2023-12-25T15:08:17Z",
+    "media": [
+      {
+        "url": "assets/developers/bookpast/media/1739302046342218131_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1739300169533780435",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "It’s happening!! 🫨 #BENDYMOVIE",
+    "timestamp": "2023-12-25T15:00:49Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1739299966571470933",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "🎬",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1739300169533780435_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1739061489812574465",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Christmas is practically here!🎄",
+    "timestamp": "2023-12-24T23:12:24Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1739061074127634623",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Merry Christmas! Have a great holiday! 🎄",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1739061489812574465_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1733170850088570982",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "I've been rocking the silver Bendy watch. My favorite! 😄⌚️🤜",
+    "timestamp": "2023-12-08T17:05:06Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Bendy",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1723071060227117214",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "😆 They look like father and son. 👨‍👦",
+    "timestamp": "2023-11-10T20:12:08Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1721905107267461463",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "⚪️ 🟥\\ | |",
+    "timestamp": "2023-11-07T14:59:03Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1719355524909576250",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "You crazy Meat. 🦈🦈🦈",
+    "timestamp": "2023-10-31T14:07:55Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1719354195386437989",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "A VERY HAPPY HALLOWEEN, EVERYONE!! :D",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1719331896667107638",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "👋🎃",
+    "timestamp": "2023-10-31T12:34:02Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1718975598700249334",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "👋",
+    "timestamp": "2023-10-30T12:58:14Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1682420626303201281",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Oh yeah!",
+    "timestamp": "2023-07-21T16:01:49Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1682417625349980160",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "SNEAK PEEK: All new action figures are coming. 🤺",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1682420626303201281_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1674861386235539458",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Congratulations!",
+    "timestamp": "2023-06-30T19:24:06Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/allymurphyvoice",
+    "referenceAuthor": "@allymurphyvoice",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1630905545237381122",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🛋️+📺+🎮+BATDR=😱",
+    "timestamp": "2023-03-01T12:19:17Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1630903520550428672",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "PLAY The Dark Revival on Xbox and Playstation TODAY! 🎉 Get it now at",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1630905545237381122_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1617245054808068098",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "I totally tested this game for 10 minutes and I give it the ’10 MINUTE TEST SEAL OF APPROVAL”. 😂 And yes I got jumpscared.",
+    "timestamp": "2023-01-22T19:37:22Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1617244533871239170",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "I decided to take ONE day off and make the \"best\" mascot horror game EVER made!... :) PLAY IT NOW! :D It's totally scary! ;)",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://gamejolt.com/games/MeatlysStorageWorld/781362",
+        "image": "assets/developers/bookpast/media/card_1617245054808068098_0.jpg",
+        "title": "Meatly's Storage World",
+        "description": "🎮 Oh, the horror! Another \"terrifying\" first person mascot horror game where you do stuff and not get caught. Over several minutes of gameplay! LORE! #horror #survival #puzzle #scary...",
+        "domain": "gamejolt.com"
+      }
+    ]
+  },
+  {
+    "id": "1615439677330178049",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Ooooooooo! 😗",
+    "timestamp": "2023-01-17T20:03:27Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/youtooz/status/1615439099476729876",
+    "referenceAuthor": "@youtooz",
+    "referenceAuthorName": "youtooz",
+    "referenceAvatarUrl": "",
+    "referenceText": "just a pencil and a dream ✏️ youtooz x collection is available now!",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1615439677330178049_0.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1614290668226052097",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Then what do you have against strangers? 😆",
+    "timestamp": "2023-01-14T15:57:42Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/themeatly",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1609416882729222145",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🎉🎉🎉",
+    "timestamp": "2023-01-01T05:11:01Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/BLacroix30/status/1609415031849947137",
+    "referenceAuthor": "@BLacroix30",
+    "referenceAuthorName": "Ben Lacroix",
+    "referenceAvatarUrl": "",
+    "referenceText": "Happy new year! 🥂🍾🎊",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1606366790623297557",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "😮👍",
+    "timestamp": "2022-12-23T19:11:02Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Artbygavin",
+    "referenceAuthor": "@Artbygavin",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1602288118794690560",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "He's amazing!",
+    "timestamp": "2022-12-12T13:03:51Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/definitelyBendy",
+    "referenceAuthor": "@definitelyBendy",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1598812367403491328",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🎄🎄🎄",
+    "timestamp": "2022-12-02T22:52:27Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1598812033515982849",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Winter is upon us.",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=uERWDY-KDJs",
+        "image": "assets/developers/bookpast/media/card_1598812367403491328_0.jpg",
+        "title": "\"Bendy and the Dark Revival - Winter Abyss\" - Seasonal Update",
+        "description": "Winter is upon us. Get it now on Steam:https://store.steampowered....",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1597282633800732672",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Lookn' sharp.",
+    "timestamp": "2022-11-28T17:33:50Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/seancrisden/status/1597280427571437568",
+    "referenceAuthor": "@seancrisden",
+    "referenceAuthorName": "Sean Crisden",
+    "referenceAvatarUrl": "",
+    "referenceText": "Inksmas comes early for good lil boys, girls, others and demons! Have you been naughty or nice?",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1597282633800732672_0.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1597282633800732672_1.jpg",
+        "type": "image"
+      },
+      {
+        "url": "assets/developers/bookpast/media/quote_1597282633800732672_2.jpg",
+        "type": "video_thumb"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1595784781828079617",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Inkredibly thankful for everything. 🙏",
+    "timestamp": "2022-11-24T14:21:54Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1595784451610578948",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Thankful.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1595784781828079617_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1594489269762105345",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "👏👏👏",
+    "timestamp": "2022-11-21T00:34:00Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/LaurenSynger/status/1594486898801745921",
+    "referenceAuthor": "@LaurenSynger",
+    "referenceAuthorName": "Lauren Synger",
+    "referenceAvatarUrl": "",
+    "referenceText": "What an AMAZING cast!!! With just a Pencil & a Dream, right Joey Drew? Meet the voice behind this big dreamer- the SENSATIONAL Dave Rivas!🎤❤️‍🔥 ✨✨",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1594489225860337670",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "👏👏👏",
+    "timestamp": "2022-11-21T00:33:50Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/LaurenSynger/status/1594486015212900352",
+    "referenceAuthor": "@LaurenSynger",
+    "referenceAuthorName": "Lauren Synger",
+    "referenceAvatarUrl": "",
+    "referenceText": "What an AMAZING cast!!! This creepy character *wheeze* needs no further introductions. But the PHENOMENAL voice behind Wilson does! Meet Tim Simmons!🎤❤️‍🔥 ✨✨",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1594489162195161088",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "👏👏👏",
+    "timestamp": "2022-11-21T00:33:35Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/LaurenSynger/status/1594485099562766341",
+    "referenceAuthor": "@LaurenSynger",
+    "referenceAuthorName": "Lauren Synger",
+    "referenceAvatarUrl": "",
+    "referenceText": "What an AMAZING cast!!! Where there is light, there is also darkness. Behold, the Ink Demon! Meet the BRILLIANT 🎤❤️‍🔥 ✨✨",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1594489053872791552",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "👏👏👏",
+    "timestamp": "2022-11-21T00:33:09Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/LaurenSynger/status/1594484040882851840",
+    "referenceAuthor": "@LaurenSynger",
+    "referenceAuthorName": "Lauren Synger",
+    "referenceAvatarUrl": "",
+    "referenceText": "I am so proud to pull back the curtains and introduce our AMAZING cast!!! Meet our leading lady Audrey!!! The STELLAR 🎤❤️‍🔥 ✨✨",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1592910559523004416",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Had an awesome time testing it. So many secrets...",
+    "timestamp": "2022-11-16T16:00:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bookpast",
+    "referenceAuthor": "@bookpast",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1592909508120137731",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Whew. Exhausted. But it was worth it. 😥👍",
+    "timestamp": "2022-11-16T15:56:36Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1592907665939775489",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "The amount of testing our team did on was insane! Personally, in the last month of production, I clocked in over 1200 hours of playtime. Wanted to make it as strong at launch as possible. Ironically, I still ENJOY playing it every time! :)",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1592850977199210497",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "A giant THANK YOU all the #BENDY fans. 🤜🤛",
+    "timestamp": "2022-11-16T12:04:01Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1592685375004319744",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "WOW!! Well I can already officially call a MASSIVE success!!! ^_^ ^_^ THANK YOU!! So many amazing players and fans made it possible!! You are all so INK-credible!! :D And we’re just getting started! :)",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1592505398250147841",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🏃‍♀️",
+    "timestamp": "2022-11-15T13:10:48Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1592505252648931330",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Play it now on Steam. Run.",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1592433229453135873",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Here we go. Good luck Audrey. 😅",
+    "timestamp": "2022-11-15T08:24:02Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1592432869112446976",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "It’s time.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1592433229453135873_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1592280140439953408",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "👋",
+    "timestamp": "2022-11-14T22:15:43Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1592279900131831808",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Tomorrow we play.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1592280140439953408_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1592195847160320001",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Seeing everyone play it for the first time ever.",
+    "timestamp": "2022-11-14T16:40:46Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Doberart",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1592140630066601984",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "This is it. ONE day. The revival is nearly here. Hang on tight. 💣",
+    "timestamp": "2022-11-14T13:01:21Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1592111585560260609",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The Dark Revival starts in 1 day.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1592140630066601984_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1591768117683752960",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🙏",
+    "timestamp": "2022-11-13T12:21:07Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1591767900020674561",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "SO CLOSE!! Two days to go!! As the Dark Revival draws near, I want to politely ask that everyone hold back from posting big spoilers on release week as much as possible for the benefit of other players/watchers. :)",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1591519576202047489",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🤔🤨😮",
+    "timestamp": "2022-11-12T19:53:30Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/SuperHorrorBro/status/1591515412671647744",
+    "referenceAuthor": "@SuperHorrorBro",
+    "referenceAuthorName": "SuperHorrorBro",
+    "referenceAvatarUrl": "",
+    "referenceText": "One last Bendy video before BATDR drops next week. A look at the JDS news archive, character bios and an analysis of the latest screenshots. Enjoy and I'll see you all Tuesday for BATDR!",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1591477066339344394",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Your purpose? 🤨",
+    "timestamp": "2022-11-12T17:04:35Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1591475940168712197",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Wilson: Custodian of the Ink",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1591477066339344394_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1591104986280333312",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Arch Gate. Nathan Arch. I wonder what all this will mean for the studio. Hmmm. 🤔",
+    "timestamp": "2022-11-11T16:26:04Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1591103328431538179",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The past of the studio unfolds in the archive.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1591104986280333312_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1590785452151345166",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "How can you NOT!? 😜",
+    "timestamp": "2022-11-10T19:16:21Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1590785022998548497",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Don’t knock.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1590785452151345166_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1590706248764329986",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🎶🤔",
+    "timestamp": "2022-11-10T14:01:38Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1590705886838009858",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Get lost in the depths of the studio. Listen to the Dark Revival Suite.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1590706248764329986_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1589006421672198145",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🙏",
+    "timestamp": "2022-11-05T21:27:07Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Doberart",
+    "referenceAuthor": "@Doberart",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1588900322688253953",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🎂🎁🎉",
+    "timestamp": "2022-11-05T14:25:31Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1588567059805470722",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Reaction while trying to keep quiet because it's late is amazing. 😂",
+    "timestamp": "2022-11-04T16:21:15Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/TheCartoonKitty/status/1588558290036097025",
+    "referenceAuthor": "@TheCartoonKitty",
+    "referenceAuthorName": "TheCartoonKitty 💟",
+    "referenceAvatarUrl": "",
+    "referenceText": "Here it is! My reaction to the Bendy and the Dark Revival trailer! 👀 Man, is it wild to be back. I don't know what's spookier- the fact that BATDR is finally here, ...",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1588552751302180864",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Truth! So many awesome fan communities out there. Let's be friendly to all. 👍",
+    "timestamp": "2022-11-04T15:24:24Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1588551394058899456",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "Hey everyone! :) I just wanted to say that it's ok for some people NOT to like Bendy. Let them have their opinion, their thoughts, and be nice to them. :) Let our community be a positive bridge between all fan communities so that we ALL can enjoy things together. :)",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1588238166225469445",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🤔",
+    "timestamp": "2022-11-03T18:34:21Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/SuperHorrorBro/status/1588230561809809409",
+    "referenceAuthor": "@SuperHorrorBro",
+    "referenceAuthorName": "SuperHorrorBro",
+    "referenceAvatarUrl": "",
+    "referenceText": "Here is my detailed look at the new trailer for Bendy and the Dark Revival. Some theory talk and speculation, as well as a more concise recap of gameplay new mechanics and enemy types.",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1588238166225469445_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1588163240256835586",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "👊",
+    "timestamp": "2022-11-03T13:36:37Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1588161878198452225",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "A few small things about : ⁃Vastly improved combat. ⁃Vastly improved hit boxes. ⁃Vastly improved mechanics. ⁃Vastly faster move speed. ⁃No Alice Angel fetch quests. ;)",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1587895134557208577",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "It's happening. For real.",
+    "timestamp": "2022-11-02T19:51:16Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1587894789172875269",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "YES! The studio is getting closer. WISHLIST THE GAME NOW ON STEAM!",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://store.steampowered.com/app/1063660/Bendy_and_the_Dark_Revival/",
+        "image": "assets/developers/bookpast/media/card_1587895134557208577_0.jpg",
+        "title": "Bendy and the Dark Revival on Steam",
+        "description": "Bendy and the Dark Revival® is a first-person survival horror game set in the creepiest cartoon studio to ever exist. Discover the truth. Escape the studio. Above all, fear the Ink Demon…and survive.",
+        "domain": "store.steampowered.com"
+      }
+    ]
+  },
+  {
+    "id": "1587815933539647491",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "😵",
+    "timestamp": "2022-11-02T14:36:33Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1587793482311245824",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Audrey🖊️🎨 Survivor.",
+    "timestamp": "2022-11-02T13:07:20Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1587792210795368449",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Audrey: Studio Newcomer",
+    "referenceMedia": [
+      {
+        "url": "assets/developers/bookpast/media/quote_1587793482311245824_0.jpg",
+        "type": "image"
+      }
+    ],
+    "linkCards": []
+  },
+  {
+    "id": "1587635839907123200",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "😅",
+    "timestamp": "2022-11-02T02:40:55Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/themeatly/status/1587633991565426688",
+    "referenceAuthor": "@themeatly",
+    "referenceAuthorName": "theMeatly",
+    "referenceAvatarUrl": "",
+    "referenceText": "WOW!! We did it! OVER 1 MILLION VIEWS in day one!! :D You all rock!!!",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1587537225071345666",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Thank you all for being patient. We never stopped working hard on BATDR. Now it’s finally go time. Worth it. 🙏 #BENDY #BATDR",
+    "timestamp": "2022-11-01T20:09:04Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1587518312384176133",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Been waiting for this. 😃",
+    "timestamp": "2022-11-01T18:53:54Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/SuperHorrorBro",
+    "referenceAuthor": "@SuperHorrorBro",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1587502146387329026",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Awwww. So sorry man. Your boy comes first. Figuratively if not literally.",
+    "timestamp": "2022-11-01T17:49:40Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/therealVTG",
+    "referenceAuthor": "@therealVTG",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1587497308492648450",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "🙏",
+    "timestamp": "2022-11-01T17:30:27Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/Seirian",
+    "referenceAuthor": "@Seirian",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1587459610415452162",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Here goes nothing! 😮",
+    "timestamp": "2022-11-01T15:00:39Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1587459460917780481",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "The studio of your nightmares returns with new cartoon terrors.",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/ZS4ZXBXhowY",
+        "image": "assets/developers/bookpast/media/card_1587459610415452162_0.jpg",
+        "title": "\"Bendy and the Dark Revival\" - Official Trailer",
+        "description": "OUT NOW: https://store.steampowered.com/app/1063660/Bendy_and_the_D...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1587097563408338946",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Bendy is waaay more alive than you think.",
+    "timestamp": "2022-10-31T15:02:00Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "quote",
+    "referenceUrl": "https://twitter.com/Bendy/status/1587097054593048578",
+    "referenceAuthor": "@Bendy",
+    "referenceAuthorName": "Bendy",
+    "referenceAvatarUrl": "",
+    "referenceText": "Tomorrow. Be ready.",
+    "referenceMedia": [],
+    "linkCards": [
+      {
+        "url": "https://piped.video/watch?v=D4XM2jyM_T4",
+        "image": "assets/developers/bookpast/media/card_1587097563408338946_0.jpg",
+        "title": "The Dark Puddles Awaken",
+        "description": "OUT NOW: https://store.steampowered.com/app/1063660/Bendy_and_the_D...",
+        "domain": "youtube.com"
+      }
+    ]
+  },
+  {
+    "id": "1481807708957327365",
+    "authorName": "bookpast",
+    "authorHandle": "@bookpast",
+    "platform": "twitter",
+    "content": "Congratulations! Such a great family.",
+    "timestamp": "2022-01-14T01:57:43Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/bookpast/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/PhuzzyBond",
+    "referenceAuthor": "@PhuzzyBond",
     "referenceAuthorName": "",
     "referenceAvatarUrl": "",
     "referenceText": "",
