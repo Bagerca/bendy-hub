@@ -1,28 +1,11 @@
 <main class="page-content music-layout">
     <search-controls placeholder="Поиск по названию трека (Enter)...">
+        
         <!-- Выпадающий список сортировки -->
-        <div class="custom-select-container" id="sort-filter-container">
-            <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                <div class="custom-select-value">
-                    <div class="custom-select-icon svg-icon"></div>
-                    <span class="custom-select-text-value">Сначала новые</span>
-                </div>
-                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <ul class="custom-select-dropdown" role="listbox"></ul>
-        </div>
+        <div class="custom-select-container" id="sort-filter-container"></div>
 
         <!-- Выпадающий список авторов -->
-        <div class="custom-select-container" id="author-filter-container">
-            <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-                <div class="custom-select-value">
-                    <div class="custom-select-icon svg-icon"></div>
-                    <span class="custom-select-text-value">Все авторы</span>
-                </div>
-                <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <ul class="custom-select-dropdown" role="listbox"></ul>
-        </div>
+        <div class="custom-select-container" id="author-filter-container"></div>
 
         <div class="view-toggles">
             <button id="btn-view-grid" class="view-btn active" title="Сетка"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></button>
@@ -31,8 +14,6 @@
     </search-controls>
     
     <div id="music-loader" class="loading-state"><div class="spinner" style="margin: 0 auto 10px;"></div><span>Настройка радиоволны...</span></div>
-    
-    <!-- Изменен ID и убран класс music-grid. Теперь это обертка для секций -->
     <div id="music-content" class="music-content" style="display: none;"></div>
 </main>
 

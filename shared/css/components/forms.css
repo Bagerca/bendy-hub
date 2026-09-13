@@ -116,7 +116,7 @@ search-controls {
     min-width: max-content;
     background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; 
     box-shadow: 0 10px 25px rgba(0,0,0,0.25); list-style: none; padding: 0.5rem; z-index: 200; 
-    max-height: 350px; overflow-y: auto; scrollbar-width: none; opacity: 0; visibility: hidden; 
+    max-height: 450px; overflow-y: auto; scrollbar-width: none; opacity: 0; visibility: hidden; 
     transform: translateY(-10px); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .custom-select-dropdown::-webkit-scrollbar { display: none; }
@@ -143,28 +143,87 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
 .custom-select-option.selected .svg-icon { color: var(--accent-color); }
 
 /* =========================================
-   ЧЕКБОКСЫ ДЛЯ MULTI-SELECT
+   ПАНЕЛЬ ДЕЙСТВИЙ (ВЫБРАТЬ ВСЕ / СБРОСИТЬ)
+   ========================================= */
+.cs-action-bar {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cs-action-btn {
+    flex: 1;
+    background: var(--bg-body);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.cs-action-btn:hover {
+    color: var(--text-main);
+    border-color: var(--text-muted);
+}
+
+/* =========================================
+   ЧЕКБОКСЫ ДЛЯ MULTI-SELECT С НОВЫМИ ИКОНКАМИ
    ========================================= */
 .cs-checkbox {
-    width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--border-color);
-    background-color: var(--bg-body); display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; transition: all 0.2s ease; margin-left: auto;
+    width: 20px; 
+    height: 20px; 
+    border-radius: 6px; 
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-body); 
+    position: relative;
+    flex-shrink: 0; 
+    transition: all 0.2s ease; 
+    margin-left: auto;
 }
-.cs-checkbox svg {
-    width: 14px; height: 14px; fill: none; stroke: var(--bg-body); stroke-width: 3;
-    stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 16; stroke-dashoffset: 16;
-    transition: stroke-dashoffset 0.3s ease;
+
+.cs-icon-check, .cs-icon-cross {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.cs-icon-check svg, .cs-icon-cross svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* По умолчанию (не выбрано): Крестик видим, Галочка скрыта */
+.cs-icon-cross { opacity: 1; transform: scale(1); color: var(--text-muted); }
+.cs-icon-check { opacity: 0; transform: scale(0.5); color: var(--bg-body); }
+
+/* При наведении подсвечиваем крестик красным для ясности */
+.custom-select-option:not(.selected):hover .cs-icon-cross {
+    color: var(--error-color);
+}
+
+/* Когда выбрано: Крестик улетает, Галочка появляется */
 .custom-select-option.selected .cs-checkbox {
-    background-color: var(--accent-color); border-color: var(--accent-color);
+    background-color: var(--accent-color); 
+    border-color: var(--accent-color);
 }
-.custom-select-option.selected .cs-checkbox svg { stroke-dashoffset: 0; }
+
+.custom-select-option.selected .cs-icon-cross { opacity: 0; transform: scale(0.5); }
+.custom-select-option.selected .cs-icon-check { opacity: 1; transform: scale(1); }
 
 /* =========================================
    ДВОЙНОЙ ПЕРЕКЛЮЧАТЕЛЬ (DUAL TOGGLE)
    ========================================= */
 .custom-select-dropdown:has(.is-dual-toggle) {
-    min-width: 280px; /* Чтобы тексту "По алфавиту" точно хватало места */
+    min-width: 280px; 
     padding: 0.75rem; 
 }
 
@@ -188,13 +247,12 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
     border: 1px solid var(--border-color);
 }
 
-/* Анимированный ползунок (задний фон) */
 .cs-dual-indicator {
     position: absolute;
     top: 4px; 
     bottom: 4px;
     left: 4px;
-    width: calc(50% - 4px); /* Ровно половина минус паддинги */
+    width: calc(50% - 4px); 
     background-color: var(--bg-card);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -206,12 +264,12 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
 .cs-dual-switch.state-2 .cs-dual-indicator { transform: translateX(100%); }
 
 .cs-dual-btn {
-    flex: 1; /* Кнопки делят пространство строго 50/50 */
+    flex: 1; 
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 12px 0; /* Только вертикальные отступы */
+    padding: 12px 0; 
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--text-muted);
@@ -230,7 +288,7 @@ img.custom-select-icon { object-fit: cover; background-color: var(--bg-body); bo
     align-items: center;
     justify-content: center;
     transition: color 0.3s ease; 
-    color: inherit; /* Наследует цвет текста кнопки */
+    color: inherit; 
 }
 .cs-dual-btn .svg-icon svg { width: 100%; height: 100%; }
 .cs-dual-btn.active .svg-icon { color: var(--accent-color); }

@@ -10,43 +10,40 @@ export class FeedModel {
         this.currentSearchTerm = '';
         this.currentAuthors = [];
         this.currentPostTypes = [];
+        this.currentSortDir = 'desc'; // По умолчанию сначала новые
     }
 
     setPosts(posts) {
-        this.allPosts = posts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-        // Первичная фильтрация происходит из контроллера
+        // Загружаем посты как есть, сортировка будет применяться в applyFilters
+        this.allPosts = posts;
     }
 
-    applyFilters(searchTerm, authorIds, postTypes) {
+    applyFilters(searchTerm, authorIds, postTypes, sortDir = 'desc') {
         this.currentSearchTerm = searchTerm.toLowerCase().trim();
         this.currentAuthors = authorIds;
         this.currentPostTypes = postTypes;
+        this.currentSortDir = sortDir;
         
         let result = SmartSearch.execute(this.currentSearchTerm, this.allPosts, ['content', 'referenceText']);
 
-        // Если сброшены все чекбоксы в любом из фильтров - ничего не показываем
         if (this.currentAuthors.length === 0 || this.currentPostTypes.length === 0) {
             this.filteredPosts = [];
             this.currentIndex = 0;
             return;
         }
 
-        // Фильтр по авторам (Показываем пост, если автор есть в массиве выбранных)
         result = result.filter(post => {
-            // Нормализуем хэндлы для точного сравнения (в базе с '@', в фильтре тоже)
             return this.currentAuthors.some(authorId => 
                 authorId.toLowerCase() === post.authorHandle.toLowerCase()
             );
         });
 
-        // Фильтр по типу поста (Мульти-селект)
         result = result.filter(post => {
             const isRT = /^RT\s+(?:by\s+)?(@[\w_]+)[\s:]/i.test(post.content) || post.isRetweet;
             const isQuote = post.referenceType === 'quote';
             
             let isMatch = false;
 
-            // Если не РТ и не Цитата, считаем это оригинальным
             if (this.currentPostTypes.includes('clean') && !isRT && !isQuote) isMatch = true;
             if (this.currentPostTypes.includes('quotes') && isQuote) isMatch = true;
             if (this.currentPostTypes.includes('retweets') && isRT) isMatch = true;
@@ -68,6 +65,13 @@ export class FeedModel {
             }
             
             return isMatch;
+        });
+
+        // >>> ПРИМЕНЯЕМ СОРТИРОВКУ ПО ДАТЕ <<<
+        result.sort((a, b) => {
+            const dateA = new Date(a.timestamp).getTime();
+            const dateB = new Date(b.timestamp).getTime();
+            return this.currentSortDir === 'asc' ? dateA - dateB : dateB - dateA;
         });
 
         this.filteredPosts = result;

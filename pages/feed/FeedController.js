@@ -1,6 +1,3 @@
-/**
- * Controller: Связывает UI, Данные (Model), Рендер (View) и Скролл.
- */
 export class FeedController {
     constructor(model, view, scroller) {
         this.model = model;
@@ -9,7 +6,6 @@ export class FeedController {
         
         this.container = document.getElementById('feed-content');
         
-        // Шаблоны состояний
         this.emptyTemplate = document.getElementById('empty-state-template');
         this.errorTemplate = document.getElementById('error-state-template');
         this.skeletonTemplate = document.getElementById('skeleton-template');
@@ -19,8 +15,9 @@ export class FeedController {
         this.renderInitial();
     }
 
-    handleSearchOrFilter(searchTerm, authorId, postType) {
-        this.model.applyFilters(searchTerm, authorId, postType);
+    // Обновили метод: теперь принимает sortDir
+    handleSearchOrFilter(searchTerm, authorId, postType, sortDir) {
+        this.model.applyFilters(searchTerm, authorId, postType, sortDir);
         this.renderInitial();
     }
 

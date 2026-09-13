@@ -4,7 +4,6 @@ import os
 OUTPUT_FILE = "entire_project_context.txt"
 
 # Системные и мусорные папки, которые мы игнорируем
-# Папки 'data' и 'assets' скрипт читает, а вот 'logs' теперь пропускает!
 EXCLUDE_DIRS = {
     ".git",
     ".idea",
@@ -14,7 +13,7 @@ EXCLUDE_DIRS = {
     "__pycache__",
     "dist",
     "build",
-    "logs", # <-- ДОБАВЛЕНО ИСКЛЮЧЕНИЕ ДЛЯ ПАПКИ ЛОГОВ
+    "logs", 
 }
 
 # Файлы, которые собирать не нужно
@@ -22,6 +21,7 @@ EXCLUDE_FILES = {
     OUTPUT_FILE,  # сам файл результата пропускаем, чтобы он не прочитал сам себя
     "package-lock.json",
     "yarn.lock",
+    "feed.json",  # <-- ДОБАВЛЕНО: Исключаем тяжелые базы данных с постами разработчиков
 }
 
 # Важно: собираем только код и текст. 
@@ -43,11 +43,11 @@ print("🚀 Запуск сборщика файлов проекта...")
 with open(OUTPUT_FILE, "w", encoding="utf-8") as outfile:
     for root, dirs, files in os.walk("."):
         
-        # Фильтруем папки (убираем системные и логи, но оставляем data и assets)
+        # Фильтруем папки
         dirs[:] = [d for d in dirs if d.lower() not in EXCLUDE_DIRS]
 
         for file in files:
-            # Пропускаем исключенные файлы
+            # Пропускаем исключенные файлы (сравниваем в нижнем регистре для надежности)
             if file.lower() in EXCLUDE_FILES:
                 continue
 

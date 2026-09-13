@@ -1,3 +1,5 @@
+import { Icons } from '../icons.js';
+
 export class CustomSelect {
     static instances = [];
 
@@ -17,6 +19,19 @@ export class CustomSelect {
             this.placeholder = config.placeholder || '';
             this.keepPlaceholder = config.keepPlaceholder || false;
             this.triggerIcon = config.triggerIcon || null;
+        }
+
+        if (!this.container.querySelector('.custom-select-trigger')) {
+            this.container.innerHTML = `
+                <button class="custom-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <div class="custom-select-value">
+                        <div class="custom-select-icon svg-icon"></div>
+                        <span class="custom-select-text-value"></span>
+                    </div>
+                    <svg class="chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <ul class="custom-select-dropdown" role="listbox"></ul>
+            `;
         }
 
         this.trigger = this.container.querySelector('.custom-select-trigger');
@@ -73,21 +88,42 @@ export class CustomSelect {
 
         activeIds.forEach(id => this.selectedValues.add(id));
 
+        // >>> ДОБАВЛЯЕМ ПАНЕЛЬ БЫСТРЫХ ДЕЙСТВИЙ ДЛЯ МУЛЬТИСЕЛЕКТА <<<
+        if (this.isMultiple) {
+            const actionBar = document.createElement('div');
+            actionBar.className = 'cs-action-bar';
+            actionBar.innerHTML = `
+                <button class="cs-action-btn" data-action="all">Выбрать всё</button>
+                <button class="cs-action-btn" data-action="none">Сбросить</button>
+            `;
+            this.dropdown.appendChild(actionBar);
+
+            actionBar.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (e.target.dataset.action === 'all') {
+                    this.selectedValues.clear();
+                    this.optionsData.forEach(o => this.selectedValues.add(o.id));
+                } else if (e.target.dataset.action === 'none') {
+                    this.selectedValues.clear();
+                }
+                this._updateListUI();
+                this._updateTriggerUI();
+                if (this.onChange) this.onChange(Array.from(this.selectedValues));
+            });
+        }
+
         options.forEach(opt => {
             const li = document.createElement('li');
             li.className = 'custom-select-option';
             li.dataset.id = opt.id;
             
-            // Если это не дуал-тоггл, устанавливаем класс selected
             if (opt.type !== 'dual-toggle' && this.selectedValues.has(opt.id)) {
                 li.classList.add('selected');
             }
 
-            // --- ДВОЙНОЙ ПЕРЕКЛЮЧАТЕЛЬ ---
             if (opt.type === 'dual-toggle') {
                 li.classList.add('is-dual-toggle');
                 
-                // Проверяем, какой из двух стейтов сейчас активен в Set
                 const isActiveState2 = this.selectedValues.has(opt.state2.id);
                 const currentStateClass = isActiveState2 ? 'state-2' : 'state-1';
                 
@@ -109,10 +145,14 @@ export class CustomSelect {
                 });
                 
             } else {
-                // СТАНДАРТНАЯ ОТРИСОВКА ИЛИ МУЛЬТИ-СЕЛЕКТ С ГАЛОЧКОЙ
                 let extraUI = '';
                 if (this.isMultiple) {
-                    extraUI = `<div class="cs-checkbox"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>`;
+                    // Используем новые иконки из Icons
+                    extraUI = `
+                        <div class="cs-checkbox">
+                            <div class="cs-icon-check">${Icons.check || ''}</div>
+                            <div class="cs-icon-cross">${Icons.cross || ''}</div>
+                        </div>`;
                 }
 
                 li.innerHTML = `
@@ -140,11 +180,7 @@ export class CustomSelect {
             } else {
                 this.selectedValues.add(option.id);
             }
-
-            this.dropdown.querySelectorAll('li').forEach(li => {
-                li.classList.toggle('selected', this.selectedValues.has(li.dataset.id));
-            });
-
+            this._updateListUI();
             this._updateTriggerUI();
             if (this.onChange) this.onChange(Array.from(this.selectedValues));
 
@@ -152,15 +188,12 @@ export class CustomSelect {
             const switchEl = liElement.querySelector('.cs-dual-switch');
             const isState2 = switchEl.classList.contains('state-2');
             
-            // Если сейчас State 2, переключаем на State 1, и наоборот
             const newStateId = isState2 ? option.state1.id : option.state2.id;
             
-            // Удаляем оба возможных значения из Set и добавляем новое
             this.selectedValues.delete(option.state1.id);
             this.selectedValues.delete(option.state2.id);
             this.selectedValues.add(newStateId);
             
-            // Анимируем переключатель
             switchEl.classList.toggle('state-1', isState2);
             switchEl.classList.toggle('state-2', !isState2);
             
@@ -169,20 +202,24 @@ export class CustomSelect {
             btns[1].classList.toggle('active', !isState2);
 
             this._updateTriggerUI(); 
-            // Отправляем массив текущих состояний всех селектов внутри дропдауна
             if (this.onChange) this.onChange(Array.from(this.selectedValues));
 
         } else {
             this.selectedValues.clear();
             this.selectedValues.add(option.id);
-            
-            this.dropdown.querySelectorAll('li').forEach(opt => opt.classList.remove('selected'));
-            liElement.classList.add('selected');
-            
+            this._updateListUI();
             this._updateTriggerUI();
             this.close();
             if (this.onChange) this.onChange(option.id);
         }
+    }
+
+    _updateListUI() {
+        this.dropdown.querySelectorAll('li.custom-select-option').forEach(li => {
+            if (li.dataset.id) {
+                li.classList.toggle('selected', this.selectedValues.has(li.dataset.id));
+            }
+        });
     }
 
     _updateTriggerUI() {
