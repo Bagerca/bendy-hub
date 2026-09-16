@@ -6,7 +6,16 @@ import { SharedFilters } from '../../shared/js/SharedFilters.js';
 
 export async function init() {
     const model = new CatalogModel();
-    const cardView = new CatalogCardView('template-card-horizontal', 'template-card-vertical');
+    
+    // Передаем коллбэк для сбора улик в View
+    const cardView = new CatalogCardView('template-card-horizontal', 'template-card-vertical', {
+        onEvidenceCollect: (item, rawDomElement) => {
+            if (window.globalInvestigation) {
+                window.globalInvestigation.addEvidence('catalog', item.id, item, rawDomElement);
+            }
+        }
+    });
+    
     const controller = new CatalogController(model, cardView);
 
     const iconAll = `<div class="svg-icon">${Icons.cat_all}</div>`;

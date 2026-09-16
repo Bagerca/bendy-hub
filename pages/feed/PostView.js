@@ -2,63 +2,97 @@ import { formatRichText } from '../../shared/js/utils.js';
 import { Logger } from '../../shared/js/Logger.js';
 import { SmartSearch } from '../../shared/js/SmartSearch.js';
 import { Icons } from '../../shared/js/icons.js';
+import { PostMediaFactory } from './services/PostMediaFactory.js';
+import { PostActionsHelper } from '../../shared/js/PostActionsHelper.js';
 
 export class PostView {
-    constructor(templateId, lightboxManager, translationService, authorNamesMap = {}) {
+    constructor(templateId, lightboxManager, translationService, authorNamesMap = {}, callbacks = {}) {
         this.template = document.getElementById(templateId);
-        this.lightbox = lightboxManager;
         this.translator = translationService;
         this.authorNamesMap = authorNamesMap; 
         this.fallbackAvatar = Icons.avatar_fallback;
+        
+        this.mediaFactory = new PostMediaFactory(lightboxManager);
+        this.onEvidenceCollect = callbacks.onEvidenceCollect || null;
     }
 
     render(post, searchTerm = '') {
         try {
             const clone = this.template.content.cloneNode(true);
+            const cardEl = clone.querySelector('.post-card');
+            
+            cardEl.dataset.id = post.id;
+
+            if (!cardEl.querySelector('.investigation-overlay')) {
+                const overlay = document.createElement('div');
+                overlay.className = 'investigation-overlay';
+                
+                const isCollected = window.globalInvestigation && window.globalInvestigation.storage.exists('post', post.id);
+                if (isCollected) {
+                    cardEl.classList.add('is-collected');
+                }
+
+                overlay.innerHTML = `
+                    <div class="inv-overlay-icon icon-add">${Icons.inv_add || ''}</div>
+                    <div class="inv-overlay-icon icon-check">${Icons.inv_check || ''}</div>
+                    <div class="inv-overlay-icon icon-remove">${Icons.inv_remove || ''}</div>
+                `;
+                cardEl.prepend(overlay);
+            }
+
             const rawText = this._extractText(post, clone);
             
             this._setupContext(clone, post);
             this._setupText(clone, rawText, searchTerm);
             this._setupMeta(clone, post);
             
-            const hasYouTube = this._setupYouTubeEmbed(clone, post, rawText);
-            
+            const hasYouTube = this.mediaFactory.setupYouTubeEmbed(clone, post, rawText);
             if (!hasYouTube) {
-                this._setupMedia(clone, post);
-                this._setupCards(clone, post);
+                this.mediaFactory.setupMedia(clone, post);
+                this.mediaFactory.setupCards(clone, post);
             }
             
-            this._setupActions(clone, rawText, post);
+            const copyBtn = clone.querySelector('.copy-btn');
+            const translateBtn = clone.querySelector('.translate-btn');
+            if(translateBtn) translateBtn.insertAdjacentHTML('afterbegin', Icons.action_translate);
+            if(copyBtn) copyBtn.insertAdjacentHTML('afterbegin', Icons.action_copy);
 
-            // >>> ЛОГИКА ПЕРЕХВАТА ДЛЯ РЕЖИМА "СБОРА УЛИК" <<<
-            const cardEl = clone.querySelector('.post-card');
+            if (!rawText.trim()) {
+                if(copyBtn) copyBtn.style.display = 'none';
+                if(translateBtn) translateBtn.style.display = 'none';
+            }
+
+            PostActionsHelper.bindActions(cardEl, post);
+
             cardEl.addEventListener('click', (e) => {
                 if (document.body.classList.contains('investigation-mode-active')) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    const handleClean = (post.authorHandle || '').replace('@', '').toLowerCase();
-                    post.resolvedAuthorName = this.authorNamesMap[`@${handleClean}`] || post.authorName;
-                    
-                    // ДЕЛАЕМ ТОЧНЫЙ СЛЕПОК КАРТОЧКИ (Со всеми медиа и цитатами)
-                    const snapClone = cardEl.cloneNode(true);
-                    
-                    // Вычищаем из слепка интерактивный мусор
-                    const overlay = snapClone.querySelector('.investigation-overlay');
-                    if (overlay) overlay.remove();
-                    
-                    const actions = snapClone.querySelector('.post-actions');
-                    if (actions) actions.remove();
-                    
-                    const headerAction = snapClone.querySelector('.post-header-action');
-                    if (headerAction) headerAction.remove();
-                    
-                    if (window.globalInvestigation) {
-                        // Сохраняем готовый HTML в менеджер!
-                        window.globalInvestigation.addEvidence('post', post.id, post, snapClone.innerHTML);
+                    if (this.onEvidenceCollect) {
+                        const handleClean = (post.authorHandle || '').replace('@', '').toLowerCase();
+                        post.resolvedAuthorName = this.authorNamesMap[`@${handleClean}`] || post.authorName;
+                        this.onEvidenceCollect(post, cardEl);
                     }
                 }
             }, { capture: true });
+
+            cardEl.addEventListener('contextmenu', (e) => {
+                if (document.body.classList.contains('investigation-mode-active')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    if (cardEl.classList.contains('is-collected')) {
+                        if (window.globalInvestigation) {
+                            window.globalInvestigation.removeEvidence('post', post.id);
+                        }
+                        cardEl.classList.add('is-removing');
+                        setTimeout(() => {
+                            cardEl.classList.remove('is-removing');
+                        }, 1000);
+                    }
+                }
+            });
 
             return clone;
         } catch (error) { 
@@ -116,13 +150,11 @@ export class PostView {
                 refBadge.style.display = 'inline-flex';
                 refBadge.classList.add('is-thread');
                 refBadge.innerHTML = `${Icons.thread} <span class="ref-text">Продолжение ветки</span>`;
-            } 
-            else if (post.referenceText) {
+            } else if (post.referenceText) {
                 refBadge.style.display = 'inline-flex';
                 refBadge.innerHTML = `${Icons.reply} <span class="ref-text">В ответ:</span>`;
                 this._fillQuoteCard(quoteCard, post);
-            } 
-            else {
+            } else {
                 refBadge.style.display = 'inline-flex';
                 refBadge.innerHTML = `${Icons.reply} <span class="ref-text">В ответ:</span> <a class="ref-link" href="${post.referenceUrl}" target="_blank" rel="noopener noreferrer">${post.referenceAuthor || 'Пользователю'}</a>`;
             }
@@ -155,6 +187,11 @@ export class PostView {
         const qMediaContainer = quoteCard.querySelector('.quote-media-grid'); 
         
         if (post.referenceMedia && post.referenceMedia.length > 0) {
+            // СОБИРАЕМ ГАЛЕРЕЮ КАРТИНОК ДЛЯ ЦИТАТЫ
+            const quoteGalleryUrls = post.referenceMedia
+                .filter(m => m.type === 'image' || (!m.type && !m.url.endsWith('.mp4') && !m.url.includes('youtube')))
+                .map(m => m.url);
+
             qMediaContainer.style.display = 'block';
             qMediaContainer.innerHTML = ''; 
             qMediaContainer.style.backgroundImage = 'none';
@@ -164,10 +201,10 @@ export class PostView {
                 if (post.referenceMedia[0].url) {
                     qMediaContainer.style.backgroundImage = `url('${post.referenceMedia[0].url}')`;
                 }
-                qMediaContainer.appendChild(this._createMediaElement(post.referenceMedia[0], post));
+                qMediaContainer.appendChild(this.mediaFactory._createMediaElement(post.referenceMedia[0], post, quoteGalleryUrls));
             } else {
                 qMediaContainer.className = 'quote-media-container multi-media-slider';
-                this._buildSlider(qMediaContainer, post.referenceMedia, post);
+                this.mediaFactory._buildSlider(qMediaContainer, post.referenceMedia, post, quoteGalleryUrls);
             }
         } else {
             qMediaContainer.style.display = 'none';
@@ -201,17 +238,12 @@ export class PostView {
             expandWrapper.className = 'post-text-collapse-wrapper';
             const expandBtn = document.createElement('button');
             expandBtn.className = 'expand-text-btn';
-            expandBtn.innerHTML = `Показать полностью ${Icons.chevron_down}`;
-            expandWrapper.appendChild(expandBtn);
             
+            expandBtn.innerHTML = Icons.chevron_down || '';
+            expandBtn.title = 'Показать полностью';
+            
+            expandWrapper.appendChild(expandBtn);
             textContainer.parentNode.insertBefore(expandWrapper, textContainer.nextSibling);
-
-            expandBtn.addEventListener('click', () => {
-                const isCollapsed = textContainer.classList.contains('collapsed');
-                textContainer.classList.toggle('collapsed', !isCollapsed);
-                textContainer.classList.toggle('expanded', isCollapsed);
-                expandBtn.innerHTML = isCollapsed ? `Свернуть ${Icons.chevron_up}` : `Показать полностью ${Icons.chevron_down}`;
-            });
         }
     }
 
@@ -238,275 +270,5 @@ export class PostView {
         if (post.timestamp) {
             dateEl.textContent = new Date(post.timestamp).toLocaleString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
         }
-    }
-
-    _setupYouTubeEmbed(clone, post, rawText) {
-        let ytId = null;
-        const textMatch = rawText.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
-        if (textMatch) ytId = textMatch[1];
-        
-        if (!ytId && post.linkCards && post.linkCards.length > 0) {
-            const card = post.linkCards.find(c => c.url.includes('youtu'));
-            if (card) {
-                const cardMatch = card.url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
-                if (cardMatch) ytId = cardMatch[1];
-            }
-        }
-
-        if (ytId) {
-            const container = clone.querySelector('.post-media-grid');
-            container.style.display = 'block';
-            container.className = 'post-media-container single-media';
-            container.innerHTML = '';
-            
-            container.style.backgroundImage = `url('https://img.youtube.com/vi/${ytId}/hqdefault.jpg')`;
-
-            const wrapper = document.createElement('div');
-            wrapper.className = 'media-item video-thumb-wrapper';
-            
-            wrapper.innerHTML = `
-                <img class="media-item img-media" src="https://img.youtube.com/vi/${ytId}/maxresdefault.jpg" onerror="this.src='https://img.youtube.com/vi/${ytId}/hqdefault.jpg'" loading="lazy" draggable="false">
-                <div class="video-thumb-overlay"><div class="video-play-btn">${Icons.play_overlay}</div></div>
-            `;
-            wrapper.title = 'Смотреть видео';
-            
-            wrapper.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.lightbox.open(`https://youtu.be/${ytId}`, true); 
-            });
-
-            container.appendChild(wrapper);
-            
-            const cardsContainer = clone.querySelector('.post-cards-container');
-            if (cardsContainer) cardsContainer.style.display = 'none';
-
-            return true;
-        }
-        
-        return false;
-    }
-
-    _setupMedia(clone, post) {
-        const container = clone.querySelector('.post-media-grid');
-        
-        if (!post.media || post.media.length === 0) {
-            container.style.display = 'none';
-            return;
-        }
-
-        container.style.display = 'block';
-        container.innerHTML = ''; 
-        container.style.backgroundImage = 'none'; 
-
-        if (post.media.length === 1) {
-            container.className = 'post-media-container single-media';
-            if (post.media[0].url) {
-                container.style.backgroundImage = `url('${post.media[0].url}')`;
-            }
-            container.appendChild(this._createMediaElement(post.media[0], post));
-        } else {
-            container.className = 'post-media-container multi-media-slider';
-            this._buildSlider(container, post.media, post);
-        }
-    }
-
-    _buildSlider(container, mediaArray, post) {
-        const total = mediaArray.length;
-
-        const counter = document.createElement('div');
-        counter.className = 'media-slider-counter';
-        counter.textContent = `1 / ${total}`;
-        container.appendChild(counter);
-
-        const track = document.createElement('div');
-        track.className = 'media-slider-track';
-
-        mediaArray.forEach(m => {
-            const slide = document.createElement('div');
-            slide.className = 'media-slide';
-            if (m.url) slide.style.backgroundImage = `url('${m.url}')`;
-            
-            slide.appendChild(this._createMediaElement(m, post));
-            track.appendChild(slide);
-        });
-
-        container.appendChild(track);
-
-        track.addEventListener('scroll', () => {
-            const index = Math.round(track.scrollLeft / track.clientWidth) + 1;
-            counter.textContent = `${index} / ${total}`;
-        });
-
-        let isDown = false;
-        let startX, scrollLeft;
-        let isDragged = false; 
-
-        track.addEventListener('mousedown', (e) => {
-            isDown = true;
-            isDragged = false;
-            track.classList.add('is-dragging');
-            startX = e.pageX - track.offsetLeft;
-            scrollLeft = track.scrollLeft;
-        });
-
-        const stopDrag = () => {
-            isDown = false;
-            track.classList.remove('is-dragging');
-        };
-        track.addEventListener('mouseleave', stopDrag);
-        track.addEventListener('mouseup', stopDrag);
-
-        track.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - track.offsetLeft;
-            const walk = (x - startX) * 1.5; 
-            if (Math.abs(walk) > 5) {
-                isDragged = true; 
-            }
-            track.scrollLeft = scrollLeft - walk;
-        });
-
-        track.addEventListener('click', (e) => {
-            if (isDragged) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-        }, { capture: true });
-    }
-
-    _setupCards(clone, post) {
-        const cardsContainer = clone.querySelector('.post-cards-container');
-        if (!post.linkCards || post.linkCards.length === 0) {
-            cardsContainer.style.display = 'none';
-            return;
-        }
-        
-        cardsContainer.style.display = 'flex';
-        post.linkCards.forEach(card => {
-            const a = document.createElement('a');
-            a.className = 'link-card';
-            a.href = card.url;
-            a.target = '_blank';
-            a.rel = 'noopener noreferrer';
-            a.innerHTML = `
-                ${card.image ? `<img src="${card.image}" class="lc-image" alt="Cover" loading="lazy">` : ''}
-                <div class="lc-content">
-                    ${card.domain ? `<div class="lc-domain">${card.domain}</div>` : ''}
-                    <div class="lc-title">${card.title}</div>
-                    ${card.description ? `<div class="lc-desc">${card.description}</div>` : ''}
-                </div>
-            `;
-            cardsContainer.appendChild(a);
-        });
-    }
-
-    _createMediaElement(m, post) {
-        if (m.type === 'video_thumb') {
-            const wrapper = document.createElement('div');
-            wrapper.className = 'media-item video-thumb-wrapper';
-            
-            const imgEl = document.createElement('img');
-            imgEl.className = 'media-item img-media';
-            imgEl.src = m.url;
-            imgEl.loading = 'lazy';
-            imgEl.draggable = false; 
-            
-            const overlay = document.createElement('div');
-            overlay.className = 'video-thumb-overlay';
-            overlay.innerHTML = `<div class="video-play-btn">${Icons.play_overlay}</div>`;
-            
-            wrapper.appendChild(imgEl);
-            wrapper.appendChild(overlay);
-            
-            wrapper.title = 'Смотреть оригинальное видео в X (Twitter)';
-            wrapper.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const cleanHandle = (post.authorHandle || '').replace('@', '');
-                const cleanId = post.id.split('#')[0]; 
-                window.open(`https://twitter.com/${cleanHandle}/status/${cleanId}`, '_blank', 'noopener,noreferrer');
-            });
-            return wrapper;
-        } 
-        else if (m.type === 'video' || m.type === 'gif' || m.url.endsWith('.mp4')) {
-            const videoEl = document.createElement('video');
-            videoEl.className = 'media-item video-media';
-            videoEl.src = m.url;
-            if (m.type === 'gif') {
-                videoEl.autoplay = true; videoEl.loop = true; videoEl.muted = true; videoEl.playsInline = true;
-            } else {
-                videoEl.controls = true;
-            }
-            videoEl.preload = 'metadata';
-            videoEl.addEventListener('click', (e) => e.stopPropagation()); 
-            return videoEl;
-        } 
-        else {
-            const imgEl = document.createElement('img');
-            imgEl.className = 'media-item img-media';
-            imgEl.src = m.url;
-            imgEl.loading = 'lazy';
-            imgEl.title = 'Нажмите для увеличения';
-            imgEl.draggable = false; 
-            imgEl.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.lightbox.open(m.url);
-            });
-            imgEl.onerror = () => imgEl.style.display = 'none';
-            return imgEl;
-        }
-    }
-
-    _setupActions(clone, rawText, post) {
-        const actionsBlock = clone.querySelector('.post-actions');
-        
-        if (!rawText.trim()) {
-            clone.querySelector('.copy-btn').style.display = 'none';
-            clone.querySelector('.translate-btn').style.display = 'none';
-            return;
-        }
-
-        const copyBtn = clone.querySelector('.copy-btn');
-        const translateBtn = clone.querySelector('.translate-btn');
-        translateBtn.insertAdjacentHTML('afterbegin', Icons.action_translate);
-        copyBtn.insertAdjacentHTML('afterbegin', Icons.action_copy);
-
-        const translationContainer = clone.querySelector('.post-translation');
-        const translateTextEl = clone.querySelector('.post-translation-text');
-
-        copyBtn.addEventListener('click', async () => {
-            try {
-                await navigator.clipboard.writeText(rawText);
-                copyBtn.classList.add('success');
-                setTimeout(() => copyBtn.classList.remove('success'), 2000);
-            } catch (err) { Logger.error('Ошибка буфера обмена', err); }
-        });
-
-        translateBtn.addEventListener('click', async () => {
-            const isTranslated = translateBtn.classList.contains('active');
-            if (isTranslated) {
-                translationContainer.style.display = 'none';
-                translateBtn.classList.remove('active');
-                return;
-            }
-            if (translateTextEl.innerHTML !== '') {
-                translationContainer.style.display = 'block';
-                translateBtn.classList.add('active');
-                return;
-            }
-            try {
-                translateBtn.classList.add('loading');
-                const translatedText = await this.translator.translate(rawText);
-                translateTextEl.innerHTML = formatRichText(translatedText);
-                translateTextEl.style.color = "var(--text-main)";
-                translationContainer.style.display = 'block';
-                translateBtn.classList.replace('loading', 'active');
-            } catch (err) {
-                translateBtn.classList.remove('loading');
-                translationContainer.style.display = 'block';
-                translateTextEl.innerHTML = err.message === 'RATE_LIMIT' ? `<em>Слишком много запросов.</em>` : `<em>Ошибка перевода.</em>`;
-                translateTextEl.style.color = "var(--error-color)";
-            }
-        });
     }
 }

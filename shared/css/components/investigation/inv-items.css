@@ -1,0 +1,33 @@
+/* =========================================
+   ОБЕРТКА УЛИК И АНИМАЦИИ (Drag & Drop)
+========================================= */
+.inv-item-wrapper { position: relative; animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.inv-item-wrapper[draggable="true"] { cursor: grab; }
+.inv-item-wrapper[draggable="true"]:active { cursor: grabbing; }
+.inv-item-wrapper.is-deleting { animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
+.inv-item-delete {
+    position: absolute; top: -10px; right: -10px; width: 24px; height: 24px;
+    background: var(--bg-card); color: var(--error-color); border: 1px solid var(--border-color);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.2s ease; opacity: 0; transform: scale(0.8);
+}
+.inv-item-wrapper:hover .inv-item-delete { opacity: 1; transform: scale(1); }
+.inv-item-delete svg { width: 14px; height: 14px; }
+.inv-item-delete:hover { background: var(--error-color); color: #fff; transform: scale(1.15) !important; }
+
+@keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.9); } }
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.inv-mini-post.shake {
+    animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+    border-color: var(--error-color) !important;
+    box-shadow: 0 0 15px rgba(248, 81, 73, 0.2) !important;
+}

@@ -24,7 +24,14 @@ export async function init() {
         authorNamesMap[author.handle.toLowerCase()] = author.name;
     });
 
-    const view = new PostView('post-template', window.globalLightbox, window.globalTranslator, authorNamesMap);
+    const view = new PostView('post-template', window.globalLightbox, window.globalTranslator, authorNamesMap, {
+        onEvidenceCollect: (postData, rawDomElement) => {
+            if (window.globalInvestigation) {
+                window.globalInvestigation.addEvidence('post', postData.id, postData, rawDomElement);
+            }
+        }
+    });
+
     const controller = new FeedController(model, view, null);
     
     const scroller = new InfiniteScroll('scroll-sentinel', () => controller.appendNextChunk());
@@ -33,7 +40,7 @@ export async function init() {
     let currentSelectedAuthors = [];
     let currentPostTypes = [];
     let currentSearchTerm = '';
-    let currentSortDir = 'desc'; // По умолчанию новые
+    let currentSortDir = 'desc'; 
 
     const triggerSearch = () => controller.handleSearchOrFilter(currentSearchTerm, currentSelectedAuthors, currentPostTypes, currentSortDir);
 
@@ -45,8 +52,9 @@ export async function init() {
         triggerSearch();
     });
 
-    const iconLayers = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline></svg></div>`;
-    const iconUsers = `<div class="svg-icon">${Icons.stat_users}</div>`;
+    const iconFeedSettings = `<div class="svg-icon">${Icons.feed_settings}</div>`;
+    // ИСПОЛЬЗУЕМ НОВУЮ ИКОНКУ АВТОРОВ ВМЕСТО СТАРОЙ
+    const iconAuthorsFilter = `<div class="svg-icon">${Icons.filter_authors || Icons.stat_users}</div>`;
 
     const iconPencil = `<div class="svg-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg></div>`;
     const iconQuote = `<div class="svg-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg></div>`;
@@ -55,7 +63,6 @@ export async function init() {
     const iconVideo = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg></div>`;
     const iconLink = `<div class="svg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></div>`;
 
-    // 1. Инициализация ОБЪЕДИНЕННОГО списка (Сортировка + Типы)
     const filterOptions = [
         {
             id: 'sort_dir',
@@ -77,7 +84,7 @@ export async function init() {
         multiple: true,
         keepPlaceholder: true,
         placeholder: 'Настройки ленты',
-        triggerIcon: iconLayers,
+        triggerIcon: iconFeedSettings,
         onChange: (selectedIds) => {
             currentSortDir = selectedIds.includes('asc') ? 'asc' : 'desc';
             currentPostTypes = selectedIds.filter(id => id !== 'asc' && id !== 'desc' && id !== 'sort_dir');
@@ -88,7 +95,6 @@ export async function init() {
     const initialSettings = [currentSortDir, ...currentPostTypes];
     typeSelect.populate(filterOptions, initialSettings);
 
-    // 2. Инициализация списка АВТОРОВ
     try {
         const fallbackAvatarUri = Icons.avatar_fallback;
         const authorOptions = [];
@@ -111,7 +117,7 @@ export async function init() {
             multiple: true,
             keepPlaceholder: true,
             placeholder: 'Разработчики',
-            triggerIcon: iconUsers,
+            triggerIcon: iconAuthorsFilter, // Используем обновленную иконку
             onChange: (selectedIds) => {
                 currentSelectedAuthors = selectedIds;
                 triggerSearch();
@@ -120,7 +126,6 @@ export async function init() {
 
         authorSelect.populate(authorOptions, currentSelectedAuthors);
 
-        // Сборка ленты
         const results = await Promise.all(feedPromises);
         let combinedFeed = [];
         results.forEach(feedArray => {

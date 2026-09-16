@@ -15,7 +15,6 @@ export class FeedController {
         this.renderInitial();
     }
 
-    // Обновили метод: теперь принимает sortDir
     handleSearchOrFilter(searchTerm, authorId, postType, sortDir) {
         this.model.applyFilters(searchTerm, authorId, postType, sortDir);
         this.renderInitial();
@@ -49,9 +48,17 @@ export class FeedController {
         const fragment = document.createDocumentFragment();
         const searchTerm = this.model.getSearchTerm();
 
-        chunk.forEach(post => {
+        chunk.forEach((post, index) => {
             const el = this.view.render(post, searchTerm);
-            if (el) fragment.appendChild(el);
+            if (el) {
+                // МАГИЯ ЗДЕСЬ: Каскадная анимация (каждая карточка появляется чуть позже)
+                const card = el.querySelector('.post-card');
+                if (card) {
+                    // Ограничиваем максимальную задержку 0.5с, чтобы не ждать вечность при быстром скролле
+                    card.style.animationDelay = `${Math.min(index * 0.05, 0.5)}s`;
+                }
+                fragment.appendChild(el);
+            }
         });
 
         this.container.appendChild(fragment);

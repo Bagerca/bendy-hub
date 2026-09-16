@@ -1,0 +1,146 @@
+/* =========================================
+   МИНИАТЮРЫ ПОСТОВ И КАТАЛОГА (Только для инвентаря!)
+========================================= */
+
+/* --- МИНИ-ПОСТ --- */
+.post-card.inv-mini-post {
+    padding: 0.85rem; border-radius: 12px; background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255,255,255,0.08); pointer-events: none;
+    animation: none; transform: none; opacity: 1; box-shadow: none; margin: 0;
+}
+
+.inv-mini-post .post-actions, 
+.inv-mini-post .expand-text-btn,
+.inv-mini-post .multi-media-slider { 
+    pointer-events: auto; 
+}
+
+.inv-mini-post .post-header { margin-bottom: 0.5rem; gap: 0.5rem; }
+.inv-mini-post .post-avatar { width: 32px; height: 32px; }
+.inv-mini-post .post-author-name { font-size: 0.85rem; }
+.inv-mini-post .post-author-handle { font-size: 0.75rem; }
+.inv-mini-post .post-date { font-size: 0.7rem; }
+.inv-mini-post .post-text { font-size: 0.8rem; line-height: 1.4; margin-bottom: 0; }
+.inv-mini-post .reference-badge, .inv-mini-post .rt-badge { font-size: 0.7rem; margin-bottom: 0.4rem; }
+.inv-mini-post .reference-badge svg, .inv-mini-post .rt-badge svg { width: 12px; height: 12px; }
+.inv-mini-post .single-media { min-height: auto; margin-top: 0.5rem; border-radius: 8px; }
+.inv-mini-post .single-media .media-item { max-height: 200px; }
+.inv-mini-post .multi-media-slider { margin-top: 0.5rem; border-radius: 8px; }
+.inv-mini-post .media-slide { height: 200px; }
+.inv-mini-post .media-slider-counter { font-size: 0.65rem; padding: 2px 6px; top: 6px; right: 6px; }
+.inv-mini-post .video-play-btn { width: 36px; height: 36px; }
+.inv-mini-post .video-play-btn svg { width: 16px; height: 16px; }
+.inv-mini-post .quote-card { padding: 0.5rem; border-radius: 8px; margin: 0.5rem 0; }
+.inv-mini-post .quote-avatar { width: 16px; height: 16px; }
+.inv-mini-post .quote-author-name { font-size: 0.75rem; }
+.inv-mini-post .quote-text { font-size: 0.75rem; }
+.inv-mini-post .quote-card .media-item { max-height: 150px; }
+.inv-mini-post .link-card { flex-direction: row; align-items: center; border-radius: 8px; }
+.inv-mini-post .lc-image { width: 60px; aspect-ratio: 1/1; border-bottom: none; border-right: 1px solid var(--border-color); }
+.inv-mini-post .lc-content { padding: 0.5rem; gap: 2px; }
+.inv-mini-post .lc-title { font-size: 0.75rem; }
+.inv-mini-post .lc-domain { font-size: 0.65rem; }
+.inv-mini-post .lc-desc { font-size: 0.7rem; color: var(--text-muted); }
+.inv-mini-post .post-footer { padding-top: 0.5rem; margin-top: 0.5rem; border-top-color: rgba(255,255,255,0.05); }
+.inv-mini-post .action-btn { font-size: 0.75rem; padding: 0.3rem 0.5rem; }
+.inv-mini-post .action-btn svg { width: 14px; height: 14px; }
+.inv-mini-post .expand-text-btn { font-size: 0.75rem; padding: 4px 12px; }
+.inv-mini-post .expand-text-btn svg { width: 14px; height: 14px; }
+.inv-mini-post .post-translation-text { font-size: 0.8rem; }
+
+
+/* --- МИНИ-КАТАЛОГ (Оригинальные пропорции, уменьшенный размер) --- */
+.inv-mini-catalog.card-horizontal,
+.inv-mini-catalog.card-vertical {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 0 !important;
+    pointer-events: none;
+    animation: none; 
+    transform: none !important; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    background: var(--bg-card) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 12px !important;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Горизонтальные карточки (Игры, Фильмы) на всю ширину панели */
+.inv-mini-catalog.card-horizontal {
+    width: 100% !important;
+}
+
+.inv-mini-catalog.card-horizontal .card-cover-container {
+    width: 100% !important;
+    aspect-ratio: 92 / 45 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    border-right: none !important;
+}
+
+/* Вертикальные карточки (Книги) - делаем компактными по центру */
+.inv-mini-catalog.card-vertical {
+    width: 160px !important;
+}
+
+.inv-mini-catalog.card-vertical .card-cover-container {
+    width: 100% !important;
+    aspect-ratio: 2 / 3 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    border-right: none !important;
+}
+
+/* МАГИЯ: Центрируем саму обертку для вертикальных карточек, чтобы крестик (X) был прикреплен точно к краю книги */
+.inv-item-wrapper:has(.card-vertical) {
+    width: max-content;
+    margin: 0 auto;
+}
+
+/* Возвращаем бейджи статуса, но делаем их чуть меньше */
+.inv-mini-catalog .card-badges { 
+    display: flex !important; 
+    transform: scale(0.85);
+    transform-origin: top left;
+} 
+
+/* Контейнер текста */
+.inv-mini-catalog .card-info {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center;
+    padding: 0.85rem !important;
+    width: 100% !important;
+    gap: 4px;
+}
+
+/* Центрируем текст у книг, у игр оставляем по левому краю */
+.inv-mini-catalog.card-vertical .card-info {
+    text-align: center;
+    align-items: center;
+}
+
+.inv-mini-catalog .card-title { 
+    font-size: 0.95rem !important; 
+    font-weight: 800 !important;
+    color: var(--text-main) !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    white-space: normal !important; 
+    display: -webkit-box !important; 
+    -webkit-line-clamp: 2 !important; 
+    -webkit-box-orient: vertical !important; 
+    overflow: hidden !important;
+}
+
+.inv-mini-catalog .card-year { 
+    font-size: 0.8rem !important; 
+    color: var(--text-muted) !important;
+    margin: 0 !important;
+}
+
+/* Скрываем бегущую строку для статичных миниатюр */
+.inv-mini-catalog .smart-marquee-wrapper::after,
+.inv-mini-catalog .smart-marquee-wrapper::before {
+    display: none !important;
+}

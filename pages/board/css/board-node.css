@@ -1,0 +1,71 @@
+/* =========================================
+   BOARD-NODE.CSS - Карточка на доске
+========================================= */
+.board-node {
+    position: absolute; 
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color); 
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4); 
+    z-index: 10;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    pointer-events: auto; 
+}
+
+/* ДИНАМИЧЕСКИЕ РАЗМЕРЫ В ЗАВИСИМОСТИ ОТ КОНТЕНТА */
+.board-node.is-post { width: 500px; }
+.board-node.is-horizontal-card { width: 420px; }
+.board-node.is-vertical-card { width: 280px; } /* Делает книги красивыми и компактными */
+
+.board-node.is-dragging {
+    z-index: 100 !important; 
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    border-color: var(--accent-color); 
+    opacity: 0.95;
+}
+
+.node-drag-handle {
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(210, 168, 80, 0.05); padding: 8px 14px;
+    border-bottom: 1px solid var(--border-color); border-radius: 12px 12px 0 0;
+    cursor: grab; user-select: none;
+}
+.node-drag-handle:active { cursor: grabbing; }
+.ndh-left, .ndh-right { display: flex; align-items: center; gap: 8px; }
+
+.ndh-title {
+    color: var(--accent-color); font-weight: 800; font-size: 0.8rem;
+    text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 6px;
+}
+.ndh-title svg { width: 16px; height: 16px; }
+
+.ndh-action {
+    background: transparent; border: none; color: var(--text-muted); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.2s; padding: 4px; border-radius: 6px;
+}
+.ndh-action svg { width: 16px; height: 16px; }
+.ndh-close:hover { background: rgba(248, 81, 73, 0.1); color: var(--error-color); }
+
+/* КОНТЕНТ ПОСТА И КАРТОЧЕК КАТАЛОГА ВНУТРИ УЗЛА */
+.node-content { 
+    background-color: transparent; 
+    border-radius: 0 0 12px 12px; 
+    overflow: hidden; 
+}
+
+/* Сбрасываем стили вложенных карточек, чтобы они слились с оболочкой узла */
+.node-content .post-card,
+.node-content .card-horizontal,
+.node-content .card-vertical {
+    border: none !important; 
+    box-shadow: none !important; 
+    margin: 0 !important;
+    border-radius: 0 0 12px 12px !important; 
+    pointer-events: auto;
+    animation: none; 
+    transform: none !important; 
+    opacity: 1; 
+}
+
+.node-content img { user-select: none; -webkit-user-drag: none; }

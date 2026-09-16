@@ -29,7 +29,7 @@ export async function init() {
         multiple: true,
         keepPlaceholder: true,
         placeholder: 'Авторы',
-        triggerIcon: `<div class="svg-icon">${Icons.stat_users}</div>`,
+        triggerIcon: `<div class="svg-icon">${Icons.filter_authors || Icons.stat_users}</div>`, // Заменили иконку
         onChange: (selectedIds) => {
             controller.handleFilterChange({ authors: selectedIds });
         }

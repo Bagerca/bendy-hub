@@ -8,14 +8,28 @@
     "release_date": "10 фев. 2017 г.",
     "description": "...",
     "tags": [
-        "..."
+        "Экшены",
+        "Приключенческие игры",
+        "Инди",
+        "Стратегии"
     ],
     "platforms": {
-        "...": "..."
+        "steam": "https://store.steampowered.com/app/622650",
+        "epic": "https://store.epicgames.com/p/bendy-and-the-ink-machine-60cf5a",
+        "gog": "https://www.gog.com/en/game/bendy_and_the_ink_machine",
+        "playstation": "https://store.playstation.com/en-ca/product/UP2344-CUSA13637_00-MDKRTGAMES4BATIM",
+        "playstation_5": "https://store.playstation.com/en-us/concept/10013479/",
+        "xbox": "https://www.xbox.com/en-us/games/store/bendy-and-the-ink-machine/btq96qtq58f3",
+        "xbox_series": "https://www.xbox.com/ru-ru/games/store/bendy-and-the-ink-machine-xbox-series-x-s/9ng45q76p8dw",
+        "nintendo": "https://www.nintendo.com/us/store/products/bendy-and-the-ink-machine-switch/",
+        "ios": "https://apps.apple.com/us/app/bendy-and-the-ink-machine/id1437669537",
+        "android": "https://play.google.com/store/apps/details?id=com.jds.batim&hl=ru",
+        "joeydrewstudios": "https://joeydrewstudios.com/batim",
+        "silverlining": "https://silverliningint.com/game/bendy-and-the-ink-machine/"
     },
     "specs": {
-        "minimum": "...",
-        "recommended": "..."
+        "minimum": "ОС: Windows 10 (64-bit) | Процессор: 64-разрядный процессор | Оперативная память: 8 GB ОЗУ | Видеокарта: 4GB Dedicated | DirectX: Версии 12 | Место на диске: 2 GB",
+        "recommended": ""
     },
     "assets": {
         "logo": "logo.png",
@@ -23,10 +37,24 @@
         "banner": "banner.jpg",
         "hero_bg": "hero.jpg",
         "videos": [
-            "..."
+            "videos_01.mp4",
+            "videos_02.mp4",
+            "videos_03.mp4",
+            "videos_04.mp4"
         ],
         "screenshots": [
-            "..."
+            "screenshot_01.jpg",
+            "screenshot_02.jpg",
+            "screenshot_03.jpg",
+            "screenshot_04.jpg",
+            "screenshot_05.jpg",
+            "screenshot_06.jpg",
+            "screenshot_07.jpg",
+            "screenshot_08.jpg",
+            "screenshot_09.jpg",
+            "screenshot_10.jpg",
+            "screenshot_11.jpg",
+            "screenshot_12.jpg"
         ]
     },
     "russifiers": [
@@ -35,7 +63,24 @@
     "wiki": {
         "story": "...",
         "characters": [
-            "..."
+            "bertram_piedmont",
+            "boris_wolf",
+            "henry_stein",
+            "jack_fain",
+            "joey_drew",
+            "alice_angel",
+            "searchers",
+            "lacey_benton",
+            "linda_stein",
+            "norman_polk",
+            "piper",
+            "lost_ones",
+            "striker",
+            "susie_campbell",
+            "thomas_connor",
+            "wally_franks",
+            "fisher",
+            "ink_demon"
         ],
         "gameplay": [
             "..."

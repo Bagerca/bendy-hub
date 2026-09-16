@@ -1,12 +1,14 @@
 import { Icons } from '../../../shared/js/icons.js';
 import { SmartMarquee } from '../../../shared/js/SmartMarquee.js';
-import { prefetchData } from '../../../shared/js/api.js'; // <-- ДОБАВЛЕНО
+import { prefetchData } from '../../../shared/js/api.js';
 
 export class CatalogCardView {
-    constructor(horizontalTemplateId, verticalTemplateId) {
+    constructor(horizontalTemplateId, verticalTemplateId, callbacks = {}) {
         this.horizontalTemplate = document.getElementById(horizontalTemplateId);
         this.verticalTemplate = document.getElementById(verticalTemplateId);
         
+        this.onEvidenceCollect = callbacks.onEvidenceCollect || null;
+
         this.fallbackIcons = {
             game: Icons.stat_gamepad,
             book: Icons.stat_book,
@@ -39,6 +41,23 @@ export class CatalogCardView {
         const clone = activeTemplate.content.cloneNode(true);
         const card = clone.querySelector(isVertical ? '.card-vertical' : '.card-horizontal');
         
+        card.dataset.id = item.id;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'investigation-overlay';
+        
+        const isCollected = window.globalInvestigation && window.globalInvestigation.storage.exists('catalog', item.id);
+        if (isCollected) {
+            card.classList.add('is-collected');
+        }
+
+        overlay.innerHTML = `
+            <div class="inv-overlay-icon icon-add">${Icons.inv_add || ''}</div>
+            <div class="inv-overlay-icon icon-check">${Icons.inv_check || ''}</div>
+            <div class="inv-overlay-icon icon-remove">${Icons.inv_remove || ''}</div>
+        `;
+        card.prepend(overlay);
+
         clone.querySelector('.card-title').textContent = item.title === '...' ? 'Без названия' : item.title;
         clone.querySelector('.card-year').textContent = item.release_date === '...' ? '' : item.release_date;
         
@@ -85,21 +104,45 @@ export class CatalogCardView {
 
         SmartMarquee.apply(card, '.smart-marquee-text');
 
-        // >>> НОВАЯ ЛОГИКА: ПРЕДЗАГРУЗКА (Prefetch) <<<
         let hoverTimeout;
         card.addEventListener('pointerenter', () => {
-            // Если курсор на карточке дольше 100мс - значит юзер ей заинтересовался
             hoverTimeout = setTimeout(() => {
                 prefetchData(`assets/catalog/${item.id}/data.json`);
             }, 100);
         });
         card.addEventListener('pointerleave', () => clearTimeout(hoverTimeout));
 
+        // ЛЕВЫЙ КЛИК
         card.addEventListener('click', (e) => {
+            if (document.body.classList.contains('investigation-mode-active')) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (this.onEvidenceCollect) this.onEvidenceCollect(item, card);
+                return;
+            }
+
             e.preventDefault();
             const url = `project.html?id=${item.id}`;
             if (window.router) window.router.navigate(url);
             else window.location.href = url;
+        });
+
+        // ПРАВЫЙ КЛИК: Удалить улику
+        card.addEventListener('contextmenu', (e) => {
+            if (document.body.classList.contains('investigation-mode-active')) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (card.classList.contains('is-collected')) {
+                    if (window.globalInvestigation) {
+                        window.globalInvestigation.removeEvidence('catalog', item.id);
+                    }
+                    card.classList.add('is-removing');
+                    setTimeout(() => {
+                        card.classList.remove('is-removing');
+                    }, 1000);
+                }
+            }
         });
 
         return clone;

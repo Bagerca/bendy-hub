@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="pages/board/css/board-layout.css">
+<link rel="stylesheet" href="pages/board/css/board-ui.css">
+<link rel="stylesheet" href="pages/board/css/board-node.css">
+<link rel="stylesheet" href="pages/board/css/board-edges.css">
+
+<!-- БЛОКИРОВКА ДЛЯ МОБИЛЬНЫХ -->
+<div class="board-mobile-blocker">
+    <div class="bmb-content">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+        <h2>Доска недоступна</h2>
+        <p>Детективная доска требует большого экрана и точного управления мышью. Пожалуйста, откройте её на ПК или ноутбуке.</p>
+        <button onclick="window.history.back()" class="bmb-btn">Вернуться назад</button>
+    </div>
+</div>
+
+<!-- ОСНОВНОЙ ХОЛСТ -->
+<main class="board-page-wrapper">
+    <!-- Окно просмотра (Камера) -->
+    <div id="board-container" class="board-container">
+        <!-- Сам холст, к которому применяется Zoom и Pan -->
+        <div id="board-viewport" class="board-viewport">
+            
+            <!-- Слой для SVG нитей -->
+            <svg id="board-edges" class="board-edges"></svg>
+            
+            <!-- Слой для HTML постов -->
+            <div id="board-nodes" class="board-nodes">
+                
+                <!-- ПРИВЕТСТВЕННАЯ ТАБЛИЧКА -->
+                <div id="board-welcome-message" class="board-welcome-msg">
+                    <button id="board-welcome-close" class="bwm-close" aria-label="Закрыть">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    Добро пожаловать на доску!<br>
+                    Попробуй покрутить колесиком или потаскать холст мышью.
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- UI Наложение (Кнопки зума) -->
+    <div class="board-ui-overlay">
+        <div class="board-zoom-controls">
+            <button id="board-zoom-in" title="Приблизить">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <button id="board-zoom-reset" title="Сбросить масштаб">100%</button>
+            <button id="board-zoom-out" title="Отдалить">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+        </div>
+    </div>
+</main>

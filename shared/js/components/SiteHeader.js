@@ -26,7 +26,7 @@ export class SiteHeader extends HTMLElement {
                     
                     <!-- КНОПКА ИНВЕНТАРЯ УЛИК -->
                     <button class="header-inv-btn investigation-feature" id="open-investigation-btn">
-                        ${Icons.board || ''} Улики
+                        ${Icons.pin || ''} Улики
                     </button>
                 </div>
             </header>

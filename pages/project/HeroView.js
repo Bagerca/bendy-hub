@@ -7,7 +7,7 @@ export class HeroView {
             contentWrapper: document.getElementById('hero-content'),
             posterContainer: document.getElementById('hero-poster-container'),
             posterImg: document.getElementById('project-poster'),
-            posterFallback: document.getElementById('hero-cover-fallback'), // Добавили ссылку на заглушку
+            posterFallback: document.getElementById('hero-cover-fallback'),
             logo: document.getElementById('project-logo'),
             title: document.getElementById('project-title'),
             date: document.getElementById('project-date'),
@@ -45,7 +45,6 @@ export class HeroView {
                 this.els.posterContainer.classList.remove('movie-poster');
             }
 
-            // Настройка иконки заглушки в зависимости от типа
             const fallbackIcons = {
                 game: Icons.stat_gamepad,
                 book: Icons.stat_book,
@@ -53,7 +52,6 @@ export class HeroView {
             };
             this.els.posterFallback.innerHTML = fallbackIcons[type] || fallbackIcons.game;
 
-            // Контейнер постера показываем всегда, так как теперь в нём есть заглушка
             this.els.posterContainer.style.display = 'block';
 
             if (mainImage && mainImage !== '...') {
@@ -62,13 +60,11 @@ export class HeroView {
                 this.els.posterImg.style.display = 'block';
                 this.els.bg.style.backgroundImage = `url('${imgSrc}')`;
 
-                // Если картинка не загрузится (ошибка 404), прячем <img>, заглушка покажется автоматически
                 this.els.posterImg.onerror = () => {
                     this.els.posterImg.style.display = 'none';
                     this.els.bg.style.backgroundImage = 'none';
                 };
             } else {
-                // Картинки нет изначально
                 this.els.posterImg.style.display = 'none';
                 this.els.bg.style.backgroundImage = 'none';
             }
@@ -136,12 +132,17 @@ export class HeroView {
             pdf: { name: 'Читать', icon: Icons.plat_pdf },
             amazon: { name: 'Amazon', icon: Icons.plat_amazon },
             steam: { name: 'Steam', icon: Icons.plat_steam },
-            xbox: { name: 'Xbox', icon: Icons.plat_xbox },
-            playstation: { name: 'PlayStation', icon: Icons.plat_playstation },
-            nintendo: { name: 'Nintendo', icon: Icons.plat_nintendo },
             epic: { name: 'Epic Games', icon: Icons.plat_epic },
+            gog: { name: 'GOG.com', icon: Icons.plat_gog },
+            xbox: { name: 'Xbox', icon: Icons.plat_xbox },
+            xbox_series: { name: 'Xbox Series X|S', icon: Icons.plat_xbox_series },
+            playstation: { name: 'PlayStation', icon: Icons.plat_playstation },
+            playstation_5: { name: 'PlayStation 5', icon: Icons.plat_playstation_5 },
+            nintendo: { name: 'Nintendo', icon: Icons.plat_nintendo },
             ios: { name: 'App Store', icon: Icons.plat_ios },
             android: { name: 'Google Play', icon: Icons.plat_android },
+            joeydrewstudios: { name: 'Joey Drew Studios', icon: Icons.plat_joeydrewstudios },
+            silverlining: { name: 'Silver Lining', icon: Icons.plat_silverlining },
             default: { name: 'Смотреть / Читать', icon: Icons.plat_default }
         };
     }

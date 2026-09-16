@@ -1,4 +1,5 @@
 import { Icons } from '../../shared/js/icons.js';
+import { VideoPlayerHelper } from '../../shared/js/VideoPlayerHelper.js';
 
 export class WikiView {
     constructor(lightboxManager) {
@@ -54,7 +55,6 @@ export class WikiView {
         const wiki = data.wiki || {};
         const type = data.type || 'game';
 
-        // Рендер описания
         if (data.description && data.description !== '...') {
             this.els.desc.className = 'project-desc';
             this.els.desc.textContent = data.description;
@@ -68,10 +68,9 @@ export class WikiView {
             `;
         }
         
-        // Рендер тегов с красивой отцентрированной заглушкой
         this.els.tags.innerHTML = '';
         const validTags = (data.tags || []).filter(t => t && t !== '...');
-        const tagsHeader = this.els.tags.previousElementSibling; // Находим <h3>Жанры и теги</h3>
+        const tagsHeader = this.els.tags.previousElementSibling; 
         
         if (validTags.length > 0) {
             if (tagsHeader) tagsHeader.style.textAlign = 'left';
@@ -155,12 +154,23 @@ export class WikiView {
         if (assets.videos && assets.videos.length > 0) {
             assets.videos.forEach(url => {
                 if(url === '...') return;
-                const videoId = this._extractYouTubeId(url);
-                if (videoId) {
+                
+                const ytId = this._extractYouTubeId(url);
+                if (ytId) {
                     mediaItems.push({
-                        type: 'video',
-                        src: `https://www.youtube.com/embed/${videoId}?rel=0`, 
-                        thumb: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+                        type: 'youtube',
+                        src: `https://www.youtube.com/embed/${ytId}?rel=0`, 
+                        thumb: `https://img.youtube.com/vi/${ytId}/mqdefault.jpg`
+                    });
+                } else if (url.match(/\.(mp4|webm|ogg)$/i)) {
+                    const basePath = `${this.baseAssetPath}${projectId}/`;
+                    const fileName = url.substring(0, url.lastIndexOf('.')) || url;
+                    
+                    mediaItems.push({
+                        type: 'local_video',
+                        src: `${basePath}${url}`, 
+                        thumb: `${basePath}${url}.jpg`, 
+                        fallbackThumb: `${basePath}${fileName}.jpg`
                     });
                 }
             });
@@ -194,12 +204,25 @@ export class WikiView {
                     <button class="gallery-arrow left" id="gallery-prev" aria-label="Назад">${Icons.gallery_prev}</button>
                     
                     <div class="gallery-thumbnails" id="gallery-thumbnails">
-                        ${mediaItems.map((item, idx) => `
+                        ${mediaItems.map((item, idx) => {
+                            let thumbHtml = '';
+                            if (item.type === 'local_video') {
+                                thumbHtml = `<img src="${item.thumb}" alt="Thumbnail" loading="lazy" 
+                                              onerror="if(this.getAttribute('data-fallback')!=='true'){ this.setAttribute('data-fallback', 'true'); this.src='${item.fallbackThumb}'; } else { this.style.display='none'; this.nextElementSibling.style.display='block'; }">
+                                             <div class="local-vid-fallback" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);"></div>`;
+                            } else if (item.thumb) {
+                                thumbHtml = `<img src="${item.thumb}" alt="Thumbnail" loading="lazy">`;
+                            } else {
+                                thumbHtml = `<div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);"></div>`;
+                            }
+
+                            return `
                             <button class="gallery-thumb-btn ${idx === 0 ? 'active' : ''}" data-index="${idx}">
-                                <img src="${item.thumb}" alt="Thumbnail" loading="lazy">
-                                ${item.type === 'video' ? `<div class="play-indicator">${Icons.play_indicator}</div>` : ''}
+                                ${thumbHtml}
+                                ${(item.type === 'youtube' || item.type === 'local_video') ? `<div class="play-indicator">${Icons.player_play}</div>` : ''}
                             </button>
-                        `).join('')}
+                            `;
+                        }).join('')}
                     </div>
                     
                     <button class="gallery-arrow right" id="gallery-next" aria-label="Вперед">${Icons.gallery_next}</button>
@@ -223,12 +246,21 @@ export class WikiView {
                 const imgEl = mainView.querySelector('.gallery-main-img');
                 imgEl.onclick = () => this.lightbox.open(item.src);
             } 
-            else if (item.type === 'video') {
+            else if (item.type === 'youtube') {
                 mainView.innerHTML = `
                     <div class="video-wrapper">
                         <iframe src="${item.src}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 `;
+            }
+            else if (item.type === 'local_video') {
+                mainView.innerHTML = `
+                    <div class="custom-video-wrapper">
+                        <video src="${item.src}" preload="metadata" playsinline></video>
+                    </div>
+                `;
+                // Инициализируем наш потрясающий кастомный плеер
+                VideoPlayerHelper.setup(mainView.querySelector('.custom-video-wrapper'));
             }
 
             if (thumbs.length > 0) {

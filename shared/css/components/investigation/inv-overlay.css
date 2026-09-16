@@ -1,0 +1,97 @@
+/* =========================================
+   РЕЖИМ "СБОРА УЛИК" В ЛЕНТЕ И КАТАЛОГЕ
+========================================= */
+body.investigation-mode-active { cursor: crosshair; }
+
+/* Применяем эффекты к постам и карточкам каталога */
+body.investigation-mode-active .post-card:not(.inv-mini-post),
+body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog),
+body.investigation-mode-active .card-vertical:not(.inv-mini-catalog) {
+    position: relative; 
+    cursor: copy !important; 
+    overflow: hidden; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.investigation-overlay {
+    position: absolute; inset: 0; z-index: 1000; display: none; 
+    align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;
+    background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(5px) brightness(0.6); -webkit-backdrop-filter: blur(5px) brightness(0.6);
+}
+
+.investigation-overlay .inv-overlay-icon {
+    width: 64px; height: 64px; background: var(--bg-card);
+    border: 2px solid var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 30px rgba(210, 168, 80, 0.4); transform: scale(0.5); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.investigation-overlay .inv-overlay-icon svg { width: 32px; height: 32px; display: block; }
+
+/* --- ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ИКОНОК --- */
+/* Состояние по умолчанию: Иконка "Добавить" */
+.investigation-overlay .icon-add { color: var(--accent-color); display: flex; }
+.investigation-overlay .icon-check { display: none; }
+.investigation-overlay .icon-remove { display: none; }
+
+/* Состояние "Уже добавлено в улики": Зеленая галочка */
+.is-collected .investigation-overlay .icon-add { display: none; }
+.is-collected .investigation-overlay .icon-check { 
+    display: flex; 
+    color: #00BA7C; 
+    border-color: #00BA7C;
+    box-shadow: 0 10px 30px rgba(0, 186, 124, 0.4);
+}
+
+/* Состояние "Удаление" (ПКМ): Красная вспышка с планшетом-крестиком */
+.is-removing .investigation-overlay .icon-add { display: none !important; }
+.is-removing .investigation-overlay .icon-check { display: none !important; }
+.is-removing .investigation-overlay .icon-remove { 
+    display: flex !important; 
+    color: var(--error-color) !important;
+    border-color: var(--error-color) !important;
+    box-shadow: 0 10px 30px rgba(248, 81, 73, 0.4) !important;
+}
+
+
+/* Включаем оверлей при активном режиме */
+body.investigation-mode-active .post-card:not(.inv-mini-post) .investigation-overlay,
+body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog) .investigation-overlay,
+body.investigation-mode-active .card-vertical:not(.inv-mini-catalog) .investigation-overlay { 
+    display: flex; 
+}
+
+/* Ховер эффекты (Если карточка НЕ собрана) */
+body.investigation-mode-active .post-card:not(.inv-mini-post):not(.is-collected):not(.is-removing):hover,
+body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog):not(.is-collected):not(.is-removing):hover,
+body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):not(.is-collected):not(.is-removing):hover { 
+    border-color: var(--accent-color) !important; 
+    box-shadow: 0 8px 30px rgba(210, 168, 80, 0.2) !important; 
+}
+
+/* Ховер эффекты (Если карточка УЖЕ собрана) */
+body.investigation-mode-active .post-card.is-collected:not(.is-removing):hover,
+body.investigation-mode-active .card-horizontal.is-collected:not(.is-removing):hover,
+body.investigation-mode-active .card-vertical.is-collected:not(.is-removing):hover { 
+    border-color: #00BA7C !important; 
+    box-shadow: 0 8px 30px rgba(0, 186, 124, 0.2) !important; 
+}
+
+/* Эффект при удалении (красная обводка) */
+body.investigation-mode-active .post-card.is-removing,
+body.investigation-mode-active .card-horizontal.is-removing,
+body.investigation-mode-active .card-vertical.is-removing { 
+    border-color: var(--error-color) !important; 
+    box-shadow: 0 8px 30px rgba(248, 81, 73, 0.2) !important; 
+}
+
+body.investigation-mode-active .post-card:not(.inv-mini-post):hover .investigation-overlay,
+body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog):hover .investigation-overlay,
+body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .investigation-overlay { 
+    opacity: 1; 
+}
+
+body.investigation-mode-active .post-card:not(.inv-mini-post):hover .inv-overlay-icon,
+body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog):hover .inv-overlay-icon,
+body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .inv-overlay-icon { 
+    transform: scale(1); 
+}

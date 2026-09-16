@@ -1,0 +1,84 @@
+/* =========================================
+   ВЫЕЗЖАЮЩАЯ ПАНЕЛЬ И КНОПКА ХЕДЕРА
+========================================= */
+@media (max-width: 1024px) {
+    .investigation-feature { display: none !important; }
+}
+
+.header-inv-btn {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 10px; /* Увеличили расстояние между иконкой и текстом */
+    
+    /* Цвета и фон */
+    background: rgba(210, 168, 80, 0.12); /* Сделали фон чуть плотнее */
+    color: var(--accent-color);
+    border: 1px solid rgba(210, 168, 80, 0.4); 
+    
+    /* Размеры (делаем кнопку массивнее) */
+    height: 42px; /* Жестко задаем высоту, чтобы она совпадала с меню слева */
+    padding: 0 22px; 
+    border-radius: 30px; 
+    
+    /* Типографика */
+    font-size: 0.95rem; /* Увеличили шрифт */
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    
+    cursor: pointer; 
+    margin-left: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Увеличиваем иконку */
+.header-inv-btn svg { 
+    width: 20px; 
+    height: 20px; 
+    display: block;
+}
+
+/* Эффект при наведении (Кнопка загорается, приподнимается и дает свечение) */
+.header-inv-btn:hover { 
+    background: var(--accent-color); 
+    color: #000; 
+    border-color: var(--accent-color);
+    box-shadow: 0 6px 20px rgba(210, 168, 80, 0.25); 
+    transform: translateY(-2px);
+}
+
+/* Состояние, когда панель улик открыта */
+.header-inv-btn.is-active { 
+    background: var(--accent-color); 
+    color: #000; 
+    transform: translateY(0);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.3); 
+}
+
+/* Стили самой панели (Оставляем без изменений) */
+.investigation-panel {
+    position: fixed; top: 70px; right: 0; bottom: 0; width: 350px;
+    background-color: rgba(28, 33, 40, 0.85); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+    border-left: 1px solid rgba(255, 255, 255, 0.05); border-top-left-radius: 24px;
+    z-index: 990; display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 40px rgba(0,0,0,0.4);
+}
+.investigation-panel.active { transform: translateX(0); }
+
+.inv-header { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.inv-header-title { display: flex; align-items: center; gap: 10px; color: var(--text-main); }
+.inv-header-title svg { width: 20px; height: 20px; color: var(--accent-color); }
+.inv-header h2 { font-size: 1.05rem; font-weight: 800; }
+
+.inv-close-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; color: var(--text-muted); cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+.inv-close-btn svg { width: 16px; height: 16px; display: block; }
+.inv-close-btn:hover { background: var(--error-color); color: #fff; border-color: var(--error-color); transform: scale(1.1); }
+
+.inv-content { flex-grow: 1; overflow-y: auto; padding: 1.25rem; display: flex; flex-direction: column; gap: 1.25rem; scrollbar-width: none; }
+.inv-content::-webkit-scrollbar { display: none; }
+
+.inv-footer { padding: 1.25rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+.inv-board-btn { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-weight: 800; font-size: 0.9rem; cursor: pointer; transition: 0.2s; }
+.inv-board-btn:hover { background: var(--accent-color); color: #000; border-color: var(--accent-color); }

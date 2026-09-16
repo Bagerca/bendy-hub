@@ -76,6 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
         'community': { 
             module: getUrl('./pages/community/app.js'),
             template: getUrl('./pages/community/community.html')
+        },
+        'board': { // <--- ДОБАВЛЕНО ДЛЯ ДОСКИ
+            module: getUrl('./pages/board/app.js'),
+            template: getUrl('./pages/board/board.html')
         }
     };
 
