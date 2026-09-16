@@ -3835,5 +3835,82 @@
     "referenceText": "",
     "referenceMedia": [],
     "linkCards": []
+  },
+  {
+    "id": "1990835259278078207",
+    "authorName": "m_ZeroLogics",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "go mad limited drop tee is now over, thanks everyone!",
+    "timestamp": "2025-11-18T17:31:28Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "",
+    "referenceUrl": "",
+    "referenceAuthor": "",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1990805102786195543",
+    "authorName": "m_ZeroLogics",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "your best bet is contacting support, like you did, include your order number and they should get to it, there is an influx of messages but they’ll get to it. :)",
+    "timestamp": "2025-11-18T15:31:38Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/NumsterProduct",
+    "referenceAuthor": "@NumsterProduct",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1990800867675811933",
+    "authorName": "m_ZeroLogics",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "Gif",
+    "timestamp": "2025-11-18T15:14:48Z",
+    "media": [
+      {
+        "url": "assets/developers/m_zerologics/media/1990800867675811933_0.mp4",
+        "type": "video"
+      }
+    ],
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/orintwt",
+    "referenceAuthor": "@orintwt",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
+  },
+  {
+    "id": "1990799725529006347",
+    "authorName": "m_ZeroLogics",
+    "authorHandle": "@m_ZeroLogics",
+    "platform": "twitter",
+    "content": "i’ll dm you",
+    "timestamp": "2025-11-18T15:10:16Z",
+    "media": [],
+    "localAvatarPath": "assets/developers/m_zerologics/avatar.jpg",
+    "referenceType": "reply",
+    "referenceUrl": "https://twitter.com/bumble_bbgun",
+    "referenceAuthor": "@bumble_bbgun",
+    "referenceAuthorName": "",
+    "referenceAvatarUrl": "",
+    "referenceText": "",
+    "referenceMedia": [],
+    "linkCards": []
   }
 ]
