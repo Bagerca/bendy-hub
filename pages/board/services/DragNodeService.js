@@ -33,22 +33,25 @@ export class DragNodeService {
         if (!handle || e.target.closest('.ndh-action')) return;
 
         e.stopPropagation();
-        e.preventDefault(); // Убиваем выделение
+        e.preventDefault(); 
 
         this.activeNode = handle.closest('.board-node');
         if (!this.activeNode) return;
 
         this.activeNode.classList.add('is-dragging');
-        this.container.appendChild(this.activeNode);
+        this.container.appendChild(this.activeNode); 
 
-        // Запрещаем выделение текста глобально
         document.body.classList.add('is-board-interacting');
 
         this.startMouseX = e.clientX;
         this.startMouseY = e.clientY;
         
-        this.startNodeX = parseFloat(this.activeNode.style.left || 0);
-        this.startNodeY = parseFloat(this.activeNode.style.top || 0);
+        // АРХИТЕКТУРНОЕ ИСПРАВЛЕНИЕ:
+        // Используем getComputedStyle, чтобы гарантированно получить пиксели.
+        // Это защищает нас от багов с calc(), % или отсутствием значения left/top.
+        const computedStyle = window.getComputedStyle(this.activeNode);
+        this.startNodeX = parseFloat(computedStyle.left) || 0;
+        this.startNodeY = parseFloat(computedStyle.top) || 0;
 
         document.addEventListener('mousemove', this._handleMouseMove);
         document.addEventListener('mouseup', this._handleMouseUp);
@@ -75,13 +78,12 @@ export class DragNodeService {
         if (!this.activeNode) return;
 
         this.activeNode.classList.remove('is-dragging');
-        document.body.classList.remove('is-board-interacting'); // Возвращаем выделение
+        document.body.classList.remove('is-board-interacting'); 
         
         const finalX = parseFloat(this.activeNode.style.left);
         const finalY = parseFloat(this.activeNode.style.top);
         const nodeId = this.activeNode.dataset.nodeId;
 
-        // Если это системная нода (вроде таблички с инструкцией), не пытаемся сохранить её позицию в базу
         if (this.onNodeMoved && !this.activeNode.classList.contains('is-system-node')) {
             this.onNodeMoved(nodeId, finalX, finalY);
         }

@@ -15,7 +15,7 @@ export class BoardView {
         };
         
         this.contextMenu = new BoardContextMenu();
-        this.boardCursorMouseMove = null; // Для очистки слушателя
+        this.boardCursorMouseMove = null; 
         
         this._initWelcomeMessage();
         this._initBoardCursor(); 
@@ -28,7 +28,6 @@ export class BoardView {
     }
 
     _initBoardCursor() {
-        // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Удаляем сиротские курсоры от предыдущих посещений страницы
         const oldCursor = document.getElementById('board-custom-cursor');
         if (oldCursor) oldCursor.remove();
 
@@ -46,7 +45,6 @@ export class BoardView {
         this.boardCursorMouseMove = (e) => {
             if (!this.boardCursor) return;
 
-            // Если открыто меню настройки, скрываем курсор
             if (this.contextMenu && this.contextMenu.element) {
                 this.boardCursor.classList.remove('visible');
                 return;
@@ -55,7 +53,6 @@ export class BoardView {
             this.boardCursor.style.setProperty('--x', `${e.clientX}px`);
             this.boardCursor.style.setProperty('--y', `${e.clientY}px`);
 
-            // Проверяем, находится ли курсор над линией (хитбоксом) и НЕ над карточкой
             const isOverEdge = e.target.closest('.board-edge-group');
             const isOverNode = e.target.closest('.board-node');
 
@@ -70,13 +67,18 @@ export class BoardView {
     }
 
     _initWelcomeMessage() {
-        // Если юзер уже закрывал подсказку ранее, мы даже не создаем DOM-узел
         if (localStorage.getItem('bendy_board_welcome_closed') === 'true') {
             return;
         }
 
+        // АРХИТЕКТУРНОЕ ИСПРАВЛЕНИЕ:
+        // Вычисляем центр в абсолютных пикселях на старте, чтобы не использовать calc() 
+        // и не ломать логику DragNodeService
+        const containerWidth = this.els.container.clientWidth || window.innerWidth;
+        const startX = (containerWidth / 2) - 175; // 175 = половина от width: 350px
+
         const welcomeHtml = `
-            <div id="board-welcome-message" class="board-node is-system-node" data-node-id="welcome_node" style="left: calc(50% - 175px); top: 150px; width: 350px;">
+            <div id="board-welcome-message" class="board-node is-system-node" data-node-id="welcome_node" style="left: ${startX}px; top: 150px; width: 350px;">
                 <div class="node-drag-handle" style="background: rgba(210, 168, 80, 0.1);">
                     <div class="ndh-left">
                         <div class="ndh-title">
@@ -271,7 +273,6 @@ export class BoardView {
         if (nodeEl) nodeEl.remove();
     }
 
-    // Очистка при уходе с доски
     destroy() {
         if (this.boardCursorMouseMove) {
             document.removeEventListener('mousemove', this.boardCursorMouseMove);
