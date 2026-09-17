@@ -67,15 +67,15 @@ export class BoardController {
                     
                     this.view.showEdgeContextMenu(edgeId, clientX, clientY, edgeData, {
                         onDelete: (id) => this._removeEdgeById(id),
-                        onChangeColor: (id, color) => {
-                            const updated = this.model.updateEdge(id, { color });
+                        // Универсальный обработчик обновлений слияния свойств
+                        onChangeEdge: (id, updates) => {
+                            const updated = this.model.updateEdge(id, updates);
                             this.edgeService.updateEdgeStyle(updated);
-                            this.view.updateNodePins(updated.from, this.model.getEdges());
-                            this.view.updateNodePins(updated.to, this.model.getEdges());
-                        },
-                        onChangeStyle: (id, style) => {
-                            const updated = this.model.updateEdge(id, { style });
-                            this.edgeService.updateEdgeStyle(updated);
+                            // Если поменялся цвет, обновляем свечение пинов
+                            if (updates.color) {
+                                this.view.updateNodePins(updated.from, this.model.getEdges());
+                                this.view.updateNodePins(updated.to, this.model.getEdges());
+                            }
                         }
                     });
                 }
@@ -259,8 +259,6 @@ export class BoardController {
         if (this.panZoom) this.panZoom.destroy();
         if (this.dragNodeService) this.dragNodeService.destroy();
         if (this.edgeService) this.edgeService.destroy();
-        
-        // Очищаем DOM от курсоров
         if (this.view) this.view.destroy();
         
         window.removeEventListener('evidenceRemoved', this._handleEvidenceRemoved);

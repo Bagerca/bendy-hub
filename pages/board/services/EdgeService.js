@@ -14,7 +14,7 @@ export class EdgeService {
         this.currentMouseX = 0;
         this.currentMouseY = 0;
 
-        this.drawnEdges = new Map();  // Хранит <g> (группы)
+        this.drawnEdges = new Map();  
         this.edgeDataMap = new Map(); 
 
         this._handleMouseDown = this._handleMouseDown.bind(this);
@@ -28,7 +28,6 @@ export class EdgeService {
 
     init() {
         this.nodesContainer.addEventListener('mousedown', this._handleMouseDown);
-        // Слушаем правый клик по холсту (будем ловить группы нитей)
         this.svg.addEventListener('contextmenu', this._handleContextMenu);
         
         this.isRendering = true;
@@ -101,6 +100,7 @@ export class EdgeService {
         document.body.classList.add('is-board-interacting');
 
         this.tempPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        // Анимация притягивания (пунктир бежит к мышке)
         this.tempPath.setAttribute('class', 'board-edge-path temp');
         this.svg.appendChild(this.tempPath);
 
@@ -146,7 +146,6 @@ export class EdgeService {
         this.startSide = null;
     }
 
-    // Обработка правого клика по хитбоксу группы
     _handleContextMenu(e) {
         const group = e.target.closest('.board-edge-group');
         if (group) {
@@ -205,27 +204,52 @@ export class EdgeService {
     }
 
     _applyStylesToPath(pathEl, edge) {
+        // Цвет и толщина
         pathEl.style.setProperty('--edge-color', edge.color || '#ff4444');
-        pathEl.style.setProperty('--edge-style', edge.style === 'solid' ? 'none' : '8 6');
+        pathEl.style.strokeWidth = `${edge.weight || 3}px`;
+        
+        // Установка стилей пунктиров
+        if (edge.style === 'dashed') {
+            pathEl.style.setProperty('--edge-style', '10 8');
+            pathEl.style.strokeLinecap = 'butt';
+        } else if (edge.style === 'dotted') {
+            pathEl.style.setProperty('--edge-style', '0.1 10'); 
+            pathEl.style.strokeLinecap = 'round'; // Чтобы точки были круглыми
+        } else if (edge.style === 'dashdot') {
+            pathEl.style.setProperty('--edge-style', '12 8 0.1 8');
+            pathEl.style.strokeLinecap = 'round';
+        } else {
+            // solid
+            pathEl.style.setProperty('--edge-style', 'none');
+            pathEl.style.strokeLinecap = 'butt';
+        }
+
+        // Анимация (если не solid)
+        if (edge.animated && edge.style !== 'solid') {
+            pathEl.classList.add('is-animated');
+        } else {
+            pathEl.classList.remove('is-animated');
+        }
+        
+        // Очищаем хвосты от прошлых стрелок
+        pathEl.removeAttribute('marker-end');
+        pathEl.removeAttribute('marker-start');
     }
 
     _drawFinalEdge(edge) {
-        // Создаем группу
         const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         group.setAttribute('class', 'board-edge-group');
         group.setAttribute('data-edge-id', edge.id);
 
-        // Толстый невидимый путь (для мыши)
         const hitbox = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         hitbox.setAttribute('class', 'board-edge-hitbox');
 
-        // Тонкий красивый путь (для глаз)
         const pathEl = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         pathEl.setAttribute('class', 'board-edge-path');
         this._applyStylesToPath(pathEl, edge);
 
         const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-        title.textContent = 'ПКМ для настройки или удаления';
+        title.textContent = 'ПКМ для настройки';
         group.appendChild(title);
 
         group.appendChild(hitbox);

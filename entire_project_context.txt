@@ -26884,32 +26884,9 @@ FILE: pages\board\board.html
             <!-- Слой для SVG нитей -->
             <svg id="board-edges" class="board-edges"></svg>
             
-            <!-- Слой для HTML постов -->
-            <div id="board-nodes" class="board-nodes">
-                
-                <!-- ПРИВЕТСТВЕННАЯ ТАБЛИЧКА (Теперь это полноценная нода) -->
-                <div id="board-welcome-message" class="board-node is-system-node" data-node-id="welcome_node" style="left: calc(50% - 175px); top: 150px; width: 350px;">
-                    <div class="node-drag-handle" style="background: rgba(210, 168, 80, 0.1);">
-                        <div class="ndh-left">
-                            <div class="ndh-title">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                                Руководство
-                            </div>
-                        </div>
-                        <div class="ndh-right">
-                            <button id="board-welcome-close" class="ndh-action ndh-close" title="Скрыть навсегда">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="node-content" style="padding: 1.5rem; text-align: center; color: var(--text-main); font-size: 0.95rem; line-height: 1.6;">
-                        <h3 style="margin-bottom: 0.5rem; font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">Добро пожаловать на доску!</h3>
-                        Используйте колёсико мыши для масштабирования и перетаскивайте холст левой кнопкой.<br><br>
-                        Чтобы добавить улику, откройте меню улик (кнопка сверху) и <b>перетащите карточку</b> прямо на этот холст.
-                    </div>
-                </div>
-
-            </div>
+            <!-- Слой для HTML постов (Табличка теперь генерируется через JS) -->
+            <div id="board-nodes" class="board-nodes"></div>
+            
         </div>
     </div>
 
@@ -27035,7 +27012,7 @@ export class BoardController {
             (state) => {
                 this.model.updateCamera(state.x, state.y, state.scale);
                 this.view.updateZoomText(state.scale);
-                this.view.closeEdgeContextMenu(); // Закрываем меню при скролле
+                this.view.closeEdgeContextMenu(); 
             }
         );
 
@@ -27074,7 +27051,6 @@ export class BoardController {
                         });
                     }
                 },
-                // Вызов контекстного меню
                 onEdgeContextMenu: (edgeId, clientX, clientY) => {
                     const edgeData = this.model.getEdges().find(e => e.id === edgeId);
                     if (!edgeData) return;
@@ -27084,7 +27060,6 @@ export class BoardController {
                         onChangeColor: (id, color) => {
                             const updated = this.model.updateEdge(id, { color });
                             this.edgeService.updateEdgeStyle(updated);
-                            // Немедленно обновляем цвета пинов на обеих карточках
                             this.view.updateNodePins(updated.from, this.model.getEdges());
                             this.view.updateNodePins(updated.to, this.model.getEdges());
                         },
@@ -27275,6 +27250,9 @@ export class BoardController {
         if (this.dragNodeService) this.dragNodeService.destroy();
         if (this.edgeService) this.edgeService.destroy();
         
+        // Очищаем DOM от курсоров
+        if (this.view) this.view.destroy();
+        
         window.removeEventListener('evidenceRemoved', this._handleEvidenceRemoved);
         Object.keys(this.hoverAnimFrames).forEach(key => cancelAnimationFrame(this.hoverAnimFrames[key]));
         
@@ -27396,7 +27374,10 @@ export class BoardView {
         };
         
         this.contextMenu = new BoardContextMenu();
+        this.boardCursorMouseMove = null; 
+        
         this._initWelcomeMessage();
+        this._initBoardCursor(); 
         
         document.addEventListener('mousedown', (e) => {
             if (this.contextMenu.element && !this.contextMenu.contains(e.target)) {
@@ -27405,30 +27386,92 @@ export class BoardView {
         });
     }
 
+    _initBoardCursor() {
+        const oldCursor = document.getElementById('board-custom-cursor');
+        if (oldCursor) oldCursor.remove();
+
+        const cursorHtml = `
+            <div id="board-custom-cursor" class="board-custom-cursor">
+                <div class="bcc-wrapper">
+                    <div class="bcc-mouse-icon">${Icons.cursor_investigation || ''}</div>
+                    <div class="bcc-text right">ПКМ Настроить</div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', cursorHtml);
+        this.boardCursor = document.getElementById('board-custom-cursor');
+
+        this.boardCursorMouseMove = (e) => {
+            if (!this.boardCursor) return;
+
+            if (this.contextMenu && this.contextMenu.element) {
+                this.boardCursor.classList.remove('visible');
+                return;
+            }
+
+            this.boardCursor.style.setProperty('--x', `${e.clientX}px`);
+            this.boardCursor.style.setProperty('--y', `${e.clientY}px`);
+
+            const isOverEdge = e.target.closest('.board-edge-group');
+            const isOverNode = e.target.closest('.board-node');
+
+            if (isOverEdge && !isOverNode) {
+                this.boardCursor.classList.add('visible');
+            } else {
+                this.boardCursor.classList.remove('visible');
+            }
+        };
+
+        document.addEventListener('mousemove', this.boardCursorMouseMove);
+    }
+
     _initWelcomeMessage() {
+        if (localStorage.getItem('bendy_board_welcome_closed') === 'true') {
+            return;
+        }
+
+        // АРХИТЕКТУРНОЕ ИСПРАВЛЕНИЕ:
+        // Вычисляем центр в абсолютных пикселях на старте, чтобы не использовать calc() 
+        // и не ломать логику DragNodeService
+        const containerWidth = this.els.container.clientWidth || window.innerWidth;
+        const startX = (containerWidth / 2) - 175; // 175 = половина от width: 350px
+
+        const welcomeHtml = `
+            <div id="board-welcome-message" class="board-node is-system-node" data-node-id="welcome_node" style="left: ${startX}px; top: 150px; width: 350px;">
+                <div class="node-drag-handle" style="background: rgba(210, 168, 80, 0.1);">
+                    <div class="ndh-left">
+                        <div class="ndh-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            Руководство
+                        </div>
+                    </div>
+                    <div class="ndh-right">
+                        <button id="board-welcome-close" class="ndh-action ndh-close" title="Скрыть навсегда">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="node-content" style="padding: 1.5rem; text-align: center; color: var(--text-main); font-size: 0.95rem; line-height: 1.6;">
+                    <h3 style="margin-bottom: 0.5rem; font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">Добро пожаловать на доску!</h3>
+                    Используйте колёсико мыши для масштабирования и перетаскивайте холст левой кнопкой.<br><br>
+                    Чтобы добавить улику, откройте меню улик (кнопка сверху) и <b>перетащите карточку</b> прямо на этот холст.
+                </div>
+            </div>
+        `;
+
+        this.els.nodesContainer.insertAdjacentHTML('beforeend', welcomeHtml);
         const welcomeMsg = document.getElementById('board-welcome-message');
         const closeBtn = document.getElementById('board-welcome-close');
 
         if (welcomeMsg && closeBtn) {
-            // Если юзер уже закрывал подсказку ранее, сразу удаляем её из DOM
-            if (localStorage.getItem('bendy_board_welcome_closed') === 'true') {
-                welcomeMsg.remove();
-                return;
-            }
-
             closeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                
-                // Красиво растворяем и сжимаем перед удалением
                 welcomeMsg.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                 welcomeMsg.style.opacity = '0';
                 welcomeMsg.style.transform = 'scale(0.8)';
-                
-                // Сохраняем флаг, чтобы она больше не появлялась при рефрешах
                 localStorage.setItem('bendy_board_welcome_closed', 'true');
-                
                 setTimeout(() => {
-                    if (welcomeMsg) welcomeMsg.remove();
+                    welcomeMsg.remove();
                 }, 300);
             });
         }
@@ -27436,6 +27479,7 @@ export class BoardView {
 
     showEdgeContextMenu(edgeId, clientX, clientY, currentEdgeData, callbacks) {
         this.contextMenu.show(edgeId, clientX, clientY, currentEdgeData, callbacks);
+        if (this.boardCursor) this.boardCursor.classList.remove('visible');
     }
 
     closeEdgeContextMenu() {
@@ -27587,6 +27631,16 @@ export class BoardView {
         const nodeEl = this.els.nodesContainer.querySelector(`[data-node-id="${id}"]`);
         if (nodeEl) nodeEl.remove();
     }
+
+    destroy() {
+        if (this.boardCursorMouseMove) {
+            document.removeEventListener('mousemove', this.boardCursorMouseMove);
+        }
+        if (this.boardCursor) {
+            this.boardCursor.remove();
+        }
+        this.closeEdgeContextMenu();
+    }
 }
 
 ============================================================
@@ -27616,9 +27670,6 @@ FILE: pages\board\css\board-edges.css
     position: relative; flex-shrink: 0;
 }
 
-/* ПОДКЛЮЧЕННЫЙ ПИН */
-/* Цвета задаются инлайн из JS, тут базовые стили не перебиваем */
-
 /* НАВЕДЕНИЕ НА ПИН */
 .node-pin:hover { 
     transform: scale(1.4); 
@@ -27643,15 +27694,16 @@ FILE: pages\board\css\board-edges.css
 
 /* === САМИ НИТИ === */
 .board-edge-group {
-    cursor: context-menu;
+    /* Чтобы кастомный курсор работал и не конфликтовал с нативным */
+    cursor: none !important;
 }
 
 /* Невидимый хитбокс (Расширяет зону клика) */
 .board-edge-hitbox {
     fill: none;
     stroke: transparent;
-    stroke-width: 25px; /* Толстая невидимая линия */
-    pointer-events: stroke; /* Реагирует на клики только по линии */
+    stroke-width: 25px; 
+    pointer-events: stroke; 
 }
 
 /* Видимая красивая линия */
@@ -27662,7 +27714,7 @@ FILE: pages\board\css\board-edges.css
     stroke-width: 3px;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
     transition: stroke-width 0.2s ease, filter 0.2s ease;
-    pointer-events: none; /* Пропускает клики сквозь себя (хитбокс поймает) */
+    pointer-events: none; 
 }
 
 /* СВЕЧЕНИЕ НИТИ ПРИ НАВЕДЕНИИ НА ХИТБОКС */
@@ -27729,13 +27781,14 @@ FILE: pages\board\css\board-node.css
     box-shadow: 0 15px 35px rgba(0,0,0,0.4); 
     z-index: 10;
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    /* Нативный курсор работает сам, так как мы изолировали стили улик */
     pointer-events: auto; 
 }
 
 /* ДИНАМИЧЕСКИЕ РАЗМЕРЫ В ЗАВИСИМОСТИ ОТ КОНТЕНТА */
 .board-node.is-post { width: 500px; }
 .board-node.is-horizontal-card { width: 420px; }
-.board-node.is-vertical-card { width: 280px; } /* Делает книги красивыми и компактными */
+.board-node.is-vertical-card { width: 280px; } 
 
 .board-node.is-dragging {
     z-index: 100 !important; 
@@ -27790,6 +27843,13 @@ FILE: pages\board\css\board-node.css
 
 .node-content img { user-select: none; -webkit-user-drag: none; }
 
+/* 
+   ПРИМЕЧАНИЕ: 
+   Все !important костыли для курсора отсюда удалены.
+   Благодаря :not(.board-page-wrapper) в inv-overlay.css,
+   здесь всё работает идеально нативно.
+*/
+
 ============================================================
 FILE: pages\board\css\board-ui.css
 ============================================================
@@ -27798,7 +27858,6 @@ FILE: pages\board\css\board-ui.css
    BOARD-UI.CSS - UI и заглушки доски
 ========================================= */
 
-/* --- КОНТРОЛЫ МАСШТАБА И ЗАГЛУШКА --- */
 .board-ui-overlay { position: absolute; bottom: 2rem; right: 2rem; z-index: 100; }
 .board-zoom-controls { display: flex; align-items: center; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); overflow: hidden; }
 .board-zoom-controls button { background: transparent; border: none; color: var(--text-main); padding: 8px 12px; cursor: pointer; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
@@ -27814,7 +27873,7 @@ FILE: pages\board\css\board-ui.css
 .bmb-btn { margin-top: 1rem; background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 10px 24px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; }
 @media (max-width: 1024px) { .board-mobile-blocker { display: flex; } .board-page-wrapper { display: none !important; } }
 
-/* --- НОВОЕ: КОНТЕКСТНОЕ МЕНЮ ЛИНИИ --- */
+/* --- КОНТЕКСТНОЕ МЕНЮ ЛИНИИ --- */
 .edge-context-menu {
     position: fixed;
     background: var(--bg-card);
@@ -27834,57 +27893,94 @@ FILE: pages\board\css\board-ui.css
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ecm-divider {
-    height: 1px;
-    background: var(--border-color);
-    margin: 4px 0;
-}
-
-.ecm-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 800;
-    text-transform: uppercase;
-    padding: 4px 8px;
-}
+.ecm-divider { height: 1px; background: var(--border-color); margin: 4px 0; }
+.ecm-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; padding: 4px 8px; }
 
 .ecm-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-main);
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 6px;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s;
+    background: transparent; border: none; color: var(--text-main); font-size: 0.9rem;
+    font-weight: 600; padding: 8px 12px; border-radius: 6px; text-align: left;
+    cursor: pointer; transition: all 0.2s;
 }
 
 .ecm-btn:hover { background: var(--bg-body); }
 .ecm-btn.active { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); }
-
 .ecm-delete { color: var(--error-color); }
 .ecm-delete:hover { background: rgba(248, 81, 73, 0.1); }
 
-.ecm-colors {
-    display: flex;
-    gap: 8px;
-    padding: 4px 8px;
-}
-
+.ecm-colors { display: flex; gap: 8px; padding: 4px 8px; }
 .ecm-color {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: transform 0.2s, border-color 0.2s;
+    width: 20px; height: 20px; border-radius: 50%; cursor: pointer;
+    border: 2px solid transparent; transition: transform 0.2s, border-color 0.2s;
     box-shadow: inset 0 0 0 1px rgba(0,0,0,0.3);
 }
 
 .ecm-color:hover { transform: scale(1.2); }
 .ecm-color.active { border-color: #fff; transform: scale(1.1); box-shadow: 0 0 8px currentColor; }
+
+/* =========================================
+   КАСТОМНЫЙ КУРСОР ДЛЯ НИТЕЙ ДОСКИ (АБСОЛЮТНЫЙ ЦЕНТР)
+   ========================================= */
+.board-custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0; height: 0; /* Корневой узел - это невидимая точка 0x0 */
+    pointer-events: none; 
+    z-index: 10000;
+    transform: translate(var(--x, 0px), var(--y, 0px));
+    will-change: transform;
+}
+
+.bcc-wrapper {
+    position: absolute;
+    left: 0; top: 0;
+    transform: translate(-50%, -50%) scale(0.8); /* Четко центрируем относительно точки 0x0 */
+    opacity: 0;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+    will-change: transform, opacity;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-custom-cursor.visible .bcc-wrapper {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.bcc-mouse-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+    position: relative;
+    z-index: 2; /* Иконка поверх надписи */
+}
+
+/* Подсвечиваем правую кнопку акцентным цветом */
+.bcc-mouse-icon svg .mouse-body { fill: #fff; opacity: 0.8; }
+.bcc-mouse-icon svg .mouse-wheel { fill: var(--bg-body); }
+.bcc-mouse-icon svg .mouse-btn-left { fill: transparent; }
+.bcc-mouse-icon svg .mouse-btn-right { fill: var(--accent-color); }
+
+/* Надпись выталкиваем вправо, отталкиваясь от центра (50% контейнера wrapper) */
+.bcc-text.right {
+    position: absolute;
+    left: calc(50% + 24px); 
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    background: rgba(17, 20, 24, 0.9);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px rgba(210, 168, 80, 0.3);
+    white-space: nowrap;
+    z-index: 1;
+}
 
 ============================================================
 FILE: pages\board\services\DragNodeService.js
@@ -27925,22 +28021,25 @@ export class DragNodeService {
         if (!handle || e.target.closest('.ndh-action')) return;
 
         e.stopPropagation();
-        e.preventDefault(); // Убиваем выделение
+        e.preventDefault(); 
 
         this.activeNode = handle.closest('.board-node');
         if (!this.activeNode) return;
 
         this.activeNode.classList.add('is-dragging');
-        this.container.appendChild(this.activeNode);
+        this.container.appendChild(this.activeNode); 
 
-        // Запрещаем выделение текста глобально
         document.body.classList.add('is-board-interacting');
 
         this.startMouseX = e.clientX;
         this.startMouseY = e.clientY;
         
-        this.startNodeX = parseFloat(this.activeNode.style.left || 0);
-        this.startNodeY = parseFloat(this.activeNode.style.top || 0);
+        // АРХИТЕКТУРНОЕ ИСПРАВЛЕНИЕ:
+        // Используем getComputedStyle, чтобы гарантированно получить пиксели.
+        // Это защищает нас от багов с calc(), % или отсутствием значения left/top.
+        const computedStyle = window.getComputedStyle(this.activeNode);
+        this.startNodeX = parseFloat(computedStyle.left) || 0;
+        this.startNodeY = parseFloat(computedStyle.top) || 0;
 
         document.addEventListener('mousemove', this._handleMouseMove);
         document.addEventListener('mouseup', this._handleMouseUp);
@@ -27967,13 +28066,12 @@ export class DragNodeService {
         if (!this.activeNode) return;
 
         this.activeNode.classList.remove('is-dragging');
-        document.body.classList.remove('is-board-interacting'); // Возвращаем выделение
+        document.body.classList.remove('is-board-interacting'); 
         
         const finalX = parseFloat(this.activeNode.style.left);
         const finalY = parseFloat(this.activeNode.style.top);
         const nodeId = this.activeNode.dataset.nodeId;
 
-        // Если это системная нода (вроде таблички с инструкцией), не пытаемся сохранить её позицию в базу
         if (this.onNodeMoved && !this.activeNode.classList.contains('is-system-node')) {
             this.onNodeMoved(nodeId, finalX, finalY);
         }
@@ -39415,28 +39513,37 @@ FILE: shared\css\components\investigation\inv-overlay.css
 ========================================= */
 body.investigation-mode-active { cursor: crosshair; }
 
-/* Скрываем системный курсор при наведении на карточки и ВСЕ вложенные в них элементы */
-body.investigation-mode-active .post-card:not(.inv-mini-post),
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog),
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog),
-body.investigation-mode-active .post-card:not(.inv-mini-post) *,
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog) *,
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog) * {
+/* 
+   АРХИТЕКТУРНОЕ РЕШЕНИЕ:
+   Ограничиваем область действия режима улик.
+   Мы используем main:not(.board-page-wrapper), чтобы стили улик ВООБЩЕ 
+   не применялись к доске расследований. Таким образом на доске остаются
+   родные нативные курсоры и нет конфликтов.
+*/
+
+/* Скрываем системный курсор только в ленте и каталоге */
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog),
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post) *,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog) *,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog) * {
     cursor: none !important;
 }
 
-body.investigation-mode-active .post-card:not(.inv-mini-post),
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog),
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog) {
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog) {
     position: relative; 
     overflow: hidden; 
-    transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out; /* УСКОРЕНА СИНХРОНИЗАЦИЯ */
+    transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out; 
 }
 
+/* Сам оверлей (крестики, галочки) */
 .investigation-overlay {
     position: absolute; inset: 0; z-index: 1000; display: none; 
     align-items: center; justify-content: center; opacity: 0; 
-    transition: opacity 0.15s ease-out; /* УСКОРЕНА СИНХРОНИЗАЦИЯ */
+    transition: opacity 0.15s ease-out; 
     background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(5px) brightness(0.6); -webkit-backdrop-filter: blur(5px) brightness(0.6);
     pointer-events: auto; 
 }
@@ -39450,7 +39557,7 @@ body.investigation-mode-active .card-vertical:not(.inv-mini-catalog) {
 
 .investigation-overlay .inv-overlay-icon svg { width: 32px; height: 32px; display: block; }
 
-/* --- ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ИКОНОК --- */
+/* Логика переключения иконок */
 .investigation-overlay .icon-add { color: var(--accent-color); display: flex; }
 .investigation-overlay .icon-check { display: none; }
 .investigation-overlay .icon-remove { display: none; }
@@ -39466,39 +39573,41 @@ body.investigation-mode-active .card-vertical:not(.inv-mini-catalog) {
     display: flex !important; color: var(--error-color) !important; border-color: var(--error-color) !important; box-shadow: 0 10px 30px rgba(248, 81, 73, 0.4) !important;
 }
 
-body.investigation-mode-active .post-card:not(.inv-mini-post) .investigation-overlay,
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog) .investigation-overlay,
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog) .investigation-overlay { 
+/* Показываем оверлей только вне доски */
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post) .investigation-overlay,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog) .investigation-overlay,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog) .investigation-overlay { 
     display: flex; 
 }
 
-body.investigation-mode-active .post-card:not(.inv-mini-post):not(.is-collected):not(.is-removing):hover,
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog):not(.is-collected):not(.is-removing):hover,
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):not(.is-collected):not(.is-removing):hover { 
+/* Подсветка карточек при наведении (только вне доски) */
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post).is-hovered-by-inv-cursor:not(.is-collected):not(.is-removing),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog).is-hovered-by-inv-cursor:not(.is-collected):not(.is-removing),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog).is-hovered-by-inv-cursor:not(.is-collected):not(.is-removing) { 
     border-color: var(--accent-color) !important; box-shadow: 0 8px 30px rgba(210, 168, 80, 0.2) !important; 
 }
 
-body.investigation-mode-active .post-card.is-collected:not(.is-removing):hover,
-body.investigation-mode-active .card-horizontal.is-collected:not(.is-removing):hover,
-body.investigation-mode-active .card-vertical.is-collected:not(.is-removing):hover { 
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card.is-collected.is-hovered-by-inv-cursor:not(.is-removing),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal.is-collected.is-hovered-by-inv-cursor:not(.is-removing),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical.is-collected.is-hovered-by-inv-cursor:not(.is-removing) { 
     border-color: #00BA7C !important; box-shadow: 0 8px 30px rgba(0, 186, 124, 0.2) !important; 
 }
 
-body.investigation-mode-active .post-card.is-removing,
-body.investigation-mode-active .card-horizontal.is-removing,
-body.investigation-mode-active .card-vertical.is-removing { 
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card.is-removing,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal.is-removing,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical.is-removing { 
     border-color: var(--error-color) !important; box-shadow: 0 8px 30px rgba(248, 81, 73, 0.2) !important; 
 }
 
-body.investigation-mode-active .post-card:not(.inv-mini-post):hover .investigation-overlay,
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog):hover .investigation-overlay,
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .investigation-overlay { 
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post).is-hovered-by-inv-cursor .investigation-overlay,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog).is-hovered-by-inv-cursor .investigation-overlay,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog).is-hovered-by-inv-cursor .investigation-overlay { 
     opacity: 1; 
 }
 
-body.investigation-mode-active .post-card:not(.inv-mini-post):hover .inv-overlay-icon,
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog):hover .inv-overlay-icon,
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .inv-overlay-icon { 
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post).is-hovered-by-inv-cursor .inv-overlay-icon,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog).is-hovered-by-inv-cursor .inv-overlay-icon,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog).is-hovered-by-inv-cursor .inv-overlay-icon { 
     transform: scale(1); 
 }
 
@@ -39509,23 +39618,23 @@ body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .inv-
 .inv-custom-cursor {
     position: fixed;
     top: 0; left: 0;
+    width: 0; height: 0; /* Центрируем относительно точки (0,0) */
     pointer-events: none; 
     z-index: 10000;
-    
     transform: translate(var(--x, 0px), var(--y, 0px));
     will-change: transform;
 }
 
 .icc-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    
+    position: absolute;
+    left: 0; top: 0;
     transform: translate(-50%, -50%) scale(0.8);
     opacity: 0;
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
     will-change: transform, opacity;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .inv-custom-cursor.visible .icc-wrapper {
@@ -39538,9 +39647,12 @@ body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .inv-
     height: 32px;
     flex-shrink: 0;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+    position: relative;
+    z-index: 2;
 }
 
 .icc-text {
+    position: absolute;
     font-size: 0.8rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -39555,11 +39667,14 @@ body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .inv-
     white-space: nowrap;
     opacity: 0.5;
     transition: color 0.15s ease-out, border-color 0.15s ease-out, box-shadow 0.15s ease-out, opacity 0.15s ease-out;
+    z-index: 1;
 }
 
-/* --- УМНАЯ ПОДСВЕТКА СОСТОЯНИЙ КУРСОРОВ --- */
+/* Отступы текста от центральной иконки */
+.icc-text.left { right: calc(50% + 24px); }
+.icc-text.right { left: calc(50% + 24px); }
 
-/* Состояние: МОЖНО ДОБАВИТЬ */
+/* --- УМНАЯ ПОДСВЕТКА СОСТОЯНИЙ КУРСОРОВ --- */
 .inv-custom-cursor.state-add .icc-text.left { 
     color: var(--accent-color); 
     border-color: var(--accent-color);
@@ -39568,7 +39683,6 @@ body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .inv-
 }
 .inv-custom-cursor.state-add .mouse-btn-left { fill: var(--accent-color); }
 
-/* Состояние: МОЖНО УДАЛИТЬ */
 .inv-custom-cursor.state-remove .icc-text.right { 
     color: var(--error-color); 
     border-color: var(--error-color);
@@ -39577,7 +39691,6 @@ body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .inv-
 }
 .inv-custom-cursor.state-remove .mouse-btn-right { fill: var(--error-color); }
 
-/* Цвет корпуса мыши */
 .mouse-body { fill: #fff; opacity: 0.8; }
 .mouse-wheel { fill: var(--bg-body); }
 .mouse-btn-left, .mouse-btn-right { transition: fill 0.15s ease-out; }
@@ -39962,7 +40075,11 @@ export class InvestigationView {
     constructor(controller) {
         this.controller = controller;
         this.customCursor = null;
-        this.hoveredCard = null;
+        this.hoveredCard = null; 
+        
+        this.lastMouseX = -1;
+        this.lastMouseY = -1;
+        this.isScrollTicking = false; 
         
         this._injectHTML();
         this._bindElements();
@@ -40026,6 +40143,9 @@ export class InvestigationView {
 
     _initCustomCursor() {
         document.addEventListener('mousemove', (e) => {
+            this.lastMouseX = e.clientX;
+            this.lastMouseY = e.clientY;
+
             if (!this.controller.isOpen) return;
 
             if (this.customCursor) {
@@ -40033,26 +40153,67 @@ export class InvestigationView {
                 this.customCursor.style.setProperty('--y', `${e.clientY}px`);
             }
 
-            const targetCard = e.target.closest('.post-card:not(.inv-mini-post), .card-horizontal:not(.inv-mini-catalog), .card-vertical:not(.inv-mini-catalog)');
-
-            if (targetCard) {
-                this.hoveredCard = targetCard;
-                this.customCursor.classList.add('visible');
-                this._syncCursorState(); 
-            } else {
-                this.hoveredCard = null;
-                this.customCursor.classList.remove('visible');
-            }
+            this._updateCardHoverState(e.target);
         });
 
+        document.addEventListener('scroll', () => {
+            if (!this.controller.isOpen || this.lastMouseX < 0 || this.lastMouseY < 0) return;
+
+            if (!this.isScrollTicking) {
+                window.requestAnimationFrame(() => {
+                    const elementUnderCursor = document.elementFromPoint(this.lastMouseX, this.lastMouseY);
+                    this._updateCardHoverState(elementUnderCursor);
+                    this.isScrollTicking = false;
+                });
+                this.isScrollTicking = true;
+            }
+        }, { passive: true, capture: true });
+
         document.addEventListener('mouseleave', () => {
-            if (this.customCursor) this.customCursor.classList.remove('visible');
-            this.hoveredCard = null;
+            if (this.controller.isOpen) this._clearHoverState();
         });
 
         window.addEventListener('syncCursorState', () => {
             this._syncCursorState();
         });
+    }
+
+    _updateCardHoverState(targetElement) {
+        // АРХИТЕКТУРНОЕ ИСПРАВЛЕНИЕ: Если курсор над доской расследований, полностью блокируем логику улик
+        if (targetElement && targetElement.closest('.board-page-wrapper')) {
+            this._clearHoverState();
+            return;
+        }
+
+        const newHoveredCard = targetElement ? targetElement.closest('.post-card:not(.inv-mini-post), .card-horizontal:not(.inv-mini-catalog), .card-vertical:not(.inv-mini-catalog)') : null;
+
+        if (this.hoveredCard !== newHoveredCard) {
+            if (this.hoveredCard) {
+                this.hoveredCard.classList.remove('is-hovered-by-inv-cursor');
+            }
+
+            this.hoveredCard = newHoveredCard; 
+
+            if (this.hoveredCard) {
+                this.hoveredCard.classList.add('is-hovered-by-inv-cursor');
+                this.customCursor.classList.add('visible'); 
+                this._syncCursorState(); 
+            } else {
+                this.customCursor.classList.remove('visible', 'state-add', 'state-remove');
+            }
+        } else if (this.hoveredCard) {
+            this._syncCursorState();
+        }
+    }
+
+    _clearHoverState() {
+        if (this.hoveredCard) {
+            this.hoveredCard.classList.remove('is-hovered-by-inv-cursor');
+            this.hoveredCard = null;
+        }
+        if (this.customCursor) {
+            this.customCursor.classList.remove('visible', 'state-add', 'state-remove');
+        }
     }
 
     _syncCursorState() {
@@ -40072,15 +40233,20 @@ export class InvestigationView {
         document.body.classList.add('investigation-mode-active');
         const headerBtn = document.getElementById('open-investigation-btn');
         if (headerBtn) headerBtn.classList.add('is-active');
+
+        if (this.lastMouseX >= 0 && this.lastMouseY >= 0) {
+            const elementUnderCursor = document.elementFromPoint(this.lastMouseX, this.lastMouseY);
+            this._updateCardHoverState(elementUnderCursor);
+        }
     }
 
     close() {
+        this._clearHoverState();
+
         this.panel.classList.remove('active');
         document.body.classList.remove('investigation-mode-active');
         const headerBtn = document.getElementById('open-investigation-btn');
         if (headerBtn) headerBtn.classList.remove('is-active');
-        
-        if (this.customCursor) this.customCursor.classList.remove('visible');
     }
 
     renderInitial(evidenceList) {
@@ -40134,8 +40300,7 @@ export class InvestigationView {
             
             const card = temp.firstElementChild; 
             if (card) {
-                // ИСПРАВЛЕНИЕ: Вычищаем любые вредные классы состояний, которые могли "застрять" в LocalStorage
-                card.classList.remove('is-collected', 'is-removing');
+                card.classList.remove('is-collected', 'is-removing', 'is-hovered-by-inv-cursor');
                 
                 if (evidence.type === 'post') {
                     card.classList.add('inv-mini-post'); 

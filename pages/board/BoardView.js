@@ -71,11 +71,8 @@ export class BoardView {
             return;
         }
 
-        // АРХИТЕКТУРНОЕ ИСПРАВЛЕНИЕ:
-        // Вычисляем центр в абсолютных пикселях на старте, чтобы не использовать calc() 
-        // и не ломать логику DragNodeService
         const containerWidth = this.els.container.clientWidth || window.innerWidth;
-        const startX = (containerWidth / 2) - 175; // 175 = половина от width: 350px
+        const startX = (containerWidth / 2) - 175;
 
         const welcomeHtml = `
             <div id="board-welcome-message" class="board-node is-system-node" data-node-id="welcome_node" style="left: ${startX}px; top: 150px; width: 350px;">
@@ -260,7 +257,8 @@ export class BoardView {
                 let html = '';
                 sideEdges.forEach(e => {
                     const color = e.color || '#ff4444';
-                    html += `<div class="node-pin is-connected" data-side="${side}" data-edge-id="${e.id}" style="background:${color}; border-color:${color}; box-shadow: 0 0 10px ${color}80;"></div>`;
+                    // ПЕРЕДАЕМ ЦВЕТ КАК CSS ПЕРЕМЕННУЮ ДЛЯ ДИНАМИЧЕСКОГО ХОВЕРА
+                    html += `<div class="node-pin is-connected" data-side="${side}" data-edge-id="${e.id}" style="--pin-color: ${color};"></div>`;
                 });
                 html += `<div class="node-pin is-empty" data-side="${side}"></div>`;
                 zone.innerHTML = html;

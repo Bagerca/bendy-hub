@@ -17,49 +17,161 @@
 .bmb-btn { margin-top: 1rem; background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 10px 24px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; }
 @media (max-width: 1024px) { .board-mobile-blocker { display: flex; } .board-page-wrapper { display: none !important; } }
 
-/* --- КОНТЕКСТНОЕ МЕНЮ ЛИНИИ --- */
+/* --- GLASSMORPHISM КОНТЕКСТНОЕ МЕНЮ ЛИНИИ --- */
 .edge-context-menu {
     position: fixed;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: rgba(23, 27, 33, 0.85); /* Полупрозрачный темный фон */
+    backdrop-filter: blur(25px); /* Эффект матового стекла */
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Очень тонкий светлый бордюр */
+    border-radius: 16px; /* Более скругленные углы */
+    padding: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
     z-index: 10000;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    min-width: 180px;
+    gap: 8px;
+    min-width: 220px;
     
     opacity: 0;
     transform: scale(0.95);
     transform-origin: top left;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.edge-context-menu.active { opacity: 1; transform: scale(1); }
 
-.ecm-divider { height: 1px; background: var(--border-color); margin: 4px 0; }
-.ecm-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; padding: 4px 8px; }
+/* Разделитель */
+.ecm-divider { height: 1px; background: rgba(255, 255, 255, 0.06); margin: 2px 0; border: none; }
+.ecm-v-divider { width: 1px; background: rgba(255, 255, 255, 0.06); margin: 0 4px; }
 
+/* Кнопки действий (Обычные) */
 .ecm-btn {
     background: transparent; border: none; color: var(--text-main); font-size: 0.9rem;
-    font-weight: 600; padding: 8px 12px; border-radius: 6px; text-align: left;
-    cursor: pointer; transition: all 0.2s;
+    font-weight: 600; padding: 10px 12px; border-radius: 10px; text-align: left;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px;
 }
+.ecm-btn svg { width: 18px; height: 18px; opacity: 0.8; }
+.ecm-btn:hover { background: rgba(255, 255, 255, 0.05); }
 
-.ecm-btn:hover { background: var(--bg-body); }
-.ecm-btn.active { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); }
-.ecm-delete { color: var(--error-color); }
-.ecm-delete:hover { background: rgba(248, 81, 73, 0.1); }
+/* Деструктивная кнопка (вниз) */
+.ecm-delete { color: var(--error-color); margin-top: 2px; }
+.ecm-delete:hover { background: rgba(248, 81, 73, 0.15); }
+.ecm-delete svg { color: currentColor; opacity: 1; }
 
-.ecm-colors { display: flex; gap: 8px; padding: 4px 8px; }
+/* --- Горизонтальный блок Цветов и Толщины --- */
+.ecm-section-horizontal { display: flex; align-items: stretch; justify-content: space-between; gap: 4px; }
+
+/* ЦВЕТА (Offset ring) */
+.ecm-colors { display: flex; gap: 8px; padding: 6px; align-items: center; }
 .ecm-color {
-    width: 20px; height: 20px; border-radius: 50%; cursor: pointer;
-    border: 2px solid transparent; transition: transform 0.2s, border-color 0.2s;
-    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.3);
+    width: 22px; height: 22px; border-radius: 50%; cursor: pointer;
+    border: 3px solid transparent; /* Прозрачный гэп */
+    box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.2); /* Базовое кольцо */
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+}
+.ecm-color:hover { transform: scale(1.15); box-shadow: 0 0 0 2px rgba(255,255,255,0.5); }
+.ecm-color.active {
+    box-shadow: 0 0 0 2px currentColor; /* Цветное внешнее кольцо */
+    border-color: rgba(23, 27, 33, 1); /* Внутренний отступ (имитация цвета фона меню) */
+    transform: scale(1.1);
 }
 
-.ecm-color:hover { transform: scale(1.2); }
-.ecm-color.active { border-color: #fff; transform: scale(1.1); box-shadow: 0 0 8px currentColor; }
+/* КАСТОМНЫЙ ВЫБОР ЦВЕТА (Пипетка) */
+.ecm-color-picker-wrapper {
+    position: relative;
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 3px solid transparent;
+    box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.2);
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.ecm-color-picker-wrapper:hover { transform: scale(1.15); box-shadow: 0 0 0 2px rgba(255,255,255,0.5); }
+.ecm-color-picker-wrapper.active {
+    box-shadow: 0 0 0 2px currentColor; 
+    border-color: rgba(23, 27, 33, 1);
+    transform: scale(1.1);
+    background: currentColor; /* Заливаем фон выбранным цветом */
+}
+
+/* Прячем дефолтный инпут */
+.ecm-color-input {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    opacity: 0; cursor: pointer; z-index: 2;
+}
+
+.ecm-color-icon {
+    position: absolute; z-index: 1; pointer-events: none;
+    color: var(--text-main); display: flex; align-items: center; justify-content: center;
+}
+.ecm-color-icon svg { width: 14px; height: 14px; display: block; }
+.ecm-color-picker-wrapper.active .ecm-color-icon { display: none; } /* Скрываем иконку палитры, когда цвет выбран */
+
+/* --- СЕГМЕНТИРОВАННЫЕ КОНТРОЛЫ --- */
+.ecm-segmented {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 3px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.ecm-segmented.is-small { padding: 2px; border-radius: 8px; flex-grow: 1; }
+.mt-1 { margin-top: 4px; }
+
+.ecm-seg-btn {
+    flex: 1;
+    background: transparent; border: none; color: var(--text-muted);
+    padding: 6px; border-radius: 8px; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center;
+}
+.ecm-seg-btn svg { width: 20px; height: 20px; }
+.ecm-seg-btn:hover { color: var(--text-main); }
+.ecm-seg-btn.active { background: rgba(255, 255, 255, 0.1); color: var(--text-main); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+
+/* Точки для толщины */
+.ecm-dot { background: currentColor; border-radius: 50%; opacity: 0.8; }
+.ecm-weight.active .ecm-dot { opacity: 1; color: var(--accent-color); }
+.ecm-dot.sm { width: 4px; height: 4px; }
+.ecm-dot.md { width: 8px; height: 8px; }
+.ecm-dot.lg { width: 12px; height: 12px; }
+
+/* --- ПЕРЕКЛЮЧАТЕЛЬ-ТУМБЛЕР (Switch) --- */
+.ecm-switch-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 10px; cursor: pointer; border-radius: 10px;
+    transition: background 0.2s, opacity 0.2s;
+}
+.ecm-switch-row:hover { background: rgba(255, 255, 255, 0.05); }
+
+/* Состояние: анимация недоступна (для сплошной линии) */
+.ecm-switch-row.disabled {
+    opacity: 0.4; pointer-events: none;
+}
+
+.ecm-switch-label {
+    font-size: 0.9rem; font-weight: 600; color: var(--text-main);
+    display: flex; align-items: center; gap: 8px;
+}
+.ecm-switch-label svg { width: 18px; height: 18px; color: var(--text-muted); }
+
+/* Скрываем реальный чекбокс */
+.ecm-switch { display: none; }
+
+/* Дизайн тумблера */
+.ecm-switch-ui {
+    width: 36px; height: 20px; background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px; position: relative; transition: 0.3s;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+.ecm-switch-ui::before {
+    content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+    background: var(--text-muted); border-radius: 50%; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.ecm-switch:checked + .ecm-switch-ui { background: var(--accent-color); }
+.ecm-switch:checked + .ecm-switch-ui::before { transform: translateX(16px); background: #000; }
+.ecm-switch:checked ~ .ecm-switch-label svg { color: var(--accent-color); }
 
 /* =========================================
    КАСТОМНЫЙ КУРСОР ДЛЯ НИТЕЙ ДОСКИ (АБСОЛЮТНЫЙ ЦЕНТР)
@@ -67,7 +179,7 @@
 .board-custom-cursor {
     position: fixed;
     top: 0; left: 0;
-    width: 0; height: 0; /* Корневой узел - это невидимая точка 0x0 */
+    width: 0; height: 0; 
     pointer-events: none; 
     z-index: 10000;
     transform: translate(var(--x, 0px), var(--y, 0px));
@@ -77,7 +189,7 @@
 .bcc-wrapper {
     position: absolute;
     left: 0; top: 0;
-    transform: translate(-50%, -50%) scale(0.8); /* Четко центрируем относительно точки 0x0 */
+    transform: translate(-50%, -50%) scale(0.8);
     opacity: 0;
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
     will-change: transform, opacity;
@@ -97,16 +209,14 @@
     flex-shrink: 0;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
     position: relative;
-    z-index: 2; /* Иконка поверх надписи */
+    z-index: 2; 
 }
 
-/* Подсвечиваем правую кнопку акцентным цветом */
 .bcc-mouse-icon svg .mouse-body { fill: #fff; opacity: 0.8; }
 .bcc-mouse-icon svg .mouse-wheel { fill: var(--bg-body); }
 .bcc-mouse-icon svg .mouse-btn-left { fill: transparent; }
 .bcc-mouse-icon svg .mouse-btn-right { fill: var(--accent-color); }
 
-/* Надпись выталкиваем вправо, отталкиваясь от центра (50% контейнера wrapper) */
 .bcc-text.right {
     position: absolute;
     left: calc(50% + 24px); 

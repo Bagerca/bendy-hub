@@ -61,10 +61,13 @@ export class BoardModel {
 
         const id = 'edge_' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
         
-        // Добавлены дефолтные стили: красная и прерывистая
+        // По дефолту: красная, ПУНКТИРНАЯ (dashed), без анимации
         this.state.edges.push({ 
             id, from: fromId, fromSide, to: toId, toSide,
-            color: '#ff4444', style: 'dashed'
+            color: '#ff4444', 
+            style: 'dashed', 
+            weight: 3, 
+            animated: false
         });
         this._saveState();
         return id;
