@@ -22,7 +22,7 @@ export class BoardController {
             (state) => {
                 this.model.updateCamera(state.x, state.y, state.scale);
                 this.view.updateZoomText(state.scale);
-                this.view.closeEdgeContextMenu(); // Закрываем меню при скролле
+                this.view.closeEdgeContextMenu(); 
             }
         );
 
@@ -61,7 +61,6 @@ export class BoardController {
                         });
                     }
                 },
-                // Вызов контекстного меню
                 onEdgeContextMenu: (edgeId, clientX, clientY) => {
                     const edgeData = this.model.getEdges().find(e => e.id === edgeId);
                     if (!edgeData) return;
@@ -71,7 +70,6 @@ export class BoardController {
                         onChangeColor: (id, color) => {
                             const updated = this.model.updateEdge(id, { color });
                             this.edgeService.updateEdgeStyle(updated);
-                            // Немедленно обновляем цвета пинов на обеих карточках
                             this.view.updateNodePins(updated.from, this.model.getEdges());
                             this.view.updateNodePins(updated.to, this.model.getEdges());
                         },
@@ -261,6 +259,9 @@ export class BoardController {
         if (this.panZoom) this.panZoom.destroy();
         if (this.dragNodeService) this.dragNodeService.destroy();
         if (this.edgeService) this.edgeService.destroy();
+        
+        // Очищаем DOM от курсоров
+        if (this.view) this.view.destroy();
         
         window.removeEventListener('evidenceRemoved', this._handleEvidenceRemoved);
         Object.keys(this.hoverAnimFrames).forEach(key => cancelAnimationFrame(this.hoverAnimFrames[key]));

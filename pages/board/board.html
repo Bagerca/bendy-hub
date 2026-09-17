@@ -27,32 +27,9 @@
             <!-- Слой для SVG нитей -->
             <svg id="board-edges" class="board-edges"></svg>
             
-            <!-- Слой для HTML постов -->
-            <div id="board-nodes" class="board-nodes">
-                
-                <!-- ПРИВЕТСТВЕННАЯ ТАБЛИЧКА (Теперь это полноценная нода) -->
-                <div id="board-welcome-message" class="board-node is-system-node" data-node-id="welcome_node" style="left: calc(50% - 175px); top: 150px; width: 350px;">
-                    <div class="node-drag-handle" style="background: rgba(210, 168, 80, 0.1);">
-                        <div class="ndh-left">
-                            <div class="ndh-title">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                                Руководство
-                            </div>
-                        </div>
-                        <div class="ndh-right">
-                            <button id="board-welcome-close" class="ndh-action ndh-close" title="Скрыть навсегда">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="node-content" style="padding: 1.5rem; text-align: center; color: var(--text-main); font-size: 0.95rem; line-height: 1.6;">
-                        <h3 style="margin-bottom: 0.5rem; font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">Добро пожаловать на доску!</h3>
-                        Используйте колёсико мыши для масштабирования и перетаскивайте холст левой кнопкой.<br><br>
-                        Чтобы добавить улику, откройте меню улик (кнопка сверху) и <b>перетащите карточку</b> прямо на этот холст.
-                    </div>
-                </div>
-
-            </div>
+            <!-- Слой для HTML постов (Табличка теперь генерируется через JS) -->
+            <div id="board-nodes" class="board-nodes"></div>
+            
         </div>
     </div>
 

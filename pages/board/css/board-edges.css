@@ -21,9 +21,6 @@
     position: relative; flex-shrink: 0;
 }
 
-/* ПОДКЛЮЧЕННЫЙ ПИН */
-/* Цвета задаются инлайн из JS, тут базовые стили не перебиваем */
-
 /* НАВЕДЕНИЕ НА ПИН */
 .node-pin:hover { 
     transform: scale(1.4); 
@@ -48,16 +45,16 @@
 
 /* === САМИ НИТИ === */
 .board-edge-group {
-    /* Оставляем нативный курсор выключенным, работает JS Board-Cursor */
-    cursor: none;
+    /* Чтобы кастомный курсор работал и не конфликтовал с нативным */
+    cursor: none !important;
 }
 
 /* Невидимый хитбокс (Расширяет зону клика) */
 .board-edge-hitbox {
     fill: none;
     stroke: transparent;
-    stroke-width: 25px; /* Толстая невидимая линия */
-    pointer-events: stroke; /* Реагирует на клики только по линии */
+    stroke-width: 25px; 
+    pointer-events: stroke; 
 }
 
 /* Видимая красивая линия */
@@ -68,7 +65,7 @@
     stroke-width: 3px;
     filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
     transition: stroke-width 0.2s ease, filter 0.2s ease;
-    pointer-events: none; /* Пропускает клики сквозь себя (хитбокс поймает) */
+    pointer-events: none; 
 }
 
 /* СВЕЧЕНИЕ НИТИ ПРИ НАВЕДЕНИИ НА ХИТБОКС */

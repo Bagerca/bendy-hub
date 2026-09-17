@@ -15,8 +15,10 @@ export class BoardView {
         };
         
         this.contextMenu = new BoardContextMenu();
+        this.boardCursorMouseMove = null; // Для очистки слушателя
+        
         this._initWelcomeMessage();
-        this._initBoardCursor(); // <-- ДОБАВЛЕНО
+        this._initBoardCursor(); 
         
         document.addEventListener('mousedown', (e) => {
             if (this.contextMenu.element && !this.contextMenu.contains(e.target)) {
@@ -25,8 +27,11 @@ export class BoardView {
         });
     }
 
-    // Изолированный кастомный курсор только для доски (наведение на нити)
     _initBoardCursor() {
+        // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Удаляем сиротские курсоры от предыдущих посещений страницы
+        const oldCursor = document.getElementById('board-custom-cursor');
+        if (oldCursor) oldCursor.remove();
+
         const cursorHtml = `
             <div id="board-custom-cursor" class="board-custom-cursor">
                 <div class="bcc-wrapper">
@@ -38,17 +43,15 @@ export class BoardView {
         document.body.insertAdjacentHTML('beforeend', cursorHtml);
         this.boardCursor = document.getElementById('board-custom-cursor');
 
-        // Отслеживаем движение мыши глобально
-        document.addEventListener('mousemove', (e) => {
+        this.boardCursorMouseMove = (e) => {
             if (!this.boardCursor) return;
 
-            // Если открыто меню настройки, скрываем курсор, чтобы не мешал
+            // Если открыто меню настройки, скрываем курсор
             if (this.contextMenu && this.contextMenu.element) {
                 this.boardCursor.classList.remove('visible');
                 return;
             }
 
-            // Перемещаем курсор
             this.boardCursor.style.setProperty('--x', `${e.clientX}px`);
             this.boardCursor.style.setProperty('--y', `${e.clientY}px`);
 
@@ -58,23 +61,48 @@ export class BoardView {
 
             if (isOverEdge && !isOverNode) {
                 this.boardCursor.classList.add('visible');
-                isOverEdge.style.cursor = 'none'; // Скрываем нативный
             } else {
                 this.boardCursor.classList.remove('visible');
             }
-        });
+        };
+
+        document.addEventListener('mousemove', this.boardCursorMouseMove);
     }
 
     _initWelcomeMessage() {
+        // Если юзер уже закрывал подсказку ранее, мы даже не создаем DOM-узел
+        if (localStorage.getItem('bendy_board_welcome_closed') === 'true') {
+            return;
+        }
+
+        const welcomeHtml = `
+            <div id="board-welcome-message" class="board-node is-system-node" data-node-id="welcome_node" style="left: calc(50% - 175px); top: 150px; width: 350px;">
+                <div class="node-drag-handle" style="background: rgba(210, 168, 80, 0.1);">
+                    <div class="ndh-left">
+                        <div class="ndh-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            Руководство
+                        </div>
+                    </div>
+                    <div class="ndh-right">
+                        <button id="board-welcome-close" class="ndh-action ndh-close" title="Скрыть навсегда">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="node-content" style="padding: 1.5rem; text-align: center; color: var(--text-main); font-size: 0.95rem; line-height: 1.6;">
+                    <h3 style="margin-bottom: 0.5rem; font-weight: 800; font-size: 1.15rem; color: var(--accent-color);">Добро пожаловать на доску!</h3>
+                    Используйте колёсико мыши для масштабирования и перетаскивайте холст левой кнопкой.<br><br>
+                    Чтобы добавить улику, откройте меню улик (кнопка сверху) и <b>перетащите карточку</b> прямо на этот холст.
+                </div>
+            </div>
+        `;
+
+        this.els.nodesContainer.insertAdjacentHTML('beforeend', welcomeHtml);
         const welcomeMsg = document.getElementById('board-welcome-message');
         const closeBtn = document.getElementById('board-welcome-close');
 
         if (welcomeMsg && closeBtn) {
-            if (localStorage.getItem('bendy_board_welcome_closed') === 'true') {
-                welcomeMsg.remove();
-                return;
-            }
-
             closeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 welcomeMsg.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -82,7 +110,7 @@ export class BoardView {
                 welcomeMsg.style.transform = 'scale(0.8)';
                 localStorage.setItem('bendy_board_welcome_closed', 'true');
                 setTimeout(() => {
-                    if (welcomeMsg) welcomeMsg.remove();
+                    welcomeMsg.remove();
                 }, 300);
             });
         }
@@ -90,7 +118,6 @@ export class BoardView {
 
     showEdgeContextMenu(edgeId, clientX, clientY, currentEdgeData, callbacks) {
         this.contextMenu.show(edgeId, clientX, clientY, currentEdgeData, callbacks);
-        // Принудительно скрываем кастомный курсор при открытии меню
         if (this.boardCursor) this.boardCursor.classList.remove('visible');
     }
 
@@ -242,5 +269,16 @@ export class BoardView {
     removeNodeDOM(id) {
         const nodeEl = this.els.nodesContainer.querySelector(`[data-node-id="${id}"]`);
         if (nodeEl) nodeEl.remove();
+    }
+
+    // Очистка при уходе с доски
+    destroy() {
+        if (this.boardCursorMouseMove) {
+            document.removeEventListener('mousemove', this.boardCursorMouseMove);
+        }
+        if (this.boardCursor) {
+            this.boardCursor.remove();
+        }
+        this.closeEdgeContextMenu();
     }
 }
