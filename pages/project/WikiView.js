@@ -1,5 +1,5 @@
 import { Icons } from '../../shared/js/icons.js';
-import { VideoPlayerHelper } from '../../shared/js/VideoPlayerHelper.js';
+import { GalleryRenderer } from './GalleryRenderer.js';
 
 export class WikiView {
     constructor(lightboxManager) {
@@ -18,6 +18,9 @@ export class WikiView {
             translatorsList: document.getElementById('project-translators'),
             translatorsTitle: document.getElementById('translators-title')
         };
+
+        // Инициализируем новый класс галереи
+        this.galleryRenderer = new GalleryRenderer(this.lightbox, this.baseAssetPath, this.els.screens);
     }
 
     setupTabs(type) {
@@ -55,6 +58,7 @@ export class WikiView {
         const wiki = data.wiki || {};
         const type = data.type || 'game';
 
+        // 1. Описание
         if (data.description && data.description !== '...') {
             this.els.desc.className = 'project-desc';
             this.els.desc.textContent = data.description;
@@ -68,8 +72,23 @@ export class WikiView {
             `;
         }
         
+        // 2. Теги
+        this._renderTags(data.tags);
+
+        // 3. Русификаторы и переводы
+        this._renderTranslators(teamsData, type, projectId);
+
+        // 4. Галерея (Делегируем работу отдельному классу!)
+        this.galleryRenderer.render(assets, projectId);
+
+        // 5. Остальные данные
+        if (type === 'game') this._renderSpecs(data.specs);
+        this._renderStaticWiki(wiki, type);
+    }
+
+    _renderTags(tags) {
         this.els.tags.innerHTML = '';
-        const validTags = (data.tags || []).filter(t => t && t !== '...');
+        const validTags = (tags || []).filter(t => t && t !== '...');
         const tagsHeader = this.els.tags.previousElementSibling; 
         
         if (validTags.length > 0) {
@@ -83,7 +102,6 @@ export class WikiView {
             });
         } else {
             if (tagsHeader) tagsHeader.style.textAlign = 'center';
-            
             this.els.tags.innerHTML = `
                 <div style="width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0 0.5rem;">
                     <div style="width: 48px; height: 48px; background: var(--bg-body); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); margin-bottom: 0.85rem; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
@@ -93,11 +111,6 @@ export class WikiView {
                 </div>
             `;
         }
-
-        this._renderTranslators(teamsData, type, projectId);
-        this._renderMediaGallery(assets, projectId);
-        if (type === 'game') this._renderSpecs(data.specs);
-        this._renderStaticWiki(wiki, type);
     }
 
     _renderTranslators(teams, type, projectId) {
@@ -147,164 +160,6 @@ export class WikiView {
         }
     }
 
-    _renderMediaGallery(assets, projectId) {
-        this.els.screens.innerHTML = '';
-        const mediaItems = [];
-
-        if (assets.videos && assets.videos.length > 0) {
-            assets.videos.forEach(url => {
-                if(url === '...') return;
-                
-                const ytId = this._extractYouTubeId(url);
-                if (ytId) {
-                    mediaItems.push({
-                        type: 'youtube',
-                        src: `https://www.youtube.com/embed/${ytId}?rel=0`, 
-                        thumb: `https://img.youtube.com/vi/${ytId}/mqdefault.jpg`
-                    });
-                } else if (url.match(/\.(mp4|webm|ogg)$/i)) {
-                    const basePath = `${this.baseAssetPath}${projectId}/`;
-                    const fileName = url.substring(0, url.lastIndexOf('.')) || url;
-                    
-                    mediaItems.push({
-                        type: 'local_video',
-                        src: `${basePath}${url}`, 
-                        thumb: `${basePath}${url}.jpg`, 
-                        fallbackThumb: `${basePath}${fileName}.jpg`
-                    });
-                }
-            });
-        }
-
-        if (assets.screenshots && assets.screenshots.length > 0) {
-            assets.screenshots.forEach(src => {
-                if(src === '...') return;
-                const fullUrl = `${this.baseAssetPath}${projectId}/${src}`;
-                mediaItems.push({
-                    type: 'image',
-                    src: fullUrl,
-                    thumb: fullUrl
-                });
-            });
-        }
-
-        if (mediaItems.length === 0) {
-            this.els.screens.style.display = 'none';
-            return;
-        } else {
-            this.els.screens.style.display = 'block';
-        }
-
-        const galleryHtml = `
-            <div class="media-gallery">
-                <div class="gallery-main-view" id="gallery-main-view"></div>
-                
-                ${mediaItems.length > 1 ? `
-                <div class="gallery-nav">
-                    <button class="gallery-arrow left" id="gallery-prev" aria-label="Назад">${Icons.gallery_prev}</button>
-                    
-                    <div class="gallery-thumbnails" id="gallery-thumbnails">
-                        ${mediaItems.map((item, idx) => {
-                            let thumbHtml = '';
-                            if (item.type === 'local_video') {
-                                thumbHtml = `<img src="${item.thumb}" alt="Thumbnail" loading="lazy" 
-                                              onerror="if(this.getAttribute('data-fallback')!=='true'){ this.setAttribute('data-fallback', 'true'); this.src='${item.fallbackThumb}'; } else { this.style.display='none'; this.nextElementSibling.style.display='block'; }">
-                                             <div class="local-vid-fallback" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);"></div>`;
-                            } else if (item.thumb) {
-                                thumbHtml = `<img src="${item.thumb}" alt="Thumbnail" loading="lazy">`;
-                            } else {
-                                thumbHtml = `<div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--bg-body) 0%, var(--bg-card) 100%);"></div>`;
-                            }
-
-                            return `
-                            <button class="gallery-thumb-btn ${idx === 0 ? 'active' : ''}" data-index="${idx}">
-                                ${thumbHtml}
-                                ${(item.type === 'youtube' || item.type === 'local_video') ? `<div class="play-indicator">${Icons.player_play}</div>` : ''}
-                            </button>
-                            `;
-                        }).join('')}
-                    </div>
-                    
-                    <button class="gallery-arrow right" id="gallery-next" aria-label="Вперед">${Icons.gallery_next}</button>
-                </div>
-                ` : ''}
-            </div>
-        `;
-
-        this.els.screens.innerHTML = galleryHtml;
-
-        let currentIndex = 0;
-        const mainView = document.getElementById('gallery-main-view');
-        const thumbnailsWrapper = document.getElementById('gallery-thumbnails');
-        const thumbs = document.querySelectorAll('.gallery-thumb-btn');
-
-        const updateMainView = (index) => {
-            const item = mediaItems[index];
-            
-            if (item.type === 'image') {
-                mainView.innerHTML = `<img src="${item.src}" alt="Screenshot" class="gallery-main-img">`;
-                const imgEl = mainView.querySelector('.gallery-main-img');
-                imgEl.onclick = () => this.lightbox.open(item.src);
-            } 
-            else if (item.type === 'youtube') {
-                mainView.innerHTML = `
-                    <div class="video-wrapper">
-                        <iframe src="${item.src}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                `;
-            }
-            else if (item.type === 'local_video') {
-                mainView.innerHTML = `
-                    <div class="custom-video-wrapper">
-                        <video src="${item.src}" preload="metadata" playsinline></video>
-                    </div>
-                `;
-                // Инициализируем наш потрясающий кастомный плеер
-                VideoPlayerHelper.setup(mainView.querySelector('.custom-video-wrapper'));
-            }
-
-            if (thumbs.length > 0) {
-                thumbs.forEach(t => t.classList.remove('active'));
-                const activeThumb = thumbs[index];
-                activeThumb.classList.add('active');
-                
-                if (thumbnailsWrapper) {
-                    const scrollLeft = activeThumb.offsetLeft - (thumbnailsWrapper.offsetWidth / 2) + (activeThumb.offsetWidth / 2);
-                    thumbnailsWrapper.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-                }
-            }
-        };
-
-        if (mediaItems.length > 1) {
-            const btnPrev = document.getElementById('gallery-prev');
-            const btnNext = document.getElementById('gallery-next');
-
-            btnPrev.addEventListener('click', () => {
-                currentIndex = currentIndex === 0 ? mediaItems.length - 1 : currentIndex - 1;
-                updateMainView(currentIndex);
-            });
-
-            btnNext.addEventListener('click', () => {
-                currentIndex = currentIndex === mediaItems.length - 1 ? 0 : currentIndex + 1;
-                updateMainView(currentIndex);
-            });
-
-            thumbs.forEach(thumb => {
-                thumb.addEventListener('click', () => {
-                    currentIndex = parseInt(thumb.dataset.index);
-                    updateMainView(currentIndex);
-                });
-            });
-        }
-
-        updateMainView(0);
-    }
-
-    _extractYouTubeId(url) {
-        const match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
-        return match ? match[1] : null;
-    }
-
     _renderSpecs(specs) {
         const specsEmptyHtml = `
             <div class="empty-state compact" style="grid-column: 1/-1;">
@@ -325,11 +180,7 @@ export class WikiView {
             reqHtml += `<div class="bento-box"><h3>Рекомендованные</h3>${this._parseSpecsString(specs.recommended)}</div>`;
         }
         
-        if (!reqHtml) {
-             this.els.specs.innerHTML = specsEmptyHtml;
-        } else {
-             this.els.specs.innerHTML = reqHtml;
-        }
+        this.els.specs.innerHTML = reqHtml || specsEmptyHtml;
     }
 
     _parseSpecsString(specStr) {

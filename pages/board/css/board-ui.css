@@ -2,43 +2,6 @@
    BOARD-UI.CSS - UI и заглушки доски
 ========================================= */
 
-/* --- ПРИВЕТСТВЕННАЯ ТАБЛИЧКА --- */
-.board-welcome-msg {
-    position: absolute;
-    left: 50%;
-    top: 30vh;
-    transform: translateX(-50%);
-    background: var(--bg-card);
-    padding: 1.5rem 3rem 1.5rem 1.5rem; 
-    border: 1px solid var(--accent-color);
-    border-radius: 12px;
-    color: var(--text-main);
-    font-weight: 700;
-    line-height: 1.5;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 5;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.bwm-close {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 4px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-.bwm-close svg { width: 18px; height: 18px; display: block; }
-.bwm-close:hover { background: rgba(248, 81, 73, 0.1); color: var(--error-color); }
-
-/* --- КОНТРОЛЫ МАСШТАБА И ЗАГЛУШКА --- */
 .board-ui-overlay { position: absolute; bottom: 2rem; right: 2rem; z-index: 100; }
 .board-zoom-controls { display: flex; align-items: center; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); overflow: hidden; }
 .board-zoom-controls button { background: transparent; border: none; color: var(--text-main); padding: 8px 12px; cursor: pointer; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
@@ -54,7 +17,7 @@
 .bmb-btn { margin-top: 1rem; background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); padding: 10px 24px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; }
 @media (max-width: 1024px) { .board-mobile-blocker { display: flex; } .board-page-wrapper { display: none !important; } }
 
-/* --- НОВОЕ: КОНТЕКСТНОЕ МЕНЮ ЛИНИИ --- */
+/* --- КОНТЕКСТНОЕ МЕНЮ ЛИНИИ --- */
 .edge-context-menu {
     position: fixed;
     background: var(--bg-card);
@@ -74,54 +37,91 @@
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ecm-divider {
-    height: 1px;
-    background: var(--border-color);
-    margin: 4px 0;
-}
-
-.ecm-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 800;
-    text-transform: uppercase;
-    padding: 4px 8px;
-}
+.ecm-divider { height: 1px; background: var(--border-color); margin: 4px 0; }
+.ecm-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; padding: 4px 8px; }
 
 .ecm-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-main);
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 6px;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s;
+    background: transparent; border: none; color: var(--text-main); font-size: 0.9rem;
+    font-weight: 600; padding: 8px 12px; border-radius: 6px; text-align: left;
+    cursor: pointer; transition: all 0.2s;
 }
 
 .ecm-btn:hover { background: var(--bg-body); }
 .ecm-btn.active { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); }
-
 .ecm-delete { color: var(--error-color); }
 .ecm-delete:hover { background: rgba(248, 81, 73, 0.1); }
 
-.ecm-colors {
-    display: flex;
-    gap: 8px;
-    padding: 4px 8px;
-}
-
+.ecm-colors { display: flex; gap: 8px; padding: 4px 8px; }
 .ecm-color {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: transform 0.2s, border-color 0.2s;
+    width: 20px; height: 20px; border-radius: 50%; cursor: pointer;
+    border: 2px solid transparent; transition: transform 0.2s, border-color 0.2s;
     box-shadow: inset 0 0 0 1px rgba(0,0,0,0.3);
 }
 
 .ecm-color:hover { transform: scale(1.2); }
 .ecm-color.active { border-color: #fff; transform: scale(1.1); box-shadow: 0 0 8px currentColor; }
+
+/* =========================================
+   КАСТОМНЫЙ КУРСОР ДЛЯ НИТЕЙ ДОСКИ (АБСОЛЮТНЫЙ ЦЕНТР)
+   ========================================= */
+.board-custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0; height: 0; /* Корневой узел - это невидимая точка 0x0 */
+    pointer-events: none; 
+    z-index: 10000;
+    transform: translate(var(--x, 0px), var(--y, 0px));
+    will-change: transform;
+}
+
+.bcc-wrapper {
+    position: absolute;
+    left: 0; top: 0;
+    transform: translate(-50%, -50%) scale(0.8); /* Четко центрируем относительно точки 0x0 */
+    opacity: 0;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+    will-change: transform, opacity;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-custom-cursor.visible .bcc-wrapper {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.bcc-mouse-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+    position: relative;
+    z-index: 2; /* Иконка поверх надписи */
+}
+
+/* Подсвечиваем правую кнопку акцентным цветом */
+.bcc-mouse-icon svg .mouse-body { fill: #fff; opacity: 0.8; }
+.bcc-mouse-icon svg .mouse-wheel { fill: var(--bg-body); }
+.bcc-mouse-icon svg .mouse-btn-left { fill: transparent; }
+.bcc-mouse-icon svg .mouse-btn-right { fill: var(--accent-color); }
+
+/* Надпись выталкиваем вправо, отталкиваясь от центра (50% контейнера wrapper) */
+.bcc-text.right {
+    position: absolute;
+    left: calc(50% + 24px); 
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    background: rgba(17, 20, 24, 0.9);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px rgba(210, 168, 80, 0.3);
+    white-space: nowrap;
+    z-index: 1;
+}

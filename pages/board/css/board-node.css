@@ -9,13 +9,14 @@
     box-shadow: 0 15px 35px rgba(0,0,0,0.4); 
     z-index: 10;
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    /* Нативный курсор работает сам, так как мы изолировали стили улик */
     pointer-events: auto; 
 }
 
 /* ДИНАМИЧЕСКИЕ РАЗМЕРЫ В ЗАВИСИМОСТИ ОТ КОНТЕНТА */
 .board-node.is-post { width: 500px; }
 .board-node.is-horizontal-card { width: 420px; }
-.board-node.is-vertical-card { width: 280px; } /* Делает книги красивыми и компактными */
+.board-node.is-vertical-card { width: 280px; } 
 
 .board-node.is-dragging {
     z-index: 100 !important; 
@@ -69,3 +70,10 @@
 }
 
 .node-content img { user-select: none; -webkit-user-drag: none; }
+
+/* 
+   ПРИМЕЧАНИЕ: 
+   Все !important костыли для курсора отсюда удалены.
+   Благодаря :not(.board-page-wrapper) в inv-overlay.css,
+   здесь всё работает идеально нативно.
+*/

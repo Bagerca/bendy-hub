@@ -1,0 +1,109 @@
+/* --- КНОПКА НАЗАД --- */
+.back-link {
+    position: absolute;
+    top: 2.5rem; 
+    left: 2.5rem; 
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: max-content !important; 
+    height: auto !important;
+    white-space: nowrap !important;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 20px !important;
+    border-radius: 30px !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.back-link svg {
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0;
+    display: block;
+    margin: 0;
+}
+
+.back-link:hover { 
+    background: rgba(0, 0, 0, 0.8); 
+    color: var(--accent-color); 
+    border-color: rgba(210, 168, 80, 0.4);
+    transform: translateX(-4px);
+}
+
+@media (max-width: 900px) {
+    .back-link { top: 1.25rem; left: 1.25rem; } 
+}
+
+/* --- МЕТА-ТЕГИ (ТЕМНЫЕ ПЛАШКИ) --- */
+.meta-badge {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Статусные плашки на странице проекта */
+.status-badge { 
+    border: none; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+.status-badge.status-released { background: rgba(35, 134, 54, 0.9); color: #fff; }
+.status-badge.status-dev { background: var(--accent-color); color: #000; box-shadow: 0 4px 15px rgba(210, 168, 80, 0.4); }
+.status-badge.status-frozen { background: rgba(44, 130, 201, 0.9); color: #fff; }
+.status-badge.status-cancelled { background: rgba(211, 47, 47, 0.9); color: #fff; }
+
+/* --- КНОПКИ МАГАЗИНОВ --- */
+.store-btn {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    background: rgba(255, 255, 255, 0.1); 
+    color: #fff; 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-decoration: none;
+    padding: 0 1.4rem; 
+    height: 44px; 
+    border-radius: 30px; 
+    font-weight: 700; 
+    font-size: 0.95rem; 
+    white-space: nowrap; 
+    flex-shrink: 0; 
+    box-sizing: border-box;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.store-btn svg {
+    height: 22px; 
+    width: auto;  
+    max-width: 60px; 
+    flex-shrink: 0;
+    display: block; 
+    fill: currentColor;
+    object-fit: contain;
+}
+
+.store-btn:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #000;
+}

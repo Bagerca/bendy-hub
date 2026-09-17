@@ -7,11 +7,9 @@ export class InvestigationManager {
         this.view = new InvestigationView(this);
         this.isOpen = false;
         
-        // Выдаем данные хранилища вьюшке для первоначального рендера
         this.view.renderInitial(this.storage.getAll());
     }
 
-    // Для совместимости со старым кодом
     get evidenceList() { return this.storage.getAll(); }
 
     toggle() { this.isOpen ? this.close() : this.open(); }
@@ -29,8 +27,14 @@ export class InvestigationManager {
     _createCleanSnapshot(rawDomElement) {
         if (!rawDomElement) return null;
         const snapClone = rawDomElement.cloneNode(true);
+        
+        // 1. Удаляем оверлей
         const overlays = snapClone.querySelectorAll('.investigation-overlay');
         overlays.forEach(el => el.remove());
+        
+        // 2. ИСПРАВЛЕНИЕ: Удаляем любые временные классы состояний, чтобы они не попали в БД
+        snapClone.classList.remove('is-collected', 'is-removing');
+        
         return snapClone.outerHTML;
     }
 
@@ -49,22 +53,23 @@ export class InvestigationManager {
         const newElement = this.view.createDOMElement(newEvidence);
         this.view.prependItem(newElement);
 
-        // УМНОЕ ОБНОВЛЕНИЕ: Зажигаем иконку "Галочка" на всех карточках с этим ID на странице
         document.querySelectorAll(`[data-id="${id}"]`).forEach(el => {
             el.classList.add('is-collected');
         });
+        
+        window.dispatchEvent(new CustomEvent('syncCursorState'));
     }
 
     removeEvidence(type, id) {
         this.storage.remove(type, id);
         this.view.removeItemDOM(id);
         
-        // Отправляем ивент, чтобы доска могла отреагировать
         window.dispatchEvent(new CustomEvent('evidenceRemoved', { detail: { id } }));
 
-        // УМНОЕ ОБНОВЛЕНИЕ: Гасим иконку "Галочка" на всех карточках с этим ID на странице
         document.querySelectorAll(`[data-id="${id}"]`).forEach(el => {
             el.classList.remove('is-collected');
         });
+        
+        window.dispatchEvent(new CustomEvent('syncCursorState'));
     }
 }

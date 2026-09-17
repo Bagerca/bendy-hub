@@ -11,13 +11,12 @@ export class BoardView {
             edgesContainer: document.getElementById('board-edges'),
             btnZoomIn: document.getElementById('board-zoom-in'),
             btnZoomOut: document.getElementById('board-zoom-out'),
-            btnZoomReset: document.getElementById('board-zoom-reset'),
-            welcomeMsg: document.getElementById('board-welcome-message'),
-            welcomeCloseBtn: document.getElementById('board-welcome-close')
+            btnZoomReset: document.getElementById('board-zoom-reset')
         };
         
         this.contextMenu = new BoardContextMenu();
         this._initWelcomeMessage();
+        this._initBoardCursor(); // <-- ДОБАВЛЕНО
         
         document.addEventListener('mousedown', (e) => {
             if (this.contextMenu.element && !this.contextMenu.contains(e.target)) {
@@ -26,14 +25,64 @@ export class BoardView {
         });
     }
 
+    // Изолированный кастомный курсор только для доски (наведение на нити)
+    _initBoardCursor() {
+        const cursorHtml = `
+            <div id="board-custom-cursor" class="board-custom-cursor">
+                <div class="bcc-wrapper">
+                    <div class="bcc-mouse-icon">${Icons.cursor_investigation || ''}</div>
+                    <div class="bcc-text right">ПКМ Настроить</div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', cursorHtml);
+        this.boardCursor = document.getElementById('board-custom-cursor');
+
+        // Отслеживаем движение мыши глобально
+        document.addEventListener('mousemove', (e) => {
+            if (!this.boardCursor) return;
+
+            // Если открыто меню настройки, скрываем курсор, чтобы не мешал
+            if (this.contextMenu && this.contextMenu.element) {
+                this.boardCursor.classList.remove('visible');
+                return;
+            }
+
+            // Перемещаем курсор
+            this.boardCursor.style.setProperty('--x', `${e.clientX}px`);
+            this.boardCursor.style.setProperty('--y', `${e.clientY}px`);
+
+            // Проверяем, находится ли курсор над линией (хитбоксом) и НЕ над карточкой
+            const isOverEdge = e.target.closest('.board-edge-group');
+            const isOverNode = e.target.closest('.board-node');
+
+            if (isOverEdge && !isOverNode) {
+                this.boardCursor.classList.add('visible');
+                isOverEdge.style.cursor = 'none'; // Скрываем нативный
+            } else {
+                this.boardCursor.classList.remove('visible');
+            }
+        });
+    }
+
     _initWelcomeMessage() {
-        if (this.els.welcomeMsg && this.els.welcomeCloseBtn) {
-            this.els.welcomeCloseBtn.addEventListener('click', (e) => {
+        const welcomeMsg = document.getElementById('board-welcome-message');
+        const closeBtn = document.getElementById('board-welcome-close');
+
+        if (welcomeMsg && closeBtn) {
+            if (localStorage.getItem('bendy_board_welcome_closed') === 'true') {
+                welcomeMsg.remove();
+                return;
+            }
+
+            closeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                this.els.welcomeMsg.style.opacity = '0';
-                this.els.welcomeMsg.style.transform = 'translate(-50%, -15px)';
+                welcomeMsg.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                welcomeMsg.style.opacity = '0';
+                welcomeMsg.style.transform = 'scale(0.8)';
+                localStorage.setItem('bendy_board_welcome_closed', 'true');
                 setTimeout(() => {
-                    if (this.els.welcomeMsg) this.els.welcomeMsg.remove();
+                    if (welcomeMsg) welcomeMsg.remove();
                 }, 300);
             });
         }
@@ -41,6 +90,8 @@ export class BoardView {
 
     showEdgeContextMenu(edgeId, clientX, clientY, currentEdgeData, callbacks) {
         this.contextMenu.show(edgeId, clientX, clientY, currentEdgeData, callbacks);
+        // Принудительно скрываем кастомный курсор при открытии меню
+        if (this.boardCursor) this.boardCursor.classList.remove('visible');
     }
 
     closeEdgeContextMenu() {

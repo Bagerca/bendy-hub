@@ -3,95 +3,184 @@
 ========================================= */
 body.investigation-mode-active { cursor: crosshair; }
 
-/* Применяем эффекты к постам и карточкам каталога */
-body.investigation-mode-active .post-card:not(.inv-mini-post),
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog),
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog) {
-    position: relative; 
-    cursor: copy !important; 
-    overflow: hidden; 
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+/* 
+   АРХИТЕКТУРНОЕ РЕШЕНИЕ:
+   Ограничиваем область действия режима улик.
+   Мы используем main:not(.board-page-wrapper), чтобы стили улик ВООБЩЕ 
+   не применялись к доске расследований. Таким образом на доске остаются
+   родные нативные курсоры и нет конфликтов.
+*/
+
+/* Скрываем системный курсор только в ленте и каталоге */
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog),
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post) *,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog) *,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog) * {
+    cursor: none !important;
 }
 
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog) {
+    position: relative; 
+    overflow: hidden; 
+    transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out; 
+}
+
+/* Сам оверлей (крестики, галочки) */
 .investigation-overlay {
     position: absolute; inset: 0; z-index: 1000; display: none; 
-    align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease;
+    align-items: center; justify-content: center; opacity: 0; 
+    transition: opacity 0.15s ease-out; 
     background: rgba(0, 0, 0, 0.25); backdrop-filter: blur(5px) brightness(0.6); -webkit-backdrop-filter: blur(5px) brightness(0.6);
+    pointer-events: auto; 
 }
 
 .investigation-overlay .inv-overlay-icon {
     width: 64px; height: 64px; background: var(--bg-card);
     border: 2px solid var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 10px 30px rgba(210, 168, 80, 0.4); transform: scale(0.5); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(210, 168, 80, 0.4); transform: scale(0.5); 
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease-out, border-color 0.15s ease-out;
 }
 
 .investigation-overlay .inv-overlay-icon svg { width: 32px; height: 32px; display: block; }
 
-/* --- ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ИКОНОК --- */
-/* Состояние по умолчанию: Иконка "Добавить" */
+/* Логика переключения иконок */
 .investigation-overlay .icon-add { color: var(--accent-color); display: flex; }
 .investigation-overlay .icon-check { display: none; }
 .investigation-overlay .icon-remove { display: none; }
 
-/* Состояние "Уже добавлено в улики": Зеленая галочка */
 .is-collected .investigation-overlay .icon-add { display: none; }
 .is-collected .investigation-overlay .icon-check { 
-    display: flex; 
-    color: #00BA7C; 
-    border-color: #00BA7C;
-    box-shadow: 0 10px 30px rgba(0, 186, 124, 0.4);
+    display: flex; color: #00BA7C; border-color: #00BA7C; box-shadow: 0 10px 30px rgba(0, 186, 124, 0.4);
 }
 
-/* Состояние "Удаление" (ПКМ): Красная вспышка с планшетом-крестиком */
 .is-removing .investigation-overlay .icon-add { display: none !important; }
 .is-removing .investigation-overlay .icon-check { display: none !important; }
 .is-removing .investigation-overlay .icon-remove { 
-    display: flex !important; 
-    color: var(--error-color) !important;
-    border-color: var(--error-color) !important;
-    box-shadow: 0 10px 30px rgba(248, 81, 73, 0.4) !important;
+    display: flex !important; color: var(--error-color) !important; border-color: var(--error-color) !important; box-shadow: 0 10px 30px rgba(248, 81, 73, 0.4) !important;
 }
 
-
-/* Включаем оверлей при активном режиме */
-body.investigation-mode-active .post-card:not(.inv-mini-post) .investigation-overlay,
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog) .investigation-overlay,
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog) .investigation-overlay { 
+/* Показываем оверлей только вне доски */
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post) .investigation-overlay,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog) .investigation-overlay,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog) .investigation-overlay { 
     display: flex; 
 }
 
-/* Ховер эффекты (Если карточка НЕ собрана) */
-body.investigation-mode-active .post-card:not(.inv-mini-post):not(.is-collected):not(.is-removing):hover,
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog):not(.is-collected):not(.is-removing):hover,
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):not(.is-collected):not(.is-removing):hover { 
-    border-color: var(--accent-color) !important; 
-    box-shadow: 0 8px 30px rgba(210, 168, 80, 0.2) !important; 
+/* Подсветка карточек при наведении (только вне доски) */
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post).is-hovered-by-inv-cursor:not(.is-collected):not(.is-removing),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog).is-hovered-by-inv-cursor:not(.is-collected):not(.is-removing),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog).is-hovered-by-inv-cursor:not(.is-collected):not(.is-removing) { 
+    border-color: var(--accent-color) !important; box-shadow: 0 8px 30px rgba(210, 168, 80, 0.2) !important; 
 }
 
-/* Ховер эффекты (Если карточка УЖЕ собрана) */
-body.investigation-mode-active .post-card.is-collected:not(.is-removing):hover,
-body.investigation-mode-active .card-horizontal.is-collected:not(.is-removing):hover,
-body.investigation-mode-active .card-vertical.is-collected:not(.is-removing):hover { 
-    border-color: #00BA7C !important; 
-    box-shadow: 0 8px 30px rgba(0, 186, 124, 0.2) !important; 
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card.is-collected.is-hovered-by-inv-cursor:not(.is-removing),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal.is-collected.is-hovered-by-inv-cursor:not(.is-removing),
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical.is-collected.is-hovered-by-inv-cursor:not(.is-removing) { 
+    border-color: #00BA7C !important; box-shadow: 0 8px 30px rgba(0, 186, 124, 0.2) !important; 
 }
 
-/* Эффект при удалении (красная обводка) */
-body.investigation-mode-active .post-card.is-removing,
-body.investigation-mode-active .card-horizontal.is-removing,
-body.investigation-mode-active .card-vertical.is-removing { 
-    border-color: var(--error-color) !important; 
-    box-shadow: 0 8px 30px rgba(248, 81, 73, 0.2) !important; 
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card.is-removing,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal.is-removing,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical.is-removing { 
+    border-color: var(--error-color) !important; box-shadow: 0 8px 30px rgba(248, 81, 73, 0.2) !important; 
 }
 
-body.investigation-mode-active .post-card:not(.inv-mini-post):hover .investigation-overlay,
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog):hover .investigation-overlay,
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .investigation-overlay { 
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post).is-hovered-by-inv-cursor .investigation-overlay,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog).is-hovered-by-inv-cursor .investigation-overlay,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog).is-hovered-by-inv-cursor .investigation-overlay { 
     opacity: 1; 
 }
 
-body.investigation-mode-active .post-card:not(.inv-mini-post):hover .inv-overlay-icon,
-body.investigation-mode-active .card-horizontal:not(.inv-mini-catalog):hover .inv-overlay-icon,
-body.investigation-mode-active .card-vertical:not(.inv-mini-catalog):hover .inv-overlay-icon { 
+body.investigation-mode-active main:not(.board-page-wrapper) .post-card:not(.inv-mini-post).is-hovered-by-inv-cursor .inv-overlay-icon,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-horizontal:not(.inv-mini-catalog).is-hovered-by-inv-cursor .inv-overlay-icon,
+body.investigation-mode-active main:not(.board-page-wrapper) .card-vertical:not(.inv-mini-catalog).is-hovered-by-inv-cursor .inv-overlay-icon { 
     transform: scale(1); 
 }
+
+
+/* =========================================
+   КАСТОМНЫЙ КУРСОР ДЛЯ РЕЖИМА УЛИК
+========================================= */
+.inv-custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 0; height: 0; /* Центрируем относительно точки (0,0) */
+    pointer-events: none; 
+    z-index: 10000;
+    transform: translate(var(--x, 0px), var(--y, 0px));
+    will-change: transform;
+}
+
+.icc-wrapper {
+    position: absolute;
+    left: 0; top: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+    will-change: transform, opacity;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inv-custom-cursor.visible .icc-wrapper {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.icc-mouse-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.6));
+    position: relative;
+    z-index: 2;
+}
+
+.icc-text {
+    position: absolute;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    background: rgba(17, 20, 24, 0.9);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    opacity: 0.5;
+    transition: color 0.15s ease-out, border-color 0.15s ease-out, box-shadow 0.15s ease-out, opacity 0.15s ease-out;
+    z-index: 1;
+}
+
+/* Отступы текста от центральной иконки */
+.icc-text.left { right: calc(50% + 24px); }
+.icc-text.right { left: calc(50% + 24px); }
+
+/* --- УМНАЯ ПОДСВЕТКА СОСТОЯНИЙ КУРСОРОВ --- */
+.inv-custom-cursor.state-add .icc-text.left { 
+    color: var(--accent-color); 
+    border-color: var(--accent-color);
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(210, 168, 80, 0.3);
+}
+.inv-custom-cursor.state-add .mouse-btn-left { fill: var(--accent-color); }
+
+.inv-custom-cursor.state-remove .icc-text.right { 
+    color: var(--error-color); 
+    border-color: var(--error-color);
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(248, 81, 73, 0.3);
+}
+.inv-custom-cursor.state-remove .mouse-btn-right { fill: var(--error-color); }
+
+.mouse-body { fill: #fff; opacity: 0.8; }
+.mouse-wheel { fill: var(--bg-body); }
+.mouse-btn-left, .mouse-btn-right { transition: fill 0.15s ease-out; }

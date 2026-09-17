@@ -81,7 +81,8 @@ export class DragNodeService {
         const finalY = parseFloat(this.activeNode.style.top);
         const nodeId = this.activeNode.dataset.nodeId;
 
-        if (this.onNodeMoved) {
+        // Если это системная нода (вроде таблички с инструкцией), не пытаемся сохранить её позицию в базу
+        if (this.onNodeMoved && !this.activeNode.classList.contains('is-system-node')) {
             this.onNodeMoved(nodeId, finalX, finalY);
         }
 
