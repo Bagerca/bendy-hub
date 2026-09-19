@@ -44,6 +44,11 @@ def update_catalog():
                 data["wiki"]["trivia"] = []
                 changed = True
 
+            # ---> ДОБАВЛЕНА ПРОВЕРКА ДЛЯ ЗАПИСЕЙ АРХИВА <---
+            if "records" not in data["wiki"]:
+                data["wiki"]["records"] = []
+                changed = True
+
             # Сохраняем, если были изменения
             if changed:
                 with open(json_path, "w", encoding="utf-8") as f:

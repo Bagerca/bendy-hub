@@ -70,6 +70,8 @@ export class GameplayRenderer {
         });
 
         navHtml += `</div></div>`;
-        return `<div class="bento-box"><h3>Управление</h3>${navHtml}${contentHtml}</div>`;
+        
+        // Убрали <h3>Управление</h3>
+        return `<div class="bento-box">${navHtml}${contentHtml}</div>`;
     }
 }

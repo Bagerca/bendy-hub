@@ -8,13 +8,109 @@
 .gameplay-list li { font-size: 1.1rem; line-height: 1.6; color: var(--text-main); padding-left: 2rem; position: relative; opacity: 0.9; }
 .gameplay-list li::before { content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 2px; font-size: 1.2rem; }
 
-/* --- ТАЙМЛАЙН РАЗРАБОТКИ --- */
-.timeline-container { display: flex; flex-direction: column; gap: 2rem; position: relative; }
-.timeline-container::before { content: ''; position: absolute; left: 15px; top: 10px; bottom: 10px; width: 2px; background: var(--border-color); z-index: 0; }
-.timeline-item { position: relative; z-index: 1; padding-left: 3rem; }
-.timeline-item::before { content: ''; position: absolute; left: 11px; top: 5px; width: 10px; height: 10px; background: var(--accent-color); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-body); }
-.timeline-item h3 { font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 800;}
-.timeline-item p { font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); }
+/* --- ТАЙМЛАЙН РАЗРАБОТКИ (ПРОКАЧАННЫЙ ВИД) --- */
+.wiki-timeline-container { 
+    display: flex; 
+    flex-direction: column; 
+    position: relative; 
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.wiki-timeline-line {
+    position: absolute;
+    left: 11px;
+    top: 15px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+        to bottom, 
+        transparent 0%, 
+        var(--border-color) 15%, 
+        var(--border-color) 85%, 
+        transparent 100%
+    );
+    z-index: 0;
+}
+
+.wiki-timeline-item { 
+    position: relative; 
+    z-index: 1; 
+    padding-left: 2.5rem; 
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUpTimeline 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.wiki-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+@keyframes fadeInSlideUpTimeline {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.wiki-timeline-node { 
+    position: absolute; 
+    left: 4px; 
+    top: 24px; 
+    width: 16px; 
+    height: 16px; 
+    background-color: var(--bg-card); 
+    border: 3px solid var(--accent-color); 
+    border-radius: 50%; 
+    z-index: 3;
+    box-shadow: 0 0 0 4px var(--bg-card);
+    transition: all 0.3s ease;
+}
+
+.wiki-timeline-item:hover .wiki-timeline-node {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 0 4px var(--bg-card), 0 0 15px rgba(210, 168, 80, 0.5);
+    transform: scale(1.2);
+}
+
+.wiki-timeline-card {
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.wiki-timeline-item:hover .wiki-timeline-card {
+    border-color: var(--accent-color);
+    transform: translateX(4px);
+    box-shadow: 0 8px 20px rgba(210, 168, 80, 0.08);
+}
+
+.wt-date {
+    display: inline-block;
+    color: var(--accent-color);
+    font-weight: 800;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    background: rgba(210, 168, 80, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.wt-title { 
+    font-size: 1.15rem; 
+    color: var(--text-main); 
+    font-weight: 800; 
+    margin-bottom: 0.5rem; 
+    line-height: 1.3;
+}
+
+.wt-desc { 
+    font-size: 1rem; 
+    line-height: 1.6; 
+    color: var(--text-muted); 
+}
 
 /* --- АЧИВКИ --- */
 .achievements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }

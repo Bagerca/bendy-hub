@@ -55,7 +55,18 @@
             }
         ],
         "chapters": [],
-        "trivia": []
+        "trivia": [],
+        "records": [
+            "batdr_audio",
+            "batdr_notes",
+            "batdr_radio",
+            "batdr_tour",
+            "wilson_library",
+            "mug_and_maiden",
+            "archgate_exhibits",
+            "lost_ones_lines",
+            "character_archives_batdr"
+        ]
     },
     "color": "75, 64, 49",
     "achievements": [],

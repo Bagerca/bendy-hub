@@ -4,6 +4,7 @@ import { Icons } from '../../shared/js/icons.js';
 import { GalleryRenderer } from './renderers/GalleryRenderer.js';
 import { WikiBlockRenderer } from './WikiBlockRenderer.js';
 import { ProjectConfig } from './ProjectConfig.js';
+import { SmartMarquee } from '../../shared/js/SmartMarquee.js';
 
 export class WikiView {
     constructor(lightboxManager) {
@@ -13,8 +14,10 @@ export class WikiView {
         this.els = {
             tabsContainer: document.getElementById('dynamic-tabs'),
             sectionsContainer: document.getElementById('dynamic-sections'),
+            
             recordModal: document.getElementById('project-record-modal'),
             modalClose: document.querySelector('#project-record-modal .modal-close'),
+            modalImage: document.getElementById('prm-image'), 
             modalTitle: document.getElementById('prm-title'),
             modalAuthor: document.getElementById('prm-author'),
             modalText: document.getElementById('prm-text')
@@ -70,12 +73,16 @@ export class WikiView {
             this.els.modalAuthor.textContent = record.author || 'Неизвестный автор';
         }
 
+        if (record.image) {
+            this.els.modalImage.src = `assets/records/${record.categoryId}/${record.image}`;
+            this.els.modalImage.style.display = 'block';
+        } else {
+            this.els.modalImage.style.display = 'none';
+            this.els.modalImage.src = '';
+        }
+
         this.els.recordModal.showModal();
         requestAnimationFrame(() => this.els.recordModal.classList.add('active'));
-    }
-
-    setupTabs(type) {
-        // Заглушка, так как генерация вкладок теперь динамическая в методе render
     }
 
     render(data, projectId, dependencies = {}) {
@@ -85,7 +92,6 @@ export class WikiView {
         
         const type = data.type || 'game';
         
-        // Получаем конфигурацию макета из ProjectConfig
         const config = ProjectConfig.getLayout(type);
         let isFirstTab = true;
 
@@ -98,7 +104,6 @@ export class WikiView {
                 WikiBlockRenderer.renderBlock(blockId, data, projectId, dependencies.teams, dependencies.records)
             ).filter(Boolean).join('') : '';
 
-            // Если оба блока пусты (например, данных нет), вообще не создаем эту вкладку
             if (!mainHtml && !sidebarHtml) return;
 
             const tabBtn = document.createElement('button');
@@ -124,7 +129,6 @@ export class WikiView {
             section.innerHTML = gridHtml;
             this.els.sectionsContainer.appendChild(section);
 
-            // Инициализация галереи (передаем только если блок gallery был отрендерен)
             if (tabDef.main.includes('gallery') && data.assets) {
                 const galleryContainer = section.querySelector('#project-screenshots');
                 if (galleryContainer) {
@@ -135,10 +139,14 @@ export class WikiView {
             
             this._initInnerTabs(section);
 
-            isFirstTab = false; // Первая УСПЕШНО созданная вкладка становится активной
+            isFirstTab = false; 
         });
 
-        // Делегирование событий клика для записей
+        const recordCards = this.els.sectionsContainer.querySelectorAll('.wiki-record-card');
+        recordCards.forEach(card => {
+            SmartMarquee.apply(card, '.smart-marquee-text');
+        });
+
         this.els.sectionsContainer.addEventListener('click', (e) => {
             const recordCard = e.target.closest('.wiki-record-card');
             if (recordCard) {
@@ -207,6 +215,7 @@ export class WikiView {
         if (list) list.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
     }
 
+    // ИСПРАВЛЕНИЕ: Убрана логика "стопки" аватаров, теперь карточки одиночные и компактные
     renderCharacters(charactersData) {
         const list = document.getElementById('wiki-characters-list');
         if (!list) return;
@@ -216,11 +225,13 @@ export class WikiView {
         charactersData.forEach(char => {
             if (!char || char === '...') return;
             
+            // Ищем лучшую фотографию (глобальную или из первой версии)
             let photo = char.assets?.avatar && char.assets.avatar !== '...' ? char.assets.avatar : null;
             if (!photo && char.versions && char.versions.length > 0) {
                 photo = char.versions[0].assets?.avatar && char.versions[0].assets.avatar !== '...' ? char.versions[0].assets.avatar : null;
             }
             
+            // Подбираем подзаголовок (Вид -> Роль -> Засекречено)
             let subtitle = "Засекречено";
             if (char.meta?.species && char.meta.species !== '...') {
                 subtitle = char.meta.species;
@@ -232,12 +243,13 @@ export class WikiView {
             card.href = `character.html?id=${char.id}`;
             card.className = 'char-card';
             
+            // 1. Формируем одиночный аватар
             const avatarWrapper = document.createElement('div');
             avatarWrapper.className = 'char-avatar-wrapper';
             
             if (photo) {
                 const img = document.createElement('img');
-                img.className = 'char-img single-img';
+                img.className = 'char-img';
                 img.loading = 'lazy';
                 img.alt = char.name;
                 img.src = `assets/characters/${char.id}/${photo}`;
@@ -247,13 +259,20 @@ export class WikiView {
                 avatarWrapper.innerHTML = this.fallbackHtml;
             }
 
+            // 2. Формируем инфо-блок с бегущей строкой
             const infoCol = document.createElement('div');
             infoCol.className = 'char-info-col';
+            
             infoCol.innerHTML = `
-                <span class="char-card-name">${char.name}</span>
-                <span class="char-card-subtitle">${subtitle}</span>
+                <div class="smart-marquee-wrapper">
+                    <span class="char-card-name smart-marquee-text">${char.name}</span>
+                </div>
+                <div class="smart-marquee-wrapper">
+                    <span class="char-card-subtitle smart-marquee-text">${subtitle}</span>
+                </div>
             `;
 
+            // 3. Стрелка
             const arrow = document.createElement('div');
             arrow.className = 'char-arrow';
             arrow.innerHTML = Icons.chevron_right;
@@ -269,6 +288,12 @@ export class WikiView {
             });
             
             list.appendChild(card);
+        });
+
+        // ПРИМЕНЯЕМ АНИМАЦИЮ БЕГУЩЕЙ СТРОКИ К ПЕРСОНАЖАМ
+        const charCards = list.querySelectorAll('.char-card');
+        charCards.forEach(card => {
+            SmartMarquee.apply(card, '.smart-marquee-text');
         });
 
         if (list.innerHTML === '') list.parentElement.style.display = 'none';

@@ -52,7 +52,10 @@
             }
         ],
         "chapters": [],
-        "trivia": []
+        "trivia": [],
+        "records": [
+            "batds_audio"
+        ]
     },
     "color": "74, 52, 29",
     "achievements": [],

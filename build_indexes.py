@@ -91,7 +91,9 @@ def build_records_list():
             
             for item in rec_data.get("items", []):
                 item_copy = item.copy()
-                item_copy["categoryId"] = folder # Вшиваем ID папки, чтобы знать, откуда брать иконки/картинки
+                item_copy["categoryId"] = folder
+                # НОВОЕ: Сохраняем имя родительской категории (название папки-источника)
+                item_copy["categoryTitle"] = rec_data.get("title", "Архив")
                 output_data.append(item_copy)
 
     with open(os.path.join("data", "records_list.json"), "w", encoding="utf-8") as f:
@@ -155,7 +157,6 @@ if __name__ == "__main__":
     build_music_list()
     build_music_authors_list()
     
-    # Сначала собираем записи, потом передаем их в сборщик персонажей
     all_records = build_records_list()
     build_characters_list(all_records)
     

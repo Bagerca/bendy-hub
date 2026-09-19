@@ -33,105 +33,489 @@
     "specs": [
         {
             "os": "Windows",
-            "minimum": ["ОС: Windows 10 (64-bit)", "Процессор: 64-разрядный процессор", "Оперативная память: 8 GB ОЗУ", "Видеокарта: 4GB Dedicated", "DirectX: Версии 12", "Место на диске: 2 GB"],
-            "recommended": ["64-разрядные процессор и операционная система"]
+            "minimum": [
+                "ОС: Windows 10 (64-bit)",
+                "Процессор: 64-разрядный процессор",
+                "Оперативная память: 8 GB ОЗУ",
+                "Видеокарта: 4GB Dedicated",
+                "DirectX: Версии 12",
+                "Место на диске: 2 GB"
+            ],
+            "recommended": [
+                "64-разрядные процессор и операционная система"
+            ]
         },
         {
             "os": "Mac OS X",
-            "minimum": ["ОС: Sierra", "Оперативная память: 16 GB ОЗУ", "Место на диске: 2 GB"],
+            "minimum": [
+                "ОС: Sierra",
+                "Оперативная память: 16 GB ОЗУ",
+                "Место на диске: 2 GB"
+            ],
             "recommended": []
         },
         {
             "os": "SteamOS + Linux",
-            "minimum": ["Оперативная память: 8 GB ОЗУ", "Место на диске: 2 GB"],
+            "minimum": [
+                "Оперативная память: 8 GB ОЗУ",
+                "Место на диске: 2 GB"
+            ],
             "recommended": []
         },
         {
             "os": "Мобильные устройства",
-            "minimum": ["iOS: Требуется 11.0 и новее", "Android: Требуется 6.0 и выше"],
+            "minimum": [
+                "iOS: Требуется 11.0 и новее",
+                "Android: Требуется 6.0 и выше"
+            ],
             "recommended": []
         }
     ],
     "languages": [
-        { "lang": "Русский", "interface": true, "audio": false, "subtitles": true },
-        { "lang": "Английский", "interface": true, "audio": true, "subtitles": true },
-        { "lang": "Французский", "interface": true, "audio": false, "subtitles": true },
-        { "lang": "Итальянский", "interface": true, "audio": false, "subtitles": true },
-        { "lang": "Немецкий", "interface": true, "audio": false, "subtitles": true },
-        { "lang": "Испанский (Испания)", "interface": true, "audio": false, "subtitles": true },
-        { "lang": "Японский", "interface": true, "audio": false, "subtitles": true },
-        { "lang": "Португальский (Бразилия)", "interface": true, "audio": false, "subtitles": true },
-        { "lang": "Китайский (упр.)", "interface": true, "audio": false, "subtitles": true }
+        {
+            "lang": "Русский",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Английский",
+            "interface": true,
+            "audio": true,
+            "subtitles": true
+        },
+        {
+            "lang": "Французский",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Итальянский",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Немецкий",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Испанский (Испания)",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Японский",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Португальский (Бразилия)",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Китайский (упр.)",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        }
     ],
     "reviews": [
-        { "author": "IGN", "text": "Лучшая хоррор-игра 2017 года по версии аудитории." },
-        { "author": "PC Gamer", "text": "Изобретательная хоррор-игра от первого лица." },
-        { "author": "ScreenCritics", "text": "Волнующая и страшная для каждого игрока!" },
-        { "author": "Game Respawn", "text": "Стилистика в игре просто превосходна!" },
-        { "author": "Rely on Horror", "text": "Игра показывает интригующий мир, эстетику и историю, которые мы не можем дождаться увидеть в будущих главах." }
+        {
+            "author": "IGN",
+            "text": "Лучшая хоррор-игра 2017 года по версии аудитории."
+        },
+        {
+            "author": "PC Gamer",
+            "text": "Изобретательная хоррор-игра от первого лица."
+        },
+        {
+            "author": "ScreenCritics",
+            "text": "Волнующая и страшная для каждого игрока!"
+        },
+        {
+            "author": "Game Respawn",
+            "text": "Стилистика в игре просто превосходна!"
+        },
+        {
+            "author": "Rely on Horror",
+            "text": "Игра показывает интригующий мир, эстетику и историю, которые мы не можем дождаться увидеть в будущих главах."
+        }
     ],
     "achievements": [
-        { "id": "picking_up_pieces", "title": "Picking Up the Pieces", "description": "Collect all the items.", "icon": "" },
-        { "id": "hello_bendy", "title": "Hello Bendy", "description": "Fall through the floor.", "icon": "" },
-        { "id": "crooner_tuner", "title": "Crooner Tuner", "description": "Turn on the radio in Chapter One.", "icon": "" },
-        { "id": "past_speaks", "title": "The Past Speaks", "description": "Listened to All Audio Logs in Chapter One.", "icon": "" },
-        { "id": "my_favorite_song", "title": "My Favorite Song", "description": "Solve the musical puzzle.", "icon": "" },
-        { "id": "the_believer", "title": "The Believer", "description": "Survive being chased by Bendy.", "icon": "" },
-        { "id": "a_special_hat", "title": "A Special Hat", "description": "Run into Jack Fain.", "icon": "" },
-        { "id": "old_problems", "title": "Old Problems", "description": "Listened to All Audio Logs in Chapter Two.", "icon": "" },
-        { "id": "spare_parts", "title": "Spare Parts", "description": "Found all of Alice Angel's gears.", "icon": "" },
-        { "id": "coast_to_coast", "title": "Coast to Coast", "description": "Turn on the radio in Chapter Two.", "icon": "" },
-        { "id": "ultimate_stomachache", "title": "Ultimate Stomachache", "description": "Hunted down all Swollen Searchers.", "icon": "" },
-        { "id": "feeling_the_pressure", "title": "Feeling the Pressure", "description": "Solved all valve panel puzzles.", "icon": "" },
-        { "id": "anger_management", "title": "Anger Management", "description": "Destroyed all Bendy cardboard cutouts in Chapter Three.", "icon": "" },
-        { "id": "front_lines", "title": "Front Lines", "description": "Survived the Butcher Gang's attack.", "icon": "" },
-        { "id": "darker_places", "title": "Darker Places", "description": "Survived the inky abyss.", "icon": "" },
-        { "id": "wasting_time", "title": "Wasting Time", "description": "Ring the bell.", "icon": "" },
-        { "id": "around_and_around", "title": "Around And Around", "description": "Defeat Bertrum.", "icon": "" },
-        { "id": "a_haunting_we_will_go", "title": "A Haunting We Will Go", "description": "Restore Power to the Haunted House.", "icon": "" },
-        { "id": "reunited", "title": "Reunited", "description": "Found Boris.", "icon": "" },
-        { "id": "shadows_and_suffering", "title": "Shadows and Suffering", "description": "Discover what's living below.", "icon": "" },
-        { "id": "pipes_and_problems", "title": "Pipes and Problems", "description": "Found a new way through.", "icon": "" },
-        { "id": "to_hell_and_back", "title": "To Hell and Back", "description": "Complete the Main Story.", "icon": "" },
-        { "id": "johnnys_broken_heart", "title": "Johnny's Broken Heart", "description": "Play the pipe organ 5 times.", "icon": "" },
-        { "id": "still_listening", "title": "Still Listening", "description": "Listen to All Audio Logs in Chapter Four.", "icon": "" },
-        { "id": "path_of_the_demon", "title": "The Path of the Demon", "description": "Chose the way of Bendy.", "icon": "" },
-        { "id": "goldbricking", "title": "Goldbricking", "description": "Let others do the work.", "icon": "" },
-        { "id": "the_creator", "title": "The Creator", "description": "Visit theMeatly.", "icon": "" },
-        { "id": "path_of_the_angel", "title": "The Path of the Angel", "description": "Chose the way of Alice.", "icon": "" },
-        { "id": "turn_it_up", "title": "Turn It Up", "description": "Turn on the radio in Chapter Three.", "icon": "" },
-        { "id": "now_hear_this", "title": "Now Hear This!", "description": "Listen to All Audio Logs in Chapter Five.", "icon": "" },
-        { "id": "strike_up_the_band", "title": "Strike Up The Band", "description": "Get all the Bendys on stage.", "icon": "" },
-        { "id": "bulls_eye", "title": "Bulls Eye", "description": "Get a perfect score on Bull's Eye Bonanza.", "icon": "" },
-        { "id": "knick_knack_paddywhack", "title": "Knick-Knack Paddywhack", "description": "Got the poor doggie a bone.", "icon": "" },
-        { "id": "finger_waggin", "title": "Finger Waggin", "description": "Find the Radio in Chapter Four.", "icon": "" },
-        { "id": "normans_fate", "title": "Norman's Fate", "description": "Brought down The Projectionist.", "icon": "" },
-        { "id": "aggression", "title": "Aggression", "description": "Bathe in violence.", "icon": "" },
-        { "id": "call_the_milk_man", "title": "Call The Milk Man", "description": "Get a perfect score on Bottle Wallop.", "icon": "" },
-        { "id": "a_little_souvenir", "title": "A Little Souvenier", "description": "Take a Photo at the Photo Cutout.", "icon": "" },
-        { "id": "standing_proud", "title": "Standing Proud", "description": "Find out where you belong.", "icon": "" },
-        { "id": "voice_collector", "title": "The Voice Collector", "description": "Listen to All Audio Logs in the Game.", "icon": "" },
-        { "id": "unlikely_victory", "title": "Unlikely Victory", "description": "Complete Chapter Four with the Plunger.", "icon": "" },
-        { "id": "gold_record", "title": "Gold Record", "description": "Find all the Hidden Radios in the Game.", "icon": "" },
-        { "id": "bring_home_the_bacon", "title": "Bring Home the Bacon", "description": "Collected all Bacon Soup in Chapter Three.", "icon": "" },
-        { "id": "a_sweet_discovery", "title": "A Sweet Discovery", "description": "Say Hello to an Old Friend.", "icon": "" },
-        { "id": "no_need_for_a_spoon", "title": "No Need for a Spoon", "description": "Collect all the Bacon Soup in Chapter Five.", "icon": "" },
-        { "id": "grand_puppeteer", "title": "Grand Puppeteer", "description": "Find theMeatly in All Chapters.", "icon": "" },
-        { "id": "just_like_mom_used_to_make", "title": "Just Like Mom Used To Make", "description": "Collect all the Bacon Soup in Chapter Four.", "icon": "" },
-        { "id": "master_of_bacon", "title": "Master of Bacon", "description": "Collect all the Bacon Soup in the Game.", "icon": "" },
-        { "id": "valued_employee", "title": "Valued Employee", "description": "Take a longer walk.", "icon": "" },
-        { "id": "vintage_scares", "title": "Vintage Scares", "description": "Visit Heavenly Toys during Ink Demon's Eve.", "icon": "" },
-        { "id": "blazing_metal", "title": "Blazing Metal", "description": "Unleashed the Tommy Gun.", "icon": "" },
-        { "id": "man_behind_the_curtain", "title": "Man Behind the Curtain", "description": "Visit theMeatly.", "icon": "" },
-        { "id": "a_taste_of_home", "title": "A Taste of Home", "description": "Collected all the Bacon Soup in Chapter One.", "icon": "" },
-        { "id": "barbecued", "title": "Barbecued", "description": "Visit theMeatly.", "icon": "" },
-        { "id": "canadian_bacon", "title": "Canadian Bacon", "description": "Collect all the Bacon Soup in Chapter Two.", "icon": "" },
-        { "id": "long_forgotten_self", "title": "Long Forgotten Self", "description": "Unearthed the sunken room.", "icon": "" },
-        { "id": "inner_child", "title": "Inner Child", "description": "Play with 25 Bendy Dolls.", "icon": "" },
-        { "id": "going_to_be_sick", "title": "Going To Be Sick", "description": "Go for a wild ride.", "icon": "" },
-        { "id": "toe_tappin", "title": "Toe Tappin", "description": "Find the Radio in Chapter Five.", "icon": "" },
-        { "id": "hearing_voices", "title": "Hearing Voices", "description": "Listened to All Audio Logs in Chapter Three.", "icon": "" },
-        { "id": "tea_time", "title": "Tea Time", "description": "Kicked back with theMeatly.", "icon": "" }
+        {
+            "id": "picking_up_pieces",
+            "title": "Picking Up the Pieces",
+            "description": "Collect all the items.",
+            "icon": ""
+        },
+        {
+            "id": "hello_bendy",
+            "title": "Hello Bendy",
+            "description": "Fall through the floor.",
+            "icon": ""
+        },
+        {
+            "id": "crooner_tuner",
+            "title": "Crooner Tuner",
+            "description": "Turn on the radio in Chapter One.",
+            "icon": ""
+        },
+        {
+            "id": "past_speaks",
+            "title": "The Past Speaks",
+            "description": "Listened to All Audio Logs in Chapter One.",
+            "icon": ""
+        },
+        {
+            "id": "my_favorite_song",
+            "title": "My Favorite Song",
+            "description": "Solve the musical puzzle.",
+            "icon": ""
+        },
+        {
+            "id": "the_believer",
+            "title": "The Believer",
+            "description": "Survive being chased by Bendy.",
+            "icon": ""
+        },
+        {
+            "id": "a_special_hat",
+            "title": "A Special Hat",
+            "description": "Run into Jack Fain.",
+            "icon": ""
+        },
+        {
+            "id": "old_problems",
+            "title": "Old Problems",
+            "description": "Listened to All Audio Logs in Chapter Two.",
+            "icon": ""
+        },
+        {
+            "id": "spare_parts",
+            "title": "Spare Parts",
+            "description": "Found all of Alice Angel's gears.",
+            "icon": ""
+        },
+        {
+            "id": "coast_to_coast",
+            "title": "Coast to Coast",
+            "description": "Turn on the radio in Chapter Two.",
+            "icon": ""
+        },
+        {
+            "id": "ultimate_stomachache",
+            "title": "Ultimate Stomachache",
+            "description": "Hunted down all Swollen Searchers.",
+            "icon": ""
+        },
+        {
+            "id": "feeling_the_pressure",
+            "title": "Feeling the Pressure",
+            "description": "Solved all valve panel puzzles.",
+            "icon": ""
+        },
+        {
+            "id": "anger_management",
+            "title": "Anger Management",
+            "description": "Destroyed all Bendy cardboard cutouts in Chapter Three.",
+            "icon": ""
+        },
+        {
+            "id": "front_lines",
+            "title": "Front Lines",
+            "description": "Survived the Butcher Gang's attack.",
+            "icon": ""
+        },
+        {
+            "id": "darker_places",
+            "title": "Darker Places",
+            "description": "Survived the inky abyss.",
+            "icon": ""
+        },
+        {
+            "id": "wasting_time",
+            "title": "Wasting Time",
+            "description": "Ring the bell.",
+            "icon": ""
+        },
+        {
+            "id": "around_and_around",
+            "title": "Around And Around",
+            "description": "Defeat Bertrum.",
+            "icon": ""
+        },
+        {
+            "id": "a_haunting_we_will_go",
+            "title": "A Haunting We Will Go",
+            "description": "Restore Power to the Haunted House.",
+            "icon": ""
+        },
+        {
+            "id": "reunited",
+            "title": "Reunited",
+            "description": "Found Boris.",
+            "icon": ""
+        },
+        {
+            "id": "shadows_and_suffering",
+            "title": "Shadows and Suffering",
+            "description": "Discover what's living below.",
+            "icon": ""
+        },
+        {
+            "id": "pipes_and_problems",
+            "title": "Pipes and Problems",
+            "description": "Found a new way through.",
+            "icon": ""
+        },
+        {
+            "id": "to_hell_and_back",
+            "title": "To Hell and Back",
+            "description": "Complete the Main Story.",
+            "icon": ""
+        },
+        {
+            "id": "johnnys_broken_heart",
+            "title": "Johnny's Broken Heart",
+            "description": "Play the pipe organ 5 times.",
+            "icon": ""
+        },
+        {
+            "id": "still_listening",
+            "title": "Still Listening",
+            "description": "Listen to All Audio Logs in Chapter Four.",
+            "icon": ""
+        },
+        {
+            "id": "path_of_the_demon",
+            "title": "The Path of the Demon",
+            "description": "Chose the way of Bendy.",
+            "icon": ""
+        },
+        {
+            "id": "goldbricking",
+            "title": "Goldbricking",
+            "description": "Let others do the work.",
+            "icon": ""
+        },
+        {
+            "id": "the_creator",
+            "title": "The Creator",
+            "description": "Visit theMeatly.",
+            "icon": ""
+        },
+        {
+            "id": "path_of_the_angel",
+            "title": "The Path of the Angel",
+            "description": "Chose the way of Alice.",
+            "icon": ""
+        },
+        {
+            "id": "turn_it_up",
+            "title": "Turn It Up",
+            "description": "Turn on the radio in Chapter Three.",
+            "icon": ""
+        },
+        {
+            "id": "now_hear_this",
+            "title": "Now Hear This!",
+            "description": "Listen to All Audio Logs in Chapter Five.",
+            "icon": ""
+        },
+        {
+            "id": "strike_up_the_band",
+            "title": "Strike Up The Band",
+            "description": "Get all the Bendys on stage.",
+            "icon": ""
+        },
+        {
+            "id": "bulls_eye",
+            "title": "Bulls Eye",
+            "description": "Get a perfect score on Bull's Eye Bonanza.",
+            "icon": ""
+        },
+        {
+            "id": "knick_knack_paddywhack",
+            "title": "Knick-Knack Paddywhack",
+            "description": "Got the poor doggie a bone.",
+            "icon": ""
+        },
+        {
+            "id": "finger_waggin",
+            "title": "Finger Waggin",
+            "description": "Find the Radio in Chapter Four.",
+            "icon": ""
+        },
+        {
+            "id": "normans_fate",
+            "title": "Norman's Fate",
+            "description": "Brought down The Projectionist.",
+            "icon": ""
+        },
+        {
+            "id": "aggression",
+            "title": "Aggression",
+            "description": "Bathe in violence.",
+            "icon": ""
+        },
+        {
+            "id": "call_the_milk_man",
+            "title": "Call The Milk Man",
+            "description": "Get a perfect score on Bottle Wallop.",
+            "icon": ""
+        },
+        {
+            "id": "a_little_souvenir",
+            "title": "A Little Souvenier",
+            "description": "Take a Photo at the Photo Cutout.",
+            "icon": ""
+        },
+        {
+            "id": "standing_proud",
+            "title": "Standing Proud",
+            "description": "Find out where you belong.",
+            "icon": ""
+        },
+        {
+            "id": "voice_collector",
+            "title": "The Voice Collector",
+            "description": "Listen to All Audio Logs in the Game.",
+            "icon": ""
+        },
+        {
+            "id": "unlikely_victory",
+            "title": "Unlikely Victory",
+            "description": "Complete Chapter Four with the Plunger.",
+            "icon": ""
+        },
+        {
+            "id": "gold_record",
+            "title": "Gold Record",
+            "description": "Find all the Hidden Radios in the Game.",
+            "icon": ""
+        },
+        {
+            "id": "bring_home_the_bacon",
+            "title": "Bring Home the Bacon",
+            "description": "Collected all Bacon Soup in Chapter Three.",
+            "icon": ""
+        },
+        {
+            "id": "a_sweet_discovery",
+            "title": "A Sweet Discovery",
+            "description": "Say Hello to an Old Friend.",
+            "icon": ""
+        },
+        {
+            "id": "no_need_for_a_spoon",
+            "title": "No Need for a Spoon",
+            "description": "Collect all the Bacon Soup in Chapter Five.",
+            "icon": ""
+        },
+        {
+            "id": "grand_puppeteer",
+            "title": "Grand Puppeteer",
+            "description": "Find theMeatly in All Chapters.",
+            "icon": ""
+        },
+        {
+            "id": "just_like_mom_used_to_make",
+            "title": "Just Like Mom Used To Make",
+            "description": "Collect all the Bacon Soup in Chapter Four.",
+            "icon": ""
+        },
+        {
+            "id": "master_of_bacon",
+            "title": "Master of Bacon",
+            "description": "Collect all the Bacon Soup in the Game.",
+            "icon": ""
+        },
+        {
+            "id": "valued_employee",
+            "title": "Valued Employee",
+            "description": "Take a longer walk.",
+            "icon": ""
+        },
+        {
+            "id": "vintage_scares",
+            "title": "Vintage Scares",
+            "description": "Visit Heavenly Toys during Ink Demon's Eve.",
+            "icon": ""
+        },
+        {
+            "id": "blazing_metal",
+            "title": "Blazing Metal",
+            "description": "Unleashed the Tommy Gun.",
+            "icon": ""
+        },
+        {
+            "id": "man_behind_the_curtain",
+            "title": "Man Behind the Curtain",
+            "description": "Visit theMeatly.",
+            "icon": ""
+        },
+        {
+            "id": "a_taste_of_home",
+            "title": "A Taste of Home",
+            "description": "Collected all the Bacon Soup in Chapter One.",
+            "icon": ""
+        },
+        {
+            "id": "barbecued",
+            "title": "Barbecued",
+            "description": "Visit theMeatly.",
+            "icon": ""
+        },
+        {
+            "id": "canadian_bacon",
+            "title": "Canadian Bacon",
+            "description": "Collect all the Bacon Soup in Chapter Two.",
+            "icon": ""
+        },
+        {
+            "id": "long_forgotten_self",
+            "title": "Long Forgotten Self",
+            "description": "Unearthed the sunken room.",
+            "icon": ""
+        },
+        {
+            "id": "inner_child",
+            "title": "Inner Child",
+            "description": "Play with 25 Bendy Dolls.",
+            "icon": ""
+        },
+        {
+            "id": "going_to_be_sick",
+            "title": "Going To Be Sick",
+            "description": "Go for a wild ride.",
+            "icon": ""
+        },
+        {
+            "id": "toe_tappin",
+            "title": "Toe Tappin",
+            "description": "Find the Radio in Chapter Five.",
+            "icon": ""
+        },
+        {
+            "id": "hearing_voices",
+            "title": "Hearing Voices",
+            "description": "Listened to All Audio Logs in Chapter Three.",
+            "icon": ""
+        },
+        {
+            "id": "tea_time",
+            "title": "Tea Time",
+            "description": "Kicked back with theMeatly.",
+            "icon": ""
+        }
     ],
     "assets": {
         "logo": "logo.png",
@@ -197,13 +581,16 @@
                 "description": "После встречи с Волком Борисом, Генри исследует множество новых уровней студии, выполняя опасные задания для искаженной Ангела Алисы."
             },
             {
-                "title": "Глава 4: Большие чудеса", "description": "После того, как Алиса похищает Бориса, Генри спускается в подземный парк развлечений «Бендиленд», чтобы спасти своего друга."
+                "title": "Глава 4: Большие чудеса",
+                "description": "После того, как Алиса похищает Бориса, Генри спускается в подземный парк развлечений «Бендиленд», чтобы спасти своего друга."
             },
             {
-                "title": "Глава 5: Последняя бобина", "description": "Генри объединяется с Эллисон и Томом для финального спуска в Чернильную Бездну, чтобы победить Чернильного Демона раз и навсегда."
+                "title": "Глава 5: Последняя бобина",
+                "description": "Генри объединяется с Эллисон и Томом для финального спуска в Чернильную Бездну, чтобы победить Чернильного Демона раз и навсегда."
             },
             {
-                "title": "Архивы", "description": "Специальный музейный уровень, открывающийся после прохождения игры. Содержит ранние 3D-модели, концепт-арты и комментарии разработчиков."
+                "title": "Архивы",
+                "description": "Специальный музейный уровень, открывающийся после прохождения игры. Содержит ранние 3D-модели, концепт-арты и комментарии разработчиков."
             }
         ],
         "gameplay": [
@@ -292,7 +679,8 @@
             "Лозунг игры «Above all, fear the Machine» (рус. Прежде всего бойтесь Машины) является прямой отсылкой на библейский стих из Первой книги Царств Самуила 12:24.",
             "Альтернативный логотип игры, представленный на сайте Rooster Teeth, был нарисован фанатом Антонио Бальцано.",
             "Для главного логотипа игры используется шрифт DK Black Bamboo, где буква «В» стилизована под дьявольские рожки Бенди."
-        ]
+        ],
+        "records": []
     },
     "color": "109, 88, 57"
 }
