@@ -12,7 +12,6 @@
 .gallery-main-view {
     width: 100%;
     aspect-ratio: 16 / 9; 
-    /* Убрали max-height: 400px, чтобы пропорции 16:9 были идеальными всегда */
     background-color: #000;
     border-radius: 12px;
     overflow: hidden;
@@ -96,7 +95,7 @@
     width: 120px;
     height: 70px;
     padding: 0;
-    border: 2px solid transparent;
+    border: none; /* Убран глючный бордер, который ломал размеры */
     border-radius: 8px;
     background: var(--bg-body);
     cursor: pointer;
@@ -104,6 +103,18 @@
     overflow: hidden;
     opacity: 0.5;
     transition: all 0.2s ease;
+}
+
+/* Рамка теперь рисуется ПОВЕРХ картинки, поэтому она всегда идеально ровная */
+.gallery-thumb-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    pointer-events: none; /* Клики проходят сквозь рамку к кнопке */
+    transition: border-color 0.2s ease;
+    z-index: 5;
 }
 
 .gallery-thumb-btn img {
@@ -119,6 +130,9 @@
 
 .gallery-thumb-btn.active {
     opacity: 1;
+}
+
+.gallery-thumb-btn.active::after {
     border-color: var(--accent-color);
 }
 
@@ -140,7 +154,6 @@
 
 /* === АДАПТИВ ГАЛЕРЕИ === */
 @media (max-width: 900px) {
-    /* Убрали искажающий max-height и для мобилок */
     .gallery-nav { padding: 0.5rem; }
     .gallery-arrow { width: 36px; height: 60px; }
     .gallery-thumb-btn { width: 96px; height: 60px; }

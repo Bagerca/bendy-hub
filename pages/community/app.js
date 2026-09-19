@@ -4,7 +4,7 @@ import { CommunityController } from './CommunityController.js';
 
 export async function init() {
     const model = new CommunityModel();
-    const view = new CommunityView();
+    const view = new CommunityView(window.globalLightbox);
     const controller = new CommunityController(model, view);
 
     await controller.init();

@@ -36,7 +36,7 @@
     to { transform: rotate(360deg); } 
 }
 
-/* --- ПУСТЫЕ СОСТОЯНИЯ (Empty States) --- */
+/* --- ПУСТЫЕ СОСТОЯНИЯ (С текстом) --- */
 .empty-state {
     display: flex;
     flex-direction: column;
@@ -84,7 +84,7 @@
     line-height: 1.5;
 }
 
-/* Компактная версия (для вкладок внутри проекта) */
+/* Компактная версия (для вкладок) */
 .empty-state.compact {
     padding: 2.5rem 1rem;
     border-width: 1px;
@@ -104,4 +104,41 @@
 .empty-state.compact .empty-state-title {
     font-size: 1.1rem;
     margin-bottom: 0;
+}
+
+/* --- НЕМАЯ ЗАГЛУШКА 404 (УНИВЕРСАЛЬНАЯ, БЕЗ ТЕКСТА) --- */
+.empty-state-silent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 120px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px dashed rgba(255, 255, 255, 0.15); /* Контрастный светлый пунктир */
+    border-radius: 16px;
+    color: var(--text-muted); /* Светло-серый цвет для иконки */
+    transition: all 0.3s ease;
+}
+
+.empty-state-silent:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--text-main); /* При наведении иконка белеет */
+}
+
+.empty-state-silent svg {
+    width: 36px;
+    height: 36px;
+    opacity: 0.8;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Модификатор для узких колонок (например, сайдбаров) */
+.empty-state-silent.in-sidebar {
+    min-height: 90px;
+    border-radius: 12px;
+}
+.empty-state-silent.in-sidebar svg {
+    width: 28px;
+    height: 28px;
 }

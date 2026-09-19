@@ -1,31 +1,81 @@
-/* --- СТРУКТУРА СТРАНИЦЫ И СЕТКИ --- */
+/* =========================================
+   СТРУКТУРА СТРАНИЦЫ WIKI (PROJECT)
+   ========================================= */
+
 .wiki-content-area { 
-    max-width: 1200px; 
+    width: 100%;
     margin: 3rem auto; 
     padding: 0 1.5rem; 
     min-height: 50vh; 
 }
 
+/* =========================================
+   1. БАЗОВАЯ СЕТКА (Геймплей, Архивы - 1 колонка)
+   ========================================= */
 .overview-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 320px; 
-    gap: 4rem; 
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+    /* Идеальная ширина, в точности как на странице Музыки (1200px минус padding 3rem) */
+    max-width: calc(1200px - 3rem); 
+    margin: 0 auto;    
+    position: relative;
 }
 
-/* Жестко фиксируем поведение левой колонки, запрещая ей ломать грид */
 .overview-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     min-width: 0;
 }
 
-/* Сайдбар */
-.sticky-sidebar-wrapper {
-    position: sticky; 
-    top: 140px; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 1.5rem;
+.overview-grid > .inv-spacer { 
+    display: none; 
 }
 
+/* =========================================
+   2. СЕТКА С САЙДБАРОМ (Обзор, Летопись - 2 колонки)
+   ========================================= */
+.overview-grid.has-sidebar {
+    display: grid; 
+    width: 100%;
+    max-width: calc(1200px - 3rem); /* Правый и левый край идеально симметричны */
+    margin: 0 auto;
+    
+    /* 400px под сайдбар (левый), всё остальное (1fr) под контент */
+    grid-template-columns: 400px 1fr; 
+    gap: 2.5rem; 
+    align-items: start;
+}
+
+.overview-grid.has-sidebar > .overview-sidebar { 
+    grid-column: 1;
+    position: static; 
+    width: 100%; 
+}
+
+.overview-grid.has-sidebar > .overview-main { 
+    grid-column: 2; 
+}
+
+/* --- ВНУТРЕННОСТИ САЙДБАРА --- */
+.sticky-sidebar-wrapper {
+    position: sticky; 
+    top: 100px; 
+    display: flex;
+    flex-direction: column; /* Карточки строго друг под другом */
+    gap: 1.25rem;
+    align-items: stretch;
+    min-width: 0;
+}
+
+.sticky-sidebar-wrapper .bento-box {
+    padding: 1.5rem;
+    min-width: 0;
+}
+
+/* Типографика описания */
 .project-desc { 
     font-size: 1.15rem; 
     line-height: 1.8; 
@@ -34,7 +84,9 @@
     white-space: pre-line;
 }
 
-/* --- STICKY TABS --- */
+/* =========================================
+   НАВИГАЦИЯ (TABS)
+   ========================================= */
 .wiki-tabs-container {
     background-color: var(--bg-card);
     border-bottom: 1px solid var(--border-color);
@@ -45,9 +97,10 @@
 }
 
 .wiki-tabs {
-    max-width: 1200px; 
+    max-width: 1600px; 
     margin: 0 auto; 
     display: flex; 
+    justify-content: center; 
     gap: 2.5rem; 
     padding: 0 1.5rem;
     overflow-x: auto; 
@@ -56,42 +109,52 @@
 .wiki-tabs::-webkit-scrollbar { display: none; }
 
 .wiki-tab {
-    background: none; 
-    border: none; 
-    color: var(--text-muted); 
-    font-size: 1.05rem;
-    font-weight: 700; 
-    padding: 1.25rem 0; 
-    cursor: pointer; 
-    border-bottom: 3px solid transparent;
-    transition: 0.2s; 
-    white-space: nowrap;
+    background: none; border: none; color: var(--text-muted); 
+    font-size: 1.05rem; font-weight: 700; padding: 1.25rem 0; 
+    cursor: pointer; border-bottom: 3px solid transparent;
+    transition: 0.2s; white-space: nowrap;
 }
 .wiki-tab:hover { color: var(--text-main); }
 .wiki-tab.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
 
-/* --- WIKI СЕКЦИИ --- */
-.wiki-section { 
-    display: none; 
-    animation: fadeInSlideUp 0.4s ease forwards; 
-}
+/* --- WIKI СЕКЦИИ (АНИМАЦИИ И ЗАГЛУШКИ) --- */
+.wiki-section { display: none; animation: fadeInSlideUp 0.4s ease forwards; }
 .wiki-section.active { display: block; }
-.section-title { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-main); }
-.mt-4 { margin-top: 3rem; }
 
-/* --- ГЛОБАЛЬНЫЕ АНИМАЦИИ --- */
+.empty-state-silent {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; min-height: 120px; background: rgba(255, 255, 255, 0.02);
+    border: 2px dashed rgba(255, 255, 255, 0.15); border-radius: 16px;
+    color: var(--text-muted); transition: all 0.3s ease;
+}
+.empty-state-silent:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.3); color: var(--text-main); }
+.empty-state-silent svg { width: 36px; height: 36px; opacity: 0.8; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+
 @keyframes fadeInSlideUp {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* === АДАПТИВ БАЗОВОЙ СЕТКИ === */
-@media (max-width: 900px) {
-    .overview-grid { 
+/* =========================================
+   АДАПТИВНОСТЬ
+   ========================================= */
+
+@media (max-width: 950px) {
+    /* На мобильных и планшетах сайдбары падают вниз под контент */
+    .overview-grid.has-sidebar {
         grid-template-columns: 1fr; 
-        gap: 2rem; 
+        gap: 2rem;
     }
-    .sticky-sidebar-wrapper { 
-        position: static; 
+
+    .overview-grid.has-sidebar > .overview-sidebar,
+    .overview-grid.has-sidebar > .overview-main {
+        grid-column: 1 / -1; 
+    }
+}
+
+@media (max-width: 768px) {
+    .wiki-tabs {
+        justify-content: flex-start; /* Свайп вкладок на мобильных устройствах */
+        gap: 1.5rem;
     }
 }

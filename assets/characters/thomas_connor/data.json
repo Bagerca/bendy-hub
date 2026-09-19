@@ -12,7 +12,38 @@
         "occupation": "...",
         "affiliation": "..."
     },
-    "versions": [],
+    "versions": [
+        {
+            "label": "Томас Коннор (Инженер)",
+            "assets": {
+                "avatar": "avatar.jpg",
+                "full_body": "full_body.png"
+            },
+            "meta": {
+                "aliases": [],
+                "species": "...",
+                "gender": "...",
+                "occupation": "...",
+                "affiliation": "..."
+            },
+            "quote": "..."
+        },
+        {
+            "label": "Том (Искаженный)",
+            "assets": {
+                "avatar": "avatar.jpg",
+                "full_body": "full_body.png"
+            },
+            "meta": {
+                "aliases": [],
+                "species": "...",
+                "gender": "...",
+                "occupation": "...",
+                "affiliation": "..."
+            },
+            "quote": "..."
+        }
+    ],
     "wiki": {
         "appearance": "...",
         "personality": "...",

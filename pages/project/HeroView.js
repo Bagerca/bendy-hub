@@ -114,13 +114,14 @@ export class HeroView {
             this.els.author.textContent = `Разработчик: ${authorText}`;
         }
 
+        // ОБНОВЛЕНО: Рисуем только иконки, передаем название в Title
         this.els.storeLink.innerHTML = '';
         if (data.platforms && Object.keys(data.platforms).length > 0 && data.platforms[Object.keys(data.platforms)[0]] !== '...') {
             Object.entries(data.platforms).forEach(([key, url]) => {
                 if (url === '...') return;
                 const keyLower = key.toLowerCase();
                 const pData = this.platformIcons[keyLower] || { name: key.charAt(0).toUpperCase() + key.slice(1), icon: this.platformIcons.default.icon };
-                this.els.storeLink.innerHTML += `<a href="${url}" target="_blank" class="store-btn">${pData.icon} <span>${pData.name}</span></a>`;
+                this.els.storeLink.innerHTML += `<a href="${url}" target="_blank" class="store-btn" title="${pData.name}">${pData.icon}</a>`;
             });
         }
     }

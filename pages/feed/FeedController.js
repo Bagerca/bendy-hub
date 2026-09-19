@@ -1,3 +1,5 @@
+import { Icons } from '../../shared/js/icons.js';
+
 export class FeedController {
     constructor(model, view, scroller) {
         this.model = model;
@@ -51,10 +53,8 @@ export class FeedController {
         chunk.forEach((post, index) => {
             const el = this.view.render(post, searchTerm);
             if (el) {
-                // МАГИЯ ЗДЕСЬ: Каскадная анимация (каждая карточка появляется чуть позже)
                 const card = el.querySelector('.post-card');
                 if (card) {
-                    // Ограничиваем максимальную задержку 0.5с, чтобы не ждать вечность при быстром скролле
                     card.style.animationDelay = `${Math.min(index * 0.05, 0.5)}s`;
                 }
                 fragment.appendChild(el);
@@ -70,12 +70,7 @@ export class FeedController {
 
     renderEmptyState() {
         const clone = this.emptyTemplate.content.cloneNode(true);
-        const term = this.model.getSearchTerm();
-        const desc = clone.querySelector('.empty-state-desc');
-        desc.textContent = term 
-            ? `По запросу «${term}» ничего не найдено. Попробуйте изменить фильтры.` 
-            : `В базе данных пока нет записей по выбранным критериям.`;
-            
+        clone.querySelector('.empty-state-silent').innerHTML = Icons.error_404;
         this.container.appendChild(clone);
     }
 

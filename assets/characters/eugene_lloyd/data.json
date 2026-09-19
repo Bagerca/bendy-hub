@@ -1,6 +1,6 @@
 {
-    "id": "buddy_boris",
-    "name": "Бадди Борис",
+    "id": "eugene_lloyd",
+    "name": "Юджин Ллойд",
     "role": "...",
     "status": "Неизвестно",
     "quote": "...",
@@ -16,12 +16,7 @@
     "wiki": {
         "appearance": "...",
         "personality": "...",
-        "history": [
-            {
-                "title": "...",
-                "text": "..."
-            }
-        ],
+        "history": [],
         "trivia": []
     },
     "assets": {

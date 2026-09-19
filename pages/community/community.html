@@ -2,37 +2,44 @@
 
 <main class="page-content community-layout">
     <div class="community-header">
-        <h1 class="page-title">Фан-зона и Творчество</h1>
-        <p class="page-subtitle">Обсуждения, теории и творчество от русскоязычного комьюнити</p>
+        <h1 class="page-title">Сортировка Музыки</h1>
+        <p class="page-subtitle">Распредели треки по категориям, чтобы выгрузить JSON.</p>
     </div>
 
-    <div class="community-grid">
-        <!-- БЛОК TELEGRAM 1 -->
-        <section class="bento-box widget-section">
-            <div class="widget-header">
-                <h3>Дети Машины</h3>
-                <a href="https://t.me/Children_of_the_Machine" target="_blank" rel="noopener noreferrer" class="widget-external-link">
-                    Открыть в Telegram
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 11L22 2M22 2H16.6562M22 2V7.34375" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17M22 12C22 17.5228 17.5228 22 12 22C10.1786 22 8.47087 21.513 7 20.6622" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-                </a>
-            </div>
-            <div class="widget-wrapper tg-wrapper" id="tg-children-container">
-                <div class="spinner" style="margin: 3rem auto;"></div>
-            </div>
-        </section>
+    <div id="sort-loader" class="loading-state">
+        <div class="spinner" style="margin: 0 auto 10px;"></div>
+        <span>Загрузка базы треков...</span>
+    </div>
 
-        <!-- БЛОК TELEGRAM 2 -->
-        <section class="bento-box widget-section">
-            <div class="widget-header">
-                <h3>Bendy Theories</h3>
-                <a href="https://t.me/batimtheories" target="_blank" rel="noopener noreferrer" class="widget-external-link">
-                    Открыть в Telegram
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 11L22 2M22 2H16.6562M22 2V7.34375" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17M22 12C22 17.5228 17.5228 22 12 22C10.1786 22 8.47087 21.513 7 20.6622" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
-                </a>
+    <div id="sort-workspace" class="sort-workspace" style="display: none;">
+        <!-- ТЕКУЩИЙ ТРЕК -->
+        <div class="active-track-column">
+            <div class="active-track-card" id="active-track-card">
+                <!-- Заполняется через JS -->
             </div>
-            <div class="widget-wrapper tg-wrapper" id="tg-theories-container">
-                <div class="spinner" style="margin: 3rem auto;"></div>
-            </div>
-        </section>
+        </div>
+
+        <!-- КАТЕГОРИИ -->
+        <div class="category-buttons">
+            <button class="cat-sort-btn" data-cat="song">🎤 Оригинальная песня</button>
+            <button class="cat-sort-btn" data-cat="animation">🎬 Анимация / Клип</button>
+            <button class="cat-sort-btn" data-cat="remix">🎛️ Ремикс / Кавер</button>
+            <button class="cat-sort-btn" data-cat="instrumental">🎹 Инструментал</button>
+            <button class="cat-sort-btn" data-cat="other">❓ Прочее</button>
+            <button class="cat-sort-btn skip" data-cat="skip">⏭️ Пропустить (оставить как есть)</button>
+        </div>
+    </div>
+
+    <div class="sort-actions-bar" id="sort-actions-bar" style="display: none;">
+        <div class="sort-progress" id="sort-progress">Осталось: 0</div>
+        <div>
+            <button class="history-item-undo" id="btn-reset-all" style="margin-right: 10px;">Сбросить прогресс</button>
+            <button class="export-btn" id="btn-export">📥 Скачать JSON</button>
+        </div>
+    </div>
+
+    <div class="history-section" id="history-section" style="display: none;">
+        <h2>Уже отсортировано:</h2>
+        <div class="history-list" id="history-list"></div>
     </div>
 </main>

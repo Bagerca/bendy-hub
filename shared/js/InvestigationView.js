@@ -109,7 +109,6 @@ export class InvestigationView {
     }
 
     _updateCardHoverState(targetElement) {
-        // АРХИТЕКТУРНОЕ ИСПРАВЛЕНИЕ: Если курсор над доской расследований, полностью блокируем логику улик
         if (targetElement && targetElement.closest('.board-page-wrapper')) {
             this._clearHoverState();
             return;
@@ -194,12 +193,12 @@ export class InvestigationView {
 
     checkEmptyState() {
         if (this.content.children.length === 0) {
-            this.content.innerHTML = `<div class="empty-state compact" style="border: none; background: transparent; padding-top: 4rem;"><div class="empty-state-icon" style="background: rgba(210, 168, 80, 0.1); color: var(--accent-color);">${Icons.pin || ''}</div><h3 class="empty-state-title" style="font-size: 1.1rem;">Инвентарь пуст</h3><p class="empty-state-desc" style="font-size: 0.85rem; opacity: 0.7;">ЛКМ: добавить улику.<br>ПКМ: убрать улику.</p></div>`;
+            this.content.innerHTML = `<div class="empty-state-silent" style="margin-top: 2rem;">${Icons.pin || ''}</div>`;
         }
     }
 
     removeEmptyState() {
-        const emptyState = this.content.querySelector('.empty-state');
+        const emptyState = this.content.querySelector('.empty-state-silent');
         if (emptyState) emptyState.remove();
     }
 

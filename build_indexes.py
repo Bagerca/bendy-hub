@@ -1,6 +1,12 @@
 import os
 import json
 
+def load_json(path):
+    if not os.path.exists(path): return {}
+    with open(path, 'r', encoding='utf-8') as f:
+        try: return json.load(f)
+        except: return {}
+
 def build_catalog_list():
     print("🎬 Сборка сводного индекса Каталога...")
     catalog_dir = os.path.join("assets", "catalog")
@@ -10,11 +16,8 @@ def build_catalog_list():
         for folder in os.listdir(catalog_dir):
             json_path = os.path.join(catalog_dir, folder, "data.json")
             if not os.path.exists(json_path): continue
-            
-            with open(json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+            data = load_json(json_path)
                 
-            # Берем только то, что нужно для карточек и поиска связей
             output_data.append({
                 "id": data.get("id"),
                 "title": data.get("title", "Без названия"),
@@ -41,9 +44,7 @@ def build_music_list():
         for folder in os.listdir(music_dir):
             json_path = os.path.join(music_dir, folder, "data.json")
             if not os.path.exists(json_path): continue
-            
-            with open(json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+            data = load_json(json_path)
                 
             output_data.append({
                 "id": data.get("id"),
@@ -69,16 +70,36 @@ def build_music_authors_list():
         for folder in os.listdir(authors_dir):
             json_path = os.path.join(authors_dir, folder, "data.json")
             if not os.path.exists(json_path): continue
-            
-            with open(json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                output_data.append(data) # Авторов грузим целиком, они легкие
+            data = load_json(json_path)
+            output_data.append(data)
                 
     with open(os.path.join("data", "music_authors_list.json"), "w", encoding="utf-8") as f:
         json.dump(output_data, f, ensure_ascii=False, indent=2)
 
 def build_characters_list():
-    print("👤 Сборка сводного индекса Персонажей...")
+    print("👤 Сборка сводного индекса Персонажей (с интеграцией Архивов)...")
+    
+    # 1. Предварительно собираем все записи из архивов и группируем по authorId
+    records_dir = os.path.join("assets", "records")
+    records_db = {}
+    
+    if os.path.exists(records_dir):
+        for folder in os.listdir(records_dir):
+            json_path = os.path.join(records_dir, folder, "data.json")
+            if not os.path.exists(json_path): continue
+            rec_data = load_json(json_path)
+            
+            for item in rec_data.get("items", []):
+                author_id = item.get("authorId")
+                if author_id:
+                    if author_id not in records_db:
+                        records_db[author_id] = []
+                    
+                    item_copy = item.copy()
+                    item_copy["categoryId"] = folder
+                    records_db[author_id].append(item_copy)
+
+    # 2. Собираем персонажей
     char_dir = os.path.join("assets", "characters")
     output_data = []
     
@@ -86,19 +107,31 @@ def build_characters_list():
         for folder in os.listdir(char_dir):
             json_path = os.path.join(char_dir, folder, "data.json")
             if not os.path.exists(json_path): continue
+            data = load_json(json_path)
             
-            with open(json_path, "r", encoding="utf-8") as f:
-                data = json.load(f)
+            # Собираем имена всех версий в алиасы для умного поиска
+            aliases = data.get("meta", {}).get("aliases", [])
+            versions_data = []
+            
+            for v in data.get("versions", []):
+                label = v.get("label", "")
+                if label and label not in aliases:
+                    aliases.append(label)
+                versions_data.append({
+                    "label": label,
+                    "assets": v.get("assets", {})
+                })
                 
             output_data.append({
                 "id": data.get("id"),
                 "name": data.get("name", "Неизвестно"),
                 "meta": {
                     "species": data.get("meta", {}).get("species", ""),
-                    "aliases": data.get("meta", {}).get("aliases", [])
+                    "aliases": aliases
                 },
                 "assets": data.get("assets", {}),
-                "versions": [ {"assets": v.get("assets", {})} for v in data.get("versions", []) ]
+                "versions": versions_data,
+                "records": records_db.get(data.get("id"), []) # Вшиваем записи прямо в индекс!
             })
             
     with open(os.path.join("data", "characters_list.json"), "w", encoding="utf-8") as f:

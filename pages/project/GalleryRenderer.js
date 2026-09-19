@@ -108,7 +108,19 @@ export class GalleryRenderer {
             if (item.type === 'image') {
                 mainView.innerHTML = `<img src="${item.src}" alt="Screenshot" class="gallery-main-img">`;
                 const imgEl = mainView.querySelector('.gallery-main-img');
-                imgEl.onclick = () => this.lightbox.open(item.src);
+                
+                // ИСПРАВЛЕНИЕ: Формируем массив всех скриншотов для лайтбокса
+                const imageItems = mediaItems.filter(m => m.type === 'image');
+                const imageUrls = imageItems.map(m => m.src);
+                const clickedIndex = imageUrls.indexOf(item.src);
+                
+                imgEl.onclick = () => {
+                    if (imageUrls.length > 1) {
+                        this.lightbox.open(imageUrls, false, clickedIndex);
+                    } else {
+                        this.lightbox.open(item.src);
+                    }
+                };
             } 
             else if (item.type === 'youtube') {
                 mainView.innerHTML = `
@@ -138,8 +150,11 @@ export class GalleryRenderer {
                 activeThumb.classList.add('active');
                 
                 if (thumbnailsWrapper) {
-                    const scrollLeft = activeThumb.offsetLeft - (thumbnailsWrapper.offsetWidth / 2) + (activeThumb.offsetWidth / 2);
-                    thumbnailsWrapper.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+                    activeThumb.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest', 
+                        inline: 'center' 
+                    });
                 }
             }
         };

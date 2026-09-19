@@ -1,3 +1,5 @@
+import { Icons } from '../../shared/js/icons.js';
+
 export class CatalogController {
     constructor(model, cardView) {
         this.model = model;
@@ -17,7 +19,6 @@ export class CatalogController {
         }
     }
 
-    // Принимает объект обновлений: { search: 'text' } или { sort: 'alpha_asc' }
     handleFilterChange(updates) {
         const filtered = this.model.applyFilters(updates);
         this.renderSections(filtered);
@@ -29,12 +30,12 @@ export class CatalogController {
         this.container.style.display = 'block';
 
         if (items.length === 0) {
-            this.container.appendChild(this.emptyTemplate.content.cloneNode(true));
+            const clone = this.emptyTemplate.content.cloneNode(true);
+            clone.querySelector('.empty-state-silent').innerHTML = Icons.error_404;
+            this.container.appendChild(clone);
             return;
         }
 
-        // Данные приходят УЖЕ отсортированные из Модели. 
-        // filter() не ломает порядок массива, поэтому проекты внутри категорий сохранят верную сортировку!
         const sectionsData = [
             { title: 'Игры', layout: 'grid-horizontal', viewMode: 'horizontal', data: items.filter(i => i.type === 'game' || !i.type) },
             { title: 'Книги и Комиксы', layout: 'grid-vertical', viewMode: 'vertical', data: items.filter(i => i.type === 'book') },

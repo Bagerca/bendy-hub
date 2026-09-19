@@ -9,9 +9,17 @@ export class Router {
 
         document.body.addEventListener('click', (e) => {
             const link = e.target.closest('a');
-            if (link && link.href.includes(window.location.host)) {
-                if (link.getAttribute('target') === '_blank' || link.getAttribute('href') === '#') return;
-                
+            if (!link) return;
+
+            // ИСПРАВЛЕНИЕ: Игнорируем скачивания, внешние вкладки, пустые якоря и blob-ссылки
+            if (link.hasAttribute('download') || 
+                link.getAttribute('target') === '_blank' || 
+                link.getAttribute('href') === '#' || 
+                link.href.startsWith('blob:')) {
+                return;
+            }
+
+            if (link.href.includes(window.location.host)) {
                 e.preventDefault();
                 this.navigate(link.href);
             }
@@ -27,13 +35,11 @@ export class Router {
         
         const params = new URLSearchParams(tempUrl.search);
         
-        // Исправляем сломанные параметры, если они есть в истории браузера (например ?page=project?id=...)
         if (params.has('page')) {
             let pVal = params.get('page');
             if (pVal.includes('?')) {
                 const parts = pVal.split('?');
                 pageName = parts[0];
-                // Восстанавливаем потерянные параметры (id)
                 const subParams = new URLSearchParams(parts[1]);
                 for (let [k, v] of subParams.entries()) {
                     params.set(k, v);
@@ -53,7 +59,6 @@ export class Router {
         
         let routeKey = urlObj.searchParams.get('page');
         
-        // Лечим битые ссылки из кэша браузера
         if (routeKey && routeKey.includes('?')) {
             routeKey = routeKey.split('?')[0];
         }
@@ -80,14 +85,12 @@ export class Router {
         }
         this.currentController = null;
 
-        // Очищаем инстансы селектов
         if (window.CustomSelect) {
             window.CustomSelect.instances = []; 
         }
         
         this.rootElem.innerHTML = '<div class="loading-state" style="margin-top:100px;"><div class="spinner" style="margin: 0 auto 10px;"></div></div>';
 
-        // Загрузка HTML
         try {
             let htmlContent = '';
             if (this.htmlCache.has(routeKey)) {
@@ -106,7 +109,6 @@ export class Router {
             return;
         }
 
-        // Подсветка меню
         const header = document.querySelector('site-header');
         if (header) {
             let navPage = routeKey;
@@ -115,7 +117,6 @@ export class Router {
             header.setAttribute('active-page', navPage);
         }
 
-        // Запуск JS контроллера
         try {
             const module = await import(route.module);
             if (module.init) {

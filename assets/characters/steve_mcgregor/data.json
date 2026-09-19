@@ -1,6 +1,6 @@
 {
-    "id": "tom",
-    "name": "Том",
+    "id": "steve_mcgregor",
+    "name": "Стив МакГрегор",
     "role": "...",
     "status": "Неизвестно",
     "quote": "...",
@@ -16,12 +16,7 @@
     "wiki": {
         "appearance": "...",
         "personality": "...",
-        "history": [
-            {
-                "title": "...",
-                "text": "..."
-            }
-        ],
+        "history": [],
         "trivia": []
     },
     "assets": {

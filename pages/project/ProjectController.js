@@ -20,19 +20,23 @@ export class ProjectController {
             this.wikiView.setupTabs(data.type || 'game');
             this.heroView.render(data, projectId);
             
-            // Загружаем команды (если есть массив russifiers с айдишниками команд)
             let teamsData = [];
             if (data.russifiers && data.russifiers.length > 0) {
-                // Предполагаем, что data.russifiers теперь массив строк ["fanic", "ybt"]
                 if (typeof data.russifiers[0] === 'string') {
                     teamsData = await this.model.fetchTranslators(data.russifiers);
                 } else {
-                    // Fallback для старых данных, пока скрипт не отработает
                     teamsData = data.russifiers;
                 }
             }
 
-            this.wikiView.render(data, projectId, teamsData);
+            // НОВАЯ ЛОГИКА: Подгружаем записи (Records), если они прописаны в data.json
+            let recordsData = [];
+            if (data.wiki?.records?.length > 0) {
+                recordsData = await this.model.fetchRecords(data.wiki.records);
+            }
+
+            // Передаем recordsData в рендерер
+            this.wikiView.render(data, projectId, teamsData, recordsData);
             
             this.loader.style.display = 'none';
             this.content.style.display = 'block';

@@ -1,6 +1,6 @@
 {
     "id": "boris_wolf",
-    "name": "Волк Борис (Чернильный)",
+    "name": "Волк Борис",
     "role": "...",
     "status": "Неизвестно",
     "quote": "...",
@@ -12,7 +12,68 @@
         "occupation": "...",
         "affiliation": "..."
     },
-    "versions": [],
+    "versions": [
+        {
+            "label": "Бадди Левек (Человек)",
+            "assets": {
+                "avatar": "avatar.jpg",
+                "full_body": "full_body.png"
+            },
+            "meta": {
+                "aliases": [],
+                "species": "...",
+                "gender": "...",
+                "occupation": "...",
+                "affiliation": "..."
+            },
+            "quote": "..."
+        },
+        {
+            "label": "Волк Борис (Оригинал)",
+            "assets": {
+                "avatar": "avatar.jpg",
+                "full_body": "full_body.png"
+            },
+            "meta": {
+                "aliases": [],
+                "species": "...",
+                "gender": "...",
+                "occupation": "...",
+                "affiliation": "..."
+            },
+            "quote": "..."
+        },
+        {
+            "label": "Бадди Борис (BATDS)",
+            "assets": {
+                "avatar": "avatar.jpg",
+                "full_body": "full_body.png"
+            },
+            "meta": {
+                "aliases": [],
+                "species": "...",
+                "gender": "...",
+                "occupation": "...",
+                "affiliation": "..."
+            },
+            "quote": "..."
+        },
+        {
+            "label": "Клоны Бориса",
+            "assets": {
+                "avatar": "avatar.jpg",
+                "full_body": "full_body.png"
+            },
+            "meta": {
+                "aliases": [],
+                "species": "...",
+                "gender": "...",
+                "occupation": "...",
+                "affiliation": "..."
+            },
+            "quote": "..."
+        }
+    ],
     "wiki": {
         "appearance": "...",
         "personality": "...",

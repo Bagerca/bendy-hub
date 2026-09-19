@@ -19,8 +19,19 @@ export class CharacterView {
             
             historyContainer: document.getElementById('char-history'),
             triviaContainer: document.getElementById('char-trivia'),
+            
             btnHistory: document.getElementById('btn-tab-history'),
             btnTrivia: document.getElementById('btn-tab-trivia'),
+            
+            btnRecords: document.getElementById('btn-tab-records'),
+            recordsBadge: document.getElementById('records-badge'),
+            recordsGrid: document.getElementById('char-records-grid'),
+            
+            recordModal: document.getElementById('char-record-modal'),
+            modalClose: document.querySelector('#char-record-modal .modal-close'),
+            modalTitle: document.getElementById('crm-title'),
+            modalAuthor: document.getElementById('crm-author'),
+            modalText: document.getElementById('crm-text'),
             
             backBtn: document.getElementById('back-btn')
         };
@@ -30,6 +41,7 @@ export class CharacterView {
 
         this._initTabs();
         this._initBackButton();
+        this._initModal();
     }
 
     _initTabs() {
@@ -62,6 +74,31 @@ export class CharacterView {
         });
     }
 
+    _initModal() {
+        if (this.els.modalClose) {
+            this.els.modalClose.innerHTML = Icons.close || 'X';
+        }
+
+        const closeModal = () => {
+            if (!this.els.recordModal) return;
+            this.els.recordModal.classList.remove('active');
+            setTimeout(() => this.els.recordModal.close(), 300);
+        };
+
+        if (this.els.modalClose) {
+            this.els.modalClose.addEventListener('click', closeModal);
+        }
+
+        if (this.els.recordModal) {
+            this.els.recordModal.addEventListener('click', (e) => {
+                // Если клик был точно по диалогу (т.е. по фону backdrop), а не по контенту внутри
+                if (e.target === this.els.recordModal) {
+                    closeModal();
+                }
+            });
+        }
+    }
+
     showLoader() {
         this.els.loader.style.display = 'block';
         this.els.content.style.display = 'none';
@@ -72,7 +109,7 @@ export class CharacterView {
         this.els.content.style.display = 'block';
     }
 
-    render(charData, charId) {
+    render(charData, charId, initialVersionIndex = 0) {
         this.charData = charData;
         this.charId = charId;
 
@@ -80,29 +117,38 @@ export class CharacterView {
         this.els.name.textContent = charData.name;
 
         if (charData.versions && charData.versions.length > 1) {
-            this._renderVersionButtons(charData.versions);
-            this._applyVersionData(charData.versions[0]);
+            this._renderVersionButtons(charData.versions, initialVersionIndex);
+            const safeIndex = (initialVersionIndex >= 0 && initialVersionIndex < charData.versions.length) ? initialVersionIndex : 0;
+            this._applyVersionData(charData.versions[safeIndex]);
         } else {
             this.els.versionsContainer.style.display = 'none';
             this._applyVersionData(charData);
         }
 
         this._renderWikiText(charData.wiki);
+        this._renderRecords(charData.records);
     }
 
-    _renderVersionButtons(versions) {
+    _renderVersionButtons(versions, initialVersionIndex) {
         this.els.versionsContainer.innerHTML = '';
         this.els.versionsContainer.style.display = 'flex';
 
+        const safeIndex = (initialVersionIndex >= 0 && initialVersionIndex < versions.length) ? initialVersionIndex : 0;
+
         versions.forEach((version, index) => {
             const btn = document.createElement('button');
-            btn.className = `version-btn ${index === 0 ? 'active' : ''}`;
+            btn.className = `version-btn ${index === safeIndex ? 'active' : ''}`;
             btn.textContent = version.label || `Версия ${index + 1}`;
             
             btn.addEventListener('click', () => {
                 this.els.versionsContainer.querySelectorAll('.version-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 
+                // Обновляем URL без перезагрузки страницы (для копирования ссылки)
+                const url = new URL(window.location);
+                url.searchParams.set('v', index);
+                window.history.pushState({}, '', url);
+
                 this.els.img.style.opacity = '0';
                 this.els.bg.style.opacity = '0'; 
                 
@@ -174,11 +220,11 @@ export class CharacterView {
         const fullBody = (assets?.full_body && assets.full_body !== '...') ? assets.full_body : null;
 
         const showFallback = () => {
-            this.els.fallback.style.display = 'none'; // Скрываем старый хардкодный блок
+            this.els.fallback.style.display = 'none'; 
             this.els.img.style.display = 'block';
-            this.els.img.src = Icons.avatar_fallback; // Просто вставляем Base64 картинку
+            this.els.img.src = Icons.avatar_fallback; 
             this.els.img.classList.remove('is-render');
-            this.els.img.style.padding = '3rem'; // Отступы для иконки
+            this.els.img.style.padding = '3rem'; 
             this.els.bg.style.backgroundImage = 'none';
         };
 
@@ -259,6 +305,43 @@ export class CharacterView {
         } else {
             this.els.btnTrivia.style.display = 'none';
         }
+    }
+
+    _renderRecords(records) {
+        if (!records || records.length === 0) {
+            this.els.btnRecords.style.display = 'none';
+            return;
+        }
+
+        this.els.btnRecords.style.display = 'inline-block';
+        this.els.recordsBadge.textContent = records.length;
+        this.els.recordsGrid.innerHTML = '';
+
+        records.forEach(record => {
+            const card = document.createElement('div');
+            card.className = 'char-record-card';
+            
+            // Если категория связана с аудио, выбираем нужную иконку
+            const isAudio = record.categoryId.includes('audio') || record.categoryId.includes('promo') || record.categoryId.includes('radio');
+            const iconHtml = isAudio ? Icons.archive_audio : Icons.archive_notes;
+
+            card.innerHTML = `
+                <div class="crc-icon">${iconHtml || Icons.stat_book}</div>
+                <h4 class="crc-title">${record.title}</h4>
+                <p class="crc-preview">${record.text}</p>
+            `;
+
+            card.addEventListener('click', () => {
+                this.els.modalTitle.textContent = record.title;
+                this.els.modalAuthor.textContent = record.author || this.charData.name;
+                this.els.modalText.textContent = record.text;
+                
+                this.els.recordModal.showModal();
+                requestAnimationFrame(() => this.els.recordModal.classList.add('active'));
+            });
+
+            this.els.recordsGrid.appendChild(card);
+        });
     }
 
     renderAppearancesLoading() {

@@ -46,7 +46,6 @@ export class MusicView {
             return;
         }
 
-        // 1. Создаем категории
         const groups = {
             'song': { title: 'Оригинальные песни', tracks: [] },
             'animation': { title: 'Анимации и Клипы', tracks: [] },
@@ -55,7 +54,6 @@ export class MusicView {
             'other': { title: 'Прочее', tracks: [] }
         };
 
-        // 2. Раскидываем треки по категориям
         tracksToRender.forEach(track => {
             const t = track.type || 'other';
             if (t === 'fan_song' || t === 'song') {
@@ -67,7 +65,6 @@ export class MusicView {
             }
         });
 
-        // 3. Рендерим секции
         const fragment = document.createDocumentFragment();
 
         Object.keys(groups).forEach(key => {
@@ -102,7 +99,6 @@ export class MusicView {
                         `;
                     }
 
-                    // Применяем заранее вычисленный цвет и градиент-плейсхолдер
                     const cardColor = track.color || '210, 168, 80';
                     card.style.setProperty('--card-hover-rgb', cardColor);
                     
@@ -163,6 +159,7 @@ export class MusicView {
     _renderEmptyState() {
         this.els.container.style.display = 'block';
         const clone = this.templates.empty.content.cloneNode(true);
+        clone.querySelector('.empty-state-silent').innerHTML = Icons.error_404;
         this.els.container.appendChild(clone);
     }
 

@@ -50,7 +50,11 @@
                 "title": "...",
                 "text": "..."
             }
-        ]
+        ],
+        "chapters": [],
+        "trivia": []
     },
-    "color": "157, 139, 114"
+    "color": "157, 139, 114",
+    "achievements": [],
+    "languages": []
 }

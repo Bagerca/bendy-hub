@@ -57,7 +57,6 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Статусные плашки на странице проекта */
 .status-badge { 
     border: none; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
@@ -67,37 +66,36 @@
 .status-badge.status-frozen { background: rgba(44, 130, 201, 0.9); color: #fff; }
 .status-badge.status-cancelled { background: rgba(211, 47, 47, 0.9); color: #fff; }
 
-/* --- КНОПКИ МАГАЗИНОВ --- */
+/* --- УМНЫЕ КНОПКИ МАГАЗИНОВ --- */
 .store-btn {
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    gap: 10px; 
     background: rgba(255, 255, 255, 0.1); 
     color: #fff; 
     border: 1px solid rgba(255, 255, 255, 0.2); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     text-decoration: none;
-    padding: 0 1.4rem; 
-    height: 44px; 
-    border-radius: 30px; 
-    font-weight: 700; 
-    font-size: 0.95rem; 
-    white-space: nowrap; 
+    
+    /* Магия: Высота фиксирована, а ширина адаптируется */
+    height: 48px; 
+    min-width: 48px; /* Базовый размер для круга */
+    padding: 0 13px; /* Внутренний отступ по бокам для длинных иконок */
+    border-radius: 24px; /* Всегда идеально скругленные края */
+    
     flex-shrink: 0; 
     box-sizing: border-box;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
 .store-btn svg {
-    height: 22px; 
-    width: auto;  
-    max-width: 60px; 
+    height: 22px; /* Фиксируем только высоту! */
+    width: auto;  /* Ширина подстроится сама (сохраняем пропорции SVG) */
+    max-width: 70px; /* Ограничитель, чтобы слишком длинные логотипы не ломали ряд */
     flex-shrink: 0;
     display: block; 
     fill: currentColor;
-    object-fit: contain;
 }
 
 .store-btn:hover { 

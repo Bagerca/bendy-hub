@@ -1,0 +1,26 @@
+{
+    "id": "harold_fish",
+    "name": "Гарольд",
+    "role": "...",
+    "status": "Неизвестно",
+    "quote": "...",
+    "voice_actor": "...",
+    "meta": {
+        "aliases": [],
+        "species": "...",
+        "gender": "...",
+        "occupation": "...",
+        "affiliation": "..."
+    },
+    "versions": [],
+    "wiki": {
+        "appearance": "...",
+        "personality": "...",
+        "history": [],
+        "trivia": []
+    },
+    "assets": {
+        "avatar": "avatar.jpg",
+        "full_body": "full_body.png"
+    }
+}

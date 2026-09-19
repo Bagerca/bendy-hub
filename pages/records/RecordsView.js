@@ -171,7 +171,23 @@ export class RecordsView {
             card.style.animationDelay = `${Math.min(index * 0.05, 0.5)}s`;
 
             clone.querySelector('.card-title').textContent = item.title;
-            clone.querySelector('.card-author').textContent = item.author || 'Неизвестный';
+            
+            // >>> ЛОГИКА АВТОРА ДЛЯ КАРТОЧКИ СЕТКИ <<<
+            const authorEl = clone.querySelector('.card-author');
+            if (item.authorId) {
+                authorEl.innerHTML = `<a href="character.html?id=${item.authorId}" class="record-author-link" title="Открыть личное дело">${item.author}</a>`;
+                
+                // Предотвращаем открытие модалки (читалки) при клике по ссылке автора
+                const link = authorEl.querySelector('.record-author-link');
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation(); // Блокируем клик по карточке!
+                    if (window.router) window.router.navigate(link.href);
+                    else window.location.href = link.href;
+                });
+            } else {
+                authorEl.textContent = item.author || 'Неизвестный';
+            }
 
             item.categoryId = category.id;
 
@@ -198,8 +214,26 @@ export class RecordsView {
 
     openModal(record) {
         this.els.mTitle.textContent = record.title;
-        this.els.mAuthor.textContent = record.author || 'Неизвестный автор';
         this.els.mText.textContent = record.text;
+
+        // >>> ЛОГИКА АВТОРА ДЛЯ ЧИТАЛКИ (МОДАЛКИ) <<<
+        if (record.authorId) {
+            this.els.mAuthor.innerHTML = `<a href="character.html?id=${record.authorId}" class="record-author-link" title="Открыть личное дело">${record.author}</a>`;
+            
+            const link = this.els.mAuthor.querySelector('.record-author-link');
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Плавно закрываем модалку перед переходом
+                this.els.modal.classList.remove('active');
+                setTimeout(() => {
+                    this.els.modal.close();
+                    if (window.router) window.router.navigate(link.href);
+                    else window.location.href = link.href;
+                }, 200);
+            });
+        } else {
+            this.els.mAuthor.textContent = record.author || 'Неизвестный автор';
+        }
 
         if (record.image) {
             this.els.mImage.src = `assets/records/${record.categoryId}/${record.image}`;

@@ -1,6 +1,6 @@
 {
     "id": "alice_angel",
-    "name": "Искаженная Алиса",
+    "name": "Алиса Ангел",
     "role": "Второстепенный антагонист",
     "status": "Мертва",
     "quote": "...",
@@ -12,7 +12,38 @@
         "occupation": "...",
         "affiliation": "..."
     },
-    "versions": [],
+    "versions": [
+        {
+            "label": "Сьюзи Кэмпбелл (Актриса)",
+            "assets": {
+                "avatar": "avatar.jpg",
+                "full_body": "full_body.png"
+            },
+            "meta": {
+                "aliases": [],
+                "species": "...",
+                "gender": "...",
+                "occupation": "...",
+                "affiliation": "..."
+            },
+            "quote": "..."
+        },
+        {
+            "label": "Искаженная Алиса",
+            "assets": {
+                "avatar": "avatar.jpg",
+                "full_body": "full_body.png"
+            },
+            "meta": {
+                "aliases": [],
+                "species": "Чернильная копия (Сьюзи Кэмпбелл)",
+                "gender": "Женский",
+                "occupation": "...",
+                "affiliation": "..."
+            },
+            "quote": "..."
+        }
+    ],
     "wiki": {
         "appearance": "...",
         "personality": "...",

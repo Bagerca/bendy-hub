@@ -1,5 +1,6 @@
 import { Icons } from '../../shared/js/icons.js';
 import { GalleryRenderer } from './GalleryRenderer.js';
+import { WikiBlockRenderer } from './WikiBlockRenderer.js';
 
 export class WikiView {
     constructor(lightboxManager) {
@@ -8,39 +9,164 @@ export class WikiView {
         
         this.els = {
             tabsContainer: document.getElementById('dynamic-tabs'),
-            desc: document.getElementById('project-description'),
-            tags: document.getElementById('project-tags'),
-            screens: document.getElementById('project-screenshots'),
-            specs: document.getElementById('project-requirements'),
-            charList: document.getElementById('wiki-characters-list'),
-            
-            translatorsContainer: document.getElementById('translators-container'),
-            translatorsList: document.getElementById('project-translators'),
-            translatorsTitle: document.getElementById('translators-title')
+            sectionsContainer: document.getElementById('dynamic-sections'),
+            recordModal: document.getElementById('project-record-modal'),
+            modalClose: document.querySelector('#project-record-modal .modal-close'),
+            modalTitle: document.getElementById('prm-title'),
+            modalAuthor: document.getElementById('prm-author'),
+            modalText: document.getElementById('prm-text')
         };
 
-        // Инициализируем новый класс галереи
-        this.galleryRenderer = new GalleryRenderer(this.lightbox, this.baseAssetPath, this.els.screens);
+        this.galleryRenderer = null; 
+        this.currentRecords = []; // Храним записи для модалки
+        
+        this.fallbackHtml = `<img src="${Icons.avatar_fallback}" alt="Нет фото" class="char-fallback" style="width: 100%; height: 100%; object-fit: cover; background: var(--bg-body); padding: 6px;">`;
+        
+        this._initModal();
     }
 
-    setupTabs(type) {
-        let tabsHtml = `<button class="wiki-tab active" data-target="tab-overview">Обзор</button>
-                        <button class="wiki-tab" data-target="tab-story">Сюжет и Персонажи</button>`;
-        
-        if (type === 'game') {
-            tabsHtml += `<button class="wiki-tab" data-target="tab-gameplay">Геймплей</button>`;
-        }
-        
-        tabsHtml += `<button class="wiki-tab" data-target="tab-dev">Создание</button>`;
-        
-        if (type === 'game') {
-            tabsHtml += `<button class="wiki-tab" data-target="tab-specs">Системные требования</button>`;
+    _initModal() {
+        if (this.els.modalClose) {
+            this.els.modalClose.innerHTML = Icons.close || 'X';
+            this.els.modalClose.addEventListener('click', () => this.closeRecordModal());
         }
 
-        this.els.tabsContainer.innerHTML = tabsHtml;
+        if (this.els.recordModal) {
+            this.els.recordModal.addEventListener('click', (e) => {
+                if (e.target === this.els.recordModal) this.closeRecordModal();
+            });
+        }
+    }
+
+    closeRecordModal() {
+        if (!this.els.recordModal) return;
+        this.els.recordModal.classList.remove('active');
+        setTimeout(() => this.els.recordModal.close(), 300);
+    }
+
+    openRecordModal(index) {
+        const record = this.currentRecords[index];
+        if (!record) return;
+
+        this.els.modalTitle.textContent = record.title;
+        this.els.modalText.textContent = record.text;
+
+        if (record.authorId) {
+            this.els.modalAuthor.innerHTML = `<a href="character.html?id=${record.authorId}" class="record-author-link" title="Открыть личное дело">${record.author}</a>`;
+            const link = this.els.modalAuthor.querySelector('.record-author-link');
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.els.recordModal.classList.remove('active');
+                setTimeout(() => {
+                    this.els.recordModal.close();
+                    if (window.router) window.router.navigate(link.href);
+                    else window.location.href = link.href;
+                }, 200);
+            });
+        } else {
+            this.els.modalAuthor.textContent = record.author || 'Неизвестный автор';
+        }
+
+        this.els.recordModal.showModal();
+        requestAnimationFrame(() => this.els.recordModal.classList.add('active'));
+    }
+
+    _getConfig(type) {
+        return [
+            {
+                id: 'overview',
+                label: 'Обзор',
+                main: ['description', 'gallery', 'reviews'], 
+                sidebar: ['tags', 'languages', 'translators', 'specs'] 
+            },
+            {
+                id: 'lore',
+                label: 'Летопись',
+                main: ['chapters', 'story'],
+                sidebar: ['characters']
+            },
+            {
+                id: 'gameplay',
+                label: 'Геймплей',
+                condition: type === 'game',
+                main: ['mechanics', 'controls', 'achievements'],
+                sidebar: []
+            },
+            {
+                id: 'extras',
+                label: 'Архивы',
+                // ДОБАВЛЕНО: Блок records
+                main: ['development', 'trivia', 'records'],
+                sidebar: []
+            }
+        ].filter(tab => tab.condition !== false);
+    }
+
+    setupTabs(type) {}
+
+    render(data, projectId, teamsData = [], recordsData = []) {
+        this.els.tabsContainer.innerHTML = '';
+        this.els.sectionsContainer.innerHTML = '';
+        this.currentRecords = recordsData;
+        
+        const type = data.type || 'game';
+        const config = this._getConfig(type);
+        
+        let isFirstTab = true;
+
+        config.forEach(tabDef => {
+            const mainHtml = tabDef.main ? tabDef.main.map(blockId => WikiBlockRenderer.renderBlock(blockId, data, projectId, teamsData, recordsData)).filter(Boolean).join('') : '';
+            const sidebarHtml = tabDef.sidebar ? tabDef.sidebar.map(blockId => WikiBlockRenderer.renderBlock(blockId, data, projectId, teamsData, recordsData)).filter(Boolean).join('') : '';
+
+            if (!mainHtml && !sidebarHtml) return;
+
+            const tabBtn = document.createElement('button');
+            tabBtn.className = `wiki-tab ${isFirstTab ? 'active' : ''}`;
+            tabBtn.dataset.target = `tab-${tabDef.id}`;
+            tabBtn.textContent = tabDef.label;
+            this.els.tabsContainer.appendChild(tabBtn);
+
+            const section = document.createElement('section');
+            section.id = `tab-${tabDef.id}`;
+            section.className = `wiki-section ${isFirstTab ? 'active' : ''}`;
+
+            let gridHtml = `<div class="overview-grid ${sidebarHtml ? 'has-sidebar' : ''}">`;
+            
+            if (sidebarHtml) {
+                gridHtml += `<aside class="overview-sidebar"><div class="sticky-sidebar-wrapper">${sidebarHtml}</div></aside>`;
+            }
+
+            gridHtml += `<div class="overview-main">`;
+            gridHtml += mainHtml || `<div class="empty-state-silent">${Icons.error_404}</div>`;
+            gridHtml += `</div><div class="inv-spacer"></div></div>`;
+            
+            section.innerHTML = gridHtml;
+            this.els.sectionsContainer.appendChild(section);
+
+            if (tabDef.main.includes('gallery') && data.assets) {
+                const galleryContainer = section.querySelector('#project-screenshots');
+                if (galleryContainer) {
+                    this.galleryRenderer = new GalleryRenderer(this.lightbox, this.baseAssetPath, galleryContainer);
+                    this.galleryRenderer.render(data.assets, projectId);
+                }
+            }
+            
+            this._initInnerTabs(section);
+
+            isFirstTab = false;
+        });
+
+        // Делегирование событий клика для записей
+        this.els.sectionsContainer.addEventListener('click', (e) => {
+            const recordCard = e.target.closest('.wiki-record-card');
+            if (recordCard) {
+                const index = parseInt(recordCard.dataset.index, 10);
+                this.openRecordModal(index);
+            }
+        });
 
         const tabs = this.els.tabsContainer.querySelectorAll('.wiki-tab');
-        const sections = document.querySelectorAll('.wiki-section');
+        const sections = this.els.sectionsContainer.querySelectorAll('.wiki-section');
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -53,241 +179,116 @@ export class WikiView {
         });
     }
 
-    render(data, projectId, teamsData = []) {
-        const assets = data.assets || {};
-        const wiki = data.wiki || {};
-        const type = data.type || 'game';
-
-        // 1. Описание
-        if (data.description && data.description !== '...') {
-            this.els.desc.className = 'project-desc';
-            this.els.desc.textContent = data.description;
-        } else {
-            this.els.desc.className = ''; 
-            this.els.desc.innerHTML = `
-                <div class="empty-state compact" style="margin-top: 0;">
-                    <div class="empty-state-icon">${Icons.error_404}</div>
-                    <h3 class="empty-state-title">Архивные данные отсутствуют</h3>
-                </div>
-            `;
-        }
-        
-        // 2. Теги
-        this._renderTags(data.tags);
-
-        // 3. Русификаторы и переводы
-        this._renderTranslators(teamsData, type, projectId);
-
-        // 4. Галерея (Делегируем работу отдельному классу!)
-        this.galleryRenderer.render(assets, projectId);
-
-        // 5. Остальные данные
-        if (type === 'game') this._renderSpecs(data.specs);
-        this._renderStaticWiki(wiki, type);
-    }
-
-    _renderTags(tags) {
-        this.els.tags.innerHTML = '';
-        const validTags = (tags || []).filter(t => t && t !== '...');
-        const tagsHeader = this.els.tags.previousElementSibling; 
-        
-        if (validTags.length > 0) {
-            if (tagsHeader) tagsHeader.style.textAlign = 'left';
+    _initInnerTabs(container) {
+        const navs = container.querySelectorAll('.inner-tabs-nav');
+        navs.forEach(nav => {
+            const wrapper = nav.closest('.bento-box');
+            const btns = nav.querySelectorAll('.inner-tab-btn');
+            const contents = wrapper.querySelectorAll('.inner-tab-content');
             
-            validTags.slice(0, 15).forEach(tag => {
-                const span = document.createElement('span');
-                span.className = 'game-tag'; 
-                span.textContent = tag;
-                this.els.tags.appendChild(span);
-            });
-        } else {
-            if (tagsHeader) tagsHeader.style.textAlign = 'center';
-            this.els.tags.innerHTML = `
-                <div style="width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 0 0.5rem;">
-                    <div style="width: 48px; height: 48px; background: var(--bg-body); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); margin-bottom: 0.85rem; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                        <div style="width: 24px; height: 24px; opacity: 0.8;">${Icons.error_404}</div>
-                    </div>
-                    <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 700;">Жанры не указаны</span>
-                </div>
-            `;
-        }
-    }
-
-    _renderTranslators(teams, type, projectId) {
-        const validTeams = (teams || []).filter(team => {
-            if (!team) return false;
-            if (typeof team === 'string' && team === '...') return false;
-            if (team.title === '...') return false; 
-            return true;
-        });
-
-        if (validTeams.length > 0) {
-            this.els.translatorsContainer.style.display = 'block';
-            this.els.translatorsTitle.textContent = type === 'book' ? 'Любительские переводы' : (type === 'movie' ? 'Озвучка / Сабы' : 'Русификаторы');
-            this.els.translatorsList.innerHTML = '';
-            
-            const fallbackAvatar = Icons.avatar_fallback;
-
-            validTeams.forEach(team => {
-                const translationData = team.translations ? team.translations[projectId] : null;
-                const isLegacy = !team.translations;
-                const url = isLegacy ? team.url : (translationData?.url || '#');
-                const tType = isLegacy ? team.description : (translationData?.type || 'Перевод');
-                const tName = isLegacy ? team.title : team.name;
-                const avatarSrc = isLegacy 
-                    ? (team.avatar ? `assets/teams/${team.avatar}` : fallbackAvatar)
-                    : (team.assets?.avatar ? `assets/teams/${team.id}/${team.assets.avatar}` : fallbackAvatar);
-
-                const a = document.createElement('a');
-                a.href = url;
-                a.target = '_blank';
-                a.className = 'rus-card';
-
-                a.innerHTML = `
-                    <img src="${avatarSrc}" alt="Avatar" class="rus-avatar" onerror="this.onerror=null; this.src='${fallbackAvatar}';">
-                    <div class="rus-info">
-                        <div class="rus-title">
-                            <span>${tName}</span>
-                            <div class="rus-icon">${Icons.link_external}</div>
-                        </div>
-                        <span class="rus-team">${tType}</span>
-                    </div>
-                `;
-                this.els.translatorsList.appendChild(a);
-            });
-        } else {
-            this.els.translatorsContainer.style.display = 'none';
-        }
-    }
-
-    _renderSpecs(specs) {
-        const specsEmptyHtml = `
-            <div class="empty-state compact" style="grid-column: 1/-1;">
-                <div class="empty-state-icon">${Icons.error_404}</div>
-                <h3 class="empty-state-title">Системные требования неизвестны</h3>
-            </div>`;
-
-        if (!specs) {
-            this.els.specs.innerHTML = specsEmptyHtml;
-            return;
-        }
-
-        let reqHtml = '';
-        if (specs.minimum && specs.minimum !== '...' && specs.minimum.length > 5) {
-            reqHtml += `<div class="bento-box"><h3>Минимальные</h3>${this._parseSpecsString(specs.minimum)}</div>`;
-        }
-        if (specs.recommended && specs.recommended !== '...' && specs.recommended.length > 5) {
-            reqHtml += `<div class="bento-box"><h3>Рекомендованные</h3>${this._parseSpecsString(specs.recommended)}</div>`;
-        }
-        
-        this.els.specs.innerHTML = reqHtml || specsEmptyHtml;
-    }
-
-    _parseSpecsString(specStr) {
-        const parts = specStr.split('|').map(s => s.trim()).filter(s => s);
-        if (parts.length > 0 && (parts[0].includes('Минимальные') || parts[0].includes('Рекомендованные'))) parts.shift(); 
-        return `<ul class="req-list">` + parts.map(p => {
-            const colonIndex = p.indexOf(':');
-            if (colonIndex !== -1 && colonIndex < 25) { 
-                return `<li><span class="req-label">${p.substring(0, colonIndex + 1)}</span>${p.substring(colonIndex + 1)}</li>`;
-            }
-            return `<li>${p}</li>`;
-        }).join('') + `</ul>`;
-    }
-
-    _renderStaticWiki(wiki, type) {
-        const storyEmpty = document.getElementById('wiki-story-empty');
-        const storyContent = document.getElementById('wiki-story-content');
-        
-        if (wiki.story && wiki.story !== '...') {
-            storyEmpty.style.display = 'none';
-            storyContent.style.display = 'block';
-            document.getElementById('wiki-story-text').textContent = wiki.story;
-        } else {
-            storyEmpty.querySelector('.empty-state-icon').innerHTML = Icons.error_404;
-            storyEmpty.style.display = 'flex'; 
-            storyContent.style.display = 'none';
-        }
-        
-        if (type === 'game') {
-            const gpEmpty = document.getElementById('wiki-gameplay-empty');
-            const gpContent = document.getElementById('wiki-gameplay-content');
-            
-            if (wiki.gameplay && wiki.gameplay.length > 0 && wiki.gameplay[0] !== '...') {
-                gpEmpty.style.display = 'none';
-                gpContent.style.display = 'block';
-                
-                const list = document.getElementById('wiki-gameplay-list');
-                list.innerHTML = '';
-                wiki.gameplay.forEach(item => {
-                    const li = document.createElement('li');
-                    li.textContent = item;
-                    list.appendChild(li);
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btns.forEach(b => b.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    btn.classList.add('active');
+                    wrapper.querySelector(`#${btn.dataset.target}`).classList.add('active');
                 });
-            } else {
-                gpEmpty.querySelector('.empty-state-icon').innerHTML = Icons.error_404;
-                gpEmpty.style.display = 'flex'; 
-                gpContent.style.display = 'none';
-            }
-        }
-
-        const devEmpty = document.getElementById('wiki-dev-empty');
-        const devContent = document.getElementById('wiki-dev-content');
-        
-        if (wiki.development && wiki.development.length > 0 && wiki.development[0].text !== '...') {
-            devEmpty.style.display = 'none';
-            devContent.style.display = 'flex';
-            devContent.innerHTML = '';
-            
-            wiki.development.forEach(stage => {
-                const item = document.createElement('div');
-                item.className = 'timeline-item';
-                item.innerHTML = `<h3>${stage.title}</h3><p>${stage.text}</p>`;
-                devContent.appendChild(item);
             });
-        } else {
-            devEmpty.querySelector('.empty-state-icon').innerHTML = Icons.error_404;
-            devEmpty.style.display = 'flex'; 
-            devContent.style.display = 'none';
-        }
+
+            let isDown = false, isDragged = false, startX, scrollLeft;
+
+            nav.addEventListener('mousedown', (e) => {
+                isDown = true; isDragged = false; startX = e.pageX - nav.offsetLeft; scrollLeft = nav.scrollLeft;
+            });
+            
+            const stopDrag = () => { isDown = false; nav.classList.remove('is-dragging'); };
+            nav.addEventListener('mouseleave', stopDrag);
+            nav.addEventListener('mouseup', stopDrag);
+
+            nav.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - nav.offsetLeft;
+                const walk = (x - startX) * 1.5; 
+                if (Math.abs(walk) > 3) { isDragged = true; nav.classList.add('is-dragging'); }
+                nav.scrollLeft = scrollLeft - walk;
+            });
+
+            nav.addEventListener('wheel', (e) => { e.preventDefault(); nav.scrollLeft += e.deltaY; });
+            nav.addEventListener('click', (e) => { if (isDragged) { e.preventDefault(); e.stopPropagation(); } }, { capture: true });
+        });
+    }
+
+    showCharLoader() {
+        const list = document.getElementById('wiki-characters-list');
+        if (list) list.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
     }
 
     renderCharacters(charactersData, requestedIds) {
-        this.els.charList.innerHTML = '';
-        const fallback = Icons.avatar_fallback;
+        const list = document.getElementById('wiki-characters-list');
+        if (!list) return;
+        
+        list.innerHTML = '';
 
-        charactersData.forEach((char, index) => {
-            if (!char || char === '...') {
-                const invalidId = requestedIds[index];
-                if (invalidId !== '...') {
-                    this.els.charList.innerHTML += `<li style="color: var(--text-muted); font-size: 0.9rem;">[Архив поврежден: ${invalidId}]</li>`;
-                }
-                return;
-            }
-            const a = document.createElement('a');
-            a.href = `character.html?id=${char.id}`;
-            a.className = 'character-card';
+        charactersData.forEach(char => {
+            if (!char || char === '...') return;
             
-            a.addEventListener('click', (e) => {
+            let photo = char.assets?.avatar && char.assets.avatar !== '...' ? char.assets.avatar : null;
+            if (!photo && char.versions && char.versions.length > 0) {
+                photo = char.versions[0].assets?.avatar && char.versions[0].assets.avatar !== '...' ? char.versions[0].assets.avatar : null;
+            }
+            
+            let subtitle = "Засекречено";
+            if (char.meta?.species && char.meta.species !== '...') {
+                subtitle = char.meta.species;
+            } else if (char.role && char.role !== '...') {
+                subtitle = char.role;
+            }
+
+            const card = document.createElement('a');
+            card.href = `character.html?id=${char.id}`;
+            card.className = 'char-card';
+            
+            const avatarWrapper = document.createElement('div');
+            avatarWrapper.className = 'char-avatar-wrapper';
+            
+            if (photo) {
+                const img = document.createElement('img');
+                img.className = 'char-img single-img';
+                img.loading = 'lazy';
+                img.alt = char.name;
+                img.src = `assets/characters/${char.id}/${photo}`;
+                img.onerror = () => { avatarWrapper.innerHTML = this.fallbackHtml; };
+                avatarWrapper.appendChild(img);
+            } else {
+                avatarWrapper.innerHTML = this.fallbackHtml;
+            }
+
+            const infoCol = document.createElement('div');
+            infoCol.className = 'char-info-col';
+            infoCol.innerHTML = `
+                <span class="char-card-name">${char.name}</span>
+                <span class="char-card-subtitle">${subtitle}</span>
+            `;
+
+            const arrow = document.createElement('div');
+            arrow.className = 'char-arrow';
+            arrow.innerHTML = Icons.chevron_right;
+
+            card.appendChild(avatarWrapper);
+            card.appendChild(infoCol);
+            card.appendChild(arrow);
+            
+            card.addEventListener('click', (e) => {
                 e.preventDefault();
-                if (window.router) {
-                    window.router.navigate(a.href);
-                } else {
-                    window.location.href = a.href;
-                }
+                if (window.router) window.router.navigate(card.href);
+                else window.location.href = card.href;
             });
             
-            const avatar = char.assets?.avatar ? `assets/characters/${char.id}/${char.assets.avatar}` : fallback;
-            a.innerHTML = `
-                <img src="${avatar}" alt="${char.name}" class="char-avatar" onerror="this.src='${fallback}'">
-                <span class="char-name">${char.name}</span>
-                <div class="char-arrow">${Icons.chevron_right}</div>
-            `;
-            this.els.charList.appendChild(a);
+            list.appendChild(card);
         });
-    }
-    
-    showCharLoader() {
-        this.els.charList.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
+
+        if (list.innerHTML === '') list.parentElement.style.display = 'none';
     }
 }
