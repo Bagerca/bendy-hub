@@ -3,25 +3,382 @@
     "title": "Bendy and the Dark Revival",
     "type": "game",
     "status": "released",
-    "developer": "...",
-    "publisher": "...",
+    "developer": "Joey Drew Studios",
+    "publisher": "Joey Drew Studios, Rooster Teeth Games",
     "release_date": "15 ноя. 2022 г.",
-    "description": "...",
+    "description": "Bendy and the Dark Revival (рус. Бенди и тёмное возрождение) — эпизодическая хоррор-игра на выживание от первого лица и прямое сюжетное продолжение Bendy and the Ink Machine. \n\nИгроку предстоит взять на себя роль Одри Дрю — девушки-аниматора студии Arch Gate Pictures, которую вероломный уборщик Уилсон затягивает в искажённое Чернильное царство. Исследуйте мрачные полуразрушенные коридоры мультяшного ада, сражайтесь с чернильными чудовищами с помощью заряжаемой трубы Gent, открывайте уникальные способности «Тёмных знаний» и спасайтесь от вечно выслеживающего вас Чернильного Демона, пытаясь разорвать порочный круг Цикла и выбраться в реальный мир.",
     "tags": [
-        "..."
+        "Хоррор на выживание",
+        "От первого лица",
+        "Головоломка",
+        "Атмосферная",
+        "Ретро-стилистика",
+        "Инди",
+        "Экшен",
+        "Стелс",
+        "Глубокий сюжет"
     ],
     "platforms": {
-        "...": "..."
+        "steam": "https://store.steampowered.com/app/1063660/Bendy_and_the_Dark_Revival/",
+        "gog": "https://www.gog.com/en/game/bendy_and_the_dark_revival",
+        "playstation": "https://store.playstation.com/en-us/product/UP5338-CUSA37772_00-1615376634139120/",
+        "playstation_5": "https://store.playstation.com/en-us/concept/10013480/",
+        "xbox": "https://www.xbox.com/en-SG/games/store/bendy-and-the-dark-revival/9P44XKC3S56V",
+        "xbox_series": "https://www.xbox.com/en-SG/games/store/bendy-and-the-dark-revival-xbox-series-x-s/9nv4x6s4kdkf",
+        "nintendo": "https://www.nintendo.com/us/store/products/bendy-and-the-dark-revival-switch/",
+        "ios": "https://apps.apple.com/us/app/bendy-and-the-dark-revival/id6749306097",
+        "android": "https://play.google.com/store/apps/details?id=com.JoeyDrewStudios.BendyandtheDarkRevival&hl=ru",
+        "joeydrewstudios": "https://joeydrewstudios.com/batdr"
     },
     "specs": [
         {
             "os": "Windows",
             "minimum": [
-                "..."
+                "ОС: Windows 10 (64-bit)",
+                "Процессор: 64-разрядные процессор и операционная система",
+                "Оперативная память: 8 GB ОЗУ",
+                "Видеокарта: 2GB VRAM GeForce GTX 1030, AMD RX 550",
+                "DirectX: Версии 11",
+                "Место на диске: 15 GB"
             ],
             "recommended": [
-                "..."
+                "ОС: Windows 10 (64-bit)",
+                "Процессор: 64-разрядные процессор и операционная система",
+                "Оперативная память: 16 GB ОЗУ",
+                "Видеокарта: 8GB VRAM GeForce RTX 2080, AMD Radeon VII",
+                "DirectX: Версии 12",
+                "Место на диске: 15 GB"
             ]
+        },
+        {
+            "os": "Мобильные устройства",
+            "minimum": [
+                "iOS: Требуется iOS 14.0 или новее",
+                "Android: Требуется Android 9.0 и выше, поддержка Vulkan API"
+            ],
+            "recommended": []
+        }
+    ],
+    "languages": [
+        {
+            "lang": "Русский",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Английский",
+            "interface": true,
+            "audio": true,
+            "subtitles": true
+        },
+        {
+            "lang": "Французский",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Итальянский",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Немецкий",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Испанский (Испания)",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Японский",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Португальский (Бразилия)",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Китайский (упр.)",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        },
+        {
+            "lang": "Украинский",
+            "interface": true,
+            "audio": false,
+            "subtitles": true
+        }
+    ],
+    "reviews": [
+        {
+            "author": "Steam Awards 2022",
+            "text": "Номинант премии в категории «Выдающийся визуальный стиль»."
+        },
+        {
+            "author": "Game Jolt Awards 2022",
+            "text": "Победитель в главной номинации «Игра года»."
+        },
+        {
+            "author": "Screen Rant",
+            "text": "Триумфальное возвращение в любимый мир."
+        },
+        {
+            "author": "DualShockers",
+            "text": "Игра держит игроков на взводе благодаря наполненным ужасами действиям."
+        },
+        {
+            "author": "GBHBL",
+            "text": "Мощное и амбициозное продолжение."
+        },
+        {
+            "author": "CGMagazine",
+            "text": "Создает атмосферу, позволяющую почувствовать себя изолированным в старинном кошмаре."
+        },
+        {
+            "author": "Touch.Tap.Play",
+            "text": "Умопомрачительная концовка, которая наверняка взорвет ваш мозг."
+        }
+    ],
+    "achievements": [
+        {
+            "id": "self_discovery",
+            "title": "Self Discovery",
+            "description": "Collect All Memories",
+            "icon": ""
+        },
+        {
+            "id": "written_in_ink",
+            "title": "Written In Ink",
+            "description": "Read All Memos",
+            "icon": ""
+        },
+        {
+            "id": "ink_master",
+            "title": "Ink Master",
+            "description": "Complete The Game Without Dying",
+            "icon": ""
+        },
+        {
+            "id": "familiar_faces",
+            "title": "Familiar Faces",
+            "description": "Reveal A Very Old Friend",
+            "icon": ""
+        },
+        {
+            "id": "the_insane_reader",
+            "title": "The Insane Reader",
+            "description": "Seek Out The Writings of Joey Drew",
+            "icon": ""
+        },
+        {
+            "id": "the_well_of_voices",
+            "title": "The Well of Voices",
+            "description": "Pick Up All Audio Logs",
+            "icon": ""
+        },
+        {
+            "id": "heavy_hitter",
+            "title": "Heavy Hitter",
+            "description": "Defeat 25 Enemies With Shock Pipe",
+            "icon": ""
+        },
+        {
+            "id": "big_spender",
+            "title": "Big Spender",
+            "description": "Spend 500 Slugs",
+            "icon": ""
+        },
+        {
+            "id": "skulls_of_the_cauldron",
+            "title": "Skulls of the Cauldron",
+            "description": "Bring Back the Dead to the Source during the Halloween event.",
+            "icon": ""
+        },
+        {
+            "id": "cabbage_night",
+            "title": "Cabbage Night",
+            "description": "Trick or Treat to ten doors without a mask during the Halloween event.",
+            "icon": ""
+        },
+        {
+            "id": "ding_dong_delights",
+            "title": "Ding Dong Delights",
+            "description": "Trick or Treat to ten doors with style during the Halloween event.",
+            "icon": ""
+        },
+        {
+            "id": "it_stinks",
+            "title": "It Stinks",
+            "description": "You Should Really Just Relax",
+            "icon": ""
+        },
+        {
+            "id": "time_to_reflect",
+            "title": "Time To Reflect",
+            "description": "Take Some Time For Yourself",
+            "icon": ""
+        },
+        {
+            "id": "the_fancy_foodie",
+            "title": "The Fancy Foodie",
+            "description": "Collect 100 Pieces of Food",
+            "icon": ""
+        },
+        {
+            "id": "did_you_see_that",
+            "title": "Did You See That?",
+            "description": "A Very Random Occurance",
+            "icon": ""
+        },
+        {
+            "id": "avid_worker",
+            "title": "Avid Worker",
+            "description": "Show Too Much Dedication",
+            "icon": ""
+        },
+        {
+            "id": "gents_finest",
+            "title": "Gent's Finest",
+            "description": "Create The Ultimate Weapon",
+            "icon": ""
+        },
+        {
+            "id": "back_to_the_puddles",
+            "title": "Back To The Puddles",
+            "description": "Banish 25 Enemies",
+            "icon": ""
+        },
+        {
+            "id": "studio_breaker",
+            "title": "Studio Breaker",
+            "description": "Complete The Game on Hard",
+            "icon": ""
+        },
+        {
+            "id": "plaything",
+            "title": "Plaything",
+            "description": "Locate The Toyman's Secret",
+            "icon": ""
+        },
+        {
+            "id": "the_ink_provides",
+            "title": "The Ink Provides",
+            "description": "Maximize Your Dark Potential",
+            "icon": ""
+        },
+        {
+            "id": "the_demons_dismay",
+            "title": "The Demon's Dismay",
+            "description": "Survive 25 Ink Demon Attacks",
+            "icon": ""
+        },
+        {
+            "id": "cartoon_madness",
+            "title": "Cartoon Madness",
+            "description": "Complete Chapter One",
+            "icon": ""
+        },
+        {
+            "id": "rubberhose_nightmare",
+            "title": "Rubberhose Nightmare",
+            "description": "Complete Chapter Two",
+            "icon": ""
+        },
+        {
+            "id": "crawling_killer",
+            "title": "Crawling Killer",
+            "description": "Defeat the Crawling King",
+            "icon": ""
+        },
+        {
+            "id": "thrills_and_spills",
+            "title": "Thrills and Spills",
+            "description": "Complete Chapter Three",
+            "icon": ""
+        },
+        {
+            "id": "next_in_line",
+            "title": "Next In Line",
+            "description": "Defeat the Ruler of the Lower Realm",
+            "icon": ""
+        },
+        {
+            "id": "timeless_remains",
+            "title": "Timeless Remains",
+            "description": "Complete Chapter Four",
+            "icon": ""
+        },
+        {
+            "id": "to_the_darkest_reaches",
+            "title": "To The Darkest Reaches",
+            "description": "Complete Chapter Five",
+            "icon": ""
+        },
+        {
+            "id": "studio_starter",
+            "title": "Studio Starter",
+            "description": "Complete The Game on Easy",
+            "icon": ""
+        },
+        {
+            "id": "the_masters_pen",
+            "title": "The Master's Pen",
+            "description": "Complete The Main Story",
+            "icon": ""
+        },
+        {
+            "id": "a_butchered_decision",
+            "title": "A Butchered Decision",
+            "description": "Complete the Game While Surviving The Slicer",
+            "icon": ""
+        },
+        {
+            "id": "socialite",
+            "title": "Socialite",
+            "description": "Be A First Time Party Pooper",
+            "icon": ""
+        },
+        {
+            "id": "studio_scrapper",
+            "title": "Studio Scrapper",
+            "description": "Complete The Game on Normal",
+            "icon": ""
+        },
+        {
+            "id": "the_ritual",
+            "title": "The Ritual",
+            "description": "Clean Up The Exhibit",
+            "icon": ""
+        },
+        {
+            "id": "welcome_to_the_studio",
+            "title": "Welcome To The Studio",
+            "description": "Meet Up With An Old Friend",
+            "icon": ""
+        },
+        {
+            "id": "armed_and_ready",
+            "title": "Armed and Ready",
+            "description": "Find Your First Weapon",
+            "icon": ""
+        },
+        {
+            "id": "banish_the_darkness",
+            "title": "Banish The Darkness",
+            "description": "Obtain The Banish Power",
+            "icon": ""
         }
     ],
     "assets": {
@@ -30,10 +387,25 @@
         "banner": "banner.jpg",
         "hero_bg": "hero.jpg",
         "videos": [
-            "..."
+            "videos_01.mp4",
+            "videos_02.mp4",
+            "videos_03.mp4"
         ],
         "screenshots": [
-            "..."
+            "screenshot_01.jpg",
+            "screenshot_02.jpg",
+            "screenshot_03.jpg",
+            "screenshot_04.jpg",
+            "screenshot_05.jpg",
+            "screenshot_06.jpg",
+            "screenshot_07.jpg",
+            "screenshot_08.jpg",
+            "screenshot_09.jpg",
+            "screenshot_10.jpg",
+            "screenshot_11.jpg",
+            "screenshot_12.jpg",
+            "screenshot_13.jpg",
+            "screenshot_14.jpg"
         ]
     },
     "russifiers": [
@@ -41,21 +413,144 @@
         "bullfinch"
     ],
     "wiki": {
-        "story": "...",
+        "story": "18 июня 1973 года. Одри Дрю, художница-аниматор компании Arch Gate Pictures, задерживается до глубокой ночи в пустой студии, заканчивая работу над раскадровками старых мультфильмов Джоуи Дрю. Отправившись за порцией кофе, она встречает загадочного пожилого уборщика по имени Уилсон Арч.\n\nУилсон заманивает Одри к выставленной в холле механической Чернильной Машине и совершает тёмный оккультный ритуал. Помещение заливают хлынувшие из труб чернила, и Одри затягивает в сюрреалистичный, погружённый в бесконечный кошмар мир студии. Придя в сознание, девушка обнаруживает, что её собственное тело мутировало и наполовину состоит из чернил. Теперь, обладая загадочными способностями и спасаясь от свирепого Чернильного Демона, Одри должна выяснить правду о своём происхождении, остановить обезумевшего Уилсона и найти путь назад в реальность.",
         "characters": [
-            "..."
+            "audrey_drew",
+            "ink_demon",
+            "bendy_toon",
+            "wilson_arch",
+            "joey_drew",
+            "allison_angel",
+            "thomas_connor",
+            "henry_stein",
+            "porter",
+            "heidi",
+            "the_lurker",
+            "alice_angel",
+            "keepers",
+            "lord_amok",
+            "betty",
+            "nathan_arch",
+            "alan_gray",
+            "carley",
+            "piper",
+            "fisher",
+            "striker",
+            "king_widow",
+            "shipahoy_dudley",
+            "lost_ones"
+        ],
+        "chapters": [
+            {
+                "title": "Пролог",
+                "description": "Одри работает в ночную смену в студии Arch Gate Pictures, знакомится с уборщиком Уилсоном и становится жертвой его ритуала у Чернильной Машины."
+            },
+            {
+                "title": "Глава 1: Обращение во мрак (Drawn to Darkness)",
+                "description": "Одри просыпается в глубинах Чернильного мира в трансформированном обличье, получает способность «Изгнание», находит трубу Gent и начинает исследовать заброшенные мастерские."
+            },
+            {
+                "title": "Глава 2: Владения Демона (The Demon's Domain)",
+                "description": "Путешествие по Музыкальному отделу и затопленным коридорам студии. Одри знакомится с дружелюбным Потерянным Портером и впервые спасается от смертоносной атаки Чернильного Демона."
+            },
+            {
+                "title": "Глава 3: Вечная машина (The Eternal Machine)",
+                "description": "Одри исследует мрачные катакомбы и канализацию, сталкивается с культом Лорда Амока, находит чертежи улучшений для трубы Gent и встречает материализовавшееся воспоминание Джоуи Дрю."
+            },
+            {
+                "title": "Глава 4: Фабрика ужасов (Factory of Horrors)",
+                "description": "Спуск в индустриальный комплекс «Яма» (The Pit). Одри попадает в плен к механическим Хранителям Уилсона, встречает запертого в камере 414 Генри Штейна и объединяется со Скрытнем (Стивом)."
+            },
+            {
+                "title": "Глава 5: Тёмное возрождение (The Dark Revival)",
+                "description": "Проникновение в особняк Уилсона. Сражение с его монструозным творением — Шипахоем Дадли, слияние с Чернильным Демоном в облике Зверского Бенди и запуск спасительной бобины «Конец»."
+            }
         ],
         "gameplay": [
-            "..."
+            "Исследование от первого лица: свободное перемещение по многоуровневым локациям Чернильного мира с акцентом на вертикальность и поиск скрытых секретов.",
+            "Система «Тёмных знаний»: открытие уникальных чернильных способностей Одри, включая телепортационный рывок («Поток») для преодоления пропастей и мгновенное бесшумное устранение врагов («Изгнание»).",
+            "Модернизация оружия Gent: использование многофункциональной трубы, которую можно оснащать электрическими модулями для перегрузки цепей, открытия кодовых замков и нанесения повышенного урона врагам.",
+            "Прокачка характеристик: поиск спрятанных резервуаров с нестабильными чернилами на терминалах студии для перманентного увеличения здоровья, выносливости и скорости восстановления способностей.",
+            "Динамический стелс и угроза Демона: внезапные появления Чернильного Демона сопровождаются искажением реальности и требуют немедленно спрятаться в вентиляцию или Станцию Маленького Чуда во избежание мгновенной смерти.",
+            "Экономика и выживание: сбор чернильных монет-слизней (Slugs) для покупки припасов в торговых автоматах и восстановление здоровья поеданием найденной еды или изгнанием падших душ."
+        ],
+        "controls": [
+            {
+                "platform": "ПК",
+                "mapping": [
+                    "Кнопки W, A, S, D — перемещение.",
+                    "Кнопка ПРОБЕЛ — прыжок.",
+                    "Кнопка ESC — пауза, опции или закрытие меню.",
+                    "Кнопка E — взаимодействовать / обыскать / подобрать.",
+                    "Кнопка C — приседание / скрытность.",
+                    "Кнопка SHIFT + W,A,S,D — бег.",
+                    "Кнопка TAB — зарядить трубу Gent электричеством (двойной заряд при повторном нажатии).",
+                    "Кнопка Ctrl — способность «Изгнание» (со спины врага).",
+                    "Мышь — круговой обзор камеры.",
+                    "Левая кнопка мыши — удар оружием ближнего боя.",
+                    "Правая кнопка мыши — использовать способность «Поток» (рывок)."
+                ]
+            },
+            {
+                "platform": "Xbox Series / Xbox One",
+                "mapping": [
+                    "Левый джойстик — перемещение.",
+                    "Правый джойстик — обзор камеры.",
+                    "Левый джойстик + LB — ускорение (бег).",
+                    "Кнопка A — прыжок.",
+                    "Кнопка B — приседание.",
+                    "Кнопка X — взаимодействие / сбор предметов.",
+                    "Кнопка Y — зарядить трубу Gent электричеством.",
+                    "Правый триггер (RT) — атака трубой.",
+                    "Левый триггер (LT) — использовать способность «Поток».",
+                    "Кнопка Menu — меню паузы."
+                ]
+            },
+            {
+                "platform": "PlayStation 5 / PlayStation 4",
+                "mapping": [
+                    "Джойстик L3 — перемещение.",
+                    "Джойстик R3 — вращение камеры.",
+                    "Кнопка L1 — бежать.",
+                    "Кнопка Крест (X) — прыжок.",
+                    "Кнопка Круг (O) — присесть.",
+                    "Кнопка Квадрат — взаимодействие.",
+                    "Кнопка Треугольник — подать питание на трубу Gent.",
+                    "Кнопка R2 — удар оружием.",
+                    "Кнопка L2 — телепортационный рывок «Поток».",
+                    "Кнопка Options — пауза."
+                ]
+            }
         ],
         "development": [
             {
-                "title": "...",
-                "text": "..."
+                "title": "10 февраля 2019: Анонс и видео к годовщине",
+                "text": "В день второй годовщины BATIM на YouTube-канале студии выходит ролик «From the desk of Joey Drew - 10 февраля 1931», в конце которого появляется сообщение «Bendy Will Return», официально подтверждающее разработку новой игры."
+            },
+            {
+                "title": "Февраль — Апрель 2019: Тизерная кампания и шифр",
+                "text": "Официальный Twitter-аккаунт Бенди публикует серию загадочных букв, сложившихся в фразу «BENEVOLENT DEMON, SOMEONE HAS REAWAKENED THE DARK». Параллельно публикуются аудиоплёнки Уолли, Томаса, Сьюзи, Бертрума, Сэмми и Джека Фейна. 14 апреля 2019 года официально раскрывается название — «Bendy and the Dark Revival»."
+            },
+            {
+                "title": "Июнь 2019: Первый геймплейный трейлер",
+                "text": "Выходит первый геймплейный трейлер, раскрывающий главную героиню Одри, обновлённую графику и атмосферу полуразрушенной студии."
+            },
+            {
+                "title": "Ноябрь 2022 — Март 2023: Релиз на ПК и консолях",
+                "text": "15 ноября 2022 года состоялся долгожданный мировой релиз игры в Steam. 1 марта 2023 года проект вышел на консолях PlayStation 4, PlayStation 5, Xbox One и Xbox Series X/S."
+            },
+            {
+                "title": "2024 — 2025: Мобильные порты и физические издания",
+                "text": "Игра получает релиз на мобильных платформах iOS и Android. В мае 2025 года компания Silver Lining Interactive анонсирует коллекционные физические издания для Nintendo Switch и PS5."
             }
         ],
-        "chapters": [],
-        "trivia": [],
+        "trivia": [
+            "На ранних стадиях производства игра планировалась под названием «Bendy and the Children of the Machine» (рус. «Бенди и Дети Машины»).",
+            "Для шрифта логотипа используется гарнитура DK Black Bamboo, где буква «В» стилизована под рога Чернильного Демона.",
+            "С 2 марта по 13 апреля 2019 года разработчики зашифровали в Твиттере послание: «BENEVOLENT DEMON, SOMEONE HAS REAWAKENED THE DARK» (рус. «Доброжелательный демон, кто-то пробудил темноту»).",
+            "В отличие от BATIM, где персонаж передвигался без собственной 3D-модели, у Одри в BATDR полностью анимированное тело от первого лица, собственные чернильные следы и отражения.",
+            "Персонаж Сэмми Лоуренс в BATDR владеет способностью «Поток», что объясняет его внезапные исчезновения и телепортации ещё во времена первой части игры."
+        ],
         "records": [
             "batdr_audio",
             "batdr_notes",
@@ -68,7 +563,5 @@
             "character_archives_batdr"
         ]
     },
-    "color": "75, 64, 49",
-    "achievements": [],
-    "languages": []
+    "color": "75, 64, 49"
 }
