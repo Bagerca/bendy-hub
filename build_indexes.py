@@ -1,3 +1,5 @@
+# FILE: build_indexes.py
+
 import os
 import json
 
@@ -76,12 +78,10 @@ def build_music_authors_list():
     with open(os.path.join("data", "music_authors_list.json"), "w", encoding="utf-8") as f:
         json.dump(output_data, f, ensure_ascii=False, indent=2)
 
-def build_characters_list():
-    print("👤 Сборка сводного индекса Персонажей (с интеграцией Архивов)...")
-    
-    # 1. Предварительно собираем все записи из архивов и группируем по authorId
+def build_records_list():
+    print("📜 Сборка сводного индекса Записей (Лор)...")
     records_dir = os.path.join("assets", "records")
-    records_db = {}
+    output_data = []
     
     if os.path.exists(records_dir):
         for folder in os.listdir(records_dir):
@@ -90,16 +90,27 @@ def build_characters_list():
             rec_data = load_json(json_path)
             
             for item in rec_data.get("items", []):
-                author_id = item.get("authorId")
-                if author_id:
-                    if author_id not in records_db:
-                        records_db[author_id] = []
-                    
-                    item_copy = item.copy()
-                    item_copy["categoryId"] = folder
-                    records_db[author_id].append(item_copy)
+                item_copy = item.copy()
+                item_copy["categoryId"] = folder # Вшиваем ID папки, чтобы знать, откуда брать иконки/картинки
+                output_data.append(item_copy)
 
-    # 2. Собираем персонажей
+    with open(os.path.join("data", "records_list.json"), "w", encoding="utf-8") as f:
+        json.dump(output_data, f, ensure_ascii=False, indent=2)
+        
+    return output_data
+
+def build_characters_list(all_records):
+    print("👤 Сборка сводного индекса Персонажей...")
+    
+    # Группируем все записи по authorId в памяти
+    records_db = {}
+    for item in all_records:
+        author_id = item.get("authorId")
+        if author_id:
+            if author_id not in records_db:
+                records_db[author_id] = []
+            records_db[author_id].append(item)
+
     char_dir = os.path.join("assets", "characters")
     output_data = []
     
@@ -109,7 +120,6 @@ def build_characters_list():
             if not os.path.exists(json_path): continue
             data = load_json(json_path)
             
-            # Собираем имена всех версий в алиасы для умного поиска
             aliases = data.get("meta", {}).get("aliases", [])
             versions_data = []
             
@@ -131,7 +141,7 @@ def build_characters_list():
                 },
                 "assets": data.get("assets", {}),
                 "versions": versions_data,
-                "records": records_db.get(data.get("id"), []) # Вшиваем записи прямо в индекс!
+                "records": records_db.get(data.get("id"), []) # Вшиваем записи
             })
             
     with open(os.path.join("data", "characters_list.json"), "w", encoding="utf-8") as f:
@@ -140,8 +150,13 @@ def build_characters_list():
 if __name__ == "__main__":
     print("🚀 Старт компиляции JSON индексов...")
     os.makedirs("data", exist_ok=True)
+    
     build_catalog_list()
     build_music_list()
     build_music_authors_list()
-    build_characters_list()
+    
+    # Сначала собираем записи, потом передаем их в сборщик персонажей
+    all_records = build_records_list()
+    build_characters_list(all_records)
+    
     print("✅ Все списки успешно сгенерированы в папку /data/")

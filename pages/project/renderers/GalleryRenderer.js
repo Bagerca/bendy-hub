@@ -1,5 +1,7 @@
-import { Icons } from '../../shared/js/icons.js';
-import { VideoPlayerHelper } from '../../shared/js/VideoPlayerHelper.js';
+// FILE: pages/project/renderers/GalleryRenderer.js
+
+import { Icons } from '../../../shared/js/icons.js';
+import { VideoPlayerHelper } from '../../../shared/js/VideoPlayerHelper.js';
 
 export class GalleryRenderer {
     constructor(lightboxManager, baseAssetPath, containerElement) {
@@ -109,7 +111,6 @@ export class GalleryRenderer {
                 mainView.innerHTML = `<img src="${item.src}" alt="Screenshot" class="gallery-main-img">`;
                 const imgEl = mainView.querySelector('.gallery-main-img');
                 
-                // ИСПРАВЛЕНИЕ: Формируем массив всех скриншотов для лайтбокса
                 const imageItems = mediaItems.filter(m => m.type === 'image');
                 const imageUrls = imageItems.map(m => m.src);
                 const clickedIndex = imageUrls.indexOf(item.src);
@@ -143,7 +144,6 @@ export class GalleryRenderer {
                 imgTest.src = item.thumb;
             }
 
-            // Обновление активной миниатюры
             if (thumbs.length > 0) {
                 thumbs.forEach(t => t.classList.remove('active'));
                 const activeThumb = thumbs[index];

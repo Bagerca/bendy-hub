@@ -40523,6 +40523,18 @@ FILE: pages\project\project.css
 FILE: pages\project\project.html
 ============================================================
 
+<link rel="stylesheet" href="pages/project/project.css">
+<link rel="stylesheet" href="pages/project/hero.css">
+<link rel="stylesheet" href="pages/project/hero-ui.css">
+<link rel="stylesheet" href="pages/project/gallery.css">
+
+<!-- Модульные CSS для блоков Вики -->
+<link rel="stylesheet" href="pages/project/css/blocks/tags.css">
+<link rel="stylesheet" href="pages/project/css/blocks/specs.css">
+<link rel="stylesheet" href="pages/project/css/blocks/entities.css">
+<link rel="stylesheet" href="pages/project/css/blocks/records.css">
+<link rel="stylesheet" href="pages/project/css/blocks/trivia.css">
+
 <div id="project-loader" class="loading-state" style="margin-top: 100px;"><div class="spinner" style="margin: 0 auto 10px;"></div><span>Расшифровка архивов студии...</span></div>
 <main id="project-content" class="project-wiki-page" style="display: none;">
     <header class="project-hero">
@@ -40551,6 +40563,15 @@ FILE: pages\project\project.html
     </div>
 </main>
 
+<!-- МОДАЛКА ДЛЯ ЧТЕНИЯ ЗАПИСЕЙ ИГРЫ -->
+<dialog id="project-record-modal" class="custom-modal reader-modal" aria-modal="true" aria-label="Просмотр записи">
+    <button class="modal-close" aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 9L11.9999 11.9999M11.9999 11.9999L14.9999 14.9999M11.9999 11.9999L9 14.9999M11.9999 11.9999L14.9999 9M4 16.8002V7.2002C4 6.08009 4 5.51962 4.21799 5.0918C4.40973 4.71547 4.71547 4.40973 5.0918 4.21799C5.51962 4 6.08009 4 7.2002 4H16.8002C17.9203 4 18.4801 4 18.9079 4.21799C19.2842 4.40973 19.5905 4.71547 19.7822 5.0918C20.0002 5.51962 20.0002 6.07967 20.0002 7.19978V16.7998C20.0002 17.9199 20.0002 18.48 19.7822 18.9078C19.5905 19.2841 19.2842 19.5905 18.9079 19.7822C18.4805 20 17.9215 20 16.8036 20H7.19691C6.07899 20 5.5192 20 5.0918 19.7822C4.71547 19.5905 4.40973 19.2842 4.21799 18.9079C4 18.4801 4 17.9203 4 16.8002Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+    <div class="reader-content">
+        <div class="reader-header"><h2 id="prm-title"></h2><span id="prm-author" class="reader-author"></span></div>
+        <div class="reader-body"><p id="prm-text"></p></div>
+    </div>
+</dialog>
+
 ============================================================
 FILE: pages\project\ProjectController.js
 ============================================================
@@ -40577,19 +40598,23 @@ export class ProjectController {
             this.wikiView.setupTabs(data.type || 'game');
             this.heroView.render(data, projectId);
             
-            // Загружаем команды (если есть массив russifiers с айдишниками команд)
             let teamsData = [];
             if (data.russifiers && data.russifiers.length > 0) {
-                // Предполагаем, что data.russifiers теперь массив строк ["fanic", "ybt"]
                 if (typeof data.russifiers[0] === 'string') {
                     teamsData = await this.model.fetchTranslators(data.russifiers);
                 } else {
-                    // Fallback для старых данных, пока скрипт не отработает
                     teamsData = data.russifiers;
                 }
             }
 
-            this.wikiView.render(data, projectId, teamsData);
+            // НОВАЯ ЛОГИКА: Подгружаем записи (Records), если они прописаны в data.json
+            let recordsData = [];
+            if (data.wiki?.records?.length > 0) {
+                recordsData = await this.model.fetchRecords(data.wiki.records);
+            }
+
+            // Передаем recordsData в рендерер
+            this.wikiView.render(data, projectId, teamsData, recordsData);
             
             this.loader.style.display = 'none';
             this.content.style.display = 'block';
@@ -40647,7 +40672,6 @@ export class ProjectModel {
         }
     }
 
-    // НОВЫЙ МЕТОД: Загрузка команд локализаторов по их ID
     async fetchTranslators(teamIds) {
         if (!teamIds || teamIds.length === 0) return [];
         try {
@@ -40660,44 +40684,587 @@ export class ProjectModel {
             return [];
         }
     }
+
+    // НОВЫЙ МЕТОД: Подгрузка записей лора
+    async fetchRecords(categoryIds) {
+        if (!categoryIds || categoryIds.length === 0) return [];
+        try {
+            const promises = categoryIds.map(catId =>
+                fetchData(`assets/records/${catId}/data.json`).catch(() => null)
+            );
+            const categories = await Promise.all(promises);
+            
+            let allRecords = [];
+            categories.forEach(cat => {
+                if (cat && cat.items) {
+                    // Инжектим ID категории, чтобы знать откуда картинка/аудио
+                    cat.items.forEach(item => item.categoryId = cat.id);
+                    allRecords.push(...cat.items);
+                }
+            });
+            return allRecords;
+        } catch (error) {
+            Logger.error('Ошибка загрузки записей', error);
+            return [];
+        }
+    }
 }
 
 ============================================================
-FILE: pages\project\widgets.css
+FILE: pages\project\WikiBlockRenderer.js
+============================================================
+
+import { RenderUtils } from './renderers/RenderUtils.js';
+import { MetaRenderer } from './renderers/MetaRenderer.js';
+import { LoreRenderer } from './renderers/LoreRenderer.js';
+import { GameplayRenderer } from './renderers/GameplayRenderer.js';
+import { MiscRenderer } from './renderers/MiscRenderer.js';
+
+/**
+ * ФАСАД (Facade): 
+ * Перенаправляет вызовы рендеринга в соответствующие специализированные классы.
+ * Это защищает нас от раздувания одного файла до 1000 строк.
+ */
+export class WikiBlockRenderer {
+    static renderBlock(blockId, data, projectId, teamsData, recordsData) {
+        switch (blockId) {
+            // --- РАЗНОЕ (Misc / Utilities) ---
+            case 'description': return RenderUtils.renderText(data.description);
+            case 'story': return RenderUtils.renderText(data.wiki?.story);
+            case 'gallery': return `<div id="project-screenshots"></div>`; 
+            case 'reviews': return MiscRenderer.renderReviews(data.reviews);
+            case 'development': return MiscRenderer.renderTimeline(data.wiki?.development);
+            case 'trivia': return RenderUtils.renderList(data.wiki?.trivia, 'trivia-list');
+            
+            // --- МЕТАДАННЫЕ (Meta) ---
+            case 'tags': return MetaRenderer.renderTags(data.tags);
+            case 'languages': return MetaRenderer.renderLanguages(data.languages);
+            case 'specs': return MetaRenderer.renderSpecs(data.specs);
+            case 'translators': return MetaRenderer.renderTranslators(teamsData, data.type, projectId);
+            
+            // --- ГЕЙМПЛЕЙ (Gameplay) ---
+            case 'mechanics': return RenderUtils.renderList(data.wiki?.gameplay, 'gameplay-list');
+            case 'controls': return GameplayRenderer.renderControls(data.wiki?.controls);
+            case 'achievements': return GameplayRenderer.renderAchievements(data.achievements);
+            
+            // --- ИСТОРИЯ (Lore) ---
+            case 'chapters': return LoreRenderer.renderChapters(data.wiki?.chapters);
+            case 'records': return LoreRenderer.renderRecords(recordsData);
+            // Контейнер под персонажей вернет оболочку, а View уже наполнит его через DOM API
+            case 'characters': return `<div class="bento-box" style="padding: 1.5rem;"><div id="wiki-characters-list" class="project-chars-list"></div></div>`; 
+            
+            default: return null;
+        }
+    }
+}
+
+============================================================
+FILE: pages\project\WikiView.js
+============================================================
+
+import { Icons } from '../../shared/js/icons.js';
+import { GalleryRenderer } from './GalleryRenderer.js';
+import { WikiBlockRenderer } from './WikiBlockRenderer.js';
+
+export class WikiView {
+    constructor(lightboxManager) {
+        this.lightbox = lightboxManager;
+        this.baseAssetPath = 'assets/catalog/';
+        
+        this.els = {
+            tabsContainer: document.getElementById('dynamic-tabs'),
+            sectionsContainer: document.getElementById('dynamic-sections'),
+            recordModal: document.getElementById('project-record-modal'),
+            modalClose: document.querySelector('#project-record-modal .modal-close'),
+            modalTitle: document.getElementById('prm-title'),
+            modalAuthor: document.getElementById('prm-author'),
+            modalText: document.getElementById('prm-text')
+        };
+
+        this.galleryRenderer = null; 
+        this.currentRecords = []; // Храним записи для модалки
+        
+        this.fallbackHtml = `<img src="${Icons.avatar_fallback}" alt="Нет фото" class="char-fallback" style="width: 100%; height: 100%; object-fit: cover; background: var(--bg-body); padding: 6px;">`;
+        
+        this._initModal();
+    }
+
+    _initModal() {
+        if (this.els.modalClose) {
+            this.els.modalClose.innerHTML = Icons.close || 'X';
+            this.els.modalClose.addEventListener('click', () => this.closeRecordModal());
+        }
+
+        if (this.els.recordModal) {
+            this.els.recordModal.addEventListener('click', (e) => {
+                if (e.target === this.els.recordModal) this.closeRecordModal();
+            });
+        }
+    }
+
+    closeRecordModal() {
+        if (!this.els.recordModal) return;
+        this.els.recordModal.classList.remove('active');
+        setTimeout(() => this.els.recordModal.close(), 300);
+    }
+
+    openRecordModal(index) {
+        const record = this.currentRecords[index];
+        if (!record) return;
+
+        this.els.modalTitle.textContent = record.title;
+        this.els.modalText.textContent = record.text;
+
+        if (record.authorId) {
+            this.els.modalAuthor.innerHTML = `<a href="character.html?id=${record.authorId}" class="record-author-link" title="Открыть личное дело">${record.author}</a>`;
+            const link = this.els.modalAuthor.querySelector('.record-author-link');
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.els.recordModal.classList.remove('active');
+                setTimeout(() => {
+                    this.els.recordModal.close();
+                    if (window.router) window.router.navigate(link.href);
+                    else window.location.href = link.href;
+                }, 200);
+            });
+        } else {
+            this.els.modalAuthor.textContent = record.author || 'Неизвестный автор';
+        }
+
+        this.els.recordModal.showModal();
+        requestAnimationFrame(() => this.els.recordModal.classList.add('active'));
+    }
+
+    _getConfig(type) {
+        return [
+            {
+                id: 'overview',
+                label: 'Обзор',
+                main: ['description', 'gallery', 'reviews'], 
+                sidebar: ['tags', 'languages', 'translators', 'specs'] 
+            },
+            {
+                id: 'lore',
+                label: 'Летопись',
+                main: ['chapters', 'story'],
+                sidebar: ['characters']
+            },
+            {
+                id: 'gameplay',
+                label: 'Геймплей',
+                condition: type === 'game',
+                main: ['mechanics', 'controls', 'achievements'],
+                sidebar: []
+            },
+            {
+                id: 'extras',
+                label: 'Архивы',
+                // ДОБАВЛЕНО: Блок records
+                main: ['development', 'trivia', 'records'],
+                sidebar: []
+            }
+        ].filter(tab => tab.condition !== false);
+    }
+
+    setupTabs(type) {}
+
+    render(data, projectId, teamsData = [], recordsData = []) {
+        this.els.tabsContainer.innerHTML = '';
+        this.els.sectionsContainer.innerHTML = '';
+        this.currentRecords = recordsData;
+        
+        const type = data.type || 'game';
+        const config = this._getConfig(type);
+        
+        let isFirstTab = true;
+
+        config.forEach(tabDef => {
+            const mainHtml = tabDef.main ? tabDef.main.map(blockId => WikiBlockRenderer.renderBlock(blockId, data, projectId, teamsData, recordsData)).filter(Boolean).join('') : '';
+            const sidebarHtml = tabDef.sidebar ? tabDef.sidebar.map(blockId => WikiBlockRenderer.renderBlock(blockId, data, projectId, teamsData, recordsData)).filter(Boolean).join('') : '';
+
+            if (!mainHtml && !sidebarHtml) return;
+
+            const tabBtn = document.createElement('button');
+            tabBtn.className = `wiki-tab ${isFirstTab ? 'active' : ''}`;
+            tabBtn.dataset.target = `tab-${tabDef.id}`;
+            tabBtn.textContent = tabDef.label;
+            this.els.tabsContainer.appendChild(tabBtn);
+
+            const section = document.createElement('section');
+            section.id = `tab-${tabDef.id}`;
+            section.className = `wiki-section ${isFirstTab ? 'active' : ''}`;
+
+            let gridHtml = `<div class="overview-grid ${sidebarHtml ? 'has-sidebar' : ''}">`;
+            
+            if (sidebarHtml) {
+                gridHtml += `<aside class="overview-sidebar"><div class="sticky-sidebar-wrapper">${sidebarHtml}</div></aside>`;
+            }
+
+            gridHtml += `<div class="overview-main">`;
+            gridHtml += mainHtml || `<div class="empty-state-silent">${Icons.error_404}</div>`;
+            gridHtml += `</div><div class="inv-spacer"></div></div>`;
+            
+            section.innerHTML = gridHtml;
+            this.els.sectionsContainer.appendChild(section);
+
+            if (tabDef.main.includes('gallery') && data.assets) {
+                const galleryContainer = section.querySelector('#project-screenshots');
+                if (galleryContainer) {
+                    this.galleryRenderer = new GalleryRenderer(this.lightbox, this.baseAssetPath, galleryContainer);
+                    this.galleryRenderer.render(data.assets, projectId);
+                }
+            }
+            
+            this._initInnerTabs(section);
+
+            isFirstTab = false;
+        });
+
+        // Делегирование событий клика для записей
+        this.els.sectionsContainer.addEventListener('click', (e) => {
+            const recordCard = e.target.closest('.wiki-record-card');
+            if (recordCard) {
+                const index = parseInt(recordCard.dataset.index, 10);
+                this.openRecordModal(index);
+            }
+        });
+
+        const tabs = this.els.tabsContainer.querySelectorAll('.wiki-tab');
+        const sections = this.els.sectionsContainer.querySelectorAll('.wiki-section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.target).classList.add('active');
+            });
+        });
+    }
+
+    _initInnerTabs(container) {
+        const navs = container.querySelectorAll('.inner-tabs-nav');
+        navs.forEach(nav => {
+            const wrapper = nav.closest('.bento-box');
+            const btns = nav.querySelectorAll('.inner-tab-btn');
+            const contents = wrapper.querySelectorAll('.inner-tab-content');
+            
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    btns.forEach(b => b.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    btn.classList.add('active');
+                    wrapper.querySelector(`#${btn.dataset.target}`).classList.add('active');
+                });
+            });
+
+            let isDown = false, isDragged = false, startX, scrollLeft;
+
+            nav.addEventListener('mousedown', (e) => {
+                isDown = true; isDragged = false; startX = e.pageX - nav.offsetLeft; scrollLeft = nav.scrollLeft;
+            });
+            
+            const stopDrag = () => { isDown = false; nav.classList.remove('is-dragging'); };
+            nav.addEventListener('mouseleave', stopDrag);
+            nav.addEventListener('mouseup', stopDrag);
+
+            nav.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - nav.offsetLeft;
+                const walk = (x - startX) * 1.5; 
+                if (Math.abs(walk) > 3) { isDragged = true; nav.classList.add('is-dragging'); }
+                nav.scrollLeft = scrollLeft - walk;
+            });
+
+            nav.addEventListener('wheel', (e) => { e.preventDefault(); nav.scrollLeft += e.deltaY; });
+            nav.addEventListener('click', (e) => { if (isDragged) { e.preventDefault(); e.stopPropagation(); } }, { capture: true });
+        });
+    }
+
+    showCharLoader() {
+        const list = document.getElementById('wiki-characters-list');
+        if (list) list.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
+    }
+
+    renderCharacters(charactersData, requestedIds) {
+        const list = document.getElementById('wiki-characters-list');
+        if (!list) return;
+        
+        list.innerHTML = '';
+
+        charactersData.forEach(char => {
+            if (!char || char === '...') return;
+            
+            let photo = char.assets?.avatar && char.assets.avatar !== '...' ? char.assets.avatar : null;
+            if (!photo && char.versions && char.versions.length > 0) {
+                photo = char.versions[0].assets?.avatar && char.versions[0].assets.avatar !== '...' ? char.versions[0].assets.avatar : null;
+            }
+            
+            let subtitle = "Засекречено";
+            if (char.meta?.species && char.meta.species !== '...') {
+                subtitle = char.meta.species;
+            } else if (char.role && char.role !== '...') {
+                subtitle = char.role;
+            }
+
+            const card = document.createElement('a');
+            card.href = `character.html?id=${char.id}`;
+            card.className = 'char-card';
+            
+            const avatarWrapper = document.createElement('div');
+            avatarWrapper.className = 'char-avatar-wrapper';
+            
+            if (photo) {
+                const img = document.createElement('img');
+                img.className = 'char-img single-img';
+                img.loading = 'lazy';
+                img.alt = char.name;
+                img.src = `assets/characters/${char.id}/${photo}`;
+                img.onerror = () => { avatarWrapper.innerHTML = this.fallbackHtml; };
+                avatarWrapper.appendChild(img);
+            } else {
+                avatarWrapper.innerHTML = this.fallbackHtml;
+            }
+
+            const infoCol = document.createElement('div');
+            infoCol.className = 'char-info-col';
+            infoCol.innerHTML = `
+                <span class="char-card-name">${char.name}</span>
+                <span class="char-card-subtitle">${subtitle}</span>
+            `;
+
+            const arrow = document.createElement('div');
+            arrow.className = 'char-arrow';
+            arrow.innerHTML = Icons.chevron_right;
+
+            card.appendChild(avatarWrapper);
+            card.appendChild(infoCol);
+            card.appendChild(arrow);
+            
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (window.router) window.router.navigate(card.href);
+                else window.location.href = card.href;
+            });
+            
+            list.appendChild(card);
+        });
+
+        if (list.innerHTML === '') list.parentElement.style.display = 'none';
+    }
+}
+
+============================================================
+FILE: pages\project\css\blocks\entities.css
 ============================================================
 
 /* =========================================
-   ВИДЖЕТЫ И КОМПОНЕНТЫ WIKI (Сайдбар и Сетка)
+   ENTITIES.CSS
+   Карточки переводчиков, языков и персонажей
    ========================================= */
 
-/* --- ТЕГИ ЖАНРОВ (PILLS) --- */
-.tags-cloud { 
+/* --- КАРТОЧКИ ПЕРЕВОДЧИКОВ И КОМАНД --- */
+.translators-list { display: flex; flex-direction: column; gap: 12px; }
+
+.rus-card {
+    display: flex; align-items: center; gap: 14px; background: var(--bg-body); 
+    border: 1px solid var(--border-color); padding: 12px 16px; border-radius: 12px; 
+    text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rus-card:hover { 
+    border-color: var(--accent-color); background: var(--bg-card); 
+    transform: translateY(-4px); box-shadow: 0 8px 25px rgba(210, 168, 80, 0.12); 
+}
+
+.rus-avatar { 
+    width: 50px; height: 50px; border-radius: 10px; object-fit: cover; 
+    background: var(--bg-card); border: 2px solid var(--border-color); flex-shrink: 0; transition: border-color 0.3s ease;
+}
+
+.rus-card:hover .rus-avatar { border-color: var(--accent-color); }
+.rus-info { display: flex; flex-direction: column; gap: 6px; flex-grow: 1; overflow: hidden; }
+
+.rus-title { 
+    font-weight: 800; color: var(--text-main); font-size: 1.05rem; 
+    line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
+}
+
+.rus-badge-wrapper { display: flex; }
+
+.rus-badge { 
+    display: inline-block; background: rgba(255, 255, 255, 0.05); padding: 2px 8px;
+    border-radius: 6px; font-size: 0.75rem; color: var(--text-muted); font-weight: 700; 
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background 0.3s ease, color 0.3s ease;
+}
+
+.rus-card:hover .rus-badge { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); }
+
+.rus-action-btn { 
+    width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color); color: var(--text-muted); transition: all 0.3s ease; 
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center; 
+}
+
+.rus-action-btn svg { width: 18px; height: 18px; display: block; }
+
+.rus-card:hover .rus-action-btn { 
+    background: var(--accent-color); border-color: var(--accent-color); color: #000; transform: rotate(45deg); 
+}
+
+
+/* --- КАРТОЧКИ ПЕРСОНАЖЕЙ В САЙДБАРЕ --- */
+.project-chars-list { display: flex; flex-direction: column; gap: 12px; }
+
+.char-card {
+    background-color: var(--bg-body); 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px; 
+    padding: 12px; 
     display: flex; 
-    flex-wrap: wrap; 
-    gap: 10px; 
+    align-items: center; 
+    gap: 14px; 
+    text-decoration: none; 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    box-sizing: border-box;
 }
 
-.game-tag { 
-    background: rgba(210, 168, 80, 0.1); 
-    color: var(--accent-color); 
-    border: 1px solid rgba(210, 168, 80, 0.25);
-    padding: 6px 16px; 
-    border-radius: 20px; 
-    font-weight: 700; 
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: default;
+.char-card:hover { 
+    transform: translateX(4px); 
+    border-color: var(--accent-color); 
+    background-color: var(--bg-card); 
+    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.1); 
 }
 
-.game-tag:hover {
-    background: rgba(210, 168, 80, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(210, 168, 80, 0.2);
+.char-avatar-wrapper {
+    display: flex; align-items: center; justify-content: center; position: relative; 
+    flex-shrink: 0; width: 48px; height: 48px; z-index: 5; 
+    border-radius: 50%; background-color: var(--bg-body); border: 1px solid var(--border-color); overflow: hidden;
 }
 
-/* --- СИСТЕМНЫЕ ТРЕБОВАНИЯ И УПРАВЛЕНИЕ (МИНИ-КАРТОЧКИ) --- */
+.char-avatar-wrapper .char-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.char-fallback { width: 100%; height: 100%; background-color: var(--bg-body); color: var(--text-muted); opacity: 0.6; display: flex; align-items: center; justify-content: center; }
+
+.char-info-col { display: flex; flex-direction: column; gap: 4px; flex-grow: 1; min-width: 0; z-index: 1; }
+
+.char-card-name { 
+    font-size: 1.05rem; font-weight: 800; color: var(--text-main); line-height: 1.2; 
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;
+}
+
+.char-card-subtitle {
+    font-size: 0.8rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; 
+    overflow: hidden; text-overflow: ellipsis; display: block;
+}
+
+.char-arrow { color: var(--text-muted); transition: 0.2s; display: flex; align-items: center; }
+.char-arrow svg { width: 20px; height: 20px; display: block; } 
+.char-card:hover .char-arrow { color: var(--accent-color); transform: translateX(4px); }
+
+
+/* --- ЯЗЫКИ (ТАБЛИЦА) --- */
+.languages-list { 
+    display: flex; flex-direction: column; border: 1px solid var(--border-color);
+    border-radius: 16px; overflow: hidden; background-color: var(--bg-card); box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+}
+
+.lang-row { 
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    padding: 16px 20px; border-bottom: 1px solid var(--border-color); transition: background 0.2s ease;
+}
+
+.lang-row:last-child { border-bottom: none; }
+.lang-row:nth-child(even) { background: rgba(0, 0, 0, 0.15); }
+.lang-row:hover { background: rgba(210, 168, 80, 0.08); }
+
+.lang-name { font-weight: 700; font-size: 1.05rem; color: var(--text-main); word-break: break-word; flex: 1 1 auto; }
+.lang-flags { display: flex; flex-wrap: wrap; gap: 20px; flex: 0 0 auto; }
+.lang-flag { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
+.lang-flag svg { width: 18px; height: 18px; color: var(--accent-color); }
+
+============================================================
+FILE: pages\project\css\blocks\records.css
+============================================================
+
+/* =========================================
+   RECORDS.CSS
+   Блок внутриигровых записок в wiki
+   ========================================= */
+
+.wiki-records-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 1.25rem;
+}
+
+.wiki-record-card {
+    background: var(--bg-body); 
+    border: 1px solid var(--border-color);
+    border-radius: 12px; 
+    padding: 1.25rem; 
+    display: flex; 
+    flex-direction: column;
+    gap: 0.75rem; 
+    cursor: pointer; 
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative; 
+    overflow: hidden;
+}
+
+.wiki-record-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--border-color); transition: 0.2s;
+}
+
+.wiki-record-card:hover {
+    transform: translateY(-4px); 
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 25px rgba(210, 168, 80, 0.1); 
+    background: var(--bg-card);
+}
+
+.wiki-record-card:hover::before { 
+    background: var(--accent-color); 
+}
+
+.crc-icon { color: var(--text-muted); display: flex; align-items: center; transition: 0.2s;}
+.wiki-record-card:hover .crc-icon { color: var(--accent-color); transform: scale(1.1); transform-origin: left;}
+.crc-icon svg { width: 24px; height: 24px; display: block; }
+
+.crc-info { display: flex; flex-direction: column; gap: 4px; }
+.crc-title { font-size: 1.05rem; font-weight: 800; color: var(--text-main); line-height: 1.2; }
+.crc-preview { font-size: 0.85rem; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* --- Ридер модалка (Читалка записей) --- */
+.reader-modal { max-width: 650px; width: 95%; background-color: var(--bg-card); border: 1px solid var(--border-color); box-shadow: 0 25px 50px rgba(0,0,0,0.4); border-radius: 16px; padding: 0; }
+.reader-content { max-height: 85vh; overflow-y: auto; padding: 3.5rem; scrollbar-width: thin; }
+.reader-header { text-align: center; margin-bottom: 2.5rem; }
+.reader-header h2 { font-size: 2.2rem; color: var(--text-main); margin-bottom: 0.75rem; font-weight: 900; line-height: 1.2; }
+.reader-author { font-size: 1.1rem; color: var(--accent-color); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.reader-body { font-family: Georgia, 'Times New Roman', serif; font-size: 1.25rem; line-height: 1.8; color: var(--text-main); white-space: pre-line; opacity: 0.9; }
+
+/* Ссылка на автора внутри читалки */
+.reader-author .record-author-link { color: var(--accent-color); text-decoration: none; transition: 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
+.reader-author .record-author-link::after { content: "↗"; font-size: 1.2rem; line-height: 1; transform: translateY(-1px); transition: transform 0.2s ease; }
+.reader-author .record-author-link:hover { text-decoration: underline; text-shadow: 0 0 10px rgba(210, 168, 80, 0.4); }
+.reader-author .record-author-link:hover::after { transform: translate(3px, -3px); }
+
+@media (max-width: 900px) {
+    .reader-content { padding: 2rem 1.5rem; }
+}
+
+============================================================
+FILE: pages\project\css\blocks\specs.css
+============================================================
+
+/* =========================================
+   SPECS.CSS
+   Системные требования, управление и Внутренние табы
+   ========================================= */
+
 .req-bento-grid { 
     display: flex; 
     flex-direction: column; 
@@ -40752,10 +41319,7 @@ FILE: pages\project\widgets.css
     margin: 0;
 }
 
-/* =========================================
-   ВНУТРЕННИЕ ВКЛАДКИ (Inner Tabs) ДЛЯ SPECS И CONTROLS
-   ========================================= */
-
+/* --- ВНУТРЕННИЕ ВКЛАДКИ (Inner Tabs) --- */
 .inner-tabs-wrapper {
     position: relative;
     margin-bottom: 1.5rem;
@@ -40764,266 +41328,147 @@ FILE: pages\project\widgets.css
     margin-right: -8px;
 }
 
-/* Правый градиент */
 .inner-tabs-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0; 
-    bottom: 1px; 
-    width: 32px;
+    content: ''; position: absolute; top: 0; right: 0; bottom: 1px; width: 32px;
     background: linear-gradient(to left, var(--bg-card) 0%, transparent 100%);
-    pointer-events: none; 
-    z-index: 5;
+    pointer-events: none; z-index: 5;
 }
 
-/* Левый градиент */
 .inner-tabs-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0; 
-    bottom: 1px; 
-    width: 32px;
+    content: ''; position: absolute; top: 0; left: 0; bottom: 1px; width: 32px;
     background: linear-gradient(to right, var(--bg-card) 0%, transparent 100%);
-    pointer-events: none; 
-    z-index: 5;
+    pointer-events: none; z-index: 5;
 }
 
 .inner-tabs-nav {
-    display: flex;
-    gap: 8px;
-    padding-bottom: 8px;
-    overflow-x: auto;
-    scrollbar-width: none; 
-    flex-wrap: nowrap;
-    padding-left: 20px; 
-    padding-right: 20px; 
-    cursor: grab;
+    display: flex; gap: 8px; padding-bottom: 8px; overflow-x: auto;
+    scrollbar-width: none; flex-wrap: nowrap; padding-left: 20px; padding-right: 20px; cursor: grab;
 }
 
-.inner-tabs-nav.is-dragging {
-    cursor: grabbing;
-}
-
-.inner-tabs-nav::-webkit-scrollbar { 
-    display: none; 
-}
+.inner-tabs-nav.is-dragging { cursor: grabbing; }
+.inner-tabs-nav::-webkit-scrollbar { display: none; }
 
 .inner-tab-btn {
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-    white-space: nowrap;
-    flex-shrink: 0; 
+    background: transparent; border: none; color: var(--text-muted); font-size: 0.95rem;
+    font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer;
+    transition: 0.2s; white-space: nowrap; flex-shrink: 0; 
 }
 
-.inner-tab-btn:hover { 
-    background: var(--bg-body); 
-    color: var(--text-main); 
-}
-
-.inner-tab-btn.active { 
-    background: rgba(210, 168, 80, 0.1); 
-    color: var(--accent-color); 
-}
+.inner-tab-btn:hover { background: var(--bg-body); color: var(--text-main); }
+.inner-tab-btn.active { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); }
 
 .inner-tab-content { display: none; animation: fadeInSlideUp 0.3s ease forwards; }
 .inner-tab-content.active { display: block; }
 
 /* --- СПИСОК УПРАВЛЕНИЯ (CONTROLS) --- */
-.controls-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
+.controls-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .controls-list li {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap; 
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-color);
-    padding: 10px 14px;
-    border-radius: 10px;
-    color: var(--text-main);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    transition: background 0.2s ease;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+    background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color);
+    padding: 10px 14px; border-radius: 10px; color: var(--text-main);
+    font-size: 0.95rem; line-height: 1.5; transition: background 0.2s ease;
 }
+.controls-list li:hover { background: rgba(255, 255, 255, 0.05); }
 
-.controls-list li:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
+.ctrl-keys-wrap { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+.ctrl-dash { color: var(--text-muted); font-weight: 700; }
+.ctrl-desc { flex: 1 1 auto; opacity: 0.9; }
 
-.ctrl-keys-wrap {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.ctrl-dash {
-    color: var(--text-muted);
-    font-weight: 700;
-}
-
-.ctrl-desc {
-    flex: 1 1 auto;
-    opacity: 0.9;
-}
-
-/* Дизайн кнопок контроллеров (<kbd>) */
 .control-key {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px 8px;
-    font-size: 0.8rem;
-    font-weight: 800;
-    font-family: var(--font-system); 
-    color: var(--text-main);
-    background-color: var(--bg-body);
-    border: 1px solid var(--border-color);
-    border-bottom-width: 2px;
-    border-radius: 6px;
-    margin: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 2px 8px; font-size: 0.8rem; font-weight: 800; font-family: var(--font-system); 
+    color: var(--text-main); background-color: var(--bg-body); border: 1px solid var(--border-color);
+    border-bottom-width: 2px; border-radius: 6px; margin: 0;
     box-shadow: inset 0 -1px 0 rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.1);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-transform: uppercase; letter-spacing: 0.5px;
 }
 
-/* --- КАРТОЧКИ ПЕРЕВОДЧИКОВ И КОМАНД --- */
-.translators-list { 
+============================================================
+FILE: pages\project\css\blocks\tags.css
+============================================================
+
+/* =========================================
+   TAGS.CSS
+   Неоновые теги жанров (Pills)
+   ========================================= */
+
+.tags-cloud { 
     display: flex; 
-    flex-direction: column; 
+    flex-wrap: wrap; 
     gap: 12px; 
 }
 
-/* Новый дизайн карточки */
-.rus-card {
-    display: flex; 
-    align-items: center; 
-    gap: 14px; 
-    background: var(--bg-body); /* Более плотный и темный фон */
-    border: 1px solid var(--border-color);
-    padding: 12px 16px; 
-    border-radius: 12px; 
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.rus-card:hover { 
-    border-color: var(--accent-color); 
-    background: var(--bg-card); /* Слегка высветляем при наведении */
-    transform: translateY(-4px); 
-    box-shadow: 0 8px 25px rgba(210, 168, 80, 0.12); 
-}
-
-.rus-avatar { 
-    width: 50px; 
-    height: 50px; 
-    border-radius: 10px; /* Чуть скруглили вместо полного круга */
-    object-fit: cover; 
-    background: var(--bg-card); 
-    border: 2px solid var(--border-color); /* Выделили рамку */
-    flex-shrink: 0; 
-    transition: border-color 0.3s ease;
-}
-
-.rus-card:hover .rus-avatar {
-    border-color: var(--accent-color);
-}
-
-.rus-info { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 6px; 
-    flex-grow: 1; 
-    overflow: hidden; 
-}
-
-.rus-title { 
-    font-weight: 800; 
+.game-tag { 
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    
+    background: linear-gradient(180deg, rgba(28, 33, 40, 0.9) 0%, rgba(17, 20, 24, 0.9) 100%);
     color: var(--text-main); 
-    font-size: 1.05rem; 
-    line-height: 1.1; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-}
-
-.rus-badge-wrapper {
-    display: flex;
-}
-
-.rus-badge { 
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.05); /* Легкая плашка под текст */
-    padding: 2px 8px;
-    border-radius: 6px;
-    font-size: 0.75rem; 
-    color: var(--text-muted); 
+    border: 1px solid rgba(210, 168, 80, 0.25);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05), 
+                0 2px 8px rgba(0, 0, 0, 0.3);
+                
+    padding: 6px 14px 6px 10px; 
+    border-radius: 8px; 
     font-weight: 700; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    transition: background 0.3s ease, color 0.3s ease;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    user-select: none;
 }
 
-.rus-card:hover .rus-badge {
+.game-tag .tag-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
     background: rgba(210, 168, 80, 0.1);
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.game-tag .tag-icon svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+}
+
+.game-tag .tag-text {
+    opacity: 0.9;
+    transition: color 0.3s ease;
+}
+
+.game-tag:hover {
+    background: linear-gradient(180deg, rgba(35, 41, 50, 0.9) 0%, rgba(22, 26, 31, 0.9) 100%);
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 
+                0 8px 20px rgba(210, 168, 80, 0.15);
     color: var(--accent-color);
 }
 
-/* Кнопка-стрелочка справа */
-.rus-action-btn { 
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-color);
-    color: var(--text-muted); 
-    transition: all 0.3s ease; 
-    flex-shrink: 0; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-}
-
-.rus-action-btn svg { 
-    width: 18px; 
-    height: 18px; 
-    display: block; 
-}
-
-.rus-card:hover .rus-action-btn { 
+.game-tag:hover .tag-icon {
     background: var(--accent-color);
-    border-color: var(--accent-color);
     color: #000;
-    transform: rotate(45deg); /* Добавим небольшой эффект игривости при наведении */
+    box-shadow: 0 0 10px rgba(210, 168, 80, 0.4);
 }
 
-/* --- КАРТОЧКИ ПЕРСОНАЖЕЙ --- */
-.character-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.character-card {
-    display: flex; align-items: center; gap: 12px; background: var(--bg-body);
-    padding: 8px 12px; border-radius: 12px; text-decoration: none; color: var(--text-main);
-    border: 1px solid var(--border-color); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+.game-tag:hover .tag-text {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(210, 168, 80, 0.3);
 }
-.character-card:hover { border-color: var(--accent-color); transform: translateX(6px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: var(--bg-card); }
-.char-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-color); background-color: var(--bg-body); }
-.char-name { flex-grow: 1; font-weight: 700; font-size: 1.05rem; }
-.char-arrow { color: var(--text-muted); transition: 0.2s; }
-.character-card:hover .char-arrow { color: var(--accent-color); transform: translateX(3px); }
+
+============================================================
+FILE: pages\project\css\blocks\trivia.css
+============================================================
+
+/* =========================================
+   TRIVIA.CSS
+   Списки фактов, достижения, геймплей, рецензии
+   ========================================= */
 
 /* --- ГЕЙМПЛЕЙ (МЕХАНИКИ) --- */
 .gameplay-list { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; }
@@ -41046,72 +41491,6 @@ FILE: pages\project\widgets.css
 .ach-title { font-weight: 800; font-size: 0.95rem; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .ach-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
 
-/* --- ЯЗЫКИ --- */
-.languages-list { 
-    display: flex; 
-    flex-direction: column; 
-    border: 1px solid var(--border-color);
-    border-radius: 16px; /* Большое скругление, как у всех блоков */
-    overflow: hidden;
-    background-color: var(--bg-card); /* Свой фон карточки */
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03); /* Легкая тень bento-box */
-}
-
-.lang-row { 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    flex-wrap: wrap; 
-    gap: 12px;
-    padding: 16px 20px; /* Увеличили отступы (сделали шире) */
-    border-bottom: 1px solid var(--border-color); 
-    transition: background 0.2s ease;
-}
-
-.lang-row:last-child {
-    border-bottom: none;
-}
-
-/* Эффект "Зебры" (чередование цветов) */
-.lang-row:nth-child(even) {
-    background: rgba(0, 0, 0, 0.15);
-}
-
-.lang-row:hover {
-    background: rgba(210, 168, 80, 0.08);
-}
-
-.lang-name { 
-    font-weight: 700; 
-    font-size: 1.05rem; /* Увеличили шрифт языка */
-    color: var(--text-main); 
-    word-break: break-word; 
-    flex: 1 1 auto;
-}
-
-.lang-flags { 
-    display: flex; 
-    flex-wrap: wrap;
-    gap: 20px; /* Увеличили расстояние между флагами */
-    flex: 0 0 auto;
-}
-
-.lang-flag { 
-    display: flex; 
-    align-items: center; 
-    gap: 6px; 
-    font-size: 0.8rem; /* Увеличили шрифт иконок */
-    color: var(--text-muted); 
-    font-weight: 700; 
-    text-transform: uppercase;
-}
-
-.lang-flag svg { 
-    width: 18px; /* Сделали галочки больше */
-    height: 18px; 
-    color: var(--accent-color); 
-}
-
 /* --- ГЛАВЫ --- */
 .chapters-list { display: flex; flex-direction: column; gap: 1rem; }
 .chapter-card { background: var(--bg-body); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-color); border-radius: 8px; padding: 1rem 1.25rem; }
@@ -41124,149 +41503,34 @@ FILE: pages\project\widgets.css
 .trivia-list li::before { content: "✦"; color: var(--accent-color); position: absolute; left: 0; top: 1px; font-size: 1.1rem; }
 
 /* --- РЕЦЕНЗИИ И ОТЗЫВЫ (REVIEWS) --- */
-.reviews-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
+.reviews-container { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
 .review-card {
-    background: rgba(255, 255, 255, 0.02);
-    border-left: 3px solid var(--accent-color);
-    border-top: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    padding: 1.25rem 1.5rem;
-    border-radius: 0 12px 12px 0;
-    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--accent-color);
+    border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; transition: all 0.2s ease;
 }
-
-.review-card:hover {
-    background: rgba(210, 168, 80, 0.05);
-    transform: translateX(4px);
-    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.1);
-}
-
-.review-text {
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--text-main);
-    opacity: 0.9;
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-}
-
+.review-card:hover { background: rgba(210, 168, 80, 0.05); transform: translateX(4px); box-shadow: 0 4px 15px rgba(210, 168, 80, 0.1); }
+.review-text { font-size: 1.1rem; font-style: italic; color: var(--text-main); opacity: 0.9; line-height: 1.6; margin-bottom: 0.75rem; }
 .review-text::before { content: "«"; color: var(--accent-color); font-weight: bold; }
 .review-text::after { content: "»"; color: var(--accent-color); font-weight: bold; }
 
-.review-author {
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.review-author::before {
-    content: '';
-    display: block;
-    width: 12px;
-    height: 2px;
-    background: var(--accent-color);
-}
+.review-author { font-size: 0.85rem; font-weight: 800; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 6px; }
+.review-author::before { content: ''; display: block; width: 12px; height: 2px; background: var(--accent-color); }
 
 @media (max-width: 900px) {
     .achievements-grid { grid-template-columns: 1fr; }
 }
 
 ============================================================
-FILE: pages\project\WikiBlockRenderer.js
+FILE: pages\project\renderers\GameplayRenderer.js
 ============================================================
 
-import { Icons } from '../../shared/js/icons.js';
+import { Icons } from '../../../shared/js/icons.js';
+import { RenderUtils } from './RenderUtils.js';
 
-export class WikiBlockRenderer {
-    static isValid(val) {
-        return val && val !== '...' && (Array.isArray(val) ? val.length > 0 : true);
-    }
-
-    static renderBlock(blockId, data, projectId, teamsData) {
-        switch (blockId) {
-            case 'description': return this.renderText(data.description);
-            case 'reviews': return this.renderReviews(data.reviews);
-            case 'gallery': return `<div id="project-screenshots"></div>`; 
-            
-            case 'tags': return this.renderTags(data.tags);
-            case 'languages': return this.renderLanguages(data.languages);
-            case 'specs': return this.renderSpecs(data.specs);
-            case 'translators': return this.renderTranslators(teamsData, data.type, projectId);
-            
-            case 'chapters': return this.renderChapters(data.wiki?.chapters);
-            case 'story': return this.renderText(data.wiki?.story);
-            case 'characters': return `<div class="bento-box"><h3>Персонажи</h3><ul id="wiki-characters-list" class="character-list"></ul></div>`; 
-            
-            case 'mechanics': return this.renderList(data.wiki?.gameplay, 'gameplay-list');
-            case 'controls': return this.renderControls(data.wiki?.controls);
-            case 'achievements': return this.renderAchievements(data.achievements);
-            
-            case 'development': return this.renderTimeline(data.wiki?.development);
-            case 'trivia': return this.renderList(data.wiki?.trivia, 'trivia-list');
-            
-            default: return null;
-        }
-    }
-
-    static renderText(text) {
-        if (!this.isValid(text)) return null;
-        return `<div class="bento-box"><p class="project-desc">${text}</p></div>`;
-    }
-
-    static renderReviews(reviews) {
-        if (!this.isValid(reviews)) return null; 
-        return `<div class="reviews-container">
-            ${reviews.map(rev => `
-                <div class="review-card">
-                    <div class="review-text">${rev.text}</div>
-                    <div class="review-author">${rev.author}</div>
-                </div>
-            `).join('')}
-        </div>`;
-    }
-
-    static renderList(items, className) {
-        if (!this.isValid(items)) return null; 
-        return `<div class="bento-box"><ul class="${className}">${items.map(i => `<li>${i}</li>`).join('')}</ul></div>`;
-    }
-
-    static renderTimeline(events) {
-        if (!this.isValid(events) || events[0]?.text === '...') return null;
-        return `<div class="bento-box large"><div class="timeline-container">
-            ${events.map(stage => `
-                <div class="timeline-item">
-                    <h3>${stage.title}</h3>
-                    <p>${stage.text}</p>
-                </div>
-            `).join('')}
-        </div></div>`;
-    }
-
-    static renderChapters(chapters) {
-        if (!this.isValid(chapters)) return null; 
-        return `<div class="bento-box"><div class="chapters-list">
-            ${chapters.map(c => `
-                <div class="chapter-card">
-                    <div class="chapter-title">${c.title}</div>
-                    <div class="chapter-desc">${c.description}</div>
-                </div>
-            `).join('')}
-        </div></div>`;
-    }
-
+export class GameplayRenderer {
     static renderAchievements(achievements) {
-        if (!this.isValid(achievements)) return null;
+        if (!RenderUtils.isValid(achievements)) return null;
         return `<div class="bento-box"><div class="achievements-grid">
             ${achievements.map(ach => `
                 <div class="achievement-card">
@@ -41282,79 +41546,8 @@ export class WikiBlockRenderer {
         </div></div>`;
     }
 
-    static renderLanguages(languages) {
-        if (!this.isValid(languages)) return null; 
-        
-        // Убрана обертка с margin-bottom и заголовок <h3>
-        return `
-        <div class="languages-list">
-            ${languages.map(l => `
-                <div class="lang-row">
-                    <span class="lang-name">${l.lang}</span>
-                    <div class="lang-flags">
-                        ${l.interface ? `<div class="lang-flag" title="Интерфейс">${Icons.check} INT</div>` : ''}
-                        ${l.audio ? `<div class="lang-flag" title="Озвучка">${Icons.check} AUD</div>` : ''}
-                        ${l.subtitles ? `<div class="lang-flag" title="Субтитры">${Icons.check} SUB</div>` : ''}
-                    </div>
-                </div>
-            `).join('')}
-        </div>`;
-    }
-
-    static renderTags(tags) {
-        if (!this.isValid(tags)) return null;
-        return `<div class="bento-box"><div class="tags-cloud">
-            ${tags.slice(0, 15).map(tag => `<span class="game-tag">${tag}</span>`).join('')}
-        </div></div>`;
-    }
-
-    static renderSpecs(specsArray) {
-        if (!this.isValid(specsArray) || !Array.isArray(specsArray)) return null;
-        
-        const randomId = Math.random().toString(36).substring(2, 9);
-        let navHtml = `<div class="inner-tabs-wrapper"><div class="inner-tabs-nav">`;
-        let contentHtml = '';
-
-        specsArray.forEach((spec, index) => {
-            const isActive = index === 0 ? 'active' : '';
-            const tabId = `spec-tab-${randomId}-${index}`;
-            
-            navHtml += `<button class="inner-tab-btn ${isActive}" data-target="${tabId}">${spec.os}</button>`;
-            
-            const parseReqs = (list, label) => {
-                if (!this.isValid(list)) return '';
-                return `
-                    <div style="flex: 1; min-width: 180px;">
-                        <span class="req-block-title">${label}</span>
-                        <ul class="req-list">
-                            ${list.map(p => {
-                                const colon = p.indexOf(':');
-                                if (colon !== -1 && colon < 25) {
-                                    return `<li><span class="req-label">${p.substring(0, colon + 1)}</span>${p.substring(colon + 1).trim()}</li>`;
-                                }
-                                return `<li>${p}</li>`;
-                            }).join('')}
-                        </ul>
-                    </div>
-                `;
-            };
-
-            contentHtml += `
-                <div id="${tabId}" class="inner-tab-content ${isActive}">
-                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                        ${parseReqs(spec.minimum, 'Минимальные')}
-                        ${parseReqs(spec.recommended, 'Рекомендованные')}
-                    </div>
-                </div>
-            `;
-        });
-
-        navHtml += `</div></div>`;
-        return `<div class="bento-box">${navHtml}${contentHtml}</div>`;
-    }
-
     static renderControls(controlsArray) {
-        if (!this.isValid(controlsArray) || !Array.isArray(controlsArray)) return null;
+        if (!RenderUtils.isValid(controlsArray) || !Array.isArray(controlsArray)) return null;
         
         const randomId = Math.random().toString(36).substring(2, 9);
         let navHtml = `<div class="inner-tabs-wrapper"><div class="inner-tabs-nav">`;
@@ -41401,6 +41594,161 @@ export class WikiBlockRenderer {
         navHtml += `</div></div>`;
         return `<div class="bento-box"><h3>Управление</h3>${navHtml}${contentHtml}</div>`;
     }
+}
+
+============================================================
+FILE: pages\project\renderers\LoreRenderer.js
+============================================================
+
+import { Icons } from '../../../shared/js/icons.js';
+import { RenderUtils } from './RenderUtils.js';
+
+export class LoreRenderer {
+    static renderChapters(chapters) {
+        if (!RenderUtils.isValid(chapters)) return null; 
+        return `<div class="bento-box"><div class="chapters-list">
+            ${chapters.map(c => `
+                <div class="chapter-card">
+                    <div class="chapter-title">${c.title}</div>
+                    <div class="chapter-desc">${c.description}</div>
+                </div>
+            `).join('')}
+        </div></div>`;
+    }
+
+    static renderRecords(records) {
+        if (!records || records.length === 0) return null;
+
+        return `<div class="bento-box">
+            <h3>Записи Архива</h3>
+            <div class="wiki-records-grid">
+            ${records.map((record, index) => {
+                const isAudio = record.categoryId?.includes('audio') || record.categoryId?.includes('radio');
+                const iconHtml = isAudio ? Icons.archive_audio : Icons.archive_notes;
+
+                return `
+                <div class="wiki-record-card" data-index="${index}">
+                    <div class="crc-icon">${iconHtml || Icons.stat_book}</div>
+                    <div class="crc-info">
+                        <h4 class="crc-title">${record.title}</h4>
+                        <p class="crc-preview">${record.text}</p>
+                    </div>
+                </div>`;
+            }).join('')}
+            </div>
+        </div>`;
+    }
+}
+
+============================================================
+FILE: pages\project\renderers\MetaRenderer.js
+============================================================
+
+import { Icons } from '../../../shared/js/icons.js';
+import { RenderUtils } from './RenderUtils.js';
+
+export class MetaRenderer {
+    static renderTags(tags) {
+        if (!RenderUtils.isValid(tags)) return null;
+
+        const getTagIcon = (tagName) => {
+            const lowerTag = tagName.toLowerCase();
+            if (lowerTag.includes('хоррор') || lowerTag.includes('horror')) {
+                return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M8 20v2h8v-2"></path><path d="M12.5 17l-.5-1-.5 1h1z"></path><path d="M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20"></path></svg>`;
+            }
+            if (lowerTag.includes('первого лица') || lowerTag.includes('first person')) {
+                return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+            }
+            if (lowerTag.includes('головоломка') || lowerTag.includes('puzzle')) {
+                return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 0-.253.902l.331 1.46c.159.703-.097 1.439-.636 1.978l-1.558 1.559c-.54.54-1.275.795-1.978.636l-1.46-.331a.98.98 0 0 0-.902.252l-1.61 1.611c-.471.47-1.088.706-1.705.706-.616 0-1.233-.235-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29l-1.427.323c-.705.158-1.44-.098-1.98-.637l-1.558-1.558c-.539-.54-.795-1.275-.636-1.978l.322-1.428a1.026 1.026 0 0 0-.29-.877l-1.568-1.568c-.94-.94-.94-2.469 0-3.408l1.611-1.611c.264-.264.381-.634.253-.902l-.331-1.46c-.159-.703.097-1.439.636-1.978l1.559-1.559c.54-.539 1.275-.795 1.978-.636l1.46.331c.268.061.543-.01.761-.176L9.61 3.292c.47-.47 1.088-.706 1.705-.706.616 0 1.233.235 1.704.706l1.568 1.568c.23.23.556.338.878.289l1.427-.322c.705-.159 1.44.097 1.98.636l1.558 1.558c.539.54.795 1.275.636 1.978l-.323 1.427z"></path></svg>`;
+            }
+            if (lowerTag.includes('экшен') || lowerTag.includes('action')) {
+                return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`;
+            }
+            if (lowerTag.includes('инди') || lowerTag.includes('indie')) {
+                return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"></path><path d="M11 3 8 9l4 13"></path><path d="M12 15V3"></path></svg>`;
+            }
+            if (lowerTag.includes('атмосфер') || lowerTag.includes('atmospheric')) {
+                return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+            }
+            if (lowerTag.includes('ретро') || lowerTag.includes('retro')) {
+                return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 17 17 22 7 22 7 17"></polyline><line x1="7" y1="7" x2="7" y2="12"></line><line x1="17" y1="7" x2="17" y2="12"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>`;
+            }
+            return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>`;
+        };
+
+        return `<div class="bento-box"><div class="tags-cloud">
+            ${tags.slice(0, 15).map(tag => `
+                <div class="game-tag">
+                    <span class="tag-icon">${getTagIcon(tag)}</span>
+                    <span class="tag-text">${tag}</span>
+                </div>
+            `).join('')}
+        </div></div>`;
+    }
+
+    static renderLanguages(languages) {
+        if (!RenderUtils.isValid(languages)) return null; 
+        
+        return `
+        <div class="languages-list">
+            ${languages.map(l => `
+                <div class="lang-row">
+                    <span class="lang-name">${l.lang}</span>
+                    <div class="lang-flags">
+                        ${l.interface ? `<div class="lang-flag" title="Интерфейс">${Icons.check} INT</div>` : ''}
+                        ${l.audio ? `<div class="lang-flag" title="Озвучка">${Icons.check} AUD</div>` : ''}
+                        ${l.subtitles ? `<div class="lang-flag" title="Субтитры">${Icons.check} SUB</div>` : ''}
+                    </div>
+                </div>
+            `).join('')}
+        </div>`;
+    }
+
+    static renderSpecs(specsArray) {
+        if (!RenderUtils.isValid(specsArray) || !Array.isArray(specsArray)) return null;
+        
+        const randomId = Math.random().toString(36).substring(2, 9);
+        let navHtml = `<div class="inner-tabs-wrapper"><div class="inner-tabs-nav">`;
+        let contentHtml = '';
+
+        specsArray.forEach((spec, index) => {
+            const isActive = index === 0 ? 'active' : '';
+            const tabId = `spec-tab-${randomId}-${index}`;
+            
+            navHtml += `<button class="inner-tab-btn ${isActive}" data-target="${tabId}">${spec.os}</button>`;
+            
+            const parseReqs = (list, label) => {
+                if (!RenderUtils.isValid(list)) return '';
+                return `
+                    <div style="flex: 1; min-width: 180px;">
+                        <span class="req-block-title">${label}</span>
+                        <ul class="req-list">
+                            ${list.map(p => {
+                                const colon = p.indexOf(':');
+                                if (colon !== -1 && colon < 25) {
+                                    return `<li><span class="req-label">${p.substring(0, colon + 1)}</span>${p.substring(colon + 1).trim()}</li>`;
+                                }
+                                return `<li>${p}</li>`;
+                            }).join('')}
+                        </ul>
+                    </div>
+                `;
+            };
+
+            contentHtml += `
+                <div id="${tabId}" class="inner-tab-content ${isActive}">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        ${parseReqs(spec.minimum, 'Минимальные')}
+                        ${parseReqs(spec.recommended, 'Рекомендованные')}
+                    </div>
+                </div>
+            `;
+        });
+
+        navHtml += `</div></div>`;
+        return `<div class="bento-box">${navHtml}${contentHtml}</div>`;
+    }
 
     static renderTranslators(teams, type, projectId) {
         const validTeams = (teams || []).filter(t => t && t !== '...' && t.title !== '...');
@@ -41438,231 +41786,54 @@ export class WikiBlockRenderer {
 }
 
 ============================================================
-FILE: pages\project\WikiView.js
+FILE: pages\project\renderers\MiscRenderer.js
 ============================================================
 
-import { Icons } from '../../shared/js/icons.js';
-import { GalleryRenderer } from './GalleryRenderer.js';
-import { WikiBlockRenderer } from './WikiBlockRenderer.js';
+import { RenderUtils } from './RenderUtils.js';
 
-export class WikiView {
-    constructor(lightboxManager) {
-        this.lightbox = lightboxManager;
-        this.baseAssetPath = 'assets/catalog/';
-        
-        this.els = {
-            tabsContainer: document.getElementById('dynamic-tabs'),
-            sectionsContainer: document.getElementById('dynamic-sections')
-        };
-
-        this.galleryRenderer = null; 
+export class MiscRenderer {
+    static renderReviews(reviews) {
+        if (!RenderUtils.isValid(reviews)) return null; 
+        return `<div class="reviews-container">
+            ${reviews.map(rev => `
+                <div class="review-card">
+                    <div class="review-text">${rev.text}</div>
+                    <div class="review-author">${rev.author}</div>
+                </div>
+            `).join('')}
+        </div>`;
     }
 
-    _getConfig(type) {
-        return [
-            {
-                id: 'overview',
-                label: 'Обзор',
-                // ОСНОВНОЙ РЯД (Справа): Описание, Галерея, Отзывы
-                main: ['description', 'gallery', 'reviews'], 
-                // САЙДБАР (Слева): Теги, Языки, Переводы и Системные требования (specs)
-                sidebar: ['tags', 'languages', 'translators', 'specs'] 
-            },
-            {
-                id: 'lore',
-                label: 'Летопись',
-                main: ['chapters', 'story'],
-                sidebar: ['characters']
-            },
-            {
-                id: 'gameplay',
-                label: 'Геймплей',
-                condition: type === 'game',
-                main: ['mechanics', 'controls', 'achievements'],
-                sidebar: []
-            },
-            {
-                id: 'extras',
-                label: 'Архивы',
-                main: ['development', 'trivia'],
-                sidebar: []
-            }
-        ].filter(tab => tab.condition !== false);
+    static renderTimeline(events) {
+        if (!RenderUtils.isValid(events) || events[0]?.text === '...') return null;
+        return `<div class="bento-box large"><div class="timeline-container">
+            ${events.map(stage => `
+                <div class="timeline-item">
+                    <h3>${stage.title}</h3>
+                    <p>${stage.text}</p>
+                </div>
+            `).join('')}
+        </div></div>`;
+    }
+}
+
+============================================================
+FILE: pages\project\renderers\RenderUtils.js
+============================================================
+
+export class RenderUtils {
+    static isValid(val) {
+        return val && val !== '...' && (Array.isArray(val) ? val.length > 0 : true);
     }
 
-    setupTabs(type) {
-        // Оставлено для обратной совместимости API контроллера
+    static renderText(text) {
+        if (!this.isValid(text)) return null;
+        return `<div class="bento-box"><p class="project-desc">${text}</p></div>`;
     }
 
-    render(data, projectId, teamsData = []) {
-        this.els.tabsContainer.innerHTML = '';
-        this.els.sectionsContainer.innerHTML = '';
-        
-        const type = data.type || 'game';
-        const config = this._getConfig(type);
-        
-        let isFirstTab = true;
-
-        config.forEach(tabDef => {
-            const mainHtml = tabDef.main ? tabDef.main.map(blockId => WikiBlockRenderer.renderBlock(blockId, data, projectId, teamsData)).filter(Boolean).join('') : '';
-            const sidebarHtml = tabDef.sidebar ? tabDef.sidebar.map(blockId => WikiBlockRenderer.renderBlock(blockId, data, projectId, teamsData)).filter(Boolean).join('') : '';
-
-            if (!mainHtml && !sidebarHtml) return;
-
-            const tabBtn = document.createElement('button');
-            tabBtn.className = `wiki-tab ${isFirstTab ? 'active' : ''}`;
-            tabBtn.dataset.target = `tab-${tabDef.id}`;
-            tabBtn.textContent = tabDef.label;
-            this.els.tabsContainer.appendChild(tabBtn);
-
-            const section = document.createElement('section');
-            section.id = `tab-${tabDef.id}`;
-            section.className = `wiki-section ${isFirstTab ? 'active' : ''}`;
-
-            // --- ФОРМИРОВАНИЕ 3-КОЛОНОЧНОГО МАКЕТА ---
-            let gridHtml = `<div class="overview-grid ${sidebarHtml ? 'has-sidebar' : ''}">`;
-            
-            // 1. Левая колонка (Сайдбар)
-            if (sidebarHtml) {
-                gridHtml += `<aside class="overview-sidebar"><div class="sticky-sidebar-wrapper">${sidebarHtml}</div></aside>`;
-            }
-
-            // 2. Центральная колонка (Основной контент)
-            gridHtml += `<div class="overview-main">`;
-            gridHtml += mainHtml || `<div class="empty-state-silent">${Icons.error_404}</div>`;
-            gridHtml += `</div>`;
-
-            // 3. Правая колонка (Просто воздух под панель улик)
-            gridHtml += `<div class="inv-spacer"></div>`;
-
-            gridHtml += `</div>`;
-            section.innerHTML = gridHtml;
-            this.els.sectionsContainer.appendChild(section);
-
-            // Инициализация Галереи
-            if (tabDef.main.includes('gallery') && data.assets) {
-                const galleryContainer = section.querySelector('#project-screenshots');
-                if (galleryContainer) {
-                    this.galleryRenderer = new GalleryRenderer(this.lightbox, this.baseAssetPath, galleryContainer);
-                    this.galleryRenderer.render(data.assets, projectId);
-                }
-            }
-            
-            // Инициализация Внутренних вкладок (Требования, Управление)
-            this._initInnerTabs(section);
-
-            isFirstTab = false;
-        });
-
-        // Переключение вкладок
-        const tabs = this.els.tabsContainer.querySelectorAll('.wiki-tab');
-        const sections = this.els.sectionsContainer.querySelectorAll('.wiki-section');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                sections.forEach(s => s.classList.remove('active'));
-                
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.target).classList.add('active');
-            });
-        });
-    }
-
-    _initInnerTabs(container) {
-        const navs = container.querySelectorAll('.inner-tabs-nav');
-        navs.forEach(nav => {
-            const wrapper = nav.closest('.bento-box');
-            const btns = nav.querySelectorAll('.inner-tab-btn');
-            const contents = wrapper.querySelectorAll('.inner-tab-content');
-            
-            btns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    btns.forEach(b => b.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
-                    
-                    btn.classList.add('active');
-                    wrapper.querySelector(`#${btn.dataset.target}`).classList.add('active');
-                });
-            });
-
-            // --- УМНАЯ ЛОГИКА DRAG & DROP С ТРЕКИНГОМ СКРОЛЛА ---
-            let isDown = false;
-            let isDragged = false; // Флаг: было ли реальное движение
-            let startX;
-            let scrollLeft;
-
-            nav.addEventListener('mousedown', (e) => {
-                isDown = true;
-                isDragged = false; // Сбрасываем флаг при новом клике
-                startX = e.pageX - nav.offsetLeft;
-                scrollLeft = nav.scrollLeft;
-            });
-            
-            const stopDrag = () => {
-                isDown = false;
-                nav.classList.remove('is-dragging');
-            };
-
-            nav.addEventListener('mouseleave', stopDrag);
-            nav.addEventListener('mouseup', stopDrag);
-
-            nav.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - nav.offsetLeft;
-                const walk = (x - startX) * 1.5; 
-                
-                // Считаем перетаскиванием, только если сдвинули больше чем на 3px
-                if (Math.abs(walk) > 3) {
-                    isDragged = true;
-                    nav.classList.add('is-dragging');
-                }
-                nav.scrollLeft = scrollLeft - walk;
-            });
-
-            // Прокрутка колесиком мыши
-            nav.addEventListener('wheel', (e) => {
-                e.preventDefault();
-                nav.scrollLeft += e.deltaY;
-            });
-            
-            // Блокируем клик ПО КНОПКАМ только если пользователь реально сделал свайп
-            nav.addEventListener('click', (e) => {
-                if (isDragged) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            }, { capture: true });
-        });
-    }
-
-    showCharLoader() {
-        const list = document.getElementById('wiki-characters-list');
-        if (list) list.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
-    }
-
-    renderCharacters(charactersData, requestedIds) {
-        const list = document.getElementById('wiki-characters-list');
-        if (!list) return;
-        
-        list.innerHTML = '';
-        const fallback = Icons.avatar_fallback;
-
-        charactersData.forEach(char => {
-            if (!char || char === '...') return;
-            const avatar = char.assets?.avatar ? `assets/characters/${char.id}/${char.assets.avatar}` : fallback;
-            list.innerHTML += `
-                <a href="character.html?id=${char.id}" class="character-card">
-                    <img src="${avatar}" alt="${char.name}" class="char-avatar" onerror="this.src='${fallback}'">
-                    <span class="char-name">${char.name}</span>
-                    <div class="char-arrow">${Icons.chevron_right}</div>
-                </a>`;
-        });
-
-        if (list.innerHTML === '') {
-            list.parentElement.style.display = 'none';
-        }
+    static renderList(items, className) {
+        if (!this.isValid(items)) return null;
+        return `<div class="bento-box"><ul class="${className}">${items.map(i => `<li>${i}</li>`).join('')}</ul></div>`;
     }
 }
 

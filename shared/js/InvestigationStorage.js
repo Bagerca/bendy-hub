@@ -1,3 +1,5 @@
+// FILE: shared/js/InvestigationStorage.js
+
 export class InvestigationStorage {
     constructor(storageKey = 'bendy_investigation_board') {
         this.storageKey = storageKey;
@@ -7,7 +9,21 @@ export class InvestigationStorage {
     _loadData() {
         try {
             const data = localStorage.getItem(this.storageKey);
-            return data ? JSON.parse(data) : [];
+            let list = data ? JSON.parse(data) : [];
+            
+            // МИГРАЦИЯ БАЗЫ: Удаляем тяжеловесные htmlSnapshot у старых пользователей
+            let isMigrated = false;
+            list = list.map(item => {
+                if (item.htmlSnapshot) {
+                    delete item.htmlSnapshot;
+                    isMigrated = true;
+                }
+                return item;
+            });
+            
+            if (isMigrated) this.saveData(); // Пересохраняем очищенную базу
+
+            return list;
         } catch (e) {
             console.warn('InvestigationStorage error:', e);
             return [];

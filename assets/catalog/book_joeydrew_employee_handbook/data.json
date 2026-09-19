@@ -13,10 +13,17 @@
     "platforms": {
         "...": "..."
     },
-    "specs": {
-        "minimum": "...",
-        "recommended": "..."
-    },
+    "specs": [
+        {
+            "os": "Windows",
+            "minimum": [
+                "..."
+            ],
+            "recommended": [
+                "..."
+            ]
+        }
+    ],
     "assets": {
         "logo": "logo.png",
         "cover": "cover.jpg",

@@ -1,6 +1,6 @@
-import { PostActionsHelper } from '../../shared/js/PostActionsHelper.js';
 import { BoardContextMenu } from './BoardContextMenu.js';
 import { Icons } from '../../shared/js/icons.js';
+import { EvidenceFactory } from '../../shared/js/EvidenceFactory.js';
 
 export class BoardView {
     constructor() {
@@ -129,15 +129,15 @@ export class BoardView {
         this.els.btnZoomReset.textContent = `${percentage}%`;
     }
 
-    createNodeDOM(id, x, y, htmlSnapshot, postData, callbacks) {
+    createNodeDOM(id, x, y, evidence, callbacks) {
         const nodeEl = document.createElement('div');
         
+        // Магия: Получаем готовый DOM со всеми событиями!
+        const cardEl = EvidenceFactory.create(evidence, 'board');
+
         let typeClass = 'is-post';
-        if (htmlSnapshot.includes('card-vertical')) {
-            typeClass = 'is-vertical-card';
-        } else if (htmlSnapshot.includes('card-horizontal')) {
-            typeClass = 'is-horizontal-card';
-        }
+        if (cardEl.classList.contains('card-vertical')) typeClass = 'is-vertical-card';
+        else if (cardEl.classList.contains('card-horizontal')) typeClass = 'is-horizontal-card';
 
         nodeEl.className = `board-node ${typeClass}`;
         nodeEl.dataset.nodeId = id;
@@ -163,10 +163,11 @@ export class BoardView {
                     </button>
                 </div>
             </div>
-            <div class="node-content">
-                ${htmlSnapshot}
-            </div>
+            <div class="node-content"></div>
         `;
+
+        // Вставляем сгенерированную карточку в контейнер
+        nodeEl.querySelector('.node-content').appendChild(cardEl);
 
         const closeBtn = nodeEl.querySelector('.ndh-close');
         closeBtn.addEventListener('click', () => {
@@ -179,57 +180,6 @@ export class BoardView {
         nodeEl.addEventListener('mouseleave', () => {
             if (callbacks.onHoverStateChange) callbacks.onHoverStateChange(id);
         });
-
-        const images = nodeEl.querySelectorAll('.img-media');
-        images.forEach(img => {
-            img.style.cursor = 'zoom-in';
-            img.addEventListener('click', (e) => {
-                e.stopPropagation(); 
-                if (window.globalLightbox) window.globalLightbox.open(img.src);
-            });
-        });
-
-        const quoteCard = nodeEl.querySelector('.quote-card');
-        if (quoteCard && postData && postData.referenceUrl) {
-            quoteCard.style.cursor = 'pointer';
-            quoteCard.addEventListener('click', (e) => {
-                e.stopPropagation();
-                window.open(postData.referenceUrl, '_blank', 'noopener,noreferrer');
-            });
-        }
-
-        const videoThumbs = nodeEl.querySelectorAll('.video-thumb-wrapper');
-        videoThumbs.forEach(wrapper => {
-            wrapper.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const img = wrapper.querySelector('img');
-                if (img && img.src.includes('img.youtube.com/vi/')) {
-                    const match = img.src.match(/vi\/([^\/]+)\//);
-                    if (match && match[1] && window.globalLightbox) {
-                        window.globalLightbox.open(`https://youtu.be/${match[1]}`, true);
-                    }
-                } else if (postData && postData.authorHandle) {
-                    const cleanHandle = postData.authorHandle.replace('@', '');
-                    const cleanId = postData.id.split('#')[0]; 
-                    window.open(`https://twitter.com/${cleanHandle}/status/${cleanId}`, '_blank', 'noopener,noreferrer');
-                }
-            });
-        });
-
-        PostActionsHelper.bindActions(nodeEl, postData);
-        PostActionsHelper.bindSliders(nodeEl);
-
-        if (postData && ['game', 'book', 'movie'].includes(postData.type)) {
-             const catalogCard = nodeEl.querySelector('.card-horizontal, .card-vertical');
-             if (catalogCard) {
-                 catalogCard.style.cursor = 'pointer';
-                 catalogCard.title = 'Открыть информацию о проекте';
-                 catalogCard.addEventListener('click', (e) => {
-                     e.stopPropagation();
-                     window.open(`?page=project&id=${postData.id}`, '_blank');
-                 });
-             }
-        }
 
         this.els.nodesContainer.appendChild(nodeEl);
     }
@@ -257,7 +207,6 @@ export class BoardView {
                 let html = '';
                 sideEdges.forEach(e => {
                     const color = e.color || '#ff4444';
-                    // ПЕРЕДАЕМ ЦВЕТ КАК CSS ПЕРЕМЕННУЮ ДЛЯ ДИНАМИЧЕСКОГО ХОВЕРА
                     html += `<div class="node-pin is-connected" data-side="${side}" data-edge-id="${e.id}" style="--pin-color: ${color};"></div>`;
                 });
                 html += `<div class="node-pin is-empty" data-side="${side}"></div>`;

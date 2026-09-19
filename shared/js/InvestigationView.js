@@ -1,5 +1,5 @@
 import { Icons } from './icons.js';
-import { PostActionsHelper } from './PostActionsHelper.js';
+import { EvidenceFactory } from './EvidenceFactory.js';
 
 export class InvestigationView {
     constructor(controller) {
@@ -223,23 +223,10 @@ export class InvestigationView {
         deleteBtn.addEventListener('click', () => this.controller.removeEvidence(evidence.type, evidence.id));
         wrapper.appendChild(deleteBtn);
 
-        if (evidence.type === 'post' || evidence.type === 'catalog') {
-            const temp = document.createElement('div');
-            temp.innerHTML = evidence.htmlSnapshot || '<article class="post-card"><p>Данные устарели.</p></article>';
-            
-            const card = temp.firstElementChild; 
-            if (card) {
-                card.classList.remove('is-collected', 'is-removing', 'is-hovered-by-inv-cursor');
-                
-                if (evidence.type === 'post') {
-                    card.classList.add('inv-mini-post'); 
-                    PostActionsHelper.bindActions(card, evidence.data);
-                    PostActionsHelper.bindSliders(card);
-                } else {
-                    card.classList.add('inv-mini-catalog');
-                }
-                wrapper.appendChild(card);
-            }
+        // ВОТ ОНО: Вся магия генерации DOM теперь спрятана в Фабрике!
+        const cardEl = EvidenceFactory.create(evidence, 'sidebar');
+        if (cardEl) {
+            wrapper.appendChild(cardEl);
         }
 
         return wrapper;

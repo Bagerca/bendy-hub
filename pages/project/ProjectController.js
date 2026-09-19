@@ -1,3 +1,5 @@
+// FILE: pages/project/ProjectController.js
+
 export class ProjectController {
     constructor(model, heroView, wikiView) {
         this.model = model;
@@ -15,39 +17,21 @@ export class ProjectController {
         }
 
         try {
-            const data = await this.model.fetchProject(projectId);
+            const { projectData, dependencies } = await this.model.fetchProjectWithDependencies(projectId);
             
-            this.wikiView.setupTabs(data.type || 'game');
-            this.heroView.render(data, projectId);
-            
-            let teamsData = [];
-            if (data.russifiers && data.russifiers.length > 0) {
-                if (typeof data.russifiers[0] === 'string') {
-                    teamsData = await this.model.fetchTranslators(data.russifiers);
-                } else {
-                    teamsData = data.russifiers;
-                }
-            }
-
-            // НОВАЯ ЛОГИКА: Подгружаем записи (Records), если они прописаны в data.json
-            let recordsData = [];
-            if (data.wiki?.records?.length > 0) {
-                recordsData = await this.model.fetchRecords(data.wiki.records);
-            }
-
-            // Передаем recordsData в рендерер
-            this.wikiView.render(data, projectId, teamsData, recordsData);
+            this.heroView.render(projectData, projectId);
+            this.wikiView.render(projectData, projectId, dependencies);
             
             this.loader.style.display = 'none';
             this.content.style.display = 'block';
 
-            if (data.wiki?.characters?.length > 0) {
-                this.wikiView.showCharLoader();
-                const chars = await this.model.fetchCharacters(data.wiki.characters);
-                this.wikiView.renderCharacters(chars, data.wiki.characters);
+            if (dependencies.characters && dependencies.characters.length > 0) {
+                this.wikiView.renderCharacters(dependencies.characters);
             }
 
         } catch (error) {
+            // ВЫВОДИМ ОШИБКУ В КОНСОЛЬ, чтобы знать, что сломалось
+            console.error('[ProjectController] Фатальная ошибка рендера:', error);
             this.showError('Информация о данном проекте отсутствует в архивах или файл поврежден.');
         }
     }
@@ -55,6 +39,11 @@ export class ProjectController {
     showError(msg) {
         this.loader.style.display = 'none';
         this.content.style.display = 'block';
-        this.content.innerHTML = `<div class="error-card" style="margin: 4rem auto; max-width: 600px;"><p>${msg}</p><a href="catalog.html" style="color:var(--accent-color);">Вернуться в каталог</a></div>`;
+        // Улучшили верстку карточки ошибки, чтобы текст и кнопка стояли вертикально
+        this.content.innerHTML = `
+            <div class="error-card" style="margin: 4rem auto; max-width: 600px; flex-direction: column; text-align: center;">
+                <p>${msg}</p>
+                <a href="catalog.html" style="color:var(--bg-body); background:var(--accent-color); padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 700; margin-top: 10px; transition: 0.2s;">Вернуться в каталог</a>
+            </div>`;
     }
 }

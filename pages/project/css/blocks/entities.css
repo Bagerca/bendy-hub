@@ -1,0 +1,123 @@
+/* =========================================
+   ENTITIES.CSS
+   Карточки переводчиков, языков и персонажей
+   ========================================= */
+
+/* --- КАРТОЧКИ ПЕРЕВОДЧИКОВ И КОМАНД --- */
+.translators-list { display: flex; flex-direction: column; gap: 12px; }
+
+.rus-card {
+    display: flex; align-items: center; gap: 14px; background: var(--bg-body); 
+    border: 1px solid var(--border-color); padding: 12px 16px; border-radius: 12px; 
+    text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rus-card:hover { 
+    border-color: var(--accent-color); background: var(--bg-card); 
+    transform: translateY(-4px); box-shadow: 0 8px 25px rgba(210, 168, 80, 0.12); 
+}
+
+.rus-avatar { 
+    width: 50px; height: 50px; border-radius: 10px; object-fit: cover; 
+    background: var(--bg-card); border: 2px solid var(--border-color); flex-shrink: 0; transition: border-color 0.3s ease;
+}
+
+.rus-card:hover .rus-avatar { border-color: var(--accent-color); }
+.rus-info { display: flex; flex-direction: column; gap: 6px; flex-grow: 1; overflow: hidden; }
+
+.rus-title { 
+    font-weight: 800; color: var(--text-main); font-size: 1.05rem; 
+    line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
+}
+
+.rus-badge-wrapper { display: flex; }
+
+.rus-badge { 
+    display: inline-block; background: rgba(255, 255, 255, 0.05); padding: 2px 8px;
+    border-radius: 6px; font-size: 0.75rem; color: var(--text-muted); font-weight: 700; 
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background 0.3s ease, color 0.3s ease;
+}
+
+.rus-card:hover .rus-badge { background: rgba(210, 168, 80, 0.1); color: var(--accent-color); }
+
+.rus-action-btn { 
+    width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color); color: var(--text-muted); transition: all 0.3s ease; 
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center; 
+}
+
+.rus-action-btn svg { width: 18px; height: 18px; display: block; }
+
+.rus-card:hover .rus-action-btn { 
+    background: var(--accent-color); border-color: var(--accent-color); color: #000; transform: rotate(45deg); 
+}
+
+
+/* --- КАРТОЧКИ ПЕРСОНАЖЕЙ В САЙДБАРЕ --- */
+.project-chars-list { display: flex; flex-direction: column; gap: 12px; }
+
+.char-card {
+    background-color: var(--bg-body); 
+    border: 1px solid var(--border-color); 
+    border-radius: 12px; 
+    padding: 12px; 
+    display: flex; 
+    align-items: center; 
+    gap: 14px; 
+    text-decoration: none; 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    box-sizing: border-box;
+}
+
+.char-card:hover { 
+    transform: translateX(4px); 
+    border-color: var(--accent-color); 
+    background-color: var(--bg-card); 
+    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.1); 
+}
+
+.char-avatar-wrapper {
+    display: flex; align-items: center; justify-content: center; position: relative; 
+    flex-shrink: 0; width: 48px; height: 48px; z-index: 5; 
+    border-radius: 50%; background-color: var(--bg-body); border: 1px solid var(--border-color); overflow: hidden;
+}
+
+.char-avatar-wrapper .char-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.char-fallback { width: 100%; height: 100%; background-color: var(--bg-body); color: var(--text-muted); opacity: 0.6; display: flex; align-items: center; justify-content: center; }
+
+.char-info-col { display: flex; flex-direction: column; gap: 4px; flex-grow: 1; min-width: 0; z-index: 1; }
+
+.char-card-name { 
+    font-size: 1.05rem; font-weight: 800; color: var(--text-main); line-height: 1.2; 
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;
+}
+
+.char-card-subtitle {
+    font-size: 0.8rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; 
+    overflow: hidden; text-overflow: ellipsis; display: block;
+}
+
+.char-arrow { color: var(--text-muted); transition: 0.2s; display: flex; align-items: center; }
+.char-arrow svg { width: 20px; height: 20px; display: block; } 
+.char-card:hover .char-arrow { color: var(--accent-color); transform: translateX(4px); }
+
+
+/* --- ЯЗЫКИ (ТАБЛИЦА) --- */
+.languages-list { 
+    display: flex; flex-direction: column; border: 1px solid var(--border-color);
+    border-radius: 16px; overflow: hidden; background-color: var(--bg-card); box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+}
+
+.lang-row { 
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    padding: 16px 20px; border-bottom: 1px solid var(--border-color); transition: background 0.2s ease;
+}
+
+.lang-row:last-child { border-bottom: none; }
+.lang-row:nth-child(even) { background: rgba(0, 0, 0, 0.15); }
+.lang-row:hover { background: rgba(210, 168, 80, 0.08); }
+
+.lang-name { font-weight: 700; font-size: 1.05rem; color: var(--text-main); word-break: break-word; flex: 1 1 auto; }
+.lang-flags { display: flex; flex-wrap: wrap; gap: 20px; flex: 0 0 auto; }
+.lang-flag { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
+.lang-flag svg { width: 18px; height: 18px; color: var(--accent-color); }

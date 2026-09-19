@@ -1,6 +1,9 @@
+// FILE: pages/project/WikiView.js
+
 import { Icons } from '../../shared/js/icons.js';
-import { GalleryRenderer } from './GalleryRenderer.js';
+import { GalleryRenderer } from './renderers/GalleryRenderer.js';
 import { WikiBlockRenderer } from './WikiBlockRenderer.js';
+import { ProjectConfig } from './ProjectConfig.js';
 
 export class WikiView {
     constructor(lightboxManager) {
@@ -18,7 +21,7 @@ export class WikiView {
         };
 
         this.galleryRenderer = null; 
-        this.currentRecords = []; // Храним записи для модалки
+        this.currentRecords = []; 
         
         this.fallbackHtml = `<img src="${Icons.avatar_fallback}" alt="Нет фото" class="char-fallback" style="width: 100%; height: 100%; object-fit: cover; background: var(--bg-body); padding: 6px;">`;
         
@@ -71,53 +74,31 @@ export class WikiView {
         requestAnimationFrame(() => this.els.recordModal.classList.add('active'));
     }
 
-    _getConfig(type) {
-        return [
-            {
-                id: 'overview',
-                label: 'Обзор',
-                main: ['description', 'gallery', 'reviews'], 
-                sidebar: ['tags', 'languages', 'translators', 'specs'] 
-            },
-            {
-                id: 'lore',
-                label: 'Летопись',
-                main: ['chapters', 'story'],
-                sidebar: ['characters']
-            },
-            {
-                id: 'gameplay',
-                label: 'Геймплей',
-                condition: type === 'game',
-                main: ['mechanics', 'controls', 'achievements'],
-                sidebar: []
-            },
-            {
-                id: 'extras',
-                label: 'Архивы',
-                // ДОБАВЛЕНО: Блок records
-                main: ['development', 'trivia', 'records'],
-                sidebar: []
-            }
-        ].filter(tab => tab.condition !== false);
+    setupTabs(type) {
+        // Заглушка, так как генерация вкладок теперь динамическая в методе render
     }
 
-    setupTabs(type) {}
-
-    render(data, projectId, teamsData = [], recordsData = []) {
+    render(data, projectId, dependencies = {}) {
         this.els.tabsContainer.innerHTML = '';
         this.els.sectionsContainer.innerHTML = '';
-        this.currentRecords = recordsData;
+        this.currentRecords = dependencies.records || [];
         
         const type = data.type || 'game';
-        const config = this._getConfig(type);
         
+        // Получаем конфигурацию макета из ProjectConfig
+        const config = ProjectConfig.getLayout(type);
         let isFirstTab = true;
 
         config.forEach(tabDef => {
-            const mainHtml = tabDef.main ? tabDef.main.map(blockId => WikiBlockRenderer.renderBlock(blockId, data, projectId, teamsData, recordsData)).filter(Boolean).join('') : '';
-            const sidebarHtml = tabDef.sidebar ? tabDef.sidebar.map(blockId => WikiBlockRenderer.renderBlock(blockId, data, projectId, teamsData, recordsData)).filter(Boolean).join('') : '';
+            const mainHtml = tabDef.main ? tabDef.main.map(blockId => 
+                WikiBlockRenderer.renderBlock(blockId, data, projectId, dependencies.teams, dependencies.records)
+            ).filter(Boolean).join('') : '';
+            
+            const sidebarHtml = tabDef.sidebar ? tabDef.sidebar.map(blockId => 
+                WikiBlockRenderer.renderBlock(blockId, data, projectId, dependencies.teams, dependencies.records)
+            ).filter(Boolean).join('') : '';
 
+            // Если оба блока пусты (например, данных нет), вообще не создаем эту вкладку
             if (!mainHtml && !sidebarHtml) return;
 
             const tabBtn = document.createElement('button');
@@ -137,12 +118,13 @@ export class WikiView {
             }
 
             gridHtml += `<div class="overview-main">`;
-            gridHtml += mainHtml || `<div class="empty-state-silent">${Icons.error_404}</div>`;
+            gridHtml += mainHtml;
             gridHtml += `</div><div class="inv-spacer"></div></div>`;
             
             section.innerHTML = gridHtml;
             this.els.sectionsContainer.appendChild(section);
 
+            // Инициализация галереи (передаем только если блок gallery был отрендерен)
             if (tabDef.main.includes('gallery') && data.assets) {
                 const galleryContainer = section.querySelector('#project-screenshots');
                 if (galleryContainer) {
@@ -153,7 +135,7 @@ export class WikiView {
             
             this._initInnerTabs(section);
 
-            isFirstTab = false;
+            isFirstTab = false; // Первая УСПЕШНО созданная вкладка становится активной
         });
 
         // Делегирование событий клика для записей
@@ -225,7 +207,7 @@ export class WikiView {
         if (list) list.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
     }
 
-    renderCharacters(charactersData, requestedIds) {
+    renderCharacters(charactersData) {
         const list = document.getElementById('wiki-characters-list');
         if (!list) return;
         

@@ -1,67 +1,72 @@
+// FILE: pages/project/ProjectModel.js
+
 import { fetchData } from '../../shared/js/api.js';
 import { Logger } from '../../shared/js/Logger.js';
+import { ProjectConfig } from './ProjectConfig.js';
 
 export class ProjectModel {
     constructor() {
         this.project = null;
     }
 
-    async fetchProject(id) {
+    async fetchProjectWithDependencies(id) {
         try {
+            // 1. Грузим ядро проекта
             this.project = await fetchData(`assets/catalog/${id}/data.json`);
-            return this.project;
+            
+            const dependencies = {
+                characters: [],
+                teams: [],
+                records: []
+            };
+
+            const fetchTasks = [];
+
+            // Загрузка команд-переводчиков (оставляем старый подход, их мало)
+            if (ProjectConfig.dependencies.includes('translators') && this.project.russifiers?.length > 0) {
+                if (typeof this.project.russifiers[0] === 'string') {
+                    fetchTasks.push(this._fetchTranslators(this.project.russifiers).then(res => dependencies.teams = res));
+                } else {
+                    dependencies.teams = this.project.russifiers; 
+                }
+            }
+
+            // ОПТИМИЗАЦИЯ: Грузим глобальный индекс ВСЕХ записей 1 раз и просто фильтруем
+            if (ProjectConfig.dependencies.includes('records') && this.project.wiki?.records?.length > 0) {
+                fetchTasks.push(
+                    fetchData('data/records_list.json').then(allRecords => {
+                        dependencies.records = allRecords.filter(record => this.project.wiki.records.includes(record.categoryId));
+                    }).catch(err => Logger.error('Ошибка подгрузки записей из индекса', err))
+                );
+            }
+
+            // ОПТИМИЗАЦИЯ: Грузим глобальный индекс ВСЕХ персонажей 1 раз и фильтруем
+            if (ProjectConfig.dependencies.includes('characters') && this.project.wiki?.characters?.length > 0) {
+                fetchTasks.push(
+                    fetchData('data/characters_list.json').then(allChars => {
+                        dependencies.characters = allChars.filter(char => this.project.wiki.characters.includes(char.id));
+                    }).catch(err => Logger.error('Ошибка подгрузки персонажей из индекса', err))
+                );
+            }
+
+            // Ждем завершения всех загрузок параллельно
+            await Promise.all(fetchTasks);
+
+            return { projectData: this.project, dependencies };
+
         } catch (error) {
-            Logger.error(`Ошибка загрузки проекта ${id}`, error);
+            Logger.error(`Ошибка загрузки проекта ${id} или его зависимостей`, error);
             throw error;
         }
     }
 
-    async fetchCharacters(charIds) {
-        if (!charIds || charIds.length === 0) return [];
-        try {
-            const promises = charIds.map(charId => 
-                fetchData(`assets/characters/${charId}/data.json`).catch(() => null)
-            );
-            return await Promise.all(promises);
-        } catch (error) {
-            Logger.error('Ошибка загрузки персонажей', error);
-            return [];
-        }
-    }
-
-    async fetchTranslators(teamIds) {
-        if (!teamIds || teamIds.length === 0) return [];
+    async _fetchTranslators(teamIds) {
         try {
             const promises = teamIds.map(teamId => 
                 fetchData(`assets/teams/${teamId}/data.json`).catch(() => null)
             );
             return await Promise.all(promises);
         } catch (error) {
-            Logger.error('Ошибка загрузки команд', error);
-            return [];
-        }
-    }
-
-    // НОВЫЙ МЕТОД: Подгрузка записей лора
-    async fetchRecords(categoryIds) {
-        if (!categoryIds || categoryIds.length === 0) return [];
-        try {
-            const promises = categoryIds.map(catId =>
-                fetchData(`assets/records/${catId}/data.json`).catch(() => null)
-            );
-            const categories = await Promise.all(promises);
-            
-            let allRecords = [];
-            categories.forEach(cat => {
-                if (cat && cat.items) {
-                    // Инжектим ID категории, чтобы знать откуда картинка/аудио
-                    cat.items.forEach(item => item.categoryId = cat.id);
-                    allRecords.push(...cat.items);
-                }
-            });
-            return allRecords;
-        } catch (error) {
-            Logger.error('Ошибка загрузки записей', error);
             return [];
         }
     }

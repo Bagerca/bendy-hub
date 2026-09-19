@@ -67,11 +67,9 @@ export class BoardController {
                     
                     this.view.showEdgeContextMenu(edgeId, clientX, clientY, edgeData, {
                         onDelete: (id) => this._removeEdgeById(id),
-                        // Универсальный обработчик обновлений слияния свойств
                         onChangeEdge: (id, updates) => {
                             const updated = this.model.updateEdge(id, updates);
                             this.edgeService.updateEdgeStyle(updated);
-                            // Если поменялся цвет, обновляем свечение пинов
                             if (updates.color) {
                                 this.view.updateNodePins(updated.from, this.model.getEdges());
                                 this.view.updateNodePins(updated.to, this.model.getEdges());
@@ -157,8 +155,9 @@ export class BoardController {
 
         nodes.forEach(node => {
             const evidence = inventory.find(e => e.id === node.id);
-            if (evidence && evidence.htmlSnapshot) {
-                this.view.createNodeDOM(node.id, node.x, node.y, evidence.htmlSnapshot, evidence.data, {
+            if (evidence) {
+                // Передаем объект evidence целиком
+                this.view.createNodeDOM(node.id, node.x, node.y, evidence, {
                     onCloseClick: (id) => this._removeNodeById(id),
                     onHoverStateChange: (id) => this._animateEdgeRedraw(id)
                 });
@@ -204,7 +203,8 @@ export class BoardController {
 
                 this.model.addOrUpdateNode(evidenceId, worldX, worldY);
 
-                this.view.createNodeDOM(evidenceId, worldX, worldY, inventoryItem.htmlSnapshot, inventoryItem.data, {
+                // Передаем объект evidence целиком
+                this.view.createNodeDOM(evidenceId, worldX, worldY, inventoryItem, {
                     onCloseClick: (id) => this._removeNodeById(id),
                     onHoverStateChange: (id) => this._animateEdgeRedraw(id)
                 });

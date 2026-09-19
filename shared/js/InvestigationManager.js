@@ -1,3 +1,5 @@
+// FILE: shared/js/InvestigationManager.js
+
 import { InvestigationStorage } from './InvestigationStorage.js';
 import { InvestigationView } from './InvestigationView.js';
 
@@ -24,28 +26,16 @@ export class InvestigationManager {
         this.view.close();
     }
 
-    _createCleanSnapshot(rawDomElement) {
-        if (!rawDomElement) return null;
-        const snapClone = rawDomElement.cloneNode(true);
-        
-        // 1. Удаляем оверлей
-        const overlays = snapClone.querySelectorAll('.investigation-overlay');
-        overlays.forEach(el => el.remove());
-        
-        // 2. ИСПРАВЛЕНИЕ: Удаляем любые временные классы состояний, чтобы они не попали в БД
-        snapClone.classList.remove('is-collected', 'is-removing');
-        
-        return snapClone.outerHTML;
-    }
-
+    // rawDomElement нам больше не нужен, но оставляем в сигнатуре 
+    // для обратной совместимости с вызовами из Feed/Catalog.
     addEvidence(type, id, data, rawDomElement = null) {
         if (this.storage.exists(type, id)) {
             this.view.shakeExistingItem(id);
             return;
         }
 
-        const htmlSnapshot = this._createCleanSnapshot(rawDomElement);
-        const newEvidence = { type, id, data, htmlSnapshot, timestamp: Date.now() };
+        // Сохраняем ТОЛЬКО чистые JSON-метаданные!
+        const newEvidence = { type, id, data, timestamp: Date.now() };
 
         this.storage.add(newEvidence);
         this.view.removeEmptyState();
