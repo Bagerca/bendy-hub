@@ -1,26 +1,42 @@
-// FILE: pages/project/renderers/GameplayRenderer.js
-
 import { Icons } from '../../../shared/js/icons.js';
 import { RenderUtils } from './RenderUtils.js';
 
 export class GameplayRenderer {
-    static renderAchievements(achievements) {
+    
+    // ИСПРАВЛЕНИЕ: Принимаем projectId и генерируем правильный локальный путь
+    static renderAchievements(achievements, projectId) {
         if (RenderUtils.isEmpty(achievements)) return null;
         if (RenderUtils.isPlaceholder(achievements)) return RenderUtils.renderPlaceholder('Достижения');
         
-        return `<div class="bento-box"><div class="achievements-grid">
-            ${achievements.map(ach => `
-                <div class="achievement-card">
-                    <div class="ach-icon">
-                        ${ach.icon && ach.icon !== '...' ? `<img src="assets/achievements/${ach.icon}" alt="Ach" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">` : Icons.stat_gamepad}
+        // Группируем по category
+        const groups = {};
+        achievements.forEach(ach => {
+            const cat = ach.category || 'Прочее';
+            if (!groups[cat]) groups[cat] = [];
+            groups[cat].push(ach);
+        });
+
+        let html = '';
+        Object.keys(groups).forEach(category => {
+            html += `
+                <h4 class="ach-category-title">${category}</h4>
+                <div class="achievements-grid">
+                ${groups[category].map(ach => `
+                    <div class="achievement-card">
+                        <div class="ach-icon">
+                            ${ach.icon && ach.icon !== '...' ? `<img src="assets/catalog/${projectId}/${ach.icon}" alt="Ach" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">` : Icons.stat_gamepad}
+                        </div>
+                        <div class="ach-info">
+                            <div class="ach-title" title="${ach.title}">${ach.title}</div>
+                            <div class="ach-desc" title="${ach.description}">${ach.description}</div>
+                        </div>
                     </div>
-                    <div class="ach-info">
-                        <div class="ach-title" title="${ach.title}">${ach.title}</div>
-                        <div class="ach-desc" title="${ach.description}">${ach.description}</div>
-                    </div>
+                `).join('')}
                 </div>
-            `).join('')}
-        </div></div>`;
+            `;
+        });
+
+        return `<div class="bento-box">${html}</div>`;
     }
 
     static renderControls(controlsArray) {
@@ -71,7 +87,6 @@ export class GameplayRenderer {
 
         navHtml += `</div></div>`;
         
-        // Убрали <h3>Управление</h3>
         return `<div class="bento-box">${navHtml}${contentHtml}</div>`;
     }
 }

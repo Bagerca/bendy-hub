@@ -52,77 +52,120 @@
 .rus-card:hover .rus-action-btn { background: var(--accent-color); border-color: var(--accent-color); color: #000; transform: rotate(45deg); }
 
 
-/* --- КАРТОЧКИ ПЕРСОНАЖЕЙ В САЙДБАРЕ --- */
-.project-chars-list { display: flex; flex-direction: column; gap: 12px; }
+/* --- КАРТОЧКИ ПЕРСОНАЖЕЙ В 2 КОЛОНКИ (КАК В АРХИВЕ) --- */
+.project-chars-list { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1.25rem; 
+}
 
-.char-card {
-    background-color: var(--bg-body); 
+.project-chars-list .char-card {
+    background-color: var(--bg-card); 
     border: 1px solid var(--border-color); 
     border-radius: 12px; 
     padding: 12px; 
     display: flex; 
     align-items: center; 
-    gap: 14px; 
+    gap: 12px; 
     text-decoration: none; 
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02); 
+    height: 72px; /* Уменьшенная высота (оригинал 96px) */
     box-sizing: border-box;
     overflow: hidden;
 }
 
-.char-card:hover { 
-    transform: translateX(4px); 
+.project-chars-list .char-card:hover { 
+    transform: translateY(-4px); 
     border-color: var(--accent-color); 
-    background-color: var(--bg-card); 
-    box-shadow: 0 4px 15px rgba(210, 168, 80, 0.1); 
+    box-shadow: 0 8px 25px rgba(210, 168, 80, 0.15); 
 }
 
-/* ИСПРАВЛЕНИЕ: Жесткая привязка цвета градиента бегущей строки к фону карточки */
-.char-card .smart-marquee-wrapper {
-    --marquee-bg: var(--bg-body);
+.project-chars-list .char-card .smart-marquee-wrapper {
+    --marquee-bg: var(--bg-card); 
 }
 
-.char-card:hover .smart-marquee-wrapper {
-    --marquee-bg: var(--bg-card);
-}
-
-/* Одиночный аватар для сайдбара */
-.char-avatar-wrapper {
-    display: flex; align-items: center; justify-content: center; position: relative; 
+/* Компактный аватар */
+.project-chars-list .char-avatar-wrapper {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    position: relative; 
     flex-shrink: 0; 
-    width: 48px !important; height: 48px !important; 
-    min-width: 48px !important; max-width: 48px !important;
-    z-index: 5; 
+    width: 48px !important; 
+    height: 48px !important;
+    min-width: 48px !important; 
+    max-width: 48px !important;
+    z-index: 5;
     border-radius: 50%; 
     background-color: var(--bg-body); 
     border: 1px solid var(--border-color); 
     overflow: hidden;
 }
 
-.char-avatar-wrapper .char-img { 
-    width: 100% !important; height: 100% !important; 
-    object-fit: cover !important; display: block !important; 
+.project-chars-list .char-img {
+    width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important;
 }
 
-.char-fallback { width: 100%; height: 100%; background-color: var(--bg-body); color: var(--text-muted); opacity: 0.6; display: flex; align-items: center; justify-content: center; }
-
-/* Инфо-блок и бегущая строка */
-.char-info-col { display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0; z-index: 1; }
-.char-info-col .smart-marquee-wrapper { width: 100%; }
-
-.char-card-name { 
-    font-size: 1.05rem; font-weight: 800; color: var(--text-main); line-height: 1.2; 
-    white-space: nowrap; display: inline-block;
+.project-chars-list .char-fallback { 
+    width: 100%; height: 100%; background-color: var(--bg-body);
+    color: var(--text-muted); opacity: 0.6; display: flex; align-items: center; justify-content: center; 
 }
 
-.char-card-subtitle {
-    font-size: 0.8rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; display: inline-block;
+.project-chars-list .char-fallback svg {
+    width: 24px; height: 24px;
 }
 
-.char-card-subtitle span { color: var(--accent-color); font-weight: 700; }
+/* Инфо-блок */
+.project-chars-list .char-info-col {
+    display: flex; 
+    flex-direction: column; 
+    gap: 2px; 
+    flex-grow: 1; 
+    min-width: 0; 
+    z-index: 1;
+}
 
-.char-arrow { color: var(--text-muted); transition: 0.2s; display: flex; align-items: center; flex-shrink: 0;}
-.char-arrow svg { width: 20px; height: 20px; display: block; } 
-.char-card:hover .char-arrow { color: var(--accent-color); transform: translateX(4px); }
+.project-chars-list .char-card-name { 
+    font-size: 1rem; 
+    font-weight: 800; 
+    color: var(--text-main); 
+    line-height: 1.2; 
+    white-space: nowrap; 
+    display: inline-block;
+}
+
+.project-chars-list .char-card-subtitle {
+    font-size: 0.8rem; 
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap; 
+    display: inline-block;
+}
+
+.project-chars-list .char-card-subtitle span {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* Стрелочка */
+.project-chars-list .char-arrow { 
+    color: var(--text-muted); 
+    transition: 0.2s; 
+    display: flex; 
+    align-items: center; 
+}
+
+.project-chars-list .char-arrow svg { 
+    width: 20px; 
+    height: 20px; 
+    display: block; 
+}
+
+.project-chars-list .char-card:hover .char-arrow { 
+    color: var(--accent-color); 
+    transform: translateX(4px); 
+}
 
 
 /* --- ЯЗЫКИ (ТАБЛИЦА) --- */
@@ -144,3 +187,16 @@
 .lang-flags { display: flex; flex-wrap: wrap; gap: 20px; flex: 0 0 auto; }
 .lang-flag { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
 .lang-flag svg { width: 18px; height: 18px; color: var(--accent-color); }
+
+/* Адаптив: когда сайдбар становится очень узким, переключаем на 1 колонку */
+@media (max-width: 1100px) {
+    .project-chars-list { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 950px) {
+    /* На телефонах и планшетах сайдбар падает вниз и становится на всю ширину, 
+       поэтому возвращаем авто-заполнение сетки, чтобы вместилось 2-3 персонажа в ряд */
+    .project-chars-list {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}

@@ -55,14 +55,24 @@ export class HeroView {
             this.els.posterContainer.style.display = 'block';
 
             if (mainImage && mainImage !== '...') {
-                const imgSrc = `${this.baseAssetPath}${projectId}/${mainImage}`;
-                this.els.posterImg.src = imgSrc;
-                this.els.posterImg.style.display = 'block';
-                this.els.bg.style.backgroundImage = `url('${imgSrc}')`;
+                const primarySrc = `${this.baseAssetPath}${projectId}/${mainImage}`;
+                const altPath = mainImage.startsWith('media/') ? mainImage.replace('media/images/', '') : `media/images/${mainImage}`;
+                const fallbackSrc = `${this.baseAssetPath}${projectId}/${altPath}`;
 
+                this.els.posterImg.src = primarySrc;
+                this.els.posterImg.style.display = 'block';
+                this.els.bg.style.backgroundImage = `url('${primarySrc}')`;
+
+                // Умный Fallback для постеров (Книги/Фильмы)
                 this.els.posterImg.onerror = () => {
-                    this.els.posterImg.style.display = 'none';
-                    this.els.bg.style.backgroundImage = 'none';
+                    if (this.els.posterImg.getAttribute('data-retried') !== 'true') {
+                        this.els.posterImg.setAttribute('data-retried', 'true');
+                        this.els.posterImg.src = fallbackSrc;
+                        this.els.bg.style.backgroundImage = `url('${fallbackSrc}')`;
+                    } else {
+                        this.els.posterImg.style.display = 'none';
+                        this.els.bg.style.backgroundImage = 'none';
+                    }
                 };
             } else {
                 this.els.posterImg.style.display = 'none';
@@ -72,6 +82,7 @@ export class HeroView {
             this.els.logo.style.display = 'none';
             this.els.title.textContent = data.title === '...' ? 'Без названия' : data.title;
             this.els.title.style.display = 'block';
+            
         } else {
             this.els.contentWrapper.classList.remove('hero-split-layout');
             this.els.bg.classList.remove('heavy-blur');
@@ -82,15 +93,39 @@ export class HeroView {
             if (!bgImage) bgImage = (assets.cover !== '...') ? assets.cover : null;
             
             if (bgImage) {
-                this.els.bg.style.backgroundImage = `url('${this.baseAssetPath}${projectId}/${bgImage}')`;
+                const primaryBg = `${this.baseAssetPath}${projectId}/${bgImage}`;
+                const altBgPath = bgImage.startsWith('media/') ? bgImage.replace('media/images/', '') : `media/images/${bgImage}`;
+                const fallbackBg = `${this.baseAssetPath}${projectId}/${altBgPath}`;
+
+                // Умный Fallback для фона игр (через объект Image)
+                const imgLoader = new Image();
+                imgLoader.onload = () => { this.els.bg.style.backgroundImage = `url('${primaryBg}')`; };
+                imgLoader.onerror = () => { this.els.bg.style.backgroundImage = `url('${fallbackBg}')`; };
+                imgLoader.src = primaryBg;
             } else {
                 this.els.bg.style.backgroundImage = 'none';
             }
 
             if (assets.logo && assets.logo !== '...') {
-                this.els.logo.src = `${this.baseAssetPath}${projectId}/${assets.logo}`;
+                const primaryLogo = `${this.baseAssetPath}${projectId}/${assets.logo}`;
+                const altLogoPath = assets.logo.startsWith('media/') ? assets.logo.replace('media/images/', '') : `media/images/${assets.logo}`;
+                const fallbackLogo = `${this.baseAssetPath}${projectId}/${altLogoPath}`;
+
+                this.els.logo.src = primaryLogo;
                 this.els.logo.style.display = 'block';
                 this.els.title.style.display = 'none';
+
+                // Умный Fallback для Логотипа
+                this.els.logo.onerror = () => {
+                    if (this.els.logo.getAttribute('data-retried') !== 'true') {
+                        this.els.logo.setAttribute('data-retried', 'true');
+                        this.els.logo.src = fallbackLogo;
+                    } else {
+                        this.els.logo.style.display = 'none';
+                        this.els.title.textContent = data.title === '...' ? 'Без названия' : data.title;
+                        this.els.title.style.display = 'block';
+                    }
+                };
             } else {
                 this.els.logo.style.display = 'none';
                 this.els.title.textContent = data.title === '...' ? 'Без названия' : data.title;
@@ -114,7 +149,6 @@ export class HeroView {
             this.els.author.textContent = `Разработчик: ${authorText}`;
         }
 
-        // ОБНОВЛЕНО: Рисуем только иконки, передаем название в Title
         this.els.storeLink.innerHTML = '';
         if (data.platforms && Object.keys(data.platforms).length > 0 && data.platforms[Object.keys(data.platforms)[0]] !== '...') {
             Object.entries(data.platforms).forEach(([key, url]) => {

@@ -25,10 +25,10 @@
         }
     ],
     "assets": {
-        "logo": "logo.png",
-        "cover": "cover.jpg",
-        "banner": "banner.jpg",
-        "hero_bg": "hero.jpg",
+        "logo": "media/images/logo.png",
+        "cover": "media/images/cover.jpg",
+        "banner": "media/images/banner.jpg",
+        "hero_bg": "media/images/hero.jpg",
         "videos": [
             "..."
         ],

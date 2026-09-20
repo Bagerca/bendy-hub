@@ -1,0 +1,10 @@
+{
+    "id": "batim_notes",
+    "title": "Все записки из Bendy and the Ink Machine",
+    "type": "document",
+    "items": [
+        { "author": "Джоуи Дрю", "title": "Письмо Джоуи (Глава 1)", "image": "", "text": "...", "authorId": "joey_drew" },
+        { "author": "Эллисон Пэндл", "title": "Письмо Эллисон (Глава 5)", "image": "", "text": "...", "authorId": "allison_angel" },
+        { "author": "Уолли Фрэнкс", "title": "Письмо Уолли (Глава 5)", "image": "", "text": "...", "authorId": "wally_franks" }
+    ]
+}

@@ -1,3 +1,5 @@
+// FILE: pages/project/renderers/MetaRenderer.js
+
 import { Icons } from '../../../shared/js/icons.js';
 import { RenderUtils } from './RenderUtils.js';
 
@@ -65,7 +67,6 @@ export class MetaRenderer {
         if (RenderUtils.isEmpty(specsArray)) return null;
         if (RenderUtils.isPlaceholder(specsArray)) return RenderUtils.renderPlaceholder('Системные требования');
         
-        // ЖЕСТКАЯ ЗАЩИТА: Если это объект или строка, а не массив - просто скрываем блок.
         if (!Array.isArray(specsArray)) return null;
         
         const randomId = Math.random().toString(36).substring(2, 9);
@@ -76,31 +77,53 @@ export class MetaRenderer {
             const isActive = index === 0 ? 'active' : '';
             const tabId = `spec-tab-${randomId}-${index}`;
             
+            // Вкладки OS (Windows, Mac OS X)
             navHtml += `<button class="inner-tab-btn ${isActive}" data-target="${tabId}">${spec.os}</button>`;
             
-            const parseReqs = (list, label) => {
-                if (RenderUtils.isEmpty(list)) return '';
+            const parseReqs = (list) => {
+                if (RenderUtils.isEmpty(list)) return '<div class="req-empty">Нет данных</div>';
                 return `
-                    <div style="flex: 1; min-width: 180px;">
-                        <span class="req-block-title">${label}</span>
-                        <ul class="req-list">
-                            ${list.map(p => {
-                                const colon = p.indexOf(':');
-                                if (colon !== -1 && colon < 25) {
-                                    return `<li><span class="req-label">${p.substring(0, colon + 1)}</span>${p.substring(colon + 1).trim()}</li>`;
-                                }
-                                return `<li>${p}</li>`;
-                            }).join('')}
-                        </ul>
-                    </div>
+                    <ul class="req-list">
+                        ${list.map(p => {
+                            const colon = p.indexOf(':');
+                            if (colon !== -1 && colon < 25) {
+                                return `<li><span class="req-label">${p.substring(0, colon + 1)}</span>${p.substring(colon + 1).trim()}</li>`;
+                            }
+                            return `<li>${p}</li>`;
+                        }).join('')}
+                    </ul>
                 `;
             };
 
+            const hasMin = !RenderUtils.isEmpty(spec.minimum);
+            const hasRec = !RenderUtils.isEmpty(spec.recommended);
+            
+            // Двойной переключатель для Минималок и Рекомендованных (работает через те же inner-tabs)
+            const subRandomId = Math.random().toString(36).substring(2, 9);
+            const minTabId = `req-min-${subRandomId}`;
+            const recTabId = `req-rec-${subRandomId}`;
+            
+            let reqNavHtml = `<div class="req-switch-nav">`;
+            let reqContentHtml = `<div class="req-switch-contents">`;
+            
+            if (hasMin) {
+                reqNavHtml += `<button class="req-switch-btn active" data-target="${minTabId}">Минимальные</button>`;
+                reqContentHtml += `<div id="${minTabId}" class="req-switch-content active">${parseReqs(spec.minimum)}</div>`;
+            }
+            if (hasRec) {
+                // Если минималок нет, активируем рекомендованные сразу
+                const activeClass = !hasMin ? 'active' : '';
+                reqNavHtml += `<button class="req-switch-btn ${activeClass}" data-target="${recTabId}">Рекомендованные</button>`;
+                reqContentHtml += `<div id="${recTabId}" class="req-switch-content ${activeClass}">${parseReqs(spec.recommended)}</div>`;
+            }
+
+            reqNavHtml += `</div>`;
+            reqContentHtml += `</div>`;
+
             contentHtml += `
                 <div id="${tabId}" class="inner-tab-content ${isActive}">
-                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                        ${parseReqs(spec.minimum, 'Минимальные')}
-                        ${parseReqs(spec.recommended, 'Рекомендованные')}
+                    <div class="req-bento-grid">
+                        ${(hasMin || hasRec) ? reqNavHtml + reqContentHtml : '<div class="req-empty">Нет данных</div>'}
                     </div>
                 </div>
             `;

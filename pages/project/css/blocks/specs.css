@@ -6,23 +6,62 @@
 .req-bento-grid { 
     display: flex; 
     flex-direction: column; 
-    gap: 1.5rem; 
+    gap: 1rem; 
 }
 
-.req-block-title {
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-    display: inline-block;
-    background: rgba(255,255,255,0.05);
-    padding: 4px 10px;
-    border-radius: 6px;
+/* --- ПЕРЕКЛЮЧАТЕЛЬ МИН/РЕК --- */
+.req-switch-nav {
+    display: flex;
+    background: rgba(0, 0, 0, 0.2);
     border: 1px solid var(--border-color);
+    padding: 4px;
+    border-radius: 12px;
 }
 
+.req-switch-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.req-switch-btn:hover {
+    color: var(--text-main);
+}
+
+.req-switch-btn.active {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Контейнеры контента */
+.req-switch-content {
+    display: none;
+    animation: fadeInSlideUp 0.3s ease forwards;
+}
+
+.req-switch-content.active {
+    display: block;
+}
+
+.req-empty {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* --- САМ СПИСОК ТРЕБОВАНИЙ --- */
 .req-list { 
     list-style: none; 
     display: flex; 

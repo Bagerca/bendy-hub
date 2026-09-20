@@ -7,7 +7,7 @@
     "release_date": "3 март. 2026 г.",
     "color": "111, 104, 87",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
@@ -22,7 +22,7 @@
     "release_date": "1 сент. 2020 г.",
     "color": "157, 139, 114",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
@@ -37,7 +37,7 @@
     "release_date": "6 авг. 2024 г.",
     "color": "94, 89, 77",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
@@ -52,11 +52,22 @@
     "release_date": "3 сент. 2019 г.",
     "color": "133, 115, 89",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
-      "..."
+      "boris_wolf",
+      "dot",
+      "joey_drew",
+      "sammy_lawrence",
+      "ink_demon",
+      "richie",
+      "jacob",
+      "dave",
+      "irene_lewek",
+      "mr_anger",
+      "norman_polk",
+      "thomas_connor"
     ]
   },
   {
@@ -67,7 +78,7 @@
     "release_date": "3 окт. 2023 г.",
     "color": "131, 113, 88",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
@@ -82,7 +93,7 @@
     "release_date": "2 фев. 2021 г.",
     "color": "85, 77, 70",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
@@ -97,7 +108,7 @@
     "release_date": "30 июл. 2019 г.",
     "color": "122, 118, 103",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
@@ -112,7 +123,7 @@
     "release_date": "6 фев. 2024 г.",
     "color": "159, 144, 111",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
@@ -127,7 +138,7 @@
     "release_date": "...",
     "color": "85, 75, 51",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
@@ -142,7 +153,7 @@
     "release_date": "7 дек. 2021 г.",
     "color": "94, 84, 70",
     "assets": {
-      "cover": "cover.jpg",
+      "cover": "media/images/cover.jpg",
       "banner": "banner.jpg"
     },
     "characters_included": [
@@ -157,11 +168,13 @@
     "release_date": "19 авг. 2026 г.",
     "color": "147, 137, 113",
     "assets": {
-      "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "cover": "media/images/cover.jpg",
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
-      "..."
+      "bendy_toon",
+      "boris_wolf",
+      "alice_angel"
     ]
   },
   {
@@ -172,11 +185,34 @@
     "release_date": "15 ноя. 2022 г.",
     "color": "75, 64, 49",
     "assets": {
-      "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "cover": "media/images/cover.jpg",
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
-      "..."
+      "audrey_drew",
+      "ink_demon",
+      "bendy_toon",
+      "wilson_arch",
+      "joey_drew",
+      "allison_angel",
+      "thomas_connor",
+      "henry_stein",
+      "porter",
+      "heidi",
+      "the_lurker",
+      "alice_angel",
+      "keepers",
+      "lord_amok",
+      "betty",
+      "nathan_arch",
+      "alan_gray",
+      "carley",
+      "piper",
+      "fisher",
+      "striker",
+      "king_widow",
+      "shipahoy_dudley",
+      "lost_ones"
     ]
   },
   {
@@ -187,8 +223,8 @@
     "release_date": "...",
     "color": "143, 108, 68",
     "assets": {
-      "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "cover": "media/images/cover.jpg",
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
       "..."
@@ -202,8 +238,8 @@
     "release_date": "10 фев. 2017 г.",
     "color": "109, 88, 57",
     "assets": {
-      "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "cover": "media/images/cover.jpg",
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
       "joey_drew",
@@ -217,6 +253,7 @@
       "fisher",
       "ink_demon",
       "boris_wolf",
+      "sammy_lawrence",
       "linda_stein",
       "jack_fain",
       "norman_polk",
@@ -233,11 +270,13 @@
     "release_date": "15 авг. 2018 г.",
     "color": "89, 89, 90",
     "assets": {
-      "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "cover": "media/images/cover.jpg",
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
-      "..."
+      "bendy_toon",
+      "boris_wolf",
+      "alice_angel"
     ]
   },
   {
@@ -248,8 +287,8 @@
     "release_date": "15 авг. 2025 г.",
     "color": "78, 67, 54",
     "assets": {
-      "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "cover": "media/images/cover.jpg",
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
       "..."
@@ -263,11 +302,16 @@
     "release_date": "14 апр. 2024 г.",
     "color": "57, 49, 43",
     "assets": {
-      "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "cover": "media/images/cover.jpg",
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
-      "..."
+      "riley_wells",
+      "ink_demon",
+      "bendy_toon",
+      "boris_wolf",
+      "alice_angel",
+      "shipahoy_dudley"
     ]
   },
   {
@@ -279,7 +323,7 @@
     "color": "84, 62, 61",
     "assets": {
       "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
       "..."
@@ -293,8 +337,8 @@
     "release_date": "...",
     "color": "66, 55, 33",
     "assets": {
-      "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "cover": "media/images/cover.jpg",
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
       "..."
@@ -308,8 +352,8 @@
     "release_date": "10 фев. 2020 г.",
     "color": "74, 52, 29",
     "assets": {
-      "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "cover": "media/images/cover.jpg",
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
       "..."
@@ -320,29 +364,32 @@
     "title": "Bendy and the Ink Machine (Movie)",
     "type": "movie",
     "status": "development",
-    "release_date": "...",
+    "release_date": "TBA",
     "color": "210, 168, 80",
     "assets": {
       "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "banner": "media/images/banner.jpg"
     },
-    "characters_included": [
-      "..."
-    ]
+    "characters_included": []
   },
   {
     "id": "movie_bendy_cartoons",
     "title": "Мультфильмы про Бенди",
     "type": "movie",
     "status": "released",
-    "release_date": "...",
+    "release_date": "11 авг. 2017 г. — 14 апр. 2025 г.",
     "color": "123, 123, 123",
     "assets": {
       "cover": "cover.jpg",
-      "banner": "banner.jpg"
+      "banner": "media/images/banner.jpg"
     },
     "characters_included": [
-      "..."
+      "bendy_toon",
+      "boris_wolf",
+      "alice_angel",
+      "piper",
+      "fisher",
+      "striker"
     ]
   }
 ]

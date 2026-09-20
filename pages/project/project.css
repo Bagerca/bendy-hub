@@ -16,7 +16,7 @@
     display: flex; 
     flex-direction: column;
     width: 100%;
-    /* Идеальная ширина, в точности как на странице Музыки (1200px минус padding 3rem) */
+    /* КЛАССИЧЕСКАЯ ШИРИНА (чтобы правый контент всегда был на месте) */
     max-width: calc(1200px - 3rem); 
     margin: 0 auto;    
     position: relative;
@@ -35,16 +35,16 @@
 }
 
 /* =========================================
-   2. СЕТКА С САЙДБАРОМ (Обзор, Летопись - 2 колонки)
+   2. СЕТКА С САЙДБАРОМ (СТАНДАРТНАЯ)
    ========================================= */
 .overview-grid.has-sidebar {
     display: grid; 
     width: 100%;
-    max-width: calc(1200px - 3rem); /* Правый и левый край идеально симметричны */
+    max-width: calc(1200px - 3rem); 
     margin: 0 auto;
     
-    /* 400px под сайдбар (левый), всё остальное (1fr) под контент */
-    grid-template-columns: 400px 1fr; 
+    /* Стандартный размер сайдбара для Обзора (не вылезает за рамки) */
+    grid-template-columns: 425px 1fr; 
     gap: 2.5rem; 
     align-items: start;
 }
@@ -59,12 +59,48 @@
     grid-column: 2; 
 }
 
+/* =========================================
+   3. СЕТКА С ШИРОКИМ САЙДБАРОМ (Летопись)
+   ========================================= */
+/* Базовое увеличение колонки для широкого режима */
+.overview-grid.has-sidebar.is-wide-sidebar {
+    grid-template-columns: 400px 1fr; 
+}
+
+/* МАГИЯ РАСШИРЕНИЯ ТОЛЬКО ДЛЯ ШИРОКОГО САЙДБАРА */
+
+/* На очень больших экранах (от 1440px и выше) забираем целых 120px! 
+   Сайдбар станет шириной 520px, персонажам будет очень просторно */
+@media (min-width: 1440px) {
+    .overview-grid.has-sidebar.is-wide-sidebar > .overview-sidebar {
+        margin-left: -120px;
+        width: calc(100% + 120px); 
+    }
+}
+
+/* На обычных ПК (1360px - 1439px) забираем 80px */
+@media (min-width: 1360px) and (max-width: 1439px) {
+    .overview-grid.has-sidebar.is-wide-sidebar > .overview-sidebar {
+        margin-left: -80px;
+        width: calc(100% + 80px); 
+    }
+}
+
+/* На небольших ноутбуках (1280px - 1359px) забираем 40px */
+@media (min-width: 1280px) and (max-width: 1359px) {
+    .overview-grid.has-sidebar.is-wide-sidebar > .overview-sidebar {
+        margin-left: -40px;
+        width: calc(100% + 40px); 
+    }
+}
+
+
 /* --- ВНУТРЕННОСТИ САЙДБАРА --- */
 .sticky-sidebar-wrapper {
     position: sticky; 
     top: 100px; 
     display: flex;
-    flex-direction: column; /* Карточки строго друг под другом */
+    flex-direction: column; 
     gap: 1.25rem;
     align-items: stretch;
     min-width: 0;
@@ -117,10 +153,18 @@
 .wiki-tab:hover { color: var(--text-main); }
 .wiki-tab.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
 
-/* --- WIKI СЕКЦИИ (АНИМАЦИИ И ЗАГЛУШКИ) --- */
+/* --- WIKI СЕКЦИИ (АНИМАЦИИ) --- */
 .wiki-section { display: none; animation: fadeInSlideUp 0.4s ease forwards; }
 .wiki-section.active { display: block; }
 
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   ЗАГЛУШКИ ДАННЫХ (PLACEHOLDERS)
+   ========================================= */
 .empty-state-silent {
     display: flex; align-items: center; justify-content: center;
     width: 100%; min-height: 120px; background: rgba(255, 255, 255, 0.02);
@@ -130,40 +174,6 @@
 .empty-state-silent:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.3); color: var(--text-main); }
 .empty-state-silent svg { width: 36px; height: 36px; opacity: 0.8; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
 
-@keyframes fadeInSlideUp {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* =========================================
-   АДАПТИВНОСТЬ
-   ========================================= */
-
-@media (max-width: 950px) {
-    /* На мобильных и планшетах сайдбары падают вниз под контент */
-    .overview-grid.has-sidebar {
-        grid-template-columns: 1fr; 
-        gap: 2rem;
-    }
-
-    .overview-grid.has-sidebar > .overview-sidebar,
-    .overview-grid.has-sidebar > .overview-main {
-        grid-column: 1 / -1; 
-    }
-}
-
-@media (max-width: 768px) {
-    .wiki-tabs {
-        justify-content: flex-start; /* Свайп вкладок на мобильных устройствах */
-        gap: 1.5rem;
-    }
-}
-
-/* В конец файла pages/project/project.css */
-
-/* =========================================
-   ЗАГЛУШКИ ДАННЫХ (PLACEHOLDERS)
-   ========================================= */
 .wiki-placeholder-box {
     background: rgba(255, 255, 255, 0.02);
     border: 1px dashed var(--border-color);
@@ -210,4 +220,33 @@
 .wp-desc {
     font-size: 0.85rem;
     color: var(--text-muted);
+}
+
+/* =========================================
+   АДАПТИВНОСТЬ
+   ========================================= */
+@media (max-width: 950px) {
+    /* На мобильных и планшетах сайдбары падают вниз под контент */
+    .overview-grid.has-sidebar,
+    .overview-grid.has-sidebar.is-wide-sidebar {
+        grid-template-columns: 1fr; 
+        gap: 2rem;
+    }
+
+    .overview-grid.has-sidebar > .overview-sidebar,
+    .overview-grid.has-sidebar > .overview-main {
+        grid-column: 1 / -1; 
+    }
+
+    .overview-grid.has-sidebar > .overview-sidebar {
+        margin-left: 0 !important; /* Убираем фокус с минусом на мобилках */
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .wiki-tabs {
+        justify-content: flex-start; /* Свайп вкладок на мобильных устройствах */
+        gap: 1.5rem;
+    }
 }

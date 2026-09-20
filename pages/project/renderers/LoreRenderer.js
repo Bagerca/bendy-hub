@@ -4,18 +4,57 @@ import { Icons } from '../../../shared/js/icons.js';
 import { RenderUtils } from './RenderUtils.js';
 
 export class LoreRenderer {
-    static renderChapters(chapters) {
+    static renderChapters(chapters, projectId) {
         if (RenderUtils.isEmpty(chapters)) return null; 
         if (RenderUtils.isPlaceholder(chapters)) return RenderUtils.renderPlaceholder('Главы');
 
-        return `<div class="bento-box"><div class="chapters-list">
-            ${chapters.map(c => `
-                <div class="chapter-card">
-                    <div class="chapter-title">${c.title}</div>
-                    <div class="chapter-desc">${c.description}</div>
-                </div>
-            `).join('')}
-        </div></div>`;
+        return `<div class="chapters-grid">
+            ${chapters.map(c => {
+                let statsHtml = '';
+                
+                // Генерируем инфобокс, если есть статистика. Защита от заглушек "..." внутри массивов.
+                const hasStats = c.stats;
+                const hasEnemies = c.enemies && c.enemies.length > 0 && c.enemies[0] !== '...';
+                const hasWeapons = c.weapons && c.weapons.length > 0 && c.weapons[0] !== '...';
+
+                if (hasStats || hasEnemies || hasWeapons) {
+                    statsHtml = `<div class="chapter-infobox">`;
+                    
+                    if (c.stats) {
+                        if (c.stats.audio_logs !== undefined) statsHtml += `<div class="ch-stat"><span class="ch-stat-label">Аудиозаписи:</span> <span class="ch-stat-val">${c.stats.audio_logs}</span></div>`;
+                        if (c.stats.bacon_soup !== undefined) statsHtml += `<div class="ch-stat"><span class="ch-stat-label">Суп с беконом:</span> <span class="ch-stat-val">${c.stats.bacon_soup}</span></div>`;
+                    }
+                    if (hasEnemies) {
+                        statsHtml += `<div class="ch-stat"><span class="ch-stat-label">Враги:</span> <span class="ch-stat-val">${c.enemies.join(', ')}</span></div>`;
+                    }
+                    if (hasWeapons) {
+                        statsHtml += `<div class="ch-stat"><span class="ch-stat-label">Оружие:</span> <span class="ch-stat-val">${c.weapons.join(', ')}</span></div>`;
+                    }
+                    
+                    statsHtml += `</div>`;
+                }
+                
+                // Защита: если блок statsHtml оказался пустым внутри (например, все массивы были '...'), очищаем его.
+                if (statsHtml === `<div class="chapter-infobox"></div>`) statsHtml = '';
+
+                // Проверяем наличие картинки. Если загрузка сбойнет (картинки нет на диске), сработает onerror:
+                // Он скроет обертку с картинкой и добавит класс "no-poster" соседнему блоку с текстом.
+                const hasImage = c.image && c.image !== '...';
+                const imgHtml = hasImage 
+                    ? `<div class="chapter-poster"><img src="assets/catalog/${projectId}/${c.image}" alt="${c.title}" loading="lazy" onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.classList.add('no-poster');"></div>`
+                    : '';
+
+                return `
+                <div class="bento-box chapter-card">
+                    ${imgHtml}
+                    <div class="chapter-content ${!hasImage ? 'no-poster' : ''}">
+                        <div class="chapter-title">${c.title}</div>
+                        <div class="chapter-desc">${c.description}</div>
+                        ${statsHtml}
+                    </div>
+                </div>`;
+            }).join('')}
+        </div>`;
     }
 
     static renderRecords(recordsData, originalIdsArray) {
@@ -74,7 +113,6 @@ export class LoreRenderer {
                             ? `<img src="assets/records/${record.categoryId}/${record.image}" class="wrc-image" loading="lazy" alt="Обложка">`
                             : `<div class="wrc-fallback-icon">${iconHtml}</div>`;
 
-                        // ВНЕДРЕНА ОБЕРТКА SMART MARQUEE ВОКРУГ ЗАГОЛОВКА
                         return `
                         <div class="wiki-record-card" data-index="${record.globalIndex}">
                             <div class="wrc-image-wrapper">

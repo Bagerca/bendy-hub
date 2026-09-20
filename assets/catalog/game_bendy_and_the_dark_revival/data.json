@@ -153,259 +153,304 @@
     ],
     "achievements": [
         {
-            "id": "self_discovery",
-            "title": "Self Discovery",
-            "description": "Collect All Memories",
-            "icon": ""
-        },
-        {
-            "id": "written_in_ink",
-            "title": "Written In Ink",
-            "description": "Read All Memos",
-            "icon": ""
-        },
-        {
-            "id": "ink_master",
-            "title": "Ink Master",
-            "description": "Complete The Game Without Dying",
-            "icon": ""
-        },
-        {
-            "id": "familiar_faces",
-            "title": "Familiar Faces",
-            "description": "Reveal A Very Old Friend",
-            "icon": ""
-        },
-        {
-            "id": "the_insane_reader",
-            "title": "The Insane Reader",
-            "description": "Seek Out The Writings of Joey Drew",
-            "icon": ""
-        },
-        {
-            "id": "the_well_of_voices",
-            "title": "The Well of Voices",
-            "description": "Pick Up All Audio Logs",
-            "icon": ""
-        },
-        {
-            "id": "heavy_hitter",
-            "title": "Heavy Hitter",
-            "description": "Defeat 25 Enemies With Shock Pipe",
-            "icon": ""
-        },
-        {
-            "id": "big_spender",
-            "title": "Big Spender",
-            "description": "Spend 500 Slugs",
-            "icon": ""
-        },
-        {
-            "id": "skulls_of_the_cauldron",
-            "title": "Skulls of the Cauldron",
-            "description": "Bring Back the Dead to the Source during the Halloween event.",
-            "icon": ""
-        },
-        {
-            "id": "cabbage_night",
-            "title": "Cabbage Night",
-            "description": "Trick or Treat to ten doors without a mask during the Halloween event.",
-            "icon": ""
-        },
-        {
-            "id": "ding_dong_delights",
-            "title": "Ding Dong Delights",
-            "description": "Trick or Treat to ten doors with style during the Halloween event.",
-            "icon": ""
-        },
-        {
-            "id": "it_stinks",
-            "title": "It Stinks",
-            "description": "You Should Really Just Relax",
-            "icon": ""
-        },
-        {
-            "id": "time_to_reflect",
-            "title": "Time To Reflect",
-            "description": "Take Some Time For Yourself",
-            "icon": ""
-        },
-        {
-            "id": "the_fancy_foodie",
-            "title": "The Fancy Foodie",
-            "description": "Collect 100 Pieces of Food",
-            "icon": ""
-        },
-        {
-            "id": "did_you_see_that",
-            "title": "Did You See That?",
-            "description": "A Very Random Occurance",
-            "icon": ""
-        },
-        {
-            "id": "avid_worker",
-            "title": "Avid Worker",
-            "description": "Show Too Much Dedication",
-            "icon": ""
-        },
-        {
-            "id": "gents_finest",
-            "title": "Gent's Finest",
-            "description": "Create The Ultimate Weapon",
-            "icon": ""
-        },
-        {
-            "id": "back_to_the_puddles",
-            "title": "Back To The Puddles",
-            "description": "Banish 25 Enemies",
-            "icon": ""
-        },
-        {
-            "id": "studio_breaker",
-            "title": "Studio Breaker",
-            "description": "Complete The Game on Hard",
-            "icon": ""
-        },
-        {
-            "id": "plaything",
-            "title": "Plaything",
-            "description": "Locate The Toyman's Secret",
-            "icon": ""
-        },
-        {
-            "id": "the_ink_provides",
-            "title": "The Ink Provides",
-            "description": "Maximize Your Dark Potential",
-            "icon": ""
-        },
-        {
-            "id": "the_demons_dismay",
-            "title": "The Demon's Dismay",
-            "description": "Survive 25 Ink Demon Attacks",
-            "icon": ""
-        },
-        {
-            "id": "cartoon_madness",
-            "title": "Cartoon Madness",
-            "description": "Complete Chapter One",
-            "icon": ""
-        },
-        {
-            "id": "rubberhose_nightmare",
-            "title": "Rubberhose Nightmare",
-            "description": "Complete Chapter Two",
-            "icon": ""
-        },
-        {
-            "id": "crawling_killer",
-            "title": "Crawling Killer",
-            "description": "Defeat the Crawling King",
-            "icon": ""
-        },
-        {
-            "id": "thrills_and_spills",
-            "title": "Thrills and Spills",
-            "description": "Complete Chapter Three",
-            "icon": ""
-        },
-        {
-            "id": "next_in_line",
-            "title": "Next In Line",
-            "description": "Defeat the Ruler of the Lower Realm",
-            "icon": ""
-        },
-        {
-            "id": "timeless_remains",
-            "title": "Timeless Remains",
-            "description": "Complete Chapter Four",
-            "icon": ""
-        },
-        {
-            "id": "to_the_darkest_reaches",
-            "title": "To The Darkest Reaches",
-            "description": "Complete Chapter Five",
-            "icon": ""
-        },
-        {
-            "id": "studio_starter",
-            "title": "Studio Starter",
-            "description": "Complete The Game on Easy",
-            "icon": ""
-        },
-        {
-            "id": "the_masters_pen",
-            "title": "The Master's Pen",
-            "description": "Complete The Main Story",
-            "icon": ""
-        },
-        {
-            "id": "a_butchered_decision",
-            "title": "A Butchered Decision",
-            "description": "Complete the Game While Surviving The Slicer",
-            "icon": ""
-        },
-        {
-            "id": "socialite",
-            "title": "Socialite",
-            "description": "Be A First Time Party Pooper",
-            "icon": ""
-        },
-        {
-            "id": "studio_scrapper",
-            "title": "Studio Scrapper",
-            "description": "Complete The Game on Normal",
-            "icon": ""
-        },
-        {
             "id": "the_ritual",
+            "category": "Сюжетные",
             "title": "The Ritual",
-            "description": "Clean Up The Exhibit",
-            "icon": ""
+            "description": "Clean up the exhibit.",
+            "icon": "achievements/the_ritual.jpg"
         },
         {
             "id": "welcome_to_the_studio",
-            "title": "Welcome To The Studio",
-            "description": "Meet Up With An Old Friend",
-            "icon": ""
+            "category": "Сюжетные",
+            "title": "Welcome to the Studio",
+            "description": "Meet up with an old friend.",
+            "icon": "achievements/welcome_to_the_studio.jpg"
         },
         {
             "id": "armed_and_ready",
+            "category": "Сюжетные",
             "title": "Armed and Ready",
-            "description": "Find Your First Weapon",
-            "icon": ""
+            "description": "Find your first weapon.",
+            "icon": "achievements/armed_and_ready.jpg"
         },
         {
             "id": "banish_the_darkness",
-            "title": "Banish The Darkness",
-            "description": "Obtain The Banish Power",
-            "icon": ""
+            "category": "Сюжетные",
+            "title": "Banish the Darkness",
+            "description": "Obtain the banish power.",
+            "icon": "achievements/banish_the_darkness.jpg"
+        },
+        {
+            "id": "cartoon_madness",
+            "category": "Сюжетные",
+            "title": "Cartoon Madness",
+            "description": "Complete Chapter One.",
+            "icon": "achievements/cartoon_madness.jpg"
+        },
+        {
+            "id": "rubberhose_nightmare",
+            "category": "Сюжетные",
+            "title": "Rubberhose Nightmare",
+            "description": "Complete Chapter Two.",
+            "icon": "achievements/rubberhose_nightmare.jpg"
+        },
+        {
+            "id": "crawling_killer",
+            "category": "Сюжетные",
+            "title": "Crawling Killer",
+            "description": "Defeat the Crawling King.",
+            "icon": "achievements/crawling_killer.jpg"
+        },
+        {
+            "id": "next_in_line",
+            "category": "Сюжетные",
+            "title": "Next in Line",
+            "description": "Defeat the ruler of the lower realm.",
+            "icon": "achievements/next_in_line.jpg"
+        },
+        {
+            "id": "thrills_and_spills",
+            "category": "Сюжетные",
+            "title": "Thrills and Spills",
+            "description": "Complete Chapter Three.",
+            "icon": "achievements/thrills_and_spills.jpg"
+        },
+        {
+            "id": "timeless_remains",
+            "category": "Сюжетные",
+            "title": "Timeless Remains",
+            "description": "Complete Chapter Four.",
+            "icon": "achievements/timeless_remains.jpg"
+        },
+        {
+            "id": "to_the_darkest_reaches",
+            "category": "Сюжетные",
+            "title": "To the Darkest Reaches",
+            "description": "Complete Chapter Five.",
+            "icon": "achievements/to_the_darkest_reaches.jpg"
+        },
+        {
+            "id": "the_masters_pen",
+            "category": "Сюжетные",
+            "title": "The Master's Pen",
+            "description": "Complete the main story.",
+            "icon": "achievements/the_masters_pen.jpg"
+        },
+        {
+            "id": "studio_starter",
+            "category": "Испытания",
+            "title": "Studio Starter",
+            "description": "Complete the game on Easy.",
+            "icon": "achievements/studio_starter.jpg"
+        },
+        {
+            "id": "studio_scrapper",
+            "category": "Испытания",
+            "title": "Studio Scrapper",
+            "description": "Complete the game on Normal.",
+            "icon": "achievements/studio_scrapper.jpg"
+        },
+        {
+            "id": "studio_breaker",
+            "category": "Испытания",
+            "title": "Studio Breaker",
+            "description": "Complete the game on Hard.",
+            "icon": "achievements/studio_breaker.jpg"
+        },
+        {
+            "id": "ink_master",
+            "category": "Испытания",
+            "title": "Ink Master",
+            "description": "Complete the game without dying.",
+            "icon": "achievements/ink_master.jpg"
+        },
+        {
+            "id": "a_butchered_decision",
+            "category": "Испытания",
+            "title": "A Butchered Decision",
+            "description": "Complete the game while surviving the Slicer.",
+            "icon": "achievements/a_butchered_decision.jpg"
+        },
+        {
+            "id": "socialite",
+            "category": "Испытания",
+            "title": "Socialite",
+            "description": "Be a first time party pooper.",
+            "icon": "achievements/socialite.jpg"
+        },
+        {
+            "id": "the_demons_dismay",
+            "category": "Испытания",
+            "title": "The Demon's Dismay",
+            "description": "Survive 25 Ink Demon attacks.",
+            "icon": "achievements/the_demons_dismay.jpg"
+        },
+        {
+            "id": "back_to_the_puddles",
+            "category": "Испытания",
+            "title": "Back to the Puddles",
+            "description": "Banish 25 enemies.",
+            "icon": "achievements/back_to_the_puddles.jpg"
+        },
+        {
+            "id": "heavy_hitter",
+            "category": "Испытания",
+            "title": "Heavy Hitter",
+            "description": "Defeat 50 enemies with Shock Pipe.",
+            "icon": "achievements/heavy_hitter.jpg"
+        },
+        {
+            "id": "the_fancy_foodie",
+            "category": "Гринд",
+            "title": "The Fancy Foodie",
+            "description": "Collect 100 pieces of food.",
+            "icon": "achievements/the_fancy_foodie.jpg"
+        },
+        {
+            "id": "big_spender",
+            "category": "Гринд",
+            "title": "Big Spender",
+            "description": "Spend 500 slugs.",
+            "icon": "achievements/big_spender.jpg"
+        },
+        {
+            "id": "avid_worker",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Avid Worker",
+            "description": "Show too much dedication.",
+            "icon": "achievements/avid_worker.jpg"
+        },
+        {
+            "id": "did_you_see_that",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Did You See That?",
+            "description": "A very random occurance.",
+            "icon": "achievements/did_you_see_that.jpg"
+        },
+        {
+            "id": "time_to_reflect",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Time to Reflect",
+            "description": "Take some time for yourself.",
+            "icon": "achievements/time_to_reflect.jpg"
+        },
+        {
+            "id": "plaything",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Plaything",
+            "description": "Locate the toyman's secret.",
+            "icon": "achievements/plaything.jpg"
+        },
+        {
+            "id": "it_stinks",
+            "category": "Скрытые (Пасхалки)",
+            "title": "It Stinks",
+            "description": "You should really just relax.",
+            "icon": "achievements/it_stinks.jpg"
+        },
+        {
+            "id": "the_insane_reader",
+            "category": "Скрытые (Пасхалки)",
+            "title": "The Insane Reader",
+            "description": "Seek out the writings of Joey Drew.",
+            "icon": "achievements/the_insane_reader.jpg"
+        },
+        {
+            "id": "familiar_faces",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Familiar Faces",
+            "description": "Reveal a very old friend.",
+            "icon": "achievements/familiar_faces.jpg"
+        },
+        {
+            "id": "the_ink_provides",
+            "category": "Коллекционирование и 100%",
+            "title": "The Ink Provides",
+            "description": "Maximize your dark potential.",
+            "icon": "achievements/the_ink_provides.jpg"
+        },
+        {
+            "id": "gents_finest",
+            "category": "Коллекционирование и 100%",
+            "title": "Gent's Finest",
+            "description": "Create the ultimate weapon.",
+            "icon": "achievements/gents_finest.jpg"
+        },
+        {
+            "id": "the_well_of_voices",
+            "category": "Коллекционирование и 100%",
+            "title": "The Well of Voices",
+            "description": "Pick up all audio logs.",
+            "icon": "achievements/the_well_of_voices.jpg"
+        },
+        {
+            "id": "written_in_ink",
+            "category": "Коллекционирование и 100%",
+            "title": "Written in Ink",
+            "description": "Read all memos.",
+            "icon": "achievements/written_in_ink.jpg"
+        },
+        {
+            "id": "self_discovery",
+            "category": "Коллекционирование и 100%",
+            "title": "Self Discovery",
+            "description": "Collect all memories.",
+            "icon": "achievements/self_discovery.jpg"
+        },
+        {
+            "id": "little_devil_darling",
+            "category": "Коллекционирование и 100%",
+            "title": "Little Devil Darling",
+            "description": "All trophies unlocked.",
+            "icon": "achievements/little_devil_darling.jpg"
+        },
+        {
+            "id": "skulls_of_the_cauldron",
+            "category": "Сезонные события (Хэллоуин)",
+            "title": "Skulls of the Cauldron",
+            "description": "Bring back the dead to the source during the Halloween event.",
+            "icon": "achievements/skulls_of_the_cauldron.jpg"
+        },
+        {
+            "id": "ding_dong_delights",
+            "category": "Сезонные события (Хэллоуин)",
+            "title": "Ding Dong Delights",
+            "description": "Trick or Treat to ten doors with style during the Halloween event.",
+            "icon": "achievements/ding_dong_delights.jpg"
+        },
+        {
+            "id": "cabbage_night",
+            "category": "Сезонные события (Хэллоуин)",
+            "title": "Cabbage Night",
+            "description": "Trick or Treat to ten doors without a mask during the Halloween event.",
+            "icon": "achievements/cabbage_night.jpg"
         }
     ],
     "assets": {
-        "logo": "logo.png",
-        "cover": "cover.jpg",
-        "banner": "banner.jpg",
-        "hero_bg": "hero.jpg",
+        "logo": "media/images/logo.png",
+        "cover": "media/images/cover.jpg",
+        "banner": "media/images/banner.jpg",
+        "hero_bg": "media/images/hero.jpg",
         "videos": [
-            "videos_01.mp4",
-            "videos_02.mp4",
-            "videos_03.mp4"
+            "media/videos/videos_01.mp4",
+            "media/videos/videos_02.mp4",
+            "media/videos/videos_03.mp4"
         ],
         "screenshots": [
-            "screenshot_01.jpg",
-            "screenshot_02.jpg",
-            "screenshot_03.jpg",
-            "screenshot_04.jpg",
-            "screenshot_05.jpg",
-            "screenshot_06.jpg",
-            "screenshot_07.jpg",
-            "screenshot_08.jpg",
-            "screenshot_09.jpg",
-            "screenshot_10.jpg",
-            "screenshot_11.jpg",
-            "screenshot_12.jpg",
-            "screenshot_13.jpg",
-            "screenshot_14.jpg"
+            "media/images/screenshot_01.jpg",
+            "media/images/screenshot_02.jpg",
+            "media/images/screenshot_03.jpg",
+            "media/images/screenshot_04.jpg",
+            "media/images/screenshot_05.jpg",
+            "media/images/screenshot_06.jpg",
+            "media/images/screenshot_07.jpg",
+            "media/images/screenshot_08.jpg",
+            "media/images/screenshot_09.jpg",
+            "media/images/screenshot_10.jpg",
+            "media/images/screenshot_11.jpg",
+            "media/images/screenshot_12.jpg",
+            "media/images/screenshot_13.jpg",
+            "media/images/screenshot_14.jpg"
         ]
     },
     "russifiers": [

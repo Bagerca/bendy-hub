@@ -87,14 +87,27 @@ export class CatalogCardView {
         }
 
         if (cardImageFile) {
-            const imgSrc = `assets/catalog/${item.id}/${cardImageFile}`;
-            imgEl.src = imgSrc;
+            // Умная нормализация путей: защита от рассинхронизации JSON и реальных файлов
+            const primarySrc = `assets/catalog/${item.id}/${cardImageFile}`;
+            const altPath = cardImageFile.startsWith('media/') 
+                ? cardImageFile.replace('media/images/', '') 
+                : `media/images/${cardImageFile}`;
+            const fallbackSrc = `assets/catalog/${item.id}/${altPath}`;
+
+            imgEl.src = primarySrc;
             fallbackContainer.style.display = 'none';
             
             imgEl.onerror = () => {
-                imgEl.style.display = 'none';
-                fallbackContainer.style.display = 'flex';
-                coverContainer.style.background = 'var(--bg-body)';
+                if (imgEl.getAttribute('data-retried') !== 'true') {
+                    // Если первый путь выдал 404, пробуем альтернативный (media/images/...)
+                    imgEl.setAttribute('data-retried', 'true');
+                    imgEl.src = fallbackSrc;
+                } else {
+                    // Если оба варианта битые - показываем заглушку
+                    imgEl.style.display = 'none';
+                    fallbackContainer.style.display = 'flex';
+                    coverContainer.style.background = 'var(--bg-body)';
+                }
             };
         } else {
             imgEl.style.display = 'none';

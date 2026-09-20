@@ -1,6 +1,7 @@
 // FILE: pages/project/renderers/MiscRenderer.js
 
 import { RenderUtils } from './RenderUtils.js';
+import { Icons } from '../../../shared/js/icons.js';
 
 export class MiscRenderer {
     static renderReviews(reviews) {
@@ -21,7 +22,6 @@ export class MiscRenderer {
         if (RenderUtils.isEmpty(events)) return null;
         if (RenderUtils.isPlaceholder(events)) return RenderUtils.renderPlaceholder('Разработка');
         
-        // Убрали <h3>Разработка</h3>, оставили только сам таймлайн внутри bento-box
         return `<div class="bento-box large">
             <div class="wiki-timeline-container">
                 <div class="wiki-timeline-line"></div>
@@ -46,6 +46,56 @@ export class MiscRenderer {
                     </div>`;
                 }).join('')}
             </div>
+        </div>`;
+    }
+
+    static renderCredits(creditsGroups) {
+        if (RenderUtils.isEmpty(creditsGroups)) return null;
+        if (RenderUtils.isPlaceholder(creditsGroups)) return RenderUtils.renderPlaceholder('Команда разработки');
+
+        return `<div class="bento-box">
+            <div class="credits-container">
+                ${creditsGroups.map(group => `
+                    <div class="credit-group">
+                        <h4 class="credit-department">${group.department}</h4>
+                        <ul class="credit-roles">
+                            ${group.roles.map(role => `
+                                <li>
+                                    <span class="credit-job">${role.title}</span>
+                                    <span class="credit-names">${role.names.join(', ')}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `).join('')}
+            </div>
+        </div>`;
+    }
+
+    // НОВЫЙ ПРОКАЧАННЫЙ ДИЗАЙН DLC (Без заголовка, как виджет магазина)
+    static renderDLC(dlcArray, projectId) {
+        if (RenderUtils.isEmpty(dlcArray)) return null;
+
+        return `<div class="dlc-list">
+            ${dlcArray.map(dlc => {
+                const imgSrc = dlc.image && dlc.image !== '...' ? `assets/catalog/${projectId}/${dlc.image}` : null;
+                
+                return `
+                <a href="${dlc.url}" target="_blank" rel="noopener noreferrer" class="dlc-card">
+                    ${imgSrc ? `
+                    <div class="dlc-image-wrapper">
+                        <img src="${imgSrc}" alt="${dlc.title}" loading="lazy">
+                    </div>` : ''}
+                    <div class="dlc-content">
+                        <div class="dlc-header">
+                            <span class="dlc-badge">${dlc.type || 'DLC'}</span>
+                            ${Icons.plat_steam}
+                        </div>
+                        <div class="dlc-title">${dlc.title}</div>
+                        <div class="dlc-price">${dlc.price || 'Купить'}</div>
+                    </div>
+                </a>`;
+            }).join('')}
         </div>`;
     }
 }

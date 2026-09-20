@@ -3,10 +3,10 @@
     "title": "Bendy and the Ink Machine",
     "type": "game",
     "status": "released",
-    "developer": "Joey Drew Studios, Kindly Beast",
-    "publisher": "Joey Drew Studios",
+    "developer": "Joey Drew Studios Inc.",
+    "publisher": "Joey Drew Studios Inc, Rooster Teeth Games, Pocket Sized Hands, Silver Lining Interactive",
     "release_date": "10 фев. 2017 г.",
-    "description": "Bendy and the Ink Machine (рус. Бенди и Чернильная Машина) — эпизодическая хоррор-игра от первого лица, разработанная Joey Drew Studios Inc. и Kindly Beast, во главе которых стоят theMeatly и Майк Муд. \n\nГенри Штейн, бывший ведущий художник студии, получает письмо от своего старого коллеги Джоуи Дрю с просьбой посетить мастерскую, в которой они не виделись уже несколько десятилетий. Прибыв на место, Генри обнаруживает, что помещение брошено, залито чернилами, а в его центре установлена колоссальная механическая Чернильная Машина. Пытаясь запустить её по указанию старых инструкций, Генри сталкивается с агрессивным Чернильным Демоном и проваливается в глубокие нижние подуровни мастерской. Теперь его единственная цель — выбраться живым из бесконечного кошмара.",
+    "description": "Bendy and the Ink Machine (рус. Бенди и Чернильная Машина) — эпизодическая хоррор-игра от первого лица, разработанная Joey Drew Studios Inc. \n\nГенри Штейн, бывший ведущий художник студии, получает письмо от своего старого коллеги Джоуи Дрю с просьбой посетить мастерскую, в которой они не виделись уже несколько десятилетий. Прибыв на место, Генри обнаруживает, что помещение брошено, залито чернилами, а в его центре установлена колоссальная механическая Чернильная Машина. Пытаясь запустить её, Генри сталкивается с агрессивным Чернильным Демоном и проваливается в глубокие нижние подуровни мастерской. Теперь его единственная цель — выбраться живым из бесконечного кошмара.",
     "tags": [
         "Хоррор на выживание",
         "От первого лица",
@@ -27,9 +27,18 @@
         "nintendo": "https://www.nintendo.com/us/store/products/bendy-and-the-ink-machine-switch/",
         "ios": "https://apps.apple.com/us/app/bendy-and-the-ink-machine/id1437669537",
         "android": "https://play.google.com/store/apps/details?id=com.jds.batim&hl=ru",
-        "gamejolt": "https://gamejolt.com/games/batim/231092",
         "joeydrewstudios": "https://joeydrewstudios.com/batim"
     },
+    "dlc": [
+        {
+            "id": "batim_ost",
+            "title": "Official Soundtrack",
+            "type": "Музыкальный альбом",
+            "url": "https://store.steampowered.com/app/3966680/Bendy_and_the_Ink_Machine__Official_Soundtrack/",
+            "image": "dlc_ost.jpg",
+            "price": "В продаже"
+        }
+    ],
     "specs": [
         {
             "os": "Windows",
@@ -42,13 +51,13 @@
                 "Место на диске: 2 GB"
             ],
             "recommended": [
-                "64-разрядные процессор и операционная система"
+                "Процессор: 64-разрядные процессор и операционная система"
             ]
         },
         {
             "os": "Mac OS X",
             "minimum": [
-                "ОС: Sierra",
+                "ОС: macOS Sierra",
                 "Оперативная память: 16 GB ОЗУ",
                 "Место на диске: 2 GB"
             ],
@@ -152,395 +161,463 @@
     "achievements": [
         {
             "id": "picking_up_pieces",
+            "category": "Сюжетные",
             "title": "Picking Up the Pieces",
-            "description": "Collect all the items.",
-            "icon": ""
+            "description": "Соберите все ритуальные предметы в 1 главе.",
+            "icon": "achievements/picking_up_pieces.jpg"
         },
         {
             "id": "hello_bendy",
+            "category": "Сюжетные",
             "title": "Hello Bendy",
-            "description": "Fall through the floor.",
-            "icon": ""
-        },
-        {
-            "id": "crooner_tuner",
-            "title": "Crooner Tuner",
-            "description": "Turn on the radio in Chapter One.",
-            "icon": ""
-        },
-        {
-            "id": "past_speaks",
-            "title": "The Past Speaks",
-            "description": "Listened to All Audio Logs in Chapter One.",
-            "icon": ""
+            "description": "Провалитесь сквозь пол.",
+            "icon": "achievements/hello_bendy.jpg"
         },
         {
             "id": "my_favorite_song",
+            "category": "Сюжетные",
             "title": "My Favorite Song",
-            "description": "Solve the musical puzzle.",
-            "icon": ""
+            "description": "Решите музыкальную головоломку Сэмми.",
+            "icon": "achievements/my_favorite_song.jpg"
         },
         {
             "id": "the_believer",
+            "category": "Сюжетные",
             "title": "The Believer",
-            "description": "Survive being chased by Bendy.",
-            "icon": ""
-        },
-        {
-            "id": "a_special_hat",
-            "title": "A Special Hat",
-            "description": "Run into Jack Fain.",
-            "icon": ""
-        },
-        {
-            "id": "old_problems",
-            "title": "Old Problems",
-            "description": "Listened to All Audio Logs in Chapter Two.",
-            "icon": ""
+            "description": "Выживите во время первой погони Бенди.",
+            "icon": "achievements/the_believer.jpg"
         },
         {
             "id": "spare_parts",
+            "category": "Сюжетные",
             "title": "Spare Parts",
-            "description": "Found all of Alice Angel's gears.",
-            "icon": ""
-        },
-        {
-            "id": "coast_to_coast",
-            "title": "Coast to Coast",
-            "description": "Turn on the radio in Chapter Two.",
-            "icon": ""
+            "description": "Найдите все шестеренки Ангела Алисы на Уровне K.",
+            "icon": "achievements/spare_parts.jpg"
         },
         {
             "id": "ultimate_stomachache",
+            "category": "Сюжетные",
             "title": "Ultimate Stomachache",
-            "description": "Hunted down all Swollen Searchers.",
-            "icon": ""
+            "description": "Выследите всех Распухших Искателей на Уровне 11.",
+            "icon": "achievements/ultimate_stomachache.jpg"
         },
         {
             "id": "feeling_the_pressure",
+            "category": "Сюжетные",
             "title": "Feeling the Pressure",
-            "description": "Solved all valve panel puzzles.",
-            "icon": ""
+            "description": "Решите все головоломки с вентилями на Уровне P.",
+            "icon": "achievements/feeling_the_pressure.jpg"
         },
         {
             "id": "anger_management",
+            "category": "Сюжетные",
             "title": "Anger Management",
-            "description": "Destroyed all Bendy cardboard cutouts in Chapter Three.",
-            "icon": ""
+            "description": "Уничтожьте все картонки Бенди по приказу Алисы.",
+            "icon": "achievements/anger_management.jpg"
         },
         {
             "id": "front_lines",
+            "category": "Сюжетные",
             "title": "Front Lines",
-            "description": "Survived the Butcher Gang's attack.",
-            "icon": ""
+            "description": "Переживите нападение Банды Мясников.",
+            "icon": "achievements/front_lines.jpg"
         },
         {
             "id": "darker_places",
+            "category": "Сюжетные",
             "title": "Darker Places",
-            "description": "Survived the inky abyss.",
-            "icon": ""
+            "description": "Спуститесь в чернильную бездну Уровня 14.",
+            "icon": "achievements/darker_places.jpg"
+        },
+        {
+            "id": "the_path_of_the_demon",
+            "category": "Сюжетные",
+            "title": "The Path of the Demon",
+            "description": "Выберите путь Демона в 3 главе.",
+            "icon": "achievements/the_path_of_the_demon.jpg"
+        },
+        {
+            "id": "the_path_of_the_angel",
+            "category": "Сюжетные",
+            "title": "The Path of the Angel",
+            "description": "Выберите путь Ангела в 3 главе.",
+            "icon": "achievements/the_path_of_the_angel.jpg"
         },
         {
             "id": "wasting_time",
+            "category": "Сюжетные",
             "title": "Wasting Time",
-            "description": "Ring the bell.",
-            "icon": ""
+            "description": "Позвоните в колокол.",
+            "icon": "achievements/wasting_time.jpg"
         },
         {
             "id": "around_and_around",
+            "category": "Сюжетные",
             "title": "Around And Around",
-            "description": "Defeat Bertrum.",
-            "icon": ""
+            "description": "Победите Бертрама Пидмонта.",
+            "icon": "achievements/around_and_around.jpg"
         },
         {
             "id": "a_haunting_we_will_go",
+            "category": "Сюжетные",
             "title": "A Haunting We Will Go",
-            "description": "Restore Power to the Haunted House.",
-            "icon": ""
+            "description": "Восстановите питание в Доме с привидениями.",
+            "icon": "achievements/a_haunting_we_will_go.jpg"
         },
         {
             "id": "reunited",
+            "category": "Сюжетные",
             "title": "Reunited",
-            "description": "Found Boris.",
-            "icon": ""
+            "description": "Найдите Бориса.",
+            "icon": "achievements/reunited.jpg"
         },
         {
             "id": "shadows_and_suffering",
+            "category": "Сюжетные",
             "title": "Shadows and Suffering",
-            "description": "Discover what's living below.",
-            "icon": ""
+            "description": "Узнайте, что живет внизу.",
+            "icon": "achievements/shadows_and_suffering.jpg"
         },
         {
             "id": "pipes_and_problems",
+            "category": "Сюжетные",
             "title": "Pipes and Problems",
-            "description": "Found a new way through.",
-            "icon": ""
+            "description": "Найдите новый путь через лабиринт администрации.",
+            "icon": "achievements/pipes_and_problems.jpg"
         },
         {
             "id": "to_hell_and_back",
+            "category": "Сюжетные",
             "title": "To Hell and Back",
-            "description": "Complete the Main Story.",
-            "icon": ""
-        },
-        {
-            "id": "johnnys_broken_heart",
-            "title": "Johnny's Broken Heart",
-            "description": "Play the pipe organ 5 times.",
-            "icon": ""
-        },
-        {
-            "id": "still_listening",
-            "title": "Still Listening",
-            "description": "Listen to All Audio Logs in Chapter Four.",
-            "icon": ""
-        },
-        {
-            "id": "path_of_the_demon",
-            "title": "The Path of the Demon",
-            "description": "Chose the way of Bendy.",
-            "icon": ""
-        },
-        {
-            "id": "goldbricking",
-            "title": "Goldbricking",
-            "description": "Let others do the work.",
-            "icon": ""
-        },
-        {
-            "id": "the_creator",
-            "title": "The Creator",
-            "description": "Visit theMeatly.",
-            "icon": ""
-        },
-        {
-            "id": "path_of_the_angel",
-            "title": "The Path of the Angel",
-            "description": "Chose the way of Alice.",
-            "icon": ""
-        },
-        {
-            "id": "turn_it_up",
-            "title": "Turn It Up",
-            "description": "Turn on the radio in Chapter Three.",
-            "icon": ""
-        },
-        {
-            "id": "now_hear_this",
-            "title": "Now Hear This!",
-            "description": "Listen to All Audio Logs in Chapter Five.",
-            "icon": ""
+            "description": "Завершите основную историю.",
+            "icon": "achievements/to_hell_and_back.jpg"
         },
         {
             "id": "strike_up_the_band",
+            "category": "Испытания",
             "title": "Strike Up The Band",
-            "description": "Get all the Bendys on stage.",
-            "icon": ""
-        },
-        {
-            "id": "bulls_eye",
-            "title": "Bulls Eye",
-            "description": "Get a perfect score on Bull's Eye Bonanza.",
-            "icon": ""
-        },
-        {
-            "id": "knick_knack_paddywhack",
-            "title": "Knick-Knack Paddywhack",
-            "description": "Got the poor doggie a bone.",
-            "icon": ""
-        },
-        {
-            "id": "finger_waggin",
-            "title": "Finger Waggin",
-            "description": "Find the Radio in Chapter Four.",
-            "icon": ""
-        },
-        {
-            "id": "normans_fate",
-            "title": "Norman's Fate",
-            "description": "Brought down The Projectionist.",
-            "icon": ""
-        },
-        {
-            "id": "aggression",
-            "title": "Aggression",
-            "description": "Bathe in violence.",
-            "icon": ""
-        },
-        {
-            "id": "call_the_milk_man",
-            "title": "Call The Milk Man",
-            "description": "Get a perfect score on Bottle Wallop.",
-            "icon": ""
-        },
-        {
-            "id": "a_little_souvenir",
-            "title": "A Little Souvenier",
-            "description": "Take a Photo at the Photo Cutout.",
-            "icon": ""
-        },
-        {
-            "id": "standing_proud",
-            "title": "Standing Proud",
-            "description": "Find out where you belong.",
-            "icon": ""
-        },
-        {
-            "id": "voice_collector",
-            "title": "The Voice Collector",
-            "description": "Listen to All Audio Logs in the Game.",
-            "icon": ""
-        },
-        {
-            "id": "unlikely_victory",
-            "title": "Unlikely Victory",
-            "description": "Complete Chapter Four with the Plunger.",
-            "icon": ""
-        },
-        {
-            "id": "gold_record",
-            "title": "Gold Record",
-            "description": "Find all the Hidden Radios in the Game.",
-            "icon": ""
-        },
-        {
-            "id": "bring_home_the_bacon",
-            "title": "Bring Home the Bacon",
-            "description": "Collected all Bacon Soup in Chapter Three.",
-            "icon": ""
-        },
-        {
-            "id": "a_sweet_discovery",
-            "title": "A Sweet Discovery",
-            "description": "Say Hello to an Old Friend.",
-            "icon": ""
-        },
-        {
-            "id": "no_need_for_a_spoon",
-            "title": "No Need for a Spoon",
-            "description": "Collect all the Bacon Soup in Chapter Five.",
-            "icon": ""
-        },
-        {
-            "id": "grand_puppeteer",
-            "title": "Grand Puppeteer",
-            "description": "Find theMeatly in All Chapters.",
-            "icon": ""
-        },
-        {
-            "id": "just_like_mom_used_to_make",
-            "title": "Just Like Mom Used To Make",
-            "description": "Collect all the Bacon Soup in Chapter Four.",
-            "icon": ""
-        },
-        {
-            "id": "master_of_bacon",
-            "title": "Master of Bacon",
-            "description": "Collect all the Bacon Soup in the Game.",
-            "icon": ""
-        },
-        {
-            "id": "valued_employee",
-            "title": "Valued Employee",
-            "description": "Take a longer walk.",
-            "icon": ""
-        },
-        {
-            "id": "vintage_scares",
-            "title": "Vintage Scares",
-            "description": "Visit Heavenly Toys during Ink Demon's Eve.",
-            "icon": ""
+            "description": "Включите радио и заставьте всех Бенди появиться на сцене во 2 главе.",
+            "icon": "achievements/strike_up_the_band.jpg"
         },
         {
             "id": "blazing_metal",
+            "category": "Испытания",
             "title": "Blazing Metal",
-            "description": "Unleashed the Tommy Gun.",
-            "icon": ""
+            "description": "Получите Автомат Томми в 3 главе.",
+            "icon": "achievements/blazing_metal.jpg"
         },
         {
-            "id": "man_behind_the_curtain",
-            "title": "Man Behind the Curtain",
-            "description": "Visit theMeatly.",
-            "icon": ""
+            "id": "normans_fate",
+            "category": "Испытания",
+            "title": "Norman's Fate",
+            "description": "Убейте Проекциониста оружием ближнего боя в 3 главе.",
+            "icon": "achievements/normans_fate.jpg"
+        },
+        {
+            "id": "bulls_eye",
+            "category": "Испытания",
+            "title": "Bulls Eye",
+            "description": "Получите идеальный счет в тире в 4 главе.",
+            "icon": "achievements/bulls_eye.jpg"
+        },
+        {
+            "id": "call_the_milk_man",
+            "category": "Испытания",
+            "title": "Call The Milk Man",
+            "description": "Сбейте все бутылки с первой попытки в 4 главе.",
+            "icon": "achievements/call_the_milk_man.jpg"
+        },
+        {
+            "id": "goldbricking",
+            "category": "Испытания",
+            "title": "Goldbricking",
+            "description": "Позвольте Тому и Эллисон сделать за вас грязную работу (Сражение в гавани).",
+            "icon": "achievements/goldbricking.jpg"
+        },
+        {
+            "id": "aggression",
+            "category": "Испытания",
+            "title": "Aggression",
+            "description": "Искупайтесь в насилии. Убейте 50 врагов в 5 главе.",
+            "icon": "achievements/aggression.jpg"
+        },
+        {
+            "id": "valued_employee",
+            "category": "Испытания",
+            "title": "Valued Employee",
+            "description": "Пройдите более долгий путь в хранилище в 5 главе.",
+            "icon": "achievements/valued_employee.jpg"
         },
         {
             "id": "a_taste_of_home",
+            "category": "Гринд и Коллекционирование",
             "title": "A Taste of Home",
-            "description": "Collected all the Bacon Soup in Chapter One.",
-            "icon": ""
+            "description": "Соберите весь суп с беконом в Главе 1.",
+            "icon": "achievements/a_taste_of_home.jpg"
         },
         {
-            "id": "barbecued",
-            "title": "Barbecued",
-            "description": "Visit theMeatly.",
-            "icon": ""
+            "id": "the_past_speaks",
+            "category": "Гринд и Коллекционирование",
+            "title": "The Past Speaks",
+            "description": "Прослушайте все аудиозаписи в Главе 1.",
+            "icon": "achievements/the_past_speaks.jpg"
+        },
+        {
+            "id": "johnnys_broken_heart",
+            "category": "Гринд и Коллекционирование",
+            "title": "Johnny's Broken Heart",
+            "description": "Сыграйте на органе 5 раз во 2 главе.",
+            "icon": "achievements/johnnys_broken_heart.jpg"
         },
         {
             "id": "canadian_bacon",
+            "category": "Гринд и Коллекционирование",
             "title": "Canadian Bacon",
-            "description": "Collect all the Bacon Soup in Chapter Two.",
-            "icon": ""
+            "description": "Соберите весь суп с беконом в Главе 2.",
+            "icon": "achievements/canadian_bacon.jpg"
         },
         {
-            "id": "long_forgotten_self",
-            "title": "Long Forgotten Self",
-            "description": "Unearthed the sunken room.",
-            "icon": ""
+            "id": "old_problems",
+            "category": "Гринд и Коллекционирование",
+            "title": "Old Problems",
+            "description": "Прослушайте все аудиозаписи в Главе 2.",
+            "icon": "achievements/old_problems.jpg"
         },
         {
             "id": "inner_child",
+            "category": "Гринд и Коллекционирование",
             "title": "Inner Child",
-            "description": "Play with 25 Bendy Dolls.",
-            "icon": ""
+            "description": "Поиграйте с 25 куклами Бенди в 3 главе.",
+            "icon": "achievements/inner_child.jpg"
         },
         {
-            "id": "going_to_be_sick",
-            "title": "Going To Be Sick",
-            "description": "Go for a wild ride.",
-            "icon": ""
-        },
-        {
-            "id": "toe_tappin",
-            "title": "Toe Tappin",
-            "description": "Find the Radio in Chapter Five.",
-            "icon": ""
+            "id": "bring_home_the_bacon",
+            "category": "Гринд и Коллекционирование",
+            "title": "Bring Home the Bacon",
+            "description": "Соберите весь суп с беконом в Главе 3.",
+            "icon": "achievements/bring_home_the_bacon.jpg"
         },
         {
             "id": "hearing_voices",
+            "category": "Гринд и Коллекционирование",
             "title": "Hearing Voices",
-            "description": "Listened to All Audio Logs in Chapter Three.",
-            "icon": ""
+            "description": "Прослушайте все аудиозаписи в Главе 3.",
+            "icon": "achievements/hearing_voices.jpg"
+        },
+        {
+            "id": "just_like_mom_used_to_make",
+            "category": "Гринд и Коллекционирование",
+            "title": "Just Like Mom Used To Make",
+            "description": "Соберите весь суп с беконом в Главе 4.",
+            "icon": "achievements/just_like_mom_used_to_make.jpg"
+        },
+        {
+            "id": "still_listening",
+            "category": "Гринд и Коллекционирование",
+            "title": "Still Listening",
+            "description": "Прослушайте все аудиозаписи в Главе 4.",
+            "icon": "achievements/still_listening.jpg"
+        },
+        {
+            "id": "no_need_for_a_spoon",
+            "category": "Гринд и Коллекционирование",
+            "title": "No Need for a Spoon",
+            "description": "Соберите весь суп с беконом в Главе 5.",
+            "icon": "achievements/no_need_for_a_spoon.jpg"
+        },
+        {
+            "id": "now_hear_this",
+            "category": "Гринд и Коллекционирование",
+            "title": "Now Hear This!",
+            "description": "Прослушайте все аудиозаписи в Главе 5.",
+            "icon": "achievements/now_hear_this.jpg"
+        },
+        {
+            "id": "master_of_bacon",
+            "category": "Платина и 100%",
+            "title": "Master of Bacon",
+            "description": "Соберите весь суп с беконом в игре.",
+            "icon": "achievements/master_of_bacon.jpg"
+        },
+        {
+            "id": "the_voice_collector",
+            "category": "Платина и 100%",
+            "title": "The Voice Collector",
+            "description": "Прослушайте абсолютно все аудиозаписи в игре.",
+            "icon": "achievements/the_voice_collector.jpg"
+        },
+        {
+            "id": "gold_record",
+            "category": "Платина и 100%",
+            "title": "Gold Record",
+            "description": "Найдите все скрытые радио в игре.",
+            "icon": "achievements/gold_record.jpg"
+        },
+        {
+            "id": "grand_puppeteer",
+            "category": "Платина и 100%",
+            "title": "Grand Puppeteer",
+            "description": "Найдите theMeatly во всех главах.",
+            "icon": "achievements/grand_puppeteer.jpg"
+        },
+        {
+            "id": "master_of_the_ink",
+            "category": "Платина и 100%",
+            "title": "Master of the Ink",
+            "description": "Вы истинный мастер чернил! (Только PlayStation).",
+            "icon": "achievements/master_of_the_ink.jpg"
+        },
+        {
+            "id": "crooner_tuner",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Crooner Tuner",
+            "description": "Включите скрытое радио в Главе 1.",
+            "icon": "achievements/crooner_tuner.jpg"
+        },
+        {
+            "id": "the_creator",
+            "category": "Скрытые (Пасхалки)",
+            "title": "The Creator",
+            "description": "Навестите theMeatly в Главе 1.",
+            "icon": "achievements/the_creator.jpg"
+        },
+        {
+            "id": "coast_to_coast",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Coast to Coast",
+            "description": "Включите скрытое радио в Главе 2.",
+            "icon": "achievements/coast_to_coast.jpg"
+        },
+        {
+            "id": "a_special_hat",
+            "category": "Скрытые (Пасхалки)",
+            "title": "A Special Hat",
+            "description": "Встретьтесь с Джеком Фейном (до убийства).",
+            "icon": "achievements/a_special_hat.jpg"
+        },
+        {
+            "id": "man_behind_the_curtain",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Man Behind the Curtain",
+            "description": "Навестите theMeatly в Главе 2.",
+            "icon": "achievements/man_behind_the_curtain.jpg"
+        },
+        {
+            "id": "knick_knack_paddywhack",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Knick-Knack Paddywhack",
+            "description": "Порадуйте песика косточкой в убежище.",
+            "icon": "achievements/knick_knack_paddywhack.jpg"
+        },
+        {
+            "id": "long_forgotten_self",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Long Forgotten Self",
+            "description": "Раскопайте затопленную секретную комнату с записью Генри.",
+            "icon": "achievements/long_forgotten_self.jpg"
+        },
+        {
+            "id": "turn_it_up",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Turn It Up",
+            "description": "Включите скрытое радио в Главе 3.",
+            "icon": "achievements/turn_it_up.jpg"
         },
         {
             "id": "tea_time",
+            "category": "Скрытые (Пасхалки)",
             "title": "Tea Time",
-            "description": "Kicked back with theMeatly.",
-            "icon": ""
+            "description": "Отдохните за чашкой чая с theMeatly в Главе 3.",
+            "icon": "achievements/tea_time.jpg"
+        },
+        {
+            "id": "going_to_be_sick",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Going To Be Sick",
+            "description": "Прокатитесь на Дикой поездке Бертрама.",
+            "icon": "achievements/going_to_be_sick.jpg"
+        },
+        {
+            "id": "a_little_souvenir",
+            "category": "Скрытые (Пасхалки)",
+            "title": "A Little Souvenir",
+            "description": "Сфотографируйтесь в тантамареске.",
+            "icon": "achievements/a_little_souvenir.jpg"
+        },
+        {
+            "id": "unlikely_victory",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Unlikely Victory",
+            "description": "Пройдите Главу 4 вооружившись вантузом.",
+            "icon": "achievements/unlikely_victory.jpg"
+        },
+        {
+            "id": "finger_waggin",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Finger Waggin",
+            "description": "Найдите скрытое радио в Главе 4.",
+            "icon": "achievements/finger_waggin.jpg"
+        },
+        {
+            "id": "barbecued",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Barbecued",
+            "description": "Навестите theMeatly на барбекю в Главе 4.",
+            "icon": "achievements/barbecued.jpg"
+        },
+        {
+            "id": "toe_tappin",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Toe Tappin",
+            "description": "Найдите скрытое радио в Главе 5.",
+            "icon": "achievements/toe_tappin.jpg"
+        },
+        {
+            "id": "a_sweet_discovery",
+            "category": "Скрытые (Пасхалки)",
+            "title": "A Sweet Discovery",
+            "description": "Поздоровайтесь со старым другом.",
+            "icon": "achievements/a_sweet_discovery.jpg"
+        },
+        {
+            "id": "standing_proud",
+            "category": "Скрытые (Пасхалки)",
+            "title": "Standing Proud",
+            "description": "Узнайте, где ваше место (Пройдите Архивы).",
+            "icon": "achievements/standing_proud.jpg"
+        },
+        {
+            "id": "vintage_scares",
+            "category": "Сезонные события",
+            "title": "Vintage Scares",
+            "description": "Посетите Heavenly Toys во время кануна Инки Демона (Хэллоуин).",
+            "icon": "achievements/vintage_scares.jpg"
         }
     ],
     "assets": {
-        "logo": "logo.png",
-        "cover": "cover.jpg",
-        "banner": "banner.jpg",
-        "hero_bg": "hero.jpg",
+        "logo": "media/images/logo.png",
+        "cover": "media/images/cover.jpg",
+        "banner": "media/images/banner.jpg",
+        "hero_bg": "media/images/hero.jpg",
         "videos": [
-            "videos_01.mp4",
-            "videos_02.mp4",
-            "videos_03.mp4",
-            "videos_04.mp4"
+            "media/videos/videos_01.mp4",
+            "media/videos/videos_02.mp4",
+            "media/videos/videos_03.mp4",
+            "media/videos/videos_04.mp4"
         ],
         "screenshots": [
-            "screenshot_01.jpg",
-            "screenshot_02.jpg",
-            "screenshot_03.jpg",
-            "screenshot_04.jpg",
-            "screenshot_05.jpg",
-            "screenshot_06.jpg",
-            "screenshot_07.jpg",
-            "screenshot_08.jpg",
-            "screenshot_09.jpg",
-            "screenshot_10.jpg",
-            "screenshot_11.jpg",
-            "screenshot_12.jpg"
+            "media/images/screenshot_01.jpg",
+            "media/images/screenshot_02.jpg",
+            "media/images/screenshot_03.jpg",
+            "media/images/screenshot_04.jpg",
+            "media/images/screenshot_05.jpg",
+            "media/images/screenshot_06.jpg",
+            "media/images/screenshot_07.jpg",
+            "media/images/screenshot_08.jpg",
+            "media/images/screenshot_09.jpg",
+            "media/images/screenshot_10.jpg",
+            "media/images/screenshot_11.jpg",
+            "media/images/screenshot_12.jpg"
         ]
     },
     "russifiers": [
@@ -560,6 +637,7 @@
             "fisher",
             "ink_demon",
             "boris_wolf",
+            "sammy_lawrence",
             "linda_stein",
             "jack_fain",
             "norman_polk",
@@ -570,27 +648,116 @@
         "chapters": [
             {
                 "title": "Глава 1: Движущиеся картинки",
-                "description": "Генри Штейн входит в Старую Студию, находит сломанную Чернильную Машину и пытается её запустить, собирая необходимые предметы для пьедесталов."
+                "description": "Генри Штейн входит в Старую Студию, находит сломанную Чернильную Машину и пытается её запустить, собирая необходимые предметы для пьедесталов.",
+                "image": "chapters/chapter1.jpg",
+                "stats": {
+                    "audio_logs": 2,
+                    "bacon_soup": 21
+                },
+                "enemies": [
+                    "Чернильный Демон (Только скрипты)"
+                ],
+                "weapons": [
+                    "Топор"
+                ]
             },
             {
                 "title": "Глава 2: Старая песня",
-                "description": "Спустившись глубже, Генри исследует Музыкальный отдел, где сталкивается с обезумевшим Сэмми Лоуренсом и впервые спасается бегством от Чернильного Демона."
+                "description": "Спустившись глубже, Генри исследует Музыкальный отдел, где сталкивается с обезумевшим Сэмми Лоуренсом и впервые спасается бегством от Чернильного Демона.",
+                "image": "chapters/chapter2.jpg",
+                "stats": {
+                    "audio_logs": 7,
+                    "bacon_soup": 31
+                },
+                "enemies": [
+                    "Обычные Искатели",
+                    "Распухший Джек",
+                    "Искатели-шахтеры",
+                    "Чернильный Демон"
+                ],
+                "weapons": [
+                    "Топор"
+                ]
             },
             {
                 "title": "Глава 3: Взлёты и падения",
-                "description": "После встречи с Волком Борисом, Генри исследует множество новых уровней студии, выполняя опасные задания для искаженной Ангела Алисы."
+                "description": "После встречи с Волком Борисом, Генри исследует множество новых уровней студии, выполняя опасные задания для искаженной Ангела Алисы.",
+                "image": "chapters/chapter3.jpg",
+                "stats": {
+                    "audio_logs": 10,
+                    "bacon_soup": 42
+                },
+                "enemies": [
+                    "Банда Мясников (Пайпер, Фишер, Страйкер)",
+                    "Ангел Алиса",
+                    "Обычные Искатели",
+                    "Искатели-Минибоссы",
+                    "Искатель-Босс",
+                    "Проекционист",
+                    "Чернильный Демон"
+                ],
+                "weapons": [
+                    "Труба Gent",
+                    "Гаечный ключ",
+                    "Шприц",
+                    "Вантуз",
+                    "Топор",
+                    "Автомат Томми"
+                ]
             },
             {
                 "title": "Глава 4: Большие чудеса",
-                "description": "После того, как Алиса похищает Бориса, Генри спускается в подземный парк развлечений «Бендиленд», чтобы спасти своего друга."
+                "description": "После того, как Алиса похищает Бориса, Генри спускается в подземный парк развлечений «Бендиленд», чтобы спасти своего друга.",
+                "image": "chapters/chapter4.jpg",
+                "stats": {
+                    "audio_logs": 6,
+                    "bacon_soup": 19
+                },
+                "enemies": [
+                    "Чернильный Демон (Только скрипты)",
+                    "Бертрам Пидмонт",
+                    "Пайпер",
+                    "Страйкер",
+                    "Фишер",
+                    "Проекционист",
+                    "Грубый Борис (Босс)"
+                ],
+                "weapons": [
+                    "Топор",
+                    "Труба Gent"
+                ]
             },
             {
                 "title": "Глава 5: Последняя бобина",
-                "description": "Генри объединяется с Эллисон и Томом для финального спуска в Чернильную Бездну, чтобы победить Чернильного Демона раз и навсегда."
+                "description": "Генри объединяется с Эллисон и Томом для финального спуска в Чернильную Бездну, чтобы победить Чернильного Демона раз и навсегда.",
+                "image": "chapters/chapter5.jpg",
+                "stats": {
+                    "audio_logs": 6,
+                    "bacon_soup": 7
+                },
+                "enemies": [
+                    "Искатели",
+                    "Искатели-шахтеры",
+                    "Потерянные",
+                    "Гигантская Рука Бенди",
+                    "Сэмми Лоуренс (Босс)",
+                    "Искатель Сэмми",
+                    "Банда Мясников",
+                    "Зверский Бенди (Босс)"
+                ],
+                "weapons": [
+                    "Труба Gent",
+                    "Топор",
+                    "Коса"
+                ]
             },
             {
-                "title": "Архивы",
-                "description": "Специальный музейный уровень, открывающийся после прохождения игры. Содержит ранние 3D-модели, концепт-арты и комментарии разработчиков."
+                "title": "Глава ?: Архивы",
+                "description": "Специальный музейный уровень, открывающийся после прохождения игры. Содержит ранние 3D-модели, концепт-арты и комментарии разработчиков.",
+                "image": "chapters/chapter_archives.jpg",
+                "stats": null,
+                "enemies": [],
+                "weapons": []
             }
         ],
         "gameplay": [
@@ -649,38 +816,342 @@
                     "Кнопка B — прыжок.",
                     "Кнопка + — меню паузы."
                 ]
-            },
-            {
-                "platform": "Android / iOS",
-                "mapping": [
-                    "Сенсорный экран — Игра поддерживает экранные кнопки на мобильных портах."
-                ]
             }
         ],
         "development": [
             {
-                "title": "Февраль 2017: Рождение франшизы",
-                "text": "Первая глава была выпущена 10 февраля 2017 года на Game Jolt, Itch.io и Indie DB. Вскоре после этого игра прошла отбор в Steam Greenlight."
+                "title": "Февраль 2017: Рождение франшизы и Прототип",
+                "text": "10 февраля 2017 года на Game Jolt, Itch.io и Indie DB вышла первая, прототипная демоверсия игры. Билд был собран TheMeatly и Майком Мудом меньше чем за неделю. В ней были совершенно другие модели персонажей (например, знаменитый среди разработчиков «Bird Poop with a Smile» — ранняя модель Чернильного Демона, а также мертвый Борис с разрезанным животом буквой Y). 28 февраля игра успешно прошла отбор в Steam Greenlight."
             },
             {
-                "title": "Апрель — Сентябрь 2017: Эра обновлений",
-                "text": "18 апреля выходит Вторая глава. 28 сентября состоялся релиз Третьей главы в Steam вместе с глобальным обновлением графики и механик предыдущих эпизодов."
+                "title": "Апрель — Октябрь 2017: Вторая Глава и Хэллоуин",
+                "text": "18 апреля выходит Вторая глава вместе с первым масштабным ремастером Первой (добавлена способность бега и супы с беконом). Осенью состоялся релиз Третьей главы. С 27 по 31 октября прошел кроссовер-ивент «Hello Bendy», где модели Демона и Сэмми были заменены на Соседа из игры Hello Neighbor, а студия была украшена хэллоуинской атрибутикой."
             },
             {
                 "title": "Октябрь 2018: Финал истории",
-                "text": "26 октября 2018 года свет увидела последняя, Пятая глава. Она была выпущена как часть полного сборника, включающего все эпизоды и специальный режим «Архивы»."
+                "text": "26 октября 2018 года свет увидела последняя, Пятая глава. Она была выпущена как часть полного издания «The Complete Edition», включающего все 5 эпизодов и специальную главу «Архивы». В ноябре-декабре состоялись релизы на консолях PS4, Xbox One, Switch и мобильных устройствах iOS/Android."
+            },
+            {
+                "title": "Октябрь 2024: Патч Quality of Life",
+                "text": "24 октября 2024 года, спустя почти 6 лет, вышел патч 1.5.1.2. Он добавил опцию переключения бега, пропуск вступительного логотипа, сократил битву в гавани в 5 главе, исправил баг с сохранениями и добавил ивент «Ink Demon's Eve»."
+            },
+            {
+                "title": "Май — Июнь 2025: Возвращение на консоли",
+                "text": "В апреле 2025 года студия Silver Lining Interactive совместно с Pocket Sized Hands анонсировала улучшенные порты для PlayStation 5 и Xbox Series X|S. Летом того же года вышли расширенные физические издания для Nintendo Switch и PS5, включающие цифровой саундтрек."
+            }
+        ],
+        "credits": [
+            {
+                "department": "Геймдизайн и Сюжет",
+                "roles": [
+                    {
+                        "title": "Оригинальная идея и Дизайн",
+                        "names": [
+                            "TheMeatly",
+                            "Mike Mood",
+                            "Matt Goles",
+                            "Dan Tozer"
+                        ]
+                    },
+                    {
+                        "title": "Сценаристы",
+                        "names": [
+                            "TheMeatly",
+                            "Bookpast"
+                        ]
+                    },
+                    {
+                        "title": "Создатели персонажей",
+                        "names": [
+                            "TheMeatly",
+                            "Bookpast"
+                        ]
+                    }
+                ]
+            },
+            {
+                "department": "Программирование",
+                "roles": [
+                    {
+                        "title": "Ведущий программист",
+                        "names": [
+                            "Mike Mood"
+                        ]
+                    },
+                    {
+                        "title": "Старший программист",
+                        "names": [
+                            "Matt Goles"
+                        ]
+                    },
+                    {
+                        "title": "Оптимизация",
+                        "names": [
+                            "Phantom Compass Inc"
+                        ]
+                    }
+                ]
+            },
+            {
+                "department": "Изобразительное искусство (3D и 2D)",
+                "roles": [
+                    {
+                        "title": "Арт-директор",
+                        "names": [
+                            "Pascal Cleurox"
+                        ]
+                    },
+                    {
+                        "title": "Старший концепт-художник",
+                        "names": [
+                            "Gavin McCarthy"
+                        ]
+                    },
+                    {
+                        "title": "3D-моделирование и Текстурирование",
+                        "names": [
+                            "Pascal Cleurox",
+                            "TheMeatly",
+                            "Mike Mood"
+                        ]
+                    },
+                    {
+                        "title": "3D-анимация и Риггинг",
+                        "names": [
+                            "Dan Tozer",
+                            "Michael Frei",
+                            "TimetheHobo"
+                        ]
+                    },
+                    {
+                        "title": "Дизайн уровней (Set dressing)",
+                        "names": [
+                            "TheMeatly",
+                            "Bookpast",
+                            "Mike Mood",
+                            "Trois Pixel"
+                        ]
+                    }
+                ]
+            },
+            {
+                "department": "Звук и Музыка",
+                "roles": [
+                    {
+                        "title": "Аудиорежиссер и Композитор",
+                        "names": [
+                            "TheMeatly"
+                        ]
+                    },
+                    {
+                        "title": "Старший саунд-дизайнер",
+                        "names": [
+                            "Joel Walsh",
+                            "Ray Gould"
+                        ]
+                    },
+                    {
+                        "title": "Разработка аудиосистем",
+                        "names": [
+                            "Jay Clipperton"
+                        ]
+                    }
+                ]
+            },
+            {
+                "department": "Актеры озвучивания",
+                "roles": [
+                    {
+                        "title": "Ангел Алиса / Искаженная Алиса / Эллисон",
+                        "names": [
+                            "Lauren Synger"
+                        ]
+                    },
+                    {
+                        "title": "Сэмми Лоуренс",
+                        "names": [
+                            "Aaron Landon"
+                        ]
+                    },
+                    {
+                        "title": "Джоуи Дрю",
+                        "names": [
+                            "David Eddings"
+                        ]
+                    },
+                    {
+                        "title": "Сьюзи Кэмпбелл",
+                        "names": [
+                            "Alanna Linayre"
+                        ]
+                    },
+                    {
+                        "title": "Генри Штейн / Уолли Фрэнкс / Норман Полк / Пайпер / Фишер / Страйкер",
+                        "names": [
+                            "TheMeatly"
+                        ]
+                    },
+                    {
+                        "title": "Томас Коннор",
+                        "names": [
+                            "Mike Mood"
+                        ]
+                    },
+                    {
+                        "title": "Джек Фейн",
+                        "names": [
+                            "Bookpast"
+                        ]
+                    },
+                    {
+                        "title": "Бертрам Пидмонт",
+                        "names": [
+                            "Joe J Thomas"
+                        ]
+                    },
+                    {
+                        "title": "Лейси Бентон",
+                        "names": [
+                            "Lani Minella"
+                        ]
+                    },
+                    {
+                        "title": "Шон Флинн",
+                        "names": [
+                            "JackSepticEye"
+                        ]
+                    },
+                    {
+                        "title": "Грант Коэн",
+                        "names": [
+                            "Will Ryan (DAGames)"
+                        ]
+                    },
+                    {
+                        "title": "Племянница Джоуи Дрю",
+                        "names": [
+                            "В титрах не указана"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "weapons": [
+            {
+                "name": "Топор",
+                "type": "Ближний бой",
+                "desc": "Основное оружие, используемое для разрубания деревянных досок и уничтожения Искателей."
+            },
+            {
+                "name": "Труба Gent",
+                "type": "Ближний бой",
+                "desc": "Тяжелая металлическая труба, разработанная корпорацией Gent. Появляется в 3 и 4 главах."
+            },
+            {
+                "name": "Вантуз",
+                "type": "Ближний бой",
+                "desc": "Особое скрытое оружие, необходимое для получения достижения «Unlikely Victory» в 4 главе."
+            },
+            {
+                "name": "Шприц",
+                "type": "Ближний бой",
+                "desc": "Используется исключительно по заданию Алисы для сбора толстых чернил из Распухших Искателей."
+            },
+            {
+                "name": "Коса",
+                "type": "Ближний бой",
+                "desc": "Скрытое мощное оружие, которое можно получить, активировав все видения (Horror visions) в игре."
+            },
+            {
+                "name": "Автомат Томми",
+                "type": "Дальний бой",
+                "desc": "Огнестрельное оружие. Открывается на пути Демона, если не умереть при выполнении заданий Алисы."
+            }
+        ],
+        "items": [
+            {
+                "name": "Суп с Беконом",
+                "type": "Коллекционный",
+                "desc": "Фирменный продукт студии. Восстанавливает здоровье и используется для получения достижений. Пустые банки можно кидать для отвлечения врагов."
+            },
+            {
+                "name": "Предметы для Ритуала",
+                "type": "Квестовый",
+                "desc": "Книга «Иллюзия жизни», кукла Бенди, гаечный ключ, шестеренка, чернильница и пластинка."
+            },
+            {
+                "name": "Линза Видящего (Seeing Tool)",
+                "type": "Устройство",
+                "desc": "Кусок стекла, дарованный Эллисон в 5 главе, позволяющий видеть скрытые послания, оставленные золотыми чернилами на стенах."
+            }
+        ],
+        "easter_eggs": [
+            {
+                "title": "theMeatly за плакатом",
+                "desc": "В каждой из 5 глав за определенным плакатом «Sheep Songs!» можно пройти сквозь стену и найти картонку создателя игры, жарящего сосиски, пьющего чай или читающего книгу."
+            },
+            {
+                "title": "Сломанные наушники TZKUnit",
+                "desc": "В Главе 3 на уровне 14 можно найти сломанные наушники. Это отсылка к ютуберу TZKUnit, который разбил свои наушники на стриме из-за бага с Проекционистом. Майк Муд увековечил это в патче."
+            },
+            {
+                "title": "Голос Сэмми Лоуренса",
+                "desc": "Если в Главе 3 на лестничной клетке 11 уровня сыграть на инструментах в порядке: Бас → Барабан → Скрипка → Пианино → Барабан, то раздастся призрачный голос Сэмми: «We've all been waiting, but now, he will set... us... free...»."
+            },
+            {
+                "title": "Куб-компаньон",
+                "desc": "В Главе 4, если посмотреть через Линзу Видящего на один из ящиков после поездки на платформе над пропастью, можно увидеть сердце. Это отсылка к кубу-компаньону из игры Portal."
+            },
+            {
+                "title": "Доска Администрации",
+                "desc": "В 5 главе на доске можно найти имена «F. Fontaine» (BioShock), «Hayden - UAC» (DOOM), а также отсылки к теоретикам (ProdCharles) и разработчикам («That weird puppet guy»)."
+            },
+            {
+                "title": "Музыка на радио",
+                "desc": "Радиоприемники в игре проигрывают каноничные фанатские песни: «Bendy and the Ink Machine» (Kyle Allen), «Build Our Machine» (DAGames), «Bendy and the Ink Musical» (Random Encounters), «Can't Be Erased» (JT Music) и официальную «Lonely Angel» (Lauren Synger)."
+            },
+            {
+                "title": "Шутка про разработчиков (lose audio)",
+                "desc": "В файлах игры можно найти неиспользованное аудио, где Майк Муд кричит «Boo you lose! You suck!», а другой член команды это повторяет."
+            },
+            {
+                "title": "Секретный уровень (Out of Bounds)",
+                "desc": "Если игрок выходит за границы карты (Out of Bounds), в некоторых секретных комнатах он может встретить Синни (Sinny) — картонку искаженного Бенди с надписью «Блуждание — страшный грех»."
+            }
+        ],
+        "events": [
+            {
+                "title": "Кроссовер «Hello Bendy»",
+                "date": "27 Окт. — 31 Окт. 2017",
+                "desc": "Официальный Хэллоуинский кроссовер с игрой Hello Neighbor. Чернильный Демон и Сэмми Лоуренс были заменены на Соседа (Теодора Питерсона). В студии появились тыквы, а музыка погони сменилась на тему Соседа.",
+                "image": "event_hello_bendy.jpg"
+            },
+            {
+                "title": "Bendy and the Brine Barrel",
+                "date": "1 Апреля 2024",
+                "desc": "Шуточное первоапрельское обновление, заменяющее Банду Мясников на гигантские разумные бочки с рассолом.",
+                "image": "event_brine_barrel.jpg"
+            },
+            {
+                "title": "Прототипная Демоверсия",
+                "date": "10 Февраля 2017",
+                "desc": "Самый первый публичный билд игры. Имел уникальные отличия: голос Генри при испуге («I'm getting the hell out of here!»), ранняя модель Демона (Alpha Bendy), и модель мертвого Бориса с Y-образным анатомическим разрезом живота.",
+                "image": "event_prototype.jpg"
             }
         ],
         "trivia": [
-            "Общая идея «Bendy and the Ink Machine» и механика аудиодневников были вдохновлены серией игр «BioShock».",
-            "Многие плакаты и картины, висящие на стенах студии — это работы фанатов, победивших в официальных художественных конкурсах от TheMeatly.",
-            "В течение короткого промежутка времени на странице удалённой альфа-версии игры в Game Jolt были доступны для загрузки ранние саундтреки.",
-            "Майк Муд однажды создал шуточную внутреннюю версию игры под названием «Bendy and the Inverted Machine» с инвертированным управлением и изменённым логотипом.",
-            "Лозунг игры «Above all, fear the Machine» (рус. Прежде всего бойтесь Машины) является прямой отсылкой на библейский стих из Первой книги Царств Самуила 12:24.",
-            "Альтернативный логотип игры, представленный на сайте Rooster Teeth, был нарисован фанатом Антонио Бальцано.",
-            "Для главного логотипа игры используется шрифт DK Black Bamboo, где буква «В» стилизована под дьявольские рожки Бенди."
+            "Общая концепция игры и механика аудиодневников были вдохновлены серией BioShock.",
+            "На ранних этапах разработки Майк Муд создал шуточную версию игры «Bendy and the Inverted Machine» для актера озвучки Дэвида Эддингса, где было инвертировано управление и изменены все логотипы.",
+            "В файлах игры можно найти модель вырезанной шахматной доски. Разработчики планировали добавить мини-игру с Борисом в убежище 3 главы, но отказались от идеи из-за нехватки времени и недостатка опыта кодирования ИИ для шахмат у Майка Муда.",
+            "В удаленных файлах 4 главы была найдена аудиозапись, где Чернильный Демон говорит «Hey hey hey!» (отсылка на мультсериал «Толстяк Альберт»). Майк Муд подтвердил, что это был просто звуковой плейсхолдер для скримера в вентиляции.",
+            "Многие плакаты и картины, висящие на стенах студии — это работы фанатов, победивших в официальных художественных конкурсах от TheMeatly перед релизами новых глав.",
+            "Слоган игры «Above all, fear the Machine» (Прежде всего бойтесь Машины) является прямой отсылкой на библейский стих из Первой книги Царств Самуила 12:24.",
+            "В ранних версиях 2 главы существовала пентаграмма возрождения, нарисованная чернилами с бьющимся сердцем в центре. Позже её полностью заменили на статуи Бенди."
         ],
-        "records": []
+        "records": [
+            "batim_audio",
+            "batim_notes"
+        ]
     },
     "color": "109, 88, 57"
 }

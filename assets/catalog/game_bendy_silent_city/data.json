@@ -25,9 +25,9 @@
         }
     ],
     "assets": {
-        "logo": "logo.png",
+        "logo": "media/images/logo.png",
         "cover": "cover.jpg",
-        "banner": "banner.jpg",
+        "banner": "media/images/banner.jpg",
         "hero_bg": "hero.jpg",
         "videos": [
             "..."

@@ -116,7 +116,9 @@ export class WikiView {
             section.id = `tab-${tabDef.id}`;
             section.className = `wiki-section ${isFirstTab ? 'active' : ''}`;
 
-            let gridHtml = `<div class="overview-grid ${sidebarHtml ? 'has-sidebar' : ''}">`;
+            // Читаем стиль сайдбара из конфига
+            const sidebarClass = tabDef.sidebarStyle === 'wide' ? 'is-wide-sidebar' : '';
+            let gridHtml = `<div class="overview-grid ${sidebarHtml ? 'has-sidebar' : ''} ${sidebarClass}">`;
             
             if (sidebarHtml) {
                 gridHtml += `<aside class="overview-sidebar"><div class="sticky-sidebar-wrapper">${sidebarHtml}</div></aside>`;
@@ -170,11 +172,20 @@ export class WikiView {
     }
 
     _initInnerTabs(container) {
-        const navs = container.querySelectorAll('.inner-tabs-nav');
+        // Ищем все виды навигации (и обычные табы ОС, и новые кнопки Мин/Рек)
+        const navs = container.querySelectorAll('.inner-tabs-nav, .req-switch-nav');
+        
         navs.forEach(nav => {
-            const wrapper = nav.closest('.bento-box');
-            const btns = nav.querySelectorAll('.inner-tab-btn');
-            const contents = wrapper.querySelectorAll('.inner-tab-content');
+            // Кнопки и контент могут быть с разными классами в зависимости от типа
+            const isSwitch = nav.classList.contains('req-switch-nav');
+            const btnClass = isSwitch ? '.req-switch-btn' : '.inner-tab-btn';
+            const contentClass = isSwitch ? '.req-switch-content' : '.inner-tab-content';
+            
+            // Ищем родителя (для свитча это ближайший grid, для табов это bento-box)
+            const wrapper = isSwitch ? nav.closest('.req-bento-grid') : nav.closest('.bento-box');
+            
+            const btns = nav.querySelectorAll(btnClass);
+            const contents = wrapper.querySelectorAll(contentClass);
             
             btns.forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -186,27 +197,30 @@ export class WikiView {
                 });
             });
 
-            let isDown = false, isDragged = false, startX, scrollLeft;
+            // Драг-н-дроп скролл нужен только для горизонтальных табов
+            if (!isSwitch) {
+                let isDown = false, isDragged = false, startX, scrollLeft;
 
-            nav.addEventListener('mousedown', (e) => {
-                isDown = true; isDragged = false; startX = e.pageX - nav.offsetLeft; scrollLeft = nav.scrollLeft;
-            });
-            
-            const stopDrag = () => { isDown = false; nav.classList.remove('is-dragging'); };
-            nav.addEventListener('mouseleave', stopDrag);
-            nav.addEventListener('mouseup', stopDrag);
+                nav.addEventListener('mousedown', (e) => {
+                    isDown = true; isDragged = false; startX = e.pageX - nav.offsetLeft; scrollLeft = nav.scrollLeft;
+                });
+                
+                const stopDrag = () => { isDown = false; nav.classList.remove('is-dragging'); };
+                nav.addEventListener('mouseleave', stopDrag);
+                nav.addEventListener('mouseup', stopDrag);
 
-            nav.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - nav.offsetLeft;
-                const walk = (x - startX) * 1.5; 
-                if (Math.abs(walk) > 3) { isDragged = true; nav.classList.add('is-dragging'); }
-                nav.scrollLeft = scrollLeft - walk;
-            });
+                nav.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - nav.offsetLeft;
+                    const walk = (x - startX) * 1.5; 
+                    if (Math.abs(walk) > 3) { isDragged = true; nav.classList.add('is-dragging'); }
+                    nav.scrollLeft = scrollLeft - walk;
+                });
 
-            nav.addEventListener('wheel', (e) => { e.preventDefault(); nav.scrollLeft += e.deltaY; });
-            nav.addEventListener('click', (e) => { if (isDragged) { e.preventDefault(); e.stopPropagation(); } }, { capture: true });
+                nav.addEventListener('wheel', (e) => { e.preventDefault(); nav.scrollLeft += e.deltaY; });
+                nav.addEventListener('click', (e) => { if (isDragged) { e.preventDefault(); e.stopPropagation(); } }, { capture: true });
+            }
         });
     }
 
@@ -215,7 +229,6 @@ export class WikiView {
         if (list) list.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
     }
 
-    // ИСПРАВЛЕНИЕ: Убрана логика "стопки" аватаров, теперь карточки одиночные и компактные
     renderCharacters(charactersData) {
         const list = document.getElementById('wiki-characters-list');
         if (!list) return;
@@ -272,7 +285,7 @@ export class WikiView {
                 </div>
             `;
 
-            // 3. Стрелка
+            // 3. Стрелка (отключена в CSS для компактности, но DOM-нода сохранена)
             const arrow = document.createElement('div');
             arrow.className = 'char-arrow';
             arrow.innerHTML = Icons.chevron_right;
