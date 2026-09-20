@@ -208,15 +208,15 @@ export class EdgeService {
         pathEl.style.setProperty('--edge-color', edge.color || '#ff4444');
         pathEl.style.strokeWidth = `${edge.weight || 3}px`;
         
-        // Установка стилей пунктиров
+        // Установка стилей пунктиров (Математически синхронизировано для бесшовной анимации)
         if (edge.style === 'dashed') {
-            pathEl.style.setProperty('--edge-style', '10 8');
+            pathEl.style.setProperty('--edge-style', '12 12'); // Сумма 24
             pathEl.style.strokeLinecap = 'butt';
         } else if (edge.style === 'dotted') {
-            pathEl.style.setProperty('--edge-style', '0.1 10'); 
-            pathEl.style.strokeLinecap = 'round'; // Чтобы точки были круглыми
+            pathEl.style.setProperty('--edge-style', '0 12'); // Сумма 12
+            pathEl.style.strokeLinecap = 'round'; // Круглые точки
         } else if (edge.style === 'dashdot') {
-            pathEl.style.setProperty('--edge-style', '12 8 0.1 8');
+            pathEl.style.setProperty('--edge-style', '12 8 0 10'); // Сумма 30
             pathEl.style.strokeLinecap = 'round';
         } else {
             // solid

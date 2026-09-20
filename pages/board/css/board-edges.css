@@ -88,17 +88,22 @@
 
 /* Анимация течения (Flow effect) */
 .board-edge-path.is-animated {
-    animation: flowDashMove 1s linear infinite;
-}
-@keyframes flowDashMove {
-    to { stroke-dashoffset: -40; }
+    /* 3s и -120px сохраняют оригинальную скорость, но создают идеальный бесшовный цикл */
+    animation: flowDashMove 3s linear infinite;
+    will-change: stroke-dashoffset, filter; /* Аппаратное GPU-ускорение для плавности */
 }
 
-/* Линия в момент протягивания */
+@keyframes flowDashMove {
+    to { stroke-dashoffset: -120; }
+}
+
+/* Линия в момент протягивания (когда только тянешь нить) */
 .board-edge-path.temp {
     stroke: #ff4444;
-    stroke-dasharray: 6 6; 
+    stroke-dasharray: 12 12; /* Синхронизировано с dashed */
     stroke-width: 3px;
-    opacity: 0.6; pointer-events: none; 
-    animation: flowDashMove 1s linear infinite;
+    opacity: 0.6; 
+    pointer-events: none; 
+    animation: flowDashMove 3s linear infinite;
+    will-change: stroke-dashoffset;
 }
